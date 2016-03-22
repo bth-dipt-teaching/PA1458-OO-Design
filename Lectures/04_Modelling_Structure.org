@@ -1,0 +1,391 @@
+#+Title: Modelling Structure \\\\ =PA14[13]5=
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-03-21
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Outline							   :noexport:
+      Upload:
+      - Conceptual Model Notation
+	- Concept
+	- Attributes
+	- Associations
+	- Multiplicity
+	- Data Dictionary (Definition/Intention/_Glossary_)
+	- Examples (Instantiated Objects)
+      - Class Diagrams
+	- Concept vs Class
+	- Associations
+	- Roles
+	- Role Multiplicity
+	- Attributes
+	- Attribtue Types
+
+      Classroom:
+      - Discuss:
+	- How to find Concepts/Attributes/Associations?
+	- Difference between Attribute and Concept?
+	- Multiplicity -- how to think?
+      - Slides on Concept Identification
+      - How to find Attributes
+      - How to find Associations
+      - Example:
+	- Conceptual Model
+	- Class Diagram
+
+      - More on Class Diagrams
+	- Generalisation
+	  - Super/Subtype
+	  - Specialisation (is-a)
+	- Abstract types
+	- Aggregation
+	  - Weak Aggregation
+	  - Strong Aggregation
+	- Association Attributes
+	- Reflexive Associations
+* Upload							   :noexport:
+# Do this in StarUML instead
+* Classroom
+** Discussion: Concepts and Attributes 				 :Discussion:
+   - How can we find / What are:
+     - Concepts
+     - Attributes
+     - Associations
+   - What is the difference between an /Attribute/ and a /Concept/
+** Identifying Concepts
+   | Category              | Examples  |                    |
+   |-----------------------+-----------+--------------------|
+   | Physical Objects      | POST      | Aeroplane          |
+   | Places                | Store     | Aerport            |
+   | Transactions          | Payment   | Reservation        |
+   | Containers            | Basket    | Aeroplane          |
+   | Things in Container   | Item      | Passenger          |
+   | Events                | Sale      | Flight             |
+   | Description of Things | Sale Item | Flight Description |
+   | Records, Contracts    | Receipt   | Ticket             |
+   |-----------------------+-----------+--------------------|
+** Finding Concepts
+   - Look for /nouns/
+   - Map nouns to concepts
+
+   Sources:     
+   - Textual description of problem domain
+   - Requirements
+   - Use-cases
+
+   Cave!
+   - Natural language is ambiguous
+   - Concepts or Attributes?
+
+** Attributes
+   - Logical value of an element
+     - Examples: /name, quantity, status, .../
+     - Hint: Builtin data types
+       - String, int, date
+       - But also simple user-defined types such as /address, personnummer, .../
+   - *Keep Attributes Simple*
+** Associations
+   An association is a
+   - relationship between concepts
+   - indicates a meaningful and interesting connection
+
+   Types
+   - Need-to-know (preserved for some time; needs to maintained by software)
+   - Comprehension-only (used to understand domain)
+** Finding Associations
+   | Category                       | Examples                    |
+   |--------------------------------+-----------------------------|
+   | A -- is a part of -- B         | Salesitem -- Sale           |
+   |                                | Wing -- Aeroplane           |
+   | A -- is contained in -- B      | Item -- Store               |
+   |                                | Seat -- Flight              |
+   | A -- is a description for -- B | ItemDescription -- Item     |
+   |                                | FlightInformation -- Flight |
+   | A -- is known/recorded in -- B | Sale -- POST                |
+   |                                | Booking -- Flight           |
+   | A -- is owned by -- B          | Store -- Company            |
+   | A -- related transactions -- B | Payment -- Sale             |
+   |                                | Booking -- Ticket           |
+   |--------------------------------+-----------------------------|
+** Discussion: Multiplicity 					 :Discussion:
+   - Go through different types of multiplicity
+** Discussion: Concept or Class 				 :Discussion:
+   - When does a conceptual diagram become a class diagram?
+** Discussion: Aggregation or Composition 			 :Discussion:
+#+BEGIN_SRC plantuml :file FAggregation.png
+left to right direction
+A *-- B
+C o-- D
+#+END_SRC
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FAggregation.png]]
+
+** Aggregation
+   - Aggregation
+     - "Has-a"
+     - Strong aggregation
+   - Composition
+     - "Consists-of"
+     - weak aggregation
+
+#+BEGIN_SRC plantuml :file FAggregation2.png
+left to right direction
+Car "1" *-- "4" Wheel
+Team "0..*" o-- "1..*" Person
+#+END_SRC
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FAggregation2.png]]
+
+** Discussion: An Example				 :Discussion:Example:
+#+BEGIN_SRC plantuml :file FExampleUniversity.png
+class Department {
++Name : String
++HoD : String
+}
+
+class Person {
++Name : String
++email(String Subject, String Body)
+}
+
+class Course {
++Name : String
++Code : String
+}
+
+class Student {
++Bully()
+}
+
+class Teacher {
++Fire()
+}
+
+
+class Exam {
++Datetime : DateTime
++Author()
++Write()
+}
+
+class Lecture {
++Datetime : DateTime
++Conduct()
++Visit()
+}
+
+Department "1..5" -- "0..200" Course
+Department "1" -- "1+" Teacher
+Department -- "*" Student
+
+Course o-- "1..20" Lecture
+Course o-- "1..3" Exam
+
+Person <|-- Student
+Person <|-- Teacher
+
+Student -- "1+" Lecture : Attends >
+Teacher -- "*" Lecture : Teaches >
+Student - "*" Student : Knows >
+note on link: Note the Reflexive Association
+
+Student -- Exam : Writes >
+Teacher -- Exam : Authors >
+#+END_SRC
+
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FExampleUniversity.png]]
+
+*** Statements							   :noexport:
+En institution kan ge hur många kurser som helst.
+Det finns 200 studenter i systemet.
+Lärare behöver inte genomföra föreläsningar.
+En lärare kan bara jobba på en institution i taget.
+En lärare kan skicka email till sina studenter.
+Lärare undervisar på ett visst program.
+Samma tenta kan användas till mer än en kurs.
+En lärare kan mobba sina studenter.
+Studenter kan skicka email till varandra.
+Studenter känner andra studenter
+** Example							    :Example:
+   - Conceptual Model for Discussion Forum Software
+** Generalisation (Inheritance)					    :Example:
+   Why
+   - Classification among concepts (is-a)
+   - Code reuse, identifying commonalities
+
+   Example
+   - Vector Graphics Drawing Programme
+     - Point, Line, Arc, Polygon, Ellipse, Circle
+** Generalisation: Hierarchy
+#+BEGIN_SRC plantuml :file FInheritance.png
+Figure <|-- 0Dimension
+Figure <|-- 1Dimension
+Figure <|-- 2Dimension
+0Dimension <|-- Point
+1Dimension <|-- Line
+1Dimension <|-- Arc
+2Dimension <|-- Polygon
+2Dimension <|-- Ellipse
+Ellipse <|-- Circle
+#+END_SRC
+
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FInheritance.png]]
+
+** Generalisation: Hierarchy II
+#+BEGIN_SRC plantuml :file FInheritance2.png
+class Figure
+note left: Supertype
+
+class 0Dimension
+note left: Subtype
+
+class 1Dimension
+class 2Dimension
+
+Figure <|-- 0Dimension
+Figure <|-- 1Dimension
+Figure <|-- 2Dimension
+0Dimension <|-- Point
+1Dimension <|-- Line
+1Dimension <|-- Arc
+2Dimension <|-- Polygon
+2Dimension <|-- Ellipse
+Ellipse <|-- Circle
+#+END_SRC
+
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FInheritance2.png]]
+
+** Generalisation: Hierarchy III
+#+BEGIN_SRC plantuml :file FInheritance3.png
+class Figure
+note left: Supertype
+Figure : +Colour
+Figure : +BGColour
+Figure : +Draw()
+
+class 0Dimension
+note left: Subtype
+
+class 1Dimension
+1Dimension : +Size
+1Dimension : +Orientation
+1Dimension : Rotate()
+1Dimension : Scale()
+1Dimension : +start:Point
+1Dimension : +end:Point
+
+class 2Dimension
+2Dimension : +Size
+2Dimension : +Orientation
+2Dimension : Rotate()
+2Dimension : Scale()
+2Dimension : +fillPattern
+
+Figure <|-- 0Dimension
+Figure <|-- 1Dimension
+Figure <|-- 2Dimension
+0Dimension <|-- Point
+1Dimension <|-- Line
+1Dimension <|-- Arc
+2Dimension <|-- Polygon
+2Dimension <|-- Ellipse
+Ellipse <|-- Circle
+
+Point : +x
+Point : +y
+
+Ellipse : +Center:Point
+Ellipse : +Diam1
+Ellipse : +Diam2
+
+Polygon : +points:Point[]
+Circle : +Diameter
+
+#+END_SRC
+
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FInheritance3.png]]
+** Abtract Types
+   - When no instances of the base class are desirable.
+   - Example: There are no instances of the generic "Figure" base class.
+#+BEGIN_SRC plantuml :file FInheritanceAbstract.png
+abstract class Payment
+class Sale
+
+Payment <|-- Cash
+Payment <|-- Credit
+Payment <|-- Check
+
+Payment -right- Sale : Pays for >
+#+END_SRC
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FInheritanceAbstract.png]]
+** Reflexive Associations
+[[./FReflexive.png]]
+** Exotic UML: Association Attributes
+#+BEGIN_SRC plantuml :file FAssociationAttributes0.png
+Company "0..*" -- "0..*" Person : Employs
+
+note as N1
+Where do we put the attribute salary?
+in Person: implies you can ony work in one place
+in Company: implies one salary for all
+end note
+#+END_SRC
+
+#+LATEX: \only<1>{
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FAssociationAttributes0.png]]
+#+LATEX: }
+
+#+BEGIN_SRC plantuml :file FAssociationAttributes1.png
+left to right direction
+Company "0..*" -- "0..*" Person : Employs
+Company "0..*" -right- "0..*" Employment
+Person "0..*" -left- "0..*" Employment
+
+Employment : +salary
+#+END_SRC
+
+#+LATEX: \only<2>{
+One solution:
+
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FAssociationAttributes1.png]]
+#+LATEX: }
+
+#+BEGIN_SRC plantuml :file FAssociationAttributes2.png
+left to right direction
+Company "0..*" -- "0..*" Person : Employs
+(Company,Person) .. Employment
+
+Employment : +salary
+#+END_SRC
+
+#+LATEX: \only<3>{
+Proper Solution:
+
+#+ATTR_LATEX: :width 10cm
+#+RESULTS:
+[[file:FAssociationAttributes2.png]]
+#+LATEX: }

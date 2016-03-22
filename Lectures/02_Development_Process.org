@@ -1,0 +1,212 @@
+#+Title: Development Process \\\\ =PA14[13]5=
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-03-09
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Overview							   :noexport:
+      Upload: Methodologies
+      - Waterfall
+      - Iterative/Incremental
+      - Kanban
+      - SCRUM
+
+      Classroom:
+      - Process
+	- Systematic
+	- Disciplined
+	- Quantifiable (!)
+      - Process vs Project vs Product
+      - Discuss:
+	- What's good with waterfall?
+	- Where would you do design in Scrum?
+	- Where would you do design in Kanban?
+      - Example: UML Process (Work through an example)
+	- Use Case Diagrams
+	- Use Cases
+	- Conceptual Model
+	- Class Diagram
+	- Collaboration Diagram
+	- Interaction Diagram
+	- ?? Flowcharts 
+* Upload							   :noexport:
+** Development Processes
+   - Waterfall
+   - Iterative / Incremental
+   - Agile: Scrum
+   - Lean: Kanban
+** Waterfall
+  Royce, W. W. (1970). /Managing the development of large software systems/, In proceedings of IEEE WESCON (Vol. 26, No. 8, pp. 1-9).
+
+#+LATEX: \only<2>{
+  - Already on page two, he states that *this will never work in practice*.
+#+LATEX: }
+
+  [[./FWaterfall.png]]
+
+** Iterative/Incremental
+
+   [[./FIterative.png]]
+
+** Iterative Development
+   - Start with a MVP (Minimum Viable Product)
+   - Start with a conceptual overview
+   - For each iteration, add details.
+   - For each iteration, add more features and functionality.
+   - Result of each iteration is an excutable but incomplete product.
+   - Each iteration is essentially a mini-waterfall
+
+   Benefits:
+   - You can "always" deliver
+   - Shorter feedback cycles
+   - You identify challenges (e.g. with test and deplopyment) early and have more time to fix it.
+** Scrum
+   Provides a framework around iterative development.
+   
+   - Short iterations (<2-3 weeks), *Sprints*
+   - Relatively small teams (but potentially many of them)
+   - Self-organising teams
+   - Prioritised *backlog* of requirements (*User Stories*)
+     - Note: User stories \neq Use cases
+** Scrum
+   - Sprint Planning Event
+     - Communicate Scope of Sprint
+     - Select stories from Product Backlog
+     - Prepare Sprint Backlog (decompose tasks)
+     - Commit to deliver
+   - Daily Scrum (Stand-up meeting)
+     - What did I do yesterday?
+     - What will I do today?
+     - Are there any impediments?
+   - Sprint Review
+     - What was completed, what wasn't?
+     - Demo the completed work to stakeholders.
+   - Sprint Retrospective
+     - What went well? What went wrong?
+     - How may we improve?
+** Scrum
+   [[./FScrum.png]]
+** Kanban
+   - Even Leaner, Even Agiler
+     - No fixed-length iterations. Measure lead time and velocity instead.
+     - Less up-front planning (?)
+     - Rapidly shifting priorities.
+   - Three pillars:
+     - Visualise Workflow
+     - Limit Work in Progess (WIP)
+     - Measure Lead Time
+** Kanban
+   - Visible flow
+   - Visible bottlenecks
+   - More responsibility to individual team members.
+     - If you cannot shift an item because the WIP is full, you need to clear it.
+** Kanban
+   [[./FKanban.jpg]]
+
+* Classroom
+** Software Engineering  
+   - IEEE std 610.12:1990 "IEEE Standard Glossary of Software Engineering Terminology":
+
+*** Software Engineering
+   The application of a systematic, disciplined, quantifiable approach to the development, operation, and maintenance of software; that is, the application of engineering to software.
+
+** Software Engineering Process
+   - *Systematic*
+     - Pre-planned, not ad-hoc
+     - Thorough
+     - Repeatable
+   - *Disciplined*
+     - Following the plan
+     - Eyes on target
+   - *Quantifiable*
+     - Measurable
+       
+
+   - *Development*
+     - =*this=
+   - *Operation*
+     - Deployment is an important part of SE, and must be planned accordingly.
+   - *Maintenance*
+     - 80% -- 90% of a system's life span is spent in maintenance.
+** Process vs Project vs Product
+   T. Gorschek, A.M. Davis, /Requirements Engineering; In Search of the Dependent Variables/, Information and Software Tecnology 50(2008):67--75.
+
+#+ATTR_LATEX: :height 5cm
+   [[./FGorschek_Onion.pdf]]
+
+(+ Process, which is not visible in this figure but neatly bisects it.)
+** Example of UML Process:					    :Example:
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
+
+*** Dice Game Machine
+- On the Machine a player may login, logout or play the game.
+- When playing the game a player rolls two die. If the total number of points is greater than seven the player wins, otherwise the player loses.
+ 
+*** Construct
+   - Use Case Diagrams
+   - Use Cases
+   - Conceptual Model
+   - Class Diagram
+   - Collaboration Diagram
+   - Interaction Diagram
+   - Flowcharts?
+   - ?? What happened to testing ??   
+** Example of UML Process: Discussion Forum			   :noexport:
+   - Discussion forum with categories, topics, posts, users, user profiles, and private messages.
+   - The system consists of a server park (including the database), a web client, and an android client.
+
+   Construct:  
+   - Use Case Diagrams
+   - Use Cases
+   - Conceptual Model
+   - Class Diagram
+   - Collaboration Diagram
+   - Interaction Diagram
+   - Flowcharts
+   - ?? What happened to our test cases ??
+*** Notes							   :noexport:
+    Users / Use Cases (inclusive)
+    - Guest
+      - List Categories
+      - List Topics
+      - Read Topics/Posts
+    - Regular User
+      - Create Topics
+      - Create/Update/Delete own Posts
+      - Reply to Posts
+      - Like/Unlike Posts
+      - Mention other users in posts
+    - Moderator
+      - Update/Delete others' Posts
+      - Edit Topic titles
+      - Move Topics to other categories
+      - Award Badges
+    - System
+      - Award Badges
+      - Promote Users
+    - Administrator
+      - Run Backups
+      - Upload custom CSS
+      - Configure Site
+      - Restart Site
+
+** Discussion							 :Discussion:
+- What is good with waterfall?
+- Where/How would you do design in Scrum?
+- Where would you do design in Kanban?
+- When should you use which process model?
+- What are their limitations?
+- Does it work to incrementally test a product like this?
+
+
+	

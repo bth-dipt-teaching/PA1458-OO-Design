@@ -1,0 +1,579 @@
+# #+Title: Requirements \\\\ Engineering \\\\ =PA14[13]5=
+#+Title: Use Cases \\\\ =PA14[13]5=
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-03-16
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Outline							   :noexport:
+      Upload: Requirements Specifications
+      - IEEE 830
+      - RFC 2119
+      - Standard Templates for Requirements "The system must do X"
+      - Standard Template for User Stories
+      - Use Cases
+	- Use Case Diagrams
+	- High Level Use Case
+	- Fully Dressed (Expanded) Use Case
+      - Prioritising Requirements
+
+      Classroom:	
+      - Discuss:
+	- How to Find Requirements
+	- Goals, Features, Functions, Components (RAM Model)
+	- Good and Bad Requirements
+	- Black box vs White Box
+      - Basic RE process
+	- (Re-use old slides)
+      - Example
+	- Use Case Diagram
+	- High Level Use Case
+	- Fully Dressed Use Case
+* Upload							   :noexport:
+** Requirements Engineering
+   Process
+   - Elicitation
+   - Analysis and Negotiation
+   - Documentation
+   - Validation
+
+   Outcome
+   - Talk to /Stakeholders/
+   - Requirements Document
+     - Requirements (of course)
+** Requirements Document
+   - Software Requirements Specification (SRS)
+   - Used in /contract/ to agree what shall be developed
+   - Used to /communicate/ with Customer/Stakeholders
+   - Used as a /bridge/ between customer and developers
+   - Used as a blueprint for /testing/
+** Requirements Document: \\ IEEE830-1993
+   1. Introduction
+      1. Purpose of the Requirements Document
+      2. Scope of the Product
+      3. Definitions, Acronyms, and Abbreviations
+      4. References
+      5. Overview of the Remainder of the Document
+   2. General Description
+      1. Product Perspective
+      2. Product Functions
+      3. User Characteristics
+      4. General Constraints
+      5. Assumptions and Dependencies
+   3. Specific Requirements
+      Functional, non-functional, and interface requirements
+   4. Appendices
+   5. Index
+** Individual Requirements: \\ RFC 2119
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
+
+#+BEGIN_QUOTE
+      The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL
+      NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED",  "MAY", and
+      "OPTIONAL" in this document are to be interpreted as described in
+      RFC 2119.
+#+END_QUOTE
+
+1. *MUST*   This word, or the terms "REQUIRED" or "SHALL", mean that the
+   definition is an absolute requirement of the specification.
+2. *MUST NOT*   This phrase, or the phrase "SHALL NOT", mean that the
+   definition is an absolute prohibition of the specification.
+3. *SHOULD*   This word, or the adjective "RECOMMENDED", mean that there
+   may exist valid reasons in particular circumstances to ignore a
+   particular item, but the full implications must be understood and
+   carefully weighed before choosing a different course.
+4. *SHOULD NOT*   This phrase, or the phrase "NOT RECOMMENDED" mean that
+   there may exist valid reasons in particular circumstances when the
+   particular behavior is acceptable or even useful, but the full
+   implications should be understood and the case carefully weighed
+   before implementing any behavior described with this label.
+5. *MAY*   This word, or the adjective "OPTIONAL", mean that an item is
+   truly optional.
+** Individual Requirements: \\ Simple Template
+#+BEGIN_QUOTE
+R1. The product shall be able to record that a room is occupied for repair in a specific period.
+
+R2. The product shall be able to show and print a suggestion for staffing during the next two weeks based on historical room occupation. The supplier shall specify the calculation details.
+
+R3. The product shall be able to run in a mode where rooms are not booked by room number, but only room type. Actual room allocation is not done until check-in.
+
+R4. The product shall be able to print out a sheet with room allocation for each room booked under one stay.
+#+END_QUOTE
+
+<unique id>. <actor> shall be able to <action> [within <constraints>]
+** Individual Requirements: \\ More Elaborate Template
+#+BEGIN_QUOTE
+Requirement #: <unique id>
+
+Description: <actor> shall be able to <action> by <initiating event> [within <constraints>]
+
+Rationale: <explanation of why this is important>
+
+Source: <Who mentioned this requirement, and when.>
+
+Fit Criterion: <passing test case>
+
+Customer Satisfaction: <How happy will the customer be if they get this requirement>
+
+Customer Dissatiscation: <how sad will they be if they don't get it>
+
+Dependencies: <links to other requirements>
+
+Conflicts: <links to other requirements, possibly with explanations>
+
+Supporting Material: <documents that may help understand the requirement>
+
+History: <Who wrote the requirement and when. Who has modified it, when, and why>
+#+END_QUOTE
+** Scrum Requirements
+   - No SRS as such. Instead a database (/backlog/) of requirements.
+   - Agreement for each sprint which requirements to work on.
+   - Requirements expressed as *User Stories*.
+     - User Stories != Use cases
+   - Just enough to communicate with customer and developers.
+     - If more information is needed, /ask the customer/.
+       
+   - Template: /As a <type of user> I want <some goal> so that <some reason>./
+
+#+BEGIN_QUOTE
+As a user I can back up my entire hard drive so that I don't lose any data.
+
+As a power user, I can specify files or folders to backup based on file size, date created and date modified.
+
+As a user, I can indicate folders not to backup so that my backup drive isn't filled up with things I don't need saved.
+#+END_QUOTE
+
+** Scrum Requirements: \\ Conditions of Satisfaction
+   - Acceptance test
+   - Usually on the flip side of the user story card.
+
+*** Select Holiday Season
+ As a vice president of marketing, I want to select a holiday season to be used when reviewing the performance of past advertising campaigns so that I can identify profitable ones.
+
+Conditions of Satisfaction:
+- Make sure it works with major retail holidays: Christmas, Easter, President’s Day, Mother’s Day, Father’s Day, Labor Day, New Year’s Day.
+- Support holidays that span two calendar years (none span three).
+- Holiday seasons can be set from one holiday to the next (such as Thanksgiving to Christmas).
+- Holiday seasons can be set to be a number of days prior to the holiday.
+
+** Requirements the RUP way
+   - Requirements are the starting point of analysis
+     - Written as *Use Cases* and *Use Case Diagrams*
+     - Can be used for /communication/ with stakeholders and developers, and for testing.
+   - Input for Domain Analysis
+     - Description of the domain, classification of objects, identification of concepts, attributes, and associations.
+     - Domain/Conceptual Model (Embryo to Class Diagrams)
+   - Design: Defining software objects and their collaborations
+     - Static view (Class Diagrams)
+     - Dynamic View (Interaction Diagrams)
+** RUP: Iterative
+    [[./FIterativeRUP_UseCases.pdf]]
+* Use Cases
+** Use Case: Basic Notation
+   - Narrative Document
+   - Involves Actors and Events
+   - Illustrates requirements in a story, in a timeline.
+   - Considers the system as a *black box*
+
+   - Different levels:
+     - Brief (High Level)
+     - Fully Dressed (Expanded)
+** Example
+*** Point Of Sale System
+ A point of sale system (PoS, [[http://www.urbandictionary.com/define.php?term=pos][Don't look it up in UrbanDictionary]]) is a computerised applicaion used to record sales and handle payments. It is typically used in a retail store. It includes hardware components such as a computer and a bar code scanner, and sofware to run the system.
+** Functions in Example
+   - Basic
+     - Record the current sale
+     - Calculate current sales total
+     - Reduce inventory after sale
+   - Payment
+     - Handle Cash Payment
+     - Handle Credit Payment
+     - Log credit Payment
+   - ...
+   - *Don't forget* quality attributes
+     - Response Time (Price will appear within 5 secs when recording a sold item)
+     - Fault Tolerance (Must record payments to accounts within 24h)
+     - System Requirements (Windows 10 or later)
+   - Interface Requirements
+     - Methaphore (Shopping Basket)
+     - Infrastructure (Platform: Windows 10, Database: MySQL, Programming Language: C++)    
+
+   (Notice how we just ignored everything about requirements engineering best practices and went straight to the solution space)
+
+** Example: Use Case
+#+BEGIN_VERSE
+Use Case: Buy Items
+Actors: Customer, Cashier
+Description: A customer arrives at a checkout with items to purchase.
+   The cashier records the purchase item
+      The system presents the running total and line-item details.
+   The cashier collects the money and enters the payment information.
+      The system updates inventory.
+   The customer receives the receipt and leaves with the items
+#+END_VERSE
+** Actors
+   - Actors are
+     - external to the system
+     - participates in the story of a use case
+   - System Boundary
+     - Hardware
+     - Software
+     - Organisation
+** Use Case Diagrams
+#+BEGIN_SRC plantuml :file FUseCaseDiagram.png
+left to right direction
+actor Customer as cu
+actor Cashier as ca
+rectangle POS {
+(Buy Items) as buy
+(Login) as login
+(Refund Items) as refund
+(Pay) as pay
+}
+cu -right-> buy
+cu -> refund
+cu -> pay
+ca -left-> buy
+ca -> login
+ca -> refund
+ca -> pay
+#+END_SRC
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FUseCaseDiagram.png]]
+
+** Expanded Use Cases
+#+BEGIN_VERSE
+Use Case: <unique name of the use case>
+Primary Actor: <Actor initiating the use case>
+Stakeholders: <List of actors and their interests>
+Purpose: <Intention of the use case>
+
+Precondition: <What must be true before the use case can start>
+Postcondition: <Guaranteed Results>
+Overview: <High-level use case or other summary>
+
+Basic Flow: <Main successful scenario>
+Alternative Flows: <branches (success or failure) of the main scenario>
+
+Special Requirements:
+Technology:
+Open Issues:
+#+END_VERSE
+** Expanded Use Case \\ Basic Flow
+Main Successful Scenario
+#+ATTR_LATEX: :align p{5cm}p{5cm}
+   | Actor Action                                                         | System Response                                                |
+   |----------------------------------------------------------------------+----------------------------------------------------------------|
+   | 1. The cashier records the purchase items                            |                                                                |
+   |                                                                      | 2. The system presents the running total and line-item details |
+   | 3. The cashier collects the money and enters the payment information |                                                                |
+   |                                                                      | 4. The System updates the inventory                            |
+   | 5. The customer receives the receipt and leaves with the items.      |                                                                |
+
+Alternative Flows
+#+BEGIN_VERSE
+Line n: ...
+Line k: ...
+#+END_VERSE
+** Example of Expanded Use Case
+:PROPERTIES: 
+:BEAMER_OPT: shrink=20
+:END:
+   - Use Case:	Buy Items with Cash
+   - Primary Actor:	Cashier
+   - Stakeholders:	Customer, Company, Gvt., Tax agency
+   - Purpose:		Capture a sale and its cash payment
+   - Overview:
+   A customer arrives at a checkout with items to purchase.
+   The cashier records the purchase items and collects payment.
+   On completion, the customer leaves with the items.
+   - Precondition:	cashier is identified
+   - Postcondition:	sale is safe, receipt is generated, payment is recorded
+   - Basic Flow:
+     | Actor Action                                              | System Response                                                                        |
+     |-----------------------------------------------------------+----------------------------------------------------------------------------------------|
+     | 1. Customer arrives at a checkout with items to purchase. |                                                                                        |
+     | 2. Cashier records identifier from each item.             |                                                                                        |
+     |                                                           | 3. The system determines the item price and adds item info into the sales transaction. |
+     |                                                           | Description and price of the current item are presented.                               |
+     |                                                           |                                                                                        |
+     (Continues with more of the same)
+   - Alternate Flows:
+     | Line | Flow                                |
+     |------+-------------------------------------|
+     |    2 | Invalid identifier is entered       |
+     |      | The System indicates an error.      |
+     |    7 | Customer does not have enough cash  |
+     |      | The Cashier cancels the transaction |
+   - Special Requirements:
+     - Touch Screen UI
+     - Language Internationalisation
+   - Technology:
+     - Item identifier entered by barcode laser scanner
+   - Open Issues:
+     - Can the customer pay by card?
+** Ranking Use Cases
+*** Question
+      Which use case is the most important to begin with?
+
+*** Rule
+    First implement use cases that /significantly influence/ the core system architecture.
+   
+    (Compare with Agile's /Minimum Viable Product (MVP)/)
+** Ranking
+   Increase ranking of a use case if it
+   - has direct impact on architectural design
+     - example: adds classes to domain layer, require persistent services
+   - includes risky, time-critical, complex functions
+   - involves new research or technology
+   - represents primary business processes
+   - directly supports revenue or decreased costs  
+*** Ranking Techniques
+    - Scored (Numerical Weights)
+    - Discrete (High, Medium, Low)
+    - Simple Ordering (bubble sort?)
+    - MoSCoW (Must have, Should have, Could have, Won't have)
+    - Cumulative Voting
+* Classroom							   :noexport:
+** Requirements Engineering \\ A Brief Overview
+   - Develop requirements through an iterative co-operative process of analysing the problem
+   - Documenting the resulting observations in a variety of representation formats
+   - checking the accuracy of the understanding gained
+
+See the course PA1410 Requirements Engineering
+** Difficulties in Requirements Engineering
+- The customer may not be able to express what he or she wants so that you are able to understand it
+  - Tacit knowledge
+- Finding the right people to ask
+- Getting access to the right people
+- Handling large amounts of requirements
+- Specifying the requirements so that both you, the customer, your developers, and your testers can understand and use them
+** Requirements Engineering Phases
+   - Elicitation
+   - Analysis & Negotiation
+   - Validation
+   - Documentation
+   - Management
+** Discuss: RE Sources and Techniques				 :Discussion:
+   - How do we find requirements?
+   - Where do we find requirements?  
+** Requirements Elicitation Techniques
+- Interviews
+- Use-Case-based Discussions
+- Observations
+- Brainstorming
+- Questionnaires
+- Prototyping
+- Incremental Deliveries
+- Analysis of Written Documents
+** Discuss: System Scope					 :Discussion:
+- What is the scope of the system?
+  - System boundaries
+- What should you do?
+- What should you not do?
+  - Balance: Requirements, Schedule and Budget
+- During Analysis / Design: Black Box vs White Box
+#+BEGIN_SRC plantuml :file FScope.png
+actor User as pe
+rectangle System {
+}
+
+pe -> System
+#+END_SRC
+
+#+ATTR_LATEX: :height 3cm
+#+RESULTS:
+[[file:FScope.png]]
+
+** Requirements Negotiation					   :noexport:
+- What should you not do? Why?
+- What is too costly to do?
+- Are there any Conflicts?
+** Requirements Specification
+- What the proposed system shall do
+  - At what quality level
+- A documented common view
+- An agreement between developers and customer
+  - Sign a contract based on the requirements specification
+- Involve client in process
+- Decrease Risk
+** Quality Attributes
+:PROPERTIES: 
+:BEAMER_OPT: shrink=35
+:END:
+*** Text
+:PROPERTIES: 
+:BEAMER_col: 0.7
+:END:
+#+BEGIN_VERSE
+Accessibility, accountability, accuracy, adaptability, additivity, adjustability, affordability, agility, audiability, buffer, space performance, capability, capacity, clarity, code-space performance, cohesiveness, commonality, communication cost, communication time, compataibility, completeness, component integration time, component integration cost, composability, comprehensibility, conceptuality, conciseness, confidentiality, configurability, consistency, controllability, coordination cost, coordination time, correctness, cost, coupling, customer evaluation time, customer loyalty, customizability, data-space performance, decomposability, degradation of service, dependability, development cost, development time, deversity, distributivety, domain analysis cost, domain analysis time, efficiency, elasticity, enhanceability, evolvability, execution cost, extensibility, external cosistency, fault-tolerance, feasibility, flexibility, formality, generality, guidance, hardware cost, impact analyzability, independence, informativeness, inspection cost, inspection time, integrity, internal consistency, inter-operability, intuitiveness, learnability, main-memory performance, maintainability, maintenance cost, maintenance time, maturity, mean performance, measurability, mobility, modifiability, modularity, naturalness, nomadicity, obervability, off-peak-period performance, operability, operating cost, peak-period performance, performability, performance, planning cost, planning time, plasticity, portability, precision, predictability, process management time, productivity, project stability, project tracking cost, promptness, prototyping cost, prototyping time, reconfigurability, recoverability, recovery, reengineering cost, reliability, repeatability, replacability, replicability, response time, responsiveness, retirement cost, reusability, risk analysis cost, risk analysis time, robustness, safety, scalability, secondary-storage performance, sensitivity, security, similarity, simplicity, software cost, software production time, space boundness, space  performance, specificity, stability, standardizability, subjectivity, supportability, surety, survivability, susceptibility, sustainability, testability, testing time, throughput, time performance, timeliness, tolerance, tracebility, trainability, transerability, transparancy, understandability, uniform performance, uniformity, usability, user-friendliness, validity, variability, verifiability, versatility, visibility, wrappability
+#+END_VERSE
+*** Figure
+:PROPERTIES: 
+:BEAMER_col: 0.2
+:END:
+#+ATTR_LATEX: :width 9cm
+[[./FQualityAttributes.png]]
+** More Structured Quality Attributes: \\ ISO9126
+- Functionality
+  - Suitability, Accuracy, Interoperability, Security, Functionality Compliance
+- Reliability
+  - Maturity, Fault Tolerance, Recoverability, Reliability Compliance
+- Usability
+  - Understandability, Learnability, Operability, Attractiveness, Usability Compliance
+- Efficiency
+  - Time Behaviour, Resource Utilisation, Efficiency Compliance
+- Maintainability
+  - Analysability, Changeability, Stability, Testability, Maintainability Compliance
+- Portability
+  - Adaptability, Installability, Co-Existence, Replaceability, Portability Compliance
+** Discuss: Requirement Attributes				 :Discussion:
+- Requirements ID
+- Title
+- Description
+- Rationale
+- Restrictions & Risks
+- Source
+- Fit Criterion / Test Case
+- Customer Priority
+- Dependencies
+*** Discuss
+What is the purpose of each of these attributes?
+** Format of Requirements
+- What the system should do
+  - not how the system should do it
+- Testable - Measurable
+- Unambiguous
+- Only one requirement
+- Unique
+- Understood by all parties
+
+- Text, Figure, Diagram, Table?
+** Discuss: Good and Bad Examples				 :Discussion:
+- The system should be easy to use
+#+LATEX: \only<2>{
+#+BEGIN_VERSE
+ID: Req.QA.Useability
+Title: Useability for New Users
+Description: The system shall be easy to learn for new users.
+Rationale: The average user is not accustomed to using computers.
+Source: Customer Meeting 2002-01-14, PG Gyllenhammar
+Value Scale: Number of Hours it takes for a novice user to learn a new operation
+Wanted value: 0,5 h / operation
+Worst case value: 1,5 h / new operation
+#+END_VERSE
+#+LATEX: }
+** Discuss: Good and Bad Examples				 :Discussion:
+- The system should be stable
+- The user should be able to log in. If the user fails to log in after three attempts the user account should be locked.
+** Customer Contacts
+:PROPERTIES: 
+:BEAMER_opt: shrink=15
+:END:
+- Respect
+- Responsibility
+- Commitment to the Customer
+- Credibility
+- Professional
+- Deliver at least what you have agreed upon
+  - Deliver at most?
+- Only one Customer? Only one Stakeholder?
+*** Customer Meetings
+- Be prepared
+- Have an Agenda
+- Document what is said
+- Reply quickly after a meeting with your perception of what was said
+  - e.g. in the form of a draft requirements specification
+- Act professional
+  - You are in control -- you should act like it
+** Contracts
+- “A written judicial document defining the terms for business related agreements”
+  - Verbal agreements
+  - Written agreements
+
+- Defines
+  - Deliverables
+  - Payments
+
+- Written in sunshine, used in storm
+
+- Contract Types
+  - Fixed price
+  - Running price
+  - Cost-plus
+  - Roof price
+  - Combinations
+** Contract Contents
+- Definition of Services
+- Time Period
+- Contact persons
+- Costs
+- Deliveries
+- General Conditions
+
+- Connected to:
+  - A Specific Version of the Requirements Specification
+  - Project Plan?
+** Contract: Important Points
+- The contract defines what you shall do.
+- The contract also defines what you can expect from the customer.
+- You sign the contract knowing that you can deliver what is specified, under the specified conditions.
+** Back to RUP / Use Cases
+#+BEGIN_SRC plantuml :file FUseCases.png
+left to right direction
+actor Student as st
+actor Teacher as te
+rectangle Classroom {
+st -> (Study)
+te -> (Teach)
+st -> (Learn)
+(Learn) <- te
+}
+#+END_SRC
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FUseCases.png]]
+
+** Discuss: Good and Bad Requirements \\ revisited 		 :Discussion:
+   /Users shall be able to view a personal calendar and recent notifications in the system./
+
+#+BEGIN_VERSE
+Use Case: View Calendar and Notifications
+Actors: System Users
+Description:
+  A user requests to view their personal calendar.
+    The system displays the users' personal calendar.
+  A user requests to view their recent notifications.
+    The system displays the users' recent notifications.
+#+END_VERSE
+** Discussion on Use Case Ranking				 :Discussion:
+***  Increase ranking of a use case if it
+   - has direct impact on architectural design
+     - example: adds classes to domain layer, require persistent services
+   - includes risky, time-critical, complex functions
+   - involves new research or technology
+   - represents primary business processes
+   - directly supports revenue or decreased costs
+*** Discuss
+    For each of these cases, why does it increase the rank of a use case?
+
+** Use Case Ranking Techniques
+    - Scored (Numerical Weights)
+    - Discrete (High, Medium, Low)
+    - Simple Ordering (bubble sort?)
+    - MoSCoW (Must have, Should have, Could have, Won't have)
+    - Cumulative Voting

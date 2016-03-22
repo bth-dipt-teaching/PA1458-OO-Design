@@ -1,0 +1,69 @@
+#+Title: Modelling Behaviour \\\\ =PA14[13]5=
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-03-22
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Outline							   :noexport:
+      Upload:
+      - Sequence Diagram
+	- Actor
+	- Lifeline
+	- Event
+      - Contract
+	- Name
+	- Responsibilities
+	- Preconditions
+	- Postconditions
+      - Extended Contract
+	- Name
+	- Responsibilities
+	- Type
+	- Cross-References
+	- Notes
+	- Exceptions
+	- Output
+	- Preconditions
+	- Postconditions
+      - State Diagrams
+	- State / Event / Transition
+	- Notation
+	  - Nested States
+	  - Activity in a State
+	  - Actions on Transitions
+      - Structuring Use Cases (From Modelling Behaviour Lecture)
+
+      Classroom:
+      - Going from Use Case to Sequence Diagram
+      - System Sequence Diagram vs regular Sequence Diagram
+      - System as a modelling concept
+      - Contracts
+	- What are they?
+	- How should you interpret preconditions?
+	- How to interpret postconditions?
+	- Stage-and-Curtain execution
+      - Discuss:
+	- What are extended contracts good for?
+      - State Diagrams
+	- Examples + Discussion: Common Pitfalls
+	- What types of Events can there be in a state diagram?
+      - Discuss:
+	- How do we fit state diagrams into the UML process?
+* Upload							   :noexport:
+** Structuring Use Cases
+# StarUML
+** Sequence Diagrams
+# Do this in StarUML
+** Contract / Extended Contract
+# Emacs
+** State Diagrams
+# StarUML
+* Classroom
