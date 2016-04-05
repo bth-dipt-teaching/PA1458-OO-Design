@@ -14,6 +14,7 @@
 
 * Outline							   :noexport:
       Upload:
+      - Structuring Use Cases (From Modelling Behaviour Lecture)
       - Sequence Diagram
 	- Actor
 	- Lifeline
@@ -39,7 +40,6 @@
 	  - Nested States
 	  - Activity in a State
 	  - Actions on Transitions
-      - Structuring Use Cases (From Modelling Behaviour Lecture)
 
       Classroom:
       - Going from Use Case to Sequence Diagram
@@ -58,12 +58,350 @@
       - Discuss:
 	- How do we fit state diagrams into the UML process?
 * Upload							   :noexport:
-** Structuring Use Cases
-# StarUML
-** Sequence Diagrams
-# Do this in StarUML
-** Contract / Extended Contract
+** DONE Structuring Use Cases
+   CLOSED: [2016-03-31 Thu 09:20]
+# StarUML/Emacs
+** DONE Contract / Extended Contract
+   CLOSED: [2016-03-31 Thu 09:45]
 # Emacs
-** State Diagrams
+** DONE Sequence Diagrams
+   CLOSED: [2016-03-31 Thu 08:57]
+*** Notes
+- lifeline
+-actor
+-System
+-message/event
+-system operation
+- clarifying texts
+
+ex:
+- startSale()
+- enterItem(upc,quantity)
+- endSale()
+- makePayment(amount)
+
+concrete instantiation example
+*** System Sequence Diagram					     :dryrun:
+#+BEGIN_SRC plantuml :file FSystemSequenceDiagramExample.png
+hide footbox
+title PoS Example
+actor ":Cashier" as cashier
+participant ":System" as system
+
+cashier -> system : startSale()
+note left: This starts a new sale
+system --> cashier : ok
+loop
+cashier -> system : enterItem(upc,quantity)
+end
+cashier -> system : endSale()
+cashier -> system : makePayment(amount)
+#+END_SRC
+
+#+RESULTS:
+[[file:FSystemSequenceDiagramExample.png]]
+
+*** System Sequence Diagram					       :live:
+#+BEGIN_SRC plantuml :file FSystemSequenceDiagramExample.png
+hide footbox
+title PoS Example
+
+actor ":Cashier" as cashier
+participant ":System" as system
+
+cashier -> system : startSale()
+system --> cashier : ok
+loop no more items
+cashier -> system : enterItem(upc, quantity)
+system --> cashier : running total
+end
+cashier -> system : endSale()
+system --> cashier : final tally
+cashier -> system : makePayment(amount)
+#+END_SRC
+
+#+RESULTS:
+[[file:FSystemSequenceDiagramExample.png]]
+
+** TODO State Diagrams
 # StarUML
-* Classroom
+*** State Diagrams						     :dryrun:
+ - State
+ - Transition
+ - Transition Action
+ - Transition Condition
+ - Nested States
+ - entry/do/exit actions
+#+BEGIN_SRC plantuml :file FStateDiagramExample0.png
+left to right direction
+title State Diagram Example
+state aState
+[*] --> aState
+aState --> anotherState : event [guard condition]/eatIcecream()
+aState : entry/callMom()
+aState : exit/callDad()
+
+anotherState --> [*] : done
+
+aState --> aState : redo
+#+END_SRC
+
+#+RESULTS:
+[[file:FStateDiagramExample0.png]]
+
+#+BEGIN_SRC plantuml :file FStateDiagramExampe1.png
+
+
+[*] --> Hunting : Game Starts
+Hunting : entry/setColour(blue)
+Hunting : do/locatePacman()
+Hunting : do/move(myStrategy)
+Hunting --> Eating : Found Pacman / playSound(lostLife)
+Eating --> Hunting
+Eating : do/cycleColours(rainbow)
+Hunting --> Running : Pacman eats Candy / playSound(powerup)
+Running: entry/setColour(red)
+Running: do/locatePacman()
+Running: do/move(myEscapeStrategy)
+Running --> Hunting : timeout /cycleColours(rainbow)
+Running --> Eaten : Pacman finds ghost / playSound(scoreup)
+
+Eating --> [*] : Game over
+
+Eaten --> Respawn
+Respawn : entry/setPosition(pen)
+Respawn : do/cycleColours(rainbow)
+Respawn --> Hunting : timeout
+#+END_SRC
+
+#+RESULTS:
+[[file:FStateDiagramExampe1.png]]
+
+*** State Diagrams
+* Structuring Use Cases						   :noexport:
+** Structuring Use Cases
+** Reusable sub-processes
+#+BEGIN_SRC plantuml :file FStructuringUC0.png
+left to right direction
+rectangle PoS {
+(BuyItem)
+(Pay by Cash)
+(Pay by Card)
+(Pay by Credit)
+#+END_SRC
+
+#+ATTR_LATEX: :width 6cm
+#+RESULTS:
+[[file:FStructuringUC0.png]]
+** Example: \\ PoS main Use Case
+:PROPERTIES: 
+:BEAMER_OPT: shrink=25
+:END:
+#+ATTR_LATEX: :align p{7cm}p{7cm}
+| Actor Action                                                                         | System Response                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+| 1. Customer arrives at a checkout with items to purchase                             |                                                                                                                               |
+| 2. Cashier records identifier from each item                                         | 3. Determines item price and adds item info to running sale transaction. Description and price of current item are presented. |
+| 4. On completion of item entry, Cashier indicates to PoS that item entry is complete | 5. Calculates and presents the sale total.                                                                                    |
+| 6. Cashier tells Customer the total.                                                 |                                                                                                                               |
+| 7. Customer gives cash to Cashier.                                                   |                                                                                                                               |
+| 8. Cashier records received cash                                                     | 9. Shows the balance due to the Customer                                                                                      |
+|                                                                                      | 10. Prints receipt                                                                                                            |
+| 11. Cashier deposits the cash and extracts the balance.                              |                                                                                                                               |
+|                                                                                      | 12. Logs the complete sale                                                                                                    |
+|                                                                                      |                                                                                                                               |
+| 13. C gives printed receipt to B with balance                                        |                                                                                                                               |
+| 14. B leaves with the items and recept.                                              |                                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+** Example: \\ PoS re-structured use case I
+:PROPERTIES: 
+:BEAMER_OPT: shrink=25
+:END:
+#+ATTR_LATEX: :align p{7cm}p{7cm}
+| Actor Action                                                                         | System Response                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+| 1. Customer arrives at a checkout with items to purchase                             |                                                                                                                               |
+| 2. Cashier records identifier from each item                                         | 3. Determines item price and adds item info to running sale transaction. Description and price of current item are presented. |
+| 4. On completion of item entry, Cashier indicates to PoS that item entry is complete | 5. Calculates and presents the sale total.                                                                                    |
+| 6. Cashier tells Customer the total.                                                 |                                                                                                                               |
+| 7. Customer chooses payment type.                                                    |                                                                                                                               |
+| a. if Cash payment -- initiate Pay by Cash                                           |                                                                                                                               |
+| b. if Credit payment -- initiate Pay by Credit                                       |                                                                                                                               |
+| c. if Check payment -- initiate Pay by Check                                         | 8. Logs the sale                                                                                                              |
+|                                                                                      | 9. Prints receipt                                                                                                             |
+|                                                                                      |                                                                                                                               |
+| 10. C gives printed receipt to B with balance                                        |                                                                                                                               |
+| 11. B leaves with the items and recept.                                              |                                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+** Example: \\ PoS re-structured use case II
+:PROPERTIES: 
+:BEAMER_OPT: shrink=25
+:END:
+#+ATTR_LATEX: :align p{7cm}p{7cm}
+| Actor Action                                                                         | System Response                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+| 1. Customer arrives at a checkout with items to purchase                             |                                                                                                                               |
+| 2. Cashier records identifier from each item                                         | 3. Determines item price and adds item info to running sale transaction. Description and price of current item are presented. |
+| 4. On completion of item entry, Cashier indicates to PoS that item entry is complete | 5. Calculates and presents the sale total.                                                                                    |
+| 6. Cashier tells Customer the total.                                                 |                                                                                                                               |
+| 7. Customer pays and the system handles payment.                                     | 8. Logs the sale                                                                                                              |
+|                                                                                      | 9. Prints receipt                                                                                                                              |
+| 10. C gives printed receipt to B with balance                                        |                                                                                                                               |
+| 11. B leaves with the items and recept.                                              |                                                                                                                               |
+|                                                                                      |                                                                                                                               |
+| ...                                                                                  |                                                                                                                               |
+| Options                                                                              |                                                                                                                               |
+| 7.a. if Cash payment initiate _CashPayment_                                          |                                                                                                                               |
+| 7.b. if Credit payment initiate _CreditPayment_                                      |                                                                                                                               |
+| 7.c. if Check payment initiate _CheckPayment_                                        |                                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+** Example: \\ sub use case
+:PROPERTIES: 
+:BEAMER_OPT: shrink=25
+:END:
+#+ATTR_LATEX: :align p{7cm}p{7cm}
+   | _CashPayment_                                |                                          |
+   | Actor Action                                 | System Response                          |
+   |----------------------------------------------+------------------------------------------|
+   | 1. Customer chooses to pay by cash           |                                          |
+   | 2. Customer gives cash to cashier            |                                          |
+   | 3. Cashier records received cash             | 4. Shows the balance due to the customer |
+   | 5. Cashier deposits cash,                    |                                          |
+   | and extracts the balance due to the Customer |                                          |
+   | 6. Cashier gives the balance to the Customer |                                          |
+** Example: \\ structured use case diagram
+#+BEGIN_SRC plantuml :file FStructuringUC1.png
+left to right direction
+
+rectangle POS {
+(BuyItems)
+(CreditPayment)
+(CashPayment)
+(CheckPayment)
+(CreditPayment) .> (BuyItems) : include
+(CashPayment) .> (BuyItems) : include
+(CheckPayment) .> (BuyItems) : include
+
+}
+
+Cashier -> (BuyItems)
+Customer -> (BuyItems)
+
+:Credit Authorisation Service: as CAS
+
+CAS -> (CreditPayment)
+#+END_SRC
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FStructuringUC1.png]]
+** Include vs Extends
+   - Include: as in example, include sub-process in use case.
+   - Extends: Keep the original use case stable, introduce a new behaviour
+     - cf. /Aspect Oriented Programming/
+#+BEGIN_SRC plantuml :file FUseCaseExtends.png
+left to right direction
+rectangle POS {
+(GiftCertificate) .> (BuyItems) : extend
+}
+:Cashier: -> (BuyItems)
+:Customer: -> (BuyItems)
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FUseCaseExtends.png]]
+
+* Contracts
+** Contracts
+** Summary
+   - Black Box Description
+     - Use Cases
+     - System Sequence Diagrams
+   - White Box (first steps)
+     - Contracts
+#+ATTR_LATEX: :height 4cm
+[[./FSystemSequenceDiagramExample.png]]
+** Stage-and-Curtain model
+
+   - Visible: Current state
+
+     /close curtains/
+
+     <things happen>
+
+     /open curtains/
+
+   - Visible: new state
+
+     The changes between current and new state are described in a /Contract/
+** State / System State
+   - Concepts (Instances of)
+   - Attributes (Values of)
+   - Associations (Links between instances)
+** Basic Contract Format
+   - Name
+   - Responsibles
+   - Pre-conditions
+   - Post-conditions
+** Example
+   - Name: /EnterItem(barcode, quantity)/
+   - Responsibilities: /Record sale of an item and add it to the sale. Display item description and price./
+   - Preconditions: /Sale is started/
+   - Postconditions:
+     - _:SalesItem_ corresponding to product barcode was created.
+     - _:SalesItem_ was associated with the current _:Sale_
+     - _:SalesItem.quantity_ was set to /quantity/
+
+#+BEGIN_SRC plantuml :file FContractExample.png
+object PoS
+object "si:SalesItem" as si
+object "current:Sale" as sale
+
+PoS -> si : creates
+sale o-- si
+si : quantity=5
+si : productID=barcode
+#+END_SRC
+
+#+ATTR_LATEX: :height 3.5cm
+#+RESULTS:
+[[file:FContractExample.png]]
+** Preconditions
+   - Assumptions of the state of the system before operation begins
+   - Not tested in the operation
+     - Ensured by the caller (!) [fn:1]
+
+[fn:1] Defensive Programming says the exact opposite: if it is a precondition, then ~assert~ them so that you can fail early.
+** Postconditions
+   Nature of postconditions:
+   - Declarative statements
+   - Not ordered
+   - Not actions performed: only state changes
+
+   Postcondition categories:     
+   - create or delete an instance
+   - modification of an attribute
+   - create or delete an association
+** Extended Contract Format
+   - Name: /EnterItem(barcode, quantity)/
+   - Responsibilities: /Record sale of an item and add it to the sale. Display item description and price./
+   - Type: /System/
+   - Cross-References: /Use case Buy Items, Requirements X, Y, Z/
+   - Notes: /Monitor speed of database query/
+   - Exceptions: /If barcode is invalid then indicate error/
+   - Output: /None/
+   - Preconditions: /Sale is started/
+   - Postconditions:
+     - _:SalesItem_ corresponding to product barcode was created.
+     - _:SalesItem_ was associated with the current _:Sale_
+     - _:SalesItem.quantity_ was set to /quantity/
+
+* Classroom							   :noexport:
+** Discuss							 :Discussion:
+   - Fit together: Contracts, Use Cases, and System Sequence Diagrams
+   - Fit together: RUP and state diagrams
+   - Naming: /Scan()/ or /EnterItem()/
+   - Contracts, State Diagrams: Actions or State Changes
+   - When might you need Extended Contracts?
+** Example: From Use Case to Sequence Diagram			    :Example:

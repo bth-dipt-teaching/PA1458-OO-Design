@@ -73,6 +73,8 @@ Efter genomförd kurs skall studenten:
 * Course Structure
   Already covered by @LKU, but:
   - Lectures
+    - Parts as videos
+    - Parts as classroom lectures/discussions
   - Assignments
     - Startup Seminars
     - Work/Submission

@@ -1,0 +1,92 @@
+#+Title: Reading Guide =PA14[13]5=
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-04-04
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+
+* Introduction
+** Read (in Larman, chapters):
+  1. Object-Oriented Analysis and Design
+  2. Iteraative, Evolutionary, and Agile
+  3. Case Studies (we will be using the POST case study)
+
+** Watch:
+  - none.
+* Development Methods
+** Read:
+  21. [@21] Test-Driven Development and Refactoring
+  40. [@40] More on Iterative Development and Agile Project Management
+
+** Watch:
+  - [[https://play.bth.se/media/Development+Process/1_gmy3m68z/41750261][Development Process]]
+* Requirements
+** Read:
+  4. [@4] Inception is Not the Requirements Phase
+  5. Evolutionary Requirements
+  6. Use Cases
+  7. Other Requirements
+
+** Watch:
+  - [[https://play.bth.se/media/Requirements+Engineering/1_epma2li8/41750261][Requirements Engineering]]
+  - [[https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261][Use Cases]]
+* Modelling Structure
+** Read:
+  8. [@8] Iteration 1 -- Basics
+  9. Domain Models
+
+** Watch
+  - [[https://play.bth.se/media/Concept+and+Classes/1_m237spjq/41750261][Concepts and Classes]]
+* Modelling Behaviour
+** Read:
+  10. [@10] System Sequence Diagrams
+  11. Operation Contracts
+  13. [@13] Logical Architecture and UML Package Diagrams
+  29. [@29] UML State Machine Diagrams
+  30. Relating Use Cases
+
+** Watch:
+  - [[https://play.bth.se/media/Structuring+Use+Cases/1_seaeffad/41750261][Structuring Use Cases]]
+  - [[https://play.bth.se/media/SystemSequenceDiagrams.mp4/1_99i0cfv7/41750261][System Sequence Diagrams]]
+  - [[https://play.bth.se/media/Contracts/1_086yu2lr/41750261][Contracts]]
+  - State Diagrams
+* Modelling Design -- Collaborations
+** Read:
+  15. [@15] UML Interaction Diagrams
+  16. UML Class Diagrams
+  31. [@31] Domain Model Refinement 
+  32. More SSD and Contracts
+
+** Watch:
+  - TBD
+* Modelling Design -- Assigning Responsibilities
+** Read:
+  17. [@17] GRASP: Designing Objects with Responsibilities
+  18. Object Design Examples with GRASP
+  25. [@25] GRASP More Objects with Responsibilities
+
+** Watch:
+  - TBD
+* Design Patterns
+** Read:
+  25. [@25] GRASP More Objects with Responsibilities
+  26. Applying GoF Design Patterns
+  36. [@36] More Object Design with GoF Patterns
+
+** Watch:
+  - TBD
+* Mapping Design to Code
+** Read:
+  19. [@19] Designing for Visibility
+  20. Mapping Design to Code
+
+** Watch:
+  - TBD
