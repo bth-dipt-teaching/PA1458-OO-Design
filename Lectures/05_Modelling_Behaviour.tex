@@ -1,4 +1,4 @@
-% Created 2016-03-31 Thu 09:24
+% Created 2016-04-06 Wed 14:25
 \documentclass[10pt,t,a4paper]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -18,7 +18,7 @@
 \tolerance=1000
 \usetheme{BTH_msv}
 \author{Mikael Svahnberg\thanks{Mikael.Svahnberg@bth.se}}
-\date{2016-03-22}
+\date{2016-04-06}
 \title{Modelling Behaviour \\\\ \texttt{PA14[13]5}}
 \hypersetup{
   pdfkeywords={},
@@ -28,109 +28,83 @@
 
 \maketitle
 
-\section{Contracts}
+\section{Classroom}
 \label{sec-1}
-\begin{frame}[label=sec-1-1]{Contracts}
+\begin{frame}[shrink=25,label=sec-1-1]{Example: \\ From Use Case to Sequence Diagram}
+\begin{center}
+\begin{tabular}{p{7cm}p{7cm}}
+Actor Action & System Response\\
+\hline
+1. Customer arrives at a checkout with items to purchase & \\
+2. Cashier records identifier from each item & 3. Determines item price and adds item info to running sale transaction. Description and price of current item are presented.\\
+4. On completion of item entry, Cashier indicates to PoS that item entry is complete & 5. Calculates and presents the sale total.\\
+6. Cashier tells Customer the total. & \\
+7. Customer gives cash to Cashier. & \\
+8. Cashier records received cash & 9. Shows the balance due to the Customer\\
+ & 10. Prints receipt\\
+11. Cashier deposits the cash and extracts the balance. & \\
+ & 12. Logs the complete sale\\
+ & \\
+13. C gives printed receipt to B with balance & \\
+14. B leaves with the items and recept. & \\
+\hline
+\end{tabular}
+\end{center}
 \end{frame}
-\begin{frame}[label=sec-1-2]{Summary}
-\begin{itemize}
-\item Black Box Description
-\begin{itemize}
-\item Use Cases
-\item System Sequence Diagrams
-\end{itemize}
-\item White Box (first steps)
-\begin{itemize}
-\item Contracts
-\end{itemize}
-\end{itemize}
-\includegraphics[height=4cm]{./FSystemSequenceDiagramExample.png}
+\begin{frame}[label=sec-1-2]{More on Sequence Diagrams}
+\vspace{-1cm}\hspace{2cm}
+\includegraphics[height=8cm]{FSequenceDiagrams.png}
 \end{frame}
-\begin{frame}[label=sec-1-3]{Stage-and-Curtain model}
-\begin{itemize}
-\item Visible: Current state
 
-\emph{close curtains}
-
-<things happen>
-
-\emph{open curtains}
-
-\item Visible: new state
-
-The changes between current and new state are described in a \emph{Contract}
-\end{itemize}
+\begin{frame}[label=sec-1-3]{Communication Diagrams \\ (Interaction Diagrams)}
+\includegraphics[width=10cm]{FCommunicationDiagram.png}
 \end{frame}
-\begin{frame}[label=sec-1-4]{State / System State}
-\begin{itemize}
-\item Concepts (Instances of)
-\item Attributes (Values of)
-\item Associations (Links between instances)
-\end{itemize}
-\end{frame}
-\begin{frame}[label=sec-1-5]{Basic Contract Format}
-\begin{itemize}
-\item Name
-\item Responsibles
-\item Pre-conditions
-\item Post-conditions
-\end{itemize}
-\end{frame}
-\begin{frame}[label=sec-1-6]{Example}
-\begin{itemize}
-\item Name: \emph{EnterItem(barcode, quantity)}
-\item Responsibilities: \emph{Record sale of an item and add it to the sale. Display item description and price.}
-\item Preconditions: \emph{Sale is started}
-\item Postconditions:
-\begin{itemize}
-\item \uline{:SalesItem} corresponding to product barcode was created.
-\item \uline{:SalesItem} was associated with the current \uline{:Sale}
-\item \uline{:SalesItem.quantity} was set to \emph{quantity}
-\end{itemize}
-\end{itemize}
 
-\includegraphics[height=3.5cm]{FContractExample.png}
-\end{frame}
-\begin{frame}[fragile,label=sec-1-7]{Preconditions}
- \begin{itemize}
-\item Assumptions of the state of the system before operation begins
-\item Not tested in the operation
+\begin{frame}[label=sec-1-4]{Discuss: Contracts}
 \begin{itemize}
-\item Ensured by the caller (!) \footnote{Defensive Programming says the exact opposite: if it is a precondition, then \verb~assert~ them so that you can fail early.}
+\item What are contracts?
+\begin{itemize}
+\item Why are we writing them?
+\end{itemize}
+\item How should you interpret preconditions?
+\item How to interpret postconditions?
+\item What are their relation to Sequence Diagrams, Class Diagrams?
+\item What are extended contracts good for?
+\begin{itemize}
+\item When might you need Extended Contracts?
 \end{itemize}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-8]{Postconditions}
-Nature of postconditions:
-\begin{itemize}
-\item Declarative statements
-\item Not ordered
-\item Not actions performed: only state changes
-\end{itemize}
+\begin{frame}[label=sec-1-5]{State Diagrams}
+\includegraphics[width=.9\linewidth]{FStateDiagramExample4.png}
+\end{frame}
 
-Postcondition categories:     
+\begin{frame}[label=sec-1-6]{Nested States}
+\includegraphics[width=.9\linewidth]{FStateDiagramExamplePhoneNested.png}
+\end{frame}
+
+\begin{frame}[label=sec-1-7]{Discuss: State Diagrams}
 \begin{itemize}
-\item create or delete an instance
-\item modification of an attribute
-\item create or delete an association
+\item What is a State?
+\begin{itemize}
+\item When is it meaningful to model states?
+\end{itemize}
+\item What is an Action and what is a State Change?
+\begin{itemize}
+\item Also discuss this for Contracts
+\end{itemize}
+\item How can we use state diagrams in the context of UML to avoid extra work?
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-9]{Extended Contract Format}
+\begin{frame}[label=sec-1-8]{Example State Diagram (bad)}
+\includegraphics[width=11cm]{./FExampleBadStateChart.png}
+\end{frame}
+\begin{frame}[label=sec-1-9]{Example State Diagram (better)}
+\includegraphics[width=11cm]{FExampleBadStateChart_fixed.png}
+\end{frame}
+\begin{frame}[label=sec-1-10]{Discussion: Dynamic Behaviour}
 \begin{itemize}
-\item Name: \emph{EnterItem(barcode, quantity)}
-\item Responsibilities: \emph{Record sale of an item and add it to the sale. Display item description and price.}
-\item Type: \emph{System}
-\item Cross-References: \emph{Use case Buy Items, Requirements X, Y, Z}
-\item Notes: \emph{Monitor speed of database query}
-\item Exceptions: \emph{If barcode is invalid then indicate error}
-\item Output: \emph{None}
-\item Preconditions: \emph{Sale is started}
-\item Postconditions:
-\begin{itemize}
-\item \uline{:SalesItem} corresponding to product barcode was created.
-\item \uline{:SalesItem} was associated with the current \uline{:Sale}
-\item \uline{:SalesItem.quantity} was set to \emph{quantity}
-\end{itemize}
+\item Why should we model the behaviour?
 \end{itemize}
 \end{frame}
 % Emacs 25.1.50.1 (Org mode 8.2.10)

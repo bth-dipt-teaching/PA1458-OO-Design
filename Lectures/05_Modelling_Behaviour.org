@@ -1,7 +1,7 @@
 #+Title: Modelling Behaviour \\\\ =PA14[13]5=
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
-#+Date: 2016-03-22
+#+Date: 2016-04-06
 #+EPRESENT_FRAME_LEVEL: 1
 #+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
 # #+STARTUP: showall
@@ -123,7 +123,8 @@ cashier -> system : makePayment(amount)
 #+RESULTS:
 [[file:FSystemSequenceDiagramExample.png]]
 
-** TODO State Diagrams
+** DONE State Diagrams
+   CLOSED: [2016-04-06 Wed 10:16]
 # StarUML
 *** State Diagrams						     :dryrun:
  - State
@@ -178,6 +179,59 @@ Respawn --> Hunting : timeout
 [[file:FStateDiagramExampe1.png]]
 
 *** State Diagrams
+
+#+BEGIN_SRC  plantuml :file FStateDiagramExample2.png
+left to right direction
+title State Diagram Example
+
+state aState
+[*] --> aState
+aState --> anotherState : event [time > 2min] / eatIceCream()
+aState --> aThirdState : someOtherEvent
+anotherState --> aState
+
+aState : entry/callMom()
+aState : exit/callDad()
+aState : do/doSomething()
+
+aState --> aState : droppedIceCream
+
+aState --> [*]
+
+#+END_SRC
+#+RESULTS:
+[[file:FStateDiagramExample2.png]]
+
+#+BEGIN_SRC  plantuml :file FStateDiagramExample3.png
+
+[*] --> Hunting : Game Starts
+Hunting : entry/setColor(blue)
+Hunting : do/locatePacman()
+Hunting : do/move(myStrategy)
+
+Hunting --> Eating : Found Pacman / playSound(lostLife)
+Eating --> Hunting
+Eating : do/cycleColours(rainbow)
+
+Hunting --> Running : Pacman eats Candy / playSound(powerUp)
+Running : entry/setColour(red)
+Running : do/locatePacman()
+Running : do/move(myEscapeStrategy)
+
+Running --> Hunting : timeout / cycleColours(rainbow)
+
+Running --> Eaten : Pacman finds ghost / playSound(scoreUp)
+
+Eating --> [*] : no more lives
+
+Eaten --> Respawn
+
+Respawn : entry/setPosition(pen)
+Respawn : do/cycleColours(rainbow)
+Respawn --> Hunting : timeout(2sec)
+#+END_SRC
+#+RESULTS:
+[[file:FStateDiagramExample3.png]]
 * Structuring Use Cases						   :noexport:
 ** Structuring Use Cases
 ** Reusable sub-processes
@@ -312,7 +366,7 @@ rectangle POS {
 #+RESULTS:
 [[file:FUseCaseExtends.png]]
 
-* Contracts
+* Contracts							   :noexport:
 ** Contracts
 ** Summary
    - Black Box Description
@@ -397,11 +451,169 @@ si : productID=barcode
      - _:SalesItem_ was associated with the current _:Sale_
      - _:SalesItem.quantity_ was set to /quantity/
 
-* Classroom							   :noexport:
-** Discuss							 :Discussion:
-   - Fit together: Contracts, Use Cases, and System Sequence Diagrams
-   - Fit together: RUP and state diagrams
-   - Naming: /Scan()/ or /EnterItem()/
-   - Contracts, State Diagrams: Actions or State Changes
-   - When might you need Extended Contracts?
-** Example: From Use Case to Sequence Diagram			    :Example:
+* Classroom
+** Example: \\ From Use Case to Sequence Diagram 		    :Example:
+:PROPERTIES: 
+:BEAMER_OPT: shrink=25
+:END:
+#+ATTR_LATEX: :align p{7cm}p{7cm}
+| Actor Action                                                                         | System Response                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+| 1. Customer arrives at a checkout with items to purchase                             |                                                                                                                               |
+| 2. Cashier records identifier from each item                                         | 3. Determines item price and adds item info to running sale transaction. Description and price of current item are presented. |
+| 4. On completion of item entry, Cashier indicates to PoS that item entry is complete | 5. Calculates and presents the sale total.                                                                                    |
+| 6. Cashier tells Customer the total.                                                 |                                                                                                                               |
+| 7. Customer gives cash to Cashier.                                                   |                                                                                                                               |
+| 8. Cashier records received cash                                                     | 9. Shows the balance due to the Customer                                                                                      |
+|                                                                                      | 10. Prints receipt                                                                                                            |
+| 11. Cashier deposits the cash and extracts the balance.                              |                                                                                                                               |
+|                                                                                      | 12. Logs the complete sale                                                                                                    |
+|                                                                                      |                                                                                                                               |
+| 13. C gives printed receipt to B with balance                                        |                                                                                                                               |
+| 14. B leaves with the items and recept.                                              |                                                                                                                               |
+|--------------------------------------------------------------------------------------+-------------------------------------------------------------------------------------------------------------------------------|
+** More on Sequence Diagrams
+#+BEGIN_SRC plantuml :file FSequenceDiagrams.png
+hide footbox
+title Example Sequence Diagram
+
+participant ":PoS"  as pos
+
+[-> pos : startNewSale()
+activate pos
+create participant "current:Sale" as cs
+pos --> cs : create()
+deactivate pos
+
+[-> pos : enterItem(upc, qty)
+activate pos
+create participant "si:SalesItem" as si
+pos --> si : create()
+pos -> si : setProductID(upc)
+activate si
+deactivate si
+pos -> si : setQuantity(qty)
+activate si
+deactivate si
+pos -> cs : addItem(si)
+activate cs
+create participant "info:Warehouse" as info
+cs --> info : create()
+cs -> info : theDescription=getDescription(si->getUPC())
+activate info
+deactivate info
+cs -> info : thePrice=getPrice(si->getUPC())
+activate info
+deactivate info
+cs -> si : setPrice(thePrice)
+activate si
+deactivate si
+cs -> cs : increaseTotal(thePrice)
+activate cs
+deactivate cs
+cs -> info : destroy()
+destroy info
+cs --> pos : theItemDescription
+deactivate cs
+deactivate pos
+#+END_SRC
+
+#+LATEX: \vspace{-1cm}\hspace{2cm}
+#+ATTR_LATEX: :height 8cm
+#+RESULTS:
+[[file:FSequenceDiagrams.png]]
+
+** Communication Diagrams \\ (Interaction Diagrams)
+#+BEGIN_SRC plantuml :file FCommunicationDiagram.png
+left to right direction
+title enterItem(upc,qty)
+
+object ":PoS"  as pos
+object "si:SalesItem" as si
+object "current:Sale" as cs
+object "info:Warehouse" as info
+
+pos --> si : 1. Create()\n2. setProductID(upc)\n3. setQuantity(qty)
+pos --> cs : 4. addItem(si)
+cs --> info : 5. Create()\n6. theDescription=getDescription(si->getUPC())\n7. thePrice=getPrice(si->getUPC())\n10. destroy()
+cs --> si : 8. setPrice(thePrice)
+cs --> cs : 9. increaseTotal(thePrice)
+#+END_SRC
+
+#+ATTR_LATEX: :width 10cm
+#+RESULTS:
+[[file:FCommunicationDiagram.png]]
+
+** Discuss: Contracts						 :Discussion:
+- What are contracts?
+  - Why are we writing them?
+- How should you interpret preconditions?
+- How to interpret postconditions?
+- What are their relation to Sequence Diagrams, Class Diagrams?
+- What are extended contracts good for?
+  - When might you need Extended Contracts?
+** State Diagrams						    :Example:
+#+BEGIN_SRC plantuml :file FStateDiagramExamplePhone.png
+left to right direction
+title Phone Call
+[*] -> Idle
+Idle --> Active : off hook /play dial tone
+Active --> Idle : on hook
+#+END_SRC
+
+#+ATTR_LATEX: :height=6cm
+#+RESULTS:
+[[file:FStateDiagramExample4.png]]
+
+** Nested States						    :Example:
+#+BEGIN_SRC plantuml :file FStateDiagramExamplePhoneNested.png
+left to right direction
+title Phone Call
+[*] -> Idle
+Idle --> Active : off hook /play dial tone
+Active --> Idle : on hook
+
+state Active {
+[*] -> PlayingDialTone
+PlayingDialTone --> Dialing : digit entered
+Dialing --> Connecting : number complete
+Dialing --> Dialing : digit entered
+Connecting -> Talking : connected
+}
+#+END_SRC
+
+#+ATTR_LATEX: :height=6cm
+#+RESULTS:
+[[file:FStateDiagramExamplePhoneNested.png]]
+
+** Discuss: State Diagrams					 :Discussion:
+   - What is a State?
+     - When is it meaningful to model states?
+   - What is an Action and what is a State Change?
+     - Also discuss this for Contracts
+   - How can we use state diagrams in the context of UML to avoid extra work?
+** Example State Diagram (bad) 				 :Example:Discussion:
+#+ATTR_LATEX: :width 11cm
+[[./FExampleBadStateChart.png]]
+** Example State Diagram (better) 			 :Example:Discussion:
+#+BEGIN_SRC plantuml :file FExampleBadStateChart_fixed.png
+left to right direction
+[*] --> Playing : Everything Loaded
+Playing --> LostLife : Fall Down
+Playing --> LostLife : Meet Ghost [powerup inactive]
+Playing --> Playing : Hit candy / addScore()
+
+LostLife : do/PlayLostLifeAnimation()
+
+LostLife --> Playing : [more lives]
+LostLife --> [*] : [no more lives]
+
+Playing --> Playing : Meet Ghost [powerup active] /addScore()
+
+#+END_SRC
+
+#+ATTR_LATEX: :width 11cm
+#+RESULTS:
+[[file:FExampleBadStateChart_fixed.png]]
+** Discussion: Dynamic Behaviour				 :Discussion:
+   - Why should we model the behaviour?
