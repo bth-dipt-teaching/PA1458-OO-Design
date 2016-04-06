@@ -1,5 +1,5 @@
-# #+Title: Requirements \\\\ Engineering \\\\ =PA14[13]5=
-#+Title: Use Cases \\\\ =PA14[13]5=
+#+Title: Requirements \\\\ Engineering \\\\ =PA14[13]5=
+# #+Title: Use Cases \\\\ =PA14[13]5=
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-03-16
@@ -178,7 +178,7 @@ Conditions of Satisfaction:
      - Dynamic View (Interaction Diagrams)
 ** RUP: Iterative
     [[./FIterativeRUP_UseCases.pdf]]
-* Use Cases
+* Use Cases							   :noexport:
 ** Use Case: Basic Notation
    - Narrative Document
    - Involves Actors and Events
@@ -347,7 +347,7 @@ Line k: ...
     - Simple Ordering (bubble sort?)
     - MoSCoW (Must have, Should have, Could have, Won't have)
     - Cumulative Voting
-* Classroom							   :noexport:
+* Classroom
 ** Requirements Engineering \\ A Brief Overview
    - Develop requirements through an iterative co-operative process of analysing the problem
    - Documenting the resulting observations in a variety of representation formats
@@ -548,7 +548,7 @@ st -> (Learn)
 #+RESULTS:
 [[file:FUseCases.png]]
 
-** Discuss: Good and Bad Requirements \\ revisited 		 :Discussion:
+** Discuss: Good and Bad Requirements II			 :Discussion:
    /Users shall be able to view a personal calendar and recent notifications in the system./
 
 #+BEGIN_VERSE
