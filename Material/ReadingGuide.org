@@ -13,7 +13,7 @@
 #+BEAMER_THEME: BTH_msv
 
 
-* Introduction
+* Lecture 01 Introduction
 ** Read (in Larman, chapters):
   1. Object-Oriented Analysis and Design
   2. Iteraative, Evolutionary, and Agile
@@ -21,14 +21,14 @@
 
 ** Watch:
   - none.
-* Development Methods
+* Lecture 02 Development Methods
 ** Read:
   21. [@21] Test-Driven Development and Refactoring
   40. [@40] More on Iterative Development and Agile Project Management
 
 ** Watch:
   - [[https://play.bth.se/media/Development+Process/1_gmy3m68z/41750261][Development Process]]
-* Requirements
+* Lecture 03 Requirements
 ** Read:
   4. [@4] Inception is Not the Requirements Phase
   5. Evolutionary Requirements
@@ -38,14 +38,14 @@
 ** Watch:
   - [[https://play.bth.se/media/Requirements+Engineering/1_epma2li8/41750261][Requirements Engineering]]
   - [[https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261][Use Cases]]
-* Modelling Structure
+* Lecture 04 Modelling Structure
 ** Read:
   8. [@8] Iteration 1 -- Basics
   9. Domain Models
 
 ** Watch
   - [[https://play.bth.se/media/Concept+and+Classes/1_m237spjq/41750261][Concepts and Classes]]
-* Modelling Behaviour
+* Lecture 05 Modelling Behaviour
 ** Read:
   10. [@10] System Sequence Diagrams
   11. Operation Contracts
@@ -57,8 +57,9 @@
   - [[https://play.bth.se/media/Structuring+Use+Cases/1_seaeffad/41750261][Structuring Use Cases]]
   - [[https://play.bth.se/media/SystemSequenceDiagrams.mp4/1_99i0cfv7/41750261][System Sequence Diagrams]]
   - [[https://play.bth.se/media/Contracts/1_086yu2lr/41750261][Contracts]]
-  - State Diagrams
+  - [[https://play.bth.se/media/StateDiagrams.mp4/1_ruht53d3][State Diagrams]]
 * Modelling Design -- Collaborations
+  *Note:* This used to be a separate lecture that I have now merged into lecture 04 and 05. I am keeping this as a placeholder so you don't get upset that I suddenly add new chapters that you "should have read" before a lecture that you have already attended.
 ** Read:
   15. [@15] UML Interaction Diagrams
   16. UML Class Diagrams
@@ -67,23 +68,18 @@
 
 ** Watch:
   - TBD
-* Modelling Design -- Assigning Responsibilities
+* Lecture 06 Design Patterns
 ** Read:
   17. [@17] GRASP: Designing Objects with Responsibilities
   18. Object Design Examples with GRASP
-  25. [@25] GRASP More Objects with Responsibilities
-
-** Watch:
-  - TBD
-* Design Patterns
-** Read:
   25. [@25] GRASP More Objects with Responsibilities
   26. Applying GoF Design Patterns
   36. [@36] More Object Design with GoF Patterns
 
 ** Watch:
-  - TBD
-* Mapping Design to Code
+  - [[https://play.bth.se/media/DesignPatterns_GRASP/1_e4z8gitx][GRASP Patterns]]
+  - [[https://play.bth.se/media/DesignPatterns_GoF/1_xdlww0y6][GoF Design Patterns]]
+* Lecture 07 Mapping Design to Code
 ** Read:
   19. [@19] Designing for Visibility
   20. Mapping Design to Code
