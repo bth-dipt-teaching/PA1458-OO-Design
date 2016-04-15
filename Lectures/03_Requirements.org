@@ -177,7 +177,7 @@ Conditions of Satisfaction:
      - Static view (Class Diagrams)
      - Dynamic View (Interaction Diagrams)
 ** RUP: Iterative
-    [[./FIterativeRUP_UseCases.pdf]]
+    [[./IIterativeRUP_UseCases.pdf]]
 * Use Cases							   :noexport:
 ** Use Case: Basic Notation
    - Narrative Document
@@ -426,7 +426,7 @@ Accessibility, accountability, accuracy, adaptability, additivity, adjustability
 :BEAMER_col: 0.2
 :END:
 #+ATTR_LATEX: :width 9cm
-[[./FQualityAttributes.png]]
+[[./IQualityAttributes.png]]
 ** More Structured Quality Attributes: \\ ISO9126
 - Functionality
   - Suitability, Accuracy, Interoperability, Security, Functionality Compliance

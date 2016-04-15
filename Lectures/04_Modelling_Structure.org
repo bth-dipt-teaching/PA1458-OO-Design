@@ -339,7 +339,7 @@ Payment -right- Sale : Pays for >
 #+RESULTS:
 [[file:FInheritanceAbstract.png]]
 ** Reflexive Associations
-[[./FReflexive.png]]
+[[./IReflexive.png]]
 ** Exotic UML: Association Attributes
 #+BEGIN_SRC plantuml :file FAssociationAttributes0.png
 Company "0..*" -- "0..*" Person : Employs

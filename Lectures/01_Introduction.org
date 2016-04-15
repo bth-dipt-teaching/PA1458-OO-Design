@@ -88,17 +88,17 @@ Efter genomförd kurs skall studenten:
 :END:
 
 #+ATTR_LATEX: :width 1.5cm
-[[./FLarman.jpg]]
+[[./ILarman.jpg]]
 - C. Larman, /Applying UML and Patterns/, Prentice Hall, 3rd Edition
 - Try to find an older edition!
 
 #+LATEX: \only<2>{
 #+ATTR_LATEX: :height 1.5cm
-[[./FGamma.jpg]]
+[[./IGamma.jpg]]
 - Gamma, Helm, Johnson, Vlissides, /Design Patterns, Elements of Reusable Object-Oriented Software/, Addison-Wesley Professional
 
 #+ATTR_LATEX: :height 1.5cm
-[[./FNystrom.jpg]]
+[[./INystrom.jpg]]
 - R. Nystrom, /Game Programming Patterns/, Genever Benning, 2014.
 - Also Available at: http://gameprogrammingpatterns.com/contents.html
 #+LATEX: }
@@ -121,7 +121,7 @@ Efter genomförd kurs skall studenten:
   - ... *There is, of course, more to this story.*
 #+LATEX: } \vspace{0.25cm}
 #+ATTR_LATEX: :width 9cm
-  [[./FSurveyModelling.png]]
+  [[./ISurveyModelling.png]]
 * Why Bother About Modelling
   - In the freetext answers a different story emerges:
     - They do use sketches, informal models, casual diagrams, etc, but not formal UML.

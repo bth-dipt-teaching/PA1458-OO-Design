@@ -50,11 +50,11 @@
   - Already on page two, he states that *this will never work in practice*.
 #+LATEX: }
 
-  [[./FWaterfall.png]]
+  [[./IWaterfall.png]]
 
 ** Iterative/Incremental
 
-   [[./FIterative.png]]
+   [[./IIterative.png]]
 
 ** Iterative Development
    - Start with a MVP (Minimum Viable Product)
@@ -93,7 +93,7 @@
      - What went well? What went wrong?
      - How may we improve?
 ** Scrum
-   [[./FScrum.png]]
+   [[./IScrum.png]]
 ** Kanban
    - Even Leaner, Even Agiler
      - No fixed-length iterations. Measure lead time and velocity instead.
@@ -109,7 +109,7 @@
    - More responsibility to individual team members.
      - If you cannot shift an item because the WIP is full, you need to clear it.
 ** Kanban
-   [[./FKanban.jpg]]
+   [[./IKanban.jpg]]
 
 * Classroom
 ** Software Engineering  
@@ -140,7 +140,7 @@
    T. Gorschek, A.M. Davis, /Requirements Engineering; In Search of the Dependent Variables/, Information and Software Tecnology 50(2008):67--75.
 
 #+ATTR_LATEX: :height 5cm
-   [[./FGorschek_Onion.pdf]]
+   [[./IGorschek_Onion.pdf]]
 
 (+ Process, which is not visible in this figure but neatly bisects it.)
 ** Example of UML Process:					    :Example:

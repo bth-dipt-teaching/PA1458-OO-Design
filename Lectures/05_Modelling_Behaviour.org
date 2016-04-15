@@ -151,8 +151,6 @@ aState --> aState : redo
 [[file:FStateDiagramExample0.png]]
 
 #+BEGIN_SRC plantuml :file FStateDiagramExampe1.png
-
-
 [*] --> Hunting : Game Starts
 Hunting : entry/setColour(blue)
 Hunting : do/locatePacman()
@@ -594,7 +592,7 @@ Connecting -> Talking : connected
    - How can we use state diagrams in the context of UML to avoid extra work?
 ** Example State Diagram (bad) 				 :Example:Discussion:
 #+ATTR_LATEX: :width 11cm
-[[./FExampleBadStateChart.png]]
+[[./IExampleBadStateChart.png]]
 ** Example State Diagram (better) 			 :Example:Discussion:
 #+BEGIN_SRC plantuml :file FExampleBadStateChart_fixed.png
 left to right direction
