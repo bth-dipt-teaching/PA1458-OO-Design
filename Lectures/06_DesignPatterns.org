@@ -1,0 +1,787 @@
+#+Title: Design Patterns
+#+Subtitle: =PA14[13]5=
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-04-06
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Outline							   :noexport:
+      Upload:
+      - [X] GRASP Patterns
+	- Expert
+	- Creator
+	- Low Coupling
+	- High Cohesion
+	  - Don't talk to strangers
+	- Controller
+	- Polymorphism
+      - [X] Design Patterns
+	- Observer
+	- Singleton
+	- Strategy
+	- State
+	- Abstract Factory
+      - [X] Architecture
+	- Layered
+	- MVC
+
+      Missing in v3 of the book:	  
+      - Don't talk to strangers (subset of high cohesion, low coupling)
+
+      Classroom:
+      - [X] Design Patterns Background
+      - [X] Levels of Patterns
+	- Architecture
+	- Design
+	- Idioms
+	- GRASP
+      - Discuss:
+	- Design Patterns:
+	  - Domain Modelling or Development tricks
+	  - What are they good for?
+	  - Limitations?
+      - Example:
+	- [X] How to apply GRASP
+	- [X] How to apply DP
+	- [X] How to apply AP
+      - Example:
+	- [-] How to Implement DP's
+* Upload GRASP							   :noexport:
+** Design Patterns
+ #+ATTR_LATEX: :width 7cm
+ [[./IPolhem.jpg]]
+** Patterns -- a brief introduction
+   - General design principles
+   - "encoded experience"
+   - Codified in a structured format
+   - Named
+*** Design Pattern: /Name/
+    - Problem: /Description of Problem/
+    - Solution: /Overall reasoning about a solution, which classes and messages are involved/
+    - Example: /A concrete example of how it works/
+** Levels of Patterns
+   Different levels:
+   - Architecture
+     - Systems, subsystems
+   - Design
+     - Classes, groups of classes
+   - Idioms
+     - One class, functions within one class
+   - GRASP
+     - In some sense orthogonal
+     - Learning aid for OO Design
+     - Advice for Assigning Responsibilities
+** GRASP Patterns
+   (Listed on the inside of the book cover)
+   - Information Expert
+   - Creator
+   - Controller
+   - Low Coupling
+   - High Cohesion
+   - Polymorphism
+   - Pure Fabrication
+   - Indirection
+   - Protected Variations
+** Information Expert
+   - Problem: /What is a general principle for assigning responsibilities to objects?/
+   - Solution: /Assign responsibilities to the *information expert*, the class that has the information necessary to fulfill the responsibility./
+   - Example:
+#+BEGIN_SRC plantuml :file FGRASPInformationExpert.png
+left to right direction
+class Sale {
+time
+}
+
+class SalesLineItem {
+quantity
+}
+
+class ProductDescription {
+description
+price
+itemID
+}
+
+Sale "1" -- "1..*" SalesLineItem : contains >
+SalesLineItem "*" -- "1" ProductDescription : described-by >
+#+END_SRC
+
+#+ATTR_LATEX: :width 10cm
+#+RESULTS:
+[[file:FGRASPInformationExpert.png]]
+
+- Who should be responsible for knowing the grand total of a sale?
+- Who should be responsible for calculating the total price for the SalesLineItem?
+** Creator
+   - Problem: /Who should be responsible for creating a new instance of some class?/
+   - Solution: /Assign class B the responsibility to create an instance of class A if one of these is true:/
+     - B "contains" or compositively aggregates A
+     - B records A
+     - B closely uses A
+     - B has the initialising data for A that will be passed to A when it is created
+       - (B is an Information Expert wrt. creating instances of A)
+   - Example:
+#+ATTR_LATEX: :width 10cm
+[[./FGRASPInformationExpert.png]]
+- Who creates instances of SalesLineItem?
+** Low Coupling
+   - Problem: /How to support low dependency, low change impact, and increased reuse?/
+   - Solution: /Assign responsibilities so that coupling remains low./
+   - Example:
+     - Assume classes: *Payment*, *Register*, *Sale*
+** Low Coupling (using Creator pattern)
+#+BEGIN_SRC plantuml :file FGRASPLowCoupling1.png
+hide footbox
+participant ":Register" as reg
+participant ":Sale" as sale
+
+[-> reg : makePayment()
+activate reg
+create participant "p:Payment" as pay
+reg -> pay : create()
+reg -> sale : addPayment(p)
+activate sale
+deactivate sale
+deactivate reg
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FGRASPLowCoupling1.png]]
+** Low Coupling (with lower coupling)
+#+BEGIN_SRC plantuml :file FGRASPLowCoupling2.png
+hide footbox
+participant ":Register" as reg
+participant ":Sale" as sale
+
+[-> reg : makePayment()
+activate reg
+reg -> sale : makePayment()
+activate sale
+create participant "p:Payment" as pay
+sale -> pay : create()
+deactivate sale
+deactivate reg
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FGRASPLowCoupling2.png]]
+
+** Controller
+   - Problem: /What first object beyond the UI layer receives and coordinates ("controls") a system operation?/
+   - Solution: /Assign the responsibility to a class representing one of the following choices:/
+     - The overall "System" (so called a /Facade Controller/
+     - A Use Case Scenario: <UseCaseName>Handler, <UseCaseName>Coordinator, <UseCaseName>Session
+   - Example:
+#+BEGIN_SRC plantuml :file FGRASPController.png
+allow_mixing
+
+actor User
+object ":UI" as UI
+object ":SaleJFrame" as sjf
+object ":System" as System
+
+User .> UI
+UI --> sjf : actionPerformed(actionEvent)
+sjf --> System : enterItem(upc, qty)
+#+END_SRC
+
+#+ATTR_LATEX: :height 3.5cm
+#+RESULTS:
+[[file:FGRASPController.png]]
+** High Cohesion
+   - Problem: /How to keep objects focused, understandable, manageable, and (as a side effect) support low coupling?/
+   - Solution: /Assign a responsibilty so that cohesion remains high./
+     - C.f. "Avoid God Classes", "Avoid bloated Controllers".
+     - Refactor! Break up into smaller classes with more well-defined responsibilities.
+   - One particular sub-pattern of High Cohesion is *Don't Talk to Strangers*.
+** Don't talk to Strangers
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
+
+#+BEGIN_SRC plantuml :file FStrangers0.png
+PoS - Sale
+Sale - Payment
+PoS : +getAmount()
+Sale : +getPayment()
+Sale : -Payment myPayment
+note right
+Payment Sale::getPayment() {
+    return myPayment;
+}
+end note
+Payment : +getAmount()
+#+END_SRC
+
+#+ATTR_LATEX: :height 2cm
+#+RESULTS:
+[[file:FStrangers0.png]]
+
+
+#+BEGIN_SRC plantuml :file FStrangers1.png
+participant ":PoS" as pos
+participant "s:Sale" as sale
+participant "Sale::Payment myPayment" as pay
+
+== Example 1 ==
+[-> pos: getAmount()
+pos -> sale: p=getPayment()
+pos -> pay: a=getAmount()
+note right
+This violates "Don't talk to Strangers"
+the Sale::myPayment object is a <i>Stranger</i> to PoS!
+end note
+== Example 2 (better) ==
+[-> pos: getAmount()
+pos -> sale: a=getAmount()
+sale -> pay: a=getAmount()
+note right: This supports "Don't talk to Strangers"
+#+END_SRC
+
+#+LATEX: \vspace{0.5cm}
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FStrangers1.png]]
+
+** Polymorphism
+   - Problem: /How to handle alternatives based on type? How to create pluggable software components?/
+   - Solution: /Assign responsibility for the behaviour using *polymorphic operations*/
+     - Note: This is a fundamental principle used in many "bigger" design patterns.
+   - Example
+#+BEGIN_SRC plantuml :file FGRASPPolymorphism.png
+class Payment <<abstract>> {
+{abstract} void handlePayment()
+}
+
+class CashPayment {
+void handlePayment()
+}
+
+class CreditPayment {
+void handlePayment()
+}
+
+class ChequePayment {
+void handlePayment()
+}
+
+Payment <|-- CashPayment
+Payment <|-- CreditPayment
+Payment <|-- ChequePayment
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FGRASPPolymorphism.png]]
+** Pure Fabrication
+   - Problem: /What object should have the responsibility when there are no good choices?/
+   - Solution: /Invent a class with a well defined responsibility./
+   - Example:
+#+BEGIN_SRC plantuml :file FGRASPFabrication.png
+class PersistentStorage {
+void logTransaction()
+}
+
+Payment - PersistentStorage
+#+END_SRC
+
+#+ATTR_LATEX: :height 2cm
+#+RESULTS:
+[[file:FGRASPFabrication.png]]
+** Indirection
+   - Problem: /Where to assign a responsibility to avoid a direct coupling?/
+   - Solution: /Assign the responsibility to an intermediate object./
+   - Example:
+#+BEGIN_SRC plantuml :file FGRASPIndirection.png
+hide footbox
+
+participant Sale
+participant Payment
+participant Purchase
+
+Sale -> TaxConnector
+Payment -> TaxConnector
+Purchase -> TaxConnector
+
+TaxMasterAdapter ->] : ...
+note right : TCP Communication 
+#+END_SRC
+
+#+RESULTS:
+[[file:FGRASPIndirection.png]]
+** Protected Variations
+   - Problem: /How to design objects, subsystems, and systems, so that variations or instabilities in these elements do not have an undesirable impact on other elements?/
+   - Solution: /Identify points of variation; assign responsibilities to create a stable interface around them./
+     - Note: This is the goal of many "bigger" design patterns, e.g. Wrapper, Abstract Factory, Adapter, Bridge, Facade, ...
+** Summary
+#+BEGIN_SRC plantuml :file FGRASPSummary.png
+'left to right direction
+class Sale {
+time
+payment : Payment
+---
+getTotal()
+makeLineItem(upc, quantity)
+makePayment()
+}
+note left of Sale
+getTotal() from Information Expert
+MakeLineItem() from Creator
+MakePayment() from Low Coupling
+end note
+
+class SalesLineItem {
+quantity
+--
+getSubTotal()
+}
+note right: getSubTotal() from Information Expert
+
+class ProductDescription {
+description
+price
+itemID
+--
+getPrice()
+}
+
+Sale "1" -- "1..*" SalesLineItem : contains >
+SalesLineItem "*" -- "1" ProductDescription : described-by >
+
+class Register
+
+class Payment <<abstract>> {
+{abstract} void handlePayment()
+}
+
+class CashPayment {
+void handlePayment()
+}
+
+class CreditPayment {
+void handlePayment()
+}
+
+class ChequePayment {
+void handlePayment()
+}
+
+Payment <|-- CashPayment
+Payment <|-- CreditPayment
+Payment <|-- ChequePayment
+
+Register -- Sale
+Sale -- Payment
+
+
+class PersistentStorage {
+void logTransaction()
+}
+
+Payment - PersistentStorage
+#+END_SRC
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FGRASPSummary.png]]
+* Upload GoF
+** Gang of Four Design Patterns and Architecture Patterns
+       - Architecture
+	 - Layered
+	 - MVC
+       - Design Patterns
+	 - Observer
+	 - Singleton
+	 - Strategy
+	 - State
+	 - Abstract Factory
+** Layered
+   - Problem: /You have groups of subtasks that depend on other subtasks at different levels of abstractions/
+   - Solution: /Put the subtasks into *layers*, each representing a specific level of abstraction/
+     - Minimise connections between layers (low coupling)
+     - Assign a clear responsibility to each layer (high cohesion)
+   - Examples: Thee Tier Architecture, Windows 2000 Architecture
+** Example: Thee Tier Architecture
+#+ATTR_LATEX: :height 6cm
+  [[./IThreeTierArchitecture.png]]
+** Example: Windows 2000 Architecture
+#+ATTR_LATEX: :height 6cm
+   [[./IWindows_2000_architecture.png]]
+** Model View Controller: MVC
+   - Problem: /You have an interactive application. How should you divide responsibilities for *presenting*, *managing*, and *storing* data?/
+   - Solution: /Divide your system into three parts:/
+     - *Model*: Maintain persistency and consistency of the data
+     - *View*: Presentation of the data (may be more than one view)
+     - *Controller*: Handle user input and manage business rules
+   - Example: Thee Tier Architecture
+** Example: Thee Tier Architecture
+#+ATTR_LATEX: :height 6cm
+  [[./IThreeTierArchitecture.png]]
+** Observer
+   - Problem: /How should one object (A) keep track of the state of another object (B)?/
+   - Solution: /Give B a pointer to A and ask it to notify when there are changes./
+   - Illustration:
+#+BEGIN_SRC plantuml :file FObserver.png
+abstract class Observer {
++{abstract} void update(Observable* theObservable)
+}
+
+class Observable {
+-std::vector<Observable*> myObservers
++void addObserver(Observer* theObserver)
++void removeObserver(Observer* theObserver)
+-void notifyObservers()
+}
+
+note right of Observable
+void notifyObservers() {
+   for (Observer* o : myObservers) {
+      o->update(this);
+   }
+}
+end note
+
+Observer -> Observable : Observes
+
+Observer <|-- PoSDisplay
+Observable <|-- Sale
+
+class PoSDisplay {
++void update(Observable* theObservable)
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:FObserver.png]]
+** Java Problem 1: Multiple Inheritance
+  - Problem:  What if you are already extending something? Multiple inheritance is not possible in Java.
+  - Solution:
+    - re-implement all methods of Observable :-(
+** Java Problem 2: Observe multiple observables
+   - Problem: What if you want to observe many things 
+   - Solution:
+     - One giant switch/case statement
+     - Inner Classes
+     - Anonymous Inner Classes
+     - Lambda function
+** Java Problem 2, Alternative 1
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
+
+#+BEGIN_SRC java
+// Alternative 1: Inner Classes
+// ---
+
+class DictionaryView {
+    public MyFancyView(DictionaryObservable theDictObs, BannerAdObservable theAdObs) {
+        theDictObs.addObserver(new DictObserver());
+        theAdsObs.addObserver(new AdObserver());
+    }
+
+    private class DictObserver implements DictionaryObserver {
+       public void update(DictionaryObservable dict) {
+        // Logic for updates on Dictionary in update method
+       }
+    }
+
+    private class AdObserver implements BannerAdObserver {
+       public void update(BannerAdObservable banner) {
+        // Logic for updates on Banner Ads in update method
+       }
+    }
+}
+#+END_SRC
+** Java Problem 2, Alternative 2
+:PROPERTIES: 
+:BEAMER_OPT: shrink=20
+:END:
+
+#+BEGIN_SRC java
+// Alternative 2: Anonymous Inner Classes
+// ---
+
+class DictionaryView {
+    public MyFancyView(DictionaryObservable theDictObs, BannerAdObservable theAdObs) {
+        theDictObs.addObserver(new DictionaryObserver() {
+          @override
+          public update(DictionaryObservable dict) {
+            // Logic for updates on Dictionary in update method
+          }
+        });
+        theAdsObs.addObserver(new AdObserver()); // Modify this in the same way
+    }
+}
+#+END_SRC
+** Java Problem 2, Alternative 3
+:PROPERTIES: 
+:BEAMER_OPT: shrink=20
+:END:
+
+#+BEGIN_SRC java
+// Alternative 3: Lambda Function
+// ---
+
+class DictionaryView {
+    public MyFancyView(DictionaryObservable theDictObs, BannerAdObservable theAdObs) {
+        theDictObs.addObserver(
+          (dict) -> System.out.println("Do stuff on " +dict.toString())); // Magic and much uglier than in lisp
+
+        theAdsObs.addObserver(new AdObserver()); // Modify this in the same way
+    }
+}
+#+END_SRC
+** Singleton
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
+
+   - Problem: /How do I ensure that a class has only one instance in the system, with a global point of access?/
+   - Solution: /Delegate the creation of the instance to a =static= method in the class./
+   - Example:
+#+BEGIN_SRC cpp
+class SingletonClass {
+public:
+  static SingletonClass* getInstance() {
+    if (!myInstance) {
+      myInstance = new SingletonClass();
+    };
+    return instance;
+  }
+private:
+  SingletonClass() {};
+  static SingletonClass* myInstance ;
+};
+
+SingletonClass* SingletonClass::myInstance=NULL;
+#+END_SRC
+
+#+BEGIN_SRC plantuml :file FSingleton.png
+class SingletonClass <<Singleton>> {
+-SingletonClass* myInstance
+-SingletonClass()
++SingletonClass* getInstance()
+}
+#+END_SRC
+
+#+ATTR_LATEX: :height 3cm
+#+RESULTS:
+[[file:FSingleton.png]]
+** Strategy
+   - Problem: /There are different ways of doing the same thing; I want an extensible way of selecting between them./
+   - Solution: /Use polymorphism to implement each different way./
+   - Example:
+
+#+BEGIN_SRC plantuml :file FStrategy.png
+class Context
+class Strategy <<interface>>
+Strategy : {abstract} doYourStuff()
+Context : doYourStuff()
+Context *- Strategy
+ConcreteStrategyA : doYourStuff()
+ConcreteStrategyB : doYourStuff()
+Strategy <|-- ConcreteStrategyA
+Strategy <|-- ConcreteStrategyB
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FStrategy.png]]
+
+(A more concrete example: Spellcheckers)
+
+** State
+   - Problem: /You have a stateful system and want this to be mimicked by your class structure/
+   - Solution: /Implement it as a strategy pattern/
+   - Example:
+** Example: State Diagram
+#+BEGIN_SRC plantuml :file FState0.png
+[*] --> Hunting : Game Starts
+Hunting : entry/setColour(blue)
+Hunting : do/locatePacman()
+Hunting : do/move(myStrategy)
+Hunting --> Eating : Found Pacman / playSound(lostLife)
+Eating --> Hunting
+Eating : do/cycleColours(rainbow)
+Hunting --> Running : Pacman eats Candy / playSound(powerup)
+Running: entry/setColour(red)
+Running: do/locatePacman()
+Running: do/move(myEscapeStrategy)
+Running --> Hunting : timeout /cycleColours(rainbow)
+Running --> Eaten : Pacman finds ghost / playSound(scoreup)
+
+Eating --> [*] : Game over
+
+Eaten --> Respawn
+Respawn : entry/setPosition(pen)
+Respawn : do/cycleColours(rainbow)
+Respawn --> Hunting : timeout
+#+END_SRC
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FState0.png]]
+** Example: Class Diagram
+#+BEGIN_SRC plantuml :file FState1.png
+class PacmanGhost {
++doState()
++event(theEvent)
++GhostState* myCurrentState
+}
+note right
+PacmanGhost::event(theEvent) {
+    GhostState gs=myCurrentState->getNewState(theEvent);
+    if (gs) {
+        myCurrentState->exitState();
+	myCurrentState = gs;
+	myCurrentState->enterState();
+    }
+}
+end note
+
+PacmanGhost *-- GhostState
+
+abstract class GhostState {
++{abstract} enterState()
++{abstract} do()
++{abstract} exitState()
++{abstract} GhostState* getNewState(event)
+}
+
+GhostState <|-- GhostStateHunting
+GhostState <|-- GhostStateRunning
+GhostState <|-- GhostStateEaten
+GhostState <|-- GhostStateRespawn
+GhostState <|-- GhostStateEating
+#+END_SRC
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FState1.png]]
+
+** Abstract Factory
+   - Problem: /There are different ways to initiate the system, depending on the context/
+   - Solution: /Use a strategy-like solution to create the right objects/
+   - Example: 
+#+BEGIN_SRC plantuml :file FAbstractFactory.png
+class Application
+Interface GUIFactory {
++{abstract} Button createButton()
+}
+interface Button {
++{abstract} void Paint()
+}
+
+WinFactory : +Button createButton()
+OSXFactory : +Button createButton()
+
+WinButton : +void Paint()
+OSXButton : +void Paint()
+
+Button <|-- WinButton
+Button <|-- OSXButton
+
+GUIFactory <|-- WinFactory
+GUIFactory <|-- OSXFactory
+
+Application -- GUIFactory
+Application -- Button
+
+WinFactory .> WinButton : <<creates>>
+OSXFactory .> OSXButton : <<creates>>
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FAbstractFactory.png]]
+
+* Classroom							   :noexport:
+** Responsibility-Driven Design
+  Responsibility for *Doing*
+  - Doing something (e.g. a calculation)
+  - Creating other objects
+  - Initiating an action in another object
+  - Controlling and coordinating other objects
+
+  Responsibility for *Knowing*
+  - Knowing about private encapsulated data
+  - Knowing about related objects
+  - Knowing abotu things it can derive or calculate
+** Example: GRASP Patterns				 :Example:Discussion:
+#+BEGIN_SRC plantuml :file FGRASPExample.png
+left to right direction
+Flight *- "10..200" Seat
+Booking -- "1..32" Flight
+Ticket "0..1" -- "1" Seat
+Passenger "1" -- "*" Booking
+Passenger "1" -- "*" Ticket
+Passenger -- Luggage
+Flight "*" -- "1" Aeroplane
+Flight "*" -- "2" Airport
+Luggage "*" -- "*" Aeroplane
+#+END_SRC
+
+#+LATEX: \vspace{-1cm}
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FGRASPExample.png]]
+
+*** Discuss
+    - Who should calculate the cost of a =Booking=?
+    - Who should be responsible for creating a =Ticket=?
+    - Why should a =Passenger= not be aware of the =Flight=?
+    - How should a =Passenger= interact with this system when booking a trip?
+    - How would you implement first, business, and third class?
+
+** Example: Design Patterns in Pacman 				    :Example:
+A look at the game:
+
+- The game consists of scenes (Main Menu, Actual Game, High-Score List)
+- Each scene consists of a number of [different] objects (graphical as well as audio)
+- Some objects need awareness of other objects
+- Some objects in each scene needs to deal with UI input
+
+** Different Scenes
+- Problem: The game consists of several scenes (Main Menu, Actual Game, High-Score List)
+- Design Pattern: Strategy
+- Involved Classes: Context, <<abstract>> Strategy, ConcreteStrategy*
+- Pacman: Game, <<abstract>> BasicScene, MenuScene, GameScene
+** Creating Objects for different Scenes
+- Problem: Set up all objects necessary for each Scene
+- Design Pattern: Builder
+- Involved classes: Director, <<abstract>> Builder, ConcreteBuilder*
+- Pacman: MenuScene/GameScene, <<abstract>>WorldCreator, GameCreator, MenuCreator
+#+LATEX: \vspace{1cm}
+- Design Pattern: Factory Method
+- Involved classes: Creator (with <<abstract>>FactoryMethod()), ConcreteCreator (with instantiated FactoryMethod())*
+- Pacman: Scene (with <<abstract>>createObjects()), GameCreator (with instantiated createObjects()), \ldots
+** Behaviour of Ghosts I
+- Problem: Each ghost behaves in a different way.
+- Design Pattern: Strategy
+- Involved Classes: Context, <<abstract>> Strategy, ConcreteStrategy*
+- Pacman: Scene (?), <<abstract>> GhostStrategy, BlinkyStrategy, InkyStrategy, PinkyStrategy, ClydeStrategy
+** Only one Audio/Graphics/World
+- Problem: Avoid creating more than one instance of AudioManagement, GraphicsManagement, World
+- Design Pattern: Singleton
+- Involved Classes: Singleton (with static getInstance(), private constructor)
+- *Less Optional Alternative:* Coding Pattern: Only create stuff in one place, keep central repository with pointers to these objects.
+** Redirecting Input
+- Problem: Different objects are interested in UI input
+- Design Pattern: Observer
+- Involved Classes: Observable, Observer
+- Pacman: InputManager, PacmanObject, MainMenuObject
+** Behaviour of Ghosts II
+- Problem: When pacman eats supercandy, the behaviour of the ghosts change
+- Design Pattern: State
+- Involved Classes: Context, <<abstract>>State, ConcreteState*
+- Pacman: Scene (?), <<abstract>>GhostState, GhostNormalState (see above, GhostStrategy), GhostChasedState
