@@ -1,0 +1,61 @@
+
+On "Usability Requirements" and "Infrastructure Requirements"
+
+* Mikael's Generic Answer
+It is not customary to, in the IEEE 830 standard for Requirements
+Specifications, make a distinction between usability/infrastructure
+requirements and other type of quality requirements (non-functional
+requirements). However, there is a separate heading for "External
+Interface Requirements", which may cover usability and infrastructure
+requirements.
+
+Specific: This is more of a reasoning from my side, but if you have
+requirements that you are going to use a particular framework (QT,
+Ember.js, CLI, ...), then these would fit into the "User Interface
+Requirements" section. Also, put the specific requirements on
+usability, measures on how complex a dialogue may be, etc. here.
+
+As for infrastructure requriements, I *think* you may interpret this
+in at least two different ways. One interpretation is that these are
+
+requirements on e.g. that you are supposed to use a particular
+development environment, programming language, configuration
+management tool, etc., /or (inclusive or, may mean both)/, this
+includes requirements on your deployment platform, such as operating
+system, server capacity, web server, docker setup, and so on.
+
+* Further Clarifications from Shoaib and Samireh
+** Answer 1
+In the "User Interface requirements", I expect the students should be
+able to (at least) to discuss "menus, dialogue boxes, buttons, radio
+buttons etc." in their system.
+
+A good/better answer by the students would be (which you mentioned
+too), if they are able to discuss details about how complex a dialogue
+box should be or other attributes of a button/dialogue box etc. in
+their system.
+
+Regarding "infrastructure requirements", I expect the same as one of
+your explanation, i.e.:
+
+> these are requirements on e.g. that you are supposed to use a
+> particular development environment, programming language,
+> configuration management tool, etc.
+
+** Answer 2
+I think that your answer is sufficiently aligned with what students
+had been asked to provide in previous years.
+
+In the user interface requirements, any generic or specific
+consideration regarding the UI shall be written e.g. format of pages,
+interactions with users, presentation of information, etc.
+
+On the other hand, infrastructure requirements shall address e.g.
+implementation language, OS, storage, memory, specific tools, etc.
+
+* Summary
+As we guessed then, but you ought also to spend some more time to draw
+mockups of your user interface with "menus, dialogue boxes, buttons,
+radio buttons etc.". Obviously, these cannot be extremely detailed
+since you are still only starting to understand what you are supposed
+to do.
