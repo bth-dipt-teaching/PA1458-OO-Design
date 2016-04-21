@@ -1,0 +1,385 @@
+#+Title: Mapping Design to Code
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-04-21
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Warmup
+** Example: From Class Diagram to Code				    :Example:
+#+BEGIN_SRC plantuml :file FClassToCode.png
+left to right direction
+SalesLineItem : -int myQuantity
+SalesLineItem : +Money getSubTotal()
+SalesLineItem ---> "myDescription" ProductDescription 
+ProductDescription : -Text myDescription
+ProductDescription : -Money myPrice
+ProductDescription : -ItemID myItemID
+#+END_SRC
+
+#+RESULTS:
+[[file:FClassToCode.png]]
+
+#+BEGIN_SRC java
+public class SalesLineItem {
+private int myQuantity;
+private ProductDescription myDescription;
+
+public SalesLineItem(ProductDescription theDescription, int theQuantity) {...};
+
+public Money getSubTotal() {...};
+}
+#+END_SRC
+
+** Example: From Interaction Diagrams to Code			    :Example:
+#+BEGIN_SRC plantuml :file FInteractionToCode.png
+hide footbox
+participant ":Register" as reg
+participant ":ProductCatalog"  as pc
+participant ":Map<ProductDescription" as pdm
+participant ":Sale" as sale
+participant "lineItems : List<SalesLineItem>" as slil
+
+[-> reg : enterItem(id,qty)
+activate reg
+reg -> pc : descr=getProductDescription(id)
+activate pc
+pc -> pdm : descr=get(id)
+activate pdm
+deactivate pdm
+deactivate pc
+reg -> sale : makeLineItem(descr, qty)
+activate sale
+create participant "si:SalesLineItem" as si
+sale --> si : create(descr, qty)
+sale -> slil : add(si)
+activate slil
+deactivate slil
+deactivate sale
+deactivate reg
+#+END_SRC
+
+#+RESULTS:
+[[file:FInteractionToCode.png]]
+
+** Example: Collections						    :Example:
+#+BEGIN_SRC plantuml :file FCollectionsToCode.png
+left to right direction
+Sale --> "*" SalesLineItem
+#+END_SRC
+
+#+RESULTS:
+[[file:FCollectionsToCode.png]]
+
+#+BEGIN_SRC java
+public class Sale {
+  private List<SalesLineItem> myItems = new ArrayList<SalesLineItem>;
+}
+#+END_SRC
+
+#+BEGIN_SRC cpp
+class Sale {
+private:
+  std::list<SalesLineItem*> myItems;
+}
+#+END_SRC
+** Discuss: Order of Implementation				 :Discussion:
+   - In which order should classes be implemented?
+     - Larman: "Least coupled to most coupled"
+     - Other suggestions:
+       - Use case per use case, create stubs first, fill them out as you go.
+       - First write test cases per use case, then add methods to classes (and create classes) to pass the tests.
+       - First write interfaces for all classes, then inherit and implement the classes
+* Dictionary Example
+** Task
+*** Dictionary
+    Write a dictionary program where you have words and their definitions.
+    - Users shall be able to browse all words.
+    - Users shall be able to search for words
+    - Users shall be able to search for definitions.
+    - The system shall maintain a log of activities.
+    - Other requirements:
+      - The system shall use a graphical user interface
+      - The system shall store the words and their definitions between sessions.
+** Conceptual Model
+#+BEGIN_SRC plantuml :file FDictionaryConceptual.png
+Dictionary o- "*" Word
+Word : word
+Word : definition
+Dictionary : +Word[] listAllWords()
+Dictionary : +Word searchWord(String)
+Dictionary : +Word searchDescription(String)
+#+END_SRC
+
+#+RESULTS:
+[[file:FDictionaryConceptual.png]]
+
+** Class Diagram I
+#+BEGIN_SRC plantuml :file FDictionaryClass1.png
+scale max 800*600
+left to right direction
+title Basic Structure (Interfaces)
+interface DictionaryInterface
+DictionaryInterface : addWord(String theWord, String theExpl)
+DictionaryInterface : deleteWord(String theWord)
+DictionaryInterface : editWord(String theWord, String theExpl)
+DictionaryInterface : DictWord getWord(String theWord)
+DictionaryInterface : Vector<DictWord> getWords()
+
+interface DictionaryView
+DictionaryView : setController(ControllerInterface theController)
+
+interface ControllerInterface
+ControllerInterface : addOutput(OutputInterface theView)
+ControllerInterface : search(String theWord)
+ControllerInterface : add(String theWord, String theExp)
+ControllerInterface : edit(String theWord, String theExp)
+ControllerInterface : delete(String theWord)
+
+' ControllerInterface -- "*" OutputInterface
+' interface OutputInterface
+' OutputInterface : display(String theWord, String theExpl)
+
+DictionaryInterface -- "*" ControllerInterface
+ControllerInterface -- "*" DictionaryView
+#+END_SRC
+
+#+RESULTS:
+[[file:FDictionaryClass1.png]]
+** Class Diagram II
+#+BEGIN_SRC plantuml :file FDictionaryClass2.png
+scale max 800*600
+left to right direction
+title Concrete Implementations
+interface DictionaryInterface
+DictionaryInterface : +addWord(String theWord, String theExpl)
+DictionaryInterface : +deleteWord(String theWord)
+DictionaryInterface : +editWord(String theWord, String theExpl)
+DictionaryInterface : +DictWord getWord(String theWord)
+DictionaryInterface : +Vector<DictWord> getWords()
+
+interface DictionaryView
+DictionaryView : +setController(ControllerInterface theController)
+
+interface ControllerInterface
+ControllerInterface : +addOutput(OutputInterface theView)
+ControllerInterface : +search(String theWord)
+ControllerInterface : +add(String theWord, String theExp)
+ControllerInterface : +edit(String theWord, String theExp)
+ControllerInterface : +delete(String theWord)
+
+ControllerInterface -- "*" OutputInterface
+interface OutputInterface #PaleGreen
+OutputInterface : display(String theWord, String theExpl)
+
+DictionaryInterface -- "*" ControllerInterface
+ControllerInterface -- "*" DictionaryView
+
+DictionaryInterface <|- Dictionary
+Dictionary : -save()
+
+ControllerInterface <|- DictionaryController
+
+DictionaryView <|- WordView
+DictionaryView <|- WordDefinitionView
+DictionaryView <|- LogView
+
+OutputInterface <|- WordView
+OutputInterface <|- WordDefinitionView
+
+class Dictionary #PaleGreen
+class DictionaryController #PaleGreen
+class LogView #PaleGreen
+class WordDefinitionView #PaleGreen
+class WordView #PaleGreen
+#+END_SRC
+
+#+RESULTS:
+[[file:FDictionaryClass2.png]]
+
+** Class Diagram III
+#+BEGIN_SRC plantuml :file FDictionaryClass3.png
+scale max 800*600
+left to right direction
+title Connecting Views to Dictionary
+interface DictionaryInterface
+DictionaryInterface : +addWord(String theWord, String theExpl)
+DictionaryInterface : +deleteWord(String theWord)
+DictionaryInterface : +editWord(String theWord, String theExpl)
+DictionaryInterface : +DictWord getWord(String theWord)
+DictionaryInterface : +Vector<DictWord> getWords()
+
+interface DictionaryView
+DictionaryView : +setController(ControllerInterface theController)
+
+interface ControllerInterface
+ControllerInterface : +addOutput(OutputInterface theView)
+ControllerInterface : +search(String theWord)
+ControllerInterface : +add(String theWord, String theExp)
+ControllerInterface : +edit(String theWord, String theExp)
+ControllerInterface : +delete(String theWord)
+
+ControllerInterface -- "*" OutputInterface
+interface OutputInterface
+OutputInterface : display(String theWord, String theExpl)
+
+DictionaryInterface -- "*" ControllerInterface
+ControllerInterface -- "*" DictionaryView
+
+DictionaryInterface <|- Dictionary
+Dictionary : -save()
+
+ControllerInterface <|- DictionaryController
+
+DictionaryView <|- WordView
+DictionaryView <|- WordDefinitionView
+DictionaryView <|- LogView
+
+OutputInterface <|- WordView
+OutputInterface <|- WordDefinitionView
+
+' ---
+interface DictObserver #PaleGreen
+DictObserver : +update(DictionaryInterface theDictionary)
+DictObserver <|- WordView
+DictObserver <|- WordDefinitionView
+DictObserver <|- LogView
+
+
+DictionaryInterface : +notify(Action theAction)
+DictionaryInterface : +addObserver(DictObserver theObserver)
+DictionaryInterface : +deleteObserver(DictObserver theObserver)
+DictionaryInterface : +Action getLastAction()
+
+Dictionary : -Action myLastAction
+Dictionary : -Vector<DictObserver> myObservers
+
+DictionaryInterface -- "*" DictObserver : >
+#+END_SRC
+
+#+RESULTS:
+[[file:FDictionaryClass3.png]]
+
+** Class Diagram IV
+#+BEGIN_SRC plantuml :file FDictionaryClass4.png
+scale max 800*600
+left to right direction
+title GUIfication
+interface DictionaryInterface
+DictionaryInterface : +addWord(String theWord, String theExpl)
+DictionaryInterface : +deleteWord(String theWord)
+DictionaryInterface : +editWord(String theWord, String theExpl)
+DictionaryInterface : +DictWord getWord(String theWord)
+DictionaryInterface : +Vector<DictWord> getWords()
+
+interface DictionaryView
+DictionaryView : +setController(ControllerInterface theController)
+
+interface ControllerInterface
+ControllerInterface : +addOutput(OutputInterface theView)
+ControllerInterface : +search(String theWord)
+ControllerInterface : +add(String theWord, String theExp)
+ControllerInterface : +edit(String theWord, String theExp)
+ControllerInterface : +delete(String theWord)
+
+ControllerInterface -- "*" OutputInterface
+interface OutputInterface
+OutputInterface : display(String theWord, String theExpl)
+
+DictionaryInterface -- "*" ControllerInterface
+ControllerInterface -- "*" DictionaryView
+
+DictionaryInterface <|- Dictionary
+Dictionary : -save()
+
+ControllerInterface <|- DictionaryController
+
+DictionaryView <|- WordView
+DictionaryView <|- WordDefinitionView
+DictionaryView <|- LogView
+
+OutputInterface <|- WordView
+OutputInterface <|- WordDefinitionView
+
+interface DictObserver
+DictObserver : +update(DictionaryInterface theDictionary)
+DictObserver <|- WordView
+DictObserver <|- WordDefinitionView
+DictObserver <|- LogView
+
+DictionaryInterface : +notify(Action theAction)
+DictionaryInterface : +addObserver(DictObserver theObserver)
+DictionaryInterface : +deleteObserver(DictObserver theObserver)
+DictionaryInterface : +Action getLastAction()
+
+Dictionary : -Action myLastAction
+Dictionary : -Vector<DictObserver> myObservers
+
+DictionaryInterface -- "*" DictObserver : >
+
+' --- 
+class MainGUI #PaleGreen
+class Start #PaleGreen
+class JPanel #PaleGreen
+
+MainGUI : addView(JPanel theView)
+MainGUI : start()
+
+Start : setup (MainGUI theGUI)
+Start : main()
+
+Start -- MainGUI
+' Don't add the links below because they clutter up too much
+' Start -- Dictionary : creates
+' Start -- LogView : creates
+' Start -- WordView : creates
+' Start -- WordDefinitionView : creates
+' Start -- DictionaryController : creates
+
+JPanel <|-- WordDefinitionView
+JPanel <|-- WordView
+#+END_SRC
+
+#+RESULTS:
+[[file:FDictionaryClass4.png]]
+** Class Diagram: setup method
+#+BEGIN_SRC java
+  public static void setup(MainGUI theGUI) {
+    // Create Dictionary
+    Dictionary theDict = new Dictionary("dict.txt");
+    debugDict(theDict); // Make sure there is stuff in it.
+    
+    // Create Views
+    LogView lv=new LogView();
+    WordView wv=new WordView();
+    WordDefinitionView wdv=new WordDefinitionView();
+
+    // Initialise views where necessary
+    wv.getWords(theDict);
+    
+    // Create and Connect the Controller
+    DictionaryController dc=new DictionaryController(theDict, wdv);
+    lv.setController(dc);
+    wv.setController(dc);
+    wdv.setController(dc); // Circular, but ok
+
+    // Add stuff to GUI
+    // theGUI.addView(lv) // skip the LogView; it prints to console/file
+    theGUI.addView(wv);
+    theGUI.addView(wdv);
+
+    // Connect views to dictionary, so that changes are reflected
+    theDict.addObserver(lv);
+    theDict.addObserver(wv);
+    theDict.addObserver(wdv);
+  }
+#+END_SRC
+** Discussion: Order of Implementation				 :Discussion:
+[[./FDictionaryClass4.png]]
