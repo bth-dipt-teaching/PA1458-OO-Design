@@ -1,0 +1,45 @@
+* an Example of a Use Case Diagram
+#+BEGIN_SRC plantuml :file FExampleUseCaseDiagram.png
+left to right direction
+
+actor Teacher
+actor Student
+actor AssignmentResponsible
+actor Examiner
+
+rectangle Course {
+
+rectangle Lecturing {
+Teacher -- (WriteLecture)
+Teacher -- (HoldLecture)
+(HoldLecture) -- Student
+}
+
+rectangle Meetings {
+Teacher --- (HoldMeeting)
+AssignmentResponsible --- (HoldMeeting)
+Examiner --- (HoldMeeting)
+(HoldMeeting) <|-- (HoldMeaninglessMeeting)
+}
+
+rectangle Assignments {
+AssignmentResponsible -- (CreateAssignment)
+(WriteAssignment) -- Student
+AssignmentResponsible -- (MarkAssignment)
+(FindGroups) -- Student
+Examiner -- (QualityControlAssignmentMarkings)
+AssignmentResponsible -- (QualityControlAssignmentMarkings)
+}
+
+rectangle Exams {
+Examiner -- (CreateExam)
+(WriteExam) -- Student
+Examiner -- (MarkExam)
+AssignmentResponsible -- (MarkExam)
+}
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:FExampleUseCaseDiagram.png]]
+
