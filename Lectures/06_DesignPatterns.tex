@@ -1,4 +1,4 @@
-% Created 2016-04-14 Thu 14:42
+% Created 2016-04-18 Mon 13:01
 \documentclass[10pt,t,a4paper]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -30,201 +30,105 @@
 
 \maketitle
 
-\section{Upload GoF}
-\label{sec:orgheadline19}
-\begin{frame}[label={sec:orgheadline1}]{Gang of Four Design Patterns and Architecture Patterns}
+\section{Classroom}
+\label{sec:orgheadline10}
+\begin{frame}[label={sec:orgheadline1}]{Responsibility-Driven Design}
+Responsibility for \alert{Doing}
 \begin{itemize}
-\item Architecture
-\begin{itemize}
-\item Layered
-\item MVC
+\item Doing something (e.g. a calculation)
+\item Creating other objects
+\item Initiating an action in another object
+\item Controlling and coordinating other objects
 \end{itemize}
-\item Design Patterns
-\begin{itemize}
-\item Observer
-\item Singleton
-\item Strategy
-\item State
-\item Abstract Factory
-\end{itemize}
-\end{itemize}
-\end{frame}
-\begin{frame}[label={sec:orgheadline2}]{Layered}
-\begin{itemize}
-\item Problem: \emph{You have groups of subtasks that depend on other subtasks at different levels of abstractions}
-\item Solution: \emph{Put the subtasks into \alert{layers}, each representing a specific level of abstraction}
-\begin{itemize}
-\item Minimise connections between layers (low coupling)
-\item Assign a clear responsibility to each layer (high cohesion)
-\end{itemize}
-\item Examples: Thee Tier Architecture, Windows 2000 Architecture
-\end{itemize}
-\end{frame}
-\begin{frame}[label={sec:orgheadline3}]{Example: Thee Tier Architecture}
-\includegraphics[height=6cm]{./IThreeTierArchitecture.png}
-\end{frame}
-\begin{frame}[label={sec:orgheadline4}]{Example: Windows 2000 Architecture}
-\includegraphics[height=6cm]{./IWindows_2000_architecture.png}
-\end{frame}
-\begin{frame}[label={sec:orgheadline5}]{Model View Controller: MVC}
-\begin{itemize}
-\item Problem: \emph{You have an interactive application. How should you divide responsibilities for \alert{presenting}, \alert{managing}, and \alert{storing} data?}
-\item Solution: \emph{Divide your system into three parts:}
-\begin{itemize}
-\item \alert{Model}: Maintain persistency and consistency of the data
-\item \alert{View}: Presentation of the data (may be more than one view)
-\item \alert{Controller}: Handle user input and manage business rules
-\end{itemize}
-\item Example: Thee Tier Architecture
-\end{itemize}
-\end{frame}
-\begin{frame}[label={sec:orgheadline6}]{Example: Thee Tier Architecture}
-\includegraphics[height=6cm]{./IThreeTierArchitecture.png}
-\end{frame}
-\begin{frame}[label={sec:orgheadline7}]{Observer}
-\begin{itemize}
-\item Problem: \emph{How should one object (A) keep track of the state of another object (B)?}
-\item Solution: \emph{Give B a pointer to A and ask it to notify when there are changes.}
-\item Illustration:
-\end{itemize}
-\includegraphics[width=.9\linewidth]{FObserver.png}
-\end{frame}
-\begin{frame}[label={sec:orgheadline8}]{Java Problem 1: Multiple Inheritance}
-\begin{itemize}
-\item Problem:  What if you are already extending something? Multiple inheritance is not possible in Java.
-\item Solution:
-\begin{itemize}
-\item re-implement all methods of Observable :-(
-\end{itemize}
-\end{itemize}
-\end{frame}
-\begin{frame}[label={sec:orgheadline9}]{Java Problem 2: Observe multiple observables}
-\begin{itemize}
-\item Problem: What if you want to observe many things
-\item Solution:
-\begin{itemize}
-\item One giant switch/case statement
-\item Inner Classes
-\item Anonymous Inner Classes
-\item Lambda function
-\end{itemize}
-\end{itemize}
-\end{frame}
-\begin{frame}[fragile,shrink=15,label={sec:orgheadline10}]{Java Problem 2, Alternative 1}
- \begin{verbatim}
-// Alternative 1: Inner Classes
-// ---
 
-class DictionaryView {
-    public MyFancyView(DictionaryObservable theDictObs, BannerAdObservable theAdObs) {
-	theDictObs.addObserver(new DictObserver());
-	theAdsObs.addObserver(new AdObserver());
-    }
-
-    private class DictObserver implements DictionaryObserver {
-       public void update(DictionaryObservable dict) {
-	// Logic for updates on Dictionary in update method
-       }
-    }
-
-    private class AdObserver implements BannerAdObserver {
-       public void update(BannerAdObservable banner) {
-	// Logic for updates on Banner Ads in update method
-       }
-    }
-}
-\end{verbatim}
+Responsibility for \alert{Knowing}
+\begin{itemize}
+\item Knowing about private encapsulated data
+\item Knowing about related objects
+\item Knowing about things it can derive or calculate
+\end{itemize}
 \end{frame}
-\begin{frame}[fragile,shrink=20,label={sec:orgheadline11}]{Java Problem 2, Alternative 2}
- \begin{verbatim}
-// Alternative 2: Anonymous Inner Classes
-// ---
+\begin{frame}[fragile,label={sec:orgheadline2}]{Example: GRASP Patterns}
+ \vspace{-1cm}
+\includegraphics[height=4cm]{FGRASPExample.png}
 
-class DictionaryView {
-    public MyFancyView(DictionaryObservable theDictObs, BannerAdObservable theAdObs) {
-	theDictObs.addObserver(new DictionaryObserver() {
-	  @override
-	  public update(DictionaryObservable dict) {
-	    // Logic for updates on Dictionary in update method
-	  }
-	});
-	theAdsObs.addObserver(new AdObserver()); // Modify this in the same way
-    }
-}
-\end{verbatim}
+\begin{block}{Discuss}
+\begin{itemize}
+\item Who should calculate the cost of a \texttt{Booking}?
+\item Who should be responsible for creating a \texttt{Ticket}?
+\item Why should a \texttt{Passenger} not be aware of the \texttt{Flight}?
+\item How should a \texttt{Passenger} interact with this system when booking a trip?
+\item How would you implement first, business, and third class?
+\end{itemize}
+\end{block}
 \end{frame}
-\begin{frame}[fragile,shrink=20,label={sec:orgheadline12}]{Java Problem 2, Alternative 3}
- \begin{verbatim}
-// Alternative 3: Lambda Function
-// ---
 
-class DictionaryView {
-    public MyFancyView(DictionaryObservable theDictObs, BannerAdObservable theAdObs) {
-	theDictObs.addObserver(
-	  (dict) -> System.out.println("Do stuff on " +dict.toString())); // Magic and much uglier than in lisp
+\begin{frame}[label={sec:orgheadline3}]{Example: Design Patterns in Pacman}
+A look at the game:
 
-	theAdsObs.addObserver(new AdObserver()); // Modify this in the same way
-    }
-}
-\end{verbatim}
+\begin{itemize}
+\item The game consists of scenes (Main Menu, Actual Game, High-Score List)
+\item Each scene consists of a number of [different] objects (graphical as well as audio)
+\item Some objects need awareness of other objects
+\item Some objects in each scene needs to deal with UI input
+\end{itemize}
 \end{frame}
-\begin{frame}[fragile,shrink=15,label={sec:orgheadline13}]{Singleton}
+
+\begin{frame}[fragile,label={sec:orgheadline4}]{Different Scenes}
  \begin{itemize}
-\item Problem: \emph{How do I ensure that a class has only one instance in the system, with a global point of access?}
-\item Solution: \emph{Delegate the creation of the instance to a \texttt{static} method in the class.}
-\item Example:
+\item Problem: The game consists of several scenes (Main Menu, Actual Game, High-Score List)
+\item Design Pattern: Strategy
+\item Involved Classes: Context, \texttt{<<abstract>> Strategy}, ConcreteStrategy*
+\item Pacman: Game, \texttt{<<abstract>> BasicScene}, MenuScene, GameScene
 \end{itemize}
-\begin{verbatim}
-class SingletonClass {
-public:
-  static SingletonClass* getInstance() {
-    if (!myInstance) {
-      myInstance = new SingletonClass();
-    };
-    return instance;
-  }
-private:
-  SingletonClass() {};
-  static SingletonClass* myInstance ;
-};
 
-SingletonClass* SingletonClass::myInstance=NULL;
-\end{verbatim}
-
-\includegraphics[height=3cm]{FSingleton.png}
+\includegraphics[height=4cm]{FPM_Scenes.png}
 \end{frame}
-\begin{frame}[label={sec:orgheadline14}]{Strategy}
+
+\begin{frame}[fragile,label={sec:orgheadline5}]{Creating Objects for different Scenes}
+ \begin{itemize}
+\item Problem: Set up all objects necessary for each Scene
+\item Design Pattern: Builder
+\item Involved classes: Director, \texttt{<<abstract>> Builder}, ConcreteBuilder*
+\item Pacman: MenuScene/GameScene, \texttt{<<abstract>> WorldCreator}, GameCreator, MenuCreator
+\end{itemize}
+\vspace{1cm}
 \begin{itemize}
-\item Problem: \emph{There are different ways of doing the same thing; I want an extensible way of selecting between them.}
-\item Solution: \emph{Use polymorphism to implement each different way.}
-\item Example:
+\item Design Pattern: Factory Method
+\item Involved classes: Creator (with \texttt{<<abstract>>FactoryMethod()}), ConcreteCreator (with instantiated FactoryMethod())*
+\item Pacman: Scene (with \texttt{<<abstract>>createObjects()}), GameCreator (with instantiated createObjects()), \ldots
 \end{itemize}
-
-\includegraphics[height=4cm]{FStrategy.png}
-
-(A more concrete example: Spellcheckers)
 \end{frame}
-
-\begin{frame}[label={sec:orgheadline15}]{State}
+\begin{frame}[fragile,label={sec:orgheadline6}]{Behaviour of Ghosts I}
+ \begin{itemize}
+\item Problem: Each ghost behaves in a different way.
+\item Design Pattern: Strategy
+\item Involved Classes: Context, \texttt{<<abstract>> Strategy}, ConcreteStrategy*
+\item Pacman: Ghost, \texttt{<<abstract>> GhostMovementStrategy}, BlinkyStrategy, InkyStrategy, PinkyStrategy, ClydeStrategy
+\end{itemize}
+\end{frame}
+\begin{frame}[label={sec:orgheadline7}]{Only one Audio/Graphics/World}
 \begin{itemize}
-\item Problem: \emph{You have a stateful system and want this to be mimicked by your class structure}
-\item Solution: \emph{Implement it as a strategy pattern}
-\item Example:
+\item Problem: Avoid creating more than one instance of AudioManagement, GraphicsManagement, World
+\item Design Pattern: Singleton
+\item Involved Classes: Singleton (with static getInstance(), private constructor)
+\item \alert{Less Optional Alternative:} Coding Pattern: Only create stuff in one place, keep central repository with pointers to these objects.
 \end{itemize}
 \end{frame}
-\begin{frame}[label={sec:orgheadline16}]{Example: State Diagram}
-\includegraphics[height=6cm]{FState0.png}
-\end{frame}
-\begin{frame}[label={sec:orgheadline17}]{Example: Class Diagram}
-\includegraphics[height=6cm]{FState1.png}
-\end{frame}
-
-\begin{frame}[label={sec:orgheadline18}]{Abstract Factory}
+\begin{frame}[label={sec:orgheadline8}]{Redirecting Input}
 \begin{itemize}
-\item Problem: \emph{There are different ways to initiate the system, depending on the context}
-\item Solution: \emph{Use a strategy-like solution to create the right objects}
-\item Example:
+\item Problem: Different objects are interested in UI input
+\item Design Pattern: Observer
+\item Involved Classes: Observable, Observer
+\item Pacman: InputManager, PacmanObject, MainMenuObject
 \end{itemize}
-\includegraphics[height=4cm]{FAbstractFactory.png}
+\end{frame}
+\begin{frame}[fragile,label={sec:orgheadline9}]{Behaviour of Ghosts II}
+ \begin{itemize}
+\item Problem: When pacman eats supercandy, the behaviour of the ghosts change
+\item Design Pattern: State
+\item Involved Classes: Context, \texttt{<<abstract>> State}, ConcreteState*
+\item Pacman: Ghost, \texttt{<<abstract>> GhostState}, GhostNormalState (see above, GhostStrategy), GhostChasedState
+\end{itemize}
 \end{frame}
 \end{document}

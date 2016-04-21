@@ -394,7 +394,7 @@ Payment - PersistentStorage
 #+ATTR_LATEX: :height 6cm
 #+RESULTS:
 [[file:FGRASPSummary.png]]
-* Upload GoF
+* Upload GoF							   :noexport:
 ** Gang of Four Design Patterns and Architecture Patterns
        - Architecture
 	 - Layered
@@ -705,7 +705,7 @@ OSXFactory .> OSXButton : <<creates>>
 #+RESULTS:
 [[file:FAbstractFactory.png]]
 
-* Classroom							   :noexport:
+* Classroom
 ** Responsibility-Driven Design
   Responsibility for *Doing*
   - Doing something (e.g. a calculation)
@@ -716,7 +716,7 @@ OSXFactory .> OSXButton : <<creates>>
   Responsibility for *Knowing*
   - Knowing about private encapsulated data
   - Knowing about related objects
-  - Knowing abotu things it can derive or calculate
+  - Knowing about things it can derive or calculate
 ** Example: GRASP Patterns				 :Example:Discussion:
 #+BEGIN_SRC plantuml :file FGRASPExample.png
 left to right direction
@@ -754,22 +754,39 @@ A look at the game:
 ** Different Scenes
 - Problem: The game consists of several scenes (Main Menu, Actual Game, High-Score List)
 - Design Pattern: Strategy
-- Involved Classes: Context, <<abstract>> Strategy, ConcreteStrategy*
-- Pacman: Game, <<abstract>> BasicScene, MenuScene, GameScene
+- Involved Classes: Context, =<<abstract>> Strategy=, ConcreteStrategy*
+- Pacman: Game, =<<abstract>> BasicScene=, MenuScene, GameScene
+
+#+BEGIN_SRC plantuml :file FPM_Scenes.png
+class Game <<Context>>
+abstract class BasicScene <<AbstractStrategy>>
+class MenuScene  <<Strategy>>
+class GameScene  <<Strategy>>
+
+Game *- BasicScene
+BasicScene <|-- GameScene
+BasicScene <|-- MenuScene
+
+#+END_SRC
+
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FPM_Scenes.png]]
+
 ** Creating Objects for different Scenes
 - Problem: Set up all objects necessary for each Scene
 - Design Pattern: Builder
-- Involved classes: Director, <<abstract>> Builder, ConcreteBuilder*
-- Pacman: MenuScene/GameScene, <<abstract>>WorldCreator, GameCreator, MenuCreator
+- Involved classes: Director, =<<abstract>> Builder=, ConcreteBuilder*
+- Pacman: MenuScene/GameScene, =<<abstract>> WorldCreator=, GameCreator, MenuCreator
 #+LATEX: \vspace{1cm}
 - Design Pattern: Factory Method
-- Involved classes: Creator (with <<abstract>>FactoryMethod()), ConcreteCreator (with instantiated FactoryMethod())*
-- Pacman: Scene (with <<abstract>>createObjects()), GameCreator (with instantiated createObjects()), \ldots
+- Involved classes: Creator (with =<<abstract>>FactoryMethod()=), ConcreteCreator (with instantiated FactoryMethod())*
+- Pacman: Scene (with =<<abstract>>createObjects()=), GameCreator (with instantiated createObjects()), \ldots
 ** Behaviour of Ghosts I
 - Problem: Each ghost behaves in a different way.
 - Design Pattern: Strategy
-- Involved Classes: Context, <<abstract>> Strategy, ConcreteStrategy*
-- Pacman: Scene (?), <<abstract>> GhostStrategy, BlinkyStrategy, InkyStrategy, PinkyStrategy, ClydeStrategy
+- Involved Classes: Context, =<<abstract>> Strategy=, ConcreteStrategy*
+- Pacman: Ghost, =<<abstract>> GhostMovementStrategy=, BlinkyStrategy, InkyStrategy, PinkyStrategy, ClydeStrategy
 ** Only one Audio/Graphics/World
 - Problem: Avoid creating more than one instance of AudioManagement, GraphicsManagement, World
 - Design Pattern: Singleton
@@ -783,5 +800,5 @@ A look at the game:
 ** Behaviour of Ghosts II
 - Problem: When pacman eats supercandy, the behaviour of the ghosts change
 - Design Pattern: State
-- Involved Classes: Context, <<abstract>>State, ConcreteState*
-- Pacman: Scene (?), <<abstract>>GhostState, GhostNormalState (see above, GhostStrategy), GhostChasedState
+- Involved Classes: Context, =<<abstract>> State=, ConcreteState*
+- Pacman: Ghost, =<<abstract>> GhostState=, GhostNormalState (see above, GhostStrategy), GhostChasedState
