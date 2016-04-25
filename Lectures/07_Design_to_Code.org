@@ -15,6 +15,7 @@
 * Warmup
 ** Example: From Class Diagram to Code				    :Example:
 #+BEGIN_SRC plantuml :file FClassToCode.png
+scale 2
 left to right direction
 SalesLineItem : -int myQuantity
 SalesLineItem : +Money getSubTotal()
@@ -40,6 +41,7 @@ public Money getSubTotal() {...};
 
 ** Example: From Interaction Diagrams to Code			    :Example:
 #+BEGIN_SRC plantuml :file FInteractionToCode.png
+scale 1.5
 hide footbox
 participant ":Register" as reg
 participant ":ProductCatalog"  as pc
@@ -71,6 +73,7 @@ deactivate reg
 
 ** Example: Collections						    :Example:
 #+BEGIN_SRC plantuml :file FCollectionsToCode.png
+scale 2
 left to right direction
 Sale --> "*" SalesLineItem
 #+END_SRC
@@ -110,6 +113,7 @@ private:
       - The system shall store the words and their definitions between sessions.
 ** Conceptual Model
 #+BEGIN_SRC plantuml :file FDictionaryConceptual.png
+scale 2
 Dictionary o- "*" Word
 Word : word
 Word : definition
@@ -123,7 +127,7 @@ Dictionary : +Word searchDescription(String)
 
 ** Class Diagram I
 #+BEGIN_SRC plantuml :file FDictionaryClass1.png
-scale max 800*600
+scale 2
 left to right direction
 title Basic Structure (Interfaces)
 interface DictionaryInterface
@@ -153,9 +157,10 @@ ControllerInterface -- "*" DictionaryView
 
 #+RESULTS:
 [[file:FDictionaryClass1.png]]
+
 ** Class Diagram II
 #+BEGIN_SRC plantuml :file FDictionaryClass2.png
-scale max 800*600
+scale 1.5
 left to right direction
 title Concrete Implementations
 interface DictionaryInterface
@@ -206,7 +211,7 @@ class WordView #PaleGreen
 
 ** Class Diagram III
 #+BEGIN_SRC plantuml :file FDictionaryClass3.png
-scale max 800*600
+scale 1.5
 left to right direction
 title Connecting Views to Dictionary
 interface DictionaryInterface
@@ -252,16 +257,18 @@ DictObserver <|- WordView
 DictObserver <|- WordDefinitionView
 DictObserver <|- LogView
 
+interface DictionaryObservable #PaleGreen
+DictionaryObservable : +notify(Action theAction)
+DictionaryObservable : +addObserver(DictObserver theObserver)
+DictionaryObservable : +deleteObserver(DictObserver theObserver)
+DictionaryObservable : +Action getLastAction()
 
-DictionaryInterface : +notify(Action theAction)
-DictionaryInterface : +addObserver(DictObserver theObserver)
-DictionaryInterface : +deleteObserver(DictObserver theObserver)
-DictionaryInterface : +Action getLastAction()
+DictionaryObservable <|- Dictionary
 
 Dictionary : -Action myLastAction
 Dictionary : -Vector<DictObserver> myObservers
 
-DictionaryInterface -- "*" DictObserver : >
+DictionaryObservable -- "*" DictObserver : >
 #+END_SRC
 
 #+RESULTS:
@@ -269,7 +276,7 @@ DictionaryInterface -- "*" DictObserver : >
 
 ** Class Diagram IV
 #+BEGIN_SRC plantuml :file FDictionaryClass4.png
-scale max 800*600
+scale 1.2
 left to right direction
 title GUIfication
 interface DictionaryInterface
@@ -314,16 +321,18 @@ DictObserver <|- WordView
 DictObserver <|- WordDefinitionView
 DictObserver <|- LogView
 
-DictionaryInterface : +notify(Action theAction)
-DictionaryInterface : +addObserver(DictObserver theObserver)
-DictionaryInterface : +deleteObserver(DictObserver theObserver)
-DictionaryInterface : +Action getLastAction()
+interface DictionaryObservable
+DictionaryObservable : +notify(Action theAction)
+DictionaryObservable : +addObserver(DictObserver theObserver)
+DictionaryObservable : +deleteObserver(DictObserver theObserver)
+DictionaryObservable : +Action getLastAction()
+
+DictionaryObservable <|- Dictionary
 
 Dictionary : -Action myLastAction
 Dictionary : -Vector<DictObserver> myObservers
 
-DictionaryInterface -- "*" DictObserver : >
-
+DictionaryObservable -- "*" DictObserver : >
 ' --- 
 class MainGUI #PaleGreen
 class Start #PaleGreen
@@ -349,6 +358,7 @@ JPanel <|-- WordView
 
 #+RESULTS:
 [[file:FDictionaryClass4.png]]
+
 ** Class Diagram: setup method
 #+BEGIN_SRC java
   public static void setup(MainGUI theGUI) {
