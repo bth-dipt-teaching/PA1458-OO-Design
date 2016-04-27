@@ -1,0 +1,184 @@
+#+Title: Packages and their Dependencies
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-04-27
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+* Introduction
+I received a question:
+
+#+BEGIN_QUOTE
+Hej! Vår grupp har stött på ett problem med Uppgift 2, kapitel 2.2: Packages and their relations/dependencies.
+Vi vet inte riktigt vad som ska göras här och vore tacksamma om vi fick ett exempel.
+#+END_QUOTE
+
+This made me realise that this is an aspect that I have not covered in the course. Packages are covered in chapter 31.18 in the course book (with some guidelines for how to think when creating packages in chapter 35.1), but here is the TL;DR of them.
+
+* What are Packages?
+A package is a means to hide lower-level details. For example, even if you model each sub-system in your application on a separate page, you will then need to have an overview of how your separate pages fit together. When you do architectural design (in another course), you will (for one of the views of your system, the Module View) use packages to illustrate how components are implemented as one or a small set of packages.
+
+You can also use them to illustrate that some classes (or other packages) logically "belong together". If we look at the Dictionary example discussed in lecture 07 (From Design to Code), we can use three high-level packages to illustrate that we have a Model, Views, and a Controller. In this simple example, there are only a few classes in each, but in a more complex system, you may have quite a number of collaborating classes in each package.
+
+The notation is simply a folder, and this is the analogy as well -- that it is a folder where you may hide stuff. You would typically use this "hide-the-inside"-mode when you are showing a high-level view of the system. Later on, you would have to open the folder and display the insides as well.
+
+** Example: Package of Packages 				    :Example:
+In this example, I am -- on a very high level -- modelling the model, view, and controller packages of the Dictionary system.
+
+I have added dependencies between the packages as well. /Please Note/ the direction of the dependency arrow! In this example, /View/ depends on /Controller/, and /Controller/ depends on the /Model/ package.
+
+Source (plantuml) and Diagram:
+#+BEGIN_SRC plantuml :file FPackageNotation.png :exports both
+@startuml
+left to right direction
+package Dictionary  {
+package Model
+package View
+package Controller
+Model <.. Controller
+Controller <.. View
+}
+@enduml
+#+END_SRC
+
+#+RESULTS:
+[[file:FPackageNotation.png]]
+
+** Example: Package of Classes					    :Example:
+
+A first look inside the /View/ Package:
+
+Source and Diagram:
+#+BEGIN_SRC plantuml :file FPackageOfClasses.png :exports both
+@startuml
+Package View {
+interface DictionaryView
+DictionaryView : +setController(ControllerInterface theController)
+
+DictionaryView <|-- WordView
+DictionaryView <|-- WordDefinitionView
+DictionaryView <|-- LogView
+}
+@enduml
+#+END_SRC
+
+#+RESULTS:
+[[file:FPackageOfClasses.png]]
+
+** Example: Referring to elements from another package		    :Example:
+A package "owns" everything that is inside the package. This means that if we want to refer to something from another package, we need to have a way to "import" it -- or link directly across package borders. Both are possible, but the "import" facility is preferred since it leads to a less cluttered diagram. This is done using the /scope/ operator from C++: =Package::Class= .
+
+#+BEGIN_SRC plantuml :file FPackageCrossRef.png :export both
+@startuml
+left to right direction
+' Model Package. Invcluded to have something to refer back to
+' ----------
+Package Model {
+interface DictionaryInterface
+DictionaryInterface : +addWord(String theWord, String theExpl)
+DictionaryInterface : +deleteWord(String theWord)
+DictionaryInterface : +editWord(String theWord, String theExpl)
+DictionaryInterface : +DictWord getWord(String theWord)
+DictionaryInterface : +Vector<DictWord> getWords()
+
+interface DictObserver
+DictObserver : +update(DictionaryInterface theDictionary)
+
+interface DictionaryObservable
+DictionaryObservable : +notify(Action theAction)
+DictionaryObservable : +addObserver(DictObserver theObserver)
+DictionaryObservable : +deleteObserver(DictObserver theObserver)
+DictionaryObservable : +Action getLastAction()
+
+DictionaryInterface <|- Dictionary
+Dictionary : -save()
+DictionaryObservable <|- Dictionary
+Dictionary : -Action myLastAction
+Dictionary : -Vector<DictObserver> myObservers
+
+DictionaryObservable -- "*" DictObserver : >
+}
+
+
+' View Package
+' ----------
+Package View {
+interface DictionaryView
+DictionaryView : +setController(ControllerInterface theController)
+
+' Import the DictObserver from the Model Package
+' ----------
+Interface "Model::DictObserver" as do
+do <|- WordView
+do <|- WordDefinitionView
+do <|- LogView
+
+DictionaryView <|- WordView
+DictionaryView <|- WordDefinitionView
+DictionaryView <|- LogView
+}
+@enduml
+#+END_SRC
+
+#+RESULTS:
+[[file:FPackageCrossRef.png]]
+
+** One More Example: Pacman					    :Example:
+#+BEGIN_SRC plantuml :file FPackagesPacman.png
+'package PacmanGame {
+
+package MovableEntities {
+
+package Ghosts {
+class Ghost
+interface GhostMovementStrategy
+class Blinky
+class Inky
+class Pinky
+class Clyde
+class RunningGhost
+Ghost o- GhostMovementStrategy
+GhostMovementStrategy <|-- Blinky
+GhostMovementStrategy <|-- Inky
+GhostMovementStrategy <|-- Pinky
+GhostMovementStrategy <|-- Clyde
+GhostMovementStrategy <|-- RunningGhost
+}
+
+package Pacman {
+class Pacman
+}
+}
+
+package Graphics {}
+
+package Input {
+class KeyboardInput
+class MouseInput
+}
+
+package Scenes {
+package GameScene {}
+package MenuScene {}
+package HighScoreScene {}
+}
+
+Scenes ..> Graphics
+MovableEntities ..> Graphics
+Input <.. Pacman
+
+GameScene ..> MovableEntities
+
+'}
+#+END_SRC
+
+#+RESULTS:
+[[file:FPackagesPacman.png]]
+
