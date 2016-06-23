@@ -201,7 +201,8 @@ aState --> [*]
 [[file:FStateDiagramExample2.png]]
 
 #+BEGIN_SRC  plantuml :file FStateDiagramExample3.png
-
+@startuml
+title Pacman Ghosts
 [*] --> Hunting : Game Starts
 Hunting : entry/setColor(blue)
 Hunting : do/locatePacman()
@@ -227,6 +228,7 @@ Eaten --> Respawn
 Respawn : entry/setPosition(pen)
 Respawn : do/cycleColours(rainbow)
 Respawn --> Hunting : timeout(2sec)
+@enduml
 #+END_SRC
 #+RESULTS:
 [[file:FStateDiagramExample3.png]]
