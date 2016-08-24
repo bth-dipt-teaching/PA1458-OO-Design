@@ -1,0 +1,858 @@
+#+Title: Software Design Courses
+#+Subtitle: PA1415, PA1435
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-08-18
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t toc:nil
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
+# #+INFOJS_OPT: view:overview toc:nil ltoc:nil mouse:underline buttons:nil path:org/org-info.js up:http:www.zombo.com
+#+HTML: <br/>
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: pa1415 PA1415 Software Design
+#+MACRO: pa1435 PA1435 Object Oriented Design
+#+MACRO: larman C. Larman, "Applying UML and Patterns", 3d Edition
+
+* Sprint Structure						   :noexport:
+** About This Sprint
+** User Stories covered in this Sprint
+** Introduction   
+** Learning Material
+*** Book Chapters
+*** Screencasts
+*** Lectures
+*** Articles
+*** Further Reading
+** Experiential Learning
+*** Sprint Test Plan
+*** Assignment Submission
+*** Update Course Backlog
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   
+* Sprint 0: Course Introduction					   :noexport:
+** About This Sprint
+   This sprint introduces the course and the course structure.
+** User Stories covered in this Sprint
+   - As a student I want to pass this course.
+   - As a student I want to understand how this course is structured so that I can quickly find the information I need to learn the subject.
+   - As a student I want to know why this topic is important so that I can be properly motivated.
+** Introduction
+   Welcome to the course!
+
+   Of course you want to pass the course, and I want you to too. This document is intended to give an overview of how the course is structured, and give you a "map" of sorts to the rest of the course material. It is my hope that this will help you find the material you want easily so that you can focus on learning each part of the course.
+
+   The course is divided into a series of /Sprints/, that is, short iterations that focus on a small number of issues per sprint. I have borrowed this term from an agile development methodology called [[https://en.wikipedia.org/wiki/Scrum_(software_development)][Scrum]], which is something you will learn more about in this course and are sure to encounter in your future career as well.
+
+   Speaking of agile, there are a few other things I have borrowed from there as well. The /User Stories/ that each sprint document starts with is one such thing. A user story is a sort of stylised requirement, and I use them to set you into the right frame of mind for each sprint. As you notice, the user story contains information about which /perspective/ you should have, the /goals/ you should achieve, and a brief explanation of /why/ this goal is important.
+
+   Related to this is the /Sprint Acceptance Tests/ that you find at the bottom of each sprint document. These acceptance tests tell you how we plan on ensuring that the goal of the sprint has been reached.
+
+   The bulk of the sprint consists of /Learning Material/, and /Experiential Learning/. Learning material are book chapters, videos, blog posts, etc. that you can use to learn more about the topic in the sprint. Experiential Learning (which is not a good name, but I can't think of any better) consists of different activities you should /do/ as part of the sprint. Some of these activities are just practice activities. Others are activities that will help you organise the material better. Others again are those activities that we (as teachers) would like to look at to assess your progress. Let me repeat this:
+
+#+BEGIN_SRC note
+Experiential Learning are things you are supposed to /do/, and includes:
+ - Things you do for practice
+ - Things you do to organise the material
+ - Things you submit as assignments to the teachers for marking
+#+END_SRC
+
+   Some activities are started during this sprint, and then I ask you to revisit them during every subsequent sprint. The idea with these activities are to help you structure your learning, and give you a means to follow your own progress.
+
+   So, without further ado, let's get started with the learning material. /Good Luck!/
+** Learning Material
+*** Course Structure
+    The course has an online presence as well as a campus existense.
+
+    The online presence consists of these pages, and is organised as a set of sprints, where each sprint focus on a small topic and a few user stories. In each sprint there are things to read and watch, as well as activities to do. The result of some of those activities will be submitted as assignments for marking.
+
+    The campus existense consists of lectures (that I try to run as seminars) and exercises. My idea is that you first study the online material, and then we can have lively discussions during the lectures/seminars. Basically, you go through the design notation and a basic understanding of the topic with the online material and then we discuss together what makes a /good/ design.
+
+    The exercises are done in smaller groups and are more geared towards your specific assignments. Here, the idea is to go through what you are expected to do in the assignments and go through examples of this.
+
+    There are also feedback meetings planned where you get feedback on the assignments that you submitted so that you may improve them.
+*** Course Goals
+    Below, the course goals for the two courses {{{pa1415}}} and {{{pa1435}}} are listed. As you notice, the PA1435 version is of a newer format, but also contains less focus on requirements engineering, project management, and testing activities. This will of course to some extent influence what you are expected to do and deliver, but will only have a limited effect on the lecture series since the topics are still quite intertwined.
+
+| {{{pa1435}}}                                                                                    | {{{pa1415}}}                                                                                                                       |
+|-------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+|                                                                                                 | Efter genomförd kurs skall studenten:                                                                                              |
+|                                                                                                 | - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation                    |
+|                                                                                                 | - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation                                          |
+| *Kunskap och förståelse* Efter genomförd kurs ska studenten:                                    |                                                                                                                                    |
+| - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.   |                                                                                                                                    |
+| - kunna visa förståelse för UML som modelleringsspråk.                                          |                                                                                                                                    |
+| - kunna visa kunskap om grundläggande designprinciper.                                          |                                                                                                                                    |
+| - kunna visa kunskap om grundläggande designmönster.                                            |                                                                                                                                    |
+|                                                                                                 |                                                                                                                                    |
+| *Färdigheter och förmåga* Efter genomförd kurs ska studenten:                                   |                                                                                                                                    |
+| - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept. | - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram                                                |
+| - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.              | - skapa och analysera objektorienterade artefakter uttryckta i UML                                                                 |
+| - kunna korrekt transformera en objektorienterad design till källkod.                           | - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design   |
+| - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.      | - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem                                                        |
+|                                                                                                 |                                                                                                                                    |
+|                                                                                                 | - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation |
+|                                                                                                 |                                                                                                                                    |
+| *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:                    |                                                                                                                                    |
+| - kunna analysera källkod för eventuella förbättringar.                                         |                                                                                                                                    |
+| - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                |                                                                                                                                    |
+|-------------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+*** Why is this course Important?
+*** TODO Course Roadmap						   :noexport:
+*** What should I do with the Sprint Test Plan?
+    The Sprint Test Plan is a way to get an overview of your expectations in the course, in relation to the provided material, and align it with my expectations as course responsible and examiner. In some sense, it is also your strategy for learning the topics. I will not mark your Sprint Test Plan -- you are creating and maintaining this for your own sake.
+
+    The Sprint Test Plan will be revisited during every sprint, so that you have an updated record of what you need to learn to pass the course.
+
+    I am loosely basing my suggestion for the Sprint Test Plan document on the IEEE 829-2008 standard. Feel free to add other information to it if you think it is relevant.
+*** What is this "Course Backlog" thing?
+    As you study, I expect that you will get more questions, or additional information sources (blog pages etc.) that you would like to read, and I hope you will also get ideas for places where you would like to test what you have learnt. Put these into a course backlog document (it will help if you put them in a roughly prioritised order), and then spend time during each sprint to resolve your backlog items.
+
+    At the end of the course, it is my hope that your backlog contains pointers to yourself with how you should go forward with the knowledge gained. For example, how can you use what you have learnt in upcoming courses? Are there any particularly interesting things you have found that you would like to study more? Are there any courses you are interested in taking as a consequence of taking this course? Are there any courses you would like to /replace/ in your education as a consequence of taking this course? Are there any ideas you can use for your bachelor or master's thesis?
+
+    The course backlog is revisited in every sprint. I will not mark it; you create it for your own benefit.
+** Experiential Learning
+*** Create Infrastructure
+    *Introduction.* In your future career you are going to use configuration management systems such as [[http://svnbook.red-bean.com/][Subversion]] or [[https://git-scm.com/][Git]], so why not start already now? This gives you an easy way to share work between your colleagues, and opens up for me to review your work even before you have submitted it.
+
+    If you also write your documents in for example [[https://daringfireball.net/projects/markdown/][Markdown]], they are formatted for you by github. Myself, I am partial to [[http://orgmode.org/][Org-mode]] and [[https://www.gnu.org/software/emacs/][Emacs]], especially because of the nice integration with [[http://plantuml.com/][PlantUML]] for generating design diagrams and the excellent export facilities. Org-mode is also nicely supported by github.
+
+    *Things to do:*
+    - [[https://education.github.com/][Create an account on Github]] (or use your existing one)
+    - Create a Project for the course =OOD-<course code>-<your name>=
+    - Invite me ([[https://github.com/mickesv][mickesv]]) to the project
+    - checkout your project and create a directory structure:
+      - =/Assignments/=
+      - =/SprintTestPlan/=
+      - =/CourseBacklog/=
+    - add a file to each directory, otherwise you will not be able to commit them. For example, add an empty =.gitignore= file to each directory.
+    - commit and push
+*** Sprint Test Plan
+    Create a document with the following sections:
+    - /Test Items./ These are the assignments you are expected to submit for marking. It will probably be a good idea if you are able to tag them with the corresponding sprint, so that you can easily find them.
+    - /Features to be Tested./ These are the user stories at the top of every sprint. Describe each of these features in terms of the object oriented modelling concepts or software development concepts that you need to master before you can satisfy the user story.
+    - /Approach./ Here, you will describe /your/ strategy for ensuring that you have learnt the material in the sprint. How do you ensure that you are confident that the assignments you submit will pass with the grade you are aiming for?
+    - /Item Pass/Fail Criteria./ What do you have to be able to show to yourself to ensure that you have learnt the material in the sprint? What do you have to show in the submitted assignments?
+    - /Schedule./ When do you plan on passing each test item and feature?
+    - /Planning Risks and Contingencies./ Are there any foreseeable risks that may limit your ability to pass the course on time? What is your contingency plan?
+    - /Glossary./ In this section you will build up a glossary of important terms in the course that you can use when studying. I suggest you collaborate with the rest of the class in the course discussion forum (on It's Learning) and post your terms and definitions there so that they can be discussed.
+
+    In this sprint, the following items can be added already (you may think of more items, please add them too):
+
+    - Test Items
+      - Exam [[https://studentportal.bth.se/web/studentportal.nsf/web.xsp/tentamen_under_kommande_veckor][Check Date]]
+      - Exam Re-sit [[https://studentportal.bth.se/web/studentportal.nsf/web.xsp/tentamen_under_kommande_veckor][Check Date]]
+    - Approach
+      - Outline your plan for reading the book and doing the sprints in time to be ready for the exam.
+      - Describe your plan for joining a group of students (for the group assignments, and for study groups) with the same ambition level as you yourself have.
+    - Item Pass/Fail Criteria
+      - Outline your ambition level; what grade are you aiming for?
+    - Schedule
+      - Dates for assignment submissions are available on It's Learning. Copy them here.
+      - Add the exam dates.
+    - Planning Risks and Contingencies
+      - Do you plan on taking any vacations (e.g., skiing trip, easter, ascension day, etc.)? When will you study more to compensate for this? Are your team-mates informed and ok with that you contribute less during these vacations?
+      - What is the expected workload for the courses you may be taking in parallel? Does your plan for /this/ course accomodate your plans for the other courses?
+      - Do you have time available if you are asked to complete your submitted assignments with more information?
+      - Are there any other risks you see at this stage?
+    - Glossary
+      - Scrum
+      - Sprint
+      - User Story
+      - Test Plan
+*** Buy Course Books
+*Main Literature (Both Courses)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/ILarman.jpg]]
+
+C. Larman, /Applying UML and Patterns/, Prentice Hall, 3rd Edition.
+
+This book is a complete guide to all things UML, with plenty of examples and detailed descriptions of all diagrams and how to think when using them. The reading instructions in each sprint are based on the 3rd edition, but I recommend you to try to find an older edition since they are essentially the same but with less text.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+*Reference Literature (PA1415)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/ISommerville.jpg]]
+
+I. Sommerville, /Software Engineering/, Pearson, 8th edition, 2006.
+
+There is also a 9th and a 10th edition (and, of course, the preceeding editions). It does not really matter which one you get. You will use this book as a reference to look up e.g. how a GANTT chart works in case the internet is down.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+*Reference Literature (PA1435)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/IGamma.jpg]]
+
+Gamma, Helm, Johnson, Vlissides, /Design Patterns, Elements of Reusable Object-Oriented Software/, Addison-Wesley Professional.
+
+This book, also called the Gang of Four book is /the/ reference work when it comes to design patterns. You will be using this book a lot in your future career. If you want to save some money, the most common design patterns are also covered in C. Larman (and these are the ones we will be focusing on in these courses).
+
+/Note to PA1415:/ I warmly recommend that you too get this book even if it is not oficially part of "your" course plan.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/INystrom.jpg]]
+
+R. Nystrom, /Game Programming Patterns/, Genever Benning, 2014.
+
+Also Available at: http://gameprogrammingpatterns.com/contents.html
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+#+HTML: &nbsp;
+*** Form Groups
+    We expect the assignments to be done in /groups of three to five people/. Use the following (in this order) to find and/or form a group:
+
+    1. Your friends
+    2. It's Learning
+    3. First Classroom Lecture
+    4. Course Teacher
+
+    Decide in your group how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
+*** Assignment Submission					   :noexport:
+*** Update Course Backlog
+    Where do you go from here? Are there any questions already now that you want answered? Add them, along with a brief strategy for how to find an answer.
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   - You have bought the literature you want/need for the course.
+   - You have joined a group.
+   - You have created a github account, created a project repository, and committed/pushed the directory structure.
+   - You have read the Learning Materials
+
+   You may also have
+   - Created a Sprint Test Plan
+   - Created a Course Backlog
+* Sprint 1: Development Methodologies				   :noexport:
+** About This Sprint
+   This sprint introduces different development methodologies. It is primarily targeted at {{{pa1415}}}.
+** User Stories covered in this Sprint
+   - As a project manager I want to plan the project so that I can make the best use of my resources.
+   - As a project manager I need to decide what to focus on building right now so that I best satisfy all customers' expectations.
+   - As a project manager I want to track the project so that I can see what the current status is.
+   - As a project manager I want to track the project so that I can forecast whether we will deliver on time or not.
+   - As a software designer I want to document my design in a standardised format so that I can communicate it to other software engineers.
+** Introduction
+   In this sprint, we focus on a couple of issues surrounding the /development process/. First of all, there are a number of choices of which developent process to use, from the intuitively easy to grasp waterfall process to the highly individualised kanban process. Which process type to use depends to some extent on the product you are trying to build, but perhaps more so on which organisation you have. Basically, with stable development teams and fairly stable requirements, you can perhaps do an iterative or incremental project, but the more user interaction, continuously changing requirements, and staff turnover you expect, your organisation will tend to move towards more agile processes. There is also a lot of hype involved here. Companies that do agile are perceived as more modern, hip, and better.
+
+   Most processes internally follow a waterfall course of events, with planning, requirements engineering, analysis and design, implementation, testing, deployment, and evaluation. The differences boil down to the amount of work that one iteration takes on, the size of the development teams, and the length of each iteration. Again, in agile there are also a lot of buzzwords added, but that's essentially it. So simple, and yet so powerful. You see, /as/ the scope and timespan for each iteration is reduced (down to weeks or even days), you get quicker feedback loops. You develop much less before you get feedback on what you have done. You also need to be smarter with what you develop so that you can get the /most important/ feedback first.
+
+   This is where the concept of a /Minimum Viable Product/ comes in. A minimum viable product, or an MVP, is a product that supports an entire end to end flow. For example, if you are building a hotel booking system, the MVP may be a product that allows you to search and book one single room. Logging in, booking double rooms with extra beds, adding a minibar, room payment, etc. comes later. Searching for and booking a single room means you have /some/ user interface in place, you have a database structure, and you have /some/ architecture with a structure for how to name API endpoints.
+
+*** Project Planning and Tracking
+   Once you have decided which development methodology to use, you need to plan your project. You have already decided if you are going to do all analysis before all design or whether you are going to do the full analysis-design-implement-test chain for each feature in your system. But /when/ are you going to do what, and /who/ is going to do what. You may, for example, have some persons in your project that are specialised on user interfaces, on databases, or on exploratory testing. So you need to plan every person and every part of the process. 
+
+   The first step of planning is to break down each task into smaller, more manageable tasks. For example, the task "Search for Room" in the hotel management system mentioned above, may consist of the tasks "database design", "GUI design", "implementation", and "testing". Each of these tasks are easier to estimate the size and difficulty of than the overall task. You can also now start assigning different parts of this task to different people, if you like. This breakdown is usually referred to as a /Work Breakdown Structure/, or a WBS. It is often graphically represented as a tree (see Figure [[fig:WBS]]), but may just as well be represented as several columns in a spreadsheet (see Table [[tab:WBS]]).
+
+#+BEGIN_SRC dot :file images/FWBSExample.png
+digraph {
+rankdir=BT;
+splines=true;
+node [shape=box];
+
+"..."
+sr [label="Search for Room"]
+sr -> "..."
+"Database Design" -> sr
+"GUI Design" -> sr
+"Implementation" -> sr
+"Testing" -> sr
+"Implement DB" -> "Implementation"
+"Implement Logic" -> "Implementation"
+"Implement GUI" -> "Implementation"
+"Create Tests" -> "Testing"
+"Run Tests" -> "Testing"
+}
+#+END_SRC
+
+#+CAPTION: An example of a graphical representation of a part of a WBS.
+#+NAME: fig:WBS
+#+RESULTS:
+[[file:images/FWBSExample.png]]
+
+#+CAPTION: An example of a spreadsheet representation of a part of a WBS.
+#+NAME: tab:WBS
+| Feature Group | Feature         | Tasks           | Sub-Tasks       |
+|---------------+-----------------+-----------------+-----------------|
+| ...           | Search for Room | Database Design |                 |
+|               |                 | GUI Design      |                 |
+|               |                 | Implementation  | Implement DB    |
+|               |                 |                 | Implement Logic |
+|               |                 |                 | Implement GUI   |
+|               |                 | Testing         | Create Tests    |
+|               |                 |                 | Run Tests       |
+
+Having the data in a spreadsheet format makes it (IMHO) easier to work with, and also enables you to easily add more columns with data on who is responsible for the task, your effort estimations, your current status, etc. Essentially, you have the starting point for easily creating a /GANTT/ chart.
+
+GANTT charts visualise your project in terms of activities and calendar dates, but you may just as well add more information to it to make it a full-fledged project tracking tool. For example, a simple format is to include the following information (Table [[tab:PPData]]).
+
+#+CAPTION: Project Planning data that may be added in a GANTT chart
+#+NAME: tab:PPData
+| Task Name    | Estimated Effort (in hours) | Start Date | End Date                                                | Responsible    | Spent Time | Progress (in percent) | Projected Effort            | Over/Undertime                          | ... And here starts the GANTT chart proper with one column per day |
+|--------------+-----------------------------+------------+---------------------------------------------------------+----------------+------------+-----------------------+-----------------------------+-----------------------------------------+--------------------------------------------------------------------|
+| Example Task |                          20 | 2016-01-01 | =(Start Date) + (Estimated Effort)/(Length of Workday)= | Example Person |         12 |                    50 | =(spent time) / (progress)= | =(estimated effort)-(projected effort)= |                                                                    |
+
+The discussion above focus on the /work performed/ (or the planned work). In contrast, agile methodologies focus on the /earned value/, which gives a slightly different picture. Whereas you can use the information above to tell your boss whether you are on time or not, you are not able to say at a glance how happy this has made the customer, or how many features you have left to before you are done. For these purposes, we use /Earned Value charts/ and /Burn charts/.
+
+An Earned Value chart has three lines in it
+- Planned Value :: How much of the estimated effort should have been completed at a specific point in time.
+- Earned Value :: How much of the estimated effort was actually implemented at a specific point in time.
+- Actual Cost :: How much effort was actually spent.
+
+This is typically presented in a cumulative earned value chart (where the previous assessment period are added to the next, so that planned value end up at 100% at the far right of the chart. In Figures [[fig:EVChartP]], [[fig:EVChartC]], and [[fig:EVChart]] each of these lines are added. The x-axis represent the time, and the y-axis is some measure of value. This can be in hours, progress, pounds, story points, collected pokemons, or whatever makes sense for your project. Just make sure that it is a unit that is fixed /a priori/, and not something that will change throughout the project. For example, the number of lines of code (LOC) may seem a nice measure, but you know as well as I do that this will become larger than expected, and so you will end up not knowing how much more you need to write before the project is done (as opposed to as big as you initially expected it to be).
+
+The planned value represent how much of the total value you plan on having done for each weeek (cumulative, so the difference in the amount of value added per week can only be seen by the differing slope of the line). If we add the actual cost (Figure [[fig:EVChartC]], sorry that the colour of the lines change, I CBA to fix it right now), we can see that we are spending about as much resources as planned. Specifically, we are spending /more/ than planned up until week 8, and after that we apparently come to grips with the project and continue spending less than planned. This graph shows the current state at week 18, which is why the actual costs flatline after that. Adding the eraned value, finally, gives the situation in Figure [[fig:EVChart]], where we see what we actually managed to deliver for the costs we invested. Up until week 8, we are delivering what is expected (the Earned value curve completely overlays the planned curve), but for a higher cost than expected. From week 8 to week 11, we are delivering more than expected. At best, we are one week ahead of schedule (the biggest horizontal difference between the Earned Value curve and the Planned Value curve). At week 11 we again slip behind shedule for a while, catching up in week 16 and 17, but then falling horribly behind schedule in week 18.
+
+#+CAPTION: Earned Value Chart: Planned
+#+NAME: fig:EVChartP
+[[./images/IEV_Planned.png]]
+
+#+CAPTION: Earned Value Chart: Adding Actual Cost
+#+NAME: fig:EVChartC
+[[./images/IEV_Cost.png]]
+
+#+CAPTION: Earned Value Chart
+#+NAME: fig:EVChart
+[[./images/IEV_Earned.png]]
+
+So what we see in this type of chart is a quick and easy measure of whether we are using our resources as planned (is the actual cost above or below the planned value curve?), and whether we are ahead of, or behind the planned schedule (is the earned value curve above or below the planned value curve?). We can then quickly decide whether we should add more resources to the project. In the example in Figure [[fig:EVChart]] we obviously need to do something if we are going to deliver as expected, for example spending the resources we already have allocated to the project (the difference between planned value and actual cost curves).
+
+A burndown chart essentially turns this chart upside down. Partially, this is done for psychological reasons; it is easier to see how much or how little remains), but more importantly it enables us to easily visualise what happens when we add more work in the middle of a project. Consider the example in Figure [[fig:Burndown]]. The plan is that the project should be complete at week 22. However, at week 5 and week 15, more work is added to the project, so the number of story points still to complete goes up. This means that at week 22, there are still some forty-odd story points left to complete and the project is not done. This is just one example of how a burndown chart can be used to easily visualise the consequences of changing the scope mid-project. Agile development methodologies are not averse to changing the scope -- rather the opposite -- but they /do/ insist on that the consequences are known and easily understood.
+
+#+CAPTION: Burndown chart
+#+NAME: fig:Burndown
+[[./images/FBurndown_Replan.png]]
+
+
+*** Design Documentation
+#+ATTR_HTML: :width 600
+#+NAME: Arne01
+[[./images/arne01.png]]
+
+The last user story for this sprint is a bit of an oddball. What, one may wonder, does design documentation have to do with development methodologies. The reason for this is that the currently dominating design documentation format, the Unified Modelling Language (UML), also prescribes a certain way of doing the design, and a certain order for things to be done. This process is known as the /Unified Process/, or the /Rational Unified Process/ (because the originators created the company Rational and wanted to make more money off everything around UML). The Unified Process claims to be agile (we can debate this in the classroom), and is iterative and incremental and whatever buzzword /du jour/. We are not going into detail about all of this in this course, and will focus almost solely on the analysis and design stages, but even here, or especially here the different UML diagrams prescribe a certain order, so that you may use what you learn in one diagram as input to creating the next diagram. Thus:
+
+- We do Requirements Engineering (outside the scope of UML) to find out what the customers and other stakeholders expect from the system.
+- We do UML Use Cases to document the requirements in the context of the processes they are going to be used, so that we can communicate with the stakeholders about them.
+- We do UML Use Case Diagrams to get an overview of, and understand how the UML Use Cases fit together.
+- We do a Conceptual Model based on the requirements and the use cases to understand the problem domain better.
+- We do UML State Diagrams based on the requirements and the use cases to understand the dynamic behaviour better.
+- We do UML System Sequence Diagrams to understand which system events are generated by each UML Use Case.
+- We may do UML Design Contracts to understand how each system operation from the UML System Sequence Diagrams changes the state of the application and instances of domain concepts.
+- We do UML Class Diagrams to understand which domain concepts are important to implement, and how to implement them and their relations.
+- We do UML Interaction Diagrams to understand how objects (instances of the classes) interact to solve one particular system event from the UML System Sequence Diagrams.
+- We revise the UML Class Diagrams based on the UML Interaction Diagrams we just did.
+- We implement the system based on the UML Class Diagram and the UML Interaction Diagrams.
+- We write test cases based on the UML use cases.
+
+Remember earlier where I mentioned that UML/RUP claims to be agile? Please take a moment to reflect upon whether you are able to do this entire list and remain agile. 
+
+In 2014 a colleague of mine did a survey [fn:TGO-paper] among nearly 4000 professional software developers about their software development practices in general. One of the questions was the seemingly innocent /"Do you model?"/. Answers ranged from "no" to "hell no!", as presented in Figure [[fig:TGOSurvey]].
+
+[fn:TGO-paper] T. Gorschek, E. Tempero, L. Angelis, /On the use of software design models in software development practice: An empirical investigation/, in Journal of Systems and Software 95(2014):176--193.
+
+
+#+CAPTION: Survey Question and Answers
+#+NAME: fig:TGOSurvey
+  [[./images/ISurveyModelling.png]]
+
+
+In the freetext answers a different story emerges:
+
+#+BEGIN_NOTE
+The industrial software developers who answered the survey do use sketches, informal models, casual diagrams, etc, but not formal UML.
+#+END_NOTE
+
+They were also allowed to provide a a further explanation to their answer. Common explanations were:
+    - "Only for very complex designs, sometimes"
+    - "Only use initially then start coding (diagrams not kept/updated)"
+    - "Enables visualisation of the big picture/high level"
+    - "Other types of models but not UML"
+    - "Use models to communicate and coordinate with other developers"
+
+... And many more, but the long and the short of it is that /models are not used as researchers expect/. Instead they are used for *conceptual analysis and exploration, problem solving, visualisation, and communication*. And this is the reason for why modelling and UML is worth bothering about. In order to visualise and communicate efficiently, it is helpful to use a common standard, which UML contributes. That way you can focus on /what/ you want to model and discuss instead of spending time explaining /how/ you have chosen to represent the information. For the analysis, exporation, and problem solving aspects it also helps to have a common notation to use. Try explaining how to tie your shoelace while at the same time invent a new language for it, and you'll see what I mean.
+
+That being said, /you will probably never ever going to use all of UML in one particular project/, and after you complete this course, /no-one will probably ever require you to stick fully to the prescribed notation/.
+
+So, why bother?
+
+By taking a course in object oriented modelling, you will get training in a particular mindset, where you begin to analyse a problem in terms of its /objects/ and their /interactions/. This problem solving mindset is difficult to reach when bogged down with all the implementation details. Also, while you will not use /all/ diagrams outside this course, knowledge of which diagrams exist and how they fit together will enable you to make an informed decision about /what/ models are necessary for you to understand the problem and to communicate it. You should, however, bear in mind that there are some good things with doing the full monty UML as well, and by cherry-picking models and parts of the process you are sacrificing them. The trick is to be able to do this with full awareness of what it is you sacrifice.
+
+So, with those heartwarming words, let's delve into /not/ UML, but development processes instead. You will notice that I have thrown in a few book chapters that are not precisely related to development methods, and some of the chapters will appear again in other sprints. But now is as good a time as any to get started on them.
+** Learning Material
+*** Book Chapters
+    - {{{larman}}}: Chapters 1, 2, 4, 21, 40.
+      1. Object-Oriented Analysis and Design
+      2. Iterative, Evolutionary, and Agile
+      3. Case Studies (we will be using the POST case study)
+      21. [@21] Test-Driven Development and Refactoring
+      40. [@40] More on Iterative Development and Agile Project Management
+*** Screencasts
+    - [[https://play.bth.se/media/Development+Process/1_gmy3m68z][Development Process]]
+*** Lectures							   :noexport:
+*** Further Reading
+    - [[https://www.mountaingoatsoftware.com/presentations/an-introduction-to-scrum][Introduction to Scrum by Mike Kohn]]
+    - [[http://www.workbreakdownstructure.com/][Work Breakdown Structure]]
+    - [[http://www.gantt.com/][GANTT charts]]
+    - [[http://www.dummies.com/how-to/content/earned-value-management-terms-and-formulas-for-pro.html][Earned Value charts]]
+    - [[http://alistair.cockburn.us/Earned-value+and+burn+charts][Earned Value and Burn Charts by Alistar Cockburn]]
+** Experiential Learning
+*** Sprint Test Plan
+    Go through the user stories for this sprint and make sure you have a clear solution to each of them.
+
+    Revisit and update your risks and contingencies section.
+
+    Add and/or revise the following items to your glossary:
+    - Waterfall Development
+    - Iterative Development
+    - Incremental Development
+    - Agile
+    - Scrum
+    - Kanban
+    - Minimum Viable Product (MVP)
+    - Work Breakdown Structure (WBS)
+    - GANTT chart
+    - Earned Value Charts
+    - Burn Charts (Also: Burndown charts and burn-up charts)
+    - UML
+    - Unified Processs (Also: Rational Unified Process RUP)
+
+    Make sure that you understand what each item is, but also what the differences between them are (where applicable).
+*** Assignment Submission
+    Create a Assignment Plan document (e.g., as a GANTT spreadsheet). Add the assignments that you will need to submit in this course, and do a brief breakdown of them into their most obvious tasks. Add early time estimates for these tasks.
+*** Update Course Backlog
+    Which development methodology do you plan on using for your projects in this course? Which development methodology would you like to know more about? Which development methodologies are you likely to encounter in the future? Is there any methodology that seems particularly suitable for other courses?
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   - You have read the Learning Materials.
+   - You have created your Assignment Plan and committed/pushed it to your project repository.
+
+   You may also have
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog
+
+* Sprint 2: Requirements Engineering
+** About This Sprint
+   This sprint briefly introduces the topic requirements engineering. It is primarily targeted at {{{pa1415}}}.
+
+   For more information on this topic, see e.g. the course =PA1412 Praktisk Kravhantering=.
+** User Stories covered in this Sprint
+   - As a software engineer I want to get an overview of all sources of requirments that may influence which system I build.
+     - As a requirements engineer I want to know who may have requirements on the system we are building so that I can make sure that all needs are met.
+   - As a software engineer I want to be able to extract all requirements on the system I build so that I know that I am not missing anything important.
+     - As a requirements engineer I want to have a range of methods for finding requirements so that I can choose the best method for each customer.
+   - As a project manager I need to decide what to focus on building right now so that I best satisfy all customers' expectations.
+** Introduction   
+   
+** Learning Material
+*** Book Chapters
+*** Screencasts
+*** Lectures
+*** Articles
+*** Further Reading
+** Experiential Learning
+*** Sprint Test Plan
+*** Assignment Submission
+*** Update Course Backlog
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   
+
+* Working Material						   :noexport:
+** Don't Forget
+   Assignments!
+   - How many
+   - Flow
+   - Topic
+
+   Requirements Engineering: Three parallel and different ways of writing requirments: Old (Reqs), Agile (User stories), UML (Use Cases): Add a picture of this...
+   GRASP: Responsibility-driven design
+** Backlog
+ | Sprint                    | Topic     | Contents                                  | User Story                                                                                                                                                                                     |   |
+ |---------------------------+-----------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---|
+ | Intro                     | Intro     | Student                                   | As a student I want to pass this course.                                                                                                                                                       |   |
+ |                           | Intro     | Student                                   | As a student I want to understand how this course is structured so that I can quickly find the information I need to learn the subject.                                                        |   |
+ |                           | Intro     | Student                                   | As a student I want to know why this topic is important so that I can be properly motivated.                                                                                                   |   |
+ | Development Methodologies | DevMeth   | UML                                       | As a software designer I want to document my design in a standardised format so that I can communicate it to other software engineers.                                                         |   |
+ |                           | DevMeth   | Development Methodologies, GANTT          | As a project manager I want to plan the project so that I can make the best use of my resources.                                                                                               |   |
+ |                           | DevMeth   | WBS                                       | As a project manager I want to track the project so that I can see what the current status is.                                                                                                 |   |
+ |                           | DevMeth   | Project Estimations                       | As a project manager I want to track the project so that I can forecast whether we will deliver on time or not.                                                                                |   |
+ | Requirements Engineering  | RE        | Requirements                              | As a software engineer I want to get an overview of all sources of requirments that may influence which system I build.                                                                        |   |
+ |                           | RE        | Requirements                              | - As a requirements engineer I want to know who may have requirements on the system we are building so that I can make sure that all needs are met.                                            |   |
+ |                           | RE        | Requirements                              | As a software engineer I want to be able to extract all requirements on the system I build so that I know that I am not missing anything important.                                            |   |
+ |                           | RE        | Requirements                              | - As a requirements engineer I want to have a range of methods for finding requirements so that I can choose the best method for each customer.                                                |   |
+ |                           | RE        | Backlog, Iterations, Prioritization       | As a project manager I need to decide what to focus on building right now so that I best satisfy all customers' expectations.                                                                  |   |
+ | Object Oriented Analysis  | OOA       | Use Cases                                 | As a software designer I want to document what the customer is telling me so that I can discuss my understanding of their requirements with them.                                              |   |
+ |                           | OOA       | Use Cases                                 | As a software designer I want to document what the customer is telling me so that I can easily continue designing based on a joint understanding.                                              |   |
+ |                           | OOA       | Conceptual Model                          | As a software designer I want to document my understanding of the problem domain so that I can easily transform this into an object oriented software system.                                  |   |
+ |                           | OOA       | System Sequence Diagram                   | As a software designer I want to understand how users plan on interacting with the system so that I can design the right API endpoints.                                                        |   |
+ |                           | OOA       | State Diagrams                            | As a software designer I want to document the states the application can be in so that I can better design them and get an overview of permissible transitions.                                |   |
+ |                           | OOA       | Use Cases - Structuring                   | As a software designer I want to be able to reuse common procedures between my use cases so that I only have to maintain them in one place.                                                    |   |
+ | Object Oriented Design    | OOD       | Sequence/Collaboration Diagrams           | As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.                                                    |   |
+ |                           | OOA       | Dynamic vs Static                         | As a software designer I want to model both the /dynamic behaviour/ as well as the /static structure/ of the application so that I can communicate both to the developers.                     |   |
+ |                           | OOD       | Class Diagrams (also Transition into)     | As a software implementer I want to know which methods and attributes each class contains so that I can implement them.                                                                        |   |
+ |                           | OOD       | Package Diagrams / Architecture           | As a software designer I want to be able to divide my design into manageable chunks so that I can get a better overview.                                                                       |   |
+ |                           | OOD       | GRASP Patterns                            | As a software designer I want to create a design that adheres to basic design principles so that I am sure that it will "hold" when I add more functionality and start maintaining the system. |   |
+ | Design Patterns           | OOD/DP    | Design Patterns                           | As a software desginer I want to be able to use appropriate design patterns where applicable so that I do not have to reinvent the wheel for every problem.                                    |   |
+ | Testing                   | Testing   | Testing, Testing Methodologies, Test Plan | As a product manager I want to make sure that we are building software of high quality.                                                                                                        |   |
+ |                           | Testing   | Regression Testing, TDD                   | As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.                                                                       |   |
+ | Implementation            | Impl      | From Design to Code                       | As a software designer I want to understand how my design will be implemented so that I can facilitate the transition into code.                                                               |   |
+ | Extra: Security           | OOD/DP/SE | Security Design Patterns                  | As a security engineer I want to use "secure" design patterns so that I can make sure that the product is secure by design.                                                                    |   |
+ | Extra: Games              | OOD/DP/GE | Games Design Patterns                     | As a games developer I want to use commonly accepted game design solutions so that I can be reasonably sure it works within my quality constraints.                                            |   |
+ | Extra: Web                | OOD/DP/WE | Web Engineering Patterns                  | As a web developer I want to be able to use design patterns especially suitable for web engineering so that I make the best use of my platform                                                 |   |
+ | Extra: More Analysis Help | OOA       | Contracts                                 | As a software designer I want to have a way of thinking about what happens in a system event so that I do not miss any important effects on the system state.                                  |   |
+** Goals
+  | Course Code   | Course Goal                                                                                                                        |
+  |---------------+------------------------------------------------------------------------------------------------------------------------------------|
+  | PA1415        | - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation                    |
+  | PA1415        | - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation                                          |
+  | PA1415/PA1435 | - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram                                                |
+  | PA1415        | - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design   |
+  | PA1415        | - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation |
+  | PA1415/PA1435 | - skapa och analysera objektorienterade artefakter uttryckta i UML                                                                 |
+  | PA1415/PA1435 | - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem                                                        |
+  |               |                                                                                                                                    |
+  | PA1435        | *Kunskap och förståelse* Efter genomförd kurs ska studenten:                                                                       |
+  | PA1435        | - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.                                      |
+  | PA1435        | - kunna visa förståelse för UML som modelleringsspråk.                                                                             |
+  | PA1435        | - kunna visa kunskap om grundläggande designprinciper.                                                                             |
+  | PA1435        | - kunna visa kunskap om grundläggande designmönster.                                                                               |
+  |               |                                                                                                                                    |
+  | PA1435        | *Färdigheter och förmåga* Efter genomförd kurs ska studenten:                                                                      |
+  | PA1435        | - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.                                    |
+  | PA1435        | - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.                                                 |
+  | PA1435        | - kunna korrekt transformera en objektorienterad design till källkod.                                                              |
+  | PA1435        | - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.                                         |
+  |               |                                                                                                                                    |
+  | PA1435        | *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:                                                       |
+  | PA1435        | - kunna analysera källkod för eventuella förbättringar.                                                                            |
+  | PA1435        | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
+  |---------------+------------------------------------------------------------------------------------------------------------------------------------|
+
+** Topics
+  | PA1415 | PA1435 | Topic                                            |
+  |--------+--------+--------------------------------------------------|
+  | PA1415 |        | Development Methodologies (Waterfall/Agile/Lean) |
+  | PA1415 |        | Requirements Engineering                         |
+  | PA1415 |        | Project Planning                                 |
+  | PA1415 |        | Work Breakdown Structures                        |
+  | PA1415 |        | Project Estimations                              |
+  | PA1415 |        | Testing, Different Levels                        |
+  | PA1415 |        | Test Driven Development                          |
+  | PA1415 |        | Test Plan                                        |
+  |        | PA1435 | Basic Design Methodology (OOA, OOD)              |
+  | PA1415 | PA1435 | UML - overview                                   |
+  | PA1415 | PA1435 | UML Analysis                                     |
+  | PA1415 | PA1435 | UML Design                                       |
+  | PA1415 | PA1435 | Basic Design Patterns (GRASP)                    |
+  | PA1415 | PA1435 | Design Patterns (GoF)                            |
+  | PA1415 | PA1435 | From Design to Code                              |
+  | PA1415 | PA1435 | Good vs Bad Design                               |
+  |--------+--------+--------------------------------------------------|
+
+** Sprints						       :OLD:noexport:
+   0. [@0] Introduction/Formalia
+   1. Overview of Development Methodologies
+      - Waterfall
+      - Agile/Lean
+      - RUP
+   2. Requirements Engineering
+      - Requirement Elicitation
+      - Requirements, User Stories, Use Cases
+      - Backlog
+      - Working with requirements in a Sprint
+      - Requirements and Testing
+   3. Planning and Estimations
+      - Requirements and Prioritisations
+      - Requirements for Planning
+      - WBS
+      - Estimations
+      - Project Tracking
+   4. Testing
+      - Levels of Testing
+      - TDD
+      - Test plan
+   5. Introduction to RUP/UML
+      - OOA
+      - OOD
+      - RUP
+      - UML Diagrams
+      - UML Dictionary
+   6. OO Analysis
+      - Use Case Diagrams
+      - Use Cases
+      - System Sequence Diagrams
+      - Conceptual Model
+      - State Diagrams
+      - Worked Example from Use Case to SSD and Conceptual Model
+   7. OO Design
+      - Interaction Diagrams
+	- Sequence Diagrams
+	- Collaboration Diagrams
+      - Class Diagrams
+   8. Basic Design Patterns
+      - GRASP
+   9. Common Design Patterns
+   10. From Design to Code
+       - Java / C++ Quirks
+       - OOP in JavaScript
+** Lecture Outline					       :OLD:noexport:
+*** DONE Introduction (01)
+    CLOSED: [2016-03-09 Wed 11:44]
+    :LOGBOOK:  
+    - State "DONE"       from "TODO"       [2016-03-09 Wed 11:44]
+    :END:      
+    Classroom only
+
+    - Course Intro
+      - About MSV
+      - Course Structure
+      - Lecture Structure
+      - Literature
+      - Tools
+    - Modelling why care
+      - Gorschek paper
+      - Sell it anyway
+    - Overall OOD Development Methodology
+      - Reason: Traceability
+      - Reason for all the models: Analysis triangulation
+    - Modelling at large
+    - OO Analysis
+    - OO Design
+    - UML
+      - Sell UML (Abstract, Precise, Pictoral)
+      - UML as a collection of models
+      - UML as a methodology
+      - UML wankery
+    - Design / Design Patterns
+    - Exercise in Scale??
+*** DONE Development Process (02)
+    CLOSED: [2016-03-09 Wed 14:35]
+    :LOGBOOK:  
+    - State "DONE"       from "TODO"       [2016-03-09 Wed 14:35]
+    :END:      
+    Upload: Methodologies
+    - Waterfall
+    - Iterative/Incremental
+    - Kanban
+    - SCRUM
+
+    Classroom:
+    - Process
+      - Systematic
+      - Disciplined
+      - Quantifiable (!)
+    - Process vs Project vs Product
+    - Discuss:
+      - What's good with waterfall?
+      - Where would you do design in Scrum?
+      - Where would you do design in Kanban?
+    - Example: UML Process (Work through an example)
+      - Use Case Diagrams
+      - Use Cases
+      - Conceptual Model
+      - Class Diagram
+      - Collaboration Diagram
+      - Interaction Diagram
+      - ?? Flowcharts 
+*** DONE Requirements (03)
+    CLOSED: [2016-03-17 Thu 09:59]
+    :LOGBOOK:  
+    - State "DONE"       from "TODO"       [2016-03-17 Thu 09:59]
+    :END:      
+    Upload: Requirements Specifications
+    - ISO 830
+    - RFC 2119
+    - Standard Templates for Requirements "The system must do X"
+    - Standard Template for User Stories
+    - Use Cases
+      - Use Case Diagrams
+      - High Level Use Case
+      - Fully Dressed (Expanded) Use Case
+    - Prioritising Requirements
+
+    Classroom:	
+    - Discuss:
+      - How to Find Requirements
+      - Goals, Features, Functions, Components (RAM Model)
+      - Good and Bad Requirements
+      - Black box vs White Box
+    - Basic RE process
+      - (Re-use old slides)
+    - Example
+      - Use Case Diagram
+      - High Level Use Case
+      - Fully Dressed Use Case
+*** DONE Modelling Structure (04)
+    CLOSED: [2016-03-22 Tue 11:15]
+    :LOGBOOK:  
+    - State "DONE"       from "TODO"       [2016-03-22 Tue 11:15]
+    :END:      
+    Upload:
+    - Conceptual Model Notation
+      - Concept
+      - Attributes
+      - Associations
+      - Multiplicity
+      - Data Dictionary (Definition/Intention/_Glossary_)
+      - Examples (Instantiated Objects)
+    - Class Diagrams
+      - Concept vs Class
+      - Associations
+      - Roles
+      - Role Multiplicity
+      - Attributes
+      - Attribtue Types
+
+    Classroom:
+    - Discuss:
+      - How to find Concepts/Attributes/Associations?
+      - Difference between Attribute and Concept?
+      - Multiplicity -- how to think?
+    - Slides on Concept Identification
+    - How to find Attributes
+    - How to find Associations
+    - Example:
+      - Conceptual Model
+      - Class Diagram
+*** DONE Modelling Structure II (04)
+    CLOSED: [2016-04-13 Wed 11:00]
+    :LOGBOOK:  
+    - State "DONE"       from "WAIT"       [2016-04-13 Wed 11:00]
+    - State "WAIT"       from ""           [2016-04-13 Wed 11:00]
+    - State "WAIT"       from ""           [2016-03-22 Tue 14:34]
+    :END:      
+    - [X] Structuring Use Cases (From Modelling Behaviour Lecture)
+*** DONE Modelling Behaviour (05)
+    CLOSED: [2016-04-06 Wed 14:28]
+    :LOGBOOK:  
+    - State "DONE"       from "TODO"       [2016-04-06 Wed 14:28]
+    :END:      
+    Upload:
+    - Sequence Diagram
+      - Actor
+      - Lifeline
+      - Event
+    - Contract
+      - Name
+      - Responsibilities
+      - Preconditions
+      - Postconditions
+    - Extended Contract
+      - Name
+      - Responsibilities
+      - Type
+      - Cross-References
+      - Notes
+      - Exceptions
+      - Output
+      - Preconditions
+      - Postconditions
+    - State Diagrams
+      - State / Event / Transition
+      - Notation
+	- Nested States
+	- Activity in a State
+	- Actions on Transitions
+
+    Classroom:
+    - Going from Use Case to Sequence Diagram
+    - System Sequence Diagram vs regular Sequence Diagram
+    - System as a modelling concept
+    - Contracts
+      - What are they?
+      - How should you interpret preconditions?
+      - How to interpret postconditions?
+      - Stage-and-Curtain execution
+    - Discuss:
+      - What are extended contracts good for?
+    - State Diagrams
+      - Examples + Discussion: Common Pitfalls
+      - What types of Events can there be in a state diagram?
+    - Discuss:
+      - How do we fit state diagrams into the UML process?
+*** TODO Design -- Collaboration and Responsibilities
+    Upload:      
+    - [ ] Interaction Diagrams, Collaboration Diagrams
+      - Classes and Instances
+      - Sequence Numbering
+      - ...
+    - [ ] Conditions, etc.
+    - [ ] Real Use Cases
+
+    Classroom:
+    - [-] Discuss
+      - What is the difference between Sequence diagrams and Collaboration Diagrams
+    - [-] Example:
+      - Go from Class Diagram to Sequence Diagram
+*** DONE Design Patterns I/II (06) (08, 09)
+    CLOSED: [2016-04-21 Thu 14:25]
+    :LOGBOOK:
+    - State "DONE"       from "TODO"       [2016-04-21 Thu 14:25]
+    :END:
+    Upload:
+    - GRASP Patterns
+      - Expert
+      - Creator
+      - Low Coupling
+      - High Cohesion
+	- Don't talk to strangers
+      - Controller
+      - Polymorphism
+    - Design Patterns
+      - Observer
+      - Singleton
+      - Strategy
+      - State
+      - Abstract Factory
+    - Architecture
+      - Layered
+      - MVC
+
+    Classroom:
+    - Design Patterns Background
+    - Levels of Patterns
+      - Architecture
+      - Design
+      - Idioms
+      - GRASP
+    - Discuss:
+      - Design Patterns:
+	- Domain Modelling or Development tricks
+	- What are they good for?
+	- Limitations?
+    - Example:
+      - How to apply GRASP
+      - How to apply DP
+      - How to apply AP
+    - Example:
+      - How to Implement DP's
+*** TODO Mapping Design to Code (07)
+    Classroom:
+    - Implementation Order
+    - Class Creation
+      - (Why bother, it's done by the tool anyway)
+      - Attributes, Methods, etc.
+    - Code from Sequence Diagrams
+      - This is not automatic, because crappy tools.
+    - Language Differences
+      - Multiple Inheritance vs Inner Classes vs Anonymous Classes
+      - Pointers vs References
+      - Aggregation vs Strong Aggregation
+      - Callback Programming (Event-Driven Arch.) (Node.js and its ilks)
+	- https://blog.risingstack.com/fundamental-node-js-design-patterns/
+      - Stateful EDA's??
+      - Dependency Injection (Might hold a discussion on this one)
+      - NULL as return values
+      - Defensive Programming
+	- http://c.learncodethehardway.org/book/ex27.html
+	- Discuss: Good or Bad? Better to Fail Early?
+** Links							   :noexport:
+   IEEE 829-2008: http://www.fit.vutbr.cz/study/courses/ITS/public/ieee829.html
