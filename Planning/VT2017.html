@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-08-24 Wed 10:48 -->
+<!-- 2016-08-25 Thu 14:28 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Software Design Courses</title>
@@ -150,476 +150,370 @@ for the JavaScript code in this tag.
 </h1>
 <br/>
 
-<div id="outline-container-orgheadline15" class="outline-2">
-<h2 id="orgheadline15"><span class="section-number-2">1</span> Sprint 1: Development Methodologies</h2>
+<div id="outline-container-orgheadline17" class="outline-2">
+<h2 id="orgheadline17"><span class="section-number-2">1</span> Sprint: Requirements Engineering</h2>
 <div class="outline-text-2" id="text-1">
 </div><div id="outline-container-orgheadline1" class="outline-3">
 <h3 id="orgheadline1"><span class="section-number-3">1.1</span> About This Sprint</h3>
 <div class="outline-text-3" id="text-1-1">
 <p>
-This sprint introduces different development methodologies. It is primarily targeted at PA1415 Software Design.
+This sprint briefly introduces the topic requirements engineering. It is primarily targeted at PA1415 Software Design.
 </p>
+
+<p>
+For more information on this topic, see e.g. the course <code>PA1412 Praktisk Kravhantering</code>.
+</p>
+
+<div class="note">
+<p>
+<b>Note:</b> In this sprint you will begin with what will eventually be delivered as a part of Assignment 1. In subsequent sprints you will continue with what you produce here and dive deeper into UML. You will thus only produce a partial delivery in this sprint.
+</p>
+
+</div>
 </div>
 </div>
 <div id="outline-container-orgheadline2" class="outline-3">
 <h3 id="orgheadline2"><span class="section-number-3">1.2</span> User Stories covered in this Sprint</h3>
 <div class="outline-text-3" id="text-1-2">
 <ul class="org-ul">
-<li>As a project manager I want to plan the project so that I can make the best use of my resources.</li>
+<li>As a requirements engineer I want to know who may have requirements on the system we are building so that I can make sure that all needs are met.</li>
+<li>As a requirements engineer I want to have a range of methods for finding requirements so that I can choose the best method for each person or source of requirements.</li>
+<li>As a requirements engineer I want to document the found requirements so that I can discuss them with the customer.</li>
+<li>As a requirements engineer I want to document the found requirements so that I can communicate them to the developers.</li>
 <li>As a project manager I need to decide what to focus on building right now so that I best satisfy all customers&rsquo; expectations.</li>
-<li>As a project manager I want to track the project so that I can see what the current status is.</li>
-<li>As a project manager I want to track the project so that I can forecast whether we will deliver on time or not.</li>
-<li>As a software designer I want to document my design in a standardised format so that I can communicate it to other software engineers.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5"><span class="section-number-3">1.3</span> Introduction</h3>
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7"><span class="section-number-3">1.3</span> Introduction</h3>
 <div class="outline-text-3" id="text-1-3">
 <p>
-In this sprint, we focus on a couple of issues surrounding the <i>development process</i>. First of all, there are a number of choices of which developent process to use, from the intuitively easy to grasp waterfall process to the highly individualised kanban process. Which process type to use depends to some extent on the product you are trying to build, but perhaps more so on which organisation you have. Basically, with stable development teams and fairly stable requirements, you can perhaps do an iterative or incremental project, but the more user interaction, continuously changing requirements, and staff turnover you expect, your organisation will tend to move towards more agile processes. There is also a lot of hype involved here. Companies that do agile are perceived as more modern, hip, and better.
+Before you start designing your system, you need to find out <i>what</i> to design and build. There are of course different ways of doing this. The traditional way advocates that you need to fully understand the entire system before you go ahead with the design (cf. <i>waterfall development</i>), whereas at the other end the agile approach (e.g. as advocated by <a href="http://www.extremeprogramming.org/">eXtreme Programming</a> and the <a href="http://agilemanifesto.org/">Agile Manifesto</a>) is that you should only do as much requirements engineering up front as is necessary to understand how to start building, since the requirements are going to change anyway. Note that they do not say &ldquo;Don&rsquo;t do it!&rdquo;; they say &ldquo;Do as little as possible, but not less&rdquo;.
 </p>
 
 <p>
-Most processes internally follow a waterfall course of events, with planning, requirements engineering, analysis and design, implementation, testing, deployment, and evaluation. The differences boil down to the amount of work that one iteration takes on, the size of the development teams, and the length of each iteration. Again, in agile there are also a lot of buzzwords added, but that&rsquo;s essentially it. So simple, and yet so powerful. You see, <i>as</i> the scope and timespan for each iteration is reduced (down to weeks or even days), you get quicker feedback loops. You develop much less before you get feedback on what you have done. You also need to be smarter with what you develop so that you can get the <i>most important</i> feedback first.
+It is thus important to decide early how much requirements engineering you should do before you start with the project. Incidentally, there is a difference between the traditional, so called <i>bespoke</i> requirements engineering where you start a project when a customer knocks on the door and then you do requirements engineering as part of that project, and the <i>continuous</i> requirements engineering where you always do requirements engineering and spawn new development projects as a result of the requirements engineering process. The latter suits the type of products that you develop and sell to more than one customer, while the former is more suitable for one-off projects. For this course, I would suggest a pragmatic approach (akin to the agile way): Do as much requirements engineering so that you have a rough overview of what the system should do, and do proper requirements engineering on what you need to know do make a Minimum Viable Product. 
 </p>
 
 <p>
-This is where the concept of a <i>Minimum Viable Product</i> comes in. A minimum viable product, or an MVP, is a product that supports an entire end to end flow. For example, if you are building a hotel booking system, the MVP may be a product that allows you to search and book one single room. Logging in, booking double rooms with extra beds, adding a minibar, room payment, etc. comes later. Searching for and booking a single room means you have <i>some</i> user interface in place, you have a database structure, and you have <i>some</i> architecture with a structure for how to name API endpoints.
-</p>
-</div>
-
-<div id="outline-container-orgheadline3" class="outline-4">
-<h4 id="orgheadline3"><span class="section-number-4">1.3.1</span> Project Planning and Tracking</h4>
-<div class="outline-text-4" id="text-1-3-1">
-<p>
-Once you have decided which development methodology to use, you need to plan your project. You have already decided if you are going to do all analysis before all design or whether you are going to do the full analysis-design-implement-test chain for each feature in your system. But <i>when</i> are you going to do what, and <i>who</i> is going to do what. You may, for example, have some persons in your project that are specialised on user interfaces, on databases, or on exploratory testing. So you need to plan every person and every part of the process. 
+There are many sources and techniques for doing requirements elicitation (i.e., finding the requirements), from reading the old documentation, analysing competitor&rsquo;s products, interviewing users, running surveys among user groups, or simply inventing the requirements yourself. If you do requirements engineering you will be using a mixture of these. Typically, you will start by doing an unstructured interview with a manager to get a broad overview of what they want the system to do. You will then try to define end user groups and find a couple of representative persons from each user group and conduct further interviews with them. At first, these interviews will be exploratory and unstructured, but will pretty soon become semi-structured as you learn about the major features of the system, so that you will be getting further details about each of these major features.
 </p>
 
 <p>
-The first step of planning is to break down each task into smaller, more manageable tasks. For example, the task &ldquo;Search for Room&rdquo; in the hotel management system mentioned above, may consist of the tasks &ldquo;database design&rdquo;, &ldquo;GUI design&rdquo;, &ldquo;implementation&rdquo;, and &ldquo;testing&rdquo;. Each of these tasks are easier to estimate the size and difficulty of than the overall task. You can also now start assigning different parts of this task to different people, if you like. This breakdown is usually referred to as a <i>Work Breakdown Structure</i>, or a WBS. It is often graphically represented as a tree (see Figure <a href="#orgparagraph1">1</a>), but may just as well be represented as several columns in a spreadsheet (see Table <a href="#orgtable1">1</a>).
+Finding out who may have an interest in the system (a <i>stakeholder</i>) is so important that I have even added a separate user story for it in this sprint. This is not limited to end-users. Other stakeholders may include (but is not limited to): the organisation that is going to maintain and continue development of the system, system service technicians that will be doing backups and adding users and other running maintenance, external parties that you may connect to (for example banks to deal with payments), legal texts (that&rsquo;s right: a text can be a stakeholder), other departments in the organisation you build for that require your system to jack in with their processes, and so on.
 </p>
 
 
 <div id="orgparagraph1" class="figure">
-<p><img src="images/FWBSExample.png" alt="FWBSExample.png" />
+<p><img src="./images/FRE_Process.png" alt="FRE_Process.png" />
 </p>
-<p><span class="figure-number">Figure 1:</span> An example of a graphical representation of a part of a WBS.</p>
+<p><span class="figure-number">Figure 1:</span> Requirements Engineering Overview (Simplified)</p>
+</div>
 </div>
 
+<div id="outline-container-orgheadline3" class="outline-4">
+<h4 id="orgheadline3"><span class="section-number-4">1.3.1</span> Interviews</h4>
+<div class="outline-text-4" id="text-1-3-1">
+<p>
+I&rsquo;ve already touched upon elicitation techniques. The one you are likely to use the most is <i>Interviews</i>. &ldquo;Interview&rdquo; is actually a cover-all phrase that encompasses a whole range of different techniques that involves two people or more with (at least) voice contact. You <i>may</i> thus do interviews over phone, but I would not recommend it since you loose a lot of nuances that can be learnt by observing body language. Video conference or face-to-face meetings IRL are the most common interview settings. You can be one person interviewing one other person, or there can be more people either doing the interview or being interviewed (although at some point it is perhaps better to run the meeting as a <a href="https://en.wikipedia.org/wiki/Focus_group">focus group</a>).
+</p>
+
+<p>
+In its most simple form, you conduct the interview as an <i>open interview</i> with <i>open answers</i>. In this setting, you basically just talk, and together explore what the application should do. You rarely have the luxury to be this unstructured, even in the first interview. I would recommend you to do as much homework as possible beforehand so that you have at least a small set of starting questions that you can use to get the interview going and to get back on track when you feel that you have diverged too far from the interview goals. Having a set of questions moves the interview into a <i>semi-structured</i> format, where you are able to follow up on the answers given with further impromptu questions. The extreme is a <i>structured</i> interview where you have a specific set of questions that you want answered in a particular order without room for any further probing. This is typically only used in research contexts.
+</p>
+
+<p>
+Similarly, you can allow <i>open answers</i>, typically early on when you want to explore and look for new information, or you can restrict the answers to a <i>closed answer</i> space, where each question can e.g. be answered with one of four alternatives. This is good for confirming what you have previously learnt; you can collect answers from larger groups of people and quickly analyse them, and the idea is that at that stage you should not expect to find any new information.
+</p>
+
+<p>
+Thus, a requirements engineer will probably use semi-structured open answered interviews. In this course, however, this will not be the case as it would be out of scope for the course. You will instead have to create the requirements yourself (more on this under the Experiential Learning in this sprint).
+</p>
+
+<p>
+How you behave during an interview influences the results, because your behaviour can make the interview subjects more or less prone to answer your questions. In Table <a href="#orgtable1">1</a> I have compiled a list of do&rsquo;s and don&rsquo;ts in interview situations (we have actually used this list to assess requirements elicitation interviews in the requirements engineering courses at BTH).
+</p>
+
 <table id="orgtable1" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 1:</span> An example of a spreadsheet representation of a part of a WBS.</caption>
+<caption class="t-above"><span class="table-number">Table 1:</span> Do and Don&rsquo;t in an Interview Situation</caption>
 
 <colgroup>
-<col  class="org-left" />
-
-<col  class="org-left" />
-
 <col  class="org-left" />
 
 <col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="org-left">Feature Group</th>
-<th scope="col" class="org-left">Feature</th>
-<th scope="col" class="org-left">Tasks</th>
-<th scope="col" class="org-left">Sub-Tasks</th>
+<th scope="col" class="org-left">Do</th>
+<th scope="col" class="org-left">Don&rsquo;t</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="org-left">&#x2026;</td>
-<td class="org-left">Search for Room</td>
-<td class="org-left">Database Design</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">Do    prepare thoroughly for the meeting</td>
+<td class="org-left">Don&rsquo;t put your laptop on the table as a wall between you and your client</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    prepare a checklist for the meeting</td>
+<td class="org-left">Don&rsquo;t keep your cap on your head</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    introduce yourself properly</td>
+<td class="org-left">Don&rsquo;t interrupt the customer</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    ask about access to stakeholders</td>
+<td class="org-left">Don&rsquo;t interrupt each other</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    ask about access to previous systems</td>
+<td class="org-left">Don&rsquo;t take no notes</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    book the next meeting</td>
+<td class="org-left">Don&rsquo;t record the interview without asking</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    ask about quality requirements</td>
+<td class="org-left">Don&rsquo;t assume stuff</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    make sure you know who you are talking to, and why</td>
+<td class="org-left">Don&rsquo;t provide requirements</td>
+</tr>
+
+<tr>
+<td class="org-left">Do    ask about deadlines</td>
+<td class="org-left">Don&rsquo;t provide goldplating</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">GUI Design</td>
-<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t technobabble</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Implementation</td>
-<td class="org-left">Implement DB</td>
+<td class="org-left">Don&rsquo;t sit quiet</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Implement Logic</td>
+<td class="org-left">Don&rsquo;t kiss up (too much)</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Implement GUI</td>
+<td class="org-left">Don&rsquo;t follow your meeting checklist manically</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Testing</td>
-<td class="org-left">Create Tests</td>
+<td class="org-left">Don&rsquo;t share war-stories about other customers and systems</td>
 </tr>
 
 <tr>
 <td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t ask about the budget at the first meeting</td>
+</tr>
+
+<tr>
 <td class="org-left">&#xa0;</td>
-<td class="org-left">&#xa0;</td>
-<td class="org-left">Run Tests</td>
+<td class="org-left">Don&rsquo;t argue among yourselves</td>
 </tr>
 </tbody>
 </table>
-
+</div>
+</div>
+<div id="outline-container-orgheadline4" class="outline-4">
+<h4 id="orgheadline4"><span class="section-number-4">1.3.2</span> Specification</h4>
+<div class="outline-text-4" id="text-1-3-2">
 <p>
-Having the data in a spreadsheet format makes it (IMHO) easier to work with, and also enables you to easily add more columns with data on who is responsible for the task, your effort estimations, your current status, etc. Essentially, you have the starting point for easily creating a <i>GANTT</i> chart.
+Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to <i>Specify</i> the requirements. There is an IEEE standard, <a href="#orgspecialblock1">IEEE 830</a>, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
 </p>
 
+<div class="info">
 <p>
-GANTT charts visualise your project in terms of activities and calendar dates, but you may just as well add more information to it to make it a full-fledged project tracking tool. For example, a simple format is to include the following information (Table <a href="#orgtable2">2</a>).
+<b>IEEE 830 Standard for Software Requirements Specifications</b>
 </p>
+<ol class="org-ol">
+<li>Introduction
+<ol class="org-ol">
+<li>Purpose of the Requirements Document</li>
+<li>Scope of the Product</li>
+<li>Definitions, Acronyms, and Abbreviations</li>
+<li>References</li>
+<li>Overview of the Remainder of the Document</li>
+</ol></li>
+<li>General Description
+<ol class="org-ol">
+<li>Product Perspective</li>
+<li>Product Functions</li>
+<li>User Characteristics</li>
+<li>General Constraints</li>
+<li>Assumptions and Dependencies</li>
+</ol></li>
+<li>Specific Requirements
+Functional, non-functional, and interface requirements</li>
+<li>Appendices</li>
+<li>Index</li>
+</ol>
 
-<table id="orgtable2" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption class="t-above"><span class="table-number">Table 2:</span> Project Planning data that may be added in a GANTT chart</caption>
-
-<colgroup>
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-right" />
-
-<col  class="org-right" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-
-<col  class="org-left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="org-left">Task Name</th>
-<th scope="col" class="org-right">Estimated Effort (in hours)</th>
-<th scope="col" class="org-right">Start Date</th>
-<th scope="col" class="org-left">End Date</th>
-<th scope="col" class="org-left">Responsible</th>
-<th scope="col" class="org-right">Spent Time</th>
-<th scope="col" class="org-right">Progress (in percent)</th>
-<th scope="col" class="org-left">Projected Effort</th>
-<th scope="col" class="org-left">Over/Undertime</th>
-<th scope="col" class="org-left">&#x2026; And here starts the GANTT chart proper with one column per day</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="org-left">Example Task</td>
-<td class="org-right">20</td>
-<td class="org-right">2016-01-01</td>
-<td class="org-left"><code>(Start Date) + (Estimated Effort)/(Length of Workday)</code></td>
-<td class="org-left">Example Person</td>
-<td class="org-right">12</td>
-<td class="org-right">50</td>
-<td class="org-left"><code>(spent time) / (progress)</code></td>
-<td class="org-left"><code>(estimated effort)-(projected effort)</code></td>
-<td class="org-left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
+</div>
 
 <p>
-The discussion above focus on the <i>work performed</i> (or the planned work). In contrast, agile methodologies focus on the <i>earned value</i>, which gives a slightly different picture. Whereas you can use the information above to tell your boss whether you are on time or not, you are not able to say at a glance how happy this has made the customer, or how many features you have left to before you are done. For these purposes, we use <i>Earned Value charts</i> and <i>Burn charts</i>.
-</p>
-
-<p>
-An Earned Value chart has three lines in it
-</p>
-<dl class="org-dl">
-<dt>Planned Value</dt><dd>How much of the estimated effort should have been completed at a specific point in time.</dd>
-<dt>Earned Value</dt><dd>How much of the estimated effort was actually implemented at a specific point in time.</dd>
-<dt>Actual Cost</dt><dd>How much effort was actually spent.</dd>
-</dl>
-
-<p>
-This is typically presented in a cumulative earned value chart (where the previous assessment period are added to the next, so that planned value end up at 100% at the far right of the chart. In Figures <a href="#orgparagraph2">2</a>, <a href="#orgparagraph3">3</a>, and <a href="#orgparagraph4">4</a> each of these lines are added. The x-axis represent the time, and the y-axis is some measure of value. This can be in hours, progress, pounds, story points, collected pokemons, or whatever makes sense for your project. Just make sure that it is a unit that is fixed <i>a priori</i>, and not something that will change throughout the project. For example, the number of lines of code (LOC) may seem a nice measure, but you know as well as I do that this will become larger than expected, and so you will end up not knowing how much more you need to write before the project is done (as opposed to as big as you initially expected it to be).
-</p>
-
-<p>
-The planned value represent how much of the total value you plan on having done for each weeek (cumulative, so the difference in the amount of value added per week can only be seen by the differing slope of the line). If we add the actual cost (Figure <a href="#orgparagraph3">3</a>, sorry that the colour of the lines change, I CBA to fix it right now), we can see that we are spending about as much resources as planned. Specifically, we are spending <i>more</i> than planned up until week 8, and after that we apparently come to grips with the project and continue spending less than planned. This graph shows the current state at week 18, which is why the actual costs flatline after that. Adding the eraned value, finally, gives the situation in Figure <a href="#orgparagraph4">4</a>, where we see what we actually managed to deliver for the costs we invested. Up until week 8, we are delivering what is expected (the Earned value curve completely overlays the planned curve), but for a higher cost than expected. From week 8 to week 11, we are delivering more than expected. At best, we are one week ahead of schedule (the biggest horizontal difference between the Earned Value curve and the Planned Value curve). At week 11 we again slip behind shedule for a while, catching up in week 16 and 17, but then falling horribly behind schedule in week 18.
+To simplify, there are two plus one ways of writing requirements. The two ways are traditional requirements and user stories. The plus one way is UML use cases. UML:ists themselves claim that use cases are not requirments, they are merely scenarios where one or several requirements are &ldquo;exercised&rdquo;. I would rather avoid re-formatting the requirements once more and just add more documentation that will only be used once, so I would try very hard to get away with only documenting the requirements within the context of a use case if I must use them.
 </p>
 
 
 <div id="orgparagraph2" class="figure">
-<p><img src="./images/IEV_Planned.png" alt="IEV_Planned.png" />
+<p><img src="./images/FRESpecification.png" alt="FRESpecification.png" />
 </p>
-<p><span class="figure-number">Figure 2:</span> Earned Value Chart: Planned</p>
-</div>
-
-
-<div id="orgparagraph3" class="figure">
-<p><img src="./images/IEV_Cost.png" alt="IEV_Cost.png" />
-</p>
-<p><span class="figure-number">Figure 3:</span> Earned Value Chart: Adding Actual Cost</p>
-</div>
-
-
-<div id="orgparagraph4" class="figure">
-<p><img src="./images/IEV_Earned.png" alt="IEV_Earned.png" />
-</p>
-<p><span class="figure-number">Figure 4:</span> Earned Value Chart</p>
+<p><span class="figure-number">Figure 2:</span> Two plus one way of specifying requirements</p>
 </div>
 
 <p>
-So what we see in this type of chart is a quick and easy measure of whether we are using our resources as planned (is the actual cost above or below the planned value curve?), and whether we are ahead of, or behind the planned schedule (is the earned value curve above or below the planned value curve?). We can then quickly decide whether we should add more resources to the project. In the example in Figure <a href="#orgparagraph4">4</a> we obviously need to do something if we are going to deliver as expected, for example spending the resources we already have allocated to the project (the difference between planned value and actual cost curves).
+Traditional requirements may be specified as figures, tables, sketches, or plaintext, with the plaintext version being the one most commonly discussed. They usually follow a standardised format with a number of attributes per requirement (title, description, source, date, etc.), and a standardised template for the actual requirement. User Stories are supposed to be less documentation so they try to include the most relevant of all of this information into a single one-liner. Shorter iterations, a more direct path from inception to implementation, and closer collaboration with the customer makes it easier to do away with a lot of the information considered necessary in traditional requirements.
 </p>
 
 <p>
-A burndown chart essentially turns this chart upside down. Partially, this is done for psychological reasons; it is easier to see how much or how little remains), but more importantly it enables us to easily visualise what happens when we add more work in the middle of a project. Consider the example in Figure <a href="#orgparagraph5">5</a>. The plan is that the project should be complete at week 22. However, at week 5 and week 15, more work is added to the project, so the number of story points still to complete goes up. This means that at week 22, there are still some forty-odd story points left to complete and the project is not done. This is just one example of how a burndown chart can be used to easily visualise the consequences of changing the scope mid-project. Agile development methodologies are not averse to changing the scope &#x2013; rather the opposite &#x2013; but they <i>do</i> insist on that the consequences are known and easily understood.
+UML use cases are covered in a different course sprint, so I will only briefly mention them here. With a use case, you are attempting to put the requirements into a context. Of course, this means that you need to write more, since you also need to add information about the context. This is one of the reasons why they are not considered requirements &#x2013; they are simply too verbose. This verbosity also means that a developer is unlikely to do use cases for every requirement and every part of the system; but will rather do them for those parts of the system where there is a usage flow that is difficult to grasp in one sentence, and where you are likely to hold a &ldquo;conversation&rdquo; with the system to fulfill a higher need. For example, searching for a hotel room is a one-liner. <i>Booking</i> a room on the other hand may involve
 </p>
-
-
-<div id="orgparagraph5" class="figure">
-<p><img src="./images/FBurndown_Replan.png" alt="FBurndown_Replan.png" />
-</p>
-<p><span class="figure-number">Figure 5:</span> Burndown chart</p>
-</div>
-</div>
-</div>
-
-
-<div id="outline-container-orgheadline4" class="outline-4">
-<h4 id="orgheadline4"><span class="section-number-4">1.3.2</span> Design Documentation</h4>
-<div class="outline-text-4" id="text-1-3-2">
-
-<div id="orgparagraph6" class="figure">
-<p><img src="./images/arne01.png" alt="arne01.png" width="600" />
-</p>
-</div>
-
-<p>
-The last user story for this sprint is a bit of an oddball. What, one may wonder, does design documentation have to do with development methodologies. The reason for this is that the currently dominating design documentation format, the Unified Modelling Language (UML), also prescribes a certain way of doing the design, and a certain order for things to be done. This process is known as the <i>Unified Process</i>, or the <i>Rational Unified Process</i> (because the originators created the company Rational and wanted to make more money off everything around UML). The Unified Process claims to be agile (we can debate this in the classroom), and is iterative and incremental and whatever buzzword <i>du jour</i>. We are not going into detail about all of this in this course, and will focus almost solely on the analysis and design stages, but even here, or especially here the different UML diagrams prescribe a certain order, so that you may use what you learn in one diagram as input to creating the next diagram. Thus:
-</p>
-
 <ul class="org-ul">
-<li>We do Requirements Engineering (outside the scope of UML) to find out what the customers and other stakeholders expect from the system.</li>
-<li>We do UML Use Cases to document the requirements in the context of the processes they are going to be used, so that we can communicate with the stakeholders about them.</li>
-<li>We do UML Use Case Diagrams to get an overview of, and understand how the UML Use Cases fit together.</li>
-<li>We do a Conceptual Model based on the requirements and the use cases to understand the problem domain better.</li>
-<li>We do UML State Diagrams based on the requirements and the use cases to understand the dynamic behaviour better.</li>
-<li>We do UML System Sequence Diagrams to understand which system events are generated by each UML Use Case.</li>
-<li>We may do UML Design Contracts to understand how each system operation from the UML System Sequence Diagrams changes the state of the application and instances of domain concepts.</li>
-<li>We do UML Class Diagrams to understand which domain concepts are important to implement, and how to implement them and their relations.</li>
-<li>We do UML Interaction Diagrams to understand how objects (instances of the classes) interact to solve one particular system event from the UML System Sequence Diagrams.</li>
-<li>We revise the UML Class Diagrams based on the UML Interaction Diagrams we just did.</li>
-<li>We implement the system based on the UML Class Diagram and the UML Interaction Diagrams.</li>
-<li>We write test cases based on the UML use cases.</li>
+<li>a search</li>
+<li>a narrowing of the results to specific types of rooms</li>
+<li>a check whether the room is available</li>
+<li>a selection of the room</li>
+<li>input of information about the person booking the room, and</li>
+<li>a confirmation that the room is booked.</li>
 </ul>
 
 <p>
-Remember earlier where I mentioned that UML/RUP claims to be agile? Please take a moment to reflect upon whether you are able to do this entire list and remain agile. 
+Each of these items may, in turn, comprise more than several requirements, including at least one requirement that restricts the order in which these actions must be performed.
 </p>
+</div>
+</div>
 
-<p>
-In 2014 a colleague of mine did a survey <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> among nearly 4000 professional software developers about their software development practices in general. One of the questions was the seemingly innocent /&ldquo;Do you model?&rdquo;/. Answers ranged from &ldquo;no&rdquo; to &ldquo;hell no!&rdquo;, as presented in Figure <a href="#orgparagraph7">7</a>.
+<div id="outline-container-orgheadline5" class="outline-4">
+<h4 id="orgheadline5"><span class="section-number-4">1.3.3</span> Prioritisation</h4>
+<div class="outline-text-4" id="text-1-3-3">
+
+<div class="figure">
+<p><img src="./images/I0Programmer.jpg" alt="I0Programmer.jpg" />
 </p>
-
-
-<div id="orgparagraph7" class="figure">
-<p><img src="./images/ISurveyModelling.png" alt="ISurveyModelling.png" />
-</p>
-<p><span class="figure-number">Figure 7:</span> Survey Question and Answers</p>
 </div>
 
 
 <p>
-In the freetext answers a different story emerges:
+&#x2026; Prioritization
 </p>
-
-<div class="NOTE">
-<p>
-The industrial software developers who answered the survey do use sketches, informal models, casual diagrams, etc, but not formal UML.
-</p>
-
+</div>
 </div>
 
+<div id="outline-container-orgheadline6" class="outline-4">
+<h4 id="orgheadline6"><span class="section-number-4">1.3.4</span> Next Step</h4>
+<div class="outline-text-4" id="text-1-3-4">
 <p>
-They were also allowed to provide a a further explanation to their answer. Common explanations were:
-</p>
-<ul class="org-ul">
-<li>&ldquo;Only for very complex designs, sometimes&rdquo;</li>
-<li>&ldquo;Only use initially then start coding (diagrams not kept/updated)&rdquo;</li>
-<li>&ldquo;Enables visualisation of the big picture/high level&rdquo;</li>
-<li>&ldquo;Other types of models but not UML&rdquo;</li>
-<li>&ldquo;Use models to communicate and coordinate with other developers&rdquo;</li>
-</ul>
-
-<p>
-&#x2026; And many more, but the long and the short of it is that <i>models are not used as researchers expect</i>. Instead they are used for <b>conceptual analysis and exploration, problem solving, visualisation, and communication</b>. And this is the reason for why modelling and UML is worth bothering about. In order to visualise and communicate efficiently, it is helpful to use a common standard, which UML contributes. That way you can focus on <i>what</i> you want to model and discuss instead of spending time explaining <i>how</i> you have chosen to represent the information. For the analysis, exporation, and problem solving aspects it also helps to have a common notation to use. Try explaining how to tie your shoelace while at the same time invent a new language for it, and you&rsquo;ll see what I mean.
-</p>
-
-<p>
-That being said, <i>you will probably never ever going to use all of UML in one particular project</i>, and after you complete this course, <i>no-one will probably ever require you to stick fully to the prescribed notation</i>.
-</p>
-
-<p>
-So, why bother?
-</p>
-
-<p>
-By taking a course in object oriented modelling, you will get training in a particular mindset, where you begin to analyse a problem in terms of its <i>objects</i> and their <i>interactions</i>. This problem solving mindset is difficult to reach when bogged down with all the implementation details. Also, while you will not use <i>all</i> diagrams outside this course, knowledge of which diagrams exist and how they fit together will enable you to make an informed decision about <i>what</i> models are necessary for you to understand the problem and to communicate it. You should, however, bear in mind that there are some good things with doing the full monty UML as well, and by cherry-picking models and parts of the process you are sacrificing them. The trick is to be able to do this with full awareness of what it is you sacrifice.
-</p>
-
-<p>
-So, with those heartwarming words, let&rsquo;s delve into <i>not</i> UML, but development processes instead. You will notice that I have thrown in a few book chapters that are not precisely related to development methods, and some of the chapters will appear again in other sprints. But now is as good a time as any to get started on them.
+&#x2026; Conceptual Model
 </p>
 </div>
 </div>
 </div>
-<div id="outline-container-orgheadline9" class="outline-3">
-<h3 id="orgheadline9"><span class="section-number-3">1.4</span> Learning Material</h3>
+<div id="outline-container-orgheadline11" class="outline-3">
+<h3 id="orgheadline11"><span class="section-number-3">1.4</span> Learning Material</h3>
 <div class="outline-text-3" id="text-1-4">
-</div><div id="outline-container-orgheadline6" class="outline-4">
-<h4 id="orgheadline6"><span class="section-number-4">1.4.1</span> Book Chapters</h4>
+</div><div id="outline-container-orgheadline8" class="outline-4">
+<h4 id="orgheadline8"><span class="section-number-4">1.4.1</span> Book Chapters</h4>
 <div class="outline-text-4" id="text-1-4-1">
 <ul class="org-ul">
-<li>C. Larman, &ldquo;Applying UML and Patterns&rdquo;, 3d Edition: Chapters 1, 2, 4, 21, 40.
+<li>C. Larman, &ldquo;Applying UML and Patterns&rdquo;, 3d Edition: Chapters 4,5,6, and 7.
 <ol class="org-ol">
-<li>Object-Oriented Analysis and Design</li>
-<li>Iterative, Evolutionary, and Agile</li>
-<li>Case Studies (we will be using the POST case study)</li>
-<li value="21">Test-Driven Development and Refactoring</li>
-<li value="40">More on Iterative Development and Agile Project Management</li>
+<li value="4">Inception is Not the Requirements Phase</li>
+<li>Evolutionary Requirements</li>
+<li>Use Cases</li>
+<li>Other Requirements</li>
 </ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline7" class="outline-4">
-<h4 id="orgheadline7"><span class="section-number-4">1.4.2</span> Screencasts</h4>
+<div id="outline-container-orgheadline9" class="outline-4">
+<h4 id="orgheadline9"><span class="section-number-4">1.4.2</span> Screencasts</h4>
 <div class="outline-text-4" id="text-1-4-2">
 <ul class="org-ul">
-<li><a href="https://play.bth.se/media/Development+Process/1_gmy3m68z">Development Process</a></li>
+<li><a href="https://play.bth.se/media/Requirements+Engineering/1_epma2li8/41750261">Requirements Engineering</a></li>
+<li><a href="https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261">Use Cases</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-orgheadline8" class="outline-4">
-<h4 id="orgheadline8"><span class="section-number-4">1.4.3</span> Further Reading</h4>
-<div class="outline-text-4" id="text-1-4-3">
-<ul class="org-ul">
-<li><a href="https://www.mountaingoatsoftware.com/presentations/an-introduction-to-scrum">Introduction to Scrum by Mike Kohn</a></li>
-<li><a href="http://www.workbreakdownstructure.com/">Work Breakdown Structure</a></li>
-<li><a href="http://www.gantt.com/">GANTT charts</a></li>
-<li><a href="http://www.dummies.com/how-to/content/earned-value-management-terms-and-formulas-for-pro.html">Earned Value charts</a></li>
-<li><a href="http://alistair.cockburn.us/Earned-value+and+burn+charts">Earned Value and Burn Charts by Alistar Cockburn</a></li>
-</ul>
+<div id="outline-container-orgheadline10" class="outline-4">
+<h4 id="orgheadline10"><span class="section-number-4">1.4.3</span> Further Reading</h4>
 </div>
 </div>
-</div>
-<div id="outline-container-orgheadline13" class="outline-3">
-<h3 id="orgheadline13"><span class="section-number-3">1.5</span> Experiential Learning</h3>
+<div id="outline-container-orgheadline15" class="outline-3">
+<h3 id="orgheadline15"><span class="section-number-3">1.5</span> Experiential Learning</h3>
 <div class="outline-text-3" id="text-1-5">
-</div><div id="outline-container-orgheadline10" class="outline-4">
-<h4 id="orgheadline10"><span class="section-number-4">1.5.1</span> Sprint Test Plan</h4>
+</div><div id="outline-container-orgheadline12" class="outline-4">
+<h4 id="orgheadline12"><span class="section-number-4">1.5.1</span> Sprint Test Plan</h4>
 <div class="outline-text-4" id="text-1-5-1">
 <p>
-Go through the user stories for this sprint and make sure you have a clear solution to each of them. 
+Go through the user stories for this sprint and make sure you have a clear solution to each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
 </p>
 
 <p>
 Add and/or revise the following items to your glossary:
 </p>
 <ul class="org-ul">
-<li>Waterfall Development</li>
-<li>Iterative Development</li>
-<li>Incremental Development</li>
-<li>Agile</li>
-<li>Scrum</li>
-<li>Kanban</li>
-<li>Minimum Viable Product (MVP)</li>
-<li>Work Breakdown Structure (WBS)</li>
-<li>GANTT chart</li>
-<li>Earned Value Charts</li>
-<li>Burn Charts (Also: Burndown charts and burn-up charts)</li>
-<li>UML</li>
-<li>Unified Processs (Also: Rational Unified Process RUP)</li>
+<li>Requirements Engineering
+<ul class="org-ul">
+<li>Requirements Elicitation</li>
+<li>Stakeholders</li>
+<li>Software Requirements Specification (SRS)</li>
+<li>RFC 2119</li>
+</ul></li>
+<li>User Story</li>
+<li>Use Case</li>
+<li>Use Case Diagram</li>
+<li>Conceptual Model</li>
 </ul>
 
 <p>
-Make sure that you understand what each item is, but also what the differences between them are (where applicable).
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.
 </p>
 </div>
 </div>
-<div id="outline-container-orgheadline11" class="outline-4">
-<h4 id="orgheadline11"><span class="section-number-4">1.5.2</span> Assignment Submission</h4>
-<div class="outline-text-4" id="text-1-5-2">
-<p>
-Create a Assignment Plan document (e.g., as a GANTT spreadsheet). Add the assignments that you will need to submit in this course, and do a brief breakdown of them into their most obvious tasks. Add early time estimates for these tasks.
-</p>
+<div id="outline-container-orgheadline13" class="outline-4">
+<h4 id="orgheadline13"><span class="section-number-4">1.5.2</span> Assignment Submission</h4>
+</div>
+<div id="outline-container-orgheadline14" class="outline-4">
+<h4 id="orgheadline14"><span class="section-number-4">1.5.3</span> Update Course Backlog</h4>
 </div>
 </div>
-<div id="outline-container-orgheadline12" class="outline-4">
-<h4 id="orgheadline12"><span class="section-number-4">1.5.3</span> Update Course Backlog</h4>
-<div class="outline-text-4" id="text-1-5-3">
-<p>
-Which development methodology do you plan on using for your projects in this course? Which development methodology would you like to know more about? Which development methodologies are you likely to encounter in the future? Is there any methodology that seems particularly suitable for other courses?
-</p>
-
-<p>
-Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
-</p>
-</div>
-</div>
-</div>
-<div id="outline-container-orgheadline14" class="outline-3">
-<h3 id="orgheadline14"><span class="section-number-3">1.6</span> Sprint Acceptance Tests</h3>
+<div id="outline-container-orgheadline16" class="outline-3">
+<h3 id="orgheadline16"><span class="section-number-3">1.6</span> Sprint Acceptance Tests</h3>
 <div class="outline-text-3" id="text-1-6">
 <p>
 You are done with this sprint when:
 </p>
-<ul class="org-ul">
-<li>You have read the Learning Materials</li>
-<li>You have created your Assignment Plan and committed/pushed it to your project repository</li>
-</ul>
-
-<p>
-You may also have
-</p>
-<ul class="org-ul">
-<li>Updated your Sprint Test Plan</li>
-<li>Updated your Course Backlog</li>
-</ul>
 </div>
 </div>
 </div>
-<div id="footnotes">
-<h2 class="footnotes">Footnotes: </h2>
-<div id="text-footnotes">
-
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
-T. Gorschek, E. Tempero, L. Angelis, <i>On the use of software design models in software development practice: An empirical investigation</i>, in Journal of Systems and Software 95(2014):176&#x2013;193.
-</p></div></div>
-
-
 </div>
-</div></div>
 <div id="postamble" class="status">
 <p class="date">Date: 2016-08-18</p>
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2016-08-24 Wed 10:48</p>
+<p class="date">Created: 2016-08-25 Thu 14:28</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
