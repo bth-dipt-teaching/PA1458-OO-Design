@@ -5,16 +5,12 @@
 #+Date: 2016-08-18
 #+EPRESENT_FRAME_LEVEL: 1
 #+OPTIONS: email:t <:t todo:t f:t ':t toc:t
-# #+STARTUP: showall
 #+STARTUP: beamer
 
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
-# #+INFOJS_OPT: view:overview toc:nil ltoc:nil mouse:underline buttons:nil path:org/org-info.js up:http:www.zombo.com
 #+HTML: <br/>
 
-# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
 #+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
-# #+LATEX_CLASS: beamer
 #+BEAMER_THEME: BTH_msv
 
 #+MACRO: pa1415 PA1415 Software Design
@@ -45,9 +41,14 @@
     Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
 *** Assignment Submission
 *** Update Course Backlog
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
 ** Sprint Acceptance Tests
    You are done with this sprint when:
-   
+
+   You may also have
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog   
 * Sprint 0: Course Introduction					   :noexport:
 ** About This Sprint
    This sprint introduces the course and the course structure.
@@ -1098,7 +1099,7 @@ When marking this part of the assignment we are looking for the following:
    - Updated your Course Backlog
    - Written self-study Use Cases
    - As self-study played planning poker.
-* Sprint: Concepts and Events
+* Sprint: Concepts and Events					   :noexport:
 ** About This Sprint
    This sprint introduces a system analysis view of the real world, and describes how to use the UML use cases as a means for finding out what is relevant to model from the real world for the system you are designing.
 ** User Stories covered in this Sprint
@@ -1237,11 +1238,11 @@ sys-->User : <acknowledging bleep>
 
     This is what makes it so useful that you have already modelled them as method calls. You have now also documented your API; the methods you may call, the system responses, and the order (if any) that the methods must be called.
 
-    Moreover, you have done this without having decided how you are going to build your user interface. You are still free to write a desktop GUI application, a mobile phone app (where you have still left the choice open between IOS and Android -- at least in theory), or a web application. You may even write your GUI in [[https://unity3d.com/][Unity]].
+    Moreover, you have done this without having decided how you are going to build your user interface. You are still free to write a desktop GUI application, a mobile phone app (where you have still left the choice open between IOS and Android -- at least in theory), or a web application. You may even write your GUI in something esoteric like [[https://unity3d.com/][Unity]], and your system sequence diagrams would still look the same.
 *** Testing
     In this sprint, we have introduced two new models; domain models and system sequence diagrams. Both of these are useful for testing purposes. The domain model shows you how you think the /problem domain/ functions. When constructing your tests, this is a better starting point than what you eventually end up implementing. More importantly, the domain model divides your problem domain into smaller entities, /concepts/, that are possible to /unit test/. Later on, you can combine your already tested units and run /integration tests/ to make sure the units work together.
 
-    Consider the Layered architecture model in Figure [[fig:Layered]] once more. Remember that we specified the API for the Application Logic in the System Sequence Diagram? So why not just "push" the user interface to one side and attach a testing interface there instead? Why not indeed.
+    Your system sequence diagrams tell you what API endpoints you have in the system. These are an excellent starting point for writing your regression tests. Consider the Layered architecture model in Figure [[fig:Layered]] once more. Remember that we specified the API for the Application Logic in the System Sequence Diagram? So why not just "push" the user interface to one side and attach a testing interface there instead? Why not indeed.
 
 #+BEGIN_SRC ditaa :file ./images/FSSDTest.png
   +------------+--------------+
@@ -1269,6 +1270,8 @@ sys-->User : <acknowledging bleep>
 #+RESULTS:
 [[file:./images/FSSDTest.png]]
 
+In one go you have enabled automated testing of your application. Technically, you can (and should) do this on top of the user interface too, but this is easier to get in place.
+
 *** Summary
 We are thus able to start building a chain of analysis efforts and UML diagrams, where what we learn in one diagram is put to use when creating the next one, as illustrated in Figure [[fig:DesignChainSSD]]. Of course, this chain is equally valuable going backwards: In order to find out more about a particular test case and why it is written the way it is, you go back to the UML use case. If this is not enough, you look at the involved requirements, or -- via the requirements -- contact the original source of the requirement to ask further questions.
 
@@ -1283,6 +1286,7 @@ digraph {
  "UML Domain Model" -> "Test Specification" [label=" Domain Units to Test"]
 
 // Have not yet come to these nodes, so paint them in a different colour.
+// Or wait with them altogether
 /*
  "UML Domain Model" -> "Class Diagram" [label=" Early Ideas of what to Implement",style=dotted]
  "UML System Sequence Diagram" -> "Interaction Diagram" [label=" Resolving System Event"]
@@ -1332,6 +1336,7 @@ digraph {
       - Model-View-Controller Software Architecture
       - Pipes-and-Filters Software Architecture
     - Unit Testing
+    - Regression Testing
     - Integration Testing
 
     Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
@@ -1460,28 +1465,304 @@ When marking this part of the assignment we are looking for the following:
    You may also have
    - Updated your Sprint Test Plan
    - Updated your Course Backlog   
+* Sprint: Testing						   :noexport:
+** About This Sprint
+   In this sprint we momentarily pause the steady onmarch of UML and instead focus on how to test the designed software.
+** User Stories covered in this Sprint
+   - As a product manager I want to make sure that we are building software of high quality.
+   - As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
+** Introduction
+   This introduction is partially written with the help of my honourable esteemed colleague Dr. Simon Poulding. And when I say "partially" I mean that substantial parts of this introduction consists of texts that he has written and that I have creatively borrowed, brutally slaughtered, and put back into a different order. Not necessarily better, but different.
 
+   I guess that all of you have heard of the importance of testing your code by now. The sad story is that many professional software developers have still only heard of the importance but not seen it in practice. In many cases, testing is something you tack on at the end of a project if there is time. Of course, since there never is time left at the end of a project, you ship the code and let the customers discover the faults instead. The situation has gotten better, but it is still not good. That's why I want to raise the topic already now in the course.
 
-* Sprint: Test Document 					   :noexport:
-*** Self-Study: Regression Test Suite
-      Create a regression test suite. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework.
+   One of the reasons for why testing is considered a time consuming activity is because you are doing manual testing. You have test protocols, you have dedicated testers who follow these protocols and conduct certain actions with the application in a certain order, and document the results. Obviously, we can do better than this. If we are testing the user interface, there are test harnesses for this that simulates button clicks, enters text into text boxes, and compares the end state of the user interface with images of predefined end states, etc (Actually, you might want to study the work of another colleague of mine, Emil Alégroth, on this particular topic).
+
+   But even if we decide not to do automated testing of the user interface, we can attach a test harness that pretends to be the user interface.
+
+#+NAME: fig:TestInterface
+#+CAPTION: A Testing Interface sitting next to the User Interface, acting like an alternative user interface.
+[[./images/FSSDTest.png]]
+
+Digging even further, we can use testing frameworks that intergate with our development environment. [[http://junit.org/][JUnit]] is one example of this when plugged in to Eclipse. You can also run JUnit as a standalone application, which may sometimes have some advantages. It's nice and all to see the results of testing directly in your IDE, but you will also want to run these tests headlessly on an automated build server.
+
+*** Types of Testing
+Which tool or method to use depends very much on what the intentions are of your testing. L. Crispin and J. Gregory [fn:Crispin] introduce four quadrants of (agile) testing that describes the types of testing that one may be doing (see Figure [[fig:TestQuadrants]]).
+
+#+BEGIN_SRC ditaa :file ./images/FTestQuadrants.png
+                            Business Facing 
+
+             +---------------------+------------------------+
+             | Functional Tests    | Exploratory Testing    |
+             | Examples            | Scenarios              | 
+   Supporting| Story Tests         | Usability Testing      | Critique
+   the       | Prototypes          | User Acceptance Testing| Product
+   Team      | Simulations         | Alpha/Beta             |
+             |                cGRE | cGRE                   |
+             +---------------------+------------------------+
+             | Unit Tests          | Performance and Load   |
+             | Component Tests     |   Testing              |
+             |                     | Security Testing       |
+             |                     | "ility Testing"        |
+             |                     |                        |
+             |                cGRE | cGRE                   |
+             +---------------------+------------------------+
+ 
+                          Technology Facing
+#+END_SRC
+
+#+NAME: fig:TestQuadrants
+#+CAPTION: Agile Testing Quadrants (Adapted from Crispin & Gregory 2009)
+#+RESULTS:
+[[file:./images/FTestQuadrants.png]]
+
+*Technology Facing & Supporting the Team (lower left quadrant)*
+This quadrant represents testing defined by the programmers that verifies the functionality of
+individual units or components in the system in order to ensure the internal code quality.
+In many agile practices, this type of testing plays a central role through the technique of test-driven
+development (TDD). In TDD, the developer writes a test for a piece of functionality, and then
+develops the code to pass that test. More on this later.
+
+*Business Facing & Supporting the Team (upper left quadrant)*
+This quadrant considers testing that in contrast to unit/component testing considers
+functionality at a higher level such that it is meaningful to the customer, and with the purpose of
+demonstrating that the functional behaviour of the system is consistent with the
+requirements.
+
+The tests in this quadrant may be derived from the user stories and examples provided by the
+customer team. Crispin and Gregory avoid the use of "acceptance test" that is often used for these
+types of tests on the basis that tests in other quadrants may also be used for this purpose.
+In addition, Crispin and Gregory consider prototypes etc. used as part of the dialogue with the
+customer to belong to this quadrant -- even mock-ups of, for example, a GUI on paper.
+
+*Business Facing & Critique Product (upper right quadrant)*
+This quadrant encompasses manual testing that ensures that the system is really what the
+customer wants rather than simply meeting the team’s understanding of what the customer
+requires. Crispin and Gregory argue that exploratory testing -- unscripted and unconstrained
+testing guided by strategy and experience -- is a core form of testing in this quadrant.
+
+*Technology Facing & Critique Product (lower right quadrant)*
+This quadrant considers types of tests related to non-functional aspects of the system such as
+security, performance, ability to handle load, scalability, reliability, safety, maintainability,
+interoperability etc.
+
+We are not going to go through all of these types of testing strategies in this course, but it gives you a map to understand how your selected test strategies fit together and what you ought to do to produce a sufficient test strategy for your project.
+
+[fn:Crispin] Lisa Crispin, Janet Gregory, "Agile Testing -- A Practical Guide for Testers and Agile Teams", Pearson Education, 2009.
+
+*** Regression Testing
+    The lower half of Crispin & Gregory's testing quadrants are particularly interesting because we are able to introduce /regression testing/. What this means is that we have a large set of test cases that we are able to execute automatically, for example daily or after each commit. The main benefit of this is that it instills confidence in the developers that what they just produced didn't accidentally break something else.
+
+    I once attended a seminar with Prof. Hans van Vliet where he asked us "what do you think takes the most time in software maintenance?"
+    - Understanding what the problem is
+    - Understanding where to fix the problem
+    - Understanding how to fix the problem
+    - Understanding the cascade effects of fixing the problem.
+
+      [[./images/IRipple.jpg]]
+
+    If you guessed "understanding the cascade effects" you guessed right, but that is slowly changing with the advent of tools for automated testing and development practices such as /Test Driven Development (TDD)/, but also by modern behaviour-driven test frameworks such as [[https://cucumber.io/][Cucumber]]. The common denominator for these frameworks is that you write your tests early, and in executable format so that you can quickly re-run them. TDD takes it one step further with its very fast red-green-refactor cycle (basically write /one/ line of tests that fails, then write the (small) code to pass, and then shape it up and put it in the right place etc.). Connect this back to Prof. van Vleet's question: You no longer need to understand the cascade effects because you have tests in place that will start failing.
+
+*** Tools for Automated Testing
+    Which tool to use for your automated testing is of course highly dependent on your choice of development platform, and you also need to work on different levels, as illustrated in Figure [[fig:TestingLevels]]. In this figure, the left-hand-side is what you would normally encounter during a build cycle, and this is also the parts where you can hope to automate. In fact, the only difference between testing "Inside the IDE" down to "Nightly Builds" is that you will run more test-cases during your nightlies than in the IDE, where you may focus only on the tests that are relevant for what you are doing right now. You will use the same testing tools.
+
+#+BEGIN_SRC ditaa :file ./images/FTestingLevels.png
+  +------------------------------+  +-------------------------------+
+  | Inside the IDE               |  | Usability Testing             |
+  |               c7CC           |  | Acceptance Testing            |
+  +------------------------------+  |                               |
+  | As part of Compile-cycle     |  |                               |
+  |                         cBLU |  |                        cGRE   |
+  +------------------------------+  +-------------------------------+
+
+  +------------------------------+  +-------------------------------+
+  | Regression Tests             |  | "Release Hardening"           |
+  | During Commit           cBLU |  |                               |
+  +------------------------------+  |                               |
+  | Nightly Builds               |  |                               |
+  |                         cBLU |  |                        cGRE   |
+  +------------------------------+  +-------------------------------+
+#+END_SRC
+
+#+NAME: fig:TestingLevels
+#+CAPTION: Testing on different Levels
+#+RESULTS:
+[[file:./images/FTestingLevels.png]]
+
+What /will/ differ, however, is the framework within which your tests are running. Obviously, if your tests are run on-the-fly in your IDE, this needs to be supported. Testing as part of the compilation cycle rarely requires much in terms of extra frameworks. For example [[https://www.gnu.org/software/make/][make]], [[https://cmake.org/][cmake]], [[http://ant.apache.org/][Ant]], and [[https://maven.apache.org/][Maven]] are all capable of running your test suites according to your wishes, on your machine.
+
+... But what if your machine environment is not the environment in which your system is intended to run? Well, then you need to set up a virtual machine (or a collection of machines if your deployment environment is more complex) to run the tests on. [[https://www.virtualbox.org/][VirtualBox]] together with [[https://www.vagrantup.com/][Vagrant]] have helped me on more than one occasion with this.
+
+Further down the stack, you want tools that can set up these virtual machines, download your code, build it, and run tests all in one go, e.g. when you do a commit. [[https://jenkins.io/][Jenkins]] is a popular choice for this, if you have access to your own servers. For open source projects, [[https://travis-ci.org/getting_started][Travis CI]] is an ok choice. I think they have some limit to 100 builds or so before you have to start paying, though. Jenkins and Travis work on a slightly different philosophy. In Jenkins you set up the project and the build steps through an admin interface on the Jenkins server. In Travis you create a build script as part of your repository. For raisins, I am partial to the latter, and have recently been exploring [[https://drone.io/][Drone.io]] as a means to set up my own build server that works like Travis with a repository-based build script.
+
+But I digress.
+
+Backing up to the original topic, you will need to find an automated testing tool suitable for your programming language and your development environment. I list some tools below just to get you started.
+
+- Java: [[http://junit.org/][JUnit]]
+- Node.js (JavaScript): [[https://mochajs.org/][Mocha]] or [[http://jasmine.github.io/][Jasmine]]
+- JavaScript/JQuery (client side): [[https://qunitjs.com/][QUnit]]
+- C++, See e.g. the article [[http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle][Exploring the C++ Unit Testing Framework Jungle]] for a good discussion of some test frameworks, and what you should require from them
+- Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/ert.html][ERT]]
+- Or you can go to [[https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks][Wikipedia and see even more choices]]
+** Learning Material
+*** Book Chapters
+    - {{{larman}}}, Chapters:
+        21. [@21] Test-Driven Development and Refactoring	    
+*** TODO Screencasts						   :noexport:
+*** TODO Lectures						   :noexport:
+*** Further Reading
+    - [[http://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html][The Cycles of TDD, by R.C. Martin]]
+    - [[http://www.jamesshore.com/Blog/Microsoft-Gets-TDD-Completely-Wrong.html][Microsoft Gets TDD Completely Wrong, by James Shore]] (Note: This article is not Microsoft bashing\trade -- they are only one among many to get it wrong)
+    - [[https://groups.yahoo.com/neo/groups/extremeprogramming/conversations/topics/111829][Guidelines for Unit Tests, by Michael Feathers]]
+    - [[http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle][Exploring the C++ Unit Testing Framework Jungle, by Noel Llopis]]
+** Experiential Learning
+*** Sprint Test Plan
+    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+    Revisit and update your risks and contingencies section.
+
+    Add and/or revise the following items to your glossary:
+    - Unit Testing
+    - Exploratory Testing
+    - Automated Testing
+    - Regression Testing
+    - Test Driven Development (TDD)
+    - Automated Test Frameworks
+    - Continuous Integration
+
+    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+*** Assignment Submission: Create Test Suite
+      Create a regression test suite. You will continue to use and extend this test suite later in the course. At this stage, you are focussing on adding test cases for your API endpoints. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework. 
 
       *Tasks:*
       1. List all the system events from all the system sequence diagrams.
       2. For each system event, identify preconditions (e.g. if the system event depends on that another event is triggered first).
       3. For each system event, identify what inputs are allowed.
       4. For each system event, identify what outputs are expected.
-      5. Express what you have identified as a test in your test framework.
+      5. For each system event, Write one or several test in your test framework that tests for the allowed inputs and the expected outputs.
+	 
+      {{{commit}}}
 
-  {{{commit}}}
-* Sprint: State Diagram 					   :noexport:
-* Sprint: Classes						   :noexport:
-** notes							   :noexport:
-   - Class Diagram
-   - Packages
-   - Architectures (Layered, MVC)
-   - GRASP?
-* Sprint: Interaction						   :noexport:
+#+BEGIN_tip
+*Conditions of Satisfaction:*
+
+When marking this part of the assignment we are looking for the following:
+
+1. size of assignment: Are there test cases for all system events from all the system sequence diagrams?
+2. For each test case: Does it test normal input as well as explore boundary values?
+3. For each test case: Does the test case evaluate a meaningful behaviour?
+#+END_tip    
+*** Update Course Backlog
+    How do can you come to an understanding of what the system needs to to as a response to a system event? What will change in the system, and how?
+    Are there meaningful tests you can do for your UML documentation? How would you automate this?
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   - You bave created an automated test suite for your API endpoints
+   - You have committed/pushed this suite to your project repository
+
+   You may also have
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog
+   - Set up a continuous integration solution to run your tests on commit   
+* Sprint: State Diagram						   :noexport:
+** About This Sprint
+   In this sprint we study a design tool to help you understand stateful behaviour in your applications.
+** User Stories covered in this Sprint
+   - As a software designer I want to document the states the application can be in so that I can better design them and get an overview of permissible transitions.
+** Introduction
+   For some applications, or for certain parts of some applications, it is meaningful to study the /states/ your application can be in. Usually, your application may be in one state and have specific rules for when you can transition to another state.
+
+   For example, if you come here by train, you probably have a several different states:
+   - /Walking/ to the train station
+   - /Waiting/ for the train
+   - /Walking in the Train/ to find a seat
+   - /Sitting/ in the train
+   - /Walking/ from your seat, out of the train, and up the hill to the Uni.
+
+   It was tempting to also add "Entering the train", and "Exiting the train", but this would not be a good idea since these are more akin to /Events/ than /States/. Incidentally, this is what most students get wrong in a state chart -- they mix up what is a state and what is an event.
+
+   When you are walking to the train station, what may change your state to something else? If you see the train coming (this is an event), you may need to switch to the state
+
+   - /Running/ to the train station
+
+   When you are waiting for the train, you can obviously not enter the train and start looking for a seat unless the train arrives (this is also an event).
+
+   When you are sitting on the train, /arriving at a station/ is an event that /could/ trigger a transition to the "walking from your seat and to the uni" state, but only if you have arrived at the right station. This is a /condition/ for the arrive at station event.
+
+   Enough dry talk. Let's put this into a UML State Diagram:
+
+#+BEGIN_SRC plantuml :file ./images/FStateTrain.png
+state "Walking to Train" as wtt
+state "Running to Train" as rtt
+state "Waiting for Train" as wft
+state "Looking for Seat" as lfs
+state "Sitting in Train" as sit
+state "Walking to Uni" as wtu
+
+[*]-> wtt
+wtt-->rtt : Sees Train
+wtt-->wft : Arrives at Station
+wft-->lfs : Train Arrives [train==right train]
+rtt-->lfs : [train==right train]
+lfs-->sit : Seat Found
+sit-->wtu : Train Arrives at Station [station==right station]
+wtu->[*]
+#+END_SRC
+
+#+NAME: fig:StateTrain
+#+CAPTION: A UML State Diagram for Catching a Train
+#+RESULTS:
+[[file:./images/FStateTrain.png]]
+
+You may not model your entire application as a state chart. In fact, you may not need to model it at all. Also, you may have several state charts that are not connected to each other (other than that they logically must be solvable in the same system).
+
+State charts are tricky. On one hand, they are a useful tool to visualise dynamic behaviour and to think about your system in terms of states and events. On the other hand, they don't really fit in with the other UML diagrams. Here's a list of questions I would like you to think about for a while. We may come back to these questions during a lecture, sinnce in order to understand the answers you also need to understand a lot more about software design:
+
+- Are state diagrams an analysis tool, or are they a design tool?
+- Can you get the states from a UML use case?
+- Can you express the same in a state diagram as in a (system) sequence diagram? If so, what is the added value?
+- Do you learn anything about what classes or what interactions between classes you need in your system from a state diagram?
+
+This sprint is smaller than many of the others because -- as you notice -- state diagrams are difficult to pin down. Rather than bundling State Diagrams with something else it makes more sense to keep them separate so that I may include the sprint in different parts of the course flow. Having said this, state charts are probably one of the older modelling techniques, and there is actually quite a lot written about different types of state charts and their cousin [[http://www.scholarpedia.org/article/Petri_net][Petri Nets]].
+** Learning Material
+*** Book Chapters
+    - {{{larman}}}, Chapters:
+      29. [@29] UML State Machine Diagrams
+*** Screencasts
+   - [[https://play.bth.se/media/StateDiagrams.mp4/1_ruht53d3][State Diagrams]]
+*** TODO Lectures						   :noexport:
+*** Further Reading						   :noexport:
+** Experiential Learning
+*** Sprint Test Plan
+    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+    Revisit and update your risks and contingencies section.
+
+    Add and/or revise the following items to your glossary:
+    - State Diagram (also: State Chart)
+
+    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+*** Self-Study: Stateful Application
+    Find a software application or a software game where you can easily identify different states. Try to model this in a state diagram.
+*** Assignment Submission: Stateful Behaviour
+    Is there any behaviour in your assignment system that exhibits a meaningful stateful behaviour? If so, model it in one or more UML State Diagrams.
+*** Update Course Backlog
+    How can you design your software such that the /states/ are the central entity as opposed to the /concepts/?
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   - You have reviewed your application for stateful behaviour
+   - You have optionally created UML State Diagrams for this behaviour.
+   
+   You may also have
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog
+   - Created one or more State Diagrams for different software applications.
+* Sprint: Interactions and Structure
 ** notes							   :noexport:
    - Objects
    - Sequence Diagrams
@@ -1520,6 +1801,12 @@ When marking this part of the assignment we are looking for the following:
    - How many
    - Flow
    - Topic
+** TODO Fix Links in Test Sprint
+   - Emil - link to his work
+   - JUnit
+   - Testing Tools
+     - unit testing (Grunt, Junit, CPPTest, etc.)
+     - Continuous Integration Tools (Jenkins, Drone.io, Travis.io, ...)
 ** TODO System Descriptions for Assignments
 ** TODO Add "Select System for Assignments" in Sprint 0
 ** TODO Tie in Lectures into Sprints, with preparations I want them to do first
@@ -1550,7 +1837,7 @@ When marking this part of the assignment we are looking for the following:
    |      18 |        |
    |      19 |        |
    |      20 |        |
-   |      21 | 1,3    |
+   |      21 | 1,3,5  |
    |      22 |        |
    |      23 |        |
    |      24 |        |
