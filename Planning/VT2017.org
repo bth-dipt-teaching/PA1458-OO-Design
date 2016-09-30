@@ -15,7 +15,7 @@
 
 #+MACRO: pa1415 PA1415 Software Design
 #+MACRO: pa1435 PA1435 Object Oriented Design
-#+MACRO: larman C. Larman, "Applying UML and Patterns", 3rd Edition
+#+MACRO: larman C. Larman, /Applying UML and Patterns/, 3rd Edition
 #+MACRO: commit Commit and push this document to your project repository.
 #+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
 #+MACRO: tasks *Tasks:*
@@ -707,7 +707,7 @@ When marking this part of the assignment we are looking for the following:
    - Updated your Course Backlog
    - Performed self-study requirements interviews
    - Documented the results from the self-study interviews in different formats.
-* Sprint: Use Cases and Use Case Diagrams			   :noexport:
+* Sprint: Use Cases and Use Case Diagrams		:noexport:submission:
 ** About This Sprint
    This sprint introduces UML use cases and UML use case diagrams as a means of putting requirements into a context and understanding the interactions between users and the system.
 ** User Stories covered in this Sprint
@@ -1703,7 +1703,127 @@ This sprint is smaller than many of the others because -- as you notice -- state
    - Updated your Sprint Test Plan
    - Updated your Course Backlog
    - Created one or more State Diagrams for different software applications.
-* Sprint: Interactions and Structure
+* Sprint: Good Interactions
+** About This Sprint
+   This sprint focus on how to identify what is a /good/ design through the use of basic object oriented principles.
+** User Stories covered in this Sprint
+   - As a software designer I want to create a design that adheres to basic design principles so that I am sure that it will "hold" when I add more functionality and start maintaining the system.
+   - As a software designer I want to understand how to best design the interaction between objects so that I can create a robust and maintainable system.
+** Introduction
+   The ordering between this sprint and the next is a bit off. In the screencast for this sprint I am discussing the dynamic behaviour in terms of UML Interaction Diagrams and the static structure in terms of UML Class Diagrams even though these aren't introduced until the next sprint. I do this because I want to save you some work, and because I think you will be able to grok this sprint anyway. The alternative would be for you to first create early versions of all your interaction diagrams and class diagrams, then learn more about design principles to make them good, and then go back and revise them. That's not how you are supposed to work with these design principles. Object Oriented design principles are so deeply ingrained in how we do OO design that we rarely even think about them once we know them -- we just do. You will not list that "you have created class X according to design principle Y" anywhere, since it is expected that you have used all principles all the time (or have had a very good reason not to use them). Therefore, let's briefly discuss them first.
+
+*** Fundamental Design Principles
+   Some design principles have fancy names (you'll find them under Further Reading (Section [[GIFurtherReading]]), and they are often described one by one as if you can first apply one, then the next, and so on. In reality you work with all of them at once, and they are essentially different aspects of a few fundamental principles:
+
+#+NAME: tab:FundamentalDesignPrinciples
+#+CAPTION: Fundamental Design Principles
+   | Principle                                     | Description                                                                                                                                    |
+   |-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------|
+   | Abstraction                                   | Focus on relevant properties                                                                                                                   |
+   | Coupling and Cohesion                         | Independent entities, but where the internals are strongly related                                                                             |
+   | Decomposition and Modularisation              | Small entities with well defined and non-overlapping functionalities or responsibilities                                                       |
+   | Encapsulation                                 | Hide the internals so they are inaccessible from outside the entity                                                                            |
+   | Separation of Interface and Implementation    | Separate the public interface from implementation details                                                                                      |
+   | Sufficiently, Completeness, and Primitiveness | Keep entities as small as possible, but not smaller. Entities should capture all important characteristica of an abstraction but nothing more. |
+   |-----------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------|
+
+
+   To put this into the context of a single class, this means that a good class has:
+   - A single, well-defined abstraction and well-defined responsibilities
+     - Tip: Let classes distribute work to other classes
+     - Tip: avoid "God Classes" that tries to do everything
+   - Has low coupling to other classes
+     - Tip: Minimise fan-out in a class
+   - Has a sufficient and complete public interface to be able to access the behaviour and state relevant for the abstraction that the class models
+   - Has a primitive public interface that does not expose anything more than necessary to the outside.
+     - Tip: All data should be hidden within the class.
+     - Tip: Do not clutter the public interface with items that users of that class are not interested in or able to use.
+   - Has high cohesion (the methods and attributes belong strongly together)
+     - Tip: Most of the methods defined on a class should be using most of the data in the class most of the time.
+   
+*** Responsibility Driven Design   
+    These are just some of the principles for how to define classes. Under Further Reading (Section [[GIFurtherReading]]) I have listed some more. Luckily, many of these have also been expressed in a slightly more accessible way in the course book. Larman calls them GRASP patterns, and the idea is that when you are doing your design you always try to define the responsibilities of the involved objects and classes according to these GRASP patterns. This is why he also refers to them as /Responsibility Driven Design/. The patterns are listed on the inside of the book cover:
+
+   - Information Expert
+   - Creator
+   - Controller
+   - Low Coupling
+   - High Cohesion
+   - Polymorphism
+   - Pure Fabrication
+   - Indirection
+   - Protected Variations
+
+Make sure you understand the principles of each one of these. Think about how you may apply them in different settings. Discuss them with your classmates, and use the course discussion forum. How might they impact your design?   
+** Learning Material
+*** Book Chapters
+    {{{larman}}}, Chapters:
+    17. [@17] GRASP: Designing Objects with Responsibilities
+    18. Object Design Examples with GRASP
+    25. [@25] GRASP More Objects with Responsibilities
+*** Screencasts
+  - [[https://play.bth.se/media/DesignPatterns_GRASP/1_e4z8gitx][GRASP Patterns]]
+*** TODO Lectures						   :noexport:
+*** Further Reading <<GIFurtherReading>>
+    - [[https://en.wikipedia.org/wiki/Law_of_Demeter][Law of Demeter]]: Keep entities as ignorant as possible of other entities, don't let them talk to strangers.
+    - [[https://en.wikipedia.org/wiki/Liskov_substitution_principle][Liskow Substitution Principle]]: Defines how sub- and supertypes can be used in each others place.
+    - [[https://en.wikipedia.org/wiki/Open/closed_principle][Open/Closed Principle]]: Software Entities should be open for extensions but closed for modifications.
+    - [[https://en.wikipedia.org/wiki/Dependency_inversion_principle][Dependency Inversion Principle]]: high-level (abstract) entities should not depend on more low-level (detailed) entities. Instead, the low-level entities should depend on the abstractions.
+    - [[https://en.wikipedia.org/wiki/Interface_segregation_principle][Interface Segregation Principle]]: Prefer many smaller interfaces with well-defined roles instead of one big interface.
+    - [[http://www.oodesign.com/single-responsibility-principle.html][Single Responsibility Principle]]: Let each class take care of one single responsibility. Split classes that do more than one thing.
+    - [[https://en.wikipedia.org/wiki/Package_principles][Common Closure Principle]]: Coupling and cohesion for packages (as opposed to individual classes)
+    - [[http://stackoverflow.com/questions/383947/what-does-it-mean-to-program-to-an-interface][Program to an Interface, not an Implementation]]: Define role-based interfaces and use these instead of "direct links" to the instantiated class. NOTE: Also read the "Wizards and Warriors" rant for a counter-argument.
+    - [[https://ericlippert.com/2015/04/27/wizards-and-warriors-part-one/][Wizards and Warriors Part I]] [[https://ericlippert.com/2015/04/30/wizards-and-warriors-part-two/][Part II]] [[https://ericlippert.com/2015/05/04/wizards-and-warriors-part-three/][Part III]] [[https://ericlippert.com/2015/05/07/wizards-and-warriors-part-four/][Part IV]] [[https://ericlippert.com/2015/05/11/wizards-and-warriors-part-five/][Part V]]: Introduces the need for an [[https://en.wikipedia.org/wiki/Entity_component_system][Entity Component System (ECS)]], which is a common game design pattern since the normal inheritance practices break down.
+    - [[https://en.wikipedia.org/wiki/Composition_over_inheritance][Favour Object Composition over Class Inheritance]]: The same pattern, with a different name.
+** Experiential Learning
+*** Sprint Test Plan
+    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+    Revisit and update your risks and contingencies section.
+
+    Add and/or revise the following items to your glossary:
+    - Abstraction
+    - Coupling and Cohesion
+    - Encapsulation
+    - Code Refactoring
+    - Design Principles
+    - Design Patterns
+    - Responsibility Driven Design
+    - GRASP Patterns
+      - Information Expert
+      - Creator
+      - Controller
+      - Low Coupling
+      - High Cohesion
+      - Polymorphism
+      - Pure Fabrication
+      - Indirection
+      - Protected Variations
+
+    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+*** Self-Study: GRASP Patterns
+    Use a small system that you know well, for exampe a Pacman game. Think about the GRASP patterns in the context of this game. For example:
+    - Who is the /information expert/ on knowing the location of pacman on the game board?
+    - Who /creates/ the ghosts?
+    - Who takes care of input and orchestrates navigation in the main menu (controller)?
+    - How should the ghosts be made aware of pacman's position so that you maintain low coupling and information expert?
+    - How do you design the game board so that it still has high cohesion?
+    - How does polymorphism work with the different ghosts?
+    - etc.
+*** Update Course Backlog
+    Are there similar principles that can help you decide how a larger collection of classes can interact? How do you find the classes in the first place? How do you explore the interactions between objects?
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   - You have studied the Fundamental Design Principles and understood them
+   - You have studied the GRASP patterns and understood them
+
+   You may also have
+   - Reflected upon the GRASP patterns in the context of a small, well-known system.
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog   
+* Sprint: Interactions and Structure			:noexport:submission:
 ** About This Sprint
    This sprint discusses how to identify and model interactions between entities in UML interaction diagrams. The sprint also covers how the interaction diagrams produce material that is used to create UML Class Diagrams.
 ** User Stories covered in this Sprint
@@ -2114,10 +2234,6 @@ When marking this part of the assignment we are looking for the following:
    You may also have
    - Updated your Sprint Test Plan
    - Updated your Course Backlog   
-* Sprint: Good Interactions					   :noexport:
-** notes							   :noexport:
-   - GRASP
-   - Demeter, DRY?, etc.
 * Sprint: Design Patterns					   :noexport:
 ** notes							   :noexport:
 * Sprint: Design the User Interface				   :noexport:
@@ -2144,21 +2260,29 @@ When marking this part of the assignment we are looking for the following:
    - [X] Requirements Engineering: Three parallel and different ways of writing requirments: Old (Reqs), Agile (User stories), UML (Use Cases): Add a picture of this...
    - [ ] GRASP: Responsibility-driven design
 
-   | PA1415            | PA1435              |
-   |-------------------+---------------------|
-   | Exam, 3hp         | Exam, 2hp           |
-   | Assignment, 4.5hp |                     |
-   |                   | Assignment 1, 1.5hp |
-   |                   | Assignment 2, 0.5hp |
-   |                   | Assignment 3, 2hp   |
-   |                   |                     |
-   | SUM: 7.5hp        | SUM: 6hp            |
-   |-------------------+---------------------|
+   | PA1415            | PA1435              | PA1443          | PAxxxx          |
+   |-------------------+---------------------+-----------------+-----------------|
+   | Exam, 3hp         | Exam, 2hp           | Exam 1hp        | Exam 1hp        |
+   | Assignment, 4.5hp |                     | Assignments 4hp | Assignments 3hp |
+   |                   | Assignment 1, 1.5hp |                 |                 |
+   |                   | Assignment 2, 0.5hp |                 |                 |
+   |                   | Assignment 3, 2hp   |                 |                 |
+   |                   |                     |                 |                 |
+   | SUM: 7.5hp        | SUM: 6hp            | SUM: 5hp        | SUM: 4hp        |
+   |-------------------+---------------------+-----------------+-----------------|
+
+   Assignment Submissions:
+   - Use Cases and Use Case Diagrams
+   - Interaction Diagrams and Classes ??
+   - Improved Classes and Interactions
+   - Design Patterns
+   - Implementation/Testing
 
    Assignments!
    - How many
    - Flow
    - Topic
+** TODO Move Submissions from Interactions and Structure into Good Interactions ?? 
 ** DONE Find a cleaner way to include Title Page and System Description in assignments.
    CLOSED: [2016-09-30 Fri 09:03]
    The MACRO for assignment title DO NOT WORK; on export it only has the latest set value, which does not work if you have more than one assignment in an export unit (a sprint.)
@@ -2169,6 +2293,7 @@ When marking this part of the assignment we are looking for the following:
    - Testing Tools
      - unit testing (Grunt, Junit, CPPTest, etc.)
      - Continuous Integration Tools (Jenkins, Drone.io, Travis.io, ...)
+** TODO Map for different Courses
 ** TODO System Descriptions for Assignments
 ** TODO Add "Select System for Assignments" in Sprint 0
 ** TODO Tie in Lectures into Sprints, with preparations I want them to do first
