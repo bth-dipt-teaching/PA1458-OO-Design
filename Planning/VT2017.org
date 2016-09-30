@@ -18,6 +18,12 @@
 #+MACRO: larman C. Larman, "Applying UML and Patterns", 3rd Edition
 #+MACRO: commit Commit and push this document to your project repository.
 #+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
+#+MACRO: tasks *Tasks:*
+#+MACRO: docStructure *Document Structure:*
+#+MACRO: condSat *Conditions of Satisfaction:*
+#+MACRO: assignment The title for this Assignment Document is: /$1 for System <system name>/
+
+
 
 * Sprint Structure						   :noexport:
 ** About This Sprint
@@ -75,6 +81,8 @@ Experiential Learning are things you are supposed to /do/, and includes:
  - Things you do to organise the material
  - Things you submit as assignments to the teachers for marking
 #+END_note
+
+   You will note that in some sprints you are expected to produce an assignment document and commit/push it to your project repository without actually submitting it for marking. These documents are intermediate steps, and you will be using the knowledge gained from them when creating the documents that /will/ be marked. In some cases, we will go back to them when marking a subsequent assignment to see that you have not missed anything. In other cases, we will go back to them to be able to follow your reasoning in your submission. I try to ensure that the overhead of creating these documents (as opposed to just doing the analysis/design work) is minimal. *Please* do not skip these documents just because they are not submitted; they are a helpful and sometimes necessary tool to be able to continue.
 
    Some activities are started during this sprint, and then I ask you to revisit them during every subsequent sprint. The idea with these activities are to help you structure your learning, and give you a means to follow your own progress.
 
@@ -227,7 +235,6 @@ Also Available at: http://gameprogrammingpatterns.com/contents.html
     4. Course Teacher
 
     Decide in your group how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
-*** Assignment Submission					   :noexport:
 *** Update Course Backlog
     Where do you go from here? Are there any questions already now that you want answered? Add them, along with a brief strategy for how to find an answer.
 ** Sprint Acceptance Tests
@@ -434,7 +441,7 @@ So, with those heartwarming words, let's delve into /not/ UML, but development p
     - Unified Processs (Also: Rational Unified Process RUP)
 
     Make sure that you understand what each item is, but also what the differences between them are (where applicable).
-*** Assignment Submission: Assignment Plan
+*** Assignment: Assignment Plan
     Create a Assignment Plan document (e.g., as a GANTT spreadsheet). Add the assignments that you will need to submit in this course, and do a brief breakdown of them into their most obvious tasks. Add early time estimates for these tasks.
 
     There is no formal submission in this sprint, but make sure that the plan is committed and pushed to your project repository.
@@ -637,7 +644,7 @@ A note also about elicitation techniques: I say earlier that you are most likely
     - regular requirements (consider their apartment, their mother, the bus, etc. as part of "the system")
     - user stories (think about the role they have for each part, and the motivation for why they want something done)
     - use cases  (consider their apartment, their mother, the bus, etc. as part of "the system")
-*** Assignment Submission: Requirements Document
+*** Assignment: Requirements Document
     Your main task is to write user stories based on the system description for the assignments.
 
     *Tasks*
@@ -646,23 +653,12 @@ A note also about elicitation techniques: I say earlier that you are most likely
     3. Take the three most important epics, and break them down to more manageable user stories. Add conditions of satisfaction to the user stories. Order them according to priority, and add a brief motivation.
 
 #+BEGIN_info
-    *Document Structure:*
+{{{DocStructure}}}
 
-1. Title Page
-   1. Title: "User Stories for System: <system name>"
-   2. Sub-title: "Assignment in the course {{{pa1415}}}"
-   3. Date
-   4. Authors and Author Contribution
+{{{assignment(User Stories)}}}
+#+INCLUDE: "./DocStruct.org" org
 
-      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-
-      | Author Name | Social Security Number | Thinking | Writing |
-      |-------------+------------------------+----------+---------|
-      |             |                        |          |         |
-2. System Description
-
-   A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-3. High-level Epics
+3. [@3] High-level Epics
    1. Motivation for Priority
    2. Epics (ordered most important first)
 4. User Stories
@@ -682,7 +678,7 @@ A note also about elicitation techniques: I say earlier that you are most likely
 {{{commit}}}
 
 #+BEGIN_tip
-*Conditions of Satisfaction*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -898,12 +894,12 @@ CAS -> (CreditPayment)
     Gather your team. Decide on a system that you want to plan (for example, the system that you just listed the use cases for), and engage in a game of [[https://www.crisp.se/bocker-och-produkter/planning-poker][Planning Poker]] to estimate the sizes of all the use cases.
 
     Give your use cases a rough priority, e.g. using the [[https://en.wikipedia.org/wiki/MoSCoW_method][MOSCoW method]], and see if you can divide your thusly created backlog into reasonably sized sprints.
-*** Assignment Submission: Use Case Overview
+*** Assignment: Use Case Overview
     *{{{pa1415}}}*: In this part of the assignment you will continue with the requirements document that you have already created and transform your user stories into UML use cases.
 
     *{{{pa1435}}}*: In this part of the assignment you will write UML use cases based on the system description for the assignments.
 
-    *Tasks:*
+    {{{tasks}}}
     1. Create a /Use Case Diagram/
        - Identify all /actors/ that are interacting with the system.
        - Identify all /use cases/ of the system (features).
@@ -918,24 +914,12 @@ CAS -> (CreditPayment)
        - Concerned User Stories
 	 
 #+BEGIN_info
-*Document Structure:*
+{{{DocStructure}}}
 
-1. Title Page
-   1. Title: "Overview of Use Cases for System: <system name>"
-   2. Sub-title: "Assignment in the course <course code><course name>"
-   3. Date
-   4. Authors and Author Contribution
+{{{assignment(Use Case Overview)}}}
+#+INCLUDE: "./DocStruct.org" org
 
-      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-
-      | Author Name | Social Security Number | Thinking | Writing |
-      |-------------+------------------------+----------+---------|
-      |             |                        |          |         |
-2. System Description
-
-   A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-
-3. Use Case Diagram
+3. [@3] Use Case Diagram
 4. Description of Actors
 5. High-Level Use Cases
 6. References
@@ -944,7 +928,7 @@ CAS -> (CreditPayment)
 {{{commit}}}
 
 #+BEGIN_tip
-*Conditions of Satisfaction*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -960,10 +944,10 @@ When marking this part of the assignment we are looking for the following:
 9. (*PA1415*) Are the use cases linked to the relevant user stories?
 10. (*PA1415*) Are all user stories linked in at least one use case?
 #+END_tip
-*** Assignment Submission: Implementation Plan
+*** Assignment: Implementation Plan
     In this part of the assignment you will prioritise your use cases and plan your first sprints.
 
-    *Tasks:*
+    {{{tasks}}}
     1. Order your UML use cases (created above) according to their importance.
 
        *{{{pa1415}}}* Make sure this order corresponds to the prioritised list of user stories that you have created earlier. You do not have to strictly adhere to the priorities of the user stories, but you need to document and motivate any major deviations that you do.
@@ -976,24 +960,12 @@ When marking this part of the assignment we are looking for the following:
        2. Have a reasonable amount of story points allocated per iteration, in relation to the MAX, MIN, and AVERAGE values defined.
 
 #+BEGIN_info
-    *Document Structure:*
+{{{DocStructure}}}
 
-1. Title Page
-   1. Title: "Implementation Plan for System: <system name>"
-   2. Sub-title: "Assignment in the course <course code><course name>"
-   3. Date
-   4. Authors and Author Contribution
+{{{assignment(Implementation Plan)}}}
+#+INCLUDE: "./DocStruct.org" org
 
-      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-
-      | Author Name | Social Security Number | Thinking | Writing |
-      |-------------+------------------------+----------+---------|
-      |             |                        |          |         |
-2. System Description
-
-   A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-
-3. Prioritised List of Use Cases
+3. [@3] Prioritised List of Use Cases
    1. Motivation for Priorities
    2. Use Cases
       
@@ -1010,7 +982,7 @@ When marking this part of the assignment we are looking for the following:
 {{{commit}}}
 
 #+BEGIN_tip
-*Conditions of Satisfaction*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -1023,10 +995,10 @@ When marking this part of the assignment we are looking for the following:
 6. (*PA1415*) Does the order of implementation of the use cases correspond to the priorities of the involved user stories?
 #+END_tip
 
-*** Assignment Submission: Detailed Use Cases for First Iteration
-And, finally, you detail the use cases that you are focusing on in the first iteration.
+*** Assignment: Detailed Use Cases for First Iteration
+    Describe in detail the use cases that you are focusing on in the first iteration.
 
-*Tasks:*
+{{{tasks}}}
 1. Extend the use case descriptions for the use cases in your first iteration in your Implementation Plan so that they also contain the following attributes:
    - Preconditions
    - Main Course of Events (or Main Success Scenario)
@@ -1034,24 +1006,12 @@ And, finally, you detail the use cases that you are focusing on in the first ite
    - Special Requirements
 
 #+BEGIN_info
-    *Document Structure:*
+{{{DocStructure}}}
 
-1. Title Page
-   1. Title: "Detailed Use Cases for Iteration 1 of System: <system name>"
-   2. Sub-title: "Assignment in the course <course code><course name>"
-   3. Date
-   4. Authors and Author Contribution
+{{{assignment(Detailed Use Cases (Iteration 1))}}}
+#+INCLUDE: "./DocStruct.org" org
 
-      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-
-      | Author Name | Social Security Number | Thinking | Writing |
-      |-------------+------------------------+----------+---------|
-      |             |                        |          |         |
-2. System Description
-
-   A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-
-3. Detailed Use Cases
+3. [@3] Detailed Use Cases
    
    List your detailed use cases here.
 #+END_info
@@ -1060,7 +1020,7 @@ And, finally, you detail the use cases that you are focusing on in the first ite
 
 
 #+BEGIN_tip
-*Conditions of Satisfaction*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -1340,37 +1300,25 @@ digraph {
     - Integration Testing
 
     Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
-*** Assignment Submission: Domain Model
+*** Assignment: Domain Model
     Create a UML Domain Model from the UML Use Cases you have selected for your first iteration. Remember that those should represent a minimum viable product and so you ought to exercise the most important concepts based on these use cases.
 
 
-    *Tasks:*
+    {{{tasks}}}
     1. Start with a domain model based on your understanding of the involved use cases.
     2. Chapters 9.5 to 9.13 in {{{larman}}} provides guidelines for how to find domain concepts. Apply each of these guidelines in turn, and /document/ what you find through each guideline.
     3. Add associations between your concepts (use the guidelines in chapters 9.14 in {{{larman}}}) with names and (where applicable) roles. Add multiplicity indicators where they are obvious, but do not go overboard with this.
 
 
 #+BEGIN_info
-    *Document Structure:*
+{{{DocStructure}}}
 
-1. Title Page
-   1. Title: "Domain Model for System: <system name>"
-   2. Sub-title: "Assignment in the course <course code><course name>"
-   3. Date
-   4. Authors and Author Contribution
+{{{assignment(Domain Model)}}}
+#+INCLUDE: "./DocStruct.org" org
 
-      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+3. [@3] Initial Domain Model
 
-      | Author Name | Social Security Number | Thinking | Writing |
-      |-------------+------------------------+----------+---------|
-      |             |                        |          |         |
-2. System Description
-
-   A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-
-3. Initial Domain Model
-
-   Your initial model before you apply the guidelines from {{{larman}}}.
+   Your initial model before you apply the guidelines from {{{larman}}}. Use the UML Class Diagram notation for your Domain Model.
 
 4. Guidelines Applied
 
@@ -1381,16 +1329,19 @@ digraph {
    |-----------------------+---------------------|
    | Business Transactions | VogonPoetry         |
    | Product or Service    | Tea, Doughnut Hole  |
+   |-----------------------+---------------------|
 
 5. Completed Domain Model
 
    Add the concepts identified through the guidelines to your initial domain model and present it here. Add associations, association names, association roles, and multiplicity. *Note* that you may also have attributes in your concepts.
+
+   Use the UML Class Diagram notation for your Domain Model.
 #+END_info
 
 {{{commit}}}
 
 #+BEGIN_tip
-*Conditions of Satisfaction*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -1401,10 +1352,10 @@ When marking this part of the assignment we are looking for the following:
 4. Where applicable: Are the roles involved in associations specified and corect
 5. Where applicable: Are multiplicity indicators used correctly
 #+END_tip
-*** Assignment Submission: System Sequence Diagrams
+*** Assignment: System Sequence Diagrams
     Create UML System Sequence Diagrams from your UML Use Cases in your first iteration. Create one System Sequence Diagram for each Use Case.
 
-    *Tasks:*
+    {{{tasks}}}
     1. For each Use Case, create one System Sequence Diagram.
     2. Add the ~:System~, and all involved Actors.
     3. Identify the system events from the use case, name the corresponding method call, and add it to your system sequence diagram from the right actor to the ~:System~
@@ -1412,24 +1363,12 @@ When marking this part of the assignment we are looking for the following:
     5. Add loops if applicable.
 
 #+BEGIN_info
-    *Document Structure:*
+{{{DocStructure}}}
 
-1. Title Page
-   1. Title: "System Sequence Diagrams for System: <system name>"
-   2. Sub-title: "Assignment in the course <course code><course name>"
-   3. Date
-   4. Authors and Author Contribution
+{{{assignment(System Sequence Diagrams)}}}
+#+INCLUDE: "./DocStruct.org" org
 
-      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-
-      | Author Name | Social Security Number | Thinking | Writing |
-      |-------------+------------------------+----------+---------|
-      |             |                        |          |         |
-2. System Description
-
-   A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-
-3. System Sequence Diagrams
+3. [@3] System Sequence Diagrams
    - System Sequence Diagram for Use Case <name 1>
    - System Sequence Diagram for Use Case <name 2>
    - System Sequence Diagram for Use Case <name ... >
@@ -1439,7 +1378,7 @@ When marking this part of the assignment we are looking for the following:
 {{{commit}}}
 
 #+BEGIN_tip
-*Conditions of Satisfaction*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -1548,6 +1487,8 @@ interoperability etc.
 
 We are not going to go through all of these types of testing strategies in this course, but it gives you a map to understand how your selected test strategies fit together and what you ought to do to produce a sufficient test strategy for your project.
 
+[[./images/IUnitVsIntegration.gif]]
+
 [fn:Crispin] Lisa Crispin, Janet Gregory, "Agile Testing -- A Practical Guide for Testers and Agile Teams", Pearson Education, 2009.
 
 *** Regression Testing
@@ -1632,10 +1573,10 @@ Backing up to the original topic, you will need to find an automated testing too
     - Continuous Integration
 
     Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
-*** Assignment Submission: Create Test Suite
+*** Assignment: Create Test Suite
       Create a regression test suite. You will continue to use and extend this test suite later in the course. At this stage, you are focussing on adding test cases for your API endpoints. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework. 
 
-      *Tasks:*
+      {{{tasks}}}
       1. List all the system events from all the system sequence diagrams.
       2. For each system event, identify preconditions (e.g. if the system event depends on that another event is triggered first).
       3. For each system event, identify what inputs are allowed.
@@ -1645,7 +1586,7 @@ Backing up to the original topic, you will need to find an automated testing too
       {{{commit}}}
 
 #+BEGIN_tip
-*Conditions of Satisfaction:*
+{{{condSat}}}
 
 When marking this part of the assignment we are looking for the following:
 
@@ -1747,7 +1688,7 @@ This sprint is smaller than many of the others because -- as you notice -- state
     Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
 *** Self-Study: Stateful Application
     Find a software application or a software game where you can easily identify different states. Try to model this in a state diagram.
-*** Assignment Submission: Stateful Behaviour
+*** Assignment: Stateful Behaviour
     Is there any behaviour in your assignment system that exhibits a meaningful stateful behaviour? If so, model it in one or more UML State Diagrams.
 *** Update Course Backlog
     How can you design your software such that the /states/ are the central entity as opposed to the /concepts/?
@@ -1763,21 +1704,438 @@ This sprint is smaller than many of the others because -- as you notice -- state
    - Updated your Course Backlog
    - Created one or more State Diagrams for different software applications.
 * Sprint: Interactions and Structure
-** notes							   :noexport:
-   - Objects
-   - Sequence Diagrams
-   - Collaboration Diagrams
-   - Contracts?
-   - Feeding into Class Diagrams
-   - GRASP?
+** About This Sprint
+   This sprint discusses how to identify and model interactions between entities in UML interaction diagrams. The sprint also covers how the interaction diagrams produce material that is used to create UML Class Diagrams.
+** User Stories covered in this Sprint
+   - As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.
+   - As a software designer I want to model both the /dynamic behaviour/ as well as the /static structure/ of the application so that I can communicate both to the developers.
+   - As a software implementer I want to know which methods and attributes each class contains so that I can implement them.
+** Introduction
+   So you have your system events from the UML system sequence diagrams, and you have an idea of the concepts in the problem domain based on your domain model. Your next step is to figure out what should happen inside the system as a consequence of your system events. UML books like to introduce the concept of an /Operation Contract/ at this stage, and spend an impressive amount of time defining all the attributes that you should fill in for each contract. I will not go this far. I will not even require you to write any contracts. As an /analysis tool/, they are quite ok, however.
+
+The takeaway from this sprint is, however, not the actual diagrams. What I want you to realise is that modelling the dynamic behaviour of your system is the /key/ to understanding the static structure. This is the best way to keep your system lean. Yes, you can start with the static structure and model what you /think/ will be needed. You will (a) get much of it wrong and have to go back and fix it later, and (b) add plenty of stuff that will never be used as you thought, so you will add the methods you really need when you develop, and then your design documentation is no longer up to date with what the code does.
+
+#+BEGIN_note
+*TL;DR:* Use the /dynamic behaviour/ of your system to extract the least possible amount of /static structure/, to keep your design relevant and lean.
+#+END_note
+
+*** Contracts
+    An operation contract simply documents the system operations. This is ok, and you should really think of doing something like this anyway. If you use e.g. [[http://www.stack.nl/~dimitri/doxygen/][Doxygen]] or the equivalent for your language, you document your system operations in your code so that callers of a function immediately can get an overview of the operation, its parameters, and its return values.
+    
+    What I would like to focus on, however, is that in this documentation you also list /preconditions/ and -- even more importantly /postconditions/. The preconditions is simply a list of conditions that must be met before this operation can be called. For example, to return change in a cash machine, there must be an ongoing sale and a payment must have been entered.
+
+    The postconditions list what should have happened /inside/ the system as a result of the operation. This is not a narrative description of "first A happens, then B, and finally C". It is simply a description of the final state. Think of it as a stage-and-curtain model. The system is in one state. A curtain goes down and the operation executes. When the curtain is raised again, you note the changes.
+
+[[./images/ICurtainGoat.jpg]]
+
+   To identify /what/ may have changed, you look at your domain model. Instances of some of the concepts from your domain model are involved in the operation (if not, your domain model is incomplete and should be revised). For these instances, the following may occur:
+
+   - an instance of a concept may be created
+   - an instance of a concept may be deleted
+   - an attribute of an instance may change value
+   - an association betwen two instances may be formed
+   - an association betwen two instances may be broken
+
+   It is good form to write this in past tense (to remind you that you are only describing what has already happened):
+
+   - An instance of ~Goat~ with the name ~gHarry~ was created.
+   - The (x,y) position of the goat ~gHarry~ was set to (10,4).
+   - An instance of ~GoatFood~ with the name ~gf~ was created.
+   - ~gf~ was associated with ~gHarry~.
+   - The location of ~gf:GoatFood~ was set to the location of ~gHarry:Goat~'s mouth.
+
+   Note that we still don't know /who/ does all of this. We can guess that it is in fact ~gHarry~ that fetches the ~gf:GoatFood~ and puts it in his mouth while going to stand at position (10,4), but we do not know. We also do not know what else may have happened. Where did ~gHarry~ find the food? Was there a clown quartet that rolled a wheelbarrow full of GoatFood on stage and fed it to ~gHarry~ while riding unicycles? Or did we initially create 500 animals on stage and used genetic algorithms to grow and breed on those that most looked like a goat with food in its mouth? We do not know.
+
+   What we /do/ know is that those concepts from the domain model that were used in this contract (and all other contracts) are those that we should model as classes. The attributes that were changed should be added to those classes with the right types. The associations formed or broken should be modelled in our class diagram. We also have an end-state that we can work towards in our interaction diagrams.
+
+#+HTML: <small><small><small><small><small><small><small><small><small>
+This here is the specific point from where I am going to get exam answers using Goats in the most horrible ways imaginable. I know this, and yet I wrote this example. What the hell is wrong with me?
+#+HTML: </small></small></small></small></small></small></small></small></small>
+
+*** Interaction Diagrams
+    UML introduces two types of Interaction diagrams, namely /Sequence Diagrams/ and /Collaboration Diagrams/. These express the same thing and so you can use either one. When I was once a young and budding student we only had collaboration diagrams, and for a long while I favoured them because you are able to express more in less space. These days, however, I prefer sequence diagrams because it is easier to follow the order in which operations should be called, and are overall clearer to get an overview of.
+
+    You have already acquainted yourself with sequence diagrams in the form of /System Sequence Diagrams/. The difference to these is that in a sequence diagram there is no restriction to view the system as a black box, as you do in a system sequence diagram. Indeed, the whole point is to now open up your black box and study what is going on /inside/ the box. Identify which entities needs to be involved to solve the system event, which methods that should be called, and in what order.
+
+#+BEGIN_SRC plantuml :file ./images/FSequenceTheatre.png
+hide footbox
+[-> ":TheatreStage" : action()
+activate ":TheatreStage"
+":TheatreStage" -> ":EvolutionManager" : getGoat()
+
+activate ":EvolutionManager"
+loop while not true goat
+
+create ":Goat"
+":EvolutionManager" --> ":Goat" : create()
+":EvolutionManager" -> ":Goat" : whosAGoodGoat()
+activate ":Goat"
+note right : checking all relevant parameters of "Goatiness"
+":Goat" --> ":EvolutionManager" : baaa!
+deactivate ":Goat"
+end
+":EvolutionManager" -> ":TheatreStage" : return lastGoat
+deactivate ":EvolutionManager"
+
+":TheatreStage" -> ":Goat" : setPosition(10,2)
+activate ":Goat"
+deactivate ":Goat"
+
+":TheatreStage" -> ":ActorContainer" : add(a)
+activate ":ActorContainer"
+deactivate ":ActorContainer"
+deactivate ":TheatreStage"
+#+END_SRC
+
+#+NAME: fig:SequenceTheatre
+#+CAPTION: This example is officially getting silly
+#+RESULTS:
+[[file:./images/FSequenceTheatre.png]]
+
+    A collaboration diagram is perhaps easier to work with on a whiteboard; you can hold more lively discussions, add an object and an interaction arrow without having to re-draw your entire model. On paper, it is less space-consuming. The cost of this is, as stated, that it is more difficult to follow the order in which methods are being called. Consider the same Goat-on-Stage example again. Note how the iteration is merely represented as an asterix ~*~ after the calls involved, and how the nested calls from within the ~EvolutionManager::getGoat()~ call have sub-numbering (1.1 and 1.2, respectively). Imagine if you have a deeper nesting, say four or five levels down, and then try to keep track of whether "1.2.0.3.2" is executed before "1.2.1.3.1" or not.
+
+#+BEGIN_SRC plantuml :file ./images/FCollaborationTheatre.png
+left to right direction
+object ":TheatreStage" as ts
+object ":EvolutionManager" as em
+object "g:Goat" as g
+object ":ActorContainer" as ac
+
+title :TheatreStage->action()
+
+ts --> em : 1 g=getGoat()
+em --> g : 1.1 create()*
+em --> g : 1.2 response=whosAGoodGoat()*
+ts --> g : 2. setPosition(10,2)
+ts --> ac : 3. add(g)
+#+END_SRC
+
+#+NAME: fig:CollaborationTheatre
+#+CAPTION: Evolving a Goat and Putting it on Stage.
+#+RESULTS:
+[[file:./images/FCollaborationTheatre.png]]
+
+
+    One more thing to note here is that you are dealing with /objects/, i.e. instances of your classes or concepts. You are not modelling the platonic /idea/ of a Goat; you are modelling /one specific instance/ of a goat that is interacting with other specific instances. You are not exercising all methods available in a class; you are calling those specific methods that are needed to solve one particular system event, and you are doing this with the necessary concrete parameters.
+
+#+BEGIN_note
+Interaction Diagrams model specific /objects/ and their /specific interactions/.
+#+END_note    
+
+*** Class Diagrams
+    From the interaction diagrams, that describe the dynamic behaviour of specific objects, we can now start to extract how the class declarations must look like. The methods that are called on an object are placed in the corresponding class of that object. The associations formed are added to the "owner" class of the association (Usually, it is fairly obvious which class should be the owner of an association. Otherwise, decide now and refactor later). Attributes are more difficult to find, since they are not really that prominent in an interaction diagram. If you have made an operation contract, you can get the (post-operation visibly changed) attributes therefrom, but otherwise you will have to guess a bit based on the methods and the responsibilities each object seem to have.
+
+    I am loath to continue with the previous example but, in the interest of completeness, here goes. First, create the classes used in the example, and add the methods called on each class and the attributes I can guess at. Then, add the relations between classes where the objects call each other. I like to do it in a particular order, and I am revealing the source code for the UML Class Diagram below to show you this order. You are of course free to work in any order you prefer.
+
+#+BEGIN_SRC plantuml :file ./images/FClassTheatre1.png :exports both
+' Add Classes, methods, and attributes:
+' --------------------
+TheatreStage : +action()
+EvolutionManager : +Goat getGoat()
+EvolutionManager : -lastGoat
+Goat : +whosAGoodGoat()
+ActorContainer : +add(Actor theActor)
+ActorContainer : -list<Actor> myActors
+
+
+' Relations
+' --------------------
+TheatreStage - "1" EvolutionManager
+EvolutionManager - "*" Goat
+TheatreStage -- "1" Goat
+TheatreStage -- "1" ActorContainer
+
+
+' I have decided that Goat needs to be a sub-type of Actor
+' This simplifies the ActorContainer to not worry about Goatiness,
+' but does need to have a relation to "Actor"
+' --------------------
+Actor <|-- Goat
+ActorContainer o-- "*" Actor
+#+END_SRC
+
+#+NAME: fig:ClassTheatre
+#+CAPTION: Class Diagram for the Theatre Example
+#+RESULTS:
+[[file:./images/FClassTheatre1.png]]
+
+As you also may notice, I am adding the class ~Actor~ and introducing an inheritance between ~Actor~ and ~Goat~, to keep the interface of the ~ActorContainer~ class clean. I am also adding visibility to the methods and attributes. For now, all methods appear to be public, and all attributes are private.
+
+Also note that even though in the interaction diagram I store the returned ~Goat~ in the variable ~g~, this variable is only needed for the duration of the ~action()~ method and so does not get added to the class. In general, you should try to keep variables in an as limited scope as possible. If you only need them in a block, declare them inside that block. If you only need them in a method, declare them in that method. If you /must/ have them for as long as your object exist, then add them as attributes to the class. If you need them for as long as the system lives you are most likely doing things wrong, but you might consider making them ~static~ or adopt the ~<<Singleton>>~ pattern. If you need them even longer than that, put them in a database or in a file.
+
+*** Moar Classes
+    Preferrably I would like to stop now and put the rest into a separate sprint (and kill the Goat-example once and for all). However, this bit needs to be said, and it will actually help you in your diagrams so I need to put at least a small teaser here.
+
+    Essentially, you now have all the tools necessary to do object oriented design. What we will focus on more in later sprints is how to use pre-existing solution templates and principles to make a /good/ design using the tools you already know after this sprint. There are, however, two major obstacles that we need to address first:
+   
+    1. You are creating a giant ball of mud, with all your classes thrown into a -- for all intents and purposes -- random order.
+    2. You will soon not be able to fit all of your design onto one single paper.
+
+    To expand on Obstacle #1; What is the significance of that ~TheatreStage~ is in the top left corner of Figure [[fig:ClassTheatre]]? What does it mean that ~Actor~ is at the bottom of the diagram? Of course, I have made this figure in [[http://plantuml.com/][plantUML]], which lays out the diagram in an order itself sees fit (since it uses [[http://www.graphviz.org/][GraphViz]] as its backend, the strategy it uses is to minimise the number of arches that needs to cross each other). But even if you are using a CASE tool that allows you to position your classes with absolute coordinates (like a normal drawing program does), there is no inherent semantic meaning in the position of a class.
+
+    Enter the /UML Package Diagram/. In this diagram we take a high-level view of our system and try to define our system as a set of packages, where each package has a well-defined responsibility. We then sort our classes into these packages. This solves Obstacle #2, since we can now move some of the packages to a new page according to some logical principle. If your packages are still too big to fit, you are able to nest packages so that your packages contain more packages.
+
+    To further address Obstacle #1, you also need to define the principles according to which you divide the system into packages. Very crudely, this is what you do in your /Software Architecture/. I say crudely, because there is much more than this to software architectures. For now, let's stick to one of the more common architecture styles, namely the /Layered/ architecture style, since this fits most interactive systems. In the layered architecture style you divide your system into three parts: User Interface, Application Logic, and Storage.
+
+#+BEGIN_SRC plantuml :file ./images/FLayeredPackage.png
+package "User Interface" {
+MainWindow o- Dialogue1
+}
+
+package "Application Logic" {
+package "Domain Logic" {
+}
+
+package "Technical Services" {
+}
+}
+
+package "Storage" {
+class DBInterface
+}
+
+"User Interface" -[hidden]- "Application Logic"
+"Application Logic" -[hidden]- "Storage"
+#+END_SRC
+
+#+NAME: fig:LayeredPackageDiagram
+#+CAPTION: An example of a Layered Architecture, expressed in an UML Package Diagram
+#+RESULTS:
+[[file:./images/FLayeredPackage.png]]
+
+   The fact that I tack this on at the end of this sprint introduction may lure you into thinking that you /first/ do your class design and /then/ divide into packages. In fact, you have the overall packages in mind already before you start with the class diagram. To be more precise, you have the "Application Logic" layer in mind. The application logic layer is the layer that mostly contain your class representation of the concepts in your domain model. Since your analysis and your interaction diagrams mostly try to express the behaviour of your system in terms of the interaction between your domain concepts, it is hardly surprising that the class diagram thus derived deals mostly with the application logic needed to represent the problem domain.
+
+   Because the focus right now is to determine what from your domain model is relevant for you to solve in your software application, and how to do it, you are not concerned at the moment with the pure software application aspects of the system. This includes the user interface, technical services (for example a key/value store, rule engines etc.), persistent storage facilities, etc.
+
+   "But", an astute reader may think, "does this not just put us back to square one? We still have all our classes in one big package that won't fit on a single page". Yes it does. And no it doesn't, because you can (and you should) nest packages inside your packages. What you should do is thus to think about the high-level packages you have /inside/ your application logic/domain logic package.
+
+#+BEGIN_note
+*To Summarise:*
+- Right now you will be focusing mostly on the Application Logic Layer
+- Start by defining the high-level packages /inside/ the application logic layer
+- Then study the dynamic behaviour of your system
+- Identify the involved entities (classes), and add these to your class diagram to represent the static structure of your system, along with the methods, attributes, and associations you have identified as necessary.
+- Allocate the identified classes to you packages.
+- ...
+- profit!
+#+END_note
+** Learning Material
+*** Book Chapters
+    - {{{larman}}}, Chapters:
+      11. [@11] Operation Contracts
+      13. [@13] Logical Architecture and UML Package Diagrams
+      14. [@14] On to Object Design	  
+      15. [@15] UML Interaction Diagrams
+      16. UML Class Diagrams
+*** TODO Screencasts
+  - [[https://play.bth.se/media/Contracts/1_086yu2lr/41750261][Contracts]]
+  - [ ] Interaction Diagrams
+  - [ ] Class Diagrams
+*** TODO Lectures						   :noexport:
+*** Further Reading
+    - [[http://dilbert.com/strip/1997-03-09e][Dilbert solves the Software Design Problem]]
+** Experiential Learning
+*** Sprint Test Plan
+    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+    Revisit and update your risks and contingencies section.
+
+    Add and/or revise the following items to your glossary:
+    - Interaction Diagrams
+      - Sequence Diagrams
+      - Collaboration Diagrams (Also: Communication Diagram)
+    - Operation Contracts (Also: Design Contracts)
+    - Class Diagrams
+      - Associations
+      - Aggregation
+      - Composition
+      - Class Roles
+      - Multiplicity
+    - Dynamic Behaviour
+    - Static Structure
+    - Package Diagram
+    - Software Architecture
+    - Architecture Style
+      - Layered Architecture Style
+
+    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+*** Assignment: Package Diagram
+    List and describe the high-level packages in your system.
+
+    {{{tasks}}}
+    - Break down your system into logically coherent packages.
+    - Briefly describe each package, and its responsibilities.
+    - Model your system in a UML Package Diagram.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Package Diagram)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Overall Packages
+   List your packages and briefly describe their responsibilities.
+4. Package Diagram
+   Represent your packages as a UML Package Diagram.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Does the package model contain 5 to 10 packages?
+2. Do the packages represent a logical division of the system?
+3. Is each package described in an understandable way?
+4. Are the responsibilities of each package clearly described?
+#+END_tip
+
+*** Assignment: Interaction Diagrams
+    Describe what will happen inside the system for your system events in terms of UML Interaction Diagrams. You may choose yourself whether you prefer UML Sequence Diagrams or UML Collaboration Diagrams. You may wish to try using both to get a feel of which one you prefer.
+
+    {{{tasks}}}
+    - Go back to your list of UML Use Cases and their corresponding UML System Sequence Diagrams, and extract the System Events therefrom.
+    - Starting with your most important Use Case, create UML Interaction Diagrams for all the System Events.
+    - Continue until you have created /no fewer than 10 UML Interaction Diagrams/ and have completed a full Use Case. I.e., if you are in the middle of a use case with your tenth interaction diagram, you complete the use case and create slightly more than ten interaction diagrams.
+
+#+BEGIN_info
+{{{docstructure}}}
+
+{{{assignment(Interaction Diagrams)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Prioritised List of Use Cases
+
+   Repeat your prioritised list of Use Cases.
+
+4. System Events
+
+   List the System Events you have extracted from your UML System Sequence Diagrams:
+
+   1. System Events for Use Case <name 1>
+   2. System Events for Use Case <name 2>
+   3. ...
+   4. System Events for Use Case <name N>
+
+5. Interaction Diagrams
+
+   Your UML Interaction Diagrams, organised per use case and titled with the system event.
+
+   1. Interaction Diagrams for Use Case <name 1>
+   2. Interaction Diagrams for Use Case <name 2>
+   3. ...
+   4. Interaction Diagrams for Use Case <name N>
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Are there at least 10 interaction diagrams?
+2. Are all relevant objects (and only objects) involved in the interaction diagrams?
+3. Are all methods (messages) suitably named?
+4. Are returned objects and objects passed as parameters also represented in the interaction diagram?
+5. Will the interaction diagram actually sufficiently address the system event?
+6. Are there interactions that are missing to fully satisfy the system event?
+#+END_tip
+*** Assignment: Class and Package Diagram
+    In this assignment you use your UML Interaction Diagrams and extract the static structure necessary in the form of a UML Class Diagram. Furthermore, you divide your classes into the packages that you have previously identified.
+
+    {{{tasks}}}
+    - For each object in each interaction diagram, create a corresponding class in a UML Class Diagram.
+    - Put your classes into the package from your Package Diagram you think is most suitable for each class.
+    - Add all methods that are being called on each object in your interaction diagram to the corresponding class.
+    - If two objects are interacting in your interaction diagrams, add an association between the corresponding classes.
+    - Identify attributes that each object must have, and add these to the corresponding class.
+    - Refine the associations in your UML Class Diagram and consider whether they should be simple associations, aggregations, or compositions.
+    - Refine the associations in your UML Class Diagram with respect to multiplicity
+    - Refine the attributes in each class in your UML Class Diagram and add types and visibility.
+    - Refine the methods in each class in your UML Class Diagram and add return types, parameter types, and visibility.
+
+#+BEGIN_info
+{{{docStructure}}}
+
+{{{assignment(Class and Package Diagram)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Class and Package Diagram
+   
+   Present the final UML Class Diagram (divided into Packages).
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Does the UML Class Diagram contain 15-30 Classes?
+2. Do all objects from the interaction diagrams in the previous assignment have a corresponding class?
+3. Are the classes placed into relevant packages?
+4. Do all method calls from the interaction diagrams in the previous assignment have a corresponding method in the right class?
+5. Are all interactions in the interaction diagrams accurately represented as associations between classes?
+6. Where applicable, are associations between classes modelled as aggregations or compositions?
+7. Are there multiplicity indicators on associations? Are they used correctly?
+8. Do all methods have a visibility indicator, a return type, types for all parameters, and a relevant name?
+9. Do all attributes have a visibility indicator, a type, and a relevant name?
+10. Are there any missing attributes?
+#+END_tip
+
+*** Assignment Submission    
+
+    {{{submit}}}
+    
+    Your submission shall include the following documents:
+    - Interaction Diagrams
+    - Class and Package Diagram
+*** Update Course Backlog
+    When deciding how to solve a system event in terms of interacting objects, are there better ways for the objects to interact, and are there worse ways? With respect to what?
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+   - You have an understanding of how the dynamic behaviour of the system is used to identify the static structure
+   - You have an understanding of how you may use your previous analysis, in terms of Use Cases, System Sequence Diagrams, and Domain Model to initiate your design of the dynamic behaviour.
+   - You have created a Package Diagram document
+   - You have created an Interaction Diagrams document
+   - You have created a Class and Package Diagrams document
+   - You have committed/pushed these documents to your project repository
+   - [[./org/checked.png]] You have submitted the Interaction Diagrams document and Class and Package Diagrams document for marking.
+
+   You may also have
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog   
 * Sprint: Good Interactions					   :noexport:
 ** notes							   :noexport:
    - GRASP
+   - Demeter, DRY?, etc.
 * Sprint: Design Patterns					   :noexport:
 ** notes							   :noexport:
-
-
-
+* Sprint: Design the User Interface				   :noexport:
+** notes
+* Sprint: Introduction to Software Architectures 		   :noexport:
+** notes  
+   För PA1443 (5hp)
+   Also: Quality Attributes (own module?)
+   Components or Packages    
+* Sprint: Software Architecture Patterns			   :noexport:
+** notes  
+   För PA1443 (5hp)
+* WAIT Sprint: Scaling up Classes 				   :noexport:
+** notes							   :noexport:
+   - Class Diagram
+   - Packages
+   - Architectures (Layered, MVC)
+   - GRASP?
 
 
 * Working Material						   :noexport:
@@ -1801,7 +2159,11 @@ This sprint is smaller than many of the others because -- as you notice -- state
    - How many
    - Flow
    - Topic
-** TODO Fix Links in Test Sprint
+** DONE Find a cleaner way to include Title Page and System Description in assignments.
+   CLOSED: [2016-09-30 Fri 09:03]
+   The MACRO for assignment title DO NOT WORK; on export it only has the latest set value, which does not work if you have more than one assignment in an export unit (a sprint.)
+** DONE Fix Links in Test Sprint
+   CLOSED: [2016-09-28 Wed 10:07]
    - Emil - link to his work
    - JUnit
    - Testing Tools
@@ -1811,33 +2173,36 @@ This sprint is smaller than many of the others because -- as you notice -- state
 ** TODO Add "Select System for Assignments" in Sprint 0
 ** TODO Tie in Lectures into Sprints, with preparations I want them to do first
 ** TODO Sprint 99: Wrap-up
-** TODO State Diagrams
+** DONE State Diagrams
+   CLOSED: [2016-09-28 Wed 10:07]
 ** TODO Revisit all sprints with submissions and make sure the sprint test plan is up to date
 ** TODO Re-do video "Concepts and Classes": Move Objects into a different sheet
+** TODO Video: Interaction Diagrams
+** TODO Video: Class Diagrams
 ** Chapters Used
    | Chapter | Sprint |
    |---------+--------|
-   |       1 | 1      |
-   |       2 | 1      |
-   |       3 | 1      |
-   |       4 | 2,3    |
-   |       5 | 2,3    |
-   |       6 | 2,3    |
-   |       7 | 2,3    |
-   |       8 | 4      |
-   |       9 | 4      |
-   |      10 | 4      |
-   |      11 |        |
+   |       1 |      1 |
+   |       2 |      1 |
+   |       3 |      1 |
+   |       4 |    2,3 |
+   |       5 |    2,3 |
+   |       6 |    2,3 |
+   |       7 |    2,3 |
+   |       8 |      4 |
+   |       9 |      4 |
+   |      10 |      4 |
+   |      11 |      7 |
    |      12 |        |
    |      13 |        |
-   |      14 |        |
-   |      15 |        |
-   |      16 |        |
+   |      14 |      7 |
+   |      15 |      7 |
+   |      16 |      7 |
    |      17 |        |
    |      18 |        |
    |      19 |        |
    |      20 |        |
-   |      21 | 1,3,5  |
+   |      21 |  1,3,5 |
    |      22 |        |
    |      23 |        |
    |      24 |        |
@@ -1845,8 +2210,8 @@ This sprint is smaller than many of the others because -- as you notice -- state
    |      26 |        |
    |      27 |        |
    |      28 |        |
-   |      29 |        |
-   |      30 | 3      |
+   |      29 |      6 |
+   |      30 |      3 |
    |      31 |        |
    |      32 |        |
    |      33 |        |
@@ -1856,7 +2221,7 @@ This sprint is smaller than many of the others because -- as you notice -- state
    |      37 |        |
    |      38 |        |
    |      39 |        |
-   |      40 | 1      |
+   |      40 |      1 |
 ** Backlog
  | Sprint                    | Topic     | Contents                                  | User Story                                                                                                                                                                                     |   |
  |---------------------------+-----------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---|
@@ -1877,7 +2242,7 @@ This sprint is smaller than many of the others because -- as you notice -- state
  |                           | OOA       | Conceptual Model                          | As a software designer I want to document my understanding of the problem domain so that I can easily transform this into an object oriented software system.                                  |   |
  |                           | OOA       | System Sequence Diagram                   | As a software designer I want to understand how users plan on interacting with the system so that I can design the right API endpoints.                                                        |   |
  |                           | OOA       | State Diagrams                            | As a software designer I want to document the states the application can be in so that I can better design them and get an overview of permissible transitions.                                |   |
- |                           | OOA       | Use Cases - Structuring                   | As a software designer I want to be able to reuse common procedures between my use cases so that I only have to maintain them in one place.                                                    |   |
+ |                           | OOA       | Use Cases - Structuring                   | As a software designer I want to be able to reuse common proceduresbetween my use cases so that I only have to maintain them in one place.                                                     |   |
  | Object Oriented Design    | OOD       | Sequence/Collaboration Diagrams           | As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.                                                    |   |
  |                           | OOA       | Dynamic vs Static                         | As a software designer I want to model both the /dynamic behaviour/ as well as the /static structure/ of the application so that I can communicate both to the developers.                     |   |
  |                           | OOD       | Class Diagrams (also Transition into)     | As a software implementer I want to know which methods and attributes each class contains so that I can implement them.                                                                        |   |
