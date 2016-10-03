@@ -55,6 +55,110 @@
    You may also have
    - Updated your Sprint Test Plan
    - Updated your Course Backlog   
+* Sprint Map							   :noexport:
+#+BEGIN_SRC dot :file ./images/FSprintMap.svg
+digraph {
+rankdir=TB;
+splines=true;
+node [style=filled,fillcolor="/greens3/2"];
+
+s0 [label="Sprint 0: Course Introduction"]
+devmet [label="Development Methodologies"]
+re [label="Requirements Engineering"]
+ucd [label="Use Cases and Use Case Diagrams"]
+ce [label="Concepts and Events"]
+tst [label="Testing"]
+sd [label="State Diagram"]
+goodint [label="Good Interactions"]
+interact [label="Interactions and Structure"]
+dp [label="Design Patterns"]
+ui [label="Designing the User Interface"]
+sa [label="Introduction to Software Architectures"]
+sap [label="Software Architecture Patterns"]
+impl [label="Implementation"]
+exam [label="Preparing for Exam"]
+s99 [label="Sprint 99: Course Wrapup"]
+
+
+subgraph cluster_intro {
+label="Course Introduction";
+s0
+}
+
+subgraph cluster_development {
+label="Software Development";
+devmet -> re
+}
+
+subgraph cluster_ooa {
+label="Object Oriented Analysis";
+ucd -> ce -> sd
+}
+
+subgraph cluster_qa {
+label="Quality Assurance";
+tst
+}
+
+subgraph cluster_ood {
+label="Object Oriented Design";
+goodint -> interact -> dp
+}
+
+
+subgraph cluster_sa {
+label="Software Architecture";
+sa -> sap
+}
+
+subgraph cluster_impl {
+label="From Design to Code";
+ui -> impl
+}
+
+subgraph cluster_wrapup {
+label="Course Wrap-up"
+exam -> s99
+}
+
+subgraph PA1415 {
+node [style=filled,fillcolor="/greens3/2"];
+edge [label="PA1415", color="green", fontcolor="green"]
+s0 -> devmet
+re -> ucd
+sd -> tst
+tst-> goodint
+dp -> sa
+sap -> ui
+impl -> exam
+}
+
+  
+subgraph PA1435 {
+node [style=filled,fillcolor="/blues3/2"];
+edge [label="PA1435", color="blue", fontcolor="blue"]
+s0 -> ucd 
+sd -> tst -> goodint
+dp -> sa
+sap -> ui
+impl -> exam
+}
+ 
+subgraph PA1443 {
+node [style=filled,fillcolor="/bupu3/2"];
+edge [label="PA1443", color="blueviolet", fontcolor="blueviolet"]
+s0 -> ucd
+ce -> goodint
+dp -> impl
+impl -> exam
+}
+
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSprintMap.png]]
+
 * Sprint 0: Course Introduction					   :noexport:
 ** About This Sprint
    This sprint introduces the course and the course structure.
@@ -1703,7 +1807,7 @@ This sprint is smaller than many of the others because -- as you notice -- state
    - Updated your Sprint Test Plan
    - Updated your Course Backlog
    - Created one or more State Diagrams for different software applications.
-* Sprint: Good Interactions
+* Sprint: Good Interactions					   :noexport:
 ** About This Sprint
    This sprint focus on how to identify what is a /good/ design through the use of basic object oriented principles.
 ** User Stories covered in this Sprint
@@ -2234,8 +2338,37 @@ When marking this part of the assignment we are looking for the following:
    You may also have
    - Updated your Sprint Test Plan
    - Updated your Course Backlog   
-* Sprint: Design Patterns					   :noexport:
-** notes							   :noexport:
+* Sprint: Design Patterns
+** About This Sprint
+** User Stories covered in this Sprint
+** Introduction
+** Learning Material
+*** Book Chapters
+*** Screencasts
+*** Lectures
+*** Articles
+*** Further Reading
+** Experiential Learning
+*** Sprint Test Plan
+    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+    Revisit and update your risks and contingencies section.
+
+    Add and/or revise the following items to your glossary:
+    - 
+
+    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+*** Assignment Submission
+*** Update Course Backlog
+
+    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+** Sprint Acceptance Tests
+   You are done with this sprint when:
+
+   You may also have
+   - Updated your Sprint Test Plan
+   - Updated your Course Backlog   
+
 * Sprint: Design the User Interface				   :noexport:
 ** notes
 * Sprint: Introduction to Software Architectures 		   :noexport:
@@ -2253,6 +2386,7 @@ When marking this part of the assignment we are looking for the following:
    - Architectures (Layered, MVC)
    - GRASP?
 
+* Sprint: Implementation					   :noexport:
 
 * Working Material						   :noexport:
 ** Don't Forget
