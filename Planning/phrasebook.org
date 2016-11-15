@@ -1,0 +1,85 @@
+#+Title: En liten parlör om UML
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2016-11-15, version 0.1.0
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+# #+STARTUP: showall
+#+STARTUP: beamer
+
+# #+LATEX_HEADER: \usepackage[a4paper]{geometry}
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+# #+LATEX_CLASS: beamer
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: version 0.1.0
+
+* Introduktion
+  Det här dokumentet listar termer i UML med deras svenska översättning. I vissa fall använder jag mig av den engelska termen även på svenska; det blir enklare och tydligare så.
+
+  *N.B.* Det här är /mina/ översättningar, som inte nödvändigtvis stämmer överens med någon oficiell standard. Ser du något som uppenbart är fel eller har en bättre lista, vänligen kontakta mig.
+
+  Jag har grovt delat in termerna i olika grupper nedan. /Detta betyder inte att termen bara är giltig i den gruppen!/ Termerna och deras översättning gäller oavsett i vilken grupp de står definierade.
+#+LATEX: \newpage
+* Termer
+** Utvecklingsmetodik
+| Engelska                 | Min Svenska             | Kanske Riktig Svenska |
+|--------------------------+-------------------------+-----------------------|
+| Requirements Engineering | Kravhantering           |                       |
+| Requirement              | Krav                    |                       |
+| Analysis                 | Analys                  |                       |
+| Design                   | Design                  |                       |
+| Implementation           | Implementation          |                       |
+| Testing                  | Testning                |                       |
+| Test Case                | Testfall                |                       |
+| Development Phase        | Utvecklingsfas          |                       |
+| Phase                    | Fas                     |                       |
+| Backlog                  | Backlog                 | Att-göra-lista        |
+| Waterfall Model          | Vattenfallsmodellen     |                       |
+| Iterative Development    | Iterativ utveckling     |                       |
+| Incremental Development  | Inkrementell utveckling |                       |
+| SCRUM                    | SCRUM                   | Skärmytsling          |
+|                          |                         |                       |
+** Use Cases
+| Engelska          | Min Svenska         | Kanske Riktig Svenska  |
+|-------------------+---------------------+------------------------|
+| Use Case          | Use Case            | Användningsfall        |
+| Expanded Use Case | Expanded Use Case   | Utökat Användningsfall |
+|                   | Expanderat Use Case |                        |
+| Use Case Diagram  | Use Case-Diagram    |                        |
+| Actor             | Aktör               |                        |
+
+** Interaktionsdiagram
+| Engelska                | Min Svenska           | Kanske Riktig Svenska |
+|-------------------------+-----------------------+-----------------------|
+| Interaction Diagram     | Interaktionsdiagram   |                       |
+| Communication Diagram   | Kommunikationsdiagram |                       |
+| Sequence Diagram        | Sekvensdiagram        |                       |
+| System Sequence Diagram | Systemsekvensdiagram  |                       |
+| Class                   | Klass                 |                       |
+| Object                  | Objekt                |                       |
+| Type                    | Typ                   |                       |
+| Event                   | Händelse              |                       |
+
+#+LATEX: \newpage
+** Klassdiagram
+| Engelska              | Min Svenska          | Kanske Riktig Svenska | Kommentar                |
+|-----------------------+----------------------+-----------------------+--------------------------|
+| Domain Model          | Domänmodell          |                       |                          |
+| Conceptual Model      | Konceptuell Modell   |                       | (Samma som Domain Model) |
+| Concept               | Koncept              |                       |                          |
+| Class Diagram         | Klassdiagram         |                       |                          |
+| Attribute             | Attribut             | Medlemsvariabel       |                          |
+| Method                | Metod                |                       |                          |
+| Message               | Meddelande           | Metodanrop            |                          |
+| Association           | Association          |                       |                          |
+| Aggregate             | Aggregat             |                       |                          |
+| Composition           | Komposition          |                       |                          |
+| Association Attribute | Associationsattribut |                       |                          |
+| Multiplicity          | Multiplicitet        | Kardinalitet          |                          |
+| Base Class            | Basklass             |                       |                          |
+| Inheritance           | Arv                  |                       |                          |
+| Inheritance Hierarchy | Arvshierarki         |                       |                          |
+
+** GRASP Patterns och Design Patterns
+GRASP Patterns och Design Patterns översätter jag inte, utan använder de engelska namnen.
