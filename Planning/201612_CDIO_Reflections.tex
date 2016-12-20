@@ -1,0 +1,161 @@
+% Created 2016-12-20 Tue 10:42
+\documentclass[10pt,t,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=3.5cm]{geometry}
+\author{Mikael Svahnberg\thanks{Mikael.Svahnberg@bth.se}}
+\date{2016-12-19}
+\title{Reflektionsrapport PA1435}
+\hypersetup{
+ pdfauthor={Mikael Svahnberg},
+ pdftitle={Reflektionsrapport PA1435},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.50.1 (Org mode 8.3.4)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+
+\section{Introduktion}
+\label{sec:orgheadline2}
+Kursen \emph{PA1435, Objektorienterad Design} omfattar 6hp och är en av i nuläget fyra kurser som på olika vis berör samma ämnesområde. De olika kurserna är listade i Tabell \ref{tab:orgtable1}. Totalt sett rör det sig om mellan 180 till 200 studenter som går de olika kurserna.
+
+\begin{table}[!b]
+\caption{\label{tab:orgtable1}
+Relaterade Kurser}
+\centering
+\begin{tabular}{lp{4cm}rp{4cm}}
+Kurskod & Namn & Omfattning & Program\\
+\hline
+PA1415 & Programvarudesign & 7.5 & BSc i Spelprogrammering, BSc i IT-Säkerhet\\
+PA1434 & Grunder i Objektorienterad Design & 4 & CI i IndEk\\
+PA1435 & Objektorienterad Design & 6 & CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi\\
+PA1443 & Introduktion till Programvarudesign och Arkitektur & 5 & BSc i Programvaruteknik\\
+\hline
+\end{tabular}
+\end{table}
+
+Kursmålen (Se Tabell \ref{tab:orgtable2} beskriver en viss evolution, där PA1415 har de äldsta målen (senast reviderade 2014, ej i det ``nya'' formatet) och PA1443 har de nyaste. Det är heller inte ett fullständigt överlapp mellan de ämnen som skall tas upp i varje kurs. För att förstå överlappet behövs en kortfattad genomgång av ämnet.
+
+\begin{table}[!t]
+\caption{\label{tab:orgtable2}
+Kursmålen för de nuvarande kurserna}
+\centering
+\begin{tabular}{p{3cm}p{12cm}}
+Kurskod & Kursmål\\
+\hline
+PA1415 & - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation\\
+PA1415 & - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation\\
+PA1415 (PA1435/PA1434) & - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram\\
+PA1415 & - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design\\
+PA1415 (PA1443) & - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation\\
+PA1415 (PA1435/PA1434) & - skapa och analysera objektorienterade artefakter uttryckta i UML\\
+PA1415 (PA1435/PA1434/ PA1443) & - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem\\
+ & \\
+ & \textbf{Kunskap och förståelse}\\
+PA1435/PA1434/ PA1443 & - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.\\
+PA1435/PA1434 & - kunna visa förståelse för UML som modelleringsspråk.\\
+PA1435/PA1434/ PA1443 & - kunna visa kunskap om grundläggande designprinciper.\\
+PA1435/PA1434/ PA1443 & - kunna visa kunskap om grundläggande designmönster.\\
+PA1443 & - kunna visa kunskap om grundläggande mjukvaruarkitekturstilar\\
+ & \\
+ & \textbf{Färdigheter och förmåga}\\
+PA1435/PA1434/ PA1443 & - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.\\
+PA1435/PA1434 & - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.\\
+PA1435/PA1434 & - kunna korrekt transformera en objektorienterad design till källkod.\\
+PA1435/PA1434 & - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.\\
+PA1443 & - kunna tillämpa grundläggande designmönster i en objektorienterad design.\\
+PA1443 & - kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper\\
+PA1443 & - kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem\\
+PA1443 & - kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha\\
+PA1443 & - kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system\\
+ & \\
+ & \textbf{Värderingsförmåga och förhållningssätt}\\
+PA1435/ PA1434 & - kunna analysera källkod för eventuella förbättringar.\\
+PA1435/PA1434/ PA1443 & - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.\\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{En Kortfattad Genomgång av Ämnet}
+\label{sec:orgheadline1}
+Kärnan i kursen är ett arbetssätt med notationsstöd för att skapa mjukvarudesigner. Detta arbetssätt är i princip en miniatyr-version av Conceive-Design-Implement -tankarna. Detta designarbetssätt passas in i ett utvecklingsprojekt, där man lägger ytterligare tonvikt på kravinsamling, projektplanering, och -- såklart -- implementation och testning. När systemen blir större behöver man strukturera det på olika nivåer, både den mikronivå som är kärnan i kursen, men också på en ``makronivå'', eller en arkitekturnivå. Genomgående för alla nivåer är att man det finns inte ett enda rätt eller fel, utan det finns ett antal goda egenskaper man förväntar sig av ett system (där kanske det främsta är att man enkelt skall kunna underhålla systemet), och ett antal principer för konstruktionen som leder till en design eller arkitektur med de förväntade egenskaperna. Att lära ut notationen och arbetssättet är relativt enkelt -- det är ``bara'' för studenterna att härma \footnote{Se \emph{Cargo-Culting}, t.ex. \url{https://en.wikipedia.org/wiki/Cargo_cult}}. Att förstå konsekvenserna av att göra designen på ett visst sätt, eller varför ett visst analys-steg ens är nödvändigt, kräver en djupare förståelse för dessa grundläggande designprinciper.
+
+Detta skall då sys ihop i olika kurser, med något olika fokus. Grovt kan man indela ämnet i \emph{Kravinsamling, Utvecklingsmetodiker, Projektplanering, Objektorienterad Analys, Objektorienterad Design, Överföring av Design till Implementation, Mjukvaruarkitekturer}, och \emph{Testning} -- där mycket av detta syftar till att också få ett underhållbart system. Tabell \ref{tab:orgtable3} sammanfattar hur jag valt att sprida dessa ämnen över de olika kurserna. Notera att samtliga delämnen (förutom kärnämnena i detta kurspaket, markerade med fetstil i tabellen) också har en eller flera egna kurser á minst 7.5hp -- många av dem på avancerad nivå.
+
+\begin{table}[bt]
+\caption{\label{tab:orgtable3}
+Berörda delämnen per kurs}
+\centering
+\begin{tabular}{l*{4}{p{1.2cm}}}
+Delämne & PA1415 & \textbf{PA1434} & \textbf{PA1435} & PA1443\\
+\hline
+Projektplanering & Ja &  &  & \\
+Utvecklingsmetodiker & delvis & delvis & delvis & \\
+Kravinsamling & Ja & delvis & delvis & \\
+\textbf{Objektorienterad Analys} & Ja & Ja & Ja & delvis\\
+\textbf{Objektorienterad Design} & Ja & Ja & Ja & Ja\\
+\textbf{Överföring av Design till Implementation} & Ja & delvis & Ja & delvis\\
+Mjukvaruarkitekturer & delvis &  &  & Ja\\
+Testning & Ja & delvis & delvis & Ja\\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Nuläge}
+\label{sec:orgheadline3}
+Nuläget är inte helt enkelt att beskriva eftersom jag nyligen tog över kursen av en pensionerad kollega. Jag var inblandad i föreläsningarna den senaste omgången, och håller nu på att arbeta om kurserna för att bättre ta hand om de olika perspektiven och nytillkommna kurser. Jag väljer därför att beskriva hur kurserna kommer se ut när de ges till våren, eftersom det är den mest relevanta bilden.
+
+``Drick din egen Champagne'' är ett uttryck som jag försöker tillämpa i den här kursen. Jag har tagit intryck av moderna utvecklingsmetodiker inom Agile/Lean, och Scrum i synnerhet, och har delat in kursen i en mängd små block, så kallade \emph{sprintar}, som fokuserar på ett mindre delämne (mindre ändå än de som är listade i Tabell \ref{tab:orgtable3}). Dessa sprintar har för avsikt att:
+
+\begin{itemize}
+\item Ge en kortfattad textbaserad introduktion till delämnet.
+\item Ge anvisningar om vad studenten förväntas läsa för att sätta sig in i delämnet. Detta innefattar kapitel i kursboken, andra relevanta böcker, onlinematerial, och ibland forskningsartiklar.
+\item Erbjuda ett antal videoföreläsningar där de rent mekaniska greppen (t.ex. notationer) gås igenom.
+\item Erbjuda ett antal övningar för självstudier
+\item Erbjuda ett antal uppgifter på ett större exempel (för senare examination).
+\end{itemize}
+
+Till varje sprint är även kopplat en eller fler föreläsningar, där fokus är på att -- tillsammans med studenterna -- diskutera hur man gör en \emph{bra} design, dvs. hur man tillämpar de genomgånga designprinciperna för att skapa en hållbar design/arkitektur med de egenskaper man önskar. Det är alltså en blandform mellan klassiska föreläsningar och seminarier.
+
+Ett större exempel löper genom hela kursen, med ett för studenterna relevant mjukvarupronblem. Studenterna förväntas med moderna verktyg genomföra alla moment som lärs ut. Med jämna mellanrum finns så kallade \emph{release-sprintar} där de får paketera ihop sina lösningar till en leverabel som sedan används för examination och betygssättning. Kopplat till detta större exempel finns övningstillfällen i mindre grupper, där studenterna får diskutera uppgifterna och sina lösningar.
+
+Jag har medvetet valt att låna begrepp från mjukvaruutvecklingsdomänen för att ytterligare hammra in modern utvecklingsmetodik. Varje sprint har alltså ett antal \emph{user stories} (Agil-världens motsvarighet till krav) som är skrivna ur perspektiv av de yrkesroller som är berörda av det som avhandlas i sprinten. Vidare finns det \emph{acceptanskriterier} för varje uppgift så att studenterna själva kan göra en bedömning av om de löst uppgiften eller inte. En \emph{testplan} utvecklas kontinuerligt av studenterna genom sprintarna där de för sin egen del beskriver hur de kan testa att de lärt sig det de förväntas i sprinten. Studenterna förväntas också underhålla en \emph{kurs-backlog} (en backlog är en lista med prioriterade user stories), där de kan lägga in frågor de behöver få besvarade, tankar som de vill följa upp, eller fudneringar på hur man kan använda det de lärt sig i ett vidare sammanhang. Idén är att när kursen är slut så innehåller backloggen ett antal pekare framåt för hur studenterna skall använda det de lärt sig i andra kurser och i sitt framtida yrkesliv. Slutligen har varje sprint ett \emph{acceptanstest} där studenterna enkelt kan checka av att de gjort allt de skall i sprinten.
+
+Kursen i dess tidigare utformning var väldigt akademisk, och som motvikt så har jag omformat den baserat på ett stort antal diskussioner med yrkesverksamma från hela världen. Vi har inte diskuterat just denna kursen, utan mer hållt allmänna diskussioner om modern programvaruutveckling, och vilka kunskaper och värderingar som de önskar se i bra programvaruutvecklare. Denna rörelse är också i enighet med vad jag hört att studenterna efterfrågar, så jag skulle vilja påstå att kursen är baserad på (om än inte granskad eller validerad av) kunskaper och önskemål från såväl lärare, studenter, och näringslivsrepresentanter. Jag tror det är svårt att få en kurs där både lärare och näringslivsrepresentanter är nöjda, då forskningsområdet drar starkt åt ett håll (mer formalism), och näringslivet drar lika starkt åt det andra hållet (mer pragmatism). Tyvärr är denna skism ganska djup och oöverstigbar. Min lösning är att ge studenterna ett pragmatiskt verktyg men med översiktlig kunskap om den av akademin så omhuldade formalismen.
+\section{Svagheter, Utvecklingspotential}
+\label{sec:orgheadline4}
+Svagheter som jag kan se i nuläget är att många av de inblandade utbildningsprogrammen har en förväntan att alla kurser skall handla om deras särintresse. Jag kommer inte hinna möta denna förväntan under VT2017, utan jag kommer ge en generisk bild där jag kryddar friskt med exempel, problemställningar, och anekdoter från de olika särintressena. Över tid planerar jag att göra en eller flera sprintar om varje särintresse som kan bidra med ``rätt'' perspektiv till den generiska bild som erbjuds i kärn-sprintarna.
+
+En annan utmaning är det stora gapet mellan forskningsfronten och nuvarande industripraxis. Industripraxis är dessutom synnerligen pragmatiskt och rudimentärt när det gäller programvarudesign. Här har jag valt sida och hävdar att det är viktigare att först förstå hur man kan använda teorierna i praktiken och vilka begränsningar man kommer stöta på, snarare än den abstrakta teoribildningen. Mitt bidrag är måhända att jag samtidigt erbjuder en verktygslåda som är mer mångsidig än den som i nuläget används av industrin, med ledtrådar till när respektive verktyg är lämpligt att använda eller (inte minst viktigt) inte användas. Samtidigt erbjuder jag en viss översikt över forskningsfronten också. Tyvärr är, som redan antytts, denna forskningsfront så långt ifrån någonting praktiskt användbart att studenterna sällan inser nyttan med den.
+
+Det är många utbildningsprogram inblandade i de olika kurserna, och det är därför en utmaning att synkronisera och integrera innehållet med övriga kurser på deras respektive program. Jag ser det här som ett ständigt pågående arbete att föra diskussioner med de olika programansvariga för att åstadkomma denna integration. I nuläget har dock fokus varit på att få en översikt över materialet och genomförandet, så jag har främst vilat på historiska lagrar.
+\newpage
+\section{Utvecklinsgförslag och mål i förhållande till utbildningsplan och CDIO syllabus}
+\label{sec:orgheadline5}
+Jag har ett antal olika mål med hur jag genomför kurserna i programvarudesign:
+
+\begin{itemize}
+\item Studenterna skall främst förstå vad som är en bra design, och vad man skall göra för att åstadkomma en bra design.
+\item Studenterna skall möta en blandning av realistiska problem -- både stora och små -- där man tydligt kan resonera om styrkor och svagheter med olika lösningar.
+\item Studenterna skall skaffa sig en bred och mångsidig verktygslåda för programvarudesign, med en ingående förståelse för syftet med varje verktyg.
+\item Studenterna skall skaffa sig en översiktlig förståelse för forskningsfronten inom ämnet och av skilnaderna mellan forskning och produktion.
+\item Studenterna skall använda modern teknologi och moderna arbetssätt när de arbetar i kursen.
+\item Kursen skall använda sig av modern teknologi och moderna arbetssätt för att erbjuda kursinnehållet.
+\item Studenterna skall -- i alla kurser -- utsättas för ett arbetssätt och en mentalitet som är baserad på modern industripraxis.
+\end{itemize}
+\end{document}
