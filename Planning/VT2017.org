@@ -3306,32 +3306,32 @@ This may be why most texts on object oriented design are quite happy to teach th
  | Extra: Web                | OOD/DP/WE | Web Engineering Patterns                  | As a web developer I want to be able to use design patterns especially suitable for web engineering so that I make the best use of my platform                                                 |   |
  | Extra: More Analysis Help | OOA       | Contracts                                 | As a software designer I want to have a way of thinking about what happens in a system event so that I do not miss any important effects on the system state.                                  |   |
 ** Goals
-  | Course Code   | Course Goal                                                                                                                        |
-  |---------------+------------------------------------------------------------------------------------------------------------------------------------|
-  | PA1415        | - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation                    |
-  | PA1415        | - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation                                          |
-  | PA1415/PA1435 | - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram                                                |
-  | PA1415        | - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design   |
-  | PA1415        | - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation |
-  | PA1415/PA1435 | - skapa och analysera objektorienterade artefakter uttryckta i UML                                                                 |
-  | PA1415/PA1435 | - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem                                                        |
-  |               |                                                                                                                                    |
-  | PA1435        | *Kunskap och förståelse* Efter genomförd kurs ska studenten:                                                                       |
-  | PA1435        | - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.                                      |
-  | PA1435        | - kunna visa förståelse för UML som modelleringsspråk.                                                                             |
-  | PA1435        | - kunna visa kunskap om grundläggande designprinciper.                                                                             |
-  | PA1435        | - kunna visa kunskap om grundläggande designmönster.                                                                               |
-  |               |                                                                                                                                    |
-  | PA1435        | *Färdigheter och förmåga* Efter genomförd kurs ska studenten:                                                                      |
-  | PA1435        | - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.                                    |
-  | PA1435        | - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.                                                 |
-  | PA1435        | - kunna korrekt transformera en objektorienterad design till källkod.                                                              |
-  | PA1435        | - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.                                         |
-  |               |                                                                                                                                    |
-  | PA1435        | *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:                                                       |
-  | PA1435        | - kunna analysera källkod för eventuella förbättringar.                                                                            |
-  | PA1435        | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
-  |---------------+------------------------------------------------------------------------------------------------------------------------------------|
+  | Course Code          | Course Goal                                                                                                                        |
+  |----------------------+------------------------------------------------------------------------------------------------------------------------------------|
+  | PA1415               | - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation                    |
+  | PA1415               | - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation                                          |
+  | PA1415/PA1435/PA1434 | - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram                                                |
+  | PA1415               | - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design   |
+  | PA1415               | - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation |
+  | PA1415/PA1435/PA1434 | - skapa och analysera objektorienterade artefakter uttryckta i UML                                                                 |
+  | PA1415/PA1435/PA1434 | - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem                                                        |
+  |                      |                                                                                                                                    |
+  | PA1435/PA1434        | *Kunskap och förståelse* Efter genomförd kurs ska studenten:                                                                       |
+  | PA1435/PA1434        | - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.                                      |
+  | PA1435/PA1434        | - kunna visa förståelse för UML som modelleringsspråk.                                                                             |
+  | PA1435/PA1434        | - kunna visa kunskap om grundläggande designprinciper.                                                                             |
+  | PA1435/PA1434        | - kunna visa kunskap om grundläggande designmönster.                                                                               |
+  |                      |                                                                                                                                    |
+  | PA1435/PA1434        | *Färdigheter och förmåga* Efter genomförd kurs ska studenten:                                                                      |
+  | PA1435/PA1434        | - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.                                    |
+  | PA1435/PA1434        | - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.                                                 |
+  | PA1435/PA1434        | - kunna korrekt transformera en objektorienterad design till källkod.                                                              |
+  | PA1435/PA1434        | - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.                                         |
+  |                      |                                                                                                                                    |
+  | PA1435/PA1434        | *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:                                                       |
+  | PA1435/PA1434        | - kunna analysera källkod för eventuella förbättringar.                                                                            |
+  | PA1435/PA1434        | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
+  |----------------------+------------------------------------------------------------------------------------------------------------------------------------|
 
 ** Topics
   | PA1415 | PA1435 | Topic                                            |
