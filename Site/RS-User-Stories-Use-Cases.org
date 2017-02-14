@@ -1,0 +1,61 @@
+#+Title: Release Sprint: User Stories and Use Case Diagrams
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t toc:t
+#+STARTUP: beamer
+#+TODO: TODO(t) | DONE(d!) WAIT(w!)
+
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
+#+HTML: <br/>
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: pa1415 PA1415 Software Design
+#+MACRO: pa1435 PA1435 Object Oriented Design
+#+MACRO: pa1434 PA1434 Basic Object Oriented Design
+#+MACRO: pa1443 PA1443 Introduction to Software Design and Architecture
+#+MACRO: larman C. Larman, /Applying UML and Patterns/, 3rd Edition
+#+MACRO: commit Commit and push this document to your project repository.
+#+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
+#+MACRO: tasks *Tasks:*
+#+MACRO: docStructure *Document Structure:*
+#+MACRO: condSat *Conditions of Satisfaction:*
+#+MACRO: assignment The title for this Assignment Document is: /$1 for System <system name>/
+
+* About this Sprint
+  This is a /release sprint/. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
+
+  This release sprint also serves as a checkpoint to make sure that you are reasonably well underway in the course, and that you are on the right track. Any feedback received on this assignment should be used to adjust your plans for the remaining releases to make sure you deliver the right thing at the right time.
+* User Stories covered in this Sprint
+  - As a teacher I want to evaulate the students' ability to write well-formed user stories for a system so that I know that they fulfil the course goals concerning requirements engineering.
+  - As a teacher I want to evaulate the students' ability to write well-formed UML Use Cases for a system so that I know that they fulfil the course goals concerning requirements engineering.
+* Course Goals covered in this Sprint
+  - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation
+  - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation
+* Learning Material
+  Please review the sprints concerning
+  - Development Methodologies
+  - Requirements Engineering
+  - Use Cases and Use Case Diagrams
+* Experiential Learning
+** Assignment Submission   
+   {{{submit}}}
+    
+   Your submission shall include the following documents:
+   - User Stories
+   - Use Case Overview
+   - Implementation Plan
+   - Detailed Use Cases for First Iteration
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - [[./org/checked.png]] You have submitted the documents for marking.
+  - [[./org/checked.png]] You have received a passing grade from the teacher.
+
+  You may be asked to complement your submission with additional information.
+
+  You may also have:
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

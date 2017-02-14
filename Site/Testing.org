@@ -1,0 +1,231 @@
+#+Title: Testing
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t toc:t
+#+STARTUP: beamer
+#+TODO: TODO(t) | DONE(d!) WAIT(w!)
+
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
+#+HTML: <br/>
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: pa1415 PA1415 Software Design
+#+MACRO: pa1435 PA1435 Object Oriented Design
+#+MACRO: pa1434 PA1434 Basic Object Oriented Design
+#+MACRO: pa1443 PA1443 Introduction to Software Design and Architecture
+#+MACRO: larman C. Larman, /Applying UML and Patterns/, 3rd Edition
+#+MACRO: commit Commit and push this document to your project repository.
+#+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
+#+MACRO: tasks *Tasks:*
+#+MACRO: docStructure *Document Structure:*
+#+MACRO: condSat *Conditions of Satisfaction:*
+#+MACRO: assignment The title for this Assignment Document is: /$1 for System <system name>/
+
+
+* About This Sprint
+  In this sprint we momentarily pause the steady onmarch of UML and instead focus on how to test the designed software.
+* User Stories covered in this Sprint
+  - As a product manager I want to make sure that we are building software of high quality.
+  - As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
+* Introduction
+   This introduction is partially written with the help of my honourable esteemed colleague Dr. Simon Poulding. And when I say "partially" I mean that substantial parts of this introduction consists of texts that he has written and that I have creatively borrowed, brutally slaughtered, and put back into a different order. Not necessarily better, but different.
+
+   I guess that all of you have heard of the importance of testing your code by now. The sad story is that many professional software developers have still only heard of the importance but not seen it in practice. In many cases, testing is something you tack on at the end of a project if there is time. Of course, since there never is time left at the end of a project, you ship the code and let the customers discover the faults instead. The situation has gotten better, but it is still not good. That's why I want to raise the topic already now in the course.
+
+   One of the reasons for why testing is considered a time consuming activity is because you are doing manual testing. You have test protocols, you have dedicated testers who follow these protocols and conduct certain actions with the application in a certain order, and document the results. Obviously, we can do better than this. If we are testing the user interface, there are test harnesses for this that simulates button clicks, enters text into text boxes, and compares the end state of the user interface with images of predefined end states, etc (Actually, you might want to study the work of another colleague of mine, Emil Alégroth, on this particular topic).
+
+   But even if we decide not to do automated testing of the user interface, we can attach a test harness that pretends to be the user interface.
+
+#+NAME: fig:TestInterface
+#+CAPTION: A Testing Interface sitting next to the User Interface, acting like an alternative user interface.
+[[./images/FSSDTest.png]]
+
+Digging even further, we can use testing frameworks that intergate with our development environment. [[http://junit.org/][JUnit]] is one example of this when plugged in to Eclipse. You can also run JUnit as a standalone application, which may sometimes have some advantages. It's nice and all to see the results of testing directly in your IDE, but you will also want to run these tests headlessly on an automated build server.
+
+** Types of Testing
+Which tool or method to use depends very much on what the intentions are of your testing. L. Crispin and J. Gregory [fn:Crispin] introduce four quadrants of (agile) testing that describes the types of testing that one may be doing (see Figure [[fig:TestQuadrants]]).
+
+#+BEGIN_SRC ditaa :file ./images/FTestQuadrants.png
+                            Business Facing 
+
+             +---------------------+------------------------+
+             | Functional Tests    | Exploratory Testing    |
+             | Examples            | Scenarios              | 
+   Supporting| Story Tests         | Usability Testing      | Critique
+   the       | Prototypes          | User Acceptance Testing| Product
+   Team      | Simulations         | Alpha/Beta             |
+             |                cGRE | cGRE                   |
+             +---------------------+------------------------+
+             | Unit Tests          | Performance and Load   |
+             | Component Tests     |   Testing              |
+             |                     | Security Testing       |
+             |                     | "ility Testing"        |
+             |                     |                        |
+             |                cGRE | cGRE                   |
+             +---------------------+------------------------+
+ 
+                          Technology Facing
+#+END_SRC
+
+#+NAME: fig:TestQuadrants
+#+CAPTION: Agile Testing Quadrants (Adapted from Crispin & Gregory 2009)
+#+RESULTS:
+[[file:./images/FTestQuadrants.png]]
+
+*Technology Facing & Supporting the Team (lower left quadrant)*
+This quadrant represents testing defined by the programmers that verifies the functionality of
+individual units or components in the system in order to ensure the internal code quality.
+In many agile practices, this type of testing plays a central role through the technique of test-driven
+development (TDD). In TDD, the developer writes a test for a piece of functionality, and then
+develops the code to pass that test. More on this later.
+
+*Business Facing & Supporting the Team (upper left quadrant)*
+This quadrant considers testing that in contrast to unit/component testing considers
+functionality at a higher level such that it is meaningful to the customer, and with the purpose of
+demonstrating that the functional behaviour of the system is consistent with the
+requirements.
+
+The tests in this quadrant may be derived from the user stories and examples provided by the
+customer team. Crispin and Gregory avoid the use of "acceptance test" that is often used for these
+types of tests on the basis that tests in other quadrants may also be used for this purpose.
+In addition, Crispin and Gregory consider prototypes etc. used as part of the dialogue with the
+customer to belong to this quadrant -- even mock-ups of, for example, a GUI on paper.
+
+*Business Facing & Critique Product (upper right quadrant)*
+This quadrant encompasses manual testing that ensures that the system is really what the
+customer wants rather than simply meeting the team’s understanding of what the customer
+requires. Crispin and Gregory argue that exploratory testing -- unscripted and unconstrained
+testing guided by strategy and experience -- is a core form of testing in this quadrant.
+
+*Technology Facing & Critique Product (lower right quadrant)*
+This quadrant considers types of tests related to non-functional aspects of the system such as
+security, performance, ability to handle load, scalability, reliability, safety, maintainability,
+interoperability etc.
+
+We are not going to go through all of these types of testing strategies in this course, but it gives you a map to understand how your selected test strategies fit together and what you ought to do to produce a sufficient test strategy for your project.
+
+[[./images/IUnitvsIntegration.gif]]
+
+[fn:Crispin] Lisa Crispin, Janet Gregory, "Agile Testing -- A Practical Guide for Testers and Agile Teams", Pearson Education, 2009.
+
+** Regression Testing
+   The lower half of Crispin & Gregory's testing quadrants are particularly interesting because we are able to introduce /regression testing/. What this means is that we have a large set of test cases that we are able to execute automatically, for example daily or after each commit. The main benefit of this is that it instills confidence in the developers that what they just produced didn't accidentally break something else.
+
+   I once attended a seminar with Prof. Hans van Vliet where he asked us "what do you think takes the most time in software maintenance?"
+   - Understanding what the problem is
+   - Understanding where to fix the problem
+   - Understanding how to fix the problem
+   - Understanding the cascade effects of fixing the problem.
+
+     [[./images/IRipple.jpg]]
+
+   If you guessed "understanding the cascade effects" you guessed right, but that is slowly changing with the advent of tools for automated testing and development practices such as /Test Driven Development (TDD)/, but also by modern behaviour-driven test frameworks such as [[https://cucumber.io/][Cucumber]]. The common denominator for these frameworks is that you write your tests early, and in executable format so that you can quickly re-run them. TDD takes it one step further with its very fast red-green-refactor cycle (basically write /one/ line of tests that fails, then write the (small) code to pass, and then shape it up and put it in the right place etc.). Connect this back to Prof. van Vleet's question: You no longer need to understand the cascade effects because you have tests in place that will start failing.
+
+** Tools for Automated Testing
+    Which tool to use for your automated testing is of course highly dependent on your choice of development platform, and you also need to work on different levels, as illustrated in Figure [[fig:TestingLevels]]. In this figure, the left-hand-side is what you would normally encounter during a build cycle, and this is also the parts where you can hope to automate. In fact, the only difference between testing "Inside the IDE" down to "Nightly Builds" is that you will run more test-cases during your nightlies than in the IDE, where you may focus only on the tests that are relevant for what you are doing right now. You will use the same testing tools.
+
+#+BEGIN_SRC ditaa :file ./images/FTestingLevels.png
+  +------------------------------+  +-------------------------------+
+  | Inside the IDE               |  | Usability Testing             |
+  |               c7CC           |  | Acceptance Testing            |
+  +------------------------------+  |                               |
+  | As part of Compile-cycle     |  |                               |
+  |                         cBLU |  |                        cGRE   |
+  +------------------------------+  +-------------------------------+
+
+  +------------------------------+  +-------------------------------+
+  | Regression Tests             |  | "Release Hardening"           |
+  | During Commit           cBLU |  |                               |
+  +------------------------------+  |                               |
+  | Nightly Builds               |  |                               |
+  |                         cBLU |  |                        cGRE   |
+  +------------------------------+  +-------------------------------+
+#+END_SRC
+
+#+NAME: fig:TestingLevels
+#+CAPTION: Testing on different Levels
+#+RESULTS:
+[[file:./images/FTestingLevels.png]]
+
+What /will/ differ, however, is the framework within which your tests are running. Obviously, if your tests are run on-the-fly in your IDE, this needs to be supported. Testing as part of the compilation cycle rarely requires much in terms of extra frameworks. For example [[https://www.gnu.org/software/make/][make]], [[https://cmake.org/][cmake]], [[http://ant.apache.org/][Ant]], and [[https://maven.apache.org/][Maven]] are all capable of running your test suites according to your wishes, on your machine.
+
+... But what if your machine environment is not the environment in which your system is intended to run? Well, then you need to set up a virtual machine (or a collection of machines if your deployment environment is more complex) to run the tests on. [[https://www.virtualbox.org/][VirtualBox]] together with [[https://www.vagrantup.com/][Vagrant]] have helped me on more than one occasion with this.
+
+Further down the stack, you want tools that can set up these virtual machines, download your code, build it, and run tests all in one go, e.g. when you do a commit. [[https://jenkins.io/][Jenkins]] is a popular choice for this, if you have access to your own servers. For open source projects, [[https://travis-ci.org/getting_started][Travis CI]] is an ok choice. I think they have some limit to 100 builds or so before you have to start paying, though. Jenkins and Travis work on a slightly different philosophy. In Jenkins you set up the project and the build steps through an admin interface on the Jenkins server. In Travis you create a build script as part of your repository. For raisins, I am partial to the latter, and have recently been exploring [[https://drone.io/][Drone.io]] as a means to set up my own build server that works like Travis with a repository-based build script.
+
+But I digress.
+
+Backing up to the original topic, you will need to find an automated testing tool suitable for your programming language and your development environment. I list some tools below just to get you started.
+
+- Java: [[http://junit.org/][JUnit]]
+- Node.js (JavaScript): [[https://mochajs.org/][Mocha]] or [[http://jasmine.github.io/][Jasmine]]
+- JavaScript/JQuery (client side): [[https://qunitjs.com/][QUnit]]
+- C++, See e.g. the article [[http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle][Exploring the C++ Unit Testing Framework Jungle]] for a good discussion of some test frameworks, and what you should require from them
+- Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/ert.html][ERT]]
+- Or you can go to [[https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks][Wikipedia and see even more choices]]
+* TODO Learning Material
+** Book Chapters
+   - {{{larman}}}, Chapters:
+       21. [@21] Test-Driven Development and Refactoring	    
+** TODO Screencasts						   :noexport:
+** TODO Lectures						   :noexport:
+** Further Reading
+   - [[http://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html][The Cycles of TDD, by R.C. Martin]]
+   - [[http://www.jamesshore.com/Blog/Microsoft-Gets-TDD-Completely-Wrong.html][Microsoft Gets TDD Completely Wrong, by James Shore]] (Note: This article is not Microsoft bashing\trade -- they are only one among many to get it wrong)
+   - [[https://groups.yahoo.com/neo/groups/extremeprogramming/conversations/topics/111829][Guidelines for Unit Tests, by Michael Feathers]]
+   - [[http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle][Exploring the C++ Unit Testing Framework Jungle, by Noel Llopis]]
+* Experiential Learning
+** Sprint Test Plan
+   Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+   Revisit and update your risks and contingencies section.
+
+   Add and/or revise the following items to your glossary:
+   - Unit Testing
+   - Exploratory Testing
+   - Automated Testing
+   - Regression Testing
+   - Test Driven Development (TDD)
+   - Automated Test Frameworks
+   - Continuous Integration
+
+   Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+** Assignment: Create Test Suite
+      Create a regression test suite. You will continue to use and extend this test suite later in the course. At this stage, you are focussing on adding test cases for your API endpoints. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework. 
+
+      {{{tasks}}}
+      1. List all the system events from all the system sequence diagrams.
+      2. For each system event, identify preconditions (e.g. if the system event depends on that another event is triggered first).
+      3. For each system event, identify what inputs are allowed.
+      4. For each system event, identify what outputs are expected.
+      5. For each system event, Write one or several test in your test framework that tests for the allowed inputs and the expected outputs.
+	 
+      {{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+1. size of assignment: Are there test cases for all system events from all the system sequence diagrams?
+2. For each test case: Does it test normal input as well as explore boundary values?
+3. For each test case: Does the test case evaluate a meaningful behaviour?
+#+END_tip    
+** Update Course Backlog
+   How do can you come to an understanding of what the system needs to to as a response to a system event? What will change in the system, and how?
+   Are there meaningful tests you can do for your UML documentation? How would you automate this?
+
+   Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You bave created an automated test suite for your API endpoints
+  - You have committed/pushed this suite to your project repository
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog
+  - Set up a continuous integration solution to run your tests on commit   

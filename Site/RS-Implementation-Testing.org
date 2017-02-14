@@ -1,0 +1,66 @@
+#+Title: Release Sprint: Implementation and Testing
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t toc:t
+#+STARTUP: beamer
+#+TODO: TODO(t) | DONE(d!) WAIT(w!)
+
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
+#+HTML: <br/>
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: pa1415 PA1415 Software Design
+#+MACRO: pa1435 PA1435 Object Oriented Design
+#+MACRO: pa1434 PA1434 Basic Object Oriented Design
+#+MACRO: pa1443 PA1443 Introduction to Software Design and Architecture
+#+MACRO: larman C. Larman, /Applying UML and Patterns/, 3rd Edition
+#+MACRO: commit Commit and push this document to your project repository.
+#+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
+#+MACRO: tasks *Tasks:*
+#+MACRO: docStructure *Document Structure:*
+#+MACRO: condSat *Conditions of Satisfaction:*
+#+MACRO: assignment The title for this Assignment Document is: /$1 for System <system name>/
+
+
+* About this Sprint
+  This is a /release sprint/. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
+* User Stories covered in this Sprint
+  - As a teacher 
+  - As a teacher in the courses {{{pa1415}}}, {{{pa1435}}}, {{{pa1434}}}, and {{{pa1443}}} I want to evaulate the students' ability to understand and express how the objects in a system interacts so that I know they fulfil the corresponding course goals.
+  - As a teacher in the courses {{{pa1415}}}, {{{pa1435}}}, {{{pa1434}}}, and {{{pa1443}}} I want to evaulate the students' ability to express a system's static structre in terms of classes and packages so that I know they fulfil the corresponding course goals.
+* Course Goals covered in this Sprint
+  - (PA1415) i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram
+  - (PA1415) skapa och analysera objektorienterade artefakter uttryckta i UML
+
+  *Färdigheter och förmåga*
+  - (PA1435, PA1434, PA1443) kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
+  - (PA1435, PA1434) kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.
+  - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.
+* Learning Material
+  Please review the sprints concerning
+  - Concepts and Events
+  - Good Interactions
+  - Interactions and Structure
+* Experiential Learning
+** Assignment Submission   
+   {{{submit}}}
+   
+   Your submission shall include the following documents:
+   - Package Diagram
+   - Interaction Diagram
+   - Class and Package Diagram
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - [[./org/checked.png]] You have submitted the documents for marking.
+  - [[./org/checked.png]] You have received a passing grade from the teacher.
+
+  You may be asked to complement your submission with additional information.
+
+  You may also have:
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   
+

@@ -1,0 +1,240 @@
+#+Title: Sprint 0: Course Introduction
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t toc:t
+#+STARTUP: beamer
+#+TODO: TODO(t) | DONE(d!) WAIT(w!)
+
+
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
+#+HTML: <br/>
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: pa1415 PA1415 Software Design
+#+MACRO: pa1435 PA1435 Object Oriented Design
+#+MACRO: pa1434 PA1434 Basic Object Oriented Design
+#+MACRO: pa1443 PA1443 Introduction to Software Design and Architecture
+#+MACRO: larman C. Larman, /Applying UML and Patterns/, 3rd Edition
+#+MACRO: commit Commit and push this document to your project repository.
+#+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
+#+MACRO: tasks *Tasks:*
+#+MACRO: docStructure *Document Structure:*
+#+MACRO: condSat *Conditions of Satisfaction:*
+#+MACRO: assignment The title for this Assignment Document is: /$1 for System <system name>/
+
+* About This Sprint
+  This sprint introduces the course and the course structure.
+* User Stories covered in this Sprint
+  - As a student I want to pass this course.
+  - As a student I want to understand how this course is structured so that I can quickly find the information I need to learn the subject.
+  - As a student I want to know why this topic is important so that I can be properly motivated.
+* Introduction
+   Welcome to the course!
+
+   Of course you want to pass the course, and I want you to too. This document is intended to give an overview of how the course is structured, and give you a "map" of sorts to the rest of the course material. It is my hope that this will help you find the material you want easily so that you can focus on learning each part of the course.
+
+   The course is divided into a series of /Sprints/, that is, short iterations that focus on a small number of issues per sprint. I have borrowed this term from an agile development methodology called [[https://en.wikipedia.org/wiki/Scrum_(software_development)][Scrum]], which is something you will learn more about in this course and are sure to encounter in your future career as well.
+
+   Speaking of agile, there are a few other things I have borrowed from there as well. The /User Stories/ that each sprint document starts with is one such thing. A user story is a sort of stylised requirement, and I use them to set you into the right frame of mind for each sprint. As you notice, the user story contains information about which /perspective/ you should have, the /goals/ you should achieve, and a brief explanation of /why/ this goal is important.
+
+   Related to this is the /Sprint Acceptance Tests/ that you find at the bottom of each sprint document. These acceptance tests tell you how we plan on ensuring that the goal of the sprint has been reached.
+
+   The bulk of the sprint consists of /Learning Material/, and /Experiential Learning/. Learning material are book chapters, videos, blog posts, etc. that you can use to learn more about the topic in the sprint. Experiential Learning (which is not a good name, but I can't think of any better) consists of different activities you should /do/ as part of the sprint. Some of these activities are just practice activities. Others are activities that will help you organise the material better. Others again are those activities that we (as teachers) would like to look at to assess your progress. Let me repeat this:
+
+#+BEGIN_note
+Experiential Learning are things you are supposed to /do/, and includes:
+ - Things you do for practice
+ - Things you do to organise the material
+ - Things you may submit as assignments to the teachers for marking
+#+END_note
+
+   You will note that in some sprints you are expected to produce an assignment document and commit/push it to your project repository without actually submitting it for marking. These documents are intermediate steps, and you will be using the knowledge gained from them when creating the documents that /will/ be marked. In some cases, we will go back to them when marking a subsequent assignment to see that you have not missed anything. In other cases, we will go back to them to be able to follow your reasoning in your submission. I try to ensure that the overhead of creating these documents (as opposed to just doing the analysis/design work) is minimal. *Please* do not skip these documents just because they are not submitted; they are a helpful and sometimes necessary tool to be able to continue.
+
+   Exactly what documents you should deliver for marking is detailed in a set of /Release Sprints/, where you package and submit the previously created material.
+
+   Some activities are started during this initial sprint, and then I ask you to revisit them during every subsequent sprint. The idea with these activities are to help you structure your learning, and give you a means to follow your own progress.
+
+   So, without further ado, let's get started with the learning material. /Good Luck!/
+* Learning Material
+** Course Structure
+    The course has an online presence as well as a campus existense.
+
+    The online presence consists of these pages, and is organised as a set of sprints, where each sprint focus on a small topic and a few user stories. In each sprint there are things to read and watch, as well as activities to do. The result of some of those activities will be submitted as assignments for marking. This is further detailed in /Release Sprints/ where instructions about which documents to deliver are given.
+
+    The campus existense consists of lectures (that I try to run as seminars) and exercises. My idea is that you first study the online material, and then we can have lively discussions during the lectures/seminars. Basically, you go through the design notation and a basic understanding of the topic with the online material and then we discuss together what makes a /good/ design.
+
+#    The exercises are done in smaller groups and are more geared towards your specific assignments. Here, the idea is to go through what you are expected to do in the assignments and go through examples of this.
+
+#    There are also feedback meetings planned where you get feedback on the assignments that you submitted so that you may improve them.
+** Learning Outcomes
+These pages address the needs of the following courses:
+
+| Course code | Name                                               | Size | Programme                                                  |
+|-------------+----------------------------------------------------+------+------------------------------------------------------------|
+| PA1415      | Programvarudesign                                  |  7.5 | BSc i Spelprogrammering, BSc i IT-Säkerhet                 |
+| PA1434      | Grunder i Objektorienterad Design                  |    4 | CI i IndEk                                                 |
+| PA1435      | Objektorienterad Design                            |    6 | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
+| PA1443      | Introduktion till Programvarudesign och Arkitektur |    5 | BSc i Programvaruteknik                                    |
+|-------------+----------------------------------------------------+------+------------------------------------------------------------|
+
+
+The following learning outcomes apply to the different courses. As you notice, the PA1435 version is of a newer format, but also contains less focus on requirements engineering, project management, and testing activities. This will of course to some extent influence what you are expected to do and deliver, but will only have a limited effect on the lecture series since the topics are still quite intertwined.
+
+  | Course Code                    | Learning Outcomes                                                                                                                  |
+  |--------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+  | PA1415                         | - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation                    |
+  | PA1415                         | - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation                                          |
+  | PA1415 (PA1435/PA1434)         | - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram                                                |
+  | PA1415                         | - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design   |
+  | PA1415 (PA1443)                | - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation |
+  | PA1415 (PA1435/PA1434)         | - skapa och analysera objektorienterade artefakter uttryckta i UML                                                                 |
+  | PA1415 (PA1435/PA1434/ PA1443) | - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem                                                        |
+  |                                |                                                                                                                                    |
+  |                                | *Kunskap och förståelse*                                                                                                           |
+  | PA1435/PA1434/ PA1443          | - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.                                      |
+  | PA1435/PA1434                  | - kunna visa förståelse för UML som modelleringsspråk.                                                                             |
+  | PA1435/PA1434/ PA1443          | - kunna visa kunskap om grundläggande designprinciper.                                                                             |
+  | PA1435/PA1434/ PA1443          | - kunna visa kunskap om grundläggande designmönster.                                                                               |
+  | PA1443                         | - kunna visa kunskap om grundläggande mjukvaruarkitekturstilar                                                                     |
+  |                                |                                                                                                                                    |
+  |                                | *Färdigheter och förmåga*                                                                                                          |
+  | PA1435/PA1434/ PA1443          | - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.                                    |
+  | PA1435/PA1434                  | - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.                                                 |
+  | PA1435/PA1434                  | - kunna korrekt transformera en objektorienterad design till källkod.                                                              |
+  | PA1435/PA1434                  | - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.                                         |
+  | PA1443                         | - kunna tillämpa grundläggande designmönster i en objektorienterad design.                                                         |
+  | PA1443                         | - kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper                              |
+  | PA1443                         | - kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem                                                             |
+  | PA1443                         | - kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha                                  |
+  | PA1443                         | - kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system                                            |
+  |                                |                                                                                                                                    |
+  |                                | *Värderingsförmåga och förhållningssätt*                                                                                           |
+  | PA1435/ PA1434                 | - kunna analysera källkod för eventuella förbättringar.                                                                            |
+  | PA1435/PA1434/ PA1443          | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
+  |--------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+** TODO Why is this course Important?				   :noexport:
+** TODO Course Roadmap						   :noexport:
+** What should I do with the Sprint Test Plan?
+   The Sprint Test Plan is a way to get an overview of your expectations in the course, in relation to the provided material, and align it with my expectations as course responsible and examiner. In some sense, it is also your strategy for learning the topics. I will not mark your Sprint Test Plan -- you are creating and maintaining this for your own sake.
+
+   The Sprint Test Plan will be revisited during every sprint, so that you have an updated record of what you need to learn to pass the course.
+
+   I am loosely basing my suggestion for the Sprint Test Plan document on the IEEE 829-2008 standard. Feel free to add other information to it if you think it is relevant.
+** What is this "Course Backlog" thing?
+   As you study, I expect that you will get more questions, or additional information sources (blog pages etc.) that you would like to read, and I hope you will also get ideas for places where you would like to test what you have learnt. Put these into a course backlog document (it will help if you put them in a roughly prioritised order), and then spend time during each sprint to resolve your backlog items.
+
+   At the end of the course, it is my hope that your backlog contains pointers to yourself with how you should go forward with the knowledge gained. For example, how can you use what you have learnt in upcoming courses? Are there any particularly interesting things you have found that you would like to study more? Are there any courses you are interested in taking as a consequence of taking this course? Are there any courses you would like to /replace/ in your education as a consequence of taking this course? Are there any ideas you can use for your bachelor or master's thesis?
+
+   The course backlog is revisited in every sprint. I will not mark it; you create it for your own benefit.
+* Experiential Learning
+** Create Infrastructure
+   *Introduction.* In your future career you are going to use configuration management systems such as [[http://svnbook.red-bean.com/][Subversion]] or [[https://git-scm.com/][Git]], so why not start already now? This gives you an easy way to share work between your colleagues, and opens up for me to review your work even before you have submitted it.
+
+   If you also write your documents in for example [[https://daringfireball.net/projects/markdown/][Markdown]], they are formatted for you by github. Myself, I am partial to [[http://orgmode.org/][Org-mode]] and [[https://www.gnu.org/software/emacs/][Emacs]], especially because of the nice integration with [[http://plantuml.com/][PlantUML]] for generating design diagrams and the excellent export facilities. Org-mode is also nicely supported by github.
+
+   *Things to do:*
+   - [[https://education.github.com/][Create an account on Github]] (or use your existing one)
+   - Create a Project for the course ~OOD-<course code>-<your name>~
+   - Invite me ([[https://github.com/mickesv][mickesv]]) to the project
+   - checkout your project and create a directory structure:
+     - ~/Assignments/~
+     - ~/SprintTestPlan/~
+     - ~/CourseBacklog/~
+   - add a file to each directory, otherwise you will not be able to commit them. For example, add an empty ~.gitignore~ file to each directory.
+   - commit and push
+** Sprint Test Plan
+   Create a document with the following sections:
+   - /Test Items./ These are the assignments you are expected to submit for marking. It will probably be a good idea if you are able to tag them with the corresponding sprint, so that you can easily find them.
+   - /Features to be Tested./ These are the user stories at the top of every sprint. Describe each of these features in terms of the object oriented modelling concepts or software development concepts that you need to master before you can satisfy the user story.
+   - /Approach./ Here, you will describe /your/ strategy for ensuring that you have learnt the material in the sprint. How do you ensure that you are confident that the assignments you submit will pass with the grade you are aiming for?
+   - /Item Pass/Fail Criteria./ What do you have to be able to show to yourself to ensure that you have learnt the material in the sprint? What do you have to show in the submitted assignments?
+   - /Schedule./ When do you plan on passing each test item and feature?
+   - /Planning Risks and Contingencies./ Are there any foreseeable risks that may limit your ability to pass the course on time? What is your contingency plan?
+   - /Glossary./ In this section you will build up a glossary of important terms in the course that you can use when studying. I suggest you collaborate with the rest of the class in the course discussion forum (on It's Learning) and post your terms and definitions there so that they can be discussed.
+
+   In this sprint, the following items can be added already (you may think of more items, please add them too):
+
+   - Test Items
+     - Exam [[https://studentportal.bth.se/web/studentportal.nsf/web.xsp/tentamen_under_kommande_veckor][Check Date]]
+     - Exam Re-sit [[https://studentportal.bth.se/web/studentportal.nsf/web.xsp/tentamen_under_kommande_veckor][Check Date]]
+   - Approach
+     - Outline your plan for reading the book and doing the sprints in time to be ready for the exam.
+     - Describe your plan for joining a group of students (for the group assignments, and for study groups) with the same ambition level as you yourself have.
+   - Item Pass/Fail Criteria
+     - Outline your ambition level; what grade are you aiming for?
+   - Schedule
+     - Dates for assignment submissions are available on It's Learning. Copy them here.
+     - Add the exam dates.
+   - Planning Risks and Contingencies
+     - Do you plan on taking any vacations (e.g., skiing trip, easter, ascension day, etc.)? When will you study more to compensate for this? Are your team-mates informed and ok with that you contribute less during these vacations?
+     - What is the expected workload for the courses you may be taking in parallel? Does your plan for /this/ course accomodate your plans for the other courses?
+     - Do you have time available if you are asked to complete your submitted assignments with more information?
+     - Are there any other risks you see at this stage?
+   - Glossary
+     - Scrum
+     - Sprint
+     - User Story
+     - Test Plan
+** Buy Course Books
+*Main Literature (Both Courses)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/ILarman.jpg]]
+
+C. Larman, /Applying UML and Patterns/, Prentice Hall, 3rd Edition.
+
+This book is a complete guide to all things UML, with plenty of examples and detailed descriptions of all diagrams and how to think when using them. The reading instructions in each sprint are based on the 3rd edition, but I recommend you to try to find an older edition since they are essentially the same but with less text.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+*Reference Literature (PA1415)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/ISommerville.jpg]]
+
+I. Sommerville, /Software Engineering/, Pearson, 8th edition, 2006.
+
+There is also a 9th and a 10th edition (and, of course, the preceeding editions). It does not really matter which one you get. You will use this book as a reference to look up e.g. how a GANTT chart works in case the internet is down.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+*Reference Literature (PA1435)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/IGamma.jpg]]
+
+Gamma, Helm, Johnson, Vlissides, /Design Patterns, Elements of Reusable Object-Oriented Software/, Addison-Wesley Professional.
+
+This book, also called the Gang of Four book is /the/ reference work when it comes to design patterns. You will be using this book a lot in your future career. If you want to save some money, the most common design patterns are also covered in C. Larman (and these are the ones we will be focusing on in these courses).
+
+/Note to PA1415:/ I warmly recommend that you too get this book even if it is not oficially part of "your" course plan.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/INystrom.jpg]]
+
+R. Nystrom, /Game Programming Patterns/, Genever Benning, 2014.
+
+Also Available at: http://gameprogrammingpatterns.com/contents.html
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+#+HTML: &nbsp;
+** Form Groups
+   We expect the assignments to be done in /groups of three to five people/. Use the following (in this order) to find and/or form a group:
+
+   1. Your friends
+   2. It's Learning
+   3. First Classroom Lecture
+   4. Course Teacher
+
+   Decide in your group how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
+** Update Course Backlog
+   Where do you go from here? Are there any questions already now that you want answered? Add them, along with a brief strategy for how to find an answer.
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have bought the literature you want/need for the course.
+  - You have joined a group.
+  - You have created a github account, created a project repository, and committed/pushed the directory structure.
+  - You have read the Learning Materials
+
+  You may also have
+  - Created a Sprint Test Plan
+  - Created a Course Backlog
