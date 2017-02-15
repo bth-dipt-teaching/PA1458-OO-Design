@@ -1,5 +1,7 @@
 #+Title: PA1434 Basic Object Oriented Design
 #+INCLUDE: "./org/header.org-in" org
+#+OPTIONS: toc:nil
+
 
 * Sprints, Lectures, and Seminars
 |                                     | Time | Sprint                                          | Lecture                        | Seminar                                   |
@@ -8,9 +10,9 @@
 | [[./images/Icon-Lecture.jpg]]           |      |                                                 | Introduction                   |                                           |
 | [[./images/Icon-Sprint.jpg]]            |      | [[./Use-Cases.org][Use Cases and Use Case Diagrams]]                 |                                |                                           |
 | [[./images/Icon-Lecture.jpg]]           |      |                                                 | User Stories and UML Use Cases |                                           |
-| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | Requirements, Use Cases, Project Planning |
+| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | [[./SEM-Requirements.org][Requirements, Use Cases, Project Planning]] |
 | [[./images/Icon-Release.jpg]]           |      | [[./RS-Use-Cases.org][Release Sprint: Use Cases]]                       |                                |                                           |
-| [[./images/Icon-AssignmentSeminar.jpg]] |      |                                                 |                                | Discuss Assignment 1                      |
+| [[./images/Icon-AssignmentSeminar.jpg]] |      |                                                 |                                | [[./SEM-Release1.org][Discuss Release 1]]                         |
 | [[./images/Icon-Sprint.jpg]]            |      | [[./Concepts-Events.org][Concepts and Events]]                             |                                |                                           |
 | [[./images/Icon-Lecture.jpg]]           |      |                                                 | Structure                      |                                           |
 | [[./images/Icon-Lecture.jpg]]           |      |                                                 | Behaviour                      |                                           |
@@ -18,12 +20,12 @@
 | [[./images/Icon-Sprint.jpg]]            |      | [[./Interactions-Structure.org][Interactions and Structure]]                      |                                |                                           |
 | [[./images/Icon-Sprint.jpg]]            |      | [[./Design-Patterns.org][Design Patterns]]                                 |                                |                                           |
 | [[./images/Icon-Lecture.jpg]]           |      |                                                 | Design Patterns                |                                           |
-| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | Structure and Design Patterns             |
+| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | [[./SEM-Structure.org][Structure and Design Patterns]]             |
 | [[./images/Icon-Release.jpg]]           |      | [[./RS-OOD.org][Release Sprint: Object Oriented Design]]          |                                |                                           |
-| [[./images/Icon-AssignmentSeminar.jpg]] |      |                                                 |                                | Discuss Assignment 2                      |
+| [[./images/Icon-AssignmentSeminar.jpg]] |      |                                                 |                                | [[./SEM-Release2.org][Discuss Release 2]]                         |
 | [[./images/Icon-Sprint.jpg]]            |      | [[./Implementation.org][Implementation and Designing the User Interface]] |                                |                                           |
 | [[./images/Icon-Lecture.jpg]]           |      |                                                 | From Design to Code            |                                           |
-| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | Open Discussion                           |
+| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | [[./SEM-OpenDiscussion.org][Open Discussion]]                           |
 |-------------------------------------+------+-------------------------------------------------+--------------------------------+-------------------------------------------|
 
 * Lost Puppies							   :noexport:

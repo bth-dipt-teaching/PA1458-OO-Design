@@ -1,6 +1,6 @@
 #+Title: Software Design Courses
 #+INCLUDE: "./org/header.org-in" org
-
+#+OPTIONS: toc:nil
 
 * Welcome
 
@@ -12,10 +12,12 @@
 
 Please use the appropriate start page as listed below:
 
-- [[./PA1415.org][{{{pa1415}}}]] 7.5 ECTS, Spelprogrammering, IT-säkerhet
-- [[./PA1434.org][{{{pa1434}}}]] 4 ECTS, CI i Industriell Ekonomi
-- [[./PA1435.org][{{{pa1435}}}]] 6 ECTS, CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi (Check which course code you are following!)
-- [[./PA1443.org][{{{pa1443}}}]] 5 ECTS, Programvaruteknik
+| Course       | Size     | Programme(s)                                               |
+|--------------+----------+------------------------------------------------------------|
+| [[./PA1415.org][{{{pa1415}}}]] | 7.5 ECTS | Spelprogrammering, IT-säkerhet                             |
+| [[./PA1435.org][{{{pa1435}}}]] | 6 ECTS   | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
+| [[./PA1443.org][{{{pa1443}}}]] | 5 ECTS   | Programvaruteknik                                          |
+|--------------+----------+------------------------------------------------------------|
 
 * Lost puppies							   :noexport:
   The involved courses are (names in Swedish, because raisins):
@@ -27,3 +29,6 @@ Please use the appropriate start page as listed below:
 | PA1435      | Objektorienterad Design                            |                6 | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
 | PA1443      | Introduktion till Programvarudesign och Arkitektur |                5 | BSc i Programvaruteknik                                    |
 |-------------+----------------------------------------------------+------------------+------------------------------------------------------------|
+
+
+| [[./PA1434.org][{{{pa1434}}}]] | 4 ECTS   | CI i Industriell Ekonomi                                                                                |

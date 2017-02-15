@@ -1,0 +1,24 @@
+#+Title: Seminar: Structure and Design Patterns
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Seminar
+  The purpose of this seminar is to further discuss UML Concepts and Classes, and how to design them by studying the interactions between concepts and classes. The purpose is also to discuss some common Design Patterns and how to use them to help structuring an application design. 
+* Preparations Before the Seminar
+  - Study the following Design Patterns:
+    - Observer
+    - Strategy
+    - Singleton
+    - Factory
+  - Consider whether these are at all relevant in your programming language (Hint: Dynamically typed languages have less use for the traditional design patterns).
+  - Construct simple examples with a small set of classes that uses each of the design patterns.
+    - How do you assign the different roles in the design pattern?
+    - Which methods are necessary to make the design pattern work as intended?
+    - How does this work in your programming language of choice?
+* Seminar Agenda
+  1. Brief Recap (~= 15 min)
+     1. Concepts and Classes
+     2. Classes and Objects
+     3. Class Diagrams
+  2. Example and Discussion: From Interaction Diagram to Class Diagram (~= 15 min)
+  3. Introduction to and Discussion of Release 2 (~= 15 min)
+  4. Discussion of Design Patterns and how to use them.

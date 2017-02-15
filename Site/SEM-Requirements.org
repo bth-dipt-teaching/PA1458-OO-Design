@@ -1,0 +1,37 @@
+#+Title: Seminar: Requirements, Use Cases, Project Planning
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Seminar
+  The purpose of this seminar is to get a quick recap on the topics of requirements/user stories, UML use cases, and project planning. The seminar is based on discussions around material that you provide.
+
+* Preparations Before the Seminar
+  - Identify a handful of requirements and/or user stories that you want to discuss. Examples of discussions include (but is not limited to):
+    - You want a run-down of the syntax of user stories or requirements.
+    - You want to discuss how to capture a certain aspect of the requirement.
+    - You want to discuss how a particular requirement relates to other requirements.
+    - You want to discuss how you should get more information about a requirement.
+    - You want to discuss how the requirement is best translated to a user story.
+    - You want to discuss how the requirement is best translated to a UML use case.
+    - You are particularly proud of the requirement and want to show this to the rest of the group.
+  - Identify UML use cases that you would like to discuss. Examples of discussions include (but is not limited to):
+    - You want a run-down of the syntax of UML use cases.
+    - You want to discuss UML Use Case Diagrams and how to make them.
+    - You want to discuss a particular aspect of a UML use case.
+    - You want to discuss how to model actors and actor behaviour in use case diagrams or use cases.
+    - You want to discuss how to relate a single UML use case to one or several requirements/user stories.
+    - You just want to show a use case that you think turned out well.
+  - Bring your project plan (Assignment Plan) for the course. Be prepared to show and to discuss:
+    - Your work breakdown structure.
+    - Your burndown chart.
+    - Your time plan (e.g. in the form of a GANTT chart).
+    - Your choice of development methodology.
+* Seminar Agenda
+  1. Brief Recap (~= 15 min)
+     1. Requirements and User Stories
+     2. UML Use Case Diagrams
+     3. UML Use Cases
+     4. Project Planning (WBS, GANTT, Burndown Charts)
+  2. Introduction to, and Discussion of Release 1 (~= 15min)
+  3. Discussion of UML Use Cases (20 min)
+  4. Discussion of Requirements and User Stories (20 min)
+  5. Discussion of Project Plans (20 min)

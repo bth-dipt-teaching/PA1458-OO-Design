@@ -1,0 +1,16 @@
+#+Title: Seminar: Discuss Release 2
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Seminar
+  The purpose of this seminar is to discuss common issues identified while marking Release 2, and to further discuss any learning opportunities that you may have identified.
+
+  *NOTE:* If you have any disagreements with how the assignment was marked please contact the teacher separately /after/ this seminar to book a meeting where you may discuss your solution and the received feedback in detail.
+
+* Preparations Before the Seminar
+  - Submit the release for marking.
+  - Reflect upon the received feedback and make note of comments where you like to find out more.
+* Seminar Agenda
+  1. Quick rundown of the Assignment (with brief examples)
+  2. Discussion of Common Issues
+  3. General Discussion

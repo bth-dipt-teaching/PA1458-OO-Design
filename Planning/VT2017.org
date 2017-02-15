@@ -1,31 +1,5 @@
 #+Title: Software Design Courses
-#+Subtitle: PA1415, PA1435
-#+Author: Mikael Svahnberg
-#+Email: Mikael.Svahnberg@bth.se
-#+Date: 2016-08-18
-#+EPRESENT_FRAME_LEVEL: 1
-#+OPTIONS: email:t <:t todo:t f:t ':t toc:t
-#+STARTUP: beamer
-#+TODO: TODO(t) | DONE(d!) WAIT(w!)
-
-
-#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
-#+HTML: <br/>
-
-#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
-#+BEAMER_THEME: BTH_msv
-
-#+MACRO: pa1415 PA1415 Software Design
-#+MACRO: pa1435 PA1435 Object Oriented Design
-#+MACRO: pa1434 PA1434 Basic Object Oriented Design
-#+MACRO: pa1443 PA1443 Introduction to Software Design and Architecture
-#+MACRO: larman C. Larman, /Applying UML and Patterns/, 3rd Edition
-#+MACRO: commit Commit and push this document to your project repository.
-#+MACRO: submit Submit the assignment as one or several PDFs on It's Learning.
-#+MACRO: tasks *Tasks:*
-#+MACRO: docStructure *Document Structure:*
-#+MACRO: condSat *Conditions of Satisfaction:*
-#+MACRO: assignment The title for this Assignment Document is: /$1 for System <system name>/
+#+INCLUDE: "../Site/org/header.org-in" org
 
 
 
@@ -85,6 +59,76 @@
  |--------------------------+----------------------------------------+--------------+--------+--------+--------|
  :END:
 
+
+ Connection between Lectures and Sprints, and which courses should follow what lectures/Sprints
+ | Offset week | Week | Lecture                        | Seminar                       | Sprint                                          | PA1415 | PA1434 | PA1435 | PA1443 |                                            |
+ |             |      |                                |                               |                                                 | 7.5 hp | 4 hp   | 6 hp   | 5 hp   |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |           1 |   13 | Introduction                   |                               | Course Introduction                             | X      | X      | X      |        |                                            |
+ |           1 |   13 | Development Process            |                               | Development Methodologies                       | X      |        |        |        |                                            |
+ |           2 |   14 | Requirements Engineering       |                               | Requirements Engineering                        | X      |        |        |        |                                            |
+ |       mid 2 |   14 | Introduction (rep)             |                               | Course Introduction                             |        |        |        | X      |                                            |
+ |      late 2 |   14 | User Stories and UML Use Cases |                               | Use Cases and Use Case Diagrams                 | X      | X      | X      | X      | x2                                         |
+ |      late 2 |   14 |                                | Req, Use Case, Planning       |                                                 | S      | S      | S      | S      |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |       mid 3 |   15 |                                |                               | Release Sprints A1v1 (Req & UC)                 | A1v1   |        |        |        |                                            |
+ |       mid 3 |   15 |                                |                               | A1v2 (UC)                                       |        | A1v2   | A1v2   |        |                                            |
+ |     early 5 |   17 |                                |                               | A1v2 (UC)                                       |        |        |        | A1v2   |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |           3 |   15 | Structure                      |                               | Concepts and Events                             | X      | X      | X      | X      | x2                                         |
+ |           3 |   15 | Testing                        |                               | Testing                                         | X      |        |        | X      |                                            |
+ |     early 4 |   16 |                                | Discuss A1                    |                                                 | AS     | AS     | AS     |        |                                            |
+ |           4 |   16 | Behaviour                      |                               | State Diagram                                   | X      |        |        |        | x2                                         |
+ |           " |    " | "                              |                               | Good Interactions                               | X      | X      | X      | X      | "                                          |
+ |           " |    " | "                              |                               | Interactions and Structure                      | X      | X      | X      | X      | "                                          |
+ |           4 |   16 | Design Patterns                |                               | Design Patterns                                 | X      | X      | X      | X      | x2                                         |
+ |           5 |   17 |                                | Structure and Design Patterns |                                                 | S      | S      | S      | S      |                                            |
+ |      late 5 |   17 |                                | Discuss A1                    |                                                 |        |        |        | AS     |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |           6 |   18 |                                |                               | Release Sprints A2v1 (OODesign)                 | A2v1   | A2v1   | A2v1   |        |                                            |
+ |           7 |   19 |                                |                               |                                                 |        |        |        | A2v1   |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |           5 |   17 | Software Architectures         |                               | Introduction to Software Architectures          |        |        |        | X      |                                            |
+ |           " |    " | "                              |                               | Software Architecture Patterns                  |        |        |        | X      |                                            |
+ |           5 |   17 | Quality Attributes             |                               | Introduction to Software Architectures          |        |        |        | X      |                                            |
+ |           5 |   17 | From Design to Code            |                               | Implementation and Designing the User Interface | X      | X      | X      | X      | x2                                         |
+ |           6 |   18 |                                | Software Architectures        |                                                 |        |        |        | S      |                                            |
+ |           6 |   18 |                                | Open Discussion               |                                                 | S      | S      | S      | S      |                                            |
+ |           7 |   19 |                                | Discuss A2                    |                                                 | AS     | AS     | AS     | AS     |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |           8 |   20 |                                |                               | Release Sprint A3v1 (Testing, Implementation)   | A3v1   |        | A3v1   |        |                                            |
+ |      late 8 |   20 |                                |                               | A3v2 (Testing)                                  |        |        |        | A3v2   | Merge A3v2 and A4v1?                       |
+ |           9 |   21 |                                |                               | Release Sprint A4v1 (Architecture)              |        |        |        | A4v1   |                                            |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |           7 |   19 | Questions and Answers          |                               | Preparing for the Exam                          | X      | X      | X      | X      | x2                                         |
+ |           " |    " | "                              |                               | Finalising the Course                           | X      | X      | X      | X      | "                                          |
+ |           9 |   21 |                                | Demo & Discuss A3             |                                                 | AS     | AS     | AS     | AS     | Possible? Exam weeks? Book times per group |
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
+ |             |      | # Lectures                     |                               |                                                 | 10     | 7      | 7      | 11     |                                            |
+
+ Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
+* TODO Pick System!
+* TODO 3 week roll cal
+* TODO Group and Team Instructions
+* DONE Seminars [7/7]
+  CLOSED: [2017-02-15 Wed 13:37]
+** DONE Requirements Use Cases Project Planning
+   CLOSED: [2017-02-15 Wed 13:37]
+** DONE Discuss Assignment 1
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Structure and Design Patterns
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Software Architectures
+   CLOSED: [2017-02-15 Wed 13:37]
+** DONE Open Discussion
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Discuss Assignment 2
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Demo and Discuss Assignment 3
+   CLOSED: [2017-02-14 Tue 14:56]
+* TODO PA1443 Assigment 3/4
+* TODO Lectures
  Lectures
  1. [ ] Introduction
     - Course Intro
@@ -142,157 +186,6 @@
      - Tactics
  11. [ ] From Design to Code
  12. [ ] Q&A
-
- Connection between Lectures and Sprints, and which courses should follow what lectures/Sprints
- | Offset week | Week | Lecture                        | Seminar                       | Sprint                                          | PA1415 | PA1434 | PA1435 | PA1443 |                                            |
- |             |      |                                |                               |                                                 | 7.5 hp | 4 hp   | 6 hp   | 5 hp   |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |           1 |   13 | Introduction                   |                               | Course Introduction                             | X      | X      | X      |        |                                            |
- |           1 |   13 | Development Process            |                               | Development Methodologies                       | X      |        |        |        |                                            |
- |           2 |   14 | Requirements Engineering       |                               | Requirements Engineering                        | X      |        |        |        |                                            |
- |       mid 2 |   14 | Introduction (rep)             |                               | Course Introduction                             |        |        |        | X      |                                            |
- |      late 2 |   14 | User Stories and UML Use Cases |                               | Use Cases and Use Case Diagrams                 | X      | X      | X      | X      | x2                                         |
- |      late 2 |   14 |                                | Req, Use Case, Planning       |                                                 | S      | S      | S      | S      |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |       mid 3 |   15 |                                |                               | Release Sprints A1v1 (Req & UC)                 | A1v1   |        |        |        |                                            |
- |       mid 3 |   15 |                                |                               | A1v2 (UC)                                       |        | A1v2   | A1v2   |        |                                            |
- |     early 5 |   17 |                                |                               | A1v2 (UC)                                       |        |        |        | A1v2   |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |           3 |   15 | Structure                      |                               | Concepts and Events                             | X      | X      | X      | X      | x2                                         |
- |           3 |   15 | Testing                        |                               | Testing                                         | X      |        |        | X      |                                            |
- |     early 4 |   16 |                                | Discuss A1                    |                                                 | AS     | AS     | AS     |        |                                            |
- |           4 |   16 | Behaviour                      |                               | State Diagram                                   | X      |        |        |        | x2                                         |
- |           " |    " | "                              |                               | Good Interactions                               | X      | X      | X      | X      | "                                          |
- |           " |    " | "                              |                               | Interactions and Structure                      | X      | X      | X      | X      | "                                          |
- |           4 |   16 | Design Patterns                |                               | Design Patterns                                 | X      | X      | X      | X      | x2                                         |
- |           5 |   17 |                                | Structure and Design Patterns |                                                 | S      | S      | S      | S      |                                            |
- |      late 5 |   17 |                                | Discuss A1                    |                                                 |        |        |        | AS     |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |           6 |   18 |                                |                               | Release Sprints A2v1 (OODesign)                 | A2v1   | A2v1   | A2v1   |        |                                            |
- |           7 |   19 |                                |                               |                                                 |        |        |        | A2v1   |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |           5 |   17 | Software Architectures         |                               | Introduction to Software Architectures          |        |        |        | X      |                                            |
- |           " |    " | "                              |                               | Software Architecture Patterns                  |        |        |        | X      |                                            |
- |           5 |   17 | Quality Attributes             |                               | Introduction to Software Architectures          |        |        |        | X      |                                            |
- |           5 |   17 | From Design to Code            |                               | Implementation and Designing the User Interface | X      | X      | X      | X      | x2                                         |
- |           6 |   18 |                                | Software Architectures        |                                                 |        |        |        | S      |                                            |
- |           6 |   18 |                                | Open Discussion               |                                                 | S      | S      | S      | S      |                                            |
- |           7 |   19 |                                | Discuss A2                    |                                                 | AS     | AS     | AS     | AS     |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |           8 |   20 |                                |                               | Release Sprint A3v1 (Testing, Implementation)   | A3v1   |        | A3v1   |        |                                            |
- |      late 8 |   20 |                                |                               | A3v2 (Testing)                                  |        |        |        | A3v2   | Merge A3v2 and A4v1?                       |
- |           9 |   21 |                                |                               | Release Sprint A4v1 (Architecture)              |        |        |        | A4v1   |                                            |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |           7 |   19 | Questions and Answers          |                               | Preparing for the Exam                          | X      | X      | X      | X      | x2                                         |
- |           " |    " | "                              |                               | Finalising the Course                           | X      | X      | X      | X      | "                                          |
- |           9 |   21 |                                | Demo & Discuss A3             |                                                 | AS     | AS     | AS     | AS     | Possible? Exam weeks? Book times per group |
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |-------------+------+--------------------------------+-------------------------------+-------------------------------------------------+--------+--------+--------+--------+--------------------------------------------|
- |             |      | # Lectures                     |                               |                                                 | 10     | 7      | 7      | 11     |                                            |
-
- Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
-
-#+BEGIN_SRC dot :file ./images/FSprintMap.svg
-digraph {
-rankdir=TB;
-splines=true;
-node [style=filled,fillcolor="/greens3/2"];
-
-s0 [label="Sprint 0: Course Introduction"]
-devmet [label="Development Methodologies"]
-re [label="Requirements Engineering"]
-ucd [label="Use Cases and Use Case Diagrams"]
-ce [label="Concepts and Events"]
-tst [label="Testing"]
-sd [label="State Diagram"]
-goodint [label="Good Interactions"]
-interact [label="Interactions and Structure"]
-dp [label="Design Patterns"]
-ui [label="Designing the User Interface"]
-sa [label="Introduction to Software Architectures"]
-sap [label="Software Architecture Patterns"]
-impl [label="Implementation"]
-exam [label="Preparing for Exam"]
-s99 [label="Sprint 99: Course Wrapup"]
-
-
-subgraph cluster_intro {
-label="Course Introduction";
-s0
-}
-
-subgraph cluster_development {
-label="Software Development";
-devmet -> re
-}
-
-subgraph cluster_ooa {
-label="Object Oriented Analysis";
-ucd -> ce -> sd
-}
-
-subgraph cluster_qa {
-label="Quality Assurance";
-tst
-}
-
-subgraph cluster_ood {
-label="Object Oriented Design";
-goodint -> interact -> dp
-}
-
-
-subgraph cluster_sa {
-label="Software Architecture";
-sa -> sap
-}
-
-subgraph cluster_impl {
-label="From Design to Code";
-ui -> impl
-}
-
-subgraph cluster_wrapup {
-label="Course Wrap-up"
-exam -> s99
-}
-
-subgraph PA1415 {
-node [style=filled,fillcolor="/greens3/2"];
-edge [label="PA1415", color="green", fontcolor="green"]
-s0 -> devmet
-re -> ucd
-sd -> tst
-tst-> goodint
-dp -> sa
-sap -> ui
-impl -> exam
-}
-
-  
-subgraph PA1435 {
-node [style=filled,fillcolor="/blues3/2"];
-edge [label="PA1435", color="blue", fontcolor="blue"]
-s0 -> ucd 
-sd -> tst -> goodint
-dp -> sa
-sap -> ui
-impl -> exam
-}
- 
-subgraph PA1443 {
-node [style=filled,fillcolor="/bupu3/2"];
-edge [label="PA1443", color="blueviolet", fontcolor="blueviolet"]
-s0 -> ucd
-ce -> goodint
-dp -> impl
-impl -> exam
-}
-
-}
-#+END_SRC
-
-* TODO Pick System!
 * DONE Sprint 0: Course Introduction
   CLOSED: [2017-02-08 Wed 14:34]
   :LOGBOOK:  
@@ -2394,3 +2287,103 @@ https://pixabay.com/en/users/3dman_eu-1553824/
 	- Discuss: Good or Bad? Better to Fail Early?
 ** Links							   :noexport:
    IEEE 829-2008: http://www.fit.vutbr.cz/study/courses/ITS/public/ieee829.html
+** Lost Puppies							   :noexport:
+#+BEGIN_SRC dot :file ./images/FSprintMap.svg
+digraph {
+rankdir=TB;
+splines=true;
+node [style=filled,fillcolor="/greens3/2"];
+
+s0 [label="Sprint 0: Course Introduction"]
+devmet [label="Development Methodologies"]
+re [label="Requirements Engineering"]
+ucd [label="Use Cases and Use Case Diagrams"]
+ce [label="Concepts and Events"]
+tst [label="Testing"]
+sd [label="State Diagram"]
+goodint [label="Good Interactions"]
+interact [label="Interactions and Structure"]
+dp [label="Design Patterns"]
+ui [label="Designing the User Interface"]
+sa [label="Introduction to Software Architectures"]
+sap [label="Software Architecture Patterns"]
+impl [label="Implementation"]
+exam [label="Preparing for Exam"]
+s99 [label="Sprint 99: Course Wrapup"]
+
+
+subgraph cluster_intro {
+label="Course Introduction";
+s0
+}
+
+subgraph cluster_development {
+label="Software Development";
+devmet -> re
+}
+
+subgraph cluster_ooa {
+label="Object Oriented Analysis";
+ucd -> ce -> sd
+}
+
+subgraph cluster_qa {
+label="Quality Assurance";
+tst
+}
+
+subgraph cluster_ood {
+label="Object Oriented Design";
+goodint -> interact -> dp
+}
+
+
+subgraph cluster_sa {
+label="Software Architecture";
+sa -> sap
+}
+
+subgraph cluster_impl {
+label="From Design to Code";
+ui -> impl
+}
+
+subgraph cluster_wrapup {
+label="Course Wrap-up"
+exam -> s99
+}
+
+subgraph PA1415 {
+node [style=filled,fillcolor="/greens3/2"];
+edge [label="PA1415", color="green", fontcolor="green"]
+s0 -> devmet
+re -> ucd
+sd -> tst
+tst-> goodint
+dp -> sa
+sap -> ui
+impl -> exam
+}
+
+  
+subgraph PA1435 {
+node [style=filled,fillcolor="/blues3/2"];
+edge [label="PA1435", color="blue", fontcolor="blue"]
+s0 -> ucd 
+sd -> tst -> goodint
+dp -> sa
+sap -> ui
+impl -> exam
+}
+ 
+subgraph PA1443 {
+node [style=filled,fillcolor="/bupu3/2"];
+edge [label="PA1443", color="blueviolet", fontcolor="blueviolet"]
+s0 -> ucd
+ce -> goodint
+dp -> impl
+impl -> exam
+}
+
+}
+#+END_SRC

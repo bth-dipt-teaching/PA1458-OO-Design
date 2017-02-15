@@ -1,0 +1,19 @@
+#+Title: Seminar: Software Architectures
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Seminar
+  The purpose of this seminar is to further discuss common Software Architecture Patterns, and Architecture Tactics.
+* Preparations Before the Seminar
+  - Study the tactics for /Modifiability/, /Performance/, and /Testability/.
+    - For each tactic, try to come up with concrete examples of how you would apply the tactic in a real system. What challenges do you see?
+  - Study the architecture patterns /Layered/, /Model-View-Controller/, and /Microkernel/.
+    - For each pattern, try to come up with concrete examples of systems that uses the pattern.
+    - When you implement a system with a specific architecture pattern, how do you ensure that you at the same time retain good design principles such as high cohesion and low coupling?
+    - How does your choice of architecture pattern influence your code structure (e.g. into packages)?
+* Seminar Agenda
+  - Brief overview of Architecture Patterns
+    - Layered
+    - Model-View-Controller
+    - Microkernel
+  - Brief overview of Architecture Tactics and how to use them when designing a software architecture
+  - Example and Discussion of designing an architecture with the help of architecture tactics.

@@ -1,0 +1,11 @@
+#+Title: Seminar: Open Discussion
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Seminar
+  The purpose of this seminar is to discuss any questions you may have and any learning opportunities that you may have identified.
+
+* Preparations Before the Seminar
+  - Are there any outstanding issues that you would like to discuss further?
+* Seminar Agenda
+  1. Open Discussion

@@ -1,0 +1,17 @@
+#+Title: Seminar: Demo and Discuss Release 3
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Seminar
+  The purpose of this seminar is to discuss your design in relation to your implementation and test plan.
+* Sign up for a Time to Demo
+  The seminar responsible will post a schedule with time slots where you can sign up to show your design, implementation, test plan, and your system. Make sure you sign up for one of the time slots.
+* Preparations Before the Seminar
+  - Submit the release for marking.
+  - Reflect upon the received feedback and make note of comments where you like to find out more.
+  - Be prepared to run your implemented system and to show the code.
+  - Be prepared to map your code to your design (e.g. answering questions such as "show me where this method is implemented", "Where is the interaction diagram for this method?", etc.
+  - Be prepared to map your implementation to your test plan (e.g. answering questions such as "Show me the test case for this feature", "Where do you test this method?", "Which classes are tested by this test case?", etc.
+* Seminar Agenda
+  There is no specific agenda for this seminar, but rather a discussion between the seminar responsible and yourself.
+
