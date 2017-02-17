@@ -64,7 +64,7 @@ The next step is to find a tactic that can control the response such that the re
 Notice that tactics do not tell you exactly which components are needed, or what responsibilities they should have. Instead they merely discuss the solution, and things to consider when using this particular solution. It is then up to you to define which components you will need to implement the tactic, and where in your overall architecture (e.g. which layers) they fit. Not only does this give you a freedom as software designer, it enabled Bass and his colleagues to discuss and categorise architecture solutions for quality requirements that were traditionally "ignored" because they could not be expressed as a set of interacting components.
 
 ** One More Thing...
-   One part of architecture patterns which I have not mentioned yet is that just as there are basic design principles for object oriented designs, there are also good practices for architectures. {{{larman}}} summarises a set of these with respect to package design (which is as close to architectures as the Larman book goes). These principles should be applied even when working within a particular architecture pattern or when designing in a particular architecture tactic.
+   One part of architecture patterns which I have not mentioned yet is that just as there are basic design principles for object oriented designs, there are also good practices for architectures. {{{larman}}} summarises a set of these with respect to package design. These principles should be applied even when working within a particular architecture pattern or when designing in a particular architecture tactic.
 * TODO Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:
@@ -170,7 +170,7 @@ When marking this part of the assignment we are looking for the following:
 #+BEGIN_info
 {{{DocStructure}}}
 
-{{{assignment(Architecture Tactics)}}}
+{{{assignment(Software Architecture and Architecture Tactics)}}}
 #+INCLUDE: "./DocStruct.org" org
 
 3. [@3] Architecture Tactics
@@ -213,6 +213,9 @@ When marking this part of the assignment we are looking for the following:
   You are done with this sprint when:
   - You have created quality attribute scenarios for your most important quality attributes.
   - You have explored architecture tactics that address your quality attribute scenarios.
+  - You have updated your software architecture according to the tactics.
+  - You have committed/pushed these documents to your project repository.
+
 
   You may also have
   - Explored architecture challenges and tactics for one or more open-source system.

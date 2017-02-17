@@ -21,7 +21,7 @@
   - (PA1435, PA1434) kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.
   - (PA1435, PA1434) kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.
   - (PA1435, PA1434) kunna tillämpa grundläggande designmönster i en objektorienterad design.
-  - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.
+  - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.    
 * Learning Material
   Please review the sprints concerning
   - Concepts and Events
@@ -36,7 +36,7 @@
    - Interaction Diagram
    - Class and Package Diagram
 
-   These documents shall be revised to use relevant design patterns (and document their use).
+   These documents shall be revised to use relevant design patterns (and document their use).   
 * Sprint Acceptance Tests
   You are done with this sprint when:
   - [[./org/checked.png]] You have submitted the documents for marking.

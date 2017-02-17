@@ -1,0 +1,95 @@
+#+Title: Release Sprint: Software Architecture and Testing
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About this Sprint
+  This is a /release sprint/. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
+* User Stories covered in this Sprint
+  - As a teacher I want to evaluate the students' ability to "raise" a detailed design into a workable software architecture solution so that I know they fulfil the corresponding course goals.
+  - As a teacher I want to evaluate the students' ability to "raise" a detailed design into a workable software architecture solution so that I know they have an understanding of software architecture solutions and how they work.
+  - As a teacher I want to evaluate the students' ability to test an implemented system according to a test plan so that I know they understand how to translate a design to a test plan and how to execute this test plan.
+* Course Goals covered in this Sprint
+  - (PA1415, PA1443) på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation.
+
+  *Kunskap och Förståelse*
+  - (PA1443) kunna visa kunskap om grundläggande mjukvaruarkitekturstilar.
+
+  *Färdigheter och förmåga*
+  - (PA1443) kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem.
+  - (PA1443) kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha.
+  - (PA1443) kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system.
+
+  *Värderingsförmåga och förhållningssätt*
+  - (PA1434, PA1435, PA1443) kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+* Learning Material
+  Please review the sprints concerning
+  - Testing
+  - Interactions and Structure
+  - Introduction to Software Architectures
+  - Software Architecture Patterns
+* Experiential Learning
+** Assignment: System Testing
+   Create a test plan for your system that builds upon your previously created test suite.
+
+   {{{tasks}}}
+   - Describe your test strategy.
+   - Describe your system tests.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Detailed Use Cases (Iteration 1))}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Test Strategy
+   - Describe your test strategy:
+     - What types of tests will you run?
+     - When will you run them?
+     - According to what rules will you run and re-run your tests?
+     - Which parts of your tests will be automated, and which parts will be manual?
+     - What tools will you use for automated testing?
+     - How will you ensure that as much as possible of your system is tested?
+       - How will you calculate your test coverage?
+4. System Tests
+   - Describe your system tests:
+     - What are your test items?
+     - Which features do you plan on testing?
+       - How?
+       - When?
+       - Rules for testing and re-testing the feature?
+     - What is the test environment for each feature test (entry and exit criteria)?
+     - What are pass/fail criteria for each feature test?
+     - What are your test deliverables for each feature test?
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. Size of assignment: Are there 5-10 features to be tested?
+2. Scope of assignment: Does the test strategy contain a mixture of exploratory testing and regression testing techniques?
+3. Do the described system tests match the described test strategy?
+4. Is there a clear test strategy that will exercise relevant parts of the system?
+#+END_tip
+   
+** Assignment Submission   
+   {{{submit}}}
+   
+   Your submission shall include the following documents:
+   - System Test Plan
+   - Software Architecture and Architecture Tactics
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - [[./org/checked.png]] You have submitted the documents for marking.
+  - [[./org/checked.png]] You have received a passing grade from the teacher.
+
+  You may be asked to complement your submission with additional information.
+
+  You may also have:
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   
+

@@ -108,26 +108,12 @@
  |             |      | # Lectures                     |                               |                                                 | 10     | 7      | 7      | 11     |                                            |
 
  Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
+* TODO Course PM
 * TODO Pick System!
-* TODO 3 week roll cal
+  
+* TODO 3 week roll call
+* TODO Resubmissions
 * TODO Group and Team Instructions
-* DONE Seminars [7/7]
-  CLOSED: [2017-02-15 Wed 13:37]
-** DONE Requirements Use Cases Project Planning
-   CLOSED: [2017-02-15 Wed 13:37]
-** DONE Discuss Assignment 1
-   CLOSED: [2017-02-14 Tue 14:56]
-** DONE Structure and Design Patterns
-   CLOSED: [2017-02-14 Tue 14:56]
-** DONE Software Architectures
-   CLOSED: [2017-02-15 Wed 13:37]
-** DONE Open Discussion
-   CLOSED: [2017-02-14 Tue 14:56]
-** DONE Discuss Assignment 2
-   CLOSED: [2017-02-14 Tue 14:56]
-** DONE Demo and Discuss Assignment 3
-   CLOSED: [2017-02-14 Tue 14:56]
-* TODO PA1443 Assigment 3/4
 * TODO Lectures
  Lectures
  1. [ ] Introduction
@@ -186,6 +172,84 @@
      - Tactics
  11. [ ] From Design to Code
  12. [ ] Q&A
+* DONE Deadlines
+  CLOSED: [2017-02-17 Fri 10:28]
+  | Assignment | Course         | Date                   |
+  |------------+----------------+------------------------|
+  | Release 1  | PA1415, PA1435 | <2017-04-12 Wed 08:00> |
+  | Release 1  | PA1443         | <2017-04-24 Mon 08:00> |
+  |            |                |                        |
+  | Release 2  | PA1415, PA1435 | <2017-05-03 Wed 08:00> |
+  | Release 2  | PA1443         | <2017-05-08 Mon 08:00> |
+  |            |                |                        |
+  | Release 3  | PA1415, PA1435 | <2017-05-17 Wed 08:00> |
+  | Release 3  | PA1443         | <2017-05-19 Fri 08:00> |
+  |------------+----------------+------------------------|
+* DONE PA1443 Assigment 3/4
+  CLOSED: [2017-02-17 Fri 10:11]
+* DONE Make sure that acceptance tests include commit/push
+  CLOSED: [2017-02-17 Fri 10:11]
+* DONE Seminars [7/7]
+  CLOSED: [2017-02-15 Wed 13:37]
+** DONE Requirements Use Cases Project Planning
+   CLOSED: [2017-02-15 Wed 13:37]
+** DONE Discuss Assignment 1
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Structure and Design Patterns
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Software Architectures
+   CLOSED: [2017-02-15 Wed 13:37]
+** DONE Open Discussion
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Discuss Assignment 2
+   CLOSED: [2017-02-14 Tue 14:56]
+** DONE Demo and Discuss Assignment 3
+   CLOSED: [2017-02-14 Tue 14:56]
+** Booking Instructions
+
+Hi,
+
+Today I have scheduled the lectures. It turns out that many of the parallel courses have already placed their schedules, so there is not much wiggle-room left for us.
+
+Therefore I would like you to schedule the seminars as quickly as possible.
+
+The seminars are supposed to be run in groups of 25-30 people. This means the following:
+
+| PA1415 | 73 students in total | 3 groups |
+| PA1435 | 51 students in total | 2 groups |
+| PA1443 | 44 students in total | 2 groups |
+
+And I would like you to place the seminars /around/ the following times. It is not critical that they end up exactly at these times, but I would prefer them to be as close as possible.
+
+- Seminar 1: Requirements Use Cases and Project Planning
+  - PA1415 and PA1435: First half of Week 14
+  - PA1443: Second half of Week 14.
+
+- Seminar 2: Discuss Release 1
+  - PA1415, PA1435: Early Week 16
+  - PA1443: Late Week 17
+
+- Seminar 3: Structure and Design Patterns
+  - PA1415, PA1435, PA1443: Early Week 17
+
+- Seminar 4: Software Architectures
+  - PA1443: Week 18
+  - (PA1415, PA1435: Not applicable)
+
+- Seminar 5: Open Discussion
+  - PA1415, PA1435, PA1443: Week 18
+
+- Seminar 6: Discuss Release 2
+  - PA1415, PA1435, PA1443: Week 19 
+
+- Seminar(ish) 7: Demo and Discuss Release 3
+  - Book individual times (15-20 min) with each team to demo and discuss their system, sometime during weeks 20.
+
+I remind you that the courses are live at: https://mickesv.github.io/OODesign/ . Follow the links to each course and seminar to see instructions for the seminar. I have kept them fairly high-level at the moment -- feel free to ask if you need more information.
+
+As I said to Raquel, if you want to divide your hours differently from what is already planned so that one of you do more "front-end" work and the other do more "back-end" work, I am fine with this. The "Discuss Assignment X" seminars may need more coordination if you choose such a model, though.
+
+/Mikael
 * DONE Sprint 0: Course Introduction
   CLOSED: [2017-02-08 Wed 14:34]
   :LOGBOOK:  
@@ -1288,7 +1352,7 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
     - M. Lindvall, R. T. Tvedt, and P. Costa. An empirically-based process for software architecture evaluation. /Empirical Software Engineering/, 8:83–108, 2003.
     - M. Svahnberg and F. Mårtensson. Six years of evaluating software architectures in student projects. /Journal of Systems & Software/, 80(11):1893–1901, 2007.
 *** Further Reading						   :noexport:
-** TODO Experiential Learning
+** Experiential Learning
 *** Sprint Test Plan
     Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
 
@@ -1317,7 +1381,7 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
     Are there any common architecture styles? What are their qualities?
 
     Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
-** TODO Sprint Acceptance Tests
+** Sprint Acceptance Tests
    You are done with this sprint when:
    - You have 
 
@@ -1698,47 +1762,10 @@ As an additional exercise, which software architecture patterns have I used here
    You may also have
    - Updated your Sprint Test Plan
    - Updated your Course Backlog   
-* TODO Release Sprint: Implementation and Testing	   :A3:PA1415:PA1435:
-** About this Sprint
-   This is a /release sprint/. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
-** User Stories covered in this Sprint
-   - As a teacher 
-   - As a teacher in the courses {{{pa1415}}}, {{{pa1435}}}, {{{pa1434}}}, and {{{pa1443}}} I want to evaulate the students' ability to understand and express how the objects in a system interacts so that I know they fulfil the corresponding course goals.
-   - As a teacher in the courses {{{pa1415}}}, {{{pa1435}}}, {{{pa1434}}}, and {{{pa1443}}} I want to evaulate the students' ability to express a system's static structre in terms of classes and packages so that I know they fulfil the corresponding course goals.
-** Course Goals covered in this Sprint
-   - (PA1415) i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram
-   - (PA1415) skapa och analysera objektorienterade artefakter uttryckta i UML
-
-   *Färdigheter och förmåga*
-   - (PA1435, PA1434, PA1443) kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
-   - (PA1435, PA1434) kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.
-   - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.
-** Learning Material
-   Please review the sprints concerning
-   - Concepts and Events
-   - Good Interactions
-   - Interactions and Structure
-** Experiential Learning
-*** Assignment Submission   
-    {{{submit}}}
-    
-    Your submission shall include the following documents:
-    - Package Diagram
-    - Interaction Diagram
-    - Class and Package Diagram
-** Sprint Acceptance Tests
-   You are done with this sprint when:
-   - [[./org/checked.png]] You have submitted the documents for marking.
-   - [[./org/checked.png]] You have received a passing grade from the teacher.
-
-   You may be asked to complement your submission with additional information.
-
-   You may also have:
-   - Updated your Sprint Test Plan
-   - Updated your Course Backlog   
-
-* TODO Release Sprint: Testing		:A3:PA1443:noexport:MERGE_WITH_SA_RS:
-* TODO Release Sprint: Software Architecture			  :A4:PA1443:
+* DONE Release Sprint: Implementation and Testing	   :A3:PA1415:PA1435:
+  CLOSED: [2017-02-16 Thu 11:41]
+* DONE Release Sprint: Architecture and Testing		 :A3:PA1443:noexport:
+  CLOSED: [2017-02-17 Fri 10:11]
 * WAIT Sprint: Quality Attributes
 * TODO Sprint: Preparing for the Exam
 * TODO Sprint 99: Finalising the Course
@@ -1931,11 +1958,11 @@ https://pixabay.com/en/users/3dman_eu-1553824/
   |   2 | PA1443                         | - kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper                              |
   |   4 | PA1443                         | - kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem                                                             |
   |   4 | PA1443                         | - kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha                                  |
-  |   3 | PA1443                         | - kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system                                            |
+  |   4 | PA1443                         | - kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system                                            |
   |     |                                |                                                                                                                                    |
   |     |                                | *Värderingsförmåga och förhållningssätt*                                                                                           |
-  |     | PA1435/ PA1434                 | - kunna analysera källkod för eventuella förbättringar.                                                                            |
-  |     | PA1435/PA1434/ PA1443          | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
+  |   3 | PA1435/ PA1434                 | - kunna analysera källkod för eventuella förbättringar.                                                                            |
+  |  34 | PA1435/PA1434/ PA1443          | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
   |-----+--------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
 
   Old version

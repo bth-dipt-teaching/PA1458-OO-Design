@@ -5,30 +5,70 @@
 * About this Sprint
   This is a /release sprint/. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
 * User Stories covered in this Sprint
-  - As a teacher 
-  - As a teacher in the courses {{{pa1415}}}, {{{pa1435}}}, {{{pa1434}}}, and {{{pa1443}}} I want to evaulate the students' ability to understand and express how the objects in a system interacts so that I know they fulfil the corresponding course goals.
-  - As a teacher in the courses {{{pa1415}}}, {{{pa1435}}}, {{{pa1434}}}, and {{{pa1443}}} I want to evaulate the students' ability to express a system's static structre in terms of classes and packages so that I know they fulfil the corresponding course goals.
+  - As a teacher I want to evaluate the students' ability to transfer a theoretical design into a workable software solution so that I know they fulfil the corresponding course goals.
+  - As a teacher I want to evaluate the students' ability to transfer a theoretical design into a workable software solution so that I know they have an understanding of the difficulties this entails.
+  - As a teacher I want to evaluate the students' ability to transfer a theoretical design into a workable software solution so that I know they have an understanding of how to read a design consisting of several viewpoints (e.g. dynamic and static) and combine them in a software solution.
+  - As a teacher I want to evaluate the students' ability to transfer a theoretical design into a workable software solution so that I know they understand how to maintain updated design documentation alongside with an implementation.
+  - As a teacher I want to evaluate the students' ability to test an implemented system according to a test plan so that I know they understand how to translate a design to a test plan and how to execute this test plan.
+
 * Course Goals covered in this Sprint
-  - (PA1415) i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram
-  - (PA1415) skapa och analysera objektorienterade artefakter uttryckta i UML
+- (PA1415) i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design.
+- (PA1415) på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation.
 
   *Färdigheter och förmåga*
-  - (PA1435, PA1434, PA1443) kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
-  - (PA1435, PA1434) kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.
-  - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.
+  - (PA1435, PA1443) kunna korrekt transformera en objektorienterad design till källkod.
+
+  *Värderingsförmåga och förhållningssätt*
+  - (PA1434, PA1435) kunna analysera källkod för eventuella förbättringar.
+  - (PA1434, PA1435, PA1443) kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
 * Learning Material
   Please review the sprints concerning
-  - Concepts and Events
-  - Good Interactions
+  - Testing
   - Interactions and Structure
+  - Implementation and Designing the User Inteface
 * Experiential Learning
+** Assignment: Implement System
+   In this assignment you are expected to implement your system according to your own design. You do not need to implement the entire system, but you need to implement enough to:
+
+   - Get a working system with the basic cases for your most important use cases.
+   - Show that you have at least partially created all the classes required for a Minimal Viable Product.
+   - Show that you understand how to implement a system according to the overall architectural style you have chosen.
+   - Show that you understand how to implement any design patterns you make use of. This /probably/ includes at least one instance of the observer pattern, and possibly one instance of the strategy pattern.
+   - Are able to execute your test plan for your most important use cases and see whether your tests adequately exercises the source code or not.
+   - Are able to study your implementation and reason about ways to improve it and your design.
+
+   Remember to update your design documentation while you are implementing to reflect any changed design decisions you make.
+
+   {{{Tasks}}}
+   - Identify a relevant subset of your system.
+   - Implement your system according to your design documentation.
+   - Document deviations from your design and update the design documentation accordingly.
+   - Execute your test plan on your implemented system and document the results.
+
+   {{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+1. Size of assignment: Does the implemented subset of the system represent a Minimal Viable Product?
+2. Does it compile and run?
+3. Does the test plan adequately test relevant aspects of the system?
+4. Is the design documentation up to date according to what is implemented?
+5. Are the students able to show a mapping between the design and the implementation?
+6. Are the students able to show a mapping between the design and the test plan?
+7. Are the students able to explain what their code does, in particular in relation to their design?
+8. Are the students able to identify areas where their implementation may be improved, and reason about why, in particular in relation to their design?
+9. Are the students able to identify areas where their design may be improved, and reason about why?
+#+END_tip
+
+
 ** Assignment Submission   
    {{{submit}}}
    
    Your submission shall include the following documents:
-   - Package Diagram
-   - Interaction Diagram
    - Class and Package Diagram
+   - Implementation (Link to Github project is ok)
 * Sprint Acceptance Tests
   You are done with this sprint when:
   - [[./org/checked.png]] You have submitted the documents for marking.

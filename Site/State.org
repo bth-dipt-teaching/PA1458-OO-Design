@@ -90,6 +90,8 @@ This sprint is smaller than many of the others because -- as you notice -- state
   You are done with this sprint when:
   - You have reviewed your application for stateful behaviour
   - You have optionally created UML State Diagrams for this behaviour.
+  - You have committed/pushed any created documents to your project repository
+
   
   You may also have
   - Updated your Sprint Test Plan

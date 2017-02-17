@@ -179,7 +179,7 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
    - M. Lindvall, R. T. Tvedt, and P. Costa. An empirically-based process for software architecture evaluation. /Empirical Software Engineering/, 8:83–108, 2003.
    - M. Svahnberg and F. Mårtensson. Six years of evaluating software architectures in student projects. /Journal of Systems & Software/, 80(11):1893–1901, 2007.
 ** Further Reading						   :noexport:
-* TODO Experiential Learning
+* Experiential Learning
 ** Sprint Test Plan
    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
 
@@ -203,15 +203,102 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
    - Architecture Tactics
 
    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
-** TODO Assignment						   :noexport:
+** Assignment: Create Initial Software Architecture
+   Create an initial software architecture for your system.
+
+   {{{tasks}}}
+   - Which quality attributes are relevant for your system?
+   - Based on what you currently know, structure your system into different modules that have high coherence and low coupling.
+     - Try to think about localising specific areas of functionality into separate modules.
+   - Do you need to model your system from different viewpoints (e.g. modules, threads and processes, data flow)?
+     - If so, create a model for each viewpoint.
+     - Make sure your viewpoints are consistent with each other.
+     - If you do not need several viewpoints, then why not?
+   - Motivate and reason about what traits in your system makes it require or not require specific viewpoints.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Initial Software Architecture)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Quality Attributes
+   Discuss quality attributes that are important for your system. Motivate why.
+4. Viewpoints
+  Discuss your choices of viewpoints.
+5. Viewpoints
+   - Create one section for each of your viewpoints.
+   - Model your system from the perspective of the viewpoint in a suitable notation (tip: You may find the UML Package notation useful)
+   - Describe the entities in your model. Remember that associations between entities also carry meaning in an architecture model and needs to be explained.
+   - Describe which particular design concerns that you are addressing with the help of the viewpoint.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Is the system described from at least one and preferrably two to three viewpoints?
+2. Size of assignment: Does each viewpoint contain 5-15 entities?
+3. Are important quality attributes described and motivated?
+4. Are the viewpoints motivated? Is there a reasoning about why or why not certain viewpoints are needed?
+5. Is there a legend for each viewpoint that describes the types of entities and connections?
+6. Are the entities and connections in each viewpoint described?
+7. Does each viewpoint/entity have high cohesion and low coupling?
+8. Is there a described strategy for how classes are allocated to different modules/entities?
+9. IS this strategy followed?
+#+END_tip
+** Assignment: Evaluate Initial Software Architecture
+   Evaluate your software architecture based on your initial list of quality attrbutes.
+
+   {{{tasks}}}
+   - For each quality attribute, how can you evaluate your architecture to see whether you meet your requirements or not?
+   - For each quality attribute, evaluate your architecture according to what you just decided.
+   - For each quality attribute and evaluation, reason about how you can improve your architecture to further meet your quality goals.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Evaluation of Initial Software Architecture)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Quality Attributes
+   - Create one section for each quality attribute
+   - Describe how you plan on evaluating your architecture with respect to the quality attribute, and why this is a sufficient evaluation strategy.
+   - Evaluate your architecture, using relevant viewpoints, according to your evaluation strategy.
+   - Summarise your evaluation and any bottlenecks you find.
+   - Reason about how your architecture can be improved to remove the identified bottlenecks.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Is the architecture evaluated from the perspective of 3-5 quality attrbutes?
+2. For each quality attribute, is the chosen evaluation strategy motivated?
+3. For each quality attribute, is the chosen evaluation strategy sufficient?
+4. For each quality attribute, is the architecture sufficiently evaluated using the described evaluation strategy?
+5. For each quality attribute, are the findings from the evaluation summarised?
+6. For each quality attribute, is there a sufficient reasoning about how to improve the architecture?
+#+END_tip
 ** Update Course Backlog
-   Are there any common architecture styles? What are their qualities?
+   Are there any common architecture styles? What are their qualities? How can you deal with (new) functionality that uses several of the components in the system (for example, a new feature may require a new UI dialogue, new business logic on several levels, new database connections, new tables in the database)?
 
    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
-* TODO Sprint Acceptance Tests
+* Sprint Acceptance Tests
   You are done with this sprint when:
-  - You have 
+  - You have considered which quality attributes are relevant for your system.
+  - You have created an initial software architecture for your system.
+  - You have evaluated your initial software architecture.
+  - You have committed/pushed the created documents to your project repository
+
 
   You may also have
+  - Improved your initial software architecture based on your evaluation.
   - Updated your Sprint Test Plan
   - Updated your Course Backlog   
