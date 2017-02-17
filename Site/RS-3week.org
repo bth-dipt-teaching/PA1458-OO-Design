@@ -1,0 +1,56 @@
+#+Title: Release Sprint: 3-Week Roll Call; List of Use Cases
+#+INCLUDE: "./org/header.org-in" org
+
+* About this Sprint
+  This is a /release sprint/. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
+
+  This particular release sprint also serves as the three week roll call in the course. *Please Note* that if you do not submit this release on time, you will be deregistered from the course.
+* User Stories covered in this Sprint
+  - As the government, we want to make sure that all students registered on a course are also active in the course so that we do not pay the university too much.
+* Course Goals for this Sprint
+- (PA1415) på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation.
+
+*Kunskap och förståelse*
+ - (PA1435, PA1434, PA1443) kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
+* Learning Material
+  Please review the sprints concerning
+  - Sprint0: Course Introduction
+* Experiential Learning
+** Assignment: Early List of Use Cases
+   Create an inital list of use cases for your system. Briefly describe each of them (1-2 sentences each).
+
+   #+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(List of Use Cases)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Use Cases
+   A list of use cases for your system, with a brief description of each.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. Size of assignment: Are there 5-15 use cases listed?
+#+END_tip
+
+** Assignment Submission   
+   {{{submit}}}
+    
+   Your submission shall include the following:
+   - A link to your course project on Github
+   - Your List of Use Cases
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - [[./org/checked.png]] You have submitted the documents.
+  - [[./org/checked.png]] You have made sure that all participants in your team are included in your submission.
+
+  You may also have:
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

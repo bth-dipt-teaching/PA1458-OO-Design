@@ -4,29 +4,31 @@
 
 
 * Sprints, Lectures, and Seminars
-|                                     | Time | Sprint                                          | Lecture                        | Seminar                                   |
-|-------------------------------------+------+-------------------------------------------------+--------------------------------+-------------------------------------------|
-| [[./images/Icon-Sprint0.jpg]]           |      | [[./Sprint0-course-intro.org][Sprint 0: Course Introduction]]                   |                                |                                           |
-| [[./images/Icon-Lecture.jpg]]           |      |                                                 | Introduction                   |                                           |
-| [[./images/Icon-Sprint.jpg]]            |      | [[./Use-Cases.org][Use Cases and Use Case Diagrams]]                 |                                |                                           |
-| [[./images/Icon-Lecture.jpg]]           |      |                                                 | User Stories and UML Use Cases |                                           |
-| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | [[./SEM-Requirements.org][Requirements, Use Cases, Project Planning]] |
-| [[./images/Icon-Release.jpg]]           |      | [[./RS-Use-Cases.org][Release Sprint: Use Cases]]                       |                                |                                           |
-| [[./images/Icon-AssignmentSeminar.jpg]] |      |                                                 |                                | [[./SEM-Release1.org][Discuss Release 1]]                         |
-| [[./images/Icon-Sprint.jpg]]            |      | [[./Concepts-Events.org][Concepts and Events]]                             |                                |                                           |
-| [[./images/Icon-Lecture.jpg]]           |      |                                                 | Structure                      |                                           |
-| [[./images/Icon-Lecture.jpg]]           |      |                                                 | Behaviour                      |                                           |
-| [[./images/Icon-Sprint.jpg]]            |      | [[./Interactions.org][Good Interactions]]                               |                                |                                           |
-| [[./images/Icon-Sprint.jpg]]            |      | [[./Interactions-Structure.org][Interactions and Structure]]                      |                                |                                           |
-| [[./images/Icon-Sprint.jpg]]            |      | [[./Design-Patterns.org][Design Patterns]]                                 |                                |                                           |
-| [[./images/Icon-Lecture.jpg]]           |      |                                                 | Design Patterns                |                                           |
-| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | [[./SEM-Structure.org][Structure and Design Patterns]]             |
-| [[./images/Icon-Release.jpg]]           |      | [[./RS-OOD.org][Release Sprint: Object Oriented Design]]          |                                |                                           |
-| [[./images/Icon-AssignmentSeminar.jpg]] |      |                                                 |                                | [[./SEM-Release2.org][Discuss Release 2]]                         |
-| [[./images/Icon-Sprint.jpg]]            |      | [[./Implementation.org][Implementation and Designing the User Interface]] |                                |                                           |
-| [[./images/Icon-Lecture.jpg]]           |      |                                                 | From Design to Code            |                                           |
-| [[./images/Icon-Seminar.jpg]]           |      |                                                 |                                | [[./SEM-OpenDiscussion.org][Open Discussion]]                           |
-|-------------------------------------+------+-------------------------------------------------+--------------------------------+-------------------------------------------|
+|                                     | Time                             | Sprint                                              | Lecture                        | Seminar                                   |
+|-------------------------------------+----------------------------------+-----------------------------------------------------+--------------------------------+-------------------------------------------|
+| [[./images/Icon-Sprint0.jpg]]           |                                  | [[./Sprint0-course-intro.org][Sprint 0: Course Introduction]]                       |                                |                                           |
+| [[./images/Icon-System.jpg]]            |                                  | [[./System-TwitterNethack.org][System to Work on: TwitterNethack]]                   |                                |                                           |
+| [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | Introduction                   |                                           |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Use-Cases.org][Use Cases and Use Case Diagrams]]                     |                                |                                           |
+| [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | User Stories and UML Use Cases |                                           |
+| [[./images/Icon-Seminar.jpg]]           |                                  |                                                     |                                | [[./SEM-Requirements.org][Requirements, Use Cases, Project Planning]] |
+| [[./images/Icon-Release.jpg]]           | Deadline: <2017-04-07 Fri 08:00> | [[./RS-3week.org][Release Sprint: 3 Week Roll Call; List of Use Cases]] |                                |                                           |
+| [[./images/Icon-Release.jpg]]           |                                  | [[./RS-Use-Cases.org][Release Sprint: Use Cases]]                           |                                |                                           |
+| [[./images/Icon-AssignmentSeminar.jpg]] |                                  |                                                     |                                | [[./SEM-Release1.org][Discuss Release 1]]                         |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Concepts-Events.org][Concepts and Events]]                                 |                                |                                           |
+| [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | Structure                      |                                           |
+| [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | Behaviour                      |                                           |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Interactions.org][Good Interactions]]                                   |                                |                                           |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Interactions-Structure.org][Interactions and Structure]]                          |                                |                                           |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Design-Patterns.org][Design Patterns]]                                     |                                |                                           |
+| [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | Design Patterns                |                                           |
+| [[./images/Icon-Seminar.jpg]]           |                                  |                                                     |                                | [[./SEM-Structure.org][Structure and Design Patterns]]             |
+| [[./images/Icon-Release.jpg]]           |                                  | [[./RS-OOD.org][Release Sprint: Object Oriented Design]]              |                                |                                           |
+| [[./images/Icon-AssignmentSeminar.jpg]] |                                  |                                                     |                                | [[./SEM-Release2.org][Discuss Release 2]]                         |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Implementation.org][Implementation and Designing the User Interface]]     |                                |                                           |
+| [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | From Design to Code            |                                           |
+| [[./images/Icon-Seminar.jpg]]           |                                  |                                                     |                                | [[./SEM-OpenDiscussion.org][Open Discussion]]                           |
+|-------------------------------------+----------------------------------+-----------------------------------------------------+--------------------------------+-------------------------------------------|
 
 * Lost Puppies							   :noexport:
 

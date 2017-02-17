@@ -109,9 +109,6 @@
 
  Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
 * TODO Course PM
-* TODO Pick System!
-  
-* TODO 3 week roll call
 * TODO Resubmissions
 * TODO Group and Team Instructions
 * TODO Lectures
@@ -172,6 +169,12 @@
      - Tactics
  11. [ ] From Design to Code
  12. [ ] Q&A
+* DONE 3 week roll call
+  CLOSED: [2017-02-17 Fri 14:09]
+* DONE Pick System!
+  CLOSED: [2017-02-17 Fri 13:30]
+  TwitterNethack
+  Busstop(Ewan) ? Not many use cases here...
 * DONE Deadlines
   CLOSED: [2017-02-17 Fri 10:28]
   | Assignment | Course         | Date                   |
@@ -1824,13 +1827,17 @@ As an additional exercise, which software architecture patterns have I used here
    - Testing Tools
      - unit testing (Grunt, Junit, CPPTest, etc.)
      - Continuous Integration Tools (Jenkins, Drone.io, Travis.io, ...)
-** TODO Map for different Courses   
-** TODO System Descriptions for Assignments
-** TODO Add "Select System for Assignments" in Sprint 0
+** DONE Map for different Courses   
+   CLOSED: [2017-02-17 Fri 13:30]
+** DONE System Descriptions for Assignments
+   CLOSED: [2017-02-17 Fri 13:30]
+** DONE Add "Select System for Assignments" in Sprint 0
+   CLOSED: [2017-02-17 Fri 13:30]
 ** TODO Tie in Lectures into Sprints, with preparations I want them to do first
 ** DONE State Diagrams
    CLOSED: [2016-09-28 Wed 10:07]
-** TODO Revisit all sprints with submissions and make sure the sprint test plan is up to date
+** DONE Revisit all sprints with submissions and make sure the sprint test plan is up to date
+   CLOSED: [2017-02-17 Fri 13:30]
 ** TODO Re-do video "Concepts and Classes": Move Objects into a different sheet
 ** TODO Video: Interaction Diagrams
 ** TODO Video: Class Diagrams
