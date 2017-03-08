@@ -1,12 +1,22 @@
 #+Title: Sprint 0: Course Introduction
 #+INCLUDE: "./org/header.org-in" org
 
-* About This Sprint
-  This sprint introduces the course and the course structure.
+* About This Sprint						   :CoursePM:
+  This sprint introduces the course and the course structure. This sprint also serves as the required Course PM to explain in more detail how the couse is going to be conducted in relation to the course syllabus.
+
+  The following courses are covered by this course PM:
+| Course Code | Name                                               | Extent (in ECTS) | Programme(s)                                               |
+|-------------+----------------------------------------------------+------------------+------------------------------------------------------------|
+| PA1415      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1415&RevisionsNr=6&format=pdf][Programvarudesign]]                                  |              7.5 | BSc i Spelprogrammering, BSc i IT-Säkerhet                 |
+| PA1434      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1434&RevisionsNr=6&format=pdf][Grunder i Objektorienterad Design]]                  |                4 | CI i IndEk                                                 |
+| PA1435      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1435&RevisionsNr=5&format=pdf][Objektorienterad Design]]                            |                6 | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
+| PA1443      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1443&RevisionsNr=2&format=pdf][Introduktion till Programvarudesign och Arkitektur]] |                5 | BSc i Programvaruteknik                                    |
+|-------------+----------------------------------------------------+------------------+------------------------------------------------------------|
 * User Stories covered in this Sprint
   - As a student I want to pass this course.
   - As a student I want to understand how this course is structured so that I can quickly find the information I need to learn the subject.
   - As a student I want to know why this topic is important so that I can be properly motivated.
+  - As a university we require all courses to have a "Course PM" so that the students can get further information about the courses they are taking.
 * Introduction
    Welcome to the course!
 
@@ -35,29 +45,135 @@ Experiential Learning are things you are supposed to /do/, and includes:
 
    So, without further ado, let's get started with the learning material. /Good Luck!/
 * Learning Material
-** Course Structure
+** Course PM Overview						   :CoursePM:
+Course Overview:
+|                     |                                                     |
+|---------------------+-----------------------------------------------------|
+| Course Platform     | ItsLearning and https://mickesv.github.io/OODesign/ |
+| Further Information |                                                     |
+|---------------------+-----------------------------------------------------|
+| Course Responsible  | Mikael Svahnberg, mailto:Mikael.Svahnberg@bth.se    |
+| Examiner            | Mikael Svahnberg, mailto:Mikael.Svahnberg@bth.se    |
+|---------------------+-----------------------------------------------------|
+| Other Teachers      | Ricardo Britto, Raquel Ouriques                     |
+|---------------------+-----------------------------------------------------|
+
+#+BEGIN_note   
+*Course PM Contents:*
+1. [[goals][Overall Course Goals and Contents]] and [[outcomes][Learning Outcomes]]
+2. [[materials][Course Materials]]
+3. [[setup][Course set-up]]
+4. [[examination][Examination]]
+5. [[common][Common Information for all Courses]]
+#+END_note
+
+*** 2017 Schedules
+Please see the individual page for each course:
+| Course       |
+|--------------|
+| [[./PA1415.org][{{{pa1415}}}]] |
+| [[./PA1435.org][{{{pa1435}}}]] |
+| [[./PA1443.org][{{{pa1443}}}]] |
+|--------------|
+
+*** Common Information for all Courses <<common>>
+In all course-related communication, we prefer if you use your BTH-student email address. Using other email addresses or varying email addresses can lead to problems and issues that we cannot take responsibility for.
+
+|                         |                                                                                    |
+|-------------------------+------------------------------------------------------------------------------------|
+| Writing guide(s)        | http://writingguide.se                                                             |
+| Plagiarism and cheating | https://studentportal.bth.se/web/studentportal.nsf/web.xsp/plagiarism_and_cheating |
+|-------------------------+------------------------------------------------------------------------------------|
+** Overall Course Goals and Contents <<goals>>			   :CoursePM:
+   The overall goal in all the involved courses is to teach Object Oriented Design, and to understand how the design process fits into the overall development process. The involved courses takes a slightly different route towards this, where some focus more on the development process and the process components that lead up to the design process (PA1415), and others focus more on putting the design into a bigger technical context (i.e. the software architecture) (PA1443). The core of all courses is the Object Oriented Design, and we use UML and RUP for this part.
+
+The detailed aims and contents for each of the courses are listed below (In swedish, copied from the respective course syllabus).
+
+#+BEGIN_info
+*{{{pa1415}}}*
+
+Syfte
+
+För att kunna producera programvara som uppfyller rätt krav för rätt kostnad, inom rätt tidsram och med rätt kvalitet så krävs det att man följer en kontrollerad process och att man lägger tid på tidig planering av programvaruproduktionen (modellering och design).
+I den här kursen förväntas studenten införskaffa förståelse för en utvecklingsprocess för mjukvara och för de grundläggande aktiviteter och artefakter som tas fram under utvecklingsprocessen. Vidare förväntas studenten införskaffa förståelse för objektorienterad modellering och design genom användande av UML (Unified Modeling Language). Detta binds sedan samman i och med att studenten förväntas visa sina förvärvade kunskaper genom att utveckla ett mindre mjukvarusystem.
+
+Innehåll
+
+Kursen omfattar följande moment:
+ - Introduktion till programvaruteknik
+ - Introduktion till systemutvecklingsprocessen
+ - Introduktion till kravhantering
+ - Tids-, storleks-, resurs- och komplexitetsskattningar
+ - Planering av arbete
+ - Testning
+ - Objektorienterad design
+ - Grundläggande begrepp inom objektorienterad modellering
+ - Användarfall (use cases)
+ - Konceptuell modell samt systembeteende •Samarbetsdiagram
+ - Klassdiagram
+ - Tillståndsdiagram
+ - Designmönster
+ - Överföring av design till programkod   
+#+END_info
+
+#+BEGIN_info
+*{{{PA1434}}}*
+
+*{{{PA1435}}}*
+
+Syfte
+
+Kursens syfte är att ge insikt i den speciella design- och implementationsproblematik som objektorienterad programvaruutveckling medför. Utgående från grundläggande objektorienterade begrepp modelleras struktur och beteende hos objektorienterade system med hjälp av modelleringsspråket UML (Unified Modeling Language). Designprinciper och designmönster introduceras som verktyg för att skapa robust programvara och förbättra möjligheten till organisation och underhåll av programvara. Designmönster är standardiserade metoder för att sätta samman objekt och klasser för att lösa vanligt förekommande designproblem. Utvecklare av objektorienterad programvara bör veta hur designmönster kan användas för att förenkla utvecklingsarbetet och kunna bedöma kvaliteten och eventuella förbättringar av källkoden. Kursen omfattar laborationer där designkunskaperna tillämpas och implementeras i källkod.
+
+Innehåll
+
+Kursen omfattar följande:
+- Grundläggande begrepp inom objektorienterad modellering.
+- Strukturella och beteendemässiga perspektiv på objektorienterade system.
+- Introduktion till modelleringsspråket UML (Unified Modeling Language).
+- Diagramtyper i UML för användningsfall, klasser, interaktion och tillstånd.
+- Grundläggande designprinciper exempelvis låg koppling, hög sammanhållning, inkapsling och polymorfism.
+- Designmönster samt orientering om hur dessa kan användas.
+- Förbättring av källkod genom s.k. reverse engineering.
+#+END_info
+
+
+#+BEGIN_info
+*{{{pa1443}}}*
+
+Syfte
+
+Val av mjukvarudesign och arkitektur har stark påverkan på kvalitet och kostnad för programvara. Syftet med kursen är att ge studenten grundläggande förståelse för tekniker och metoder för mjukvarudesign. Vidare skaffar studenterna grundläggande förståelse för hur dessa val av design och arkitektur påverkar kvalitet och därmed kostnad för utveckling, drift och underhåll för programvara.
+Kursen innehåller både teori och praktiska övningar där studenterna ges möjlighet att skapa programvarudesigner och arkitekturer, samt jämföra möjliga design- och arkitekturlösningar i olika typer av mjukvarusystem.
+
+Innehåll
+
+Kursen omfattar följande moment:
+- Introduktion till Objektorienterad Design
+- Introduktion till Programvaruarkitekturer
+- Grundläggande begrepp inom objektorienterad designmodellering
+- Grundläggande objektorienterade designprinciper
+- Designmönster
+- Mjukvaruarkitekturstilar
+- Överföring av design till programkod
+- Testning
+#+END_info
+** Course Structure <<setup>>					   :CoursePM:
     The course has an online presence as well as a campus existense.
 
-    The online presence consists of these pages, and is organised as a set of sprints, where each sprint focus on a small topic and a few user stories. In each sprint there are things to read and watch, as well as activities to do. The result of some of those activities will be submitted as assignments for marking. This is further detailed in /Release Sprints/ where instructions about which documents to deliver are given.
+    The online presence consists of these pages, and is organised as a set of sprints, where each sprint focus on a small topic and a few user stories. In each sprint there are things to read and watch, as well as activities to do. The result of some of those activities will be submitted as assignments for marking. This is further detailed in /Release Sprints/ where instructions about which documents to deliver are given. 
 
     The campus existense consists of lectures (that I try to run as seminars) and exercises. My idea is that you first study the online material, and then we can have lively discussions during the lectures/seminars. Basically, you go through the design notation and a basic understanding of the topic with the online material and then we discuss together what makes a /good/ design.
+
+    Some of ther sprints are so called /release sprints/. In these sprints you primarily package what you have done in previous sprints, but you may also be requested to produce new material during the release sprint too. This is then delivered as a /course assignment/ for marking.
+
+    Please see the [[./index.org][Start Page for each course]] for information about which sprints, lectures, seminars, and assignments are relevant for each course.
 
 #    The exercises are done in smaller groups and are more geared towards your specific assignments. Here, the idea is to go through what you are expected to do in the assignments and go through examples of this.
 
 #    There are also feedback meetings planned where you get feedback on the assignments that you submitted so that you may improve them.
-** Learning Outcomes
-These pages address the needs of the following courses:
-
-| Course code | Name                                               | Size | Programme                                                  |
-|-------------+----------------------------------------------------+------+------------------------------------------------------------|
-| PA1415      | Programvarudesign                                  |  7.5 | BSc i Spelprogrammering, BSc i IT-Säkerhet                 |
-| PA1434      | Grunder i Objektorienterad Design                  |    4 | CI i IndEk                                                 |
-| PA1435      | Objektorienterad Design                            |    6 | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
-| PA1443      | Introduktion till Programvarudesign och Arkitektur |    5 | BSc i Programvaruteknik                                    |
-|-------------+----------------------------------------------------+------+------------------------------------------------------------|
-
-
-The following learning outcomes apply to the different courses. As you notice, the PA1435 version is of a newer format, but also contains less focus on requirements engineering, project management, and testing activities. This will of course to some extent influence what you are expected to do and deliver, but will only have a limited effect on the lecture series since the topics are still quite intertwined.
+** Learning Outcomes <<outcomes>>				   :CoursePM:
+The following learning outcomes apply to the different courses.
 
   | Course Code                    | Learning Outcomes                                                                                                                  |
   |--------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
@@ -91,6 +207,52 @@ The following learning outcomes apply to the different courses. As you notice, t
   | PA1435/ PA1434                 | - kunna analysera källkod för eventuella förbättringar.                                                                            |
   | PA1435/PA1434/ PA1443          | - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.                                                   |
   |--------------------------------+------------------------------------------------------------------------------------------------------------------------------------|
+** Examination <<examination>>					   :CoursePM:
+*** Assignments
+    Assignments in the courses are:
+
+    | Course | Assignment                               | Moment in LADOK               |
+    |--------+------------------------------------------+-------------------------------|
+    | PA1415 | 3 Week Roll Call                         |                               |
+    |        | Assignment 1: User Stories and Use Cases |                               |
+    |        | Assignment 2: Object Oriented Design     |                               |
+    |        | Assignment 3: Implementation and Testing |                               |
+    |        |                                          |                               |
+    |        | Together these form the moment:          | 1415 Laboration, 4.5hp, A-F   |
+    |--------+------------------------------------------+-------------------------------|
+    | PA1434 | 3 Week Roll Call                         |                               |
+    |        | Assignment 1: Use Cases                  | 1515 Laboration 2, 0.5hp, G-U |
+    |        | Assignment 2: Object Oriented Design     | 1505 Laboration 1, 1.5hp, A-F |
+    |--------+------------------------------------------+-------------------------------|
+    | PA1435 | 3 Week Roll Call                         |                               |
+    |        | Assignment 1: Use Cases                  | 1515 Laboration 2, 0.5hp, G-U |
+    |        | Assignment 2: Object Oriented Design     | 1505 Laboration 1, 1.5hp, A-F |
+    |        | Assignment 3: Implementation and Testing | 1535 Laboration 3, 2hp, A-F   |
+    |--------+------------------------------------------+-------------------------------|
+    | PA1443 | 3 Week Roll Call                         |                               |
+    |        | Assignment 1: Use Cases                  |                               |
+    |        | Assignment 2: Object Oriented Design     |                               |
+    |        | Assignment 3: Architecture and Testing   |                               |
+    |        |                                          |                               |
+    |        | Together these form the moment:          | 1705 Laboration, 4hp, A-F     |
+    |--------+------------------------------------------+-------------------------------|
+
+    Please see the [[./index.org][Start Page for each course]] for more information about the assignments, how they map to course goals, and their respective deadlines.    
+*** Written Exam
+    The written exam will be a computer-based exam.
+
+    Dates for the written exams for the next 12 months can be checked on the student portal at https://studentportal.bth.se/web/studentportal.nsf/web.xsp/prescheduled_dates .
+*** Deadlines and re-examination
+    Assignments:
+    1. *Initial Deadlines*
+       Please see the [[./index.org][Start Page for each course]] for more information about the assignments and their respective deadlines.
+    2. *First Resubmission*
+       <2017-08-30 Wed 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
+    3. *Second Resubmission*
+       <2018-03-26 Mon 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
+
+    Exam:
+    - Dates for the written exams for the next 12 months can be checked on the student portal at https://studentportal.bth.se/web/studentportal.nsf/web.xsp/prescheduled_dates .
 ** TODO Why is this course Important?				   :noexport:
 ** TODO Course Roadmap						   :noexport:
 ** What should I do with the Sprint Test Plan?
@@ -114,7 +276,7 @@ The following learning outcomes apply to the different courses. As you notice, t
    *Things to do:*
    - [[https://education.github.com/][Create an account on Github]] (or use your existing one)
    - Create a Project for the course ~OOD-<course code>-<your name>~
-   - Invite me ([[https://github.com/mickesv][mickesv]]) to the project
+   - (optional) Invite me ([[https://github.com/mickesv][mickesv]]) to the project
    - checkout your project and create a directory structure:
      - ~/Assignments/~
      - ~/SprintTestPlan/~
@@ -154,8 +316,8 @@ The following learning outcomes apply to the different courses. As you notice, t
      - Sprint
      - User Story
      - Test Plan
-** Buy Course Books
-*Main Literature (Both Courses)*
+** Buy Course Books <<materials>>				   :CoursePM:
+*Main Literature (All Courses)*
 #+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
 [[./images/ILarman.jpg]]
 
@@ -173,7 +335,7 @@ I. Sommerville, /Software Engineering/, Pearson, 8th edition, 2006.
 There is also a 9th and a 10th edition (and, of course, the preceeding editions). It does not really matter which one you get. You will use this book as a reference to look up e.g. how a GANTT chart works in case the internet is down.
 #+HTML: <br/><br/><br/><br/><br/><br/>
 
-*Reference Literature (PA1435)*
+*Reference Literature (PA1434, PA1435)*
 #+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
 [[./images/IGamma.jpg]]
 
@@ -191,6 +353,22 @@ R. Nystrom, /Game Programming Patterns/, Genever Benning, 2014.
 
 Also Available at: http://gameprogrammingpatterns.com/contents.html
 #+HTML: <br/><br/><br/><br/><br/><br/>
+
+*Reference Literature (PA1443)*
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/IBass.jpg]]
+
+L. Bass, R. Kazman, P. Clements, /Software Architecture in Practice/, Addison-Wesley, 2012. ISBN-10: 0321815734
+
+A general-purpose software architecture book. I find this book to be less hands on with a design methodology and more shoot-from-the-hip, but there is a large section on <I>architecture tactics</I>, i.e. solutions and structures that address different quality concerns. These are, I find, a great inspiration for the architectural decisions.
+#+HTML: <br/><br/><br/><br/><br/><br/>
+
+#+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
+[[./images/IGamma.jpg]]
+
+Gamma, Helm, Johnson, Vlissides, /Design Patterns, Elements of Reusable Object-Oriented Software/, Addison-Wesley Professional.
+
+This book, also called the Gang of Four book is /the/ reference work when it comes to design patterns. You will be using this book a lot in your future career. If you want to save some money, the most common design patterns are also covered in C. Larman (and these are the ones we will be focusing on in these courses).
 
 #+HTML: &nbsp;
 ** Form Groups

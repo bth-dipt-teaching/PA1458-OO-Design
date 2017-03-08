@@ -111,6 +111,7 @@
 * TODO Course PM
 * TODO Resubmissions
 * TODO Group and Team Instructions
+* TODO PA1443 Seminar Instructions for Release 3 seminar.
 * TODO Lectures
  Lectures
  1. [ ] Introduction
@@ -1773,7 +1774,8 @@ As an additional exercise, which software architecture patterns have I used here
 * TODO Sprint: Preparing for the Exam
 * TODO Sprint 99: Finalising the Course
 * Working Material						   :noexport:
-** TODO Three Week Rollcall assignment
+** DONE Three Week Rollcall assignment
+   CLOSED: [2017-02-17 Fri 14:11]
 ** TODO Work in "The Design Pattern Way" into all sprints.
    For example: The DP way to design interactions
 ** TODO Review Assignments.
