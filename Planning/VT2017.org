@@ -108,8 +108,6 @@
  |             |      | # Lectures                     |                               |                                                 | 10     | 7      | 7      | 11     |                                            |
 
  Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
-* TODO Course PM
-* TODO Resubmissions
 * TODO Group and Team Instructions
 * TODO PA1443 Seminar Instructions for Release 3 seminar.
 * TODO Lectures
@@ -170,6 +168,20 @@
      - Tactics
  11. [ ] From Design to Code
  12. [ ] Q&A
+* DONE Course PM
+  CLOSED: [2017-03-08 Wed 10:23]
+* DONE Resubmissions
+  CLOSED: [2017-03-08 Wed 10:24]
+      Assignments:
+    1. *Initial Deadlines*
+       Please see the [[./index.org][Start Page for each course]] for more information about the assignments and their respective deadlines.
+    2. *First Resubmission*
+       <2017-08-30 Wed 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
+    3. *Second Resubmission*
+       <2018-03-26 Mon 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
+
+    Exam:
+    - Dates for the written exams for the next 12 months can be checked on the student portal at https://studentportal.bth.se/web/studentportal.nsf/web.xsp/prescheduled_dates .
 * DONE 3 week roll call
   CLOSED: [2017-02-17 Fri 14:09]
 * DONE Pick System!
