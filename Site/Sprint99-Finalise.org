@@ -1,0 +1,57 @@
+#+Title: Sprint 99: Finalise the Course
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Sprint
+  This sprint describes what you can consider once you have passed the course.
+* User Stories covered in this Sprint
+  - As a teacher I want the students to continue practicing what I have taught them so they further increase their proficiency.
+  - As a student I want to continue learning and applying object oriented design so that I become a better software engineer.
+  - As a student I want to contribute back to the course so that students in coming years can benefit from my experiences.
+* Introduction
+  Congratulations, dear traveller, for having made it this far. Your journey in this course is about to end. If you have made it this far you probably:
+
+  - Know a thing or two about object oriented design.
+  - Have a healthy suspicion of people who use internet memes.
+
+  You may also have passed the assignments and the exam. I hope you have. I would like you to spend a few moments and think about where to go from here, and what you can do to further ingrain your object oriented design skills. Below I list a number of activities that can help you in this endeavour. I also list some activities that will help me to improve the course.   
+* Experiential Learning
+** Summarise your Learning
+   Reflect upon what you have done and read. What have you learnt? What would you like to know more about?
+** Update the Course Backlog
+   - Purge the [completed] course sprints from the backlog.
+   - Add items to answer any questions you may still have about the course contents.
+   - Reflect upon how you can change your current ways of working, with respect to object oriented design.
+   - Reprioritise your backlog.
+** Fill in the Course Evaluation
+   I value your feedback, and I am constantly looking for ways to improve the course further. Please complete the official course evaluation.
+
+   I would also like you to think about how the course was delivered, and what was delivered. If you can think of things that can be done better, please do send me an e-mail and tell me this. I would love to discuss course improvement with you.
+
+   In particular, if you have ideas that can make the assignments more streamlined for you, as a student, to learn from and to exercise your understanding of everything about object oriented design, then please tell me.
+
+   Also, if you have ideas that can make the /marking/ of assignments more streamlined (How /do/ you unit test a software design?), please discuss this with me.
+** Pass the Torch: System for Next Year
+   If you have an idea of a system that is of reasonable size that you think would be good for the students to work on next year, then summarise it in 1-2 pages and send it to me. I would like the system to have:
+
+   - Some meaningful user interaction (to make use cases from)
+   - Some interesting interaction between objects (to make interaction diagrams)
+   - Some complex relations between classes (to exercise design patterns)
+   - Inheritance hierarchies
+** Work for me
+   If you are interested in helping out in the course next year, then let me know already now, and I'll contact you when it is time to start planning next year's course instance.
+** Sell the Course Book
+   You are of course welcome to keep the course book (Larman). It is actually a decent reference book for most things baout UML and a quick guide to common design patterns (and design practices) too. However, /if/ you want to sell the book, and want my help, then use the link below to submit your name, contact information, information about your book, and your asking price. I will make this available to next years students, who may then contact you:
+
+   [[./images/IRecycle.png]] [[https://docs.google.com/forms/d/e/1FAIpQLScpC7nNWlmodxYaSWANOLHRbNqxM4XDMO02tR1qAgfoKO2MBQ/viewform?usp=sf_link][Reclaim The Books]]
+
+   During next year's course I will clear this list, so if you didn't get the book sold, then you need to remember to re-add yourself.
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have at least considered each of the things to do listed above under experiential learning.
+
+  You may also have:
+  - Updated your Course Backlog.
+
+
+  /Thank you for your time and interest. -- MSV/ 

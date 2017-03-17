@@ -372,14 +372,38 @@ This book, also called the Gang of Four book is /the/ reference work when it com
 
 #+HTML: &nbsp;
 ** Form Groups
-   We expect the assignments to be done in /groups of three to five people/. Use the following (in this order) to find and/or form a group:
+   We expect the assignments to be done in /teans consisting of three to five people/. Use the following (in this order) to find and/or form a team:
 
    1. Your friends
    2. It's Learning
    3. First Classroom Lecture
    4. Course Teacher
 
-   Decide in your group how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
+   Decide in your team how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
+
+*** Groups for Seminars
+   In the seminars we aim at having 25-30 people per group. Use the following guidelines for an initial rough sort:
+
+   1. Who is the oldest member in your team?
+   2. What letter does his family name start with?
+   3. Go to the seminar accordingly:
+
+   | Course | Start Letter | Seminar |
+   |--------+--------------+---------|
+   | PA1415 | A--J         | Group 1 |
+   |        | K--S         | Group 2 |
+   |        | T--Ö         | Group 3 |
+   |        | (other)      | Group 3 |
+   |--------+--------------+---------|
+   | PA1345 | A--N         | Group 1 |
+   |        | O--Ö         | Group 2 |
+   |        | (other)      | Group 2 |
+   |--------+--------------+---------|
+   | PA1443 | A--N         | Group 1 |
+   |        | O--Ö         | Group 2 |
+   |        | (other)      | Group 2 |
+   |--------+--------------+---------|
+
 ** Update Course Backlog
    Where do you go from here? Are there any questions already now that you want answered? Add them, along with a brief strategy for how to find an answer.
 * Sprint Acceptance Tests
@@ -392,3 +416,5 @@ This book, also called the Gang of Four book is /the/ reference work when it com
   You may also have
   - Created a Sprint Test Plan
   - Created a Course Backlog
+
+

@@ -108,8 +108,8 @@
  |             |      | # Lectures                     |                               |                                                 | 10     | 7      | 7      | 11     |                                            |
 
  Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
-* TODO Group and Team Instructions
 * TODO PA1443 Seminar Instructions for Release 3 seminar.
+  Since they don't have anything to demo, this needs to be different.
 * TODO Lectures
  Lectures
  1. [ ] Introduction
@@ -168,6 +168,8 @@
      - Tactics
  11. [ ] From Design to Code
  12. [ ] Q&A
+* DONE Group and Team Instructions
+  CLOSED: [2017-03-17 Fri 11:27]
 * DONE Links in Release Sprints
   CLOSED: [2017-03-16 Thu 10:27]
 * DONE Update assignment reqs template
@@ -1637,7 +1639,8 @@ As an additional exercise, which software architecture patterns have I used here
 * WAIT Sprint: Quality Attributes
 * DONE Sprint: Preparing for the Exam
   CLOSED: [2017-03-17 Fri 10:15]
-* TODO Sprint 99: Finalising the Course
+* DONE Sprint 99: Finalising the Course
+  CLOSED: [2017-03-17 Fri 14:12]
   - Sell Book
   - Work for me next year
   - backlog

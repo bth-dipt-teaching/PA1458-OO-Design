@@ -29,6 +29,7 @@
 | [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | From Design to Code            |                                           |
 | [[./images/Icon-Seminar.jpg]]           |                                  |                                                     |                                | [[./SEM-OpenDiscussion.org][Open Discussion]]                           |
 | [[./images/Icon-Sprint.jpg]]            |                                  | [[./Exam.org][Preparing for the Exam]]                              |                                |                                           |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Sprint99-Finalise.org][Sprint 99: Wrap-up and Finalise the Course]]          |                                |                                           |
 |-------------------------------------+----------------------------------+-----------------------------------------------------+--------------------------------+-------------------------------------------|
 
 * Lost Puppies							   :noexport:
