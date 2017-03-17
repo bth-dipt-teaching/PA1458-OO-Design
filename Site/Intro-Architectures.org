@@ -161,7 +161,13 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
    For example, if /performance/  is a concern for you, Bass et al. suggest that you can focus on managing the resource demand (e.g. by reducing overhead, rate limit the incoming data, or be more efficient in your computations), you may manage the resources smarter (e.g. by introducing concurency), or you may divide the work better (e.g. with a different scheduling policy). Of course, you may decide to use several of these tactics at once. Which tactic to use depends on your system and your data.
 
    I suggest that you have a look in the Software Architecture in Practice book by Bass et al. and get an overview of the available tactics. These are good engineering principles that help you achieve your quality requirements in a more repeatable way.
-** TODO Summary							   :noexport:
+** Summary
+   To summarise, software architecture design is about:
+   - Identifying what needs to be decided in order to support the required functionality with the right level of quality.
+   - Deciding on solutions (for example with the help of tactics) that will address the required qualities.
+   - Instantiating those solutions in different viewpoints of the system.
+   - Evaluating whether your instantiation sufficiently address the decisions, and whether you thus sufficiently satisfy your quality requirements.
+   - Iterating until you are satisfied.  
 * TODO Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:

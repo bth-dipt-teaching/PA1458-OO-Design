@@ -23,10 +23,10 @@
   - (PA1434, PA1435, PA1443) kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
 * Learning Material
   Please review the sprints concerning
-  - Testing
-  - Interactions and Structure
-  - Introduction to Software Architectures
-  - Software Architecture Patterns
+  - [[./Testing.org][Testing]]
+  - [[./Interactions-Structure.org][Interactions and Structure]]
+  - [[./Intro-Architectures.org][Introduction to Software Architectures]]
+  - [[./Architecture-Patterns.org][Software Architecture Patterns]]
 * Experiential Learning
 ** Assignment: System Testing
    Create a test plan for your system that builds upon your previously created test suite.

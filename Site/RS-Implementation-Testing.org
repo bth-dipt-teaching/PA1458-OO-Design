@@ -23,9 +23,9 @@
   - (PA1434, PA1435, PA1443) kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
 * Learning Material
   Please review the sprints concerning
-  - Testing
-  - Interactions and Structure
-  - Implementation and Designing the User Inteface
+  - [[./Testing.org][Testing]]
+  - [[./Interactions-Structure.org][Interactions and Structure]]
+  - [[./Implementation.org][Implementation and Designing the User Inteface]]
 * Experiential Learning
 ** Assignment: Implement System
    In this assignment you are expected to implement your system according to your own design. You do not need to implement the entire system, but you need to implement enough to:

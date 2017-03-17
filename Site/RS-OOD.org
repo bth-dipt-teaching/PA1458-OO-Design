@@ -24,10 +24,10 @@
   - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.    
 * Learning Material
   Please review the sprints concerning
-  - Concepts and Events
-  - Good Interactions
-  - Interactions and Structure
-  - Design Patterns
+  - [[./Concepts-Events.org][Concepts and Events]]
+  - [[./Interactions.org][Good Interactions]]
+  - [[./Interactions-Structure.org][Interactions and Structure]]
+  - [[./Design-Patterns.org][Design Patterns]]
 * Experiential Learning
 ** Assignment Submission   
    {{{submit}}}

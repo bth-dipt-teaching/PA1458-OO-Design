@@ -13,9 +13,9 @@
   - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation
 * Learning Material
   Please review the sprints concerning
-  - Development Methodologies
-  - Requirements Engineering
-  - Use Cases and Use Case Diagrams
+  - [[./Development-Methodologies.org][Development Methodologies]]
+  - [[./Requirements-Engineering.org][Requirements Engineering]]
+  - [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
 * Experiential Learning
 ** Assignment Submission   
    {{{submit}}}

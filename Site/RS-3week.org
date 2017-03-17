@@ -14,7 +14,7 @@
  - (PA1435, PA1434, PA1443) kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
 * Learning Material
   Please review the sprints concerning
-  - Sprint0: Course Introduction
+  - [[./Sprint0-course-intro.org][Sprint0: Course Introduction]]
 * Experiential Learning
 ** Assignment: Early List of Use Cases
    Create an inital list of use cases for your system. Briefly describe each of them (1-2 sentences each).

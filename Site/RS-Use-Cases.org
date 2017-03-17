@@ -15,7 +15,7 @@
  - (PA1435, PA1434, PA1443) kunna visa kunskap om grundläggande designprinciper.
 * Learning Material
   Please review the sprints concerning
-  - Use Cases and Use Case Diagrams
+  - [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
 * Experiential Learning
 ** Assignment Submission   
    {{{submit}}}
