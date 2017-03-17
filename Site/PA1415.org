@@ -41,6 +41,7 @@
 | [[./images/Icon-Lecture.jpg]]           | <2017-05-09 Tue 10:00-12:00> C413A |                                                     | [[./QnA.org][Questions and Answers]]          |                                           |
 | [[./images/Icon-Lecture.jpg]]           | <2017-05-12 Fri 13:00-15:00> G404  |                                                     | [[./QnA.org][Questions and Answers]]          |                                           |
 | [[./images/Icon-AssignmentSeminar.jpg]] |                                    |                                                     |                                | [[./SEM-Release3.org][Demo and Discuss Release 3]]                |
+| [[./images/Icon-Sprint.jpg]]            |                                    | [[./Exam.org][Preparing for the Exam]]                              |                                |                                           |
 |-------------------------------------+------------------------------------+-----------------------------------------------------+--------------------------------+-------------------------------------------|
 
 * Lost Puppies							   :noexport:

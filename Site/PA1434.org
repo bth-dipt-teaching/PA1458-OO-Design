@@ -28,6 +28,7 @@
 | [[./images/Icon-Sprint.jpg]]            |                                  | [[./Implementation.org][Implementation and Designing the User Interface]]     |                                |                                           |
 | [[./images/Icon-Lecture.jpg]]           |                                  |                                                     | From Design to Code            |                                           |
 | [[./images/Icon-Seminar.jpg]]           |                                  |                                                     |                                | [[./SEM-OpenDiscussion.org][Open Discussion]]                           |
+| [[./images/Icon-Sprint.jpg]]            |                                  | [[./Exam.org][Preparing for the Exam]]                              |                                |                                           |
 |-------------------------------------+----------------------------------+-----------------------------------------------------+--------------------------------+-------------------------------------------|
 
 * Lost Puppies							   :noexport:
