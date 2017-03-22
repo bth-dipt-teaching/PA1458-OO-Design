@@ -1,0 +1,241 @@
+#+Title: Interaction Diagrams
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2017-03-21
+
+* Interaction Diagrams
+** Sequence Diagrams
+*** System Sequence Diagrams
+** Communication Diagrams
+
+
+* Sequence Diagram
+#+BEGIN_SRC plantuml :file ./images/FSeq1.png
+participant ":CoffeMaker" as cm
+participant ":BrewUnit" as bu
+participant ":WaterBoiler" as wb
+participant ":Grinder" as gr
+participant ":Brewer"  as br
+participant ":Mixer" as mi
+
+cm -> bu : makeCoffee(theSize, theType, theExtras)
+activate bu
+
+bu -> br : brew()
+activate br
+br -> wb : heat(theSize)
+activate wb
+br -> gr : grind(theSize, theType)
+activate gr
+gr --> br : all done
+deactivate gr
+wb --> br : all done
+deactivate wb
+br --> bu : all done
+deactivate br
+
+bu -> mi : pourCoffee()
+activate mi
+bu -> mi : pourExtras(theExtras)
+mi --> bu : all done
+deactivate mi
+
+deactivate bu
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSeq1.png]]
+
+* Communication Diagram
+#+BEGIN_SRC plantuml :file ./images/FSeqComm1.png
+object ":CoffeMaker" as cm
+object ":BrewUnit" as bu
+object ":WaterBoiler" as wb
+object ":Grinder" as gr
+object ":Brewer"  as br
+object ":Mixer" as mi
+
+cm -> bu : 1. makeCoffee(theSize, theType, theExtras)
+' activate bu
+bu --> wb : 2. heat(theSize)
+' activate wb
+bu --> gr : 3. grind(theSize, theType)
+' activate gr
+'gr --> bu : all done
+' deactivate gr
+'wb --> bu : all done
+' deactivate wb
+
+bu --> br : 4. brew()
+' activate br
+'br --> bu : all done
+' deactivate br
+
+bu --> mi : 5. pourCoffee()
+' activate mi
+bu --> mi : 6. pourExtras(theExtras)
+
+mi --> ":MilkContainer" : 6.1 checkAvailability()
+'mi --> bu : all done
+' deactivate mi
+
+' deactivate bu
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSeqComm1.png]]
+
+
+* Class Diagram
+#+BEGIN_SRC plantuml :file ./images/FSeqClass1.png
+class CoffeeMaker
+class BrewUnit
+BrewUnit : +makeCofee(int theSize, enum theType, enum theExtras [])
+
+WaterBoiler : +heat(int theSize)
+Grinder : +grind(int theSize, enum theType)
+Brewer : +brew()
+Mixer : +pourCoffee()
+Mixer : +pourExtras(enum theExtras [])
+
+CoffeeMaker - BrewUnit
+Brewer -- WaterBoiler
+Brewer -- Grinder
+BrewUnit -- Brewer
+BrewUnit -- Mixer
+
+MilkContainer : +boolean checkAvailability()
+Mixer -- MilkContainer
+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSeqClass1.png]]
+
+* Class Diagram II
+#+BEGIN_SRC plantuml :file ./images/FSeqClass2.png
+scale 0.7
+package UserInterface {
+class CoffeeMaker
+class SelectorPanel
+class Display
+
+CoffeeMaker o-- SelectorPanel
+CoffeeMaker o-- Display
+}
+
+package Brew {
+class BrewUnit
+class Brewer
+}
+
+package HardwareControllers {
+class WaterBoiler
+class Grinder
+class Mixer
+class WaterPump
+class ServiceUnit
+}
+
+package HardwareSensors {
+class MilkContainer
+class CoffeeContainer
+class BeanTrash
+}
+
+package Plug-Ins {
+class BarristaUnit
+}
+
+package DataStore {
+class StatisticsUnit
+}
+
+BrewUnit : +makeCofee(int theSize, enum theType, enum theExtras [])
+BrewUnit : +String getStatus()
+
+WaterBoiler : +heat(int theSize)
+Grinder : +grind(int theSize, enum theType)
+Brewer : +brew()
+Mixer : +pourCoffee()
+Mixer : +pourExtras(enum theExtras [])
+
+CoffeeMaker -- BrewUnit
+Brewer -- WaterBoiler
+Brewer -- Grinder
+BrewUnit -- Brewer
+BrewUnit -- Mixer
+
+Mixer -- MilkContainer
+MilkContainer : +boolean checkAvailability()
+MilkContainer : +get(theAmount)
+
+WaterPump : get(theAmount)
+WaterBoiler -- WaterPump
+
+CoffeeContainer : +boolean checkAvailability(theAmount)
+CoffeeContainer : +get(theAmount)
+
+Grinder -- CoffeeContainer
+
+ServiceUnit : +startCleaningCycle()
+
+WaterBoiler -- ServiceUnit
+Grinder -- ServiceUnit
+ServiceUnit -- BrewUnit
+
+BeanTrash : +boolean checkIfFull()
+BrewUnit -- BeanTrash
+
+BrewUnit -- StatisticsUnit
+StatisticsUnit : +push(theSize, theType, theExtras)
+StatisticsUnit : +get(enum informationType)
+
+BrewUnit -- BarristaUnit
+BarristaUnit : +getCoffeeTypes()
+BarristaUnit : +struct brewInfo getIngredients(enum CofeeType)
+CoffeeMaker -- BarristaUnit
+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSeqClass2.png]]
+
+* Packages
+#+BEGIN_SRC plantuml :file ./images/FSeqPackages.png
+package UserInterface {}
+package Brew {}
+package DataStore {}
+package HardwareControllers {}
+package HardwareSensors {}
+package Plugins {}
+
+UserInterface -- Brew
+Brew -- DataStore
+Brew -- HardwareControllers
+Brew -- HardwareSensors
+Brew - Plugins
+
+UserInterface -- Plugins
+HardwareControllers - HardwareSensors
+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSeqPackages.png]]
+
+
+* Package Access
+#+BEGIN_SRC plantuml :file ./images/FSeqPack2.png
+package HardwareControllers {
+
+class "HardwareSensors::MilkContainer" as mc
+
+Mixer -- mc
+}
+
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FSeqPack2.png]]
+

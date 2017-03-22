@@ -108,9 +108,9 @@
  |             |      | # Lectures                     |                               |                                                 | 10     | 7      | 7      | 11     |                                            |
 
  Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
-* TODO PA1443 Seminar Instructions for Release 3 seminar.
+* TODO PA1443 Seminar Instructions for Release 3 seminar
   Since they don't have anything to demo, this needs to be different.
-* TODO Lectures
+* TODO [#A] Lectures
  Lectures
  1. [ ] Introduction
     - Course Intro
@@ -168,6 +168,11 @@
      - Tactics
  11. [ ] From Design to Code
  12. [ ] Q&A
+* DONE Page Analytics
+  CLOSED: [2017-03-20 Mon 10:21]
+  https://www.google.com/analytics/web/provision/?authuser=0#provision/SignUp/
+
+https://github.com/blog/1672-introducing-github-traffic-analytics
 * DONE Group and Team Instructions
   CLOSED: [2017-03-17 Fri 11:27]
 * DONE Links in Release Sprints
@@ -282,7 +287,7 @@ As I said to Raquel, if you want to divide your hours differently from what is a
   :LOGBOOK:  
   - State "DONE"       from "TODO"       [2017-02-08 Wed 14:34]
   :END:      
-* TODO Sprint: Requirements Engineering
+* TODO [#A] Sprint: Requirements Engineering
 ** About This Sprint
    This sprint briefly introduces the topic requirements engineering. It is primarily targeted at {{{pa1415}}}.
    
@@ -552,7 +557,7 @@ When marking this part of the assignment we are looking for the following:
   :LOGBOOK:  
   - State "DONE"       from "TODO"       [2017-02-08 Wed 14:34]
   :END:      
-* TODO Sprint: Testing
+* TODO [#A] Sprint: Testing
 ** About This Sprint
    In this sprint we momentarily pause the steady onmarch of UML and instead focus on how to test the designed software.
 ** User Stories covered in this Sprint
@@ -994,11 +999,11 @@ class DBInterface
       16. UML Class Diagrams
       31. [@31] Domain Model Refinement
       35. [@35] Package Design
-*** TODO Screencasts
+*** Screencasts
   - [[https://play.bth.se/media/Contracts/1_086yu2lr/41750261][Contracts]]
-  - [ ] Interaction Diagrams
-  - [ ] Class Diagrams
-  - [ ] Package Diagrams
+  - [X] Interaction Diagrams
+  - [X] Class Diagrams
+  - [X] Package Diagrams
 *** TODO Lectures						   :noexport:
 *** Further Reading
     - [[http://dilbert.com/strip/1997-03-09e][Dilbert solves the Software Design Problem]]
@@ -1715,7 +1720,8 @@ As an additional exercise, which software architecture patterns have I used here
    CLOSED: [2016-09-28 Wed 10:07]
 ** DONE Revisit all sprints with submissions and make sure the sprint test plan is up to date
    CLOSED: [2017-02-17 Fri 13:30]
-** TODO Re-do video "Concepts and Classes": Move Objects into a different sheet
+** DONE Re-do video "Concepts and Classes": Move Objects into a different sheet
+   CLOSED: [2017-03-21 Tue 10:25]
 ** TODO Video: Interaction Diagrams
 ** TODO Video: Class Diagrams
 ** TODO Videos: Software Architectures
