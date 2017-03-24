@@ -1,4 +1,4 @@
-#+Title: Modelling Structure \\\\ =PA14[13]5=
+#+Title: Modelling Structure
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-03-21
@@ -122,9 +122,11 @@
 ** Discussion: Aggregation or Composition 			 :Discussion:
 #+BEGIN_SRC plantuml :file FAggregation.png
 left to right direction
+scale 400 height
 A *-- B
 C o-- D
 #+END_SRC
+
 #+ATTR_LATEX: :height 6.5cm
 #+RESULTS:
 [[file:FAggregation.png]]
@@ -322,7 +324,7 @@ Circle : +Diameter
 #+ATTR_LATEX: :height 6.5cm
 #+RESULTS:
 [[file:FInheritance3.png]]
-** Abtract Types
+** Abstract Types
    - When no instances of the base class are desirable.
    - Example: There are no instances of the generic "Figure" base class.
 #+BEGIN_SRC plantuml :file FInheritanceAbstract.png

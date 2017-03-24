@@ -1,4 +1,4 @@
-#+Title: Development Process \\\\ =PA14[13]5=
+#+Title: Development Process
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-03-09
@@ -210,3 +210,89 @@
 
 
 	
+** Project Planning 						 :Discussion:
+   - What do we need to know in order to plan something?
+   - How do we put this together into a plan?
+*** notes							   :noexport:
+    - size of a task
+    - Dependencies between sub-tasks
+    - allocation of resources
+** Work Breakdown Structure
+#+BEGIN_SRC dot :file FWBSExample.png
+digraph {
+rankdir=BT;
+splines=true;
+node [shape=box];
+
+"..."
+sr [label="Search for Room"]
+sr -> "..."
+"Database Design" -> sr
+"GUI Design" -> sr
+"Implementation" -> sr
+"Testing" -> sr
+"Implement DB" -> "Implementation"
+"Implement Logic" -> "Implementation"
+"Implement GUI" -> "Implementation"
+"Create Tests" -> "Testing"
+"Run Tests" -> "Testing"
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:FWBSExample.png]]
+
+** GANTT
+:PROPERTIES:
+:BEAMER_OPT: shrink=60
+:END:
+
+| Feature         | Tasks           | Sub-Tasks       | Effort | Start Date | End Date | Responsible | Spent Time | Progress | Projected Effort | Over/Undertime             |
+|-----------------+-----------------+-----------------+--------+------------+----------+-------------+------------+----------+------------------+----------------------------|
+| Search for Room | Database Design |                 |        |            |          |             |            |          | ~spent/progress~ | ~(est eff.) - (proj. eff)~ |
+|                 | GUI Design      |                 |        |            |          |             |            |          |                  |                            |
+|                 | Implementation  | Implement DB    |        |            |          |             |            |          |                  |                            |
+|                 |                 | Implement Logic |        |            |          |             |            |          |                  |                            |
+|                 |                 | Implement GUI   |        |            |          |             |            |          |                  |                            |
+|                 | Testing         | Create Tests    |        |            |          |             |            |          |                  |                            |
+|                 |                 | Run Tests       |        |            |          |             |            |          |                  |                            |
+
+
+[[./IGANTT.png]]
+
+** Tracking Progress
+   - Reporting /Time/ or reporting /Progress/
+     - Amount of time/money spent
+     - Delivered LOC?
+     - Completed Tasks?
+   - Earned Value Charts
+     - Planned cost (value)
+     - Actual cost
+     - Earned Value
+** Story Points
+   - An arbitrary measure of the size of a task
+   - Typically uses a modification of a fibonacci sequence:
+     - ~1,2,3,5,13,40,100~
+   - Use them to
+     - measure /velocity/ of your development team.
+     - plan sprints accordingly
+** Earned Value Charts: Planned
+[[../Site/images/IEV_Planned.png]]
+
+** Earned Value Chart: Adding Actual Cost
+[[../Site/images/IEV_Cost.png]]
+
+** Earned Value Chart
+[[../Site/images/IEV_Earned.png]]
+
+** Burndown chart
+[[../Site/images/FBurndown_Replan.png]]
+
+** Risk Management
+- Identify risks
+- Develop plans to minimise their effect on a project
+- A risk is a probability that some adverse circumstance will occur
+  - Project risks affect schedule or resources
+  - Product risks affect the quality or performance of the software being developed
+  - Business risks affect the organisation developing or procuring the software
+- Monitor and mitigate risks

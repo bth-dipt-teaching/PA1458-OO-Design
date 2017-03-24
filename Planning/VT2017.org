@@ -112,7 +112,7 @@
   Since they don't have anything to demo, this needs to be different.
 * TODO [#A] Lectures
  Lectures
- 1. [ ] Introduction
+ 1. [X] Introduction
     - Course Intro
     - Modelling Why care
     - Overall OOD Development Methodology
@@ -122,33 +122,33 @@
     - Sell UML
     - Design /Design Patterns
     - Exercise in Scale
- 2. [ ] Development Process
+ 2. [X] Development Process
     - Process
     - Process vs Project vs Product
     - Waterfall vs Iterative
     - UML Process
-    - [ ] Process planning
-      - [ ] Story Points
-      - [ ] Burndown
-      - [ ] GANTT
-      - [ ] WBS
- 3. [ ] Requirements Engineering
+    - [X] Process planning
+      - [X] Story Points
+      - [X] Burndown
+      - [X] GANTT
+      - [X] WBS
+ 3. [X] Requirements Engineering
     - Elicitation
     - Goals, Features, Functions, Components
     - Good and Bad
     - Black Box vs White Box
     - Basic RE Process
     - User Stories
- 4. [ ] User Stories and UML Use Cases
+ 4. [X] User Stories and UML Use Cases
     - Use Cases
     - Use Case Diagrams
- 5. [ ] Stucture
+ 5. [X] Stucture
     - Concepts and Events
     - Class Diagrams
     - Packages
       - Use ch35
  6. [ ] Testing
- 7. [ ] Behaviour
+ 7. [X] Behaviour
     - From Use Cases to System Sequence Diagram to Interaction Diagram
     - Contracts?
     - State Diagrams
@@ -1722,8 +1722,10 @@ As an additional exercise, which software architecture patterns have I used here
    CLOSED: [2017-02-17 Fri 13:30]
 ** DONE Re-do video "Concepts and Classes": Move Objects into a different sheet
    CLOSED: [2017-03-21 Tue 10:25]
-** TODO Video: Interaction Diagrams
-** TODO Video: Class Diagrams
+** DONE Video: Interaction Diagrams
+   CLOSED: [2017-03-22 Wed 13:38]
+** DONE Video: Class Diagrams
+   CLOSED: [2017-03-22 Wed 13:38]
 ** TODO Videos: Software Architectures
    - SA Intro
    - Tactics

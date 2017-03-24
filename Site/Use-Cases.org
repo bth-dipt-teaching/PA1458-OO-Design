@@ -42,6 +42,8 @@ It is also important to remember that the main course of events should describe 
 
 ** Use Cases as Test Cases
    As a developer, you may use this use case straight off as a test case for the system. Find Bob, put him in front of the ice cream truck, and tell him to order an ice cream. If you are able to execute the use case as specified, you have a passing test case. You are of course not done with your tests here, since the use case is not complete. If you think about it, you may select different flavours of ice cream, you may ask for one or several scoops of ice cream, you can ask for a cone or a cup, you can pay with cash or card, and so on. All of these choices ought to be covered in the use case and the corresponding test cases. You may also pay up-front or after delivery, but this may be better represented as two separate use cases.
+
+   If Bob is a tester, he will go beyond what is specified in the use case, and order -1 ice creams, 999 999 999 ice creams, NaN ice creams, and a pony. These are not specified in the use case, and probably should not be, except as a generic alternative flow of events "bad input". The point is that the use case describes a positive scenario, and these are all special cases that need to be dealt with, but not necessarily at this level of detail as early as during the analysis phase.
 ** Use Cases and Business Requirements
     Take the use case above. Now quickly tell me which business requirements that are involved.
 

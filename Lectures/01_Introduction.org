@@ -1,4 +1,4 @@
-#+Title: =PA14[13]5= \\\\Software Design\\\\Introduction
+#+Title: Software Design\\\\Introduction
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-03-08
@@ -70,18 +70,38 @@ Efter genomförd kurs skall studenten:
 *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:
 - kunna analysera källkod för eventuella förbättringar.
 - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
-* Course Structure
-  Already covered by @LKU, but:
-  - Lectures
-    - Parts as videos
-    - Parts as classroom lectures/discussions
-  - Assignments
-    - Startup Seminars
-    - Work/Submission
-    - Feedback Meetings
-      - For first Assignment, there is also a midway discussion meeting
+* Discuss: Course Charter: PA1443				 :Discussion:
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
 
-  See course homepage on It's for deadlines etc.	
+*Kunskap och förståelse* Efter genomförd kurs ska studenten:
+- kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
+- kunna visa kunskap om grundläggande designprinciper.
+- kunna visa kunskap om grundläggande designmönster.
+- kunna visa kunskap om grundläggande mjukvaruarkitekturstilar
+
+*Färdigheter och förmåga* Efter genomförd kurs ska studenten:
+- kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
+- kunna tillämpa grundläggande designmönster i en objektorienterad design.
+- kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper
+- kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem
+- kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha
+- kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system
+
+*Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:
+- kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+* Course Structure
+  - https://mickesv.github.io/OODesign/
+
+  - Sprints
+  - Lectures
+    - Video Lectures
+    - Classroom Lectures
+  - Seminars
+  - Assignments (Release Sprints)
+
+  See [[https://mickesv.github.io/OODesign/Sprint0-course-intro.html][Sprint 0: Course Introduction]] homepage on It's for deadlines etc.	
 * Literature
 :PROPERTIES: 
 :BEAMER_OPT: shrink=15
@@ -90,17 +110,12 @@ Efter genomförd kurs skall studenten:
 #+ATTR_LATEX: :width 1.5cm
 [[./ILarman.jpg]]
 - C. Larman, /Applying UML and Patterns/, Prentice Hall, 3rd Edition
-- Try to find an older edition!
+- Also available as a softcover edition from 2015
 
 #+LATEX: \only<2>{
 #+ATTR_LATEX: :height 1.5cm
 [[./IGamma.jpg]]
 - Gamma, Helm, Johnson, Vlissides, /Design Patterns, Elements of Reusable Object-Oriented Software/, Addison-Wesley Professional
-
-#+ATTR_LATEX: :height 1.5cm
-[[./INystrom.jpg]]
-- R. Nystrom, /Game Programming Patterns/, Genever Benning, 2014.
-- Also Available at: http://gameprogrammingpatterns.com/contents.html
 #+LATEX: }
 ** Sidenote							   :noexport:
    The Gamma et al. book is often referred to as the "Gang of Four-book". This is, in fact, a reference to the Chinese cultural revolution (https://en.wikipedia.org/wiki/Gang_of_Four), and refers to four people who were later charged with treason. When talking to industry practitioners, the GoF-book is often held in the same regard. Stockholm-syndromed as I am into academia, I find this a bit unfair, but the book does become a problem when you use it indiscriminately in an attempt to design pattern /everything/.
@@ -112,6 +127,7 @@ Efter genomförd kurs skall studenten:
   - http://www.eclipse.org/papyrus/
   - http://argouml.tigris.org/
   - https://marketplace.eclipse.org/content/uml-designer
+  - http://plantuml.com/
   - ...
 * Discuss: Why Bother About Modelling				 :Discussion:
   T. Gorschek, E. Tempero, L. Angelis, /On the use of software design models in software development practice: An empirical investigation/, in Journal of Systems and Software 95(2014):176--193.

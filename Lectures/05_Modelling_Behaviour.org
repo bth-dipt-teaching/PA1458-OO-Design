@@ -1,4 +1,4 @@
-#+Title: Modelling Behaviour \\\\ =PA14[13]5=
+#+Title: Modelling Behaviour
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-04-06
@@ -522,7 +522,6 @@ deactivate pos
 #+ATTR_LATEX: :height 8cm
 #+RESULTS:
 [[file:FSequenceDiagrams.png]]
-
 ** Communication Diagrams \\ (Interaction Diagrams)
 #+BEGIN_SRC plantuml :file FCommunicationDiagram.png
 left to right direction
@@ -615,5 +614,11 @@ Playing --> Playing : Meet Ghost [powerup active] /addScore()
 #+ATTR_LATEX: :width 11cm
 #+RESULTS:
 [[file:FExampleBadStateChart_fixed.png]]
+
+** Discuss: From Sequence Diagrams to Class Diagrams 		 :Discussion:
+#+LATEX: \vspace{-0.5cm}\hspace{2cm}
+#+ATTR_LATEX: :height 8cm
+#+RESULTS:
+[[file:FSequenceDiagrams.png]]
 ** Discussion: Dynamic Behaviour				 :Discussion:
    - Why should we model the behaviour?

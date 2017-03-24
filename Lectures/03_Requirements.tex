@@ -1,4 +1,4 @@
-% Created 2016-04-06 Wed 10:26
+% Created 2017-03-23 Thu 10:24
 \documentclass[10pt,t,a4paper]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -19,25 +19,25 @@
 \usetheme{BTH_msv}
 \author{Mikael Svahnberg\thanks{Mikael.Svahnberg@bth.se}}
 \date{2016-03-16}
-\title{Requirements \\\\ Engineering \\\\ \texttt{PA14[13]5}}
+\title{Requirements \\\\ Engineering}
 \hypersetup{
   pdfkeywords={},
   pdfsubject={},
-  pdfcreator={Emacs 25.1.50.1 (Org mode 8.2.10)}}
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
 \begin{document}
 
 \maketitle
 
 \section{Classroom}
 \label{sec-1}
-\begin{frame}[label=sec-1-1]{Requirements Engineering \\ A Brief Overview}
-\begin{itemize}
+\begin{frame}[fragile,label=sec-1-1]{Requirements Engineering \\ A Brief Overview}
+ \begin{itemize}
 \item Develop requirements through an iterative co-operative process of analysing the problem
 \item Documenting the resulting observations in a variety of representation formats
 \item checking the accuracy of the understanding gained
 \end{itemize}
 
-See the course PA1410 Requirements Engineering
+See the course \verb~PA1410 Requirements Engineering~
 \end{frame}
 \begin{frame}[label=sec-1-2]{Difficulties in Requirements Engineering}
 \begin{itemize}
@@ -117,7 +117,7 @@ Accessibility, accountability, accuracy, adaptability, additivity, adjustability
 \end{verse}
 \end{column}
 \begin{column}{0.2\textwidth}
-\includegraphics[width=9cm]{./FQualityAttributes.png}
+\includegraphics[width=9cm]{./IQualityAttributes.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -180,7 +180,33 @@ What is the purpose of each of these attributes?
 \item Text, Figure, Diagram, Table?
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-12]{Discuss: Good and Bad Examples}
+\begin{frame}[label=sec-1-12]{User Stories}
+\begin{itemize}
+\item Simpler template:
+\begin{itemize}
+\item As a \emph{type of user}, I want \emph{some goal} so that \emph{some reason}.
+\end{itemize}
+\item Written on index cards or post-it notes.
+\item Often with \emph{acceptance tests} on the flip-side.
+\end{itemize}
+\end{frame}
+\begin{frame}[label=sec-1-13]{Levels of Requirements}
+T. Gorschek and C. Wohlin. Requirements abstraction model. \emph{Requirements Engineering}, 11:79–101, 2006:
+
+\begin{itemize}
+\item \alert{Goals} : Aligned with product Strategies
+\item \alert{Features} : High-level descriptions of system functionalities
+\item \alert{Functions} :  break-down of each feature
+\item \alert{Components} : further breakdown
+\end{itemize}
+
+Do we see the system as a \emph{Black Box} or a \emph{White Box}?
+\begin{description}
+\item[{Black box}] What can we do towards the system, how does it respond?
+\item[{White box}] What does the system do internally?
+\end{description}
+\end{frame}
+\begin{frame}[label=sec-1-14]{Discuss: Good and Bad Examples}
 \begin{itemize}
 \item The system should be easy to use
 \end{itemize}
@@ -197,13 +223,13 @@ Worst case value: 1,5 h / new operation \\
 \end{verse}
 }
 \end{frame}
-\begin{frame}[label=sec-1-13]{Discuss: Good and Bad Examples}
+\begin{frame}[label=sec-1-15]{Discuss: Good and Bad Examples}
 \begin{itemize}
 \item The system should be stable
 \item The user should be able to log in. If the user fails to log in after three attempts the user account should be locked.
 \end{itemize}
 \end{frame}
-\begin{frame}[shrink=15,label=sec-1-14]{Customer Contacts}
+\begin{frame}[shrink=15,label=sec-1-16]{Customer Contacts}
 \begin{itemize}
 \item Respect
 \item Responsibility
@@ -232,7 +258,7 @@ Worst case value: 1,5 h / new operation \\
 \end{itemize}
 \end{block}
 \end{frame}
-\begin{frame}[label=sec-1-15]{Contracts}
+\begin{frame}[label=sec-1-17]{Contracts}
 \begin{itemize}
 \item “A written judicial document defining the terms for business related agreements”
 \begin{itemize}
@@ -258,7 +284,7 @@ Worst case value: 1,5 h / new operation \\
 \end{itemize}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-16]{Contract Contents}
+\begin{frame}[label=sec-1-18]{Contract Contents}
 \begin{itemize}
 \item Definition of Services
 \item Time Period
@@ -274,18 +300,18 @@ Worst case value: 1,5 h / new operation \\
 \end{itemize}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-17]{Contract: Important Points}
+\begin{frame}[label=sec-1-19]{Contract: Important Points}
 \begin{itemize}
 \item The contract defines what you shall do.
 \item The contract also defines what you can expect from the customer.
 \item You sign the contract knowing that you can deliver what is specified, under the specified conditions.
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-1-18]{Back to RUP / Use Cases}
+\begin{frame}[label=sec-1-20]{Back to RUP / Use Cases}
 \includegraphics[height=6cm]{FUseCases.png}
 \end{frame}
 
-\begin{frame}[label=sec-1-19]{Discuss: Good and Bad Requirements II}
+\begin{frame}[label=sec-1-21]{Discuss: Good and Bad Requirements II}
 \emph{Users shall be able to view a personal calendar and recent notifications in the system.}
 
 \begin{verse}
@@ -298,7 +324,7 @@ Description: \\
 \hspace*{4em}The system displays the users' recent notifications. \\
 \end{verse}
 \end{frame}
-\begin{frame}[label=sec-1-20]{Discussion on Use Case Ranking}
+\begin{frame}[label=sec-1-22]{Discussion on Use Case Ranking}
 \begin{block}{Increase ranking of a use case if it}
 \begin{itemize}
 \item has direct impact on architectural design
@@ -316,7 +342,7 @@ For each of these cases, why does it increase the rank of a use case?
 \end{block}
 \end{frame}
 
-\begin{frame}[label=sec-1-21]{Use Case Ranking Techniques}
+\begin{frame}[label=sec-1-23]{Use Case Ranking Techniques}
 \begin{itemize}
 \item Scored (Numerical Weights)
 \item Discrete (High, Medium, Low)
@@ -325,5 +351,5 @@ For each of these cases, why does it increase the rank of a use case?
 \item Cumulative Voting
 \end{itemize}
 \end{frame}
-% Emacs 25.1.50.1 (Org mode 8.2.10)
+% Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

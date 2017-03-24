@@ -1,5 +1,4 @@
 #+Title: Design Patterns
-#+Subtitle: =PA14[13]5=
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-04-06
@@ -717,6 +716,29 @@ OSXFactory .> OSXButton : <<creates>>
   - Knowing about private encapsulated data
   - Knowing about related objects
   - Knowing about things it can derive or calculate
+** Levels of Patterns
+   Different levels:
+   - Architecture
+     - Systems, subsystems
+   - Design
+     - Classes, groups of classes
+   - Idioms
+     - One class, functions within one class
+   - GRASP
+     - In some sense orthogonal
+     - Learning aid for OO Design
+     - Advice for Assigning Responsibilities
+** GRASP Patterns
+   (Listed on the inside of the book cover)
+   - Information Expert
+   - Creator
+   - Controller
+   - Low Coupling
+   - High Cohesion
+   - Polymorphism
+   - Pure Fabrication
+   - Indirection
+   - Protected Variations
 ** Example: GRASP Patterns				 :Example:Discussion:
 #+BEGIN_SRC plantuml :file FGRASPExample.png
 left to right direction
@@ -731,7 +753,7 @@ Flight "*" -- "2" Airport
 Luggage "*" -- "*" Aeroplane
 #+END_SRC
 
-#+LATEX: \vspace{-1cm}
+#+LATEX: \vspace{-1cm}\hspace{2cm}
 #+ATTR_LATEX: :height 4cm
 #+RESULTS:
 [[file:FGRASPExample.png]]
@@ -802,3 +824,19 @@ BasicScene <|-- MenuScene
 - Design Pattern: State
 - Involved Classes: Context, =<<abstract>> State=, ConcreteState*
 - Pacman: Ghost, =<<abstract>> GhostState=, GhostNormalState (see above, GhostStrategy), GhostChasedState
+** Architecture Patterns					 :Discussion:
+   Examples of Systems:
+
+   - Compiler
+   - Interactive System, e.g. a Time Management Program
+
+#+LATEX: \only<2>{
+   $\ldots$ imposed with different quality requirements:
+   - Performance: High Throughput
+   - Flexibility / Continuous Deployment   
+#+LATEX: }
+** Discuss: When to worry about Design Patterns 		 :Discussion:
+   When should you introduce patterns into your system?
+   - GRASP patterns
+   - Design Patterns
+   - Architectural Patterns

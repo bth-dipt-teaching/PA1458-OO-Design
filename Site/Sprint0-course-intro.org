@@ -360,7 +360,7 @@ Also Available at: http://gameprogrammingpatterns.com/contents.html
 
 L. Bass, R. Kazman, P. Clements, /Software Architecture in Practice/, Addison-Wesley, 2012. ISBN-10: 0321815734
 
-A general-purpose software architecture book. I find this book to be less hands on with a design methodology and more shoot-from-the-hip, but there is a large section on <I>architecture tactics</I>, i.e. solutions and structures that address different quality concerns. These are, I find, a great inspiration for the architectural decisions.
+A general-purpose software architecture book. I find this book to be less hands on with a design methodology and more shoot-from-the-hip, but there is a large section on /architecture tactics/, i.e. solutions and structures that address different quality concerns. These are, I find, a great inspiration for the architectural decisions.
 #+HTML: <br/><br/><br/><br/><br/><br/>
 
 #+ATTR_HTML: :width 100 :style float:left;margin-right:1em;
@@ -395,7 +395,7 @@ This book, also called the Gang of Four book is /the/ reference work when it com
    |        | T--Ö         | Group 3 |
    |        | (other)      | Group 3 |
    |--------+--------------+---------|
-   | PA1345 | A--N         | Group 1 |
+   | PA1435 | A--N         | Group 1 |
    |        | O--Ö         | Group 2 |
    |        | (other)      | Group 2 |
    |--------+--------------+---------|

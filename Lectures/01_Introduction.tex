@@ -1,4 +1,4 @@
-% Created 2016-03-31 Thu 14:48
+% Created 2017-03-23 Thu 09:33
 \documentclass[10pt,t,a4paper]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -19,11 +19,11 @@
 \usetheme{BTH_msv}
 \author{Mikael Svahnberg\thanks{Mikael.Svahnberg@bth.se}}
 \date{2016-03-08}
-\title{\texttt{PA14[13]5} \\\\Software Design\\\\Introduction}
+\title{Software Design\\\\Introduction}
 \hypersetup{
   pdfkeywords={},
   pdfsubject={},
-  pdfcreator={Emacs 25.1.50.1 (Org mode 8.2.10)}}
+  pdfcreator={Emacs 25.1.1 (Org mode 8.2.10)}}
 \begin{document}
 
 \maketitle
@@ -76,49 +76,63 @@ Efter genomförd kurs skall studenten:
 \item kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-4]{Course Structure}
-Already covered by @LKU, but:
+\begin{frame}[shrink=15,label=sec-4]{Discuss: Course Charter: PA1443}
+
+\alert{Kunskap och förståelse} Efter genomförd kurs ska studenten:
 \begin{itemize}
+\item kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
+\item kunna visa kunskap om grundläggande designprinciper.
+\item kunna visa kunskap om grundläggande designmönster.
+\item kunna visa kunskap om grundläggande mjukvaruarkitekturstilar
+\end{itemize}
+
+\alert{Färdigheter och förmåga} Efter genomförd kurs ska studenten:
+\begin{itemize}
+\item kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
+\item kunna tillämpa grundläggande designmönster i en objektorienterad design.
+\item kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper
+\item kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem
+\item kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha
+\item kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system
+\end{itemize}
+
+\alert{Värderingsförmåga och förhållningssätt} Efter genomförd kurs ska studenten:
+\begin{itemize}
+\item kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+\end{itemize}
+\end{frame}
+\begin{frame}[label=sec-5]{Course Structure}
+\begin{itemize}
+\item \url{https://mickesv.github.io/OODesign/}
+
+\item Sprints
 \item Lectures
 \begin{itemize}
-\item Parts as videos
-\item Parts as classroom lectures/discussions
+\item Video Lectures
+\item Classroom Lectures
 \end{itemize}
-\item Assignments
-\begin{itemize}
-\item Startup Seminars
-\item Work/Submission
-\item Feedback Meetings
-\begin{itemize}
-\item For first Assignment, there is also a midway discussion meeting
-\end{itemize}
-\end{itemize}
+\item Seminars
+\item Assignments (Release Sprints)
 \end{itemize}
 
-See course homepage on It's for deadlines etc.        
+See \href{https://mickesv.github.io/OODesign/Sprint0-course-intro.html}{Sprint 0: Course Introduction} homepage on It's for deadlines etc.        
 \end{frame}
-\begin{frame}[shrink=15,label=sec-5]{Literature}
+\begin{frame}[shrink=15,label=sec-6]{Literature}
 
-\includegraphics[width=1.5cm]{./FLarman.jpg}
+\includegraphics[width=1.5cm]{./ILarman.jpg}
 \begin{itemize}
 \item C. Larman, \emph{Applying UML and Patterns}, Prentice Hall, 3rd Edition
-\item Try to find an older edition!
+\item Also available as a softcover edition from 2015
 \end{itemize}
 
 \only<2>{
-\includegraphics[height=1.5cm]{./FGamma.jpg}
+\includegraphics[height=1.5cm]{./IGamma.jpg}
 \begin{itemize}
 \item Gamma, Helm, Johnson, Vlissides, \emph{Design Patterns, Elements of Reusable Object-Oriented Software}, Addison-Wesley Professional
 \end{itemize}
-
-\includegraphics[height=1.5cm]{./FNystrom.jpg}
-\begin{itemize}
-\item R. Nystrom, \emph{Game Programming Patterns}, Genever Benning, 2014.
-\item Also Available at: \url{http://gameprogrammingpatterns.com/contents.html}
-\end{itemize}
 }
 \end{frame}
-\begin{frame}[label=sec-6]{Tools}
+\begin{frame}[label=sec-7]{Tools}
 Any UML Tool will work, except pen and paper.
 
 \begin{itemize}
@@ -127,10 +141,11 @@ Any UML Tool will work, except pen and paper.
 \item \url{http://www.eclipse.org/papyrus/}
 \item \url{http://argouml.tigris.org/}
 \item \url{https://marketplace.eclipse.org/content/uml-designer}
+\item \url{http://plantuml.com/}
 \item \ldots{}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-7]{Discuss: Why Bother About Modelling}
+\begin{frame}[label=sec-8]{Discuss: Why Bother About Modelling}
 T. Gorschek, E. Tempero, L. Angelis, \emph{On the use of software design models in software development practice: An empirical investigation}, in Journal of Systems and Software 95(2014):176--193.
 
 \begin{itemize}
@@ -141,9 +156,9 @@ T. Gorschek, E. Tempero, L. Angelis, \emph{On the use of software design models 
 \item \ldots{} \alert{There is, of course, more to this story.}
 \end{itemize}
 } \vspace{0.25cm}
-\includegraphics[width=9cm]{./FSurveyModelling.png}
+\includegraphics[width=9cm]{./ISurveyModelling.png}
 \end{frame}
-\begin{frame}[label=sec-8]{Why Bother About Modelling}
+\begin{frame}[label=sec-9]{Why Bother About Modelling}
 \begin{itemize}
 \item In the freetext answers a different story emerges:
 \begin{itemize}
@@ -160,7 +175,7 @@ T. Gorschek, E. Tempero, L. Angelis, \emph{On the use of software design models 
 \item $\sum$ Models are not used as researchers expect. Instead they are used for \alert{conceptual analysis and exploration, problem solving, visualisation, and communication.}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-9]{So, why bother?}
+\begin{frame}[label=sec-10]{So, why bother?}
 \begin{itemize}
 \item conceptual analysis and exploration
 \item problem solving
@@ -181,7 +196,7 @@ Also:
 \item Bear in mind that you throw out a few good things with the bath water too.
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-10]{Development Phases}
+\begin{frame}[label=sec-11]{Development Phases}
 \begin{itemize}
 \item Requirements
 \begin{itemize}
@@ -206,7 +221,7 @@ Also:
 \item Maintenance
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-11]{Object Oriented Analysis and Design}
+\begin{frame}[label=sec-12]{Object Oriented Analysis and Design}
 \begin{itemize}
 \item Object Orientation
 \begin{itemize}
@@ -228,7 +243,7 @@ Also:
 \item OO Construction/Implementation
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-12]{OO Modelling}
+\begin{frame}[label=sec-13]{OO Modelling}
 \begin{itemize}
 \item A traceable chain from requirements to code/test.
 \begin{itemize}
@@ -245,7 +260,7 @@ Also:
 \end{itemize}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-13]{RUP/UML}
+\begin{frame}[label=sec-14]{RUP/UML}
 \begin{itemize}
 \item Rational Unified Process
 \item Unified Modelling Language
@@ -261,7 +276,7 @@ Process:
 \item Goto (4)
 \end{enumerate}
 \end{frame}
-\begin{frame}[label=sec-14]{Design Patterns}
+\begin{frame}[label=sec-15]{Design Patterns}
 \begin{itemize}
 \item Design patterns are reusable solutions to known problems
 \begin{itemize}
@@ -274,11 +289,11 @@ Process:
 \end{itemize}
 \end{itemize}
 \end{frame}
-\begin{frame}[label=sec-15]{Excercise}
+\begin{frame}[label=sec-16]{Excercise}
 \begin{block}{Discussion Forum}
 Design a Conceptual Model of a Discussion forum with categories, topics, posts, users, user profiles, and private messages.
 The system consists of a server park (including the database), a web client, and an android client.
 \end{block}
 \end{frame}
-% Emacs 25.1.50.1 (Org mode 8.2.10)
+% Emacs 25.1.1 (Org mode 8.2.10)
 \end{document}

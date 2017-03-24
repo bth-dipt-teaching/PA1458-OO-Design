@@ -1,4 +1,4 @@
-#+Title: Requirements \\\\ Engineering \\\\ =PA14[13]5=
+#+Title: Requirements \\\\ Engineering
 # #+Title: Use Cases \\\\ =PA14[13]5=
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
@@ -353,7 +353,7 @@ Line k: ...
    - Documenting the resulting observations in a variety of representation formats
    - checking the accuracy of the understanding gained
 
-See the course PA1410 Requirements Engineering
+See the course ~PA1410 Requirements Engineering~
 ** Difficulties in Requirements Engineering
 - The customer may not be able to express what he or she wants so that you are able to understand it
   - Tacit knowledge
@@ -462,6 +462,22 @@ What is the purpose of each of these attributes?
 - Understood by all parties
 
 - Text, Figure, Diagram, Table?
+** User Stories
+   - Simpler template:
+     - As a /type of user/, I want /some goal/ so that /some reason/.
+   - Written on index cards or post-it notes.
+   - Often with /acceptance tests/ on the flip-side.
+** Levels of Requirements
+   T. Gorschek and C. Wohlin. Requirements abstraction model. /Requirements Engineering/, 11:79–101, 2006:
+
+   - *Goals* : Aligned with product Strategies
+   - *Features* : High-level descriptions of system functionalities
+   - *Functions* :  break-down of each feature
+   - *Components* : further breakdown
+
+   Do we see the system as a /Black Box/ or a /White Box/?
+   - Black box :: What can we do towards the system, how does it respond?
+   - White box :: What does the system do internally?
 ** Discuss: Good and Bad Examples				 :Discussion:
 - The system should be easy to use
 #+LATEX: \only<2>{
