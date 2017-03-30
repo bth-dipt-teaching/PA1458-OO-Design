@@ -1,7 +1,6 @@
 #+Title: Software Design\\\\Introduction
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
-#+Date: 2016-03-08
 #+EPRESENT_FRAME_LEVEL: 1
 #+OPTIONS: email:t <:t todo:t f:t ':t H:1 toc:nil
 # #+STARTUP: showall
