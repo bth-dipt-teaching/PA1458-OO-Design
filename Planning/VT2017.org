@@ -287,7 +287,7 @@ As I said to Raquel, if you want to divide your hours differently from what is a
   :LOGBOOK:  
   - State "DONE"       from "TODO"       [2017-02-08 Wed 14:34]
   :END:      
-* TODO [#A] Sprint: Requirements Engineering
+* TODO [#B] Sprint: Requirements Engineering
 ** About This Sprint
    This sprint briefly introduces the topic requirements engineering. It is primarily targeted at {{{pa1415}}}.
    

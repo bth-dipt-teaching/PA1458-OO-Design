@@ -96,7 +96,8 @@ This may be why most texts on object oriented design are quite happy to teach th
 ** TODO Screencasts
    - Go through the MVC Dictionary app
 ** TODO Lectures
-** Further Reading						   :noexport:
+** Further Reading
+   - [[http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/][Falsehoods programmers believe about names]] An interesting piece about input sanitation
 * Experiential Learning
 ** Sprint Test Plan
    Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.

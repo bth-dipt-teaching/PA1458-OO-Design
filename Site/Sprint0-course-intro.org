@@ -283,6 +283,9 @@ The following learning outcomes apply to the different courses.
      - ~/CourseBacklog/~
    - add a file to each directory, otherwise you will not be able to commit them. For example, add an empty ~.gitignore~ file to each directory.
    - commit and push
+
+   *More info on Git*
+   - [[./git.org][Getting Started with Git -- a mini-tutorial]]
 ** Sprint Test Plan
    Create a document with the following sections:
    - /Test Items./ These are the assignments you are expected to submit for marking. It will probably be a good idea if you are able to tag them with the corresponding sprint, so that you can easily find them.
