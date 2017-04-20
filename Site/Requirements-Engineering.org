@@ -204,7 +204,6 @@ A note also about elicitation techniques: I say earlier that you are most likely
 4. User Stories and Epics
    1. Motivation for Priority
    2. User Stories and Epics (ordered most important first)
-5. References
 #+END_info    
 
 #+BEGIN_note

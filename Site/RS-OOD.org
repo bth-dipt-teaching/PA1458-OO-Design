@@ -22,6 +22,48 @@
   - (PA1435, PA1434) kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.
   - (PA1435, PA1434) kunna tillämpa grundläggande designmönster i en objektorienterad design.
   - (PA1443) kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper.    
+* Introduction
+  In this assignment you continue working with the use cases you selected for your first iteration, and make interaction diagrams, class diagrams, and package diagrams based on them.
+
+  Please note that while I do not ask you to make /system sequence diagrams/ for your use cases, you are still going to have to, on your own, do someting akin to this in order to extract the system events that the actors generate for each use case. These are then the system events that you create your interaction diagrams for.
+
+#+BEGIN_SRC dot :file ./images/FDUC-ID1.png
+digraph{
+rankdir=LR;
+size=10;
+node [colorscheme="accent4", style=radial, fillcolor=1, shape=note];
+sd [label="System Description", shape=parallelogram];
+
+subgraph cluster_a0 {
+label="3 week roll call\nList of Use Cases";
+luc [label="Use Case 1\nUse Case 2\n...\nUse case n"];
+}
+
+subgraph cluster_a1 {
+label="User Stories\nand\nUse Case Diagrams";
+a1 [label="Use Case Overview\nImplementation Plan\n(User Stories)" shape=folder];
+duc [label="Detailed Use Cases for Iteration 1\n----------\nUse Case 1\nUse Case 2\n...\nUse Case n"];
+a1->duc;
+}
+
+subgraph cluster_a2 {
+label="Object Oriented Design";
+ssd [label="System Sequence Diagrams" shape=ellipse, style=dashed];
+id [label="Interaction Diagrams\n----------\nPrioritised List of Use Cases (repeated)\nSystem Events\nInteraction Diagrams\n"];
+cd [label="Class and Package Diagram"];
+ssd->id->cd;
+}
+
+sd -> a1
+sd -> luc -> a1
+duc -> ssd
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FDUC-ID1.png]]
+
+
 * Learning Material
   Please review the sprints concerning
   - [[./Concepts-Events.org][Concepts and Events]]
@@ -33,8 +75,8 @@
    {{{submit}}}
    
    Your submission shall include the following documents:
-   - Interaction Diagram
-   - Class and Package Diagram
+   - [[file:./Interactions-Structure.org::*Assignment: Interaction Diagrams][Interaction Diagrams]]
+   - [[file:./Interactions-Structure.org::*Assignment: Class and Package Diagram][Class and Package Diagram]]
 
    These documents shall be revised to use relevant design patterns (and document their use).   
 * Sprint Acceptance Tests

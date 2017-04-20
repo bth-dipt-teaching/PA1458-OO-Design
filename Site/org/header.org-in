@@ -5,7 +5,6 @@
 #+STARTUP: beamer
 #+TODO: TODO(t) | DONE(d!) WAIT(w!)
 
-
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/org.css" />
 #+HTML: <br/>
 

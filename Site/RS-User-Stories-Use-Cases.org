@@ -11,6 +11,52 @@
 * Course Goals covered in this Sprint
   - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation
   - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation
+* Introduction
+  In this release sprint you show what you have done with respect to requirements analysis and object oriented analysis.
+
+  This follows two tracks; user stories, and use cases. Note that you are expected to map between them.
+
+#+BEGIN_SRC dot :file ./images/FRS-US-UCD1.png
+digraph{
+rankdir=LR;
+size=10;
+node [colorscheme="accent4", style=radial, fillcolor=1, shape=note];
+sd [label="System Description", shape=parallelogram];
+
+subgraph cluster_a0 {
+label="3 week roll call\nList of Use Cases";
+luc [label="Use Case 1\nUse Case 2\n...\nUse case n"];
+}
+
+subgraph cluster_a1 {
+label="User Stories\nand\nUse Case Diagrams";
+stories [label="User Stories\n----------\nEpic 1\nEpic 2\n...\nEpic n\nUser Story 1\nUser Story 2\n...\nUser Story k"];
+uco [label="Use Case Overview\n----------\nUse Case Diagram\nUse Case 1\nUse Case 2\n...\nUse Case n"];
+ip [label="Implementation Plan\n----------\nPrioritised List of Use Cases\nVelocity\n\nIteration 1\n<list of use cases>\nIteration 2\n<list of use cases>\n...\nIteration n\n<list of use cases>"];
+duc [label="Detailed Use Cases for Iteration 1\n----------\nUse Case 1\nUse Case 2\n...\nUse Case n"];
+}
+
+luc -> uco
+sd -> luc
+sd -> stories -> ip
+uco -> ip -> duc
+stories -> uco [style=dashed];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FRS-US-UCD1.png]]
+
+
+  *Clarification for the user stories* I use the term "High-level Epic" just to point out that I really mean the most high level things that one might be expected to do towards the system. For example, in a game the highest level epics might be to play the game, configure character, and interact with other players (suitably written up as proper user stories, of course). These high level epics may very well be broken down into other epics -- equally big, but on a lower level. For example, one might "interact with game objects". This is still too fuzzy to know how to implement it, so it is an epic, but it is still on a lower level than the "play game" epic.
+
+  You then break down the epics into user stories, and now you have a big bag full of both epics and user stories. /These are prioritised together/. This means that you may get any order in the final prioritised list.
+
+  [[./images/IPrioritisation.png]]
+
+Thus, in Section 3 of your document, you describe /only/ the epics, and in section 4 you present your entire list of prioritised epics and user stories. Please note that in order to be able to follow your reasoning, I would expect you to have links from the user stories back to the epic to which they "belong". Also, remember that you are only expected to do this for your three most important epics.
+
+
 * Learning Material
   Please review the sprints concerning
   - [[./Development-Methodologies.org][Development Methodologies]]
@@ -21,10 +67,10 @@
    {{{submit}}}
     
    Your submission shall include the following documents:
-   - User Stories
-   - Use Case Overview
-   - Implementation Plan
-   - Detailed Use Cases for First Iteration
+   - [[file:./Requirements-Engineering.org::*Assignment: Requirements Document][User Stories]]
+   - [[file:./Use-Cases.org::*Assignment: Use Case Overview][Use Case Overview]]
+   - [[file:./Use-Cases.org::*Assignment: Implementation Plan][Implementation Plan]]
+   - [[file:./Use-Cases.org::*Assignment: Detailed Use Cases for First Iteration][Detailed Use Cases for First Iteration]]
 * Sprint Acceptance Tests
   You are done with this sprint when:
   - [[./org/checked.png]] You have submitted the documents for marking.

@@ -10,7 +10,9 @@
 
   For each course there is a path through the available material that describes what you should do and your schedule. Please make sure that you use the right path, since deliveries and deadlines may differ between the paths.
 
-Please use the appropriate start page as listed below:
+  Start with the [[./Sprint0-course-intro.org][first sprint (Sprint 0 - Course Introduction)]] to get an overview of the course and how to understand the course structure. This also serves as the official Course PM.
+
+  Then, please use the appropriate start page for your course as listed below:
 
 | Course       | Size     | Programme(s)                                               |
 |--------------+----------+------------------------------------------------------------|

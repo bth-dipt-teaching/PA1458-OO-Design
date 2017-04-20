@@ -393,10 +393,9 @@ This book, also called the Gang of Four book is /the/ reference work when it com
 
    | Course | Start Letter | Seminar |
    |--------+--------------+---------|
-   | PA1415 | A--J         | Group 1 |
-   |        | K--S         | Group 2 |
-   |        | T--Ö         | Group 3 |
-   |        | (other)      | Group 3 |
+   | PA1415 | A--N         | Group 1 |
+   |        | O--Ö         | Group 2 |
+   |        | (other)      | Group 2 |
    |--------+--------------+---------|
    | PA1435 | A--N         | Group 1 |
    |        | O--Ö         | Group 2 |
@@ -407,6 +406,8 @@ This book, also called the Gang of Four book is /the/ reference work when it com
    |        | (other)      | Group 2 |
    |--------+--------------+---------|
 
+** Get an Overview of the Assignments
+   Take a look at the [[./AssignmentMap.org][Assignment Map]] to see which assignments are relevant for you and how they are connected to each other.
 ** Update Course Backlog
    Where do you go from here? Are there any questions already now that you want answered? Add them, along with a brief strategy for how to find an answer.
 * Sprint Acceptance Tests

@@ -398,13 +398,6 @@ When marking this part of the assignment we are looking for the following:
 10. Are there any missing attributes?
 #+END_tip
 
-** Assignment Submission    
-
-   {{{submit}}}
-   
-   Your submission shall include the following documents:
-   - Interaction Diagrams
-   - Class and Package Diagram
 ** Update Course Backlog
    When deciding how to solve a system event in terms of interacting objects, are there better ways for the objects to interact, and are there worse ways? With respect to what?
 

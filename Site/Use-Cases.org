@@ -219,7 +219,6 @@ CAS -> (CreditPayment)
 3. [@3] Use Case Diagram
 4. Description of Actors
 5. High-Level Use Cases
-6. References
 #+END_info
 
 {{{commit}}}

@@ -142,7 +142,7 @@ a->c
 #+RESULTS:
 [[file:./images/FGitBranching.png]]
 
-If you are at the HEAD in the ~master~ branch you are going to see files /a, b, c, d, and e/. What's more, you will see the updated versions of /a/ and /b/. When you checkout the ~la branche~ branch /everything that has happened in the ~master~ branch since the branch point will be removed from your filesystem/. Don't worry, they are still available inside git, so if you checkout the ~master~ branch again you will get it back.
+If you are at the HEAD in the ~master~ branch you are going to see files /a, b, c, d, and e/. What's more, you will see the updated versions of /a/ and /c/. When you checkout the ~la branche~ branch /everything that has happened in the ~master~ branch since the branch point will be removed from your filesystem/. Don't worry, they are still available inside git, so if you checkout the ~master~ branch again you will get it back.
 
 Thus, when checking out ~la branche~ your filesystem will be populated with the old versions of /a/ and /c/, files /d/ and /e/ will be removed, and the committed versions of files /g/ and /f/ will be made available.
 #+END_info
@@ -185,7 +185,7 @@ $ git log --oneline --graph
 ** Clone, Fetch, Pull and Push
     As stated you /clone/ a repository to get a local branch. When you have created a repository in github, the link to the project is available in a menu:
 
-    [[./images/IGithubClone.png]]
+    [[./images/IGithubClone2.png]]
 
     Use this link in your favourite git tool, or on the command line:
 
@@ -252,7 +252,14 @@ To github.com:mickesv/jenkinsTest.git
 
    - http://git-scm.com/docs/gittutorial
    - http://www.vogella.com/tutorials/Git/article.html
+** Further Further Reading
+   - [[https://blogs.msdn.microsoft.com/bharry/2017/02/03/scaling-git-and-some-back-story/][Scaling Git (and some Back Story)]]
 ** Tools
+   - [[https://www.sourcetreeapp.com/][SourceTree]]
+   - [[https://desktop.github.com/][Github Desktop]]
+   - [[https://www.gitkraken.com/][GitKraken]]
+   - [[https://tortoisegit.org/][TortoiseGit]]
+   - Other; there are [[https://git-scm.com/downloads/guis][plenty more tools]] if you search for "git gui tool". You can also find tools that are integrated into your IDE. Find and use one you like.
 * Experiential Learning
    The exercises below uses command-line git. If you prefer to use a tool instead, then do so. The point is to get a feel of cloning, staging, committing, merging, pushing, fetching, and pulling.
 
@@ -306,7 +313,7 @@ Shirley there must be an "easier" way than ~git remote add origin~?
 
 3. [@3] There is. Go to your project homepage on github. Locate the "Clone or Download" button:
 
-    [[./images/IGithubClone.png]]
+    [[./images/IGithubClone2.png]]
 
 
 4. [@4] create a new directory (not in your current project directory), and clone the repository thither.

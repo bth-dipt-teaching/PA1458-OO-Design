@@ -168,7 +168,7 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
    - Instantiating those solutions in different viewpoints of the system.
    - Evaluating whether your instantiation sufficiently address the decisions, and whether you thus sufficiently satisfy your quality requirements.
    - Iterating until you are satisfied.  
-* TODO Learning Material
+* Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:
      33. [@33] Architecture Analysis

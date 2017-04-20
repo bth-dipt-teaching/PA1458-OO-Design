@@ -12,6 +12,12 @@
 
 *Kunskap och förståelse*
  - (PA1435, PA1434, PA1443) kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
+* Introduction
+  The idea with this release sprint is that I should see who is active in the course. I will at the same time take the opportunity to briefly look at your initial efforts regarding the assignment series so that I may possibly steer you in a more productive direction.
+
+  A reasonable effort for this assignment is between 1/2 to 1 hour. Just read the system description and brainstorm a list of 5-15 processes that a user may do with the system (i.e. UML use cases). Add one or two sentences describing each of these use cases, package it up in a PDF and submit.
+
+  This submission can be seen as a starting point for the next submission where you take this initial list of use cases and continue your analysis, and expand the descriptions of your found use cases.
 * Learning Material
   Please review the sprints concerning
   - [[./Sprint0-course-intro.org][Sprint0: Course Introduction]]

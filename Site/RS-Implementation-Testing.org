@@ -21,6 +21,68 @@
   *Värderingsförmåga och förhållningssätt*
   - (PA1434, PA1435) kunna analysera källkod för eventuella förbättringar.
   - (PA1434, PA1435, PA1443) kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+* Introduction
+  In this release sprint you implement and test your design for your first iteration.
+
+#+BEGIN_SRC dot :file ./images/FImpl1.png
+digraph{
+compound=true;
+#rankdir=LR;
+size=10;
+node [colorscheme="accent4", style=radial, fillcolor=1, shape=note];
+
+sd [label="System Description", shape=parallelogram];
+sd -> luc [lhead=cluster_a0];
+
+subgraph cluster_a0 {
+label="3 week roll call\nList of Use Cases";
+luc [label="Use Case 1\nUse Case 2\n...\nUse case n"];
+}
+
+luc2 [label="Use Case 1\nUse Case 2\n...\nUse case n", style=dashed];
+luc2 -> a1 [lhead=cluster_a1];
+
+subgraph cluster_a1 {
+label="User Stories\nand\nUse Case Diagrams";
+a1 [label="Use Case Overview\nImplementation Plan\n(User Stories)" shape=folder];
+duc [label="Detailed Use Cases for Iteration 1\n----------\nUse Case 1\nUse Case 2\n...\nUse Case n"];
+a1->duc;
+}
+
+duc2 [label="Detailed Use Cases for Iteration 1\n----------\nUse Case 1\nUse Case 2\n...\nUse Case n", style=dashed];
+duc2 -> ssd [lhead=cluster_a2];
+
+subgraph cluster_a2 {
+label="Object Oriented Design";
+ssd [label="System Sequence Diagrams" shape=ellipse, style=dashed];
+id [label="Interaction Diagrams\n----------\nPrioritised List of Use Cases (repeated)\nSystem Events\nInteraction Diagrams\n"];
+cd [label="Class and Package Diagram"];
+ssd->id->cd;
+}
+
+cdd [label="Class and Package Diagram", style=dashed];
+cdd -> cd2 [lhead=cluster_a3];
+
+subgraph cluster_a3 {
+label="Implementation and Testing";
+cd2 [label="Class and Package Diagram (Revised)"];
+im [label="Implementation"];
+tst [label="Results of Testing"];
+cd2 -> im [dir="both"];
+im -> tst [dir="both"];
+}
+
+#sd -> a1
+#sd -> luc -> a1
+#duc -> ssd
+# cd -> cd2
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FImpl1.png]]
+
+
 * Learning Material
   Please review the sprints concerning
   - [[./Testing.org][Testing]]
@@ -62,12 +124,12 @@ When marking this part of the assignment we are looking for the following:
 9. Are the students able to identify areas where their design may be improved, and reason about why?
 #+END_tip
 
-
+   
 ** Assignment Submission   
    {{{submit}}}
    
    Your submission shall include the following documents:
-   - Class and Package Diagram
+   - [[file:./Interactions-Structure.org::*Assignment: Class and Package Diagram][Class and Package Diagram]]
    - Implementation (Link to Github project is ok)
 * Sprint Acceptance Tests
   You are done with this sprint when:

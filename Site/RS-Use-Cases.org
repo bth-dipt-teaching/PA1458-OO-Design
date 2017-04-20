@@ -13,6 +13,39 @@
  - (PA1435, PA1434, PA1443) kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
  - (PA1435, PA1434) kunna visa förståelse för UML som modelleringsspråk.
  - (PA1435, PA1434, PA1443) kunna visa kunskap om grundläggande designprinciper.
+* Introduction
+  In this release sprint you show what you have done with respect to requirements analysis and object oriented analysis.
+
+  This follows two tracks; user stories, and use cases. Note that you are expected to map between them.
+
+#+BEGIN_SRC dot :file ./images/FRS-US-UCD2.png
+digraph{
+rankdir=LR;
+size=10;
+node [colorscheme="accent4", style=radial, fillcolor=1, shape=note];
+sd [label="System Description", shape=parallelogram];
+
+subgraph cluster_a0 {
+label="3 week roll call\nList of Use Cases";
+luc [label="Use Case 1\nUse Case 2\n...\nUse case n"];
+}
+
+subgraph cluster_a1 {
+label="Use Case Diagrams";
+uco [label="Use Case Overview\n----------\nUse Case Diagram\nUse Case 1\nUse Case 2\n...\nUse Case n"];
+ip [label="Implementation Plan\n----------\nPrioritised List of Use Cases\nVelocity\n\nIteration 1\n<list of use cases>\nIteration 2\n<list of use cases>\n...\nIteration n\n<list of use cases>"];
+duc [label="Detailed Use Cases for Iteration 1\n----------\nUse Case 1\nUse Case 2\n...\nUse Case n"];
+}
+
+luc -> uco
+sd -> luc
+uco -> ip -> duc
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:./images/FRS-US-UCD2.png]]
+
 * Learning Material
   Please review the sprints concerning
   - [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
@@ -21,9 +54,9 @@
    {{{submit}}}
     
    Your submission shall include the following documents:
-   - Use Case Overview
-   - Implementation Plan
-   - Detailed Use Cases for First Iteration
+   - [[file:./Use-Cases.org::*Assignment: Use Case Overview][Use Case Overview]]
+   - [[file:./Use-Cases.org::*Assignment: Implementation Plan][Implementation Plan]]
+   - [[file:./Use-Cases.org::*Assignment: Detailed Use Cases for First Iteration][Detailed Use Cases for First Iteration]]
 * Sprint Acceptance Tests
   You are done with this sprint when:
   - [[./org/checked.png]] You have submitted the documents for marking.
