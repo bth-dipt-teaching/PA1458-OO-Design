@@ -1,0 +1,1 @@
+digraph FQATerms { compound=true; ranksep="1"; q1 [label="Quality"]; q1->q4 [lhead="cluster_c1"]; q1->q5 [lhead="cluster_c2"]; subgraph cluster_c1 { label="Requirements"; q3 [label="Quality Requirement"]; q4 [label="Non-Functional Requirement"]; q4->q3; } subgraph cluster_c2 { label="System"; q5 [label="Quality Attribute"] } }

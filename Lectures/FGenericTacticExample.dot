@@ -1,0 +1,1 @@
+digraph FGenericTacticExample { rankdir=LR; Source [shape=doublecircle, label="Source"]; Target [shape=oval, label="Response Measure"]; Tactic [shape=rectangle, label="Tactics to control Performance"]; Source->Tactic [label="Events Arrive"]; Tactic->Target [label="Response generated within time constraints"]; }
