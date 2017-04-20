@@ -1,0 +1,51 @@
+#+Title: Assignment Map
+#+INCLUDE: "./org/header.org-in" org
+
+* About this Text
+  This document briefly describes each of the release sprints and the assignments in the course(s).
+
+* Release Sprint 0: 3 Week Roll Call; List of Use Cases :PA1415:PA1435:PA1443:
+  The idea with this release sprint is that I should see who is active in the course. I will at the same time take the opportunity to briefly look at your initial efforts regarding the assignment series so that I may possibly steer you in a more productive direction.
+
+  A reasonable effort for this assignment is between 1/2 to 1 hour. Just read the system description and brainstorm a list of 5-15 processes that a user may do with the system (i.e. UML use cases). Add one or two sentences describing each of these use cases, package it up in a PDF and submit.
+
+  This submission can be seen as a starting point for the next submission where you take this initial list of use cases and continue your analysis, and expand the descriptions of your found use cases.
+* Release Sprint 1: User Stories and Use Case Diagrams 		     :PA1415:
+  In this release sprint you show what you have done with respect to requirements analysis and object oriented analysis.
+
+  This follows two tracks; user stories, and use cases. Note that you are expected to map between them.
+
+  [[./images/FRS-US-UCD1.png]]
+
+
+  *Clarification for the user stories* I use the term "High-level Epic" just to point out that I really mean the most high level things that one might be expected to do towards the system. For example, in a game the highest level epics might be to play the game, configure character, and interact with other players (suitably written up as proper user stories, of course). These high level epics may very well be broken down into other epics -- equally big, but on a lower level. For example, one might "interact with game objects". This is still too fuzzy to know how to implement it, so it is an epic, but it is still on a lower level than the "play game" epic.
+
+  You then break down the epics into user stories, and now you have a big bag full of both epics and user stories. /These are prioritised together/. This means that you may get any order in the final prioritised list.
+
+  [[./images/IPrioritisation.png]]
+
+Thus, in Section 3 of your document, you describe /only/ the epics, and in section 4 you present your entire list of prioritised epics and user stories. Please note that in order to be able to follow your reasoning, I would expect you to have links from the user stories back to the epic to which they "belong". Also, remember that you are only expected to do this for your three most important epics.
+* Release Sprint 1: Use Case Diagrams 			      :PA1435:PA1443:
+  In this release sprint you show what you have done with respect to requirements analysis and object oriented analysis.
+
+  This follows two tracks; user stories, and use cases. Note that you are expected to map between them.
+
+  [[./images/FRS-US-UCD2.png]]
+* Release Sprint 2: Object Oriented Design	       :PA1415:PA1435:PA1443:
+  In this assignment you continue working with the use cases you selected for your first iteration, and make interaction diagrams, class diagrams, and package diagrams based on them.
+
+  Please note that while I do not ask you to make /system sequence diagrams/ for your use cases, you are still going to have to, on your own, do someting akin to this in order to extract the system events that the actors generate for each use case. These are then the system events that you create your interaction diagrams for.
+
+[[./images/FDUC-ID1.png]]
+* Release Sprint 3: Implementation and Testing		      :PA1415:PA1435:
+  In this release sprint you implement and test your design for your first iteration.
+
+  [[./images/FImpl1.png]]
+* Release Sprint 3: Architecture and Testing			     :PA1443:
+  In this release sprint you design a test strategy for the first iteration of the system you have been designing. You also construct a software architecture for the system. An embryo to this ought to be your class and package diagram; there should be some form of connection between what you have done previously and the architecture created in this assignment, even if we do not explicitly ask you to make a complete mapping down to the design level.
+
+  You use the initial software architecture and the quality attribute scenarios you create as input for refining it with the help of the architecture tactics so that the quality attribute scenarios are addressed.
+
+  And, at the end of the day, make sure that your test plan still holds for your revised architecture as well.
+
+  [[./images/FArch1.png]]
