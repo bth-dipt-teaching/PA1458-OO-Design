@@ -1,7 +1,6 @@
 #+Title: Design Patterns
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
-#+Date: 2016-04-06
 #+EPRESENT_FRAME_LEVEL: 1
 #+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
 # #+STARTUP: showall
@@ -827,14 +826,17 @@ BasicScene <|-- MenuScene
 ** Architecture Patterns					 :Discussion:
    Examples of Systems:
 
-   - Compiler
+   - Data processing, e.g. a Compiler
    - Interactive System, e.g. a Time Management Program
+   - Pluggable Architecture, e.g. a Service System
 
 #+LATEX: \only<2>{
    $\ldots$ imposed with different quality requirements:
    - Performance: High Throughput
    - Flexibility / Continuous Deployment   
 #+LATEX: }
+*** Discuss: Suitable Architectures
+    Discuss suitable architectures for these types of systems
 ** Discuss: When to worry about Design Patterns 		 :Discussion:
    When should you introduce patterns into your system?
    - GRASP patterns

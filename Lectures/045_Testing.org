@@ -120,6 +120,9 @@
   - GUI Test tools/libraries/frameworks
     - e.g. Selenium, Cucumber, Canoo WebTest, Robot Framework $\ldots$
 * Upper Right Quadrant: Business Facing / Critique Product
+:PROPERTIES: 
+:BEAMER_OPT: shrink=5
+:END:
   - Recreate actual user experiences
   - Realistic use
   - Learn as you test

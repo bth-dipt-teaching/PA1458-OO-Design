@@ -1,4 +1,4 @@
-#+Title: Mapping Design to Code
+#+Title: Mapping\\\\ Design to Code
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-04-21
@@ -15,11 +15,11 @@
 * Warmup
 ** Example: From Class Diagram to Code				    :Example:
 #+BEGIN_SRC plantuml :file FClassToCode.png
-scale 2
+' scale 2
 left to right direction
 SalesLineItem : -int myQuantity
 SalesLineItem : +Money getSubTotal()
-SalesLineItem ---> "myDescription" ProductDescription 
+SalesLineItem --- "myDescription >" ProductDescription 
 ProductDescription : -Text myDescription
 ProductDescription : -Money myPrice
 ProductDescription : -ItemID myItemID
@@ -28,6 +28,7 @@ ProductDescription : -ItemID myItemID
 #+RESULTS:
 [[file:FClassToCode.png]]
 
+*** Solution 							   :noexport:
 #+BEGIN_SRC java
 public class SalesLineItem {
 private int myQuantity;
@@ -41,11 +42,11 @@ public Money getSubTotal() {...};
 
 ** Example: From Interaction Diagrams to Code			    :Example:
 #+BEGIN_SRC plantuml :file FInteractionToCode.png
-scale 1.5
+' scale 1.5
 hide footbox
 participant ":Register" as reg
 participant ":ProductCatalog"  as pc
-participant ":Map<ProductDescription" as pdm
+participant ":Map<ProductDescription>" as pdm
 participant ":Sale" as sale
 participant "lineItems : List<SalesLineItem>" as slil
 
@@ -73,7 +74,7 @@ deactivate reg
 
 ** Example: Collections						    :Example:
 #+BEGIN_SRC plantuml :file FCollectionsToCode.png
-scale 2
+' scale 2
 left to right direction
 Sale --> "*" SalesLineItem
 #+END_SRC
@@ -81,6 +82,7 @@ Sale --> "*" SalesLineItem
 #+RESULTS:
 [[file:FCollectionsToCode.png]]
 
+*** Solutions							   :noexport:
 #+BEGIN_SRC java
 public class Sale {
   private List<SalesLineItem> myItems = new ArrayList<SalesLineItem>;
@@ -113,7 +115,7 @@ private:
       - The system shall store the words and their definitions between sessions.
 ** Conceptual Model
 #+BEGIN_SRC plantuml :file FDictionaryConceptual.png
-scale 2
+'scale 2
 Dictionary o- "*" Word
 Word : word
 Word : definition
@@ -127,9 +129,9 @@ Dictionary : +Word searchDescription(String)
 
 ** Class Diagram I
 #+BEGIN_SRC plantuml :file FDictionaryClass1.png
-scale 2
+'scale 2
 left to right direction
-title Basic Structure (Interfaces)
+title Basic Structure (Interfaces, MVC Pattern)
 interface DictionaryInterface
 DictionaryInterface : addWord(String theWord, String theExpl)
 DictionaryInterface : deleteWord(String theWord)
@@ -141,7 +143,7 @@ interface DictionaryView
 DictionaryView : setController(ControllerInterface theController)
 
 interface ControllerInterface
-ControllerInterface : addOutput(OutputInterface theView)
+' ControllerInterface : addOutput(OutputInterface theView)
 ControllerInterface : search(String theWord)
 ControllerInterface : add(String theWord, String theExp)
 ControllerInterface : edit(String theWord, String theExp)
@@ -158,11 +160,18 @@ ControllerInterface -- "*" DictionaryView
 #+RESULTS:
 [[file:FDictionaryClass1.png]]
 
+*** Note
+    - Views are loosely connected to Controller (pointer given via ~setController()~)
+    - Views have no direct connection to the Dictionary.
+      - Controller ensures views "behave".
+      - Dictionary ensures integrity of Data Model
+    - Controller loosely connected to Dictionary (pointer given to constructor)
+
 ** Class Diagram II
 #+BEGIN_SRC plantuml :file FDictionaryClass2.png
-scale 1.5
+'scale 1.5
 left to right direction
-title Concrete Implementations
+title Concrete Implementations, Three different Views
 interface DictionaryInterface
 DictionaryInterface : +addWord(String theWord, String theExpl)
 DictionaryInterface : +deleteWord(String theWord)
@@ -206,12 +215,19 @@ class WordDefinitionView #PaleGreen
 class WordView #PaleGreen
 #+END_SRC
 
+#+ATTR_LATEX: :height 4cm
 #+RESULTS:
 [[file:FDictionaryClass2.png]]
 
+*** Note
+    - Views track all changes (=CRUD= -- Create, Remove, Update, Delete)
+    - What if I just want to select a different word to display?
+      - ~OutputInterface~ to keep track of which word to display
+      - Keeps Controller ignorant of concrete views (dependency injection)
+
 ** Class Diagram III
 #+BEGIN_SRC plantuml :file FDictionaryClass3.png
-scale 1.5
+'scale 1.5
 left to right direction
 title Connecting Views to Dictionary
 interface DictionaryInterface
@@ -269,6 +285,9 @@ Dictionary : -Action myLastAction
 Dictionary : -Vector<DictObserver> myObservers
 
 DictionaryObservable -- "*" DictObserver : >
+
+note "Can you spot the other instance of the <I>Observer</I> pattern?" as N1
+
 #+END_SRC
 
 #+RESULTS:
@@ -276,7 +295,7 @@ DictionaryObservable -- "*" DictObserver : >
 
 ** Class Diagram IV
 #+BEGIN_SRC plantuml :file FDictionaryClass4.png
-scale 1.2
+'scale 1.2
 left to right direction
 title GUIfication
 interface DictionaryInterface
@@ -356,12 +375,17 @@ JPanel <|-- WordDefinitionView
 JPanel <|-- WordView
 #+END_SRC
 
+#+ATTR_LATEX: :height 7cm
 #+RESULTS:
 [[file:FDictionaryClass4.png]]
 
 ** Class Diagram: setup method
-#+BEGIN_SRC java
-  public static void setup(MainGUI theGUI) {
+:PROPERTIES: 
+:BEAMER_OPT: shrink=15
+:END:
+
+#+BEGIN_SRC java :exports code
+  public static void start::setup(MainGUI theGUI) {
     // Create Dictionary
     Dictionary theDict = new Dictionary("dict.txt");
     debugDict(theDict); // Make sure there is stuff in it.
@@ -392,4 +416,19 @@ JPanel <|-- WordView
   }
 #+END_SRC
 ** Discussion: Order of Implementation				 :Discussion:
+*** Text							      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.3
+    :END:
+   - Use Cases
+     - Create Word
+     - Read Word (Search)
+     - Update Word
+     - Delete Word
+*** Figure							      :BMCOL:
+    :PROPERTIES:
+    :BEAMER_col: 0.8
+    :END:
+Class Diagram:
 [[./FDictionaryClass4.png]]
+

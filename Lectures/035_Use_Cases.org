@@ -265,6 +265,30 @@ Alternative Flows:
 *** Example   
    - Example the use case "Pay for Items" can /include/ "Pay by cash", "Pay by card", and "Pay by cheque".
    - The use case "Pay with Gift Certificate" /extends/ "Pay by cash".
+** How to write Extends Use Cases
+:PROPERTIES: 
+:BEAMER_OPT: shrink=5
+:END:
+   - Trigger: What starts the extension rather than the original use case?
+   - Extension Point: Where in the original use case do you add your extensions
+   - Main Course of Events: the changes to the flow.
+
+#+BEGIN_QUOTE
+Trigger: Customer wants to pay with a gift certificate
+
+Extension Points: Payment in the 'Process Sale' use case
+
+Main Success Scenario:
+#+END_QUOTE
+   | Actor       | System |
+   | 1. $\ldots$ | 2. $\ldots$ |
+
+*** Larman and the Extend Relationship
+See more in Larman, page 497.
+
+The bottom line is that not even Larman knows what to use the extends relationship for, so he writes something fluffy in the hope that someone might glean some meaning out of it.
+
+So in your case I think the best advice is: *don't use the extends relationship.*
 ** Extends vs Includes
 #+ATTR_LATEX: :height 6cm
 [[./IUseCaseIncludevsExtend.png]]
