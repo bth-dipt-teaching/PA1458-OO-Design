@@ -812,7 +812,7 @@ BasicScene <|-- MenuScene
 - Problem: Avoid creating more than one instance of AudioManagement, GraphicsManagement, World
 - Design Pattern: Singleton
 - Involved Classes: Singleton (with static getInstance(), private constructor)
-- *Less Optional Alternative:* Coding Pattern: Only create stuff in one place, keep central repository with pointers to these objects.
+- *Less Optimal Alternative:* Coding Pattern: Only create stuff in one place, keep central repository with pointers to these objects.
 ** Redirecting Input
 - Problem: Different objects are interested in UI input
 - Design Pattern: Observer
