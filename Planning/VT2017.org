@@ -110,7 +110,8 @@
  Note: Academic year 2017 lp4: week 13-22. Assuming exam weeks last two or three weeks.
 * TODO PA1443 Seminar Instructions for Release 3 seminar
   Since they don't have anything to demo, this needs to be different.
-* TODO [#A] Lectures
+* DONE [#A] Lectures
+  CLOSED: [2017-04-21 Fri 09:30]
  Lectures
  1. [X] 01 Introduction
     - Course Intro
@@ -160,13 +161,13 @@
     - Example Apply DP
     - Example Apply AP
     - [X] Discuss how this influences Design and assignments.
- 9. [ ] Software Architectures
+ 9. [X] Software Architectures
  10. [X] Quality Attributes
      - Importance of attributes and architecture
      - Different Attributes
      - Stimulus-response model
      - Tactics
- 11. [ ] From Design to Code
+ 11. [X] From Design to Code
  12. [X] Q&A
 * DONE Page Analytics
   CLOSED: [2017-03-20 Mon 10:21]
@@ -440,9 +441,9 @@ When marking this part of the assignment we are looking for the following:
   - [ ] Lectures
 * WAIT Sprint: From UML to Architecture
 * TODO [#A] Sprint: Implementation and Designing the User Interface
-  - [ ] Screencasts
+  - [ ] Screencasts ??
+  - [X] Lectures
     - Go through the MVC Dictionary app
-  - [ ] Lectures
 * DONE Release Sprint: Implementation and Testing	   :A3:PA1415:PA1435:
   CLOSED: [2017-02-16 Thu 11:41]
 * DONE Release Sprint: Architecture and Testing		 :A3:PA1443:noexport:
