@@ -20,7 +20,7 @@ left to right direction
 SalesLineItem : -int myQuantity
 SalesLineItem : +Money getSubTotal()
 SalesLineItem --- "myDescription >" ProductDescription 
-ProductDescription : -Text myDescription
+ProductDescription : -Text myData
 ProductDescription : -Money myPrice
 ProductDescription : -ItemID myItemID
 #+END_SRC
@@ -76,7 +76,7 @@ deactivate reg
 #+BEGIN_SRC plantuml :file FCollectionsToCode.png
 ' scale 2
 left to right direction
-Sale --> "*" SalesLineItem
+Sale -- "*" SalesLineItem : >
 #+END_SRC
 
 #+RESULTS:
@@ -220,10 +220,9 @@ class WordView #PaleGreen
 [[file:FDictionaryClass2.png]]
 
 *** Note
-    - Views track all changes (=CRUD= -- Create, Remove, Update, Delete)
-    - What if I just want to select a different word to display?
-      - ~OutputInterface~ to keep track of which word to display
+    - ~OutputInterface~ to keep track of which word to display
       - Keeps Controller ignorant of concrete views (dependency injection)
+    - Views /should/ track all changes (=CRUD= -- Create, Remove, Update, Delete)
 
 ** Class Diagram III
 #+BEGIN_SRC plantuml :file FDictionaryClass3.png

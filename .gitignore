@@ -3,3 +3,8 @@ VT2017.html
 /Planning/phrasebook.tex
 /Site/Sprint0-course-intro.html
 /Lectures/08_Software_Architectures.tex
+/Lectures/07_Design_to_Code.tex
+*.nav
+*.out
+*.snm
+*.toc
