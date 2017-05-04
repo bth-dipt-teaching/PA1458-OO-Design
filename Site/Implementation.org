@@ -88,14 +88,14 @@ There are some more forces at play here, and I go through some of them in the ac
 Taken together all of this can become rather complex to comprehend, as is typically the case when you are trying to integrate different frameworks with each other (consider the user interface as one framework, and your domain functionality as another. You may also have further frameworks that you need to connect with your code). One key obstacle is what is known as the "Hollywood principle", that many frameworks assume. This means that you, once you've configured things at startup, hand over control to the framework who then lends it back to you when an event occurs. Of course, this is more difficult to to if you have two or more frameworks each expecting to be in control of your application.
 
 This may be why most texts on object oriented design are quite happy to teach the principles of good design and responsibility-driven design, but conveniently stops at the level of the ~BrewController~, leaving everything above this level to the poor programmer.
-* TODO Learning Material
+* Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:
      20. [@20] Mapping Designs to Code
      21. Test-Driven Development and Refactoring
-** TODO Screencasts
+** TODO Screencasts						   :noexport:
    - Go through the MVC Dictionary app
-** TODO Lectures
+** TODO Lectures						   :noexport:
 ** Further Reading
    - [[http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/][Falsehoods programmers believe about names]] An interesting piece about input sanitation
 * Experiential Learning
