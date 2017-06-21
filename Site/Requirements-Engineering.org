@@ -137,6 +137,8 @@ Requirements Engineering is a big topic, and can be quite complex. The introduct
 I include some of the UML Use Case learning material in this sprint which will give you a head start for the next sprint, but the focus on what you are expected to do is "traditional" requirements engineering.
 
 A note also about elicitation techniques: I say earlier that you are most likely going to use interviews. Well... In this course that's not quite true. In this course you are going to create the requirements yourself, based on a brief system description.
+
+[[./images/ILightbulb_moment.jpg]]
 * Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:
