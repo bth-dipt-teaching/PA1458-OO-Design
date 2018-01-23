@@ -5,6 +5,8 @@
 
 * About This Sprint
   This sprint focus on how to identify what is a /good/ design through the use of basic object oriented principles.
+
+  /Please note/ that while the text for this sprint is short, the concepts taught in it are central to object oriented design. Understanding the basic object oriented principles (for example as expressed in the GRASP patterns) is /essential/ to create a good and sustainable software design. Please do spend some extra time on the concepts in this sprint to make sure you fully understand how to use them in your design work.
 * User Stories covered in this Sprint
   - As a software designer I want to create a design that adheres to basic design principles so that I am sure that it will "hold" when I add more functionality and start maintaining the system.
   - As a software designer I want to understand how to best design the interaction between objects so that I can create a robust and maintainable system.
@@ -72,7 +74,7 @@ Make sure you understand the principles of each one of these. Think about how yo
    - [[https://en.wikipedia.org/wiki/Interface_segregation_principle][Interface Segregation Principle]]: Prefer many smaller interfaces with well-defined roles instead of one big interface.
    - [[http://www.oodesign.com/single-responsibility-principle.html][Single Responsibility Principle]]: Let each class take care of one single responsibility. Split classes that do more than one thing.
    - [[https://en.wikipedia.org/wiki/Package_principles][Common Closure Principle]]: Coupling and cohesion for packages (as opposed to individual classes)
-   - [[http://stackoverflow.com/questions/383947/what-does-it-mean-to-program-to-an-interface][Program to an Interface, not an Implementation]]: Define role-based interfaces and use these instead of "direct links" to the instantiated class. NOTE: Also read the "Wizards and Warriors" rant for a counter-argument.
+   - [[https://stackoverflow.com/questions/383947/what-does-it-mean-to-program-to-an-interface][Program to an Interface, not an Implementation]]: Define role-based interfaces and use these instead of "direct links" to the instantiated class. NOTE: Also read the "Wizards and Warriors" rant for a counter-argument.
    - [[https://ericlippert.com/2015/04/27/wizards-and-warriors-part-one/][Wizards and Warriors Part I]] [[https://ericlippert.com/2015/04/30/wizards-and-warriors-part-two/][Part II]] [[https://ericlippert.com/2015/05/04/wizards-and-warriors-part-three/][Part III]] [[https://ericlippert.com/2015/05/07/wizards-and-warriors-part-four/][Part IV]] [[https://ericlippert.com/2015/05/11/wizards-and-warriors-part-five/][Part V]]: Introduces the need for an [[https://en.wikipedia.org/wiki/Entity_component_system][Entity Component System (ECS)]], which is a common game design pattern since the normal inheritance practices break down.
    - [[https://en.wikipedia.org/wiki/Composition_over_inheritance][Favour Object Composition over Class Inheritance]]: The same pattern, with a different name.
 * Experiential Learning

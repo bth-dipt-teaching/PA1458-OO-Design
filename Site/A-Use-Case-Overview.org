@@ -1,0 +1,81 @@
+#+Title: Use Case Overview Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Sprint
+  This sprint introduces UML use cases and UML use case diagrams as a means of putting requirements into a context and understanding the interactions between users and the system.
+
+  In this sprint you start creating an overview of the UML use cases that together describe your system.
+* User Stories covered in this Sprint
+  - As a software designer I want to document what the customer is telling me so that I can discuss my understanding of their requirements with them.
+  - As a software designer I want to document what the customer is telling me so that I can easily continue designing based on a joint understanding.
+  - As a software designer I want to be able to reuse common procedures between my use cases so that I only have to maintain them in one place.
+  - As a project manager I need to decide what to focus on building right now so that I best satisfy all customers' expectations.
+  - As a product manager I want to make sure that we are building software of high quality.
+  - As a student I want to have a clear overview of what I am supposed to work on so that I am able to focus on what is important.
+* Learning Material
+Please review the sprints concerning
+- [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
+* Experiential Learning
+** Assignment: Use Case Overview
+    *{{{pa1415}}}*: In this part of the assignment you will continue with the requirements document that you have already created and transform your user stories into UML use cases.
+
+    *{{{pa1435}}}*: In this part of the assignment you will write UML use cases based on the system description for the assignments.
+
+    *{{{pa1434}}}*: In this part of the assignment you will write UML use cases based on the system description for the assignments.
+
+    {{{tasks}}}
+    1. Create a /Use Case Diagram/
+       - Identify all /actors/ that are interacting with the system.
+       - Identify all /use cases/ of the system (features).
+       - Identify which actors are involved in each use case.
+       - Identify any other relations between the use cases.
+    2. Briefly describe the actors in a dictionary.
+    3. Describe the use cases in a high-level description, containing:
+       - Use Case Name
+       - Primary Actor
+       - Brief Description
+    4. For students of *{{{pa1415}}}*, link your user stories to the relevant use cases by adding an attribute:
+       - Concerned User Stories
+	 
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Use Case Overview)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Use Case Diagram
+4. Description of Actors
+5. High-Level Use Cases
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. Size of assignment: Are there 15-25 high-level use cases?
+2. Are all relevant actors identified and described?
+3. Are all relevant use cases identified and briefly described?
+4. For each use case, are all the relevant actors linked?
+5. Is the use case diagram well formed?
+6. Do all the use cases have all attributes?
+7. Do all the use cases have unique and good names?
+8. Do all the use cases have a sufficient and proper description?
+9. (*PA1415*) Are the use cases linked to the relevant user stories?
+10. (*PA1415*) Are all user stories linked in at least one use case?
+#+END_tip
+** Update Course Backlog
+   How do you design a system from your use cases? What should you look for when you are trying to understand the structure of your system? What about the behaviour of the system?
+
+   Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have created a "Use Case Overview" document
+  - You have committed/pushed these documents to your project repository
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog

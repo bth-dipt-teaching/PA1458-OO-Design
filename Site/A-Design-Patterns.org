@@ -1,0 +1,81 @@
+#+Title: Design Patterns Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Sprint
+  This sprint extends upon the previous sprints on constructing a /good/ design with the help of previously tried and tested solutions, so called /Design Patterns/.
+* User Stories covered in this Sprint
+  - As a software designer I want to create a design that adheres to basic design principles so that I am sure that it will "hold" when I add more functionality and start maintaining the system.
+  - As a software desginer I want to be able to use previously tested solutions where applicable so that I do not have to reinvent the wheel for every problem.
+* Learning Material
+Please review the sprints on:
+- [[./Design-Patterns.org][Design Patterns]]
+- [[./Interactions.org][Good Interactions]]
+* Experiential Learning
+** Assignment: Identify Design Patterns
+    Revisit the material you have produced until now and identify if you may use any design patterns.
+
+    {{{tasks}}}
+    - Go through your UML Use Cases, your UML Interaction Diagrams, and your UML Class Diagrams.
+    - Identify where there are challenges such as (but not limited to) shared resources, external interfaces, or context dependent strategies.
+    - For each challenge:
+      - Identify a suitable design pattern.
+      - Identify the involved classes in your current solution
+      - Identify which roles they would have according to the design pattern.
+      - Briefly describe:
+	- What was your challenge?
+	- Which design pattern(s) may address it? Why?
+	- Which classes are involved? What are their roles?
+	- What did you gain by applying this design pattern?
+	- What did you lose by applying this design pattern?
+      - IMPORTANT: Refactor your class diagrams and your interaction diagrams to use the design pattern. Rename classes or use stereotypes so that the applied design patterns become clear in your design.
+      - Review your new design according to the GRASP patterns to make sure you still have a good object-oriented design. Refactor otherwise.
+    - Iterate 1-2 times to make sure you have covered 
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Applying Design Patterns)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Challenges
+
+   Briefly describe your challenges according to the task description above:
+   - What was your challenge? How (and in wich diagrams) was it identified?
+   - Which design pattern(s) may address it? Why?
+   - Which classes are involved? What are their roles?
+   - What did you gain by applying this design pattern?
+   - What did you lose by applying this design pattern?
+   - Refactorings
+     - A partial class diagram with your refactored classes
+     - Relevant Interaction diagrams refactored to use the new class diagram.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Are there between 3 and 10 challenges that are solved with design patterns?
+2. Consistency: Are the associated diagrams (UML Class Diagrams, UML Interaction Diagrams) updated to reflect the application of the design patterns?
+3. Are the most obvious challenges where design patterns may be applied identified?
+4. For each challenge: Is the challenge well described?
+5. For each challenge: Is the most suitable design pattern selected? Does the motivation make sense?
+6. For each challenge: Is the design pattern properly applied?
+7. For each challenge: Are the benefits and liabilities well explored?
+#+END_tip    
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have reviewed the Design Patterns in {{{larman}}} and have a general understanding of which problems they try to solve, and how to structure a solution in accordance with each design pattern.
+  - You have considered your current design and identified design patterns that may be useful to you.
+  - You have refactored your current design to make use of the identified design patterns.
+  - You have reviewed your design to make sure all diagrams are fully consistent with each other after your refactoring.
+  - You have created an "Applying Design Patterns" document.
+  - You have committed/pushed this document to your project repository.
+
+  you may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   
+    

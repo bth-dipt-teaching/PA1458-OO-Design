@@ -21,26 +21,6 @@
 
    The first step of planning is to break down each task into smaller, more manageable tasks. For example, the task "Search for Room" in the hotel management system mentioned above, may consist of the tasks "database design", "GUI design", "implementation", and "testing". Each of these tasks are easier to estimate the size and difficulty of than the overall task. You can also now start assigning different parts of this task to different people, if you like. This breakdown is usually referred to as a /Work Breakdown Structure/, or a WBS. It is often graphically represented as a tree (see Figure [[fig:WBS]]), but may just as well be represented as several columns in a spreadsheet (see Table [[tab:WBS]]).
 
-#+BEGIN_SRC dot :file images/FWBSExample.png
-digraph {
-rankdir=BT;
-splines=true;
-node [shape=box];
-
-"..."
-sr [label="Search for Room"]
-sr -> "..."
-"Database Design" -> sr
-"GUI Design" -> sr
-"Implementation" -> sr
-"Testing" -> sr
-"Implement DB" -> "Implementation"
-"Implement Logic" -> "Implementation"
-"Implement GUI" -> "Implementation"
-"Create Tests" -> "Testing"
-"Run Tests" -> "Testing"
-}
-#+END_SRC
 
 #+CAPTION: An example of a graphical representation of a part of a WBS.
 #+NAME: fig:WBS
@@ -100,6 +80,27 @@ A burndown chart essentially turns this chart upside down. Partially, this is do
 #+NAME: fig:Burndown
 [[./images/FBurndown_Replan.png]]
 
+*** Fig                                                            :noexport:
+#+BEGIN_SRC dot :file images/FWBSExample.png
+digraph {
+rankdir=BT;
+splines=true;
+node [shape=box];
+
+"..."
+sr [label="Search for Room"]
+sr -> "..."
+"Database Design" -> sr
+"GUI Design" -> sr
+"Implementation" -> sr
+"Testing" -> sr
+"Implement DB" -> "Implementation"
+"Implement Logic" -> "Implementation"
+"Implement GUI" -> "Implementation"
+"Create Tests" -> "Testing"
+"Run Tests" -> "Testing"
+}
+#+END_SRC
 
 ** Design Documentation
 #+ATTR_HTML: :width 600
@@ -170,7 +171,7 @@ So, with those heartwarming words, let's delve into /not/ UML, but development p
    - [[https://www.mountaingoatsoftware.com/presentations/an-introduction-to-scrum][Introduction to Scrum by Mike Kohn]]
    - [[http://www.workbreakdownstructure.com/][Work Breakdown Structure]]
    - [[http://www.gantt.com/][GANTT charts]]
-   - [[http://www.dummies.com/how-to/content/earned-value-management-terms-and-formulas-for-pro.html][Earned Value charts]]
+   - [[http://www.dummies.com/careers/project-management/earned-value-management-terms-and-formulas-for-project-managers/][Earned Value charts]]
    - [[http://alistair.cockburn.us/Earned-value+and+burn+charts][Earned Value and Burn Charts by Alistar Cockburn]]
 * Experiential Learning
 ** Sprint Test Plan

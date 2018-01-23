@@ -1,0 +1,7 @@
+{{{module(Assignment Submission, statusNone)}}}
+This assignment "sets the stage" for your subsequent assignments by making sure you have understood the system requirements properly. In a seminar you then discuss your submitted User Stories and Use Cases.
+
+To do:
+  - Submit Assignment:  [[./RS-Use-Cases.org][Release Sprint: Use Cases]] call_get-date(filter="A1UseCases")[:results raw]
+  - Visit: [[./SEM-Release1.org][Discuss Assignment 1]] call_get-date(filter="SA1UseCases")[:results raw]
+{{{moduleEnd}}}

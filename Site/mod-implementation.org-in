@@ -1,0 +1,7 @@
+{{{module(Implementation, statusNone)}}}
+Connect your well-designed system with a user interface and other external systems to make a functional application. Also, an understanding of the quirks in your selected programming language will help you understand how to actually implement your design.
+
+To do:
+  - Read: [[./Implementation.org][Sprint Implementation and Designing the User Interface]]
+  - Visit: [[./Lectures/07_Design_to_Code.pdf][Lecture From Design to Code]] call_get-date(filter="LImplementation")[:results raw]
+{{{moduleEnd}}}

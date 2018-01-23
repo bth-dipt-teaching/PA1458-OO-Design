@@ -1,0 +1,72 @@
+#+Title: System Testing Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About this Sprint
+  In this sprint you create a test plan for your system.
+* User Stories covered in this Sprint
+  - As a teacher I want to evaluate the students' ability to test an implemented system according to a test plan so that I know they understand how to translate a design to a test plan and how to execute this test plan.
+* Learning Material
+  Please review the sprints concerning
+  - [[./Testing.org][Testing]]
+  - [[./Interactions-Structure.org][Interactions and Structure]]
+  - [[./Intro-Architectures.org][Introduction to Software Architectures]]
+  - [[./Architecture-Patterns.org][Software Architecture Patterns]]
+* Experiential Learning
+** Assignment: System Testing
+   Create a test plan for your system that builds upon your previously created test suite.
+
+   {{{tasks}}}
+   - Describe your test strategy.
+   - Describe your system tests.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(System Test Plan)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Test Strategy
+   - Describe your test strategy:
+     - What types of tests will you run?
+     - When will you run them?
+     - According to what rules will you run and re-run your tests?
+     - Which parts of your tests will be automated, and which parts will be manual?
+     - What tools will you use for automated testing?
+     - How will you ensure that as much as possible of your system is tested?
+       - How will you calculate your test coverage?
+4. System Tests
+   - Describe your system tests:
+     - What are your test items?
+     - Which features do you plan on testing?
+       - How?
+       - When?
+       - Rules for testing and re-testing the feature?
+     - What is the test environment for each feature test (entry and exit criteria)?
+     - What are pass/fail criteria for each feature test?
+     - What are your test deliverables for each feature test?
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. Size of assignment: Are there 5-10 features to be tested?
+2. Scope of assignment: Does the test strategy contain a mixture of exploratory testing and regression testing techniques?
+3. Do the described system tests match the described test strategy?
+4. Is there a clear test strategy that will exercise relevant parts of the system?
+#+END_tip
+   
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have created a system test plan.
+  - You have committed/pushed these documents to your project repository.
+
+  You may also have:
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   
+

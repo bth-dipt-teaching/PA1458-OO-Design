@@ -1,0 +1,70 @@
+
+#
+# Javascript (jquery) Tree-view macros for org-mode
+#
+# Copyright(c) Mikael Svahnberg, 2017.
+#
+
+
+#
+# Load relevant libraries
+# --------------------
+#+HTML_HEAD: <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
+#+HTML_HEAD: <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+#+HTML_HEAD: <script src="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/jstree.min.js"></script>
+
+#
+# Macros for starting and ending the jstree
+# (only one per page)
+# --------------------
+#+MACRO: jstree-start #+HTML:<div id="jstree">
+#+MACRO: jstree-end #+HTML:</div> <script>$("#jstree").jstree({"core": {"themes":{"variant":"large"}}, "plugins" : ["wholerow"]}).bind("ready.jstree", function (event, data) {$(this).jstree("open_all");}).bind("select_node.jstree", function(event, data){ window.location.assign(data.node.a_attr.href);});</script>
+
+#
+# Not needed, but keeping it just in case. Call it last in the document, if you must
+# --------------------
+#+MACRO: jstree-finalise #+HTML: <script>$("#jstree").jstree({"core": {"themes":{"variant":"large"}}, "plugins" : ["wholerow"]}).bind("ready.jstree", function (event, data) {$(this).jstree("open_all");}).bind("select_node.jstree", function(event, data){ window.location.assign(data.node.a_attr.href);});</script>
+
+
+#
+# In case you want to change icons, use these instead of the standard nested lists in org-mode.
+# ul to start a subtree, lu to end it, and node(text, url, icon) for each node
+# --------------------
+#+MACRO: ul #+HTML:<UL>
+#+MACRO: lu #+HTML:</UL>
+#+MACRO: node #+HTML: <li data-jstree='{"icon":"$3"}'><A HREF="$2">$1</A>
+#+MACRO: inode #+HTML: <li data-jstree='{"disabled":"true","icon":"$3"}'><A HREF="$2">$1</A>
+
+
+#
+# Examples
+# --------------------
+
+# # Standard org-mode lists
+# # --------------------
+# {{{jstree-start}}}
+# - Root1
+#   - [[./jstest.org][child 1 text]] 
+#   - [[./jstest.html][child2 a child]]
+# - Root2
+#   - child3
+# {{{jstree-end}}}
+
+# # changing icons
+# # --------------------
+# {{{jstree-start}}}
+# {{{ul}}}
+# {{{node(First node)}}}
+# {{{ul}}}
+# {{{node(child)}}}
+# {{{node(child 2, ./jstest.html)}}}
+# {{{lu}}}
+# {{{node(Second Root,, ./Mushroom.png)}}}
+# {{{ul}}}
+# {{{node(child 3)}}}
+# {{{lu}}}
+# {{{lu}}}
+# {{{jstree-end}}}
+
+
+

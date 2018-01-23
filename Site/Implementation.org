@@ -116,26 +116,11 @@ This may be why most texts on object oriented design are quite happy to teach th
 
     For example, build a "yow" counter:
 
-#+BEGIN_SRC plantuml :file ./images/FYowCounterUI.png
-salt
-{+
-Number of times you have yowed:
-{"   0"}
-[Yow]
-}
-#+END_SRC
 
 #+RESULTS:
 [[file:./images/FYowCounterUI.png]]
 
 With the classes:
-#+BEGIN_SRC plantuml :file ./images/FYowDesign.png
-YowGUI -- YowController
-YowController -- YowDataStore
-YowController : +yow()
-YowDataStore : +addYow()
-YowDataStore : +getYows()
-#+END_SRC
 
 #+RESULTS:
 [[file:./images/FYowDesign.png]]
@@ -146,6 +131,24 @@ Now, figure out:
 - how, by using an ~observer~ pattern, you can get the YowGUI to update the yowcounter.
 
 As an additional exercise, which software architecture patterns have I used here? Are there any that are more suitable? How does this change your implementation?
+*** Figure                                                         :noexport:
+#+BEGIN_SRC plantuml :file ./images/FYowCounterUI.png
+salt
+{+
+Number of times you have yowed:
+{"   0"}
+[Yow]
+}
+#+END_SRC
+
+#+BEGIN_SRC plantuml :file ./images/FYowDesign.png
+YowGUI -- YowController
+YowController -- YowDataStore
+YowController : +yow()
+YowDataStore : +addYow()
+YowDataStore : +getYows()
+#+END_SRC
+
 ** Update Course Backlog
    You do not have a choice; you need to understand the design and your choice of programming platform well enough so that you can implement your system. What challenges can you expect during implementation?
 

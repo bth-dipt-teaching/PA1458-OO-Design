@@ -1,0 +1,8 @@
+{{{module(Requirements and Use Cases,statusNone)}}}
+The first step in making a good design is to understand /what/ you are building. This module intoduces the overall Requirements Engineering process, with a particular emphasis on specifying requirements in the agile way.
+
+To do:
+  - Read: [[./Requirements-Engineering.org][Sprint Requirements Engineering]]
+  - Visit: [[./Lectures/03_Requirements.pdf][Lecture Requirements Engineering]] call_get-date(filter="LReqEng")[:results raw]
+  - Work on Assignment [[./A-Requirements.org][Sprint Requirements Engineering Assignment]]
+{{{moduleEnd}}}

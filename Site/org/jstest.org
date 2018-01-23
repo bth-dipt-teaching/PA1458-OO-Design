@@ -1,0 +1,44 @@
+
+#
+# Javascript (jquery) Quiz-package for org-mode
+#
+# Copyright(c) Mikael Svahnberg, 2017.
+#
+
+
+#
+# Load relevant libraries
+# --------------------
+
+#+HTML_HEAD: <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+#+HTML_HEAD: <script type="text/javascript">$(document).ready(function(){  $("input[name='opt']").click(function () { var theexpl="#ex"+this.form.id; $(theexpl).css('display', ($(this).val() === 't') ? 'block':'none'); });});</script>
+#+HTML_HEAD: <style type="text/css">.correctAnswer:before {content: "Correct. ";font-weight: bold;} .correctAnswer {border: 1px solid;background: #DFF2BF;color: #4F8A10;padding: 4px;border-radius: 5px;margin: 4px;}</style>
+
+#
+# Macros
+# --------------------
+#+MACRO: question #+HTML:<BR><FORM id="$1"><b>$2</b><br/>
+#+MACRO: qend #+HTML:</FORM>
+#+MACRO: opt #+HTML:<INPUT name="opt" type="radio" value="$1"/>$2<br/>
+#+MACRO: expl #+HTML:<div id="ex$1" class="correctAnswer" style="display:none">$2</div>
+
+#
+# Examples
+# --------------------
+
+# {{{question(q1, Here is a question for you:)}}}
+# How much wood would a woodchuck chuck if a woodchuck could chuck wood?
+# {{{opt(, Huh?)}}}
+# {{{opt(t, Would a woodchuck chuck wood if a woodchuck could chuck wood?)}}}
+# {{{opt(t, ... Is that from Monkey Island?)}}}
+# {{{opt(, Buffalo?)}}}
+# {{{expl(q1, A woodchuck would chuck if a woodchuck could chuck)}}}
+# {{{qend}}}
+
+
+# {{{question(q2, Here is another question for you:)}}}
+# {{{opt(, An option)}}}
+# {{{opt(t, True alternative)}}}
+# {{{opt(, Another option)}}}
+# {{{expl(q2, The other explanation for the correct answer)}}}
+# {{{qend}}}

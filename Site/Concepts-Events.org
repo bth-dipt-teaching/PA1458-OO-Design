@@ -74,6 +74,18 @@ myCars.insert(new Car("VolksWagen Golf"));
 
     Expressing this in a system sequence diagram:
 
+
+#+NAME: fig:SSDTea
+#+CAPTION: System Sequence Diagram
+#+RESULTS:
+[[file:images/FTeaSSD.png]]
+
+#+BEGIN_note
+  In a System Sequence Diagram we are viewing the system as a /black box/. We put things into the box, and stuff comes out, but we have no clue what's going on inside. That's why we only model actors external to the system and the system itself. We do not open up the ~:System~ box to see what's going on inside, but are only interested in events to and from the system as a whole.
+#+END_note
+
+    We will come back to /Sequence Diagrams/ later, where we use the same notation to express what's going on /inside/ the system.
+*** Fig                                                            :noexport:
 #+BEGIN_SRC plantuml :file images/FTeaSSD.png
 hide footbox
 title System Sequence Diagram: User Orders Tea
@@ -89,17 +101,6 @@ sys-->User : request temperature
 User->sys : setTemperature("Hot!")
 sys-->User : <acknowledging bleep>
 #+END_SRC
-
-#+NAME: fig:SSDTea
-#+CAPTION: System Sequence Diagram
-#+RESULTS:
-[[file:images/FTeaSSD.png]]
-
-#+BEGIN_note
-  In a System Sequence Diagram we are viewing the system as a /black box/. We put things into the box, and stuff comes out, but we have no clue what's going on inside. That's why we only model actors external to the system and the system itself. We do not open up the ~:System~ box to see what's going on inside, but are only interested in events to and from the system as a whole.
-#+END_note
-
-    We will come back to /Sequence Diagrams/ later, where we use the same notation to express what's going on /inside/ the system.
 ** Attaching a User Interface
     So what's the point of expressing this as method calls? We're still just doing analysis, aren't we?
     
@@ -107,6 +108,22 @@ sys-->User : <acknowledging bleep>
 
     Second, by modelling the system events as method calls we are creating a powerful entry point for our system. I will need to diverge a bit into software architecture in order to explain this further. Please bear with me. Almost all applications with some form of user interaction can be split into three parts, or /layers/:
 
+#+NAME: fig:Layered
+#+CAPTION: Layered Architecture Style
+#+RESULTS:
+[[file:./images/FLayered.png]]
+
+
+    Each layer has an API, a set of methods which we can call to access it. In the case of the user interface, this may consist of buttons and text boxes, but if you are creating a web application, it may also include the API endpoints such as ~https://www.your.server/User/userid~ to access the User profile for ~userid~, as well as landing pages for your [[https://www.w3schools.com/xml/ajax_intro.asp][AJAX]] calls. The point is that you only focus on the interface of the layer you are going to connect to. So if you are an end-user, you only need to worry about the user interface. If you "are" a user interface, you only need to worry about the API for the Application Logic Layer.
+
+#+BEGIN_info
+    For the Application Logic layer, the methods in the API are the system events from your System Sequence Diagram.
+#+END_info
+
+    This is what makes it so useful that you have already modelled them as method calls. You have now also documented your API; the methods you may call, the system responses, and the order (if any) that the methods must be called.
+
+    Moreover, you have done this without having decided how you are going to build your user interface. You are still free to write a desktop GUI application, a mobile phone app (where you have still left the choice open between IOS and Android -- at least in theory), or a web application. You may even write your GUI in something esoteric like [[https://unity3d.com/][Unity]], and your system sequence diagrams would still look the same.
+*** Fig                                                            :noexport:
 #+BEGIN_SRC ditaa :file ./images/FLayered.png
   +--------------------------+
   |  User Interface          |
@@ -125,26 +142,19 @@ sys-->User : <acknowledging bleep>
   +--------------------------+
 #+END_SRC
 
-#+NAME: fig:Layered
-#+CAPTION: Layered Architecture Style
-#+RESULTS:
-[[file:./images/FLayered.png]]
-
-
-    Each layer has an API, a set of methods which we can call to access it. In the case of the user interface, this may consist of buttons and text boxes, but if you are creating a web application, it may also include the API endpoints such as ~https://www.your.server/User/userid~ to access the User profile for ~userid~, as well as landing pages for your [[http://www.w3schools.com/ajax/][AJAX]] calls. The point is that you only focus on the interface of the layer you are going to connect to. So if you are an end-user, you only need to worry about the user interface. If you "are" a user interface, you only need to worry about the API for the Application Logic Layer.
-
-#+BEGIN_info
-    For the Application Logic layer, the methods in the API are the system events from your System Sequence Diagram.
-#+END_info
-
-    This is what makes it so useful that you have already modelled them as method calls. You have now also documented your API; the methods you may call, the system responses, and the order (if any) that the methods must be called.
-
-    Moreover, you have done this without having decided how you are going to build your user interface. You are still free to write a desktop GUI application, a mobile phone app (where you have still left the choice open between IOS and Android -- at least in theory), or a web application. You may even write your GUI in something esoteric like [[https://unity3d.com/][Unity]], and your system sequence diagrams would still look the same.
 ** Testing
     In this sprint, we have introduced two new models; domain models and system sequence diagrams. Both of these are useful for testing purposes. The domain model shows you how you think the /problem domain/ functions. When constructing your tests, this is a better starting point than what you eventually end up implementing. More importantly, the domain model divides your problem domain into smaller entities, /concepts/, that are possible to /unit test/. Later on, you can combine your already tested units and run /integration tests/ to make sure the units work together.
 
     Your system sequence diagrams tell you what API endpoints you have in the system. These are an excellent starting point for writing your regression tests. Consider the Layered architecture model in Figure [[fig:Layered]] once more. Remember that we specified the API for the Application Logic in the System Sequence Diagram? So why not just "push" the user interface to one side and attach a testing interface there instead? Why not indeed.
 
+
+#+NAME: fig:SSDTest
+#+CAPTION: Adding a Testing Interface to the Layered Architecture
+#+RESULTS:
+[[file:./images/FSSDTest.png]]
+
+In one go you have enabled automated testing of your application. Technically, you can (and should) do this on top of the user interface too, but this is easier to get in place.
+*** Fig                                                            :noexport:
 #+BEGIN_SRC ditaa :file ./images/FSSDTest.png
   +------------+--------------+
   | User  cBLU | Testing  cBLU|
@@ -166,16 +176,15 @@ sys-->User : <acknowledging bleep>
   +---------------------------+
 #+END_SRC
 
-#+NAME: fig:SSDTest
-#+CAPTION: Adding a Testing Interface to the Layered Architecture
-#+RESULTS:
-[[file:./images/FSSDTest.png]]
-
-In one go you have enabled automated testing of your application. Technically, you can (and should) do this on top of the user interface too, but this is easier to get in place.
-
 ** Summary
 We are thus able to start building a chain of analysis efforts and UML diagrams, where what we learn in one diagram is put to use when creating the next one, as illustrated in Figure [[fig:DesignChainSSD]]. Of course, this chain is equally valuable going backwards: In order to find out more about a particular test case and why it is written the way it is, you go back to the UML use case. If this is not enough, you look at the involved requirements, or -- via the requirements -- contact the original source of the requirement to ask further questions.
 
+
+#+NAME: fig:DesignChainSSD
+#+CAPTION: A Chain of Design Elements.
+#+RESULTS:
+[[file:./images/FDesignChainSSD.png]]
+*** Fig                                                            :noexport:
 #+BEGIN_SRC dot :file ./images/FDesignChainSSD.png
 digraph {
  splines=true;
@@ -197,11 +206,6 @@ digraph {
 */
 }
 #+END_SRC
-
-#+NAME: fig:DesignChainSSD
-#+CAPTION: A Chain of Design Elements.
-#+RESULTS:
-[[file:./images/FDesignChainSSD.png]]
 
 * Learning Material
 ** Book Chapters
@@ -241,106 +245,14 @@ digraph {
    - Integration Testing
 
    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
-** Assignment: Domain Model
-    Create a UML Domain Model from the UML Use Cases you have selected for your first iteration. Remember that those should represent a minimum viable product and so you ought to exercise the most important concepts based on these use cases.
-
-
-    {{{tasks}}}
-    1. Start with a domain model based on your understanding of the involved use cases.
-    2. Chapters 9.5 to 9.13 in {{{larman}}} provides guidelines for how to find domain concepts. Apply each of these guidelines in turn, and /document/ what you find through each guideline.
-    3. Add associations between your concepts (use the guidelines in chapters 9.14 in {{{larman}}}) with names and (where applicable) roles. Add multiplicity indicators where they are obvious, but do not go overboard with this.
-
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Domain Model)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Initial Domain Model
-
-   Your initial model before you apply the guidelines from {{{larman}}}. Use the UML Class Diagram notation for your Domain Model.
-
-4. Guidelines Applied
-
-   List each guideline and the concepts you identify with the help of this guideline. Keep this simple but easy to read. For example, a table may work nicely:
-
-   Guideline:Use a Category List
-   | Category              | Identified Concepts |
-   |-----------------------+---------------------|
-   | Business Transactions | VogonPoetry         |
-   | Product or Service    | Tea, Doughnut Hole  |
-   |-----------------------+---------------------|
-
-5. Completed Domain Model
-
-   Add the concepts identified through the guidelines to your initial domain model and present it here. Add associations, association names, association roles, and multiplicity. *Note* that you may also have attributes in your concepts.
-
-   Use the UML Class Diagram notation for your Domain Model.
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution
-1. Size of assignment: Does the domain model contain 20-30 domain concepts
-2. Are all concepts and associations modelled correctly
-3. Do all associations have relevant names
-4. Where applicable: Are the roles involved in associations specified and corect
-5. Where applicable: Are multiplicity indicators used correctly
-#+END_tip
-** Assignment: System Sequence Diagrams
-    Create UML System Sequence Diagrams from your UML Use Cases in your first iteration. Create one System Sequence Diagram for each Use Case.
-
-    {{{tasks}}}
-    1. For each Use Case, create one System Sequence Diagram.
-    2. Add the ~:System~, and all involved Actors.
-    3. Identify the system events from the use case, name the corresponding method call, and add it to your system sequence diagram from the right actor to the ~:System~
-    4. Add return messages from the ~:System~ to the actors.
-    5. Add loops if applicable.
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(System Sequence Diagrams)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] System Sequence Diagrams
-   - System Sequence Diagram for Use Case <name 1>
-   - System Sequence Diagram for Use Case <name 2>
-   - System Sequence Diagram for Use Case <name ... >
-   - System Sequence Diagram for Use Case <name n>
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution
-1. size of assignment: Do all Use Cases in Iteration 1 have a corresponding System Sequence Diagram
-2. Are all actors in each use case represented in the system sequece diagrams
-3. Is the system treated as a black box
-4. Do all system events in each use case have a corresponding system event in the same order as in the use case
-5. Are the system events aptly named
-6. Are the return messages from the system sufficiently descriptive
-7. Is the loop construct used correctly
-#+END_tip
 ** Update Course Backlog
    What's the next step? What do you need to do in order to understand how to implement the system based on your system sequence diagrams?
 
    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
 * Sprint Acceptance Tests
   You are done with this sprint when:
-  - You have created the Domain Model document
-  - You have created the System Sequence Diagram document
-  - You have committed/pushed these documents to your project repository
+  - You understand how to use your UML use cases to identify system events, that will trigger a series of interactions inside the system.
+  - You understand how to start identifying candidate entities for this internal structure through the use of a Domain Model.
 
   You may also have
   - Updated your Sprint Test Plan

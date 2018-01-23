@@ -25,27 +25,6 @@ Digging even further, we can use testing frameworks that intergate with our deve
 ** Types of Testing
 Which tool or method to use depends very much on what the intentions are of your testing. L. Crispin and J. Gregory [fn:Crispin] introduce four quadrants of (agile) testing that describes the types of testing that one may be doing (see Figure [[fig:TestQuadrants]]).
 
-#+BEGIN_SRC ditaa :file ./images/FTestQuadrants.png
-                            Business Facing 
-
-             +---------------------+------------------------+
-             | Functional Tests    | Exploratory Testing    |
-             | Examples            | Scenarios              | 
-   Supporting| Story Tests         | Usability Testing      | Critique
-   the       | Prototypes          | User Acceptance Testing| Product
-   Team      | Simulations         | Alpha/Beta             |
-             |                cGRE | cGRE                   |
-             +---------------------+------------------------+
-             | Unit Tests          | Performance and Load   |
-             | Component Tests     |   Testing              |
-             |                     | Security Testing       |
-             |                     | "ility Testing"        |
-             |                     |                        |
-             |                cGRE | cGRE                   |
-             +---------------------+------------------------+
- 
-                          Technology Facing
-#+END_SRC
 
 #+NAME: fig:TestQuadrants
 #+CAPTION: Agile Testing Quadrants (Adapted from Crispin & Gregory 2009)
@@ -87,7 +66,28 @@ We are not going to go through all of these types of testing strategies in this 
 [[./images/IUnitvsIntegration.gif]]
 
 [fn:Crispin] Lisa Crispin, Janet Gregory, "Agile Testing -- A Practical Guide for Testers and Agile Teams", Pearson Education, 2009.
+*** Fig                                                            :noexport:
+#+BEGIN_SRC ditaa :file ./images/FTestQuadrants.png
+                            Business Facing 
 
+             +---------------------+------------------------+
+             | Functional Tests    | Exploratory Testing    |
+             | Examples            | Scenarios              | 
+   Supporting| Story Tests         | Usability Testing      | Critique
+   the       | Prototypes          | User Acceptance Testing| Product
+   Team      | Simulations         | Alpha/Beta             |
+             |                cGRE | cGRE                   |
+             +---------------------+------------------------+
+             | Unit Tests          | Performance and Load   |
+             | Component Tests     |   Testing              |
+             |                     | Security Testing       |
+             |                     | "ility Testing"        |
+             |                     |                        |
+             |                cGRE | cGRE                   |
+             +---------------------+------------------------+
+ 
+                          Technology Facing
+#+END_SRC
 ** Regression Testing
    The lower half of Crispin & Gregory's testing quadrants are particularly interesting because we are able to introduce /regression testing/. What this means is that we have a large set of test cases that we are able to execute automatically, for example daily or after each commit. The main benefit of this is that it instills confidence in the developers that what they just produced didn't accidentally break something else.
 
@@ -104,6 +104,28 @@ We are not going to go through all of these types of testing strategies in this 
 ** Tools for Automated Testing
     Which tool to use for your automated testing is of course highly dependent on your choice of development platform, and you also need to work on different levels, as illustrated in Figure [[fig:TestingLevels]]. In this figure, the left-hand-side is what you would normally encounter during a build cycle, and this is also the parts where you can hope to automate. In fact, the only difference between testing "Inside the IDE" down to "Nightly Builds" is that you will run more test-cases during your nightlies than in the IDE, where you may focus only on the tests that are relevant for what you are doing right now. You will use the same testing tools.
 
+#+NAME: fig:TestingLevels
+#+CAPTION: Testing on different Levels
+#+RESULTS:
+[[file:./images/FTestingLevels.png]]
+
+What /will/ differ, however, is the framework within which your tests are running. Obviously, if your tests are run on-the-fly in your IDE, this needs to be supported. Testing as part of the compilation cycle rarely requires much in terms of extra frameworks. For example [[https://www.gnu.org/software/make/][make]], [[https://cmake.org/][cmake]], [[http://ant.apache.org/][Ant]], and [[https://maven.apache.org/][Maven]] are all capable of running your test suites according to your wishes, on your machine.
+
+... But what if your machine environment is not the environment in which your system is intended to run? Well, then you need to set up a virtual machine (or a collection of machines if your deployment environment is more complex) to run the tests on. [[https://www.virtualbox.org/][VirtualBox]] together with [[https://www.vagrantup.com/][Vagrant]] have helped me on more than one occasion with this.
+
+Further down the stack, you want tools that can set up these virtual machines, download your code, build it, and run tests all in one go, e.g. when you do a commit. [[https://jenkins.io/][Jenkins]] is a popular choice for this, if you have access to your own servers. For open source projects, [[https://travis-ci.org/getting_started][Travis CI]] is an ok choice. I think they have some limit to 100 builds or so before you have to start paying, though. Jenkins and Travis work on a slightly different philosophy. In Jenkins you set up the project and the build steps through an admin interface on the Jenkins server. In Travis you create a build script as part of your repository. For raisins, I am partial to the latter, and have recently been exploring [[https://drone.io/][Drone.io]] as a means to set up my own build server that works like Travis with a repository-based build script.
+
+But I digress.
+
+Backing up to the original topic, you will need to find an automated testing tool suitable for your programming language and your development environment. I list some tools below just to get you started.
+
+- Java: [[http://junit.org/][JUnit]]
+- Node.js (JavaScript): [[https://mochajs.org/][Mocha]] or [[https://jasmine.github.io/][Jasmine]]
+- JavaScript/JQuery (client side): [[https://qunitjs.com/][QUnit]]
+- C++, See e.g. the article [[http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle][Exploring the C++ Unit Testing Framework Jungle]] for a good discussion of some test frameworks, and what you should require from them
+- Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/ert.html][ERT]]
+- Or you can go to [[https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks][Wikipedia and see even more choices]]
+*** Fig                                                            :noexport:
 #+BEGIN_SRC ditaa :file ./images/FTestingLevels.png
   +------------------------------+  +-------------------------------+
   | Inside the IDE               |  | Usability Testing             |
@@ -122,28 +144,7 @@ We are not going to go through all of these types of testing strategies in this 
   +------------------------------+  +-------------------------------+
 #+END_SRC
 
-#+NAME: fig:TestingLevels
-#+CAPTION: Testing on different Levels
-#+RESULTS:
-[[file:./images/FTestingLevels.png]]
-
-What /will/ differ, however, is the framework within which your tests are running. Obviously, if your tests are run on-the-fly in your IDE, this needs to be supported. Testing as part of the compilation cycle rarely requires much in terms of extra frameworks. For example [[https://www.gnu.org/software/make/][make]], [[https://cmake.org/][cmake]], [[http://ant.apache.org/][Ant]], and [[https://maven.apache.org/][Maven]] are all capable of running your test suites according to your wishes, on your machine.
-
-... But what if your machine environment is not the environment in which your system is intended to run? Well, then you need to set up a virtual machine (or a collection of machines if your deployment environment is more complex) to run the tests on. [[https://www.virtualbox.org/][VirtualBox]] together with [[https://www.vagrantup.com/][Vagrant]] have helped me on more than one occasion with this.
-
-Further down the stack, you want tools that can set up these virtual machines, download your code, build it, and run tests all in one go, e.g. when you do a commit. [[https://jenkins.io/][Jenkins]] is a popular choice for this, if you have access to your own servers. For open source projects, [[https://travis-ci.org/getting_started][Travis CI]] is an ok choice. I think they have some limit to 100 builds or so before you have to start paying, though. Jenkins and Travis work on a slightly different philosophy. In Jenkins you set up the project and the build steps through an admin interface on the Jenkins server. In Travis you create a build script as part of your repository. For raisins, I am partial to the latter, and have recently been exploring [[https://drone.io/][Drone.io]] as a means to set up my own build server that works like Travis with a repository-based build script.
-
-But I digress.
-
-Backing up to the original topic, you will need to find an automated testing tool suitable for your programming language and your development environment. I list some tools below just to get you started.
-
-- Java: [[http://junit.org/][JUnit]]
-- Node.js (JavaScript): [[https://mochajs.org/][Mocha]] or [[http://jasmine.github.io/][Jasmine]]
-- JavaScript/JQuery (client side): [[https://qunitjs.com/][QUnit]]
-- C++, See e.g. the article [[http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle][Exploring the C++ Unit Testing Framework Jungle]] for a good discussion of some test frameworks, and what you should require from them
-- Emacs Lisp: [[https://www.gnu.org/software/emacs/manual/ert.html][ERT]]
-- Or you can go to [[https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks][Wikipedia and see even more choices]]
-* TODO Learning Material
+* Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:
        21. [@21] Test-Driven Development and Refactoring	    
@@ -170,27 +171,6 @@ Backing up to the original topic, you will need to find an automated testing too
    - Continuous Integration
 
    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
-** Assignment: Create Test Suite
-      Create a regression test suite. You will continue to use and extend this test suite later in the course. At this stage, you are focussing on adding test cases for your API endpoints. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework. 
-
-      {{{tasks}}}
-      1. List all the system events from all the system sequence diagrams.
-      2. For each system event, identify preconditions (e.g. if the system event depends on that another event is triggered first).
-      3. For each system event, identify what inputs are allowed.
-      4. For each system event, identify what outputs are expected.
-      5. For each system event, Write one or several test in your test framework that tests for the allowed inputs and the expected outputs.
-	 
-      {{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-1. size of assignment: Are there test cases for all system events from all the system sequence diagrams?
-2. For each test case: Does it test normal input as well as explore boundary values?
-3. For each test case: Does the test case evaluate a meaningful behaviour?
-#+END_tip    
 ** Update Course Backlog
    How do can you come to an understanding of what the system needs to to as a response to a system event? What will change in the system, and how?
    Are there meaningful tests you can do for your UML documentation? How would you automate this?
@@ -198,8 +178,9 @@ When marking this part of the assignment we are looking for the following:
    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
 * Sprint Acceptance Tests
   You are done with this sprint when:
-  - You bave created an automated test suite for your API endpoints
-  - You have committed/pushed this suite to your project repository
+  - You understand that there are different types of testing that applies during different phases of development.
+  - You understand the need for and importance of regression testing.
+  - You have an overview of types of tools for automated testing.
 
   You may also have
   - Updated your Sprint Test Plan

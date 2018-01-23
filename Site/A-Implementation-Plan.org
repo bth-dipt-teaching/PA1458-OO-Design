@@ -1,0 +1,82 @@
+#+Title: Implementation Plan Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Sprint
+  This sprint introduces UML use cases and UML use case diagrams as a means of putting requirements into a context and understanding the interactions between users and the system.
+
+  In this sprint you create an implementation plan based on your overview of the system, and decide what is feasible for you to focus on in a first iteration of the system (this also narrows the scope for subsequent assignments so that you are able to create a design within the time frame of the course).
+* User Stories covered in this Sprint
+  - As a software designer I want to document what the customer is telling me so that I can discuss my understanding of their requirements with them.
+  - As a software designer I want to document what the customer is telling me so that I can easily continue designing based on a joint understanding.
+  - As a software designer I want to be able to reuse common procedures between my use cases so that I only have to maintain them in one place.
+  - As a project manager I need to decide what to focus on building right now so that I best satisfy all customers' expectations.
+  - As a product manager I want to make sure that we are building software of high quality.
+  - As a student I want to have a clear overview of what I am supposed to work on so that I am able to focus on what is important.
+* Learning Material
+Please review the sprints concerning
+- [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
+- [[./A-Use-Case-Overview.org][Use Case Overview Assignment]]
+* Experiential Learning
+** Assignment: Implementation Plan
+    In this part of the assignment you will prioritise your use cases and plan your first sprints.
+
+    {{{tasks}}}
+    1. Order your UML use cases (created above) according to their importance.
+
+       *{{{pa1415}}}* Make sure this order corresponds to the prioritised list of user stories that you have created earlier. You do not have to strictly adhere to the priorities of the user stories, but you need to document and motivate any major deviations that you do.
+
+    2. Motivate your ordering in terms of how this allows you to build a minimum viable product first.
+    3. Assign story points to each use case.
+    4. Decide and motivate how many story points you will have time for in this course (=your first iteration) and per iteration. Set a MAX, a MIN, and an AVERAGE value per iteration.
+    5. Assign your use cases to iterations such that you
+       1. Create a minimum viable product in your first iteration (motivate why which this is the case).
+       2. Have a reasonable amount of story points allocated per iteration, in relation to the MAX, MIN, and AVERAGE values defined.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Implementation Plan)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Prioritised List of Use Cases
+   1. Motivation for Priorities
+   2. Use Cases
+      
+      Include use case name and size in story points. Present the list ordered according to priority (most important first).
+4. Estimated Velocity Per Iteration
+
+   Here you list your MAX, MIN, and AVERAGE number of story points that you think you will have time for per iteration. Pay special attention to the first iteration since this is the one you will continue with in the rest of the course.
+
+5. Implementation Plan
+   1. Motivation for Implementation Plan
+   2. Iterations and Use Cases
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. Size of assignment: Does the first iteration contain 5-10 use cases?
+2. Size of (future) assignments: Does the suggested iteration velocity in relation to the size in story points per use case represent a reasonable development speed?
+3. Is the relative size in story points reasonable for each use case?
+4. Does the first iteration contain a workable and acceptable Minimum Viable Product?
+5. Is there a reasonable amount of work (in terms of story points) assigned to each iteration.
+6. (*PA1415*) Does the order of implementation of the use cases correspond to the priorities of the involved user stories?
+#+END_tip
+
+** Update Course Backlog
+   How do you design a system from your use cases? What should you look for when you are trying to understand the structure of your system? What about the behaviour of the system?
+
+   Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have created an "Implementation Plan" document
+  - You have committed/pushed these documents to your project repository
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog

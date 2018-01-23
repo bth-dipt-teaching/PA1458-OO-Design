@@ -87,6 +87,11 @@ It is also important to remember that the main course of events should describe 
 ** Use Case Reuse
     When doing larger use cases, you may encounter smaller pieces of processes that are needed by the big use case but are not really dealing with the same problem. For example, what does money and payment have to do with ordering ice-cream (my kids struggle with this one too). There may be alternative ways of doing something, where each way in turn has a number of sub-steps. In order to keep the main use case clean and focused on one problem, and in order to create reusable bits of processes, you can break out behaviour from the main use case into sub-use-cases.
 
+#+CAPTION: Example of a Use Case Diagram where the BuyItems use case includes CashPayment, CheckPayment, and CreditPayment.
+#+NAME: fig:UCInclude
+#+RESULTS:
+[[file:./images/FStructuringUC1.png]]
+*** Fig                                                            :noexport:
 #+BEGIN_SRC plantuml :file ./images/FStructuringUC1.png
 scale 400 width
 left to right direction
@@ -110,10 +115,6 @@ Customer -> (BuyItems)
 CAS -> (CreditPayment)
 #+END_SRC
 
-#+CAPTION: Example of a Use Case Diagram where the BuyItems use case includes CashPayment, CheckPayment, and CreditPayment.
-#+NAME: fig:UCInclude
-#+RESULTS:
-[[file:./images/FStructuringUC1.png]]
 ** Use Case Prioritisation
     Prioritising use cases is at first no different than prioritising requirements or user stories, the difference is that it is the first UML artefact available for you to prioritise. The ground rule is:
 
@@ -189,155 +190,14 @@ CAS -> (CreditPayment)
    Gather your team. Decide on a system that you want to plan (for example, the system that you just listed the use cases for), and engage in a game of [[https://www.crisp.se/bocker-och-produkter/planning-poker][Planning Poker]] to estimate the sizes of all the use cases.
 
    Give your use cases a rough priority, e.g. using the [[https://en.wikipedia.org/wiki/MoSCoW_method][MOSCoW method]], and see if you can divide your thusly created backlog into reasonably sized sprints.
-** Assignment: Use Case Overview
-    *{{{pa1415}}}*: In this part of the assignment you will continue with the requirements document that you have already created and transform your user stories into UML use cases.
-
-    *{{{pa1435}}}*: In this part of the assignment you will write UML use cases based on the system description for the assignments.
-
-    *{{{pa1434}}}*: In this part of the assignment you will write UML use cases based on the system description for the assignments.
-
-    {{{tasks}}}
-    1. Create a /Use Case Diagram/
-       - Identify all /actors/ that are interacting with the system.
-       - Identify all /use cases/ of the system (features).
-       - Identify which actors are involved in each use case.
-       - Identify any other relations between the use cases.
-    2. Briefly describe the actors in a dictionary.
-    3. Describe the use cases in a high-level description, containing:
-       - Use Case Name
-       - Primary Actor
-       - Brief Description
-    4. For students of *{{{pa1415}}}*, link your user stories to the relevant use cases by adding an attribute:
-       - Concerned User Stories
-	 
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Use Case Overview)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Use Case Diagram
-4. Description of Actors
-5. High-Level Use Cases
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution
-1. Size of assignment: Are there 15-25 high-level use cases?
-2. Are all relevant actors identified and described?
-3. Are all relevant use cases identified and briefly described?
-4. For each use case, are all the relevant actors linked?
-5. Is the use case diagram well formed?
-6. Do all the use cases have all attributes?
-7. Do all the use cases have unique and good names?
-8. Do all the use cases have a sufficient and proper description?
-9. (*PA1415*) Are the use cases linked to the relevant user stories?
-10. (*PA1415*) Are all user stories linked in at least one use case?
-#+END_tip
-** Assignment: Implementation Plan
-    In this part of the assignment you will prioritise your use cases and plan your first sprints.
-
-    {{{tasks}}}
-    1. Order your UML use cases (created above) according to their importance.
-
-       *{{{pa1415}}}* Make sure this order corresponds to the prioritised list of user stories that you have created earlier. You do not have to strictly adhere to the priorities of the user stories, but you need to document and motivate any major deviations that you do.
-
-    2. Motivate your ordering in terms of how this allows you to build a minimum viable product first.
-    3. Assign story points to each use case.
-    4. Decide and motivate how many story points you will have time for in this course (=your first iteration) and per iteration. Set a MAX, a MIN, and an AVERAGE value per iteration.
-    5. Assign your use cases to iterations such that you
-       1. Create a minimum viable product in your first iteration (motivate why which this is the case).
-       2. Have a reasonable amount of story points allocated per iteration, in relation to the MAX, MIN, and AVERAGE values defined.
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Implementation Plan)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Prioritised List of Use Cases
-   1. Motivation for Priorities
-   2. Use Cases
-      
-      Include use case name and size in story points. Present the list ordered according to priority (most important first).
-4. Estimated Velocity Per Iteration
-
-   Here you list your MAX, MIN, and AVERAGE number of story points that you think you will have time for per iteration. Pay special attention to the first iteration since this is the one you will continue with in the rest of the course.
-
-5. Implementation Plan
-   1. Motivation for Implementation Plan
-   2. Iterations and Use Cases
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution
-1. Size of assignment: Does the first iteration contain 5-10 use cases?
-2. Size of (future) assignments: Does the suggested iteration velocity in relation to the size in story points per use case represent a reasonable development speed?
-3. Is the relative size in story points reasonable for each use case?
-4. Does the first iteration contain a workable and acceptable Minimum Viable Product?
-5. Is there a reasonable amount of work (in terms of story points) assigned to each iteration.
-6. (*PA1415*) Does the order of implementation of the use cases correspond to the priorities of the involved user stories?
-#+END_tip
-
-** Assignment: Detailed Use Cases for First Iteration
-    Describe in detail the use cases that you are focusing on in the first iteration.
-
-{{{tasks}}}
-1. Extend the use case descriptions for the use cases in your first iteration in your Implementation Plan so that they also contain the following attributes:
-   - Preconditions
-   - Main Course of Events (or Main Success Scenario)
-   - Alternative Flow of Events (or Extensions)
-   - Special Requirements
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Detailed Use Cases (Iteration 1))}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Detailed Use Cases
-   
-   List your detailed use cases here.
-#+END_info
-
-{{{commit}}}
-
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution
-1. Size of assignment: Are all use cases in the first iteration from the Implementation Plan described?
-2. Are the preconditions relevant?
-3. Is it a reasonable main course of events?
-4. Does the main course of events end successfully?
-5. Does the alternative flow of events cover the obvious ways in which the use case can fail or take an alternate route?
-#+END_tip
-
 ** Update Course Backlog
    How do you design a system from your use cases? What should you look for when you are trying to understand the structure of your system? What about the behaviour of the system?
 
    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
 * Sprint Acceptance Tests
   You are done with this sprint when:
-  - You have created a "Use Case Overview" document
-  - You have created an "Implementation Plan" document
-  - You have created a "Detailed Use Cases for First Iteration" document
-  - You have committed/pushed these documents to your project repository
+  - You understand how you can express the interactions between users and the system as a set of UML Use Cases.
+  - You understand how to use UML use case to express the positive case as well as deviations/exceptions therefrom.
 
   You may also have
   - Updated your Sprint Test Plan

@@ -1,0 +1,50 @@
+#+Title: Testing Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Sprint
+  In this sprint we momentarily pause the steady onmarch of UML and instead focus on how to test the designed software.
+  
+  In this sprint you create a test plan for your system, based on your system sequence diagrams.
+* User Stories covered in this Sprint
+  - As a product manager I want to make sure that we are building software of high quality.
+  - As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
+  - As a teacher I want to evaluate the students' ability to identify and describe meaningful tests from early design artefacts so that I know they understand how test and design go hand in hand.
+* Introduction
+  The basics of a test plan is that you should identify /what/ to test, /how/ to test it, and /when/ to test or re-test it. Using your current understanding of the system, for example your system sequence diagrams, you are able to create a first version of your test plan (To be specific, the /how/ and /when/ is not depending on you having produced any design artefacts at all yet, but it makes sense to bundle this with the /what/).
+
+* Learning Material
+  Please review the sprints concerning
+  - [[./Testing.org][Testing]]
+  - [[./Concepts-Events.org][Concepts and Events]]
+* Experiential Learning
+** Assignment: Create Test Suite
+      Create a regression test suite. You will continue to use and extend this test suite later in the course. At this stage, you are focussing on adding test cases for your API endpoints. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework. 
+
+      {{{tasks}}}
+      1. List all the system events from all the system sequence diagrams.
+      2. For each system event, identify preconditions (e.g. if the system event depends on that another event is triggered first).
+      3. For each system event, identify what inputs are allowed.
+      4. For each system event, identify what outputs are expected.
+      5. For each system event, Write one or several test in your test framework that tests for the allowed inputs and the expected outputs.
+	 
+      {{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+1. size of assignment: Are there test cases for all system events from all the system sequence diagrams?
+2. For each test case: Does it test normal input as well as explore boundary values?
+3. For each test case: Does the test case evaluate a meaningful behaviour?
+#+END_tip    
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You bave created an automated test suite for your API endpoints
+  - You have committed/pushed this suite to your project repository
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog
+  - Set up a continuous integration solution to run your tests on commit   

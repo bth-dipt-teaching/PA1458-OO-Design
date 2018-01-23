@@ -1,0 +1,92 @@
+#+Title: System Sequence Diagrams Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Sprint
+  This sprint introduces a system analysis view of the real world, and describes how to use the UML use cases as a means for finding out what is relevant to model from the real world for the system you are designing.
+
+  This sprint focuses in particular on extracting top-level system events from UNML use cases.
+* User Stories covered in this Sprint
+  - As a software designer I want to document my understanding of the problem domain so that I can easily transform this into an object oriented software system.
+  - As a software designer I want to understand how users plan on interacting with the system so that I can design the right API endpoints.
+  - As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
+* Learning Material
+Please review the sprints on:
+- [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
+- [[./Concepts-Events.org][Concepts and Events]]
+* Experiential Learning
+** Sprint Test Plan
+   Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+   Revisit and update your risks and contingencies section.
+
+   Add and/or revise the following items to your glossary:
+   - Concept
+   - Class
+   - Instance
+   - Object
+   - Object state
+   - Class Diagram
+   - Domain Model (Also: Conceptual Model)
+   - System Sequence Diagram
+   - System Event
+   - Black Box
+   - Software Architecture
+     - Layered Software Architecture
+     - Model-View-Controller Software Architecture
+     - Pipes-and-Filters Software Architecture
+   - Unit Testing
+   - Regression Testing
+   - Integration Testing
+
+   Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+** Assignment: System Sequence Diagrams
+    Create UML System Sequence Diagrams from your UML Use Cases in your first iteration. Create one System Sequence Diagram for each Use Case.
+
+    {{{tasks}}}
+    1. /For each Use Case/, create one System Sequence Diagram.
+    2. Add the ~:System~, and all involved Actors.
+    3. Identify the system events from the use case, name the corresponding method call, and add it to your system sequence diagram from the right actor to the ~:System~
+    4. Add return messages from the ~:System~ to the actors.
+    5. Add loops if applicable.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(System Sequence Diagrams)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] System Sequence Diagrams
+   - System Sequence Diagram for Use Case <name 1>
+   - System Sequence Diagram for Use Case <name 2>
+   - System Sequence Diagram for Use Case <name ... >
+   - System Sequence Diagram for Use Case <name n>
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. size of assignment: Do all Use Cases in Iteration 1 have a corresponding System Sequence Diagram
+2. Are all actors in each use case represented in the system sequece diagrams
+3. Is the system treated as a black box
+4. Do all system events in each use case have a corresponding system event in the same order as in the use case
+5. Are the system events aptly named
+6. Are the return messages from the system sufficiently descriptive
+7. Is the loop construct used correctly
+#+END_tip
+** Update Course Backlog
+   What's the next step? What do you need to do in order to understand how to implement the system based on your system sequence diagrams?
+
+   Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have created the System Sequence Diagram document
+  - You have committed/pushed these documents to your project repository
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

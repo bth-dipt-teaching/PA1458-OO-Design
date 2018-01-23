@@ -1,0 +1,62 @@
+#+Title: Package Diagram Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Sprint
+  This sprint discusses how to identify and model interactions between entities in UML interaction diagrams. The sprint also covers how the interaction diagrams produce material that is used to create UML Class Diagrams.
+
+  The sprint particularly focus on the top-level structure of the system as subsystems/packages.
+* User Stories covered in this Sprint
+  - As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.
+  - As a software designer I want to model both the /dynamic behaviour/ as well as the /static structure/ of the application so that I can communicate both to the developers.
+  - As a software implementer I want to know which methods and attributes each class contains so that I can implement them.
+* Learning Material
+Please review the sprints on
+- [[./Interactions.org][Good Interactions]]
+- [[./Interactions-Structure.org][Interactions and Structure]]
+* Experiential Learning
+** Assignment: Package Diagram
+    List and describe the high-level packages in your system.
+
+    {{{tasks}}}
+    - Break down your system into logically coherent packages.
+    - Briefly describe each package, and its responsibilities.
+    - Model your system in a UML Package Diagram.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Package Diagram)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Overall Packages
+
+   List your packages and briefly describe their responsibilities.
+4. Package Diagram
+
+   Represent your packages as a UML Package Diagram.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Does the package model contain 5 to 10 packages?
+2. Do the packages represent a logical division of the system?
+3. Is each package described in an understandable way?
+4. Are the responsibilities of each package clearly described?
+#+END_tip
+
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have an understanding of how the dynamic behaviour of the system is used to identify the static structure
+  - You have an understanding of how you may use your previous analysis, in terms of Use Cases, System Sequence Diagrams, and Domain Model to initiate your design of the dynamic behaviour.
+  - You have created a Package Diagram document.
+  - You have committed/pushed these documents to your project repository.
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

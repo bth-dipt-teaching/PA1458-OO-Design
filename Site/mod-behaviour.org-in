@@ -1,0 +1,12 @@
+{{{module(Modelling Behaviour, statusNone)}}}
+Different ways of modelling behaviour is introduced. A particular emphasis is placed on patterns to help you identify what makes a /good/ design.
+
+To do:
+  - Read: [[./State.org][Sprint State Diagrams]]
+  - Read: [[./Interactions.org][Sprint Good Interactions]]
+  - Read: [[./Interactions-Structure.org][Sprint Interactions and Structure]]
+  - Visit: [[./Lectures/05_Modelling_Behaviour.pdf][Lecture Modelling Behaviour]] call_get-date(filter="LBehaviour")[:results raw]
+  - Work on Assignment: [[./A-Package-Diagram.org][Sprint Package Diagram Assignment]]
+  - Work on Assignment: [[./A-Interaction-Diagrams.org][Sprint Interaction Diagrams Assignment]]
+  - Work on Assignment: [[./A-Class-and-Package-Diagram.org][Sprint Class and Package Diagram Assignment]]
+{{{moduleEnd}}}

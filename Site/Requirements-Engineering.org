@@ -3,9 +3,9 @@
 
 
 * About This Sprint
-   This sprint briefly introduces the topic requirements engineering. It is primarily targeted at {{{pa1415}}}.
+   This sprint briefly introduces the topic requirements engineering.
    
-   For more information on this topic, see e.g. the course ~PA1412 Praktisk Kravhantering~.
+   For more information on this topic, see e.g. the course ~PA2551 Kravhantering och Produkthantering~.
 * User Stories covered in this Sprint
   - As a requirements engineer I want to know who may have requirements on the system we are building so that I can make sure that all needs are met.
   - As a requirements engineer I want to have a range of methods for finding requirements so that I can choose the best method for each person or source of requirements.
@@ -57,7 +57,7 @@ How you behave during an interview influences the results, because your behaviou
 |                                                          | Don't ask about the budget at the first meeting                          |
 |                                                          | Don't argue among yourselves                                             |
 ** Specification
-    Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to /Specify/ the requirements. There is an IEEE standard, [[fig:SRS][IEEE 830]], for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
+    Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to /Specify/ the requirements. There is an IEEE standard, IEEE 830, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
 
 #+NAME: fig:SRS
 #+BEGIN_info
@@ -82,19 +82,6 @@ How you behave during an interview influences the results, because your behaviou
 
 To simplify, there are two plus one ways of writing requirements. The two ways are traditional requirements and user stories. The plus one way is UML use cases. UML:ists themselves claim that use cases are not requirments, they are merely scenarios where one or several requirements are "exercised". I would rather avoid re-formatting the requirements once more and just add more documentation that will only be used once, so I would try very hard to get away with only documenting the requirements within the context of a use case if I must use them.
 
-#+BEGIN_SRC ditaa :file ./images/FRESpecification.png
-        +------------------+  +-----------+
-        | Requirements     |  | UML       |
-        | cGRE             |  | Use Cases |
-        |                  |  | cBLU      |
-        +------------------+  |           |
-                              |           |
-        +------------------+  |           |
-        | User Stories     |  |           |
-        | cGRE             |  |           |
-        |                  |  |           |
-        +------------------+  +-----------+
-#+END_SRC
 
 #+CAPTION: Two plus one way of specifying requirements
 #+NAME: fig:REtwoplusone
@@ -112,6 +99,20 @@ UML use cases are covered in a different course sprint, so I will only briefly m
 - a confirmation that the room is booked.
 
 Each of these items may, in turn, comprise more than several requirements, including at least one requirement that restricts the order in which these actions must be performed.
+*** Fig                                                            :noexport:
+#+BEGIN_SRC ditaa :file ./images/FRESpecification.png
+        +------------------+  +-----------+
+        | Requirements     |  | UML       |
+        | cGRE             |  | Use Cases |
+        |                  |  | cBLU      |
+        +------------------+  |           |
+                              |           |
+        +------------------+  |           |
+        | User Stories     |  |           |
+        | cGRE             |  |           |
+        |                  |  |           |
+        +------------------+  +-----------+
+#+END_SRC
 
 ** Prioritisation
 [[./images/I0Programmer.jpg]]
@@ -186,52 +187,6 @@ A note also about elicitation techniques: I say earlier that you are most likely
    - regular requirements (consider their apartment, their mother, the bus, etc. as part of "the system")
    - user stories (think about the role they have for each part, and the motivation for why they want something done)
    - use cases  (consider their apartment, their mother, the bus, etc. as part of "the system")
-** Assignment: Requirements Document
-    Your main task is to write user stories based on the system description for the assignments.
-
-    *Tasks*
-    1. Describe the system in terms of the most important workflows, as "epics". Add conditions of satisfaction to each epic.
-    2. List the epics in order of importance, and add a brief motivation for why you have ordered them the way you have.
-    3. Take the three most important epics, and break them down to more manageable user stories. Add conditions of satisfaction to the user stories. Order them according to priority, and add a brief motivation.
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(User Stories)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] High-level Epics
-   1. Motivation for Priority
-   2. Epics (ordered most important first)
-4. User Stories and Epics
-   1. Motivation for Priority
-   2. User Stories and Epics (ordered most important first)
-#+END_info    
-
-#+BEGIN_note
-*Please note* that the "User Stories and Epics" shall include /both/ the remaining epics from section 3 in the document /and/ the broken down user stories.
-
-*Please also note* that the user stories from the epics that you break down will probably be interlaced; the least important user stories from the top-most epic need not be more important than the most important user stories from the second epic. You will thus have to review the priorities of /all/ user stories against all other user stories and epics.
-
-*Please also also note*, when you go forward you will want each user story to have a unique ID so that you can refer back to them.
-#+END_note
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution 
-1. Size of assignment: Are there 5-10 epics and 10-30 user stories?
-2. Is there a significant difference in scope between the epics and the user stories?
-3. Are the epics and user stories well formed (including actor, goal, and reason)?
-4. Are there relevant conditions of satisfaction for each user story/epic?
-5. Is there a reasonable motivation for the priorities of the epics and user stories?
-6. Does the prioritisation actually follow the motivation?
-#+END_tip
-
 ** Update Course Backlog
    How do you translate your user stories into UML use cases? How do you use the prioritised order to decide on a development schedule? Why are you specifying your requirements first as user stories if you are then going to re-specify them as UML use cases immediately afterwards?
 
@@ -241,7 +196,6 @@ When marking this part of the assignment we are looking for the following:
 * Sprint Acceptance Tests
   You are done with this sprint when:
   - You have read the Learning Materials.
-  - You have created the "User Stories" document and committed/pushed it to your project repository.
 
   You may also have
   - Updated your Sprint Test Plan

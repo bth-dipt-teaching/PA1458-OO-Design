@@ -1,0 +1,64 @@
+#+Title: Evaluate Software Architecture Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+
+* About This Sprint
+  This sprint reviews how to describe a non-trivial software system in the form of a software architecture.
+
+  In particular, the sprint focuses on evaluating your software architecture.
+  
+* User Stories covered in this Sprint
+  - As a software designer I want to be able to divide my design into manageable chunks so that I can get a better overview.
+  - As a software designer I want to address the quality requirements of the software system early on so that they are not missed.
+  - As a software designer I want to address the quality requirements of the software system in the most appropriate way to facilitate the rest of the development project.
+* Learning Material
+Please review the sprints on:
+ - [[./Intro-Architectures.org][Introduction to Software Architectures]]
+ - [[./Interactions-Structure.org][Interactions and Structure]]
+* Experiential Learning
+** Assignment: Evaluate Initial Software Architecture
+   Evaluate your software architecture based on your initial list of quality attrbutes.
+
+   {{{tasks}}}
+   - For each quality attribute, how can you evaluate your architecture to see whether you meet your requirements or not?
+   - For each quality attribute, evaluate your architecture according to what you just decided.
+   - For each quality attribute and evaluation, reason about how you can improve your architecture to further meet your quality goals.
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Evaluation of Initial Software Architecture)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Quality Attributes
+   - Create one section for each quality attribute
+   - Describe how you plan on evaluating your architecture with respect to the quality attribute, and why this is a sufficient evaluation strategy.
+   - Evaluate your architecture, using relevant viewpoints, according to your evaluation strategy.
+   - Summarise your evaluation and any bottlenecks you find.
+   - Reason about how your architecture can be improved to remove the identified bottlenecks.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Is the architecture evaluated from the perspective of 3-5 quality attrbutes?
+2. For each quality attribute, is the chosen evaluation strategy motivated?
+3. For each quality attribute, is the chosen evaluation strategy sufficient?
+4. For each quality attribute, is the architecture sufficiently evaluated using the described evaluation strategy?
+5. For each quality attribute, are the findings from the evaluation summarised?
+6. For each quality attribute, is there a sufficient reasoning about how to improve the architecture?
+#+END_tip
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have evaluated your initial software architecture.
+  - You have committed/pushed the created documents to your project repository
+
+
+  You may also have
+  - Improved your initial software architecture based on your evaluation.
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

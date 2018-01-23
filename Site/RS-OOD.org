@@ -27,6 +27,11 @@
 
   Please note that while I do not ask you to make /system sequence diagrams/ for your use cases, you are still going to have to, on your own, do someting akin to this in order to extract the system events that the actors generate for each use case. These are then the system events that you create your interaction diagrams for.
 
+
+#+RESULTS:
+[[file:./images/FDUC-ID1.png]]
+
+** Fig                                                             :noexport:
 #+BEGIN_SRC dot :file ./images/FDUC-ID1.png
 digraph{
 rankdir=LR;
@@ -60,10 +65,6 @@ duc -> ssd
 }
 #+END_SRC
 
-#+RESULTS:
-[[file:./images/FDUC-ID1.png]]
-
-
 * Learning Material
   Please review the sprints concerning
   - [[./Concepts-Events.org][Concepts and Events]]
@@ -75,8 +76,8 @@ duc -> ssd
    {{{submit}}}
    
    Your submission shall include the following documents:
-   - [[file:./Interactions-Structure.org::*Assignment: Interaction Diagrams][Interaction Diagrams]]
-   - [[file:./Interactions-Structure.org::*Assignment: Class and Package Diagram][Class and Package Diagram]]
+   - [[./A-Interaction-Diagrams][Interaction Diagrams]]
+   - [[./A-Class-and-Package-Diagram.org][Class and Package Diagram]]
 
    These documents shall be revised to use relevant design patterns (and document their use).   
 * Sprint Acceptance Tests

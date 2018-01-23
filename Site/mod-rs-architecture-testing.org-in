@@ -1,0 +1,8 @@
+{{{module(Assignment Sumbission, statusNone)}}}
+In this assignment you finalise your architecture along with your test plan and submit it.
+
+To do:
+ - Work on Assignment: [[./A-System-Testing.org][Sprint Create System Test Plan Assignment]]
+ - Submit Assignment: [[./RS-Architecture-Test.org][Release Sprint: Architecture and Testing]]  call_get-date(filter="A3Architecture")[:results raw]
+ - Prepare before and Visit: [[./SEM-Release3.org][Demo and Discuss Assignment 3]] call_get-date(filter="SA3Demo")[:results raw]   
+{{{moduleEnd}}}

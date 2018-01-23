@@ -5,13 +5,13 @@
   This sprint introduces the course and the course structure. This sprint also serves as the required Course PM to explain in more detail how the couse is going to be conducted in relation to the course syllabus.
 
   The following courses are covered by this course PM:
-| Course Code | Name                                               | Extent (in ECTS) | Programme(s)                                               |
-|-------------+----------------------------------------------------+------------------+------------------------------------------------------------|
-| PA1415      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1415&RevisionsNr=6&format=pdf][Programvarudesign]]                                  |              7.5 | BSc i Spelprogrammering, BSc i IT-Säkerhet                 |
-| PA1434      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1434&RevisionsNr=6&format=pdf][Grunder i Objektorienterad Design]]                  |                4 | CI i IndEk                                                 |
-| PA1435      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1435&RevisionsNr=5&format=pdf][Objektorienterad Design]]                            |                6 | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
-| PA1443      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1443&RevisionsNr=2&format=pdf][Introduktion till Programvarudesign och Arkitektur]] |                5 | BSc i Programvaruteknik                                    |
-|-------------+----------------------------------------------------+------------------+------------------------------------------------------------|
+| Course Code | Name                                               | Extent (in ECTS) | Programme(s)                                                    |
+|-------------+----------------------------------------------------+------------------+-----------------------------------------------------------------|
+| PA1415      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1415&RevisionsNr=6&format=pdf][Programvarudesign]]                                  |              7.5 | BSc i Spelprogrammering                                         |
+| PA1434      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1434&RevisionsNr=6&format=pdf][Grunder i Objektorienterad Design]]                  |                4 |                                                                 |
+| PA1435      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1435&RevisionsNr=5&format=pdf][Objektorienterad Design]]                            |                6 | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi      |
+| PA1443      | [[http://edu.bth.se/utbildning/utb_kursplan.asp?Kurskod=PA1443&RevisionsNr=2&format=pdf][Introduktion till Programvarudesign och Arkitektur]] |                5 | BSc i Programvaruteknik, BSc International Software Engineering |
+|-------------+----------------------------------------------------+------------------+-----------------------------------------------------------------|
 * User Stories covered in this Sprint
   - As a student I want to pass this course.
   - As a student I want to understand how this course is structured so that I can quickly find the information I need to learn the subject.
@@ -247,16 +247,16 @@ The following learning outcomes apply to the different courses.
     1. *Initial Deadlines*
        Please see the [[./index.org][Start Page for each course]] for more information about the assignments and their respective deadlines.
     2. *First Resubmission*
-       <2017-08-30 Wed 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
+       <2018-08-30 Thu 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
     3. *Second Resubmission*
-       <2018-03-26 Mon 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
+       <2019-03-26 Tue 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
 
     Exam:
     - Dates for the written exams for the next 12 months can be checked on the student portal at https://studentportal.bth.se/web/studentportal.nsf/web.xsp/prescheduled_dates .
 ** TODO Why is this course Important?				   :noexport:
 ** TODO Course Roadmap						   :noexport:
 ** What should I do with the Sprint Test Plan?
-   The Sprint Test Plan is a way to get an overview of your expectations in the course, in relation to the provided material, and align it with my expectations as course responsible and examiner. In some sense, it is also your strategy for learning the topics. I will not mark your Sprint Test Plan -- you are creating and maintaining this for your own sake.
+   The Sprint Test Plan is a way to get an overview of your expectations in the course, in relation to the provided material, and align it with my expectations as course responsible and examiner. In some sense, it is also your strategy for learning the topics. /I will not mark your Sprint Test Plan/ -- you are creating and maintaining this for your own sake.
 
    The Sprint Test Plan will be revisited during every sprint, so that you have an updated record of what you need to learn to pass the course.
 
@@ -266,12 +266,14 @@ The following learning outcomes apply to the different courses.
 
    At the end of the course, it is my hope that your backlog contains pointers to yourself with how you should go forward with the knowledge gained. For example, how can you use what you have learnt in upcoming courses? Are there any particularly interesting things you have found that you would like to study more? Are there any courses you are interested in taking as a consequence of taking this course? Are there any courses you would like to /replace/ in your education as a consequence of taking this course? Are there any ideas you can use for your bachelor or master's thesis?
 
-   The course backlog is revisited in every sprint. I will not mark it; you create it for your own benefit.
+   The course backlog is revisited in every sprint. /I will not mark it/; you create it for your own benefit.
 * Experiential Learning
-** Create Infrastructure
+** (Optional) Create Infrastructure
    *Introduction.* In your future career you are going to use configuration management systems such as [[http://svnbook.red-bean.com/][Subversion]] or [[https://git-scm.com/][Git]], so why not start already now? This gives you an easy way to share work between your colleagues, and opens up for me to review your work even before you have submitted it.
 
-   If you also write your documents in for example [[https://daringfireball.net/projects/markdown/][Markdown]], they are formatted for you by github. Myself, I am partial to [[http://orgmode.org/][Org-mode]] and [[https://www.gnu.org/software/emacs/][Emacs]], especially because of the nice integration with [[http://plantuml.com/][PlantUML]] for generating design diagrams and the excellent export facilities. Org-mode is also nicely supported by github.
+   If you also write your documents in for example [[https://daringfireball.net/projects/markdown/][Markdown]], they are formatted for you by github. Myself, I am partial to [[https://orgmode.org/][Org-mode]] and [[https://www.gnu.org/software/emacs/][Emacs]], especially because of the nice integration with [[http://plantuml.com/][PlantUML]] for generating design diagrams and the excellent export facilities. Org-mode is also nicely supported by github.
+
+   Please note that this is currently optional. I do not require you to create a repository on github (or anywhere else, for that matter), but I strongly recommend that you start familiarising yourself with modern configuration management tools already now. Moreover, if you /were/ to run into conflicts within your group, the commit record of a configuration management repository is an excellent starting point to figure out who has contributed what.
 
    *Things to do:*
    - [[https://education.github.com/][Create an account on Github]] (or use your existing one)
@@ -406,6 +408,7 @@ This book, also called the Gang of Four book is /the/ reference work when it com
    |        | (other)      | Group 2 |
    |--------+--------------+---------|
 
+   It is desirable if your entire team visits the same seminar. Moreover, the above is intended as a rough sort. There may be all sorts of instances and special cases where it would be better for you (and your team) to visit another seminar session. Do so at your own discretion.
 ** Get an Overview of the Assignments
    Take a look at the [[./AssignmentMap.org][Assignment Map]] to see which assignments are relevant for you and how they are connected to each other.
 ** Update Course Backlog
@@ -414,10 +417,11 @@ This book, also called the Gang of Four book is /the/ reference work when it com
   You are done with this sprint when:
   - You have bought the literature you want/need for the course.
   - You have joined a group.
-  - You have created a github account, created a project repository, and committed/pushed the directory structure.
   - You have read the Learning Materials
+  - You have reviewed the [[./AssignmentMap.org][Assignment Map]] and are clear on what you are expected to submit, and in what order.
 
   You may also have
+  - Created a github account, created a project repository, and committed/pushed the directory structure.
   - Created a Sprint Test Plan
   - Created a Course Backlog
 

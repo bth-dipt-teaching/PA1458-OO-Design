@@ -1,0 +1,9 @@
+{{{module(Modelling Structure, statusNone)}}}
+There are two sides to modelling. You model the /structure/ of a system to understand which entities you are going to work with, and you model the /behaviour/ of these entities. In this module we focus on the structure.
+
+To do:
+  - Read: [[./Concepts-Events.org][Sprint Concepts and Events]]
+  - Visit: [[./Lectures/04_Modelling_Structure.pdf][Lecture Modelling Structure]] call_get-date(filter="LStructure")[:results raw]
+  - Work on Assignment: [[./A-Domain-Model.org][Sprint Domain Model Assignment]]
+  - Work on Assignment: [[./A-System-Sequence-Diagrams.org][Sprint System Sequence Diagrams Assignment]]
+{{{moduleEnd}}}

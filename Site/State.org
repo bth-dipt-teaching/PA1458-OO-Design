@@ -27,6 +27,23 @@
 
    Enough dry talk. Let's put this into a UML State Diagram:
 
+
+#+NAME: fig:StateTrain
+#+CAPTION: A UML State Diagram for Catching a Train
+#+RESULTS:
+[[file:./images/FStateTrain.png]]
+
+You may not model your entire application as a state chart. In fact, you may not need to model it at all. Also, you may have several state charts that are not connected to each other (other than that they logically must be solvable in the same system).
+
+State charts are tricky. On one hand, they are a useful tool to visualise dynamic behaviour and to think about your system in terms of states and events. On the other hand, they don't really fit in with the other UML diagrams. Here's a list of questions I would like you to think about for a while. We may come back to these questions during a lecture, sinnce in order to understand the answers you also need to understand a lot more about software design:
+
+- Are state diagrams an analysis tool, or are they a design tool?
+- Can you get the states from a UML use case?
+- Can you express the same in a state diagram as in a (system) sequence diagram? If so, what is the added value?
+- Do you learn anything about what classes or what interactions between classes you need in your system from a state diagram?
+
+This sprint is smaller than many of the others because -- as you notice -- state diagrams are difficult to pin down. Rather than bundling State Diagrams with something else it makes more sense to keep them separate so that I may include the sprint in different parts of the course flow. Having said this, state charts are probably one of the older modelling techniques, and there is actually quite a lot written about different types of state charts and their cousin [[http://www.scholarpedia.org/article/Petri_net][Petri Nets]].
+*** Fig                                                            :noexport:
 #+BEGIN_SRC plantuml :file ./images/FStateTrain.png
 state "Walking to Train" as wtt
 state "Running to Train" as rtt
@@ -45,21 +62,6 @@ sit-->wtu : Train Arrives at Station [station==right station]
 wtu->[*]
 #+END_SRC
 
-#+NAME: fig:StateTrain
-#+CAPTION: A UML State Diagram for Catching a Train
-#+RESULTS:
-[[file:./images/FStateTrain.png]]
-
-You may not model your entire application as a state chart. In fact, you may not need to model it at all. Also, you may have several state charts that are not connected to each other (other than that they logically must be solvable in the same system).
-
-State charts are tricky. On one hand, they are a useful tool to visualise dynamic behaviour and to think about your system in terms of states and events. On the other hand, they don't really fit in with the other UML diagrams. Here's a list of questions I would like you to think about for a while. We may come back to these questions during a lecture, sinnce in order to understand the answers you also need to understand a lot more about software design:
-
-- Are state diagrams an analysis tool, or are they a design tool?
-- Can you get the states from a UML use case?
-- Can you express the same in a state diagram as in a (system) sequence diagram? If so, what is the added value?
-- Do you learn anything about what classes or what interactions between classes you need in your system from a state diagram?
-
-This sprint is smaller than many of the others because -- as you notice -- state diagrams are difficult to pin down. Rather than bundling State Diagrams with something else it makes more sense to keep them separate so that I may include the sprint in different parts of the course flow. Having said this, state charts are probably one of the older modelling techniques, and there is actually quite a lot written about different types of state charts and their cousin [[http://www.scholarpedia.org/article/Petri_net][Petri Nets]].
 * Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:

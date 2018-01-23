@@ -6,7 +6,7 @@
 * User Stories covered in this Sprint
   - As a software architect I want to start my design with a well known structure so that I can be sure that I am addressing my quality requirements in the best way.
 * Introduction
-  I am going to address the user stories in this sprint from two different perspectives. Both of them backs up to how [[https://www.wikipedia.org/wiki/Christopher_Alexander][Christopher Alexander]] described a pattern language for architectures (as used e.g. by Gamma et al. in the Design Pattern book). The first perspective is the common and widely used idea of architectural styles and architectural patterns as a design template. For example, if I describe a system as having a "Layered Architecture", being a "Pipes and Filters system", or a "Model-View-Controller" architecture, this means that the basic structure of the architecture is done according to these patterns. They can be described as ready-made solutions that describe the overall structure of your system, along with the roles and responsibilities of each component. This is the approach taken e.g. by Buschmann et al. (1996)
+  I am going to address the user stories in this sprint from two different perspectives. Both of them backs up to how [[https://en.wikipedia.org/wiki/Christopher_Alexander][Christopher Alexander]] described a pattern language for architectures (as used e.g. by Gamma et al. in the Design Pattern book). The first perspective is the common and widely used idea of architectural styles and architectural patterns as a design template. For example, if I describe a system as having a "Layered Architecture", being a "Pipes and Filters system", or a "Model-View-Controller" architecture, this means that the basic structure of the architecture is done according to these patterns. They can be described as ready-made solutions that describe the overall structure of your system, along with the roles and responsibilities of each component. This is the approach taken e.g. by Buschmann et al. (1996)
 
   The /second/ perspective is the one that Bass et al. (2012) uses, where they describe patterns as specific building blocks that you use for specific purposes, and thus your overall architecture is composed by these smaller building blocks. They refer to these blocks as /Architecture Tactics/. The two perspectives are not mutually exclusive. You are likely to start with an overall architecture pattern to setup a /potential/ for achieving a certain blend of quality requirements. As you continue to design your architecture, you will then encounter specific challenges that you need to design an architectural solution for, where you will apply architectural tactics to address the challenge.
 
@@ -65,7 +65,7 @@ Notice that tactics do not tell you exactly which components are needed, or what
 
 ** One More Thing...
    One part of architecture patterns which I have not mentioned yet is that just as there are basic design principles for object oriented designs, there are also good practices for architectures. {{{larman}}} summarises a set of these with respect to package design. These principles should be applied even when working within a particular architecture pattern or when designing in a particular architecture tactic.
-* TODO Learning Material
+* Learning Material
 ** Book Chapters
    - {{{larman}}}, Chapters:
      35. [@35] Package Design
@@ -110,112 +110,14 @@ Notice that tactics do not tell you exactly which components are needed, or what
    How did they decide to address the challenge? Which architecture tactics best correspond to their solution? Exactly how is this tactic instantiated into a workable system architecture?
    
    The intention of this self-study task is that by going in one direction (from an already solved solution to a generic tactic) you also get experience in seeing how the other direction (going from the tactic to a workable solution) may be done.
-** Assignment: Quality Attribute Scenarios
-    List, briefly describe, and prioritise the most important quality attributes that you need to consider in your system. Develop quality attribute scenarios for the most important ones.
-
-    {{{tasks}}}
-    - Identify the most important quality attributes for your system.
-    - Briefly describe each of them so that it is possible to understand what the quality attribute means in the context of your system and why it is imporant.
-    - Prioritise your quality attributes so you know which are the most important for your system.
-    - Develop /Quality Attribute Scenarios/ for the top five most important quality attributes.
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Quality Attribute Scenarios)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Prioritised list of Quality Attributes
-
-   List your quality attributes in order of priority and briefly describe them.
-4. Quality Attribute Scenarios
-
-   Your five most important quality attributes, expressed as quality attribute scenarios. This may be expressed as figures, but it is more useful if you present them in a table:
-
-   | Aspect           | Value |
-   |------------------+-------|
-   | Source           |       |
-   | Stimulus         |       |
-   | Artifact         |       |
-   | Environment      |       |
-   | Response         |       |
-   | Response Measure |       |
-
-   *Note:* You also need to explain your values with one or two sentences for each aspect.
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution?
-1. Size of assignment: Are there more than five quality attributes listed?
-2. Size of assignment: Are there five quality attribute scenarios?
-3. Do the prioritisation of the quality attributes make sense with respect to the system?
-4. For each scenario: Are appropriate sources, stimuli, and artifacts listed?
-5. For each scenario: Is the environment reasonable?
-6. For each scenario: Is the response appropriate given the stimulus?
-7. For each scenario: Is the response measure reasonable given the type of response, the stimulus, and the environment?
-#+END_tip
-** Assignment: Architecture Tactics
-    Explore architectural solutions (in terms of architecture tactics) for your quality attribute scenarios.
-
-    {{{tasks}}}
-    - For each quality attribute scenario, identify which architectural tactics (from Bass et al.) that might help you achieve the desired response measure.
-    - Explore how you would design the architecture of your system to make use of the identified tactics.
-    - Also consider what support you would need on the design level (in terms of classes and interactions between classes).
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Software Architecture and Architecture Tactics)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Architecture Tactics
-   1. Tactics for Quality Attribute Scenario 1: <quality attribute name>
-
-      For each scenario:
-      - List and describe the tactics that may be relevant.
-      - Briefly discuss how you would use the tactic (or why you decide /not/ to use this particular tactic).
-      - Identify key components and classes in your design that are affected by applying your selected tactics.
-
-   2. Tactics for Quality Attribute Scenario 2: <quality attribute name>
-   3. Tactics for Quality Attribute Scenario 3: <quality attribute name>
-   4. Tactics for Quality Attribute Scenario 4: <quality attribute name>
-   5. Tactics for Quality Attribute Scenario 5: <quality attribute name>
-
-4. Updated Architecture
-
-   Present an updated architecture (with as many views that are necessary) that includes the tactics you decided to use. Try to mark, in your architecture, which entities are involved in each tactic, and the responsibilities the entity have in relation to the tactic.
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution?
-1. Size of assignment: Are two to three tactics explored for each of the five quality attribute scenarios?
-2. Will the discussed tactics address the challenges in each quality attribute scenario?
-3. Are the tactics adequately translated into a workable architecture and design for the particular system?
-4. Does the updated architecture have a reasonable potential to address the quality attribute scenarios?
-#+END_tip
-
 ** Update Course Backlog
    This sprint, and the previous, describes a "top-down" approach to creating an architecture. By this I mean that you start with the problem and then you create an overall architecture, and then (theoretically) you continue by doing detailed design (e.g. with the help of RUP/UML) inside each component or module. How would this fit into a workflow that is primarily based on RUP/UML, which can be described as a more "bottom-up" approach?
 
    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
 * Sprint Acceptance Tests
   You are done with this sprint when:
-  - You have created quality attribute scenarios for your most important quality attributes.
-  - You have explored architecture tactics that address your quality attribute scenarios.
-  - You have updated your software architecture according to the tactics.
-  - You have committed/pushed these documents to your project repository.
-
+  - You understand how architecture patterns and architecture tactics can be used as "shortcuts" to create a reusable and sustainable software architecture.
+  - You understand how you can express your quality attributes, with the help of quality attrbute scenarios, so that you can measure and control whether you meet your quaity goals.
 
   You may also have
   - Explored architecture challenges and tactics for one or more open-source system.

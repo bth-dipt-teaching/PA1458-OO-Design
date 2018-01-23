@@ -24,6 +24,10 @@
 * Introduction
   In this release sprint you implement and test your design for your first iteration.
 
+
+#+RESULTS:
+[[file:./images/FImpl1.png]]
+** Fig                                                             :noexport:
 #+BEGIN_SRC dot :file ./images/FImpl1.png
 digraph{
 compound=true;
@@ -79,10 +83,6 @@ im -> tst [dir="both"];
 }
 #+END_SRC
 
-#+RESULTS:
-[[file:./images/FImpl1.png]]
-
-
 * Learning Material
   Please review the sprints concerning
   - [[./Testing.org][Testing]]
@@ -129,7 +129,7 @@ When marking this part of the assignment we are looking for the following:
    {{{submit}}}
    
    Your submission shall include the following documents:
-   - [[file:./Interactions-Structure.org::*Assignment: Class and Package Diagram][Class and Package Diagram]]
+   - [[./A-Class-and-Package-Diagram.org][Class and Package Diagram]]
    - Implementation (Link to Github project is ok)
 * Sprint Acceptance Tests
   You are done with this sprint when:

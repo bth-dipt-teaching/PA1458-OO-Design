@@ -1,0 +1,80 @@
+#+Title: Interaction Diagrams Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Sprint
+  This sprint discusses how to identify and model interactions between entities in UML interaction diagrams. The sprint also covers how the interaction diagrams produce material that is used to create UML Class Diagrams.
+
+  The sprint particularly focus on the dynamic behaviour inside the system to address each system event.
+* User Stories covered in this Sprint
+  - As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.
+  - As a software designer I want to model both the /dynamic behaviour/ as well as the /static structure/ of the application so that I can communicate both to the developers.
+  - As a software implementer I want to know which methods and attributes each class contains so that I can implement them.
+* Learning Material
+Please review the sprints on
+- [[./Interactions.org][Good Interactions]]
+- [[./Interactions-Structure.org][Interactions and Structure]]
+- [[./Concepts-Events.org][Concepts and Events]]
+- [[./A-System-Sequence-Diagrams.org][System Sequence Diagrams Assignment]]
+* Experiential Learning
+** Assignment: Interaction Diagrams
+    Describe what will happen inside the system for your system events in terms of UML Interaction Diagrams. You may choose yourself whether you prefer UML Sequence Diagrams or UML Collaboration Diagrams. You may wish to try using both to get a feel of which one you prefer.
+
+    {{{tasks}}}
+    - Go back to your list of UML Use Cases and their corresponding UML System Sequence Diagrams, and extract the System Events therefrom.
+    - Starting with your most important Use Case, create UML Interaction Diagrams for all the System Events.
+    - Continue until you have created /no fewer than 10 UML Interaction Diagrams/ and have completed a full Use Case. I.e., if you are in the middle of a use case with your tenth interaction diagram, you complete the use case and create slightly more than ten interaction diagrams.
+
+#+BEGIN_info
+{{{docstructure}}}
+
+{{{assignment(Interaction Diagrams)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Prioritised List of Use Cases
+
+   Repeat your prioritised list of Use Cases.
+
+4. System Events
+
+   List the System Events you have extracted from your UML System Sequence Diagrams:
+
+   1. System Events for Use Case <name 1>
+   2. System Events for Use Case <name 2>
+   3. ...
+   4. System Events for Use Case <name N>
+
+5. Interaction Diagrams
+
+   Your UML Interaction Diagrams, organised per use case and titled with the system event.
+
+   1. Interaction Diagrams for Use Case <name 1>
+   2. Interaction Diagrams for Use Case <name 2>
+   3. ...
+   4. Interaction Diagrams for Use Case <name N>
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution?
+1. Size of assignment: Are there at least 10 interaction diagrams?
+2. Are all relevant objects (and only objects) involved in the interaction diagrams?
+3. Are all methods (messages) suitably named?
+4. Are returned objects and objects passed as parameters also represented in the interaction diagram?
+5. Will the interaction diagram actually sufficiently address the system event?
+6. Are there interactions that are missing to fully satisfy the system event?
+#+END_tip
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have an understanding of how the dynamic behaviour of the system is used to identify the static structure
+  - You have an understanding of how you may use your previous analysis, in terms of Use Cases, System Sequence Diagrams, and Domain Model to initiate your design of the dynamic behaviour.
+  - You have created an Interaction Diagrams document.
+  - You have committed/pushed these documents to your project repository.
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

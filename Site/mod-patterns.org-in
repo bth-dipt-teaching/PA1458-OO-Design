@@ -1,0 +1,9 @@
+{{{module(Design Patterns, statusNone)}}}
+Design patterns are essentially re-usable solutions to common problems, where you can be reasonably sure that the end result will actually be a good, understandable, and extensible design.
+
+To do:
+  - Read: [[./Design-Patterns.org][Sprint Design Patterns]]
+  - Visit: [[./Lectures/06_DesignPatterns.pdf][Lecture Design Patterns]] call_get-date(filter="LDesignPatterns")[:results raw]
+  - Work on Assignment: [[./A-Design-Patterns.org][Sprint Design Patterns Assignment]]
+  - Prepare before and Visit: [[./SEM-Structure.org][Seminar Structure and Design Patterns]] call_get-date(filter="SPatterns")[:results raw]
+{{{moduleEnd}}}

@@ -1,0 +1,13 @@
+{{{module(Architecture,statusNone)}}}
+When constructing a larger system, it is not sufficient to just focus on the software design of classes and groups of classes. Instead you need to raise your view and look at the system as a whole, i.e. its software architecture.
+
+To do:
+- Read: [[./Intro-Architectures.org][Sprint Introduction to Software Architectures]]
+- Read: [[./Architecture-Patterns.org][Sprint Software Architecture Patterns]]
+- Visit: [[./Lectures/08_Software_Architectures.pdf][Lecture Introduction to Software Architectures]] call_get-date(filter="LArchitecture")[:results raw]
+- Visit: [[./Lectures/09_Quality-Attributes.pdf][Lecture Quality Attributes]] call_get-date(filter="LQuality")[:results raw]
+- Work on Assignment: [[./A-Initial-Architecture.org][Sprint Create Initial Architecture Assignment]]
+- Work on Assignment: [[./A-Evaluate-Architecture.org][Sprint Evaluate Software Architecture Assignment]]
+- Work on Assignment: [[./A-Quality-Attributes.org][Sprint Create Quality Attribute Scenarios Assignment]]
+- Work on Assignment: [[./A-Architecture-Tactics.org][Sprint Revise Architecture with Architecture Tactics Assignment]]
+{{{moduleEnd}}}

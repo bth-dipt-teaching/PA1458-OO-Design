@@ -2,12 +2,61 @@
 #+INCLUDE: "./org/header.org-in" org
 #+OPTIONS: toc:nil
 
+* Lecture Dates                                                    :noexport:
+#+INCLUDE: "./org/modules.org" org
 
+#+tblname: lecture-dates
+| LIntro          | <2018-01-22 Mon 10:00> |
+| LDevMeth        | <2018-01-22 Mon 10:00> |
+| LReqEng         | <2018-01-22 Mon 10:00> |
+| LUseCases       | <2018-01-22 Mon 10:00> |
+| SReqEng         | <2018-01-22 Mon 10:00> |
+| A0ThreeWeek     | <2018-01-22 Mon 10:00> |
+| A1UseCases      | <2018-01-22 Mon 10:00> |
+| SA1UseCases     | <2018-01-22 Mon 10:00> |
+| LStructure      | <2018-01-22 Mon 10:00> |
+| LTesting        | <2018-01-22 Mon 10:00> |
+| LBehaviour      | <2018-01-22 Mon 10:00> |
+| LDesignPatterns | <2018-01-22 Mon 10:00> |
+| SPatterns       | <2018-01-22 Mon 10:00> |
+| A2OOD           | <2018-01-22 Mon 10:00> |
+| LArchitecture   | <2018-01-22 Mon 10:00> |
+| LQuality        | <2018-01-22 Mon 10:00> |
+| LImplementation | <2018-01-22 Mon 10:00> |
+| A3Architecture  | <2018-01-22 Mon 10:00> |
+| SA3Demo         | Individually Booked    |
+| SQnA            | <2018-01-22 Mon 10:00> |
 
 * Sprints, Lectures, and Seminars
-*Please note* That the dates are not fully in order below, but are rather organised according to logical coherence. To export this to your calendar, please use the [[https://se.timeedit.net/web/bth/db1/sched1/riqmoQ3QwYXZ3YQyQo776Q3065Z9Z77Zq5QY.html][Official Schedule]].
 
-Lectures and Seminars are 2 hours.
+#+INCLUDE: "./mod-intro.org-in" org
+
+
+#+INCLUDE: "./mod-uc.org-in" org
+#+INCLUDE: "./mod-rs-uc.org-in" org
+
+#+INCLUDE: "./mod-structure.org-in" org
+#+INCLUDE: "./mod-testing.org-in" org
+#+INCLUDE: "./mod-behaviour.org-in" org
+#+INCLUDE: "./mod-patterns.org-in" org
+#+INCLUDE: "./mod-rs-ood.org-in" org
+
+#+INCLUDE: "./mod-architecture.org-in" org
+#+INCLUDE: "./mod-implementation.org-in" org
+#+INCLUDE: "./mod-rs-architecture-testing.org-in" org
+
+#+INCLUDE: "./mod-finalise.org-in" org
+
+
+
+* Lost Puppies							   :noexport:
+  
+|                                     | <2017-04-07 Fri 15:00> C236 Group 2 |                                                     |                                        |                                           |
+|                                     | <2017-04-21 Fri 10:00> C236 Group 2 |                                                     |                                        |                                           |
+|                                     | <2017-04-27 Thu 10:00> C236 Group 2 |                                                     |                                        |                                           |
+|                                     | <2017-05-11 Thu 15:00> C236 Group 2 |                                                     |                                        |                                           |
+|                                     | <2017-05-03 Wed 10:00> C236 Group 2 |                                                     |                                        |                                           |
+|                                     | <2017-05-04 Thu 10:00> C236 Group 2 |                                                     |                                        |                                           |
 
 |                                     | Time                                | Sprint                                              | Lecture                                | Seminar                                   |
 |-------------------------------------+-------------------------------------+-----------------------------------------------------+----------------------------------------+-------------------------------------------|
@@ -50,12 +99,8 @@ Lectures and Seminars are 2 hours.
 | [[./images/Icon-Sprint.jpg]]            |                                     | [[./Exam.org][Preparing for the Exam]]                              |                                        |                                           |
 | [[./images/Icon-Sprint.jpg]]            |                                     | [[./Sprint99-Finalise.org][Sprint 99: Wrap-up and Finalise the Course]]          |                                        |                                           |
 |-------------------------------------+-------------------------------------+-----------------------------------------------------+----------------------------------------+-------------------------------------------|
-
-* Lost Puppies							   :noexport:
-
-|                                     | <2017-04-07 Fri 15:00> C236 Group 2 |                                                     |                                        |                                           |
-|                                     | <2017-04-21 Fri 10:00> C236 Group 2 |                                                     |                                        |                                           |
-|                                     | <2017-04-27 Thu 10:00> C236 Group 2 |                                                     |                                        |                                           |
-|                                     | <2017-05-11 Thu 15:00> C236 Group 2 |                                                     |                                        |                                           |
-|                                     | <2017-05-03 Wed 10:00> C236 Group 2 |                                                     |                                        |                                           |
-|                                     | <2017-05-04 Thu 10:00> C236 Group 2 |                                                     |                                        |                                           |
+* Local Variables                                                  :noexport:
+# Local Variables:
+# org-export-use-babel: t
+# org-confirm-babel-evaluate: (lambda (lang body) (not (string= lang "emacs-lisp")))
+# End:

@@ -5,14 +5,30 @@
 * About This Sprint
   This sprint reviews how to describe a non-trivial software system in the form of a software architecture.
 
-  For more information on this topic, see e.g. the course ~PA1410 Software Architecture and Quality~.
+  For more information on this topic, see e.g. the course ~PA1453 Software Architecture and Quality~.
 * User Stories covered in this Sprint
   - As a software designer I want to be able to divide my design into manageable chunks so that I can get a better overview.
   - As a software designer I want to address the quality requirements of the software system early on so that they are not missed.
   - As a software designer I want to address the quality requirements of the software system in the most appropriate way to facilitate the rest of the development project.
 * Introduction
-   When developing software there are a number of challenges to keep in mind. For example, the project manager want to /reduce the development costs/, your marketing department will want to /reduce time-to market/, considering that your application is going to spend 90% of its lifespan in maintenance, your company will want to /decrease the maintenance costs/, and your product managers want to /increase system quality/. We can summarise these needs in what is known as the [[https://en.wikipedia.org/wiki/Project_management_triangle][Iron Triangle]]. Ignoring Euclidean geometry, this can be [[http://paulhammant.com/2015/12/19/the-iron-triangle-is-actually-a-square-and-not-particularly-iron/][summarised as]]: 
+   When developing software there are a number of challenges to keep in mind. For example, the project manager want to /reduce the development costs/, your marketing department will want to /reduce time-to market/, considering that your application is going to spend 90% of its lifespan in maintenance, your company will want to /decrease the maintenance costs/, and your product managers want to /increase system quality/. We can summarise these needs in what is known as the [[https://en.wikipedia.org/wiki/Project_management_triangle][Iron Triangle]]. Ignoring Euclidean geometry, this can be [[https://paulhammant.com/2015/12/19/the-iron-triangle-is-actually-a-square-and-not-particularly-iron/][summarised as]]: 
 
+
+#+NAME: fig:IronTriangle
+#+CAPTION: The Iron Triangle of Software Development
+#+RESULTS:
+[[file:./images/FIronTriangle.png]]
+
+In order to balance these requests (and many more) you, as software developers, take decisions (Note how only one of the challenges appear to be about software. I won't say any more about this for now, but I encourage you to think about how you would address the other challenges in your software). Software architecting is about identifying /which/ business and technical decisions are necessary, and /finding solutions/ that satisfy all stakeholders.
+
+The software architecture is a tool for /understanding/ which decisions are necessary, for /planning/ how to instantiate these decisions in your software, and for /communicating/ your decisions to the rest of the development team. You also use them to /predict/ quality, and identify opportunities for /reuse/.
+
+Going back to the iron triangle. Jan Bosch once said "Functionality is easy." Anyone can implement functionality. It's just a matter of hacking away until you have the right functionality. It is the other three corners that require planning, and where a software architecture may help. Let's review each of the corners:
+
+- On Time :: What features are most important to deliver first? How much time do you have? How can you structure the system so that you can develop features in parallel?
+- On Budget :: What resources do you have available? How do you structure the software to make best use of the available expertise? What can you buy? What must you build?
+- On Quality :: The obvious bit here is how you structure the software so that you can test it properly, but there is more to say here. The software architecture defines a /potential/ to achieve certain quality attributes (for example, one structure may be good for reliability, another for modifiability, and a third for throughput). We may, in fact, define "on time" and "on budget" to also be specific quality requirements, that should be balanced alongside with performance, maintainability, reliability etc. [[https://en.wikipedia.org/wiki/ISO/IEC_9126][ISO9126]] (and it's successor ISO 25010) goes one step further and also includes functionality as one quality attribute among the rest.
+*** Fig                                                            :noexport:
 #+BEGIN_SRC ditaa :file ./images/FIronTriangle.png
   The Right
   Functionality                     On Time
@@ -30,27 +46,12 @@
                                     Quality
 #+END_SRC   
 
-#+NAME: fig:IronTriangle
-#+CAPTION: The Iron Triangle of Software Development
-#+RESULTS:
-[[file:./images/FIronTriangle.png]]
-
-In order to balance these requests (and many more) you, as software developers, take decisions (Note how only one of the challenges appear to be about software. I won't say any more about this for now, but I encourage you to think about how you would address the other challenges in your software). Software architecting is about identifying /which/ business and technical decisions are necessary, and /finding solutions/ that satisfy all stakeholders.
-
-The software architecture is a tool for /understanding/ which decisions are necessary, for /planning/ how to instantiate these decisions in your software, and for /communicating/ your decisions to the rest of the development team. You also use them to /predict/ quality, and identify opportunities for /reuse/.
-
-Going back to the iron triangle. Jan Bosch once said "Functionality is easy." Anyone can implement functionality. It's just a matter of hacking away until you have the right functionality. It is the other three corners that require planning, and where a software architecture may help. Let's review each of the corners:
-
-- On Time :: What features are most important to deliver first? How much time do you have? How can you structure the system so that you can develop features in parallel?
-- On Budget :: What resources do you have available? How do you structure the software to make best use of the available expertise? What can you buy? What must you build?
-- On Quality :: The obvious bit here is how you structure the software so that you can test it properly, but there is more to say here. The software architecture defines a /potential/ to achieve certain quality attributes (for example, one structure may be good for reliability, another for modifiability, and a third for throughput). We may, in fact, define "on time" and "on budget" to also be specific quality requirements, that should be balanced alongside with performance, maintainability, reliability etc. [[https://en.wikipedia.org/wiki/ISO/IEC_9126][ISO9126]] (and it's successor ISO 25010) goes one step further and also includes functionality as one quality attribute among the rest.
-
 ** Architecture as Decisions
 The first thing of a software architecture is thus that it consists of /conscious decisions/ on how to address different concerns from different stakeholders. This includes decisions on concerns where you do not have the right competence available in-house, decisions on concerns where you need to deliver parts of the system in a certain order, decisions on concerns about how to achieve different quality requirements, and decisions on how to /balance/ all these different concerns such that you focus on the most important concerns (side note: how do you prioritise your concerns?).
 
 I will even go so far as to say that the decisions /are/ the software architecture. The rest is just instantiations of these decisions. The instantiation is important, since this brings together all of your decisions into one coherent system that you are able to communicate to others, and to evaluate to ensure that you actually satisfy the right balance of quality requirements.
 
-A more traditional definition is provided by the [[http://www.sei.cmu.edu/architecture/][Software Engineering Institute]] (The definition below is from their book /Software Architecture in Practice/ (Bass et al. 2012)):
+A more traditional definition is provided by the [[https://www.sei.cmu.edu/architecture/][Software Engineering Institute]] (The definition below is from their book /Software Architecture in Practice/ (Bass et al. 2012)):
 
 #+BEGIN_QUOTE
 The software architecture of a program or computing system
@@ -210,102 +211,18 @@ There is a range of different evaluation methodologies available, from ad-hoc ba
    - Architecture Tactics
 
    Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
-** Assignment: Create Initial Software Architecture
-   Create an initial software architecture for your system.
-
-   {{{tasks}}}
-   - Which quality attributes are relevant for your system?
-   - Based on what you currently know, structure your system into different modules that have high coherence and low coupling.
-     - Try to think about localising specific areas of functionality into separate modules.
-   - Do you need to model your system from different viewpoints (e.g. modules, threads and processes, data flow)?
-     - If so, create a model for each viewpoint.
-     - Make sure your viewpoints are consistent with each other.
-     - If you do not need several viewpoints, then why not?
-   - Motivate and reason about what traits in your system makes it require or not require specific viewpoints.
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Initial Software Architecture)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Quality Attributes
-   Discuss quality attributes that are important for your system. Motivate why.
-4. Viewpoints
-  Discuss your choices of viewpoints.
-5. Viewpoints
-   - Create one section for each of your viewpoints.
-   - Model your system from the perspective of the viewpoint in a suitable notation (tip: You may find the UML Package notation useful)
-   - Describe the entities in your model. Remember that associations between entities also carry meaning in an architecture model and needs to be explained.
-   - Describe which particular design concerns that you are addressing with the help of the viewpoint.
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution?
-1. Size of assignment: Is the system described from at least one and preferrably two to three viewpoints?
-2. Size of assignment: Does each viewpoint contain 5-15 entities?
-3. Are important quality attributes described and motivated?
-4. Are the viewpoints motivated? Is there a reasoning about why or why not certain viewpoints are needed?
-5. Is there a legend for each viewpoint that describes the types of entities and connections?
-6. Are the entities and connections in each viewpoint described?
-7. Does each viewpoint/entity have high cohesion and low coupling?
-8. Is there a described strategy for how classes are allocated to different modules/entities?
-9. IS this strategy followed?
-#+END_tip
-** Assignment: Evaluate Initial Software Architecture
-   Evaluate your software architecture based on your initial list of quality attrbutes.
-
-   {{{tasks}}}
-   - For each quality attribute, how can you evaluate your architecture to see whether you meet your requirements or not?
-   - For each quality attribute, evaluate your architecture according to what you just decided.
-   - For each quality attribute and evaluation, reason about how you can improve your architecture to further meet your quality goals.
-
-#+BEGIN_info
-{{{DocStructure}}}
-
-{{{assignment(Evaluation of Initial Software Architecture)}}}
-#+INCLUDE: "./DocStruct.org" org
-
-3. [@3] Quality Attributes
-   - Create one section for each quality attribute
-   - Describe how you plan on evaluating your architecture with respect to the quality attribute, and why this is a sufficient evaluation strategy.
-   - Evaluate your architecture, using relevant viewpoints, according to your evaluation strategy.
-   - Summarise your evaluation and any bottlenecks you find.
-   - Reason about how your architecture can be improved to remove the identified bottlenecks.
-#+END_info
-
-{{{commit}}}
-
-#+BEGIN_tip
-{{{condSat}}}
-When marking this part of the assignment we are looking for the following:
-
-0. [@0] Does the title page contain a table with authors and author contribution?
-1. Size of assignment: Is the architecture evaluated from the perspective of 3-5 quality attrbutes?
-2. For each quality attribute, is the chosen evaluation strategy motivated?
-3. For each quality attribute, is the chosen evaluation strategy sufficient?
-4. For each quality attribute, is the architecture sufficiently evaluated using the described evaluation strategy?
-5. For each quality attribute, are the findings from the evaluation summarised?
-6. For each quality attribute, is there a sufficient reasoning about how to improve the architecture?
-#+END_tip
 ** Update Course Backlog
    Are there any common architecture styles? What are their qualities? How can you deal with (new) functionality that uses several of the components in the system (for example, a new feature may require a new UI dialogue, new business logic on several levels, new database connections, new tables in the database)?
 
    Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
 * Sprint Acceptance Tests
   You are done with this sprint when:
+  - You understand the relationship between quality and software architecture.
+  - You understand how different views of a software system interact to create a richer picture of the entire system.
+  - You have an overview of different means available to evaluate your software architecture.
+  - You understand how architecture tactics can be used to drive your quality-focused architecture design work forward.
   - You have considered which quality attributes are relevant for your system.
-  - You have created an initial software architecture for your system.
-  - You have evaluated your initial software architecture.
-  - You have committed/pushed the created documents to your project repository
-
 
   You may also have
-  - Improved your initial software architecture based on your evaluation.
   - Updated your Sprint Test Plan
   - Updated your Course Backlog   

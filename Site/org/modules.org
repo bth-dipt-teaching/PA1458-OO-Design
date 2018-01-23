@@ -1,0 +1,23 @@
+#
+# Module division for OODesign Courses
+#
+# Copyright (c) Mikael Svahnberg, 2018.
+#
+
+#
+# Load relevant libraries
+# --------------------
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="org/modules.css" />
+
+#+MACRO: module #+HTML: <div class="module $2"><div class="moduleContents"><div class="moduleTitle">$1</div>
+#+MACRO: moduleEnd #+HTML: </div></div>
+
+
+#+NAME: get-date
+#+BEGIN_SRC emacs-lisp :var lect-dates=lecture-dates filter="" :exports none
+(defun get-date (filter row)
+ (if (string= (car row) filter) t))
+
+;; (mapcar 'get-date lect-dates)
+ (cdr (car (seq-filter (apply-partially 'get-date filter) lect-dates)))
+#+END_SRC

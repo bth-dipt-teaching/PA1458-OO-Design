@@ -1,0 +1,106 @@
+#+Title: Domain Model Assignment
+#+INCLUDE: "./org/header.org-in" org
+
+* About This Sprint
+  This sprint introduces a system analysis view of the real world, and describes how to use the UML use cases as a means for finding out what is relevant to model from the real world for the system you are designing.
+
+  This sprint focuses in particular on constructing a domain model, as a first step of understanding the entities involved inside a system.
+* User Stories covered in this Sprint
+  - As a software designer I want to document my understanding of the problem domain so that I can easily transform this into an object oriented software system.
+  - As a software designer I want to understand how users plan on interacting with the system so that I can design the right API endpoints.
+  - As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
+  - As a software designer I need to get an overview of the elements in the system I am designing so that I can later make them interact to solve specific tasks.
+* Learning Material
+Please review the sprints on:
+- [[./Use-Cases.org][Use Cases and Use Case Diagrams]]
+- [[./Concepts-Events.org][Concepts and Events]]
+* Experiential Learning
+** Sprint Test Plan
+   Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+
+   Revisit and update your risks and contingencies section.
+
+   Add and/or revise the following items to your glossary:
+   - Concept
+   - Class
+   - Instance
+   - Object
+   - Object state
+   - Class Diagram
+   - Domain Model (Also: Conceptual Model)
+   - System Sequence Diagram
+   - System Event
+   - Black Box
+   - Software Architecture
+     - Layered Software Architecture
+     - Model-View-Controller Software Architecture
+     - Pipes-and-Filters Software Architecture
+   - Unit Testing
+   - Regression Testing
+   - Integration Testing
+
+   Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+** Assignment: Domain Model
+    Create a UML Domain Model from the UML Use Cases you have selected for your first iteration. Remember that those should represent a minimum viable product and so you ought to exercise the most important concepts based on these use cases.
+
+
+    {{{tasks}}}
+    1. Start with a domain model based on your understanding of the involved use cases.
+    2. Chapters 9.5 to 9.13 in {{{larman}}} provides guidelines for how to find domain concepts. Apply each of these guidelines in turn, and /document/ what you find through each guideline.
+    3. Add associations between your concepts (use the guidelines in chapters 9.14 in {{{larman}}}) with names and (where applicable) roles. Add multiplicity indicators where they are obvious, but do not go overboard with this.
+
+
+#+BEGIN_info
+{{{DocStructure}}}
+
+{{{assignment(Domain Model)}}}
+#+INCLUDE: "./DocStruct.org" org
+
+3. [@3] Initial Domain Model
+
+   Your initial model before you apply the guidelines from {{{larman}}}. Use the UML Class Diagram notation for your Domain Model.
+
+4. Guidelines Applied
+
+   List each guideline and the concepts you identify with the help of this guideline. Keep this simple but easy to read. For example, a table may work nicely:
+
+   Guideline:Use a Category List
+   | Category              | Identified Concepts |
+   |-----------------------+---------------------|
+   | Business Transactions | VogonPoetry         |
+   | Product or Service    | Tea, Doughnut Hole  |
+   |-----------------------+---------------------|
+
+5. Completed Domain Model
+
+   Add the concepts identified through the guidelines to your initial domain model and present it here. Add associations, association names, association roles, and multiplicity. *Note* that you may also have attributes in your concepts.
+
+   Use the UML Class Diagram notation for your Domain Model.
+#+END_info
+
+{{{commit}}}
+
+#+BEGIN_tip
+{{{condSat}}}
+
+When marking this part of the assignment we are looking for the following:
+
+0. [@0] Does the title page contain a table with authors and author contribution
+1. Size of assignment: Does the domain model contain 20-30 domain concepts
+2. Are all concepts and associations modelled correctly
+3. Do all associations have relevant names
+4. Where applicable: Are the roles involved in associations specified and corect
+5. Where applicable: Are multiplicity indicators used correctly
+#+END_tip
+** Update Course Backlog
+   What's the next step? What do you need to do in order to understand how to implement the system based on your system sequence diagrams?
+
+   Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
+* Sprint Acceptance Tests
+  You are done with this sprint when:
+  - You have created the Domain Model document
+  - You have committed/pushed these documents to your project repository
+
+  You may also have
+  - Updated your Sprint Test Plan
+  - Updated your Course Backlog   

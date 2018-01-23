@@ -1,0 +1,8 @@
+{{{module(Testing,statusNone)}}}
+Testing is introduced at an early stage in the course since it is vital to understand how you intend to test your system in order to design and build the system so that you /can/ test it as you intend.
+
+To do:
+  - Read: [[./Testing.org][Sprint Testing]]
+  - Visit: [[./Lectures/045_Testing.pdf][Lecture Testing]] call_get-date(filter="LTesting")[:results raw]
+  - Work on Assignment [[./A-Testing.org][Sprint Testing Assignment]]
+{{{moduleEnd}}}
