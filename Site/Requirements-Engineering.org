@@ -57,7 +57,7 @@ How you behave during an interview influences the results, because your behaviou
 |                                                          | Don't ask about the budget at the first meeting                          |
 |                                                          | Don't argue among yourselves                                             |
 ** Specification
-    Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to /Specify/ the requirements. There is an IEEE standard, IEEE 830, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
+    Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to /Specify/ the requirements. There is an IEEE standard, IEEE 830, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few minutes of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
 
 #+NAME: fig:SRS
 #+BEGIN_info
@@ -90,6 +90,10 @@ To simplify, there are two plus one ways of writing requirements. The two ways a
 
 Traditional requirements may be specified as figures, tables, sketches, or plaintext, with the plaintext version being the one most commonly discussed. They usually follow a standardised format with a number of attributes per requirement (title, description, source, date, etc.), and a standardised template for the actual requirement. User Stories are supposed to be less documentation so they try to include the most relevant of all of this information into a single one-liner. Shorter iterations, a more direct path from inception to implementation, and closer collaboration with the customer makes it easier to do away with a lot of the information considered necessary in traditional requirements.
 
+User stories are intended to be kept simple while still covering the most important information. They are often written according to a standard template: /As a <type of user> I want <some goal> so that <some reason>./
+
+With this template, we get the most important information, namely /what/ you want the system to do ("some goal"), /who" wants it ("type of user") so that you can go back and get more information, and put the requirement into context of what else this type of user wants with the system, and a /motivation/ for the requirement ("some reason"), so that you can better understand exactly what the user desires to do and why. This will help you make reasonable assumptions about how to implement the requirement.
+
 UML use cases are covered in a different course sprint, so I will only briefly mention them here. With a use case, you are attempting to put the requirements into a context. Of course, this means that you need to write more, since you also need to add information about the context. This is one of the reasons why they are not considered requirements -- they are simply too verbose. This verbosity also means that a developer is unlikely to do use cases for every requirement and every part of the system; but will rather do them for those parts of the system where there is a usage flow that is difficult to grasp in one sentence, and where you are likely to hold a "conversation" with the system to fulfill a higher need. For example, searching for a hotel room is a one-liner. /Booking/ a room on the other hand may involve
 - a search
 - a narrowing of the results to specific types of rooms
@@ -121,6 +125,7 @@ So, which requirement should you focus on developing first?
 
 In traditional requirements engineering, there is a whole phase solely dedicated to requirements prioritisation. Agile software development methodologies (such as Scrum) also assumes that you always have your user stories prioritised in your backlog. Essentially, you are doing insertion sort whenever you add a new user story, while also checking that the priority of the existing items do not change as a result of adding the new user story. Each sprint begins with a review of the backlog, before you select among the top prioritised user stories which you should develop in the sprint. If the user story is really big (called an /epic/), one of the actions you may do is to break it down into more manageable user stories and put these into the backlog.
 
+
 This, of course, does not answer the question since it only explains /how/ you decide, but not /on what grounds/. Also here, you can probably build a research career on deciding which factors should influence your prioritisation (see, for example, Ruhe and Saliu's paper "The art and Science of Release Planning" [fn:Ruhe]), but a few good starting points are:
 
 - Value for the customer
@@ -128,6 +133,15 @@ This, of course, does not answer the question since it only explains /how/ you d
 - Penalty for not implementing
 
 UML/RUP would advocate that you wait with prioritising your requirements and instead prioritise the UML use cases, so that you deliver the most important features first. This does not mean that you need to implement the full flow of events in one go; always keep the Minimum Viable Product in mind.
+
+#+BEGIN_warning
+*Epics are bigger user stories, but not necessarily more important.*
+
+[[./images/IFrank-the-Pug-Quote.jpg]]
+
+For example, the epic "As a manager I want us to support Chinese characters so we can enter the chinese market" is really big, but maybe not very important. Conversely, the user story "As a user I want to be able to abort a transaction so that I am able to change my mind at any time" is much smaller, and way more important.
+#+END_warning
+
 
 [fn:Ruhe] G. Ruhe and M. O. Saliu. /The art and science of software release planning/. IEEE Software, 22(6):47–53, 2005.
 [fn:CostValue] J. Karlsson and K. Ryan. A cost-value approach for prioritizing requirements. IEEE Software, 14(5):67– 74, 1997.
