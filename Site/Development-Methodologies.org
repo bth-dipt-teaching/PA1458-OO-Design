@@ -49,6 +49,12 @@ GANTT charts visualise your project in terms of activities and calendar dates, b
 |--------------+-----------------------------+------------+---------------------------------------------------------+----------------+------------+-----------------------+-----------------------------+-----------------------------------------+--------------------------------------------------------------------|
 | Example Task |                          20 | 2016-01-01 | ~(Start Date) + (Estimated Effort)/(Length of Workday)~ | Example Person |         12 |                    50 | ~(spent time) / (progress)~ | ~(estimated effort)-(projected effort)~ |                                                                    |
 
+An example of a GANTT chart is presented in Figure [[fig:GANTTExample]]. As you can see, many of the columns I describe above are hidden inside tasks or not available at all. Of course, different tools will provide you with different values to set, but the table above is -- to me -- a bare minimum of what you would want to define per task. Eye candy be damned!
+
+#+CAPTION: An example of a GANTT chart
+#+NAME: fig:GANTTExample
+[[./images/IGANTT_example.png]]
+
 The discussion above focus on the /work performed/ (or the planned work). In contrast, agile methodologies focus on the /earned value/, which gives a slightly different picture. Whereas you can use the information above to tell your boss whether you are on time or not, you are not able to say at a glance how happy this has made the customer, or how many features you have left to before you are done. For these purposes, we use /Earned Value charts/ and /Burn charts/.
 
 An Earned Value chart has three lines in it
