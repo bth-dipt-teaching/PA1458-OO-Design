@@ -10,6 +10,12 @@
   There are many different steps and diagrams involved in this process. Some of these diagrams you will be asked to submit, but some of these diagrams you will construct as an /input/ and a /means/ to understand what you should do in other diagrams. So have a look at the release sprints to see what you will actually submit as assignments, and make sure that you adjust your effort accordingly. 
 
   Aligned with this mass of different diagrams, the assignments are split up into several smaller sprints that culminate in a /release sprint/ where you package what you have done up to that point and submit it to the course management system. An outline of the submissions is presented [[releaseOutline][below]].
+
+#+BEGIN_info
+   All assignments are done in teams (See the [[file:./Sprint0-course-intro.org::groups][information about forming groups in Sprint 0]]), and are submitted as a team on the course management platform.
+
+   The /three week roll call/ must, however, be submitted individually.
+#+END_info
 * Release Sprints / Assignment Submissions <<releaseOutline>>
 ** Release Sprint 0: 3 Week Roll Call; List of Use Cases :PA1415:PA1435:PA1443:
    The idea with this release sprint is that I should see who is active in the course. I will at the same time take the opportunity to briefly look at your initial efforts regarding the assignment series so that I may possibly steer you in a more productive direction.

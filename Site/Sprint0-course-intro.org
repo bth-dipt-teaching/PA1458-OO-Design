@@ -399,7 +399,7 @@ Gamma, Helm, Johnson, Vlissides, /Design Patterns, Elements of Reusable Object-O
 This book, also called the Gang of Four book is /the/ reference work when it comes to design patterns. You will be using this book a lot in your future career. If you want to save some money, the most common design patterns are also covered in C. Larman (and these are the ones we will be focusing on in these courses).
 
 #+HTML: &nbsp;
-** Form Groups
+** Form Groups <<groups>>
    We expect all the assignments to be done in /teans consisting of three to five people/. Use the following (in this order) to find and/or form a team:
 
    1. Your friends
