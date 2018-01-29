@@ -6,26 +6,24 @@
 #+INCLUDE: "./org/modules.org" org
 
 #+tblname: lecture-dates
-| LIntro          | <2018-01-22 Mon 10:00> |
-| LDevMeth        | <2018-01-22 Mon 10:00> |
-| LReqEng         | <2018-01-22 Mon 10:00> |
-| LUseCases       | <2018-01-22 Mon 10:00> |
-| SReqEng         | <2018-01-22 Mon 10:00> |
-| A0ThreeWeek     | <2018-01-22 Mon 10:00> |
-| A1UseCases      | <2018-01-22 Mon 10:00> |
-| SA1UseCases     | <2018-01-22 Mon 10:00> |
-| LStructure      | <2018-01-22 Mon 10:00> |
-| LTesting        | <2018-01-22 Mon 10:00> |
-| LBehaviour      | <2018-01-22 Mon 10:00> |
-| LDesignPatterns | <2018-01-22 Mon 10:00> |
-| SPatterns       | <2018-01-22 Mon 10:00> |
-| A2OOD           | <2018-01-22 Mon 10:00> |
-| LArchitecture   | <2018-01-22 Mon 10:00> |
-| LQuality        | <2018-01-22 Mon 10:00> |
-| LImplementation | <2018-01-22 Mon 10:00> |
-| A3Architecture  | <2018-01-22 Mon 10:00> |
-| SA3Demo         | Individually Booked    |
-| SQnA            | <2018-01-22 Mon 10:00> |
+| LIntro          | <2018-02-14 Wed 10:00> J1620                                                 |
+| LUseCases       | <2018-02-21 Wed 10:00> J1610                                                 |
+| SReqEng         | Online on Gitter <2018-02-23 Fri 09:00-12:00>                                |
+| A0ThreeWeek     | Deadline <2018-02-23 Fri>                                                    |
+| A1UseCases      | Feedback Deadline <2018-02-26 Mon>                                           |
+| SA1UseCases     | Online on Gitter <2018-02-27 Tue 13:00-15:00>                                |
+| LStructure      | <2018-02-28 Wed 10:00> J1610                                                 |
+| LTesting        | <2018-03-06 Tue 10:00> C413A                                                 |
+| LBehaviour      | <2018-03-09 Fri 10:00> C413A                                                 |
+| LDesignPatterns | <2018-03-26 Mon 13:00> J1610                                                 |
+| SPatterns       | <2018-04-05 Thu 13:00> J1610                                                 |
+| A2OOD           | Feedback Deadline <2018-04-06 Fri>                                           |
+| LArchitecture   | <2018-04-09 Mon 10:00> J1610                                                 |
+| LQuality        | <2018-04-12 Thu 10:00> J1610                                                 |
+| LImplementation | <2018-04-17 Tue 10:00> J1610                                                 |
+| A3Architecture  | Feedback Deadline <2018-04-19 Thu>                                           |
+| SA3Demo         | Individually Booked Week 17, Week 18                                         |
+| SQnA            | <2018-04-19 Thu 10:00> J1610, <2018-05-16 Wed> J1504, <2018-05-23 Wed> J1504 |
 
 * Sprints, Lectures, and Seminars
 

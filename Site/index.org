@@ -16,10 +16,12 @@
 
 | Course       | Size     | Programme(s)                                               |
 |--------------+----------+------------------------------------------------------------|
-| [[./PA1415.org][{{{pa1415}}}]] | 7.5 ECTS | Spelprogrammering, IT-säkerhet                             |
+| [[./PA1415.org][{{{pa1415}}}]] | 7.5 ECTS | Spelprogrammering                                          |
 | [[./PA1435.org][{{{pa1435}}}]] | 6 ECTS   | CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi |
 | [[./PA1443.org][{{{pa1443}}}]] | 5 ECTS   | Programvaruteknik                                          |
 |--------------+----------+------------------------------------------------------------|
+
+There is a  [[https://gitter.im/BTH-SE/OODesign][Gitter room]] which I will monitor during the course if you have any questions or would like to discuss anything related to object oriented design. We will also use this channel for some online seminars.
 
 #+BEGIN_info
 These pages are released under the [[https://opensource.org/licenses/MIT][MIT Licence]]:

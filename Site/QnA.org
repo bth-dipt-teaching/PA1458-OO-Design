@@ -5,18 +5,7 @@
 * About This Lecture
   The purpose of this Lecture is to discuss any questions you may have and any learning opportunities that you may have identified.
 * Please Note
-  There are four times scheduled. It is /primarily/ intended as follows:
-
-| Course        | Time                         | Place |
-|---------------+------------------------------+-------|
-| PA1415        | <2017-05-08 Mon 10:00-12:00> | C413A |
-| PA1435/PA1443 | <2017-05-09 Tue 08:00-10:00> | G404  |
-| PA1415        | <2017-05-09 Tue 10:00-12:00> | C413A |
-| PA1435/PA1443 | <2017-05-12 Fri 13:00-15:00> | G404  |
-|---------------+------------------------------+-------|
-
-However, if you are not busy with another lecture and if there is room for you, you are more than welcome to attend any of the sessions.
-
+  Several times are scheduled, you are welcome to attend any, or all, of the sessions.
 * Preparations Before the Lecture
   - Are there any outstanding issues that you would like to discuss further?
 * Agenda 

@@ -3,15 +3,20 @@
 
 
 * About This Seminar
-  The purpose of this seminar is to discuss your design in relation to your implementation and test plan.
+  The purpose of this seminar is to discuss your design in relation to your implementation and test plan, or your architecture and test plan depending on which course you are taking.
 * Sign up for a Time to Demo
   The seminar responsible will post a schedule with time slots where you can sign up to show your design, implementation, test plan, and your system. Make sure you sign up for one of the time slots.
 * Preparations Before the Seminar
   - Submit the release for marking.
-  - Reflect upon the received feedback and make note of comments where you like to find out more.
-  - Be prepared to run your implemented system and to show the code.
-  - Be prepared to map your code to your design (e.g. answering questions such as "show me where this method is implemented", "Where is the interaction diagram for this method?", etc.
-  - Be prepared to map your implementation to your test plan (e.g. answering questions such as "Show me the test case for this feature", "Where do you test this method?", "Which classes are tested by this test case?", etc.
+  - Reflect upon the submitted assignment and make note of comments where you like to find out more.
+  - PA1415, PA1435:
+    - Be prepared to run your implemented system and to show the code.
+    - Be prepared to map your code to your design (e.g. answering questions such as "show me where this method is implemented", "Where is the interaction diagram for this method?", etc.)
+    - Be prepared to map your implementation to your test plan (e.g. answering questions such as "Show me the test case for this feature", "Where do you test this method?", "Which classes are tested by this test case?", etc.)
+  - PA1443:
+    - Be prepared to discuss your architecture (e.g. answering questions such as "how do you address quality attribute X?", "Why do you have this interaction between these modules?",  "What is the nature of this interaction?", etc.)
+    - Be prepared to discuss your test plan (e.g. answering questions such as "Why have you chosen your particular test strategy?",  "What types of tests do you focus on?", "How do you ensure that the system is sufficiently tested?", "What is sufficiently tested?", etc.)
+    - Be prepared to discuss your architecture in relation to your test plan ((e.g. answering questions such as "How do you test this module?", etc.)
 * Seminar Agenda
   There is no specific agenda for this seminar, but rather a discussion between the seminar responsible and yourself.
 

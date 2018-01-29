@@ -6,24 +6,25 @@
 #+INCLUDE: "./org/modules.org" org
 
 #+tblname: lecture-dates
-| LIntro           | <2018-01-22 Mon 10:00> |
-| LDevMeth         | <2018-01-22 Mon 10:00> |
-| LReqEng          | <2018-01-22 Mon 10:00> |
-| LUseCases        | <2018-01-22 Mon 10:00> |
-| SReqEng          | <2018-01-22 Mon 10:00> |
-| A0ThreeWeek      | <2018-01-22 Mon 10:00> |
-| A1UseCases       | <2018-01-22 Mon 10:00> |
-| SA1UseCases      | <2018-01-22 Mon 10:00> |
-| LStructure       | <2018-01-22 Mon 10:00> |
-| LTesting         | <2018-01-22 Mon 10:00> |
-| LBehaviour       | <2018-01-22 Mon 10:00> |
-| LDesignPatterns  | <2018-01-22 Mon 10:00> |
-| SPatterns        | <2018-01-22 Mon 10:00> |
-| A2OOD            | <2018-01-22 Mon 10:00> |
-| LImplementation  | <2018-01-22 Mon 10:00> |
-| A3Implementation | <2018-01-22 Mon 10:00> |
-| SA3Demo          | Individually Booked    |
-| SQnA             | <2018-01-22 Mon 10:00> |
+| LIntro           | <2018-03-27 Tue 10:00> J1504                                                                                          |
+| LDevMeth         | <2018-03-27 Tue 13:00> J1504                                                                                          |
+| LReqEng          | <2018-03-28 Wed 10:00> J1504                                                                                          |
+| LUseCases        | <2018-04-03 Tue 10:00> J1504                                                                                          |
+| SReqEng          | Group I <2018-04-04 Wed 13:00> J1207, Group II <2018-04-04 Wed 15:00> J1207, Group III (IndEk) <2018-04-05 Thu 10:00> |
+| A0ThreeWeek      | Deadline <2018-04-06 Fri>                                                                                     |
+| A1UseCases       | Feedback Deadline <2018-04-09 Mon>                                                                                    |
+| SA1UseCases      | Online on Gitter <2018-04-11 Wed 13:00-15:00>                                                                         |
+| LStructure       | <2018-04-10 Tue 10:00> J1504                                                                                          |
+| LTesting         | <2018-04-10 Tue 13:00> J1504                                                                                          |
+| LBehaviour       | <2018-04-11 Wed 10:00> J1504                                                                                          |
+| LDesignPatterns  | <2018-04-13 Fri 10:00> J1504                                                                                          |
+| SPatterns        | <2018-04-16 Mon 10:00> J1504                                                                                          |
+| A2OOD            | Feedback Deadline <2018-04-25 Wed>                                                                                    |
+| LImplementation  | <2018-04-25 Wed 10:00> J1504                                                                                          |
+| A3Implementation | Feedback Deadline <2018-05-09 Wed>                                                                                    |
+| SA3Demo          | Individually Booked Week 20                                                                                           |
+| SQnA             | <2018-05-16 Wed> J1504, <2018-05-23 Wed> J1504                                                                        |
+
 
 * Sprints, Lectures, and Seminars
 

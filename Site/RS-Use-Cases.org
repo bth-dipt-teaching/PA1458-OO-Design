@@ -16,8 +16,6 @@
 * Introduction
   In this release sprint you show what you have done with respect to requirements analysis and object oriented analysis.
 
-  This follows two tracks; user stories, and use cases. Note that you are expected to map between them.
-
 
 #+RESULTS:
 [[file:./images/FRS-US-UCD2.png]]

@@ -1,0 +1,20 @@
+#+Title: Instructions for Assignment Title Page
+#+INCLUDE: "./org/header.org-in" org
+#+OPTIONS: toc:nil
+
+* Assignment Title Page
+  All assignments are expected to have a title page with the following information:
+
+#+BEGIN_info
+   1. Title: <assignment document title>
+   2. Sub-title: "Assignment in the course <course code><course name>"
+   3. Date
+   4. Authors and Author Contribution
+
+      Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+
+      | Author Name | Social Security Number | Thinking | Writing |
+      |-------------+------------------------+----------+---------|
+      |             |                        |          |         |
+
+#+END_info

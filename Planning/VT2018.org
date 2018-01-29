@@ -1,0 +1,33 @@
+
+
+| Week 2017 | Week 2018 | Lecture                       | PA1415 | PA1435 | PA1443 |
+|-----------+-----------+-------------------------------+--------+--------+--------|
+|        13 | 13 mo     | L Intro                       | X      | X      | X      |
+|        13 | 13 tu     | L Dev Methodologies           | X      |        |        |
+|        13 | 13 wed    | L Req Engineering             | X      |        |        |
+|        14 | 13 th     | L Use Cases                   | X      | X      | X      |
+|        14 | 13 fr     | S Req Eng / Use Cases         | X      | X      | X      |
+|           |           |                               |        |        |        |
+|        15 | 14 mo     | A1 Requirements               | DL     |        |        |
+|        15 | 14 mo     | A1 Use Cases                  |        | DL     | DL     |
+|        16 | 14 fr     | S A1 Req/UC                   | X      | X      | X      |
+|           |           |                               |        |        |        |
+|        14 | 15 mo     | L Structure                   | X      | X      | X      |
+|        14 | 15 wed    | L Testing                     | X      |        | X      |
+|        15 | 15 fri    | L Behaviour                   | X      | X      | X      |
+|           |           |                               |        |        |        |
+|        15 | 16 mo     | L Design Patterns             | X      | X      | X      |
+|        17 | 16 wed    | S Patterns                    | X      | X      | X      |
+|           |           |                               |        |        |        |
+|        18 | 17 mo     | A2 OOD                        | DL     | DL     | DL     |
+|        17 | 17 mo     | L Intro Architectures         |        |        | X      |
+|        17 | 17 tu     | L Quality Attributes          |        |        | X      |
+|        16 | 17 wed    | L Implementation              | X      | X      | X      |
+|           |           |                               |        |        |        |
+|        20 | 19 wed    | A3 Implementation and Testing | DL     | DL     |        |
+|        20 | 19 wed    | A3 Architecture and Testing   |        |        | DL     |
+|           |           |                               |        |        |        |
+|        21 | 20        | S A3 Demo                     | IB     | IB     | IB     |
+|        19 | 20 wed    | S QnA                         | X      | X      | X      |
+|-----------+-----------+-------------------------------+--------+--------+--------|
+

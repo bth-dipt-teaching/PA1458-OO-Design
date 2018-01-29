@@ -238,17 +238,40 @@ The following learning outcomes apply to the different courses.
     |--------+------------------------------------------+-------------------------------|
 
     Please see the [[./index.org][Start Page for each course]] for more information about the assignments, how they map to course goals, and their respective deadlines.    
+
+**** Grading    
+     I use a /cumulative grading/ scheme in this course. This means that for every assignment you submit, your final grade for the assignments is revised up or down depending on your /total/ performance, but with extra emphasis on your most recent performance.
+
+Let's say that you get a E on the first assignment. The second assignment gets a C, but you have also made an effort to take care of the comments you received on your first assignment in a nice way. So at present, your /cumulative/ grade is a C. For the third assignment, you may confirm your C or improve it by doing a really good job at taking care of past comments as well as the specific topic of the assignment. You may also make a significant error in the third assignment, which will then lower your cumulative grade proportionally. In the end your "scorecard" may look like:
+
+ | Assignment   | Grade | Cumulative Grade | Comment                                                   |
+ |--------------+-------+------------------+-----------------------------------------------------------|
+ | Assignment 1 | E     | E                |                                                           |
+ | Assignment 2 | C     | C                | Improved A1 along with A2                                 |
+ | Assignment 3 | E     | D                | Significant flaw in A3, but "rescued" by past performance |
+ | Final grade  |       | D                |                                                           |
+ |--------------+-------+------------------+-----------------------------------------------------------|
+
+For the courses where you have more than one assignment "moment" in LADOK, the final cumulative grade will be reported on all assignment "moment". For formal reasons, this also means that there is only one submission deadline for all assignments at the end of the course, and all the dates "inside" the course are called /Feedback Deadline/. A Feedback Deadline is a deadline for when you need to submit an assignment in order to get feedback on it, so that you understand how you can improve yourself for the next assignment.
+**** Resubmission of Assignments
+     IFF you write a /rejoinder/ (see below) you can resubmit Assignment 1 together with Assignments 2 and 3, or at the resubmission dates as outlined below under "Deadlines and Re-Examination". Similarly, Assignment 2 can be resubmitted along with Assigment 3, or at the resubmission dates outlined below. Assignment 3 can only be resubmitted at one of the resubmission dates below, and only if it had a failing grade.
+     
+     A /rejoinder/ is a separate document where you repeat the feedback you received and exactly what you have done to address that feedback, and point to where this is done in the assignment document(s). You can also make a clear argument for why you disagree with the feedback and why you take no corrective action based on the feedback. By making this document as detailed as possible you make the life of the person marking your assignment so much easier.
 *** Written Exam
     The written exam will be a computer-based exam.
 
     Dates for the written exams for the next 12 months can be checked on the student portal at https://studentportal.bth.se/web/studentportal.nsf/web.xsp/prescheduled_dates .
-*** Deadlines and re-examination
+*** Deadlines and Re-Examination
     Assignments:
-    1. *Initial Deadlines*
-       Please see the [[./index.org][Start Page for each course]] for more information about the assignments and their respective deadlines.
-    2. *First Resubmission*
+    1. *Three Week Roll Call*
+       Please see the [[./index.org][Start Page for each course]] for more information about the deadline for the three week roll call.
+    2. *Feedback Deadlines*
+       Please see the [[./index.org][Start Page for each course]] for more information about the assignments and their respective feedback deadlines.
+    3. *Assignment Submission*
+       <2018-05-25 Fri 08:00> This deadline applies for all assignments.
+    4. *First Resubmission*
        <2018-08-30 Thu 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
-    3. *Second Resubmission*
+    5. *Second Resubmission*
        <2019-03-26 Tue 08:00> This deadline applies for all assignments unless otherwise agreed with the person marking the assignments and/or the examiner of the course.
 
     Exam:
@@ -377,36 +400,37 @@ This book, also called the Gang of Four book is /the/ reference work when it com
 
 #+HTML: &nbsp;
 ** Form Groups
-   We expect the assignments to be done in /teans consisting of three to five people/. Use the following (in this order) to find and/or form a team:
+   We expect all the assignments to be done in /teans consisting of three to five people/. Use the following (in this order) to find and/or form a team:
 
    1. Your friends
    2. It's Learning
-   3. First Classroom Lecture
-   4. Course Teacher
+   3. Gitter
+   4. First Classroom Lecture
+   5. Course Teacher
 
    Decide in your team how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
-
 *** Groups for Seminars
-   In the seminars we aim at having 25-30 people per group. Use the following guidelines for an initial rough sort:
+   Some seminars are done online, others are done as a full group. But for /some/ seminars, we would like to divide you in groups, consisting of around 25-30 people per group. Use the following guidelines for an initial rough sort:
 
    1. Who is the oldest member in your team?
    2. What letter does his family name start with?
    3. Go to the seminar accordingly:
 
-   | Course | Start Letter | Seminar |
-   |--------+--------------+---------|
-   | PA1415 | A--N         | Group 1 |
-   |        | O--Ö         | Group 2 |
-   |        | (other)      | Group 2 |
-   |--------+--------------+---------|
-   | PA1435 | A--N         | Group 1 |
-   |        | O--Ö         | Group 2 |
-   |        | (other)      | Group 2 |
-   |--------+--------------+---------|
-   | PA1443 | A--N         | Group 1 |
-   |        | O--Ö         | Group 2 |
-   |        | (other)      | Group 2 |
-   |--------+--------------+---------|
+   | Course | Study Programme               | Start Letter | Seminar   |
+   |--------+-------------------------------+--------------+-----------|
+   | PA1415 | (all)                         | A--N         | Group I   |
+   |        |                               | O--Ö         | Group II  |
+   |        |                               | (other)      | Group II  |
+   |--------+-------------------------------+--------------+-----------|
+   | PA1435 | CI Spel och Programvaruteknik | A--N         | Group I   |
+   |        |                               | O--Ö         | Group II  |
+   |        |                               | (other)      | Group II  |
+   |        | CI Industriell Ekonomi        | A--Z + other | Group III |
+   |--------+-------------------------------+--------------+-----------|
+   | PA1443 | (all)                         | A--Z         | Group I   |
+   |        |                               | O--Ö         | Group II  |
+   |        |                               | (other)      | Group II  |
+   |--------+-------------------------------+--------------+-----------|
 
    It is desirable if your entire team visits the same seminar. Moreover, the above is intended as a rough sort. There may be all sorts of instances and special cases where it would be better for you (and your team) to visit another seminar session. Do so at your own discretion.
 ** Get an Overview of the Assignments
