@@ -49,12 +49,36 @@ GANTT charts visualise your project in terms of activities and calendar dates, b
 |--------------+-----------------------------+------------+---------------------------------------------------------+----------------+------------+-----------------------+-----------------------------+-----------------------------------------+--------------------------------------------------------------------|
 | Example Task |                          20 | 2016-01-01 | ~(Start Date) + (Estimated Effort)/(Length of Workday)~ | Example Person |         12 |                    50 | ~(spent time) / (progress)~ | ~(estimated effort)-(projected effort)~ |                                                                    |
 
-An example of a GANTT chart is presented in Figure [[fig:GANTTExample]]. As you can see, many of the columns I describe above are hidden inside tasks or not available at all. Of course, different tools will provide you with different values to set, but the table above is -- to me -- a bare minimum of what you would want to define per task. Eye candy be damned!
+An example of a GANTT chart is presented in Figure [[fig:GANTTExample]]. As you can see, many of the columns I describe above are hidden inside tasks or not available at all. Of course, different tools will provide you with different values to set, but the table above is -- to me -- a bare minimum of what you would want to define per task. Eye candy be damned; it is relatively easy to roll out your own GANTT charts using Excel.
 
 #+CAPTION: An example of a GANTT chart
 #+NAME: fig:GANTTExample
 [[./images/IGANTT_example.png]]
 
+
+*** Fig                                                            :noexport:
+ #+BEGIN_SRC dot :file images/FWBSExample.png
+ digraph {
+ rankdir=BT;
+ splines=true;
+ node [shape=box];
+
+ "..."
+ sr [label="Search for Room"]
+ sr -> "..."
+ "Database Design" -> sr
+ "GUI Design" -> sr
+ "Implementation" -> sr
+ "Testing" -> sr
+ "Implement DB" -> "Implementation"
+ "Implement Logic" -> "Implementation"
+ "Implement GUI" -> "Implementation"
+ "Create Tests" -> "Testing"
+ "Run Tests" -> "Testing"
+ }
+ #+END_SRC
+
+** Earned Value and Burndown Charts
 The discussion above focus on the /work performed/ (or the planned work). In contrast, agile methodologies focus on the /earned value/, which gives a slightly different picture. Whereas you can use the information above to tell your boss whether you are on time or not, you are not able to say at a glance how happy this has made the customer, or how many features you have left to before you are done. For these purposes, we use /Earned Value charts/ and /Burn charts/.
 
 An Earned Value chart has three lines in it
@@ -85,29 +109,25 @@ A burndown chart essentially turns this chart upside down. Partially, this is do
 #+CAPTION: Burndown chart
 #+NAME: fig:Burndown
 [[./images/FBurndown_Replan.png]]
+** Velocity
+   With the help of earned value charts and/or burndown charts, it is possible to measure your /velocity/, i.e. the speed at which you are developing. Simply put, your average velocity is the average number of story points that your team is able to complete in one iteration. When planning for the next release, your average veloity is useful as a guideline for how much you should commit to.
 
-*** Fig                                                            :noexport:
-#+BEGIN_SRC dot :file images/FWBSExample.png
-digraph {
-rankdir=BT;
-splines=true;
-node [shape=box];
+   Your current velocity is, correspondingly, the speed at which you are currently completing story points. It is a simple math exercise to make a projection for how many story points you will be able to close the current iteration (/We are ~x%~ into the current iteration and have closed ~y~ story points/).
 
-"..."
-sr [label="Search for Room"]
-sr -> "..."
-"Database Design" -> sr
-"GUI Design" -> sr
-"Implementation" -> sr
-"Testing" -> sr
-"Implement DB" -> "Implementation"
-"Implement Logic" -> "Implementation"
-"Implement GUI" -> "Implementation"
-"Create Tests" -> "Testing"
-"Run Tests" -> "Testing"
-}
-#+END_SRC
+#+BEGIN_warning
+*Why You Should Not Compare Velocities*
 
+A manager may wish look at your average velocity and compare with other teams. This is wrong, for a number of reasons:
+
+- Each team assigns story points in their own unique way :: Rather than following some corporate standard, counting [[https://en.wikipedia.org/wiki/Function_point][Function Points]], using [[https://en.wikipedia.org/wiki/COCOMO][COCOMO]], or some other method, you assign story points according to /your/ experience, and /your/ assessment of how big a user story is, or how difficult it will be to implement. You do this based in your past velocity, and based on the skills and abilities of /your/ team. This is a unique composition, and so the story point estimates will also be unique. The important thing is that /you/ are consistent over time, which is difficult enough considering that your team is likely /not/ stable (old people leave, new people are added, etc.).
+- Your team has decided what a story point means for you :: Your team may have decided that an average user story is 400 story points. Another team may decide that the same user story is 4000 points, because it makes them feel better. Others will claim that the average user story is 4 story points, just because. In other words, the meaning of a story point only makes sense to the team that created it. [fn::It is a different story if you have several teams working on items from the same backlog. Then you want them to use the same standard so you can compare estimates of the /user stories/ (note: /not/ the teams).]
+- Each team has a unique composition :: Not all developers are the same, and your velocity is just that: /yours/. Different teams are likely working on different parts of the product (unless you move around, which is not so common), and the average user stories may be of different sizes (Compare, for example, implementing smaller workflows into the user interface, with adding support for new standards against backend systems). 
+- Story Points are intended as a planning tool :: The worst thing you can do is to take something that works well as a planning tool, and pervert it to also be a reporting tool or (worse yet) a control tool. What will inevitably happen is that people will optimise for whatever favours them most, and you will end up having a mediocre tool for control, planning, and monitoring.
+
+Ultimately, the underlying philosophy here is that the /teams/ are (and should be) capable of planning themselves, and should only be compared to themselves. Management should support the teams so that they are able to excel, rather than punishing them for being human.
+
+( [[https://www.scrumalliance.org/community/articles/2014/february/velocity][Read More]] )
+#+END_warning
 ** Design Documentation
 #+ATTR_HTML: :width 600
 #+NAME: Arne01
