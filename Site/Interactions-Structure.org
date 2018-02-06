@@ -120,8 +120,6 @@ em --> g : 1.2 response=whosAGoodGoat()*
 ts --> g : 2. setPosition(10,2)
 ts --> ac : 3. add(g)
 #+END_SRC
-
-
 ** Class Diagrams
     From the interaction diagrams, that describe the dynamic behaviour of specific objects, we can now start to extract how the class declarations must look like. The methods that are called on an object are placed in the corresponding class of that object. The associations formed are added to the "owner" class of the association (Usually, it is fairly obvious which class should be the owner of an association. Otherwise, decide now and refactor later). Attributes are more difficult to find, since they are not really that prominent in an interaction diagram. If you have made an operation contract, you can get the (post-operation visibly changed) attributes therefrom, but otherwise you will have to guess a bit based on the methods and the responsibilities each object seem to have.
 

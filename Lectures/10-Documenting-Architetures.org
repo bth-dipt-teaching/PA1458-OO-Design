@@ -1,0 +1,237 @@
+#+Title: Documenting Architectures
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2018-02-01
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:1
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+
+* Purpose
+  - Education
+  - Communication
+  - Initiater Discussions
+  - Support Analysis and Evaluations
+  - Early Design Decisions
+  - Resource Allocations
+  - Support Maintenance
+** Documentation
+- Abstract enough to understand
+- Detailed enough to analyse
+- Describes constraints
+- Recounts Decisions
+* Views
+  - Fixed Set of Views (Kruchten 1995, UML, Hofmeister et al.)
+  - Flexible set of views (Bass et al.)
+    - Choose relevant views /for the current system/
+    - Document the view
+      - Behavouor
+      - Interfaces
+    - Document information that applies to more than one view.
+* Different Documentation Techniques
+- Informal (boxes and lines)
+- Structured Diagrams
+- Formal Specifications
+- Architecture Description Language (ADL)
+* Boxes and Lines
+** Fig                                                                :BMCOL:
+  :PROPERTIES:
+  :BEAMER_col: 0.4
+  :END:
+
+#+ATTR_LATEX: :width 4cm
+#+RESULTS:
+[[file:FBoxLines.png]]
+
+*** Fig                                                            :noexport:
+ #+BEGIN_SRC ditaa :file FBoxLines.png
+   +------------+
+   |            |              +------------+
+   |Client      |              |            |
+   |            |              |  DB-manager|
+   +-----+------+      +-------+            |
+         |             |       |            |
+         |             |       +-----+------+
+   +-----+------+      |             |
+   |            |      |             |
+   | Server     +------+             |
+   |            |                    |
+   +-----+------+              +-----+----------+
+         |                     |                |
+         |                     |    Database    |
+   +-----+------+              |                |
+   |            |              |                |
+   |  Logging   |              |  {s}           |
+   |            |              +----------------+
+   |            |
+   |            |
+   |            |
+   +------------+
+ #+END_SRC
+
+ #+RESULTS:
+ [[file:FBoxLines.png]]
+** Text                                                               :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.6
+   :END:
+Questions that need answers:
+- What is the nature of the boxes? 	
+- Do the boxes have similar behaviour?	
+- What is the significance of the lines?	
+- How does the behaviour of the parts contribute to the behaviour of the system?	
+- Does the layout have any meaning?	
+- Is the sketch realisable?	
+* Structured Diagrams
+- Boxes and Lines, but with /semantics/ in the form of a legend.
+
+#+RESULTS:
+[[file:FStructured.png]]
+
+- Some methods may come with a notation.
+- For example, Hofmeister et al. uses extended UML.
+- *Consistent Use is more important than choice of Notation*
+*** Fig                                                            :noexport:
+#+BEGIN_SRC ditaa :file FStructured.png
+      +-----------------+        /------------------\        +-------------------+
+      |  Compose Scene  |        |  Event           |        |   Culling         |
+      |                 +------->|                  +------->|                   |
+      |                 |        |                  |        |                   |
+      +-----------------+        \------------------/        +-------------------+
+
+       Legend:    
+       +---------+
+       | Filter  |
+       +---------+
+      
+       /---------\
+       | Pipe    |
+       \---------/
+
+       Interaction
+       ---------->
+#+END_SRC
+
+* UML Package Diagrams
+- Package Diagrams can be used to represent different Views, typically /Conceptual/, /Module/, and /Execution/ views.
+- No obvious guidelines for /how/, but
+  - Pick one style per view, and stick to it.
+  - Reserve the "default" view for a /Module view/.
+- The nature of Interactions still need to be defined
+
+Examples:
+** Conceptual                                                         :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.2
+   :END:
+#+ATTR_LATEX: :height 3cm
+[[./FUMLPackage-Conceptual.png]]
+** Module                                                             :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.5
+   :BEAMER_act: <2->
+   :END:
+#+ATTR_LATEX: :height 3cm
+[[./FUMLPackage-Module.png]]
+** Execution                                                          :BMCOL:
+   :PROPERTIES:
+   :BEAMER_col: 0.3
+   :BEAMER_act: <3->
+   :END:
+#+ATTR_LATEX: :height 3cm
+[[./FUMLPackage-Execution.png]]
+
+*** Fig                                                            :noexport:
+#+BEGIN_SRC plantuml :file FUMLPackage-Module.png
+title Module View
+package UserInterface {
+}
+
+package BusinessLogic {
+class BusinessFunctionA
+class OutputFormatter
+class SomeOtherBusinessFunction
+
+}
+
+package Logging {
+}
+
+package DBInterface {
+}
+
+UserInterface -- BusinessLogic
+BusinessLogic -- Logging
+BusinessLogic -- DBInterface
+#+END_SRC
+
+#+RESULTS:
+[[file:FUMLPackage-Module.png]]
+
+#+BEGIN_SRC plantuml :file FUMLPackage-Conceptual.png
+title Conceptual View
+package UserInterface <<Rectangle>> {
+}
+
+package BusinessLogic <<Rectangle>> {
+}
+
+package Logging <<Rectangle>> {
+}
+
+package Database <<Database>> {
+}
+
+UserInterface -- BusinessLogic
+BusinessLogic -- Logging
+BusinessLogic -- Database
+#+END_SRC
+
+#+RESULTS:
+[[file:FUMLPackage-Conceptual.png]]
+
+#+BEGIN_SRC plantuml :file FUMLPackage-Execution.png
+title Execution View
+package Client <<Node>> {
+package UserInterface {
+}
+}
+
+package Server <<Node>> {
+package BusinessLogic {
+}
+
+package Logging {
+}
+
+package DBInterface {
+}
+
+}
+
+package Database <<Database>> {
+}
+
+Client -- Server
+Server -- Database
+#+END_SRC
+
+#+RESULTS:
+[[file:FUMLPackage-Execution.png]]
+
+* Things I would like to see in a Software Architecture 
+- Architectural Drivers
+  - Challenges stemming from the requirements, legacy system, organisation, etc. that need to be taken care of in the archtiecture.
+- Solutions and Strategies
+  - Discussion of (generic) solutions for the architectural drivers (reason about possible solutions, and pros and cons with each).
+  - A deeper discussion of the selected solution where you decribe in /concrete/ terms how you will address it in your architecture.
+- An Evaluation
+  - Do you meet the quality requirements? If not, why not, and what should you do about it?
+  - Note that you will need to first create an initial architecture (with different views; see below) in order to do the evaluation. The architectural views should be then updated according to this evaluation.
+- Architectural Views
+  - Component and Connectors, Modules, Subsystems, Processes, etc.
+  - Should have components so that you are able to address the required functionality.
+  - Should /also/ show -- in the right view -- your architectural strategies being instantiated as concrete components/modules/processes/etc. and concrete connectors/APIs/pipes/RMI'/etc.
