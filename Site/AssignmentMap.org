@@ -16,6 +16,34 @@
 
    The /three week roll call/ must, however, be submitted individually.
 #+END_info
+* System Description <<systemDescription>>
+** Introduction
+   /Warez-R-Us/ is seeking your help for their next version of their warehouse management system. In particular, they are seeking solutions to the following:
+
+   - A visual map of a warehouse floor, so you can directly see where a certain item is stored.
+   - Enable multiple users to concurrently interact with the same warehouse and eah other.
+** Minimal Requirements
+Your solution shall /at least/ contain:
+
+1. An opening screen where you can select which warehouse you want to manage.
+2. A screen where you can enter new goods into the warehouse.
+3. A map of the warehouse where you can visually see where goods are stored. You can also move goods around by using the cursor keys.
+4. A live-tracking of where warehouse trucks are located, as well as any goods they are currently moving.
+   - You shall also be able to select a truck, or a piece of goods and interact with it. For example, you can direct a truck to go to a specific place, you can set the temperature for cold storage goods, or edit any other data available for each goods item (Make reasonable assumptions, for example weight, expiration date, order status etc.).
+   - There are different types of goods, hierarchically organised. For example, you have ~Big-Box~, with sub-type ~cold-storage~, ~hot-storage~, ~soft-box~, and ~hard-box~. You also have ~small-items~, which can be stacked to form a ~goods-collection~.
+5. Multi-User
+   - Users shall be able to concurrently interact with different pieces of goods and trucks. The map shall indicate if an item is currently "locked" for interaction by another user.
+   - Users skall be able to chat with each other. In this chat they shall be able to easily share information about goods and trucks.
+** Map Generation
+   New warehouse floors are configured through a separate administrator interface. This is not in focus for the assignments in this course, but you should make sure that it is possible for you to create this interface at a later stage. For now, the implication is that you need to load and store a warehouse and its current state to a file.
+** Truck Movements
+   For the same of the assignments in this course, you can assume that trucks move around randomly. They should, however, be prepared so that they can in a future version of the system, acquire their location through an interface.
+** Extras
+   Ideas for the future. We do not expect these extras to be implemented in your version of your system. What we /do/ expect, however, is that you create a design that can easily accommodate these changes, and that you have documented how you would implement them.
+
+   - The map may be in three dimensions so that you can have different floors and be able to stack goods on top of each other.
+   - You may get a first-person view from any point in the warehouse so that you can "see" what goods look like.
+   - You can also use this first person view to follow trucks through the warehouse.
 * Release Sprints / Assignment Submissions <<releaseOutline>>
 ** Release Sprint 0: 3 Week Roll Call; List of Use Cases :PA1415:PA1435:PA1443:
    The idea with this release sprint is that I should see who is active in the course. I will at the same time take the opportunity to briefly look at your initial efforts regarding the assignment series so that I may possibly steer you in a more productive direction.
@@ -66,31 +94,3 @@
    And, at the end of the day, make sure that your test plan still holds for your revised architecture as well.
 
    [[./images/FArch1.png]]
-* System Description <<systemDescription>>
-** Introduction
-   /Warez-R-Us/ is seeking your help for their next version of their warehouse management system. In particular, they are seeking solutions to the following:
-
-   - A visual map of a warehouse floor, so you can directly see where a certain item is stored.
-   - Enable multiple users to concurrently interact with the same warehouse and eah other.
-** Minimal Requirements
-Your solution shall /at least/ contaion:
-
-1. An opening screen where you can select which warehouse you want to manage.
-2. A screen where you can enter new goods into the warehouse.
-3. A map of the warehouse where you can visually see where goods are stored. You can also move goods around by using the cursor keys.
-4. A live-tracking of where warehouse trucks are located, as well as any goods they are currently moving.
-   - You shall also be able to select a truck, or a piece of goods and interact with it. For example, you can direct a truck to go to a specific place, you can set the temperature for cold storage goods, or edit any other data available for each goods item (Make reasonable assumptions, for example weight, expiration date, order status etc.).
-   - There are different types of goods, hierarchically organised. For example, you have ~Big-Box~, with sub-type ~cold-storage~, ~hot-storage~, ~soft-box~, and ~hard-box~. You also have ~small-items~, which can be stacked to form a ~goods-collection~.
-5. Multi-User
-   - Users shall be able to concurrently interact with different pieces of goods and trucks. The map shall indicate if an item is currently "locked" for interaction by another user.
-   - Users skall be able to chat with each other. In this chat they shall be able to easily share information about goods and trucks.
-** Map Generation
-   New warehouse floors are configured through a separate administrator interface. This is not in focus for the assignments in this course, but you should make sure that it is possible for you to create this interface at a later stage. For now, the implication is that you need to load and store a warehouse and its current state to a file.
-** Truck Movements
-   For the same of the assignments in this course, you can assume that trucks move around randomly. They should, however, be prepared so that they can in a future version of the system, acquire their location through an interface.
-** Extras
-   Ideas for the future. We do not expect these extras to be implemented in your version of your system. What we /do/ expect, however, is that you create a design that can easily accommodate these changes, and that you have documented how you would implement them.
-
-   - The map may be in three dimensions so that you can have different floors and be able to stack goods on top of each other.
-   - You may get a first-person view from any point in the warehouse so that you can "see" what goods look like.
-   - You can also use this first person view to follow trucks through the warehouse.
