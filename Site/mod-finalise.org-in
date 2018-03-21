@@ -1,8 +1,10 @@
 {{{module(Finalising the Course, statusNone)}}}
 Prepare for the exam and tidy up after the course so you know how to continue.
 
-To do:
+{{{scheduled}}}
   - Visit: [[./QnA.org][Seminar Questions and Answers]] call_get-date(filter="SQnA")[:results raw]
+
+{{{read}}}
   - Read: [[./Exam.org][Preparing for the Exam]]
   - Read: [[./Sprint99-Finalise.org][Sprint 99 Wrap-up and Finalise the Course]]
 {{{moduleEnd}}}

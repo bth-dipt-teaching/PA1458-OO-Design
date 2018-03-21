@@ -1,6 +1,10 @@
 {{{module(Assignment Submission, statusNone)}}}
 In this assignment you demonstrate your ability to design a software system in terms of interaction diagrams and class and package diagrams.
 
-To do:
+{{{assignment}}}
   - Submit Assignment: [[./RS-OOD.org][Release Sprint: Object Oriented Design]] call_get-date(filter="A2OOD")[:results raw]
+    - This assignment consists of two parts:
+      - [[./A-Interaction-Diagrams][Interaction Diagrams]]
+      - [[./A-Class-and-Package-Diagram.org][Class and Package Diagram]]
+
 {{{moduleEnd}}}

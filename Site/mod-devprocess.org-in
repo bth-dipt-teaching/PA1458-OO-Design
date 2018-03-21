@@ -1,7 +1,10 @@
 {{{module(Development Process,statusNone)}}}
 One may use different development methodologies, some of which are introduced in this module.
 
-To do:
+{{{read}}}
   - Read: [[./Development-Methodologies.org][Sprint Development Methodologies]]
+    - /Remember/ to look at the "Learning Material" for book chapters, screencasts, and further reading.
+
+{{{scheduled}}}
   - Visit: [[./Lectures/02_Development_Process.pdf][Lecture Development Process]] call_get-date(filter="LDevMeth")[:results raw]
 {{{moduleEnd}}}

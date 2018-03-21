@@ -28,6 +28,8 @@ Please review the sprints concerning
     2. Motivate your ordering in terms of how this allows you to build a minimum viable product first.
     3. Assign story points to each use case.
     4. Decide and motivate how many story points you will have time for in this course (=your first iteration) and per iteration. Set a MAX, a MIN, and an AVERAGE value per iteration.
+       - *Please Note* that in the Real World your velocity would be based on your team's history; how many story points do you usually complete on average. In the context of this course, you obviously do not have any history to calculate averages from, so you will need to make an estimate based on not only the relative sizes of the use cases, but also of the /absolute/ size of them (the good old-fashioned art of effort estimation based on person-hours required to implement the use cases).
+       - [[./Development-Methodologies.org][Read more on Story Points and Velocity Here]]
     5. Assign your use cases to iterations such that you
        1. Create a minimum viable product in your first iteration (motivate why which this is the case).
        2. Have a reasonable amount of story points allocated per iteration, in relation to the MAX, MIN, and AVERAGE values defined.

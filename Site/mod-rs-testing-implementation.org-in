@@ -1,8 +1,13 @@
 {{{module(Assignment Sumbission, statusNone)}}}
 In this assignment you finalise your design and submit it.
 
-To do:
+{{{assignment}}}
   - Work on Assignment: [[./RS-Implementation-Testing.org][Release Sprint Implementation and Testing]]
   - Submit Assignment: [[./RS-Implementation-Testing.org][Release Sprint Implementation and Testing]] call_get-date(filter="A3Implementation")[:results raw]
-  - Prepare before and Visit: [[./SEM-Release3.org][Demo and Discuss Assignment 3]] call_get-date(filter="SA3Demo")[:results raw]  
+    - This assignment consists of two parts:
+      - [[./A-Class-and-Package-Diagram.org][Class and Package Diagram]]
+      - Implementation (Link to Github project is ok)
+
+{{{scheduled}}}
+- Prepare before and Visit: [[./SEM-Release3.org][Demo and Discuss Assignment 3]] call_get-date(filter="SA3Demo")[:results raw]  
 {{{moduleEnd}}}

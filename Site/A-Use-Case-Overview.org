@@ -28,7 +28,7 @@ Please review the sprints concerning
        - Identify all /actors/ that are interacting with the system.
        - Identify all /use cases/ of the system (features).
        - Identify which actors are involved in each use case.
-       - Identify any other relations between the use cases.
+       - Identify any other relations between the use cases (This /may/ be relationships of the form ~includes~ or ~extends~, but may also be just another heading in the use case "Related Use Cases" to be able to group use cases dealing with the same underlying feature). /Please note/ that you do not need to have any relations. The idea is to identify the most obvious relationships, /if there are any/.
     2. Briefly describe the actors in a dictionary.
     3. Describe the use cases in a high-level description, containing:
        - Use Case Name

@@ -1,13 +1,17 @@
 {{{module(Use Cases,statusNone)}}}
 This module introduces the UML way of specifying requirements, which can then be used to provide a traceable chain all the way through your software design and down to your code.
 
-*Please Note:* There are two submissions in this module: The three week roll call, which is a starting point for the bigger submission of your user stories and use cases. 
-
+{{{read}}}
   - Read: [[./Use-Cases.org][Sprint Use Cases and Use Case Diagrams]]
-  - Visit: [[./Lectures/035_Use_Cases.pdf][Lecture User Stories and UML Use Cases]] call_get-date(filter="LUseCases")[:results raw]
-  - Prepare before and Visit: [[./SEM-Requirements.org][Seminar Requirements, Use Cases, Project Planning]] call_get-date(filter="SReqEng")[:results raw]
-  - Submit: [[./RS-3week.org][Release Sprint 3 Week Roll Call; List of Use Cases]] call_get-date(filter="A0ThreeWeek")[:results raw]
-  - Work on Assignment: [[./A-Use-Case-Overview.org][Sprint Use Case Overview Assignment]]
-  - Work on Assignment: [[./A-Implementation-Plan.org][Sprint Implementation Plan Assignment]]
-  - Work on Assignment: [[./A-Detailed-Use-Cases.org][Sprint Detailed Use Cases for First Iteration Assignment]]
+    - /Remember/ to look at the "Learning Material" for book chapters, screencasts, and further reading.
+
+{{{scheduled}}}
+   - Visit: [[./Lectures/035_Use_Cases.pdf][Lecture User Stories and UML Use Cases]] call_get-date(filter="LUseCases")[:results raw]
+   - Prepare before and Visit: [[./SEM-Requirements.org][Seminar Requirements, Use Cases, Project Planning]] call_get-date(filter="SReqEng")[:results raw]
+
+{{{assignment}}}
+- Submit: [[./RS-3week.org][Release Sprint 3 Week Roll Call; List of Use Cases]] call_get-date(filter="A0ThreeWeek")[:results raw]
+- Work on Assignment: [[./A-Use-Case-Overview.org][Sprint Use Case Overview Assignment]]
+- Work on Assignment: [[./A-Implementation-Plan.org][Sprint Implementation Plan Assignment]]
+- Work on Assignment: [[./A-Detailed-Use-Cases.org][Sprint Detailed Use Cases for First Iteration Assignment]]
 {{{moduleEnd}}}

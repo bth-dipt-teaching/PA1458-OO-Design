@@ -1,7 +1,15 @@
 {{{module(Assignment Submission, statusNone)}}}
 This Assignment "sets the stage" for your subsequent assignments by making sure you have understood the system requirements properly. In a seminar you then discuss your submitted User Stories and Use Cases.
 
-To do:
+{{{assignment}}}
   - Submit Assignment: [[./RS-User-Stories-Use-Cases.org][Release Sprint User Stories and Use Cases]] call_get-date(filter="A1Req")[:results raw]
+    - This asignment consists of four parts:
+      - [[./A-Requirements.org][User Stories]]
+      - [[./A-Use-Case-Overview.org][Use Case Overview]]
+      - [[./A-Implementation-Plan.org][Implementation Plan]]
+      - [[./A-Detailed-Use-Cases.org][Detailed Use Cases for First Iteration]]
+
+
+{{{scheduled}}}
   - Visit: [[./SEM-Release1.org][Discuss Assignment 1]] call_get-date(filter="SA1Req")[:results raw]
 {{{moduleEnd}}}

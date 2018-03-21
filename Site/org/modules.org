@@ -21,3 +21,7 @@
 ;; (mapcar 'get-date lect-dates)
  (cdr (car (seq-filter (apply-partially 'get-date filter) lect-dates)))
 #+END_SRC
+
+#+MACRO: read #+HTML: <h3>Things to Read</h3>
+#+MACRO: scheduled #+HTML: <h3>Scheduled Events</h3>
+#+MACRO: assignment #+HTML: <h3>Assignment Work</h3>
