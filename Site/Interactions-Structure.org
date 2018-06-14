@@ -233,10 +233,10 @@ class DBInterface
      31. [@31] Domain Model Refinement
      35. [@35] Package Design
 ** Screencasts
- - [[https://play.bth.se/media/Contracts/1_086yu2lr/41750261][Contracts]]
- - [[https://play.bth.se/media/Interaction+Diagrams/1_pntlhd3l][Interaction Diagrams]]
- - [[https://play.bth.se/media/From+Interactions+to+Classes/1_8cte1tiv][From Interaction Diagrams to Classes]]
- - [[https://play.bth.se/media/Packages/1_31pkpm8r][Packages]]
+ - [[https://youtu.be/Dma1Eu7HySY][Contracts]]
+ - [[https://youtu.be/-qwmAyzGYVU][Interaction Diagrams]]
+ - [[https://youtu.be/aAaJxmRntls][From Interaction Diagrams to Classes]]
+ - [[https://youtu.be/0SIVzsprYlA][Packages]]
 ** TODO Lectures						   :noexport:
 ** Further Reading
    - [[http://dilbert.com/strip/1997-03-09e][Dilbert solves the Software Design Problem]]

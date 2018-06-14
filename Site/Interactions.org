@@ -64,7 +64,7 @@ Make sure you understand the principles of each one of these. Think about how yo
      19. Designing for Visibility
      25. [@25] GRASP More Objects with Responsibilities
 ** Screencasts
- - [[https://play.bth.se/media/DesignPatterns_GRASP/1_e4z8gitx][GRASP Patterns]]
+ - [[https://youtu.be/zf2A_xSNhvM][GRASP Patterns]]
 ** TODO Lectures						   :noexport:
 ** Further Reading <<GIFurtherReading>>
    - [[https://en.wikipedia.org/wiki/Law_of_Demeter][Law of Demeter]]: Keep entities as ignorant as possible of other entities, don't let them talk to strangers.

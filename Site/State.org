@@ -67,7 +67,7 @@ wtu->[*]
    - {{{larman}}}, Chapters:
      29. [@29] UML State Machine Diagrams
 ** Screencasts
-  - [[https://play.bth.se/media/StateDiagrams.mp4/1_ruht53d3][State Diagrams]]
+  - [[https://youtu.be/RRcIllbwb2Y][State Diagrams]]
 ** TODO Lectures						   :noexport:
 ** Further Reading						   :noexport:
 * Experiential Learning

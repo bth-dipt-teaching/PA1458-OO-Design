@@ -162,8 +162,8 @@ A note also about elicitation techniques: I say earlier that you are most likely
      6. Use Cases
      7. Other Requirements
 ** Screencasts
-     - [[https://play.bth.se/media/Requirements+Engineering/1_epma2li8/41750261][Requirements Engineering]]
-     - [[https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261][Use Cases]]
+     - [[https://youtu.be/3_eMaBj5UpY][Requirements Engineering]]
+     - [[https://youtu.be/0H0zEcuCBkE][Use Cases]]
 ** TODO Lectures						   :noexport:
    Ideas:
    - Requirements Elicitation Roleplay?

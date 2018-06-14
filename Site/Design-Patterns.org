@@ -88,7 +88,7 @@
      36. [@36] More Object Design with GoF Patterns
      37. Designing a Persistence Framework with Patterns
 ** Screencasts
- - [[https://play.bth.se/media/DesignPatterns_GoF/1_xdlww0y6][GoF Design Patterns]]    
+ - [[https://youtu.be/GSR6e9SGMdY][GoF Design Patterns]]    
 ** TODO Lectures						   :noexport:
 ** Further Reading
    - [[http://steve-yegge.blogspot.se/2006/03/execution-in-kingdom-of-nouns.html][Execution in the Kingdom of Nouns (Steve Yegge)]]

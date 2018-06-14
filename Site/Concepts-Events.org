@@ -214,8 +214,8 @@ digraph {
      9. Domain Models
      10. System Sequence Diagrams
 ** Screencasts
-   - [[https://play.bth.se/media/Concept+and+Classes/1_m237spjq/41750261][Concepts and Classes]]
-   - [[https://play.bth.se/media/SystemSequenceDiagrams.mp4/1_99i0cfv7/41750261][System Sequence Diagrams]]
+   - [[https://youtu.be/aCgYJ3NkKJQ][Concepts and Classes]]
+   - [[https://youtu.be/N2vQAtqGp-o][System Sequence Diagrams]]
 ** TODO Lectures						   :noexport:
 ** Further Reading
    - [[http://steve-yegge.blogspot.se/2006/03/execution-in-kingdom-of-nouns.html][Execution in the Kingdom of Nouns (Steve Yegge)]]

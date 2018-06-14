@@ -16,7 +16,7 @@
      38. [@38] UML Deployment and Component Diagrams
      39. Documenting Architecture: UML & the N+1 View Model
 ** Screencasts
-   - [[https://play.bth.se/media/Architecture_Styles/1_dzmp3dcw][Architecture Styles]]
+   - [[https://youtu.be/7rTe0-2Ewak][Architecture Styles]]
 ** TODO Lectures						   :noexport:
 ** Books and Articles
    - L. Bass, P. Clements, and R. Kazman. /Software Architecture in Practice, Third Edition./ Addison-Wesley Publishing Co., Reading MA, 2012.

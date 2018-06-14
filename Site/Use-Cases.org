@@ -154,8 +154,8 @@ CAS -> (CreditPayment)
      21. [@21] Test Driven Development and Refactoring
      30. [@30] Relating Use Cases
 ** Screencasts
- - [[https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261][Use Cases]]
- - [[https://play.bth.se/media/Structuring+Use+Cases/1_seaeffad][Structuring Use Cases]]
+ - [[https://youtu.be/0H0zEcuCBkE][Use Cases]]
+ - [[https://youtu.be/ivhOfaXRYss][Structuring Use Cases]]
 ** TODO Lectures						   :noexport:
 ** Further Reading
    - [[https://agilefaq.wordpress.com/2007/11/13/what-is-a-story-point/][What is a Story Point?]]

@@ -5,39 +5,39 @@
 | <2018-02-14 Wed> |        |        | X      | LIntro           | <2018-02-14 Wed 10:00> J1620                                                                                          |
 | <2018-02-21 Wed> |        |        | X      | LUseCases        | <2018-02-21 Wed 10:00> J1610                                                                                          |
 | <2018-02-23 Fri> |        |        | X      | SReqEng          | Online on Gitter <2018-02-23 Fri 09:00-12:00>                                                                         |
-|                  |        |        | X      | A0ThreeWeek      | Deadline <2018-02-23 Fri>                                                                                             |
-|                  |        |        | X      | A1UseCases       | Feedback Deadline <2018-02-26 Mon>                                                                                    |
+| a                |        |        | X      | A0ThreeWeek      | Deadline <2018-02-23 Fri>                                                                                             |
+| a                |        |        | X      | A1UseCases       | Feedback Deadline <2018-02-26 Mon>                                                                                    |
 | <2018-02-27 Tue> |        |        | X      | SA1UseCases      | Online on Gitter <2018-02-27 Tue 13:00-15:00>                                                                         |
 | <2018-02-28 Wed> |        |        | X      | LStructure       | <2018-02-28 Wed 10:00> J1610                                                                                          |
 | <2018-03-06 Tue> |        |        | X      | LTesting         | <2018-03-06 Tue 10:00> C413A                                                                                          |
-|                  |        |        | X      | LBehaviour       | <2018-03-09 Fri 10:00> C413A                                                                                          |
-|                  |        |        | X      | LDesignPatterns  | <2018-03-26 Mon 13:00> J1610                                                                                          |
-|                  | X      | X      |        | LIntro           | <2018-03-27 Tue 10:00> J1504                                                                                          |
-|                  | X      |        |        | LDevMeth         | <2018-03-27 Tue 13:00> J1504                                                                                          |
-|                  | X      |        |        | LReqEng          | <2018-03-28 Wed 10:00> J1504                                                                                          |
-|                  | X      | X      |        | LUseCases        | <2018-04-03 Tue 10:00> J1504                                                                                          |
-|                  | X      |        |        | SReqEng          | Group I <2018-04-04 Wed 08:00> J1207, Group II <2018-04-04 Wed 10:00> J1207                                           |
-|                  |        | X      |        | SReqEng          | Group I <2018-04-04 Wed 13:00> J1207, Group II <2018-04-04 Wed 15:00> J1207, Group III (IndEk) <2018-04-05 Thu 10:00> |
-|                  |        |        | X      | SPatterns        | <2018-04-05 Thu 13:00> J1610                                                                                          |
-|                  | X      | X      |        | A0ThreeWeek      | Deadline <2018-04-06 Fri>                                                                                             |
-|                  |        |        | X      | A2OOD            | Feedback Deadline <2018-04-06 Fri>                                                                                    |
-|                  |        |        | X      | LArchitecture    | <2018-04-09 Mon 10:00> J1610                                                                                          |
-|                  | X      |        |        | A1Req            | Feedback Deadline <2018-04-09 Mon>                                                                                    |
-|                  | X      |        |        | SA1Req           | Online on Gitter <2018-04-11 Wed 13:00-15:00>                                                                         |
-|                  |        | X      |        | A1UseCases       | Feedback Deadline <2018-04-09 Mon>                                                                                    |
-|                  |        | X      |        | SA1UseCases      | Online on Gitter <2018-04-11 Wed 13:00-15:00>                                                                         |
-|                  | X      | X      |        | LStructure       | <2018-04-10 Tue 10:00> J1504                                                                                          |
-|                  | X      |        |        | LTesting         | <2018-04-10 Tue 13:00> J1504                                                                                          |
-|                  | X      | X      |        | LBehaviour       | <2018-04-11 Wed 10:00> J1504                                                                                          |
-|                  |        |        | X      | LQuality         | <2018-04-12 Thu 10:00> J1610                                                                                          |
-|                  | X      | X      |        | LDesignPatterns  | <2018-04-13 Fri 10:00> J1504                                                                                          |
-|                  | X      | X      |        | SPatterns        | <2018-04-16 Mon 10:00> J1504                                                                                          |
-|                  |        |        | X      | LImplementation  | <2018-04-17 Tue 10:00> J1610                                                                                          |
-|                  |        |        | X      | A3Architecture   | Feedback Deadline <2018-04-19 Thu>                                                                                    |
-|                  |        |        | X      | SQnA             | <2018-04-19 Thu 10:00> J1610, <2018-05-16 Wed> J1504, <2018-05-23 Wed> J1504                                          |
-|                  |        |        | X      | SA3Demo          | Individually Booked Week 17, Week 18                                                                                  |
-|                  | X      | X      |        | A2OOD            | Feedback Deadline <2018-04-25 Wed>                                                                                    |
-|                  | X      | X      |        | LImplementation  | <2018-04-25 Wed 10:00> J1504                                                                                          |
-|                  | X      | X      |        | A3Implementation | Feedback Deadline <2018-05-09 Wed>                                                                                    |
-|                  | X      | X      |        | SA3Demo          | Individually Booked Week 20                                                                                           |
+| <2018-03-09 Fri> |        |        | X      | LBehaviour       | <2018-03-09 Fri 10:00> C413A                                                                                          |
+| <2018-03-26 Mon> |        |        | X      | LDesignPatterns  | <2018-03-26 Mon 13:00> J1610                                                                                          |
+| <2018-03-27 Tue> | X      | X      |        | LIntro           | <2018-03-27 Tue 10:00> J1504                                                                                          |
+| <2018-03-27 Tue> | X      |        |        | LDevMeth         | <2018-03-27 Tue 13:00> J1504                                                                                          |
+| <2018-03-28 Wed> | X      |        |        | LReqEng          | <2018-03-28 Wed 10:00> J1504                                                                                          |
+| <2018-04-03 Tue> | X      | X      |        | LUseCases        | <2018-04-03 Tue 10:00> J1504                                                                                          |
+| s                | X      |        |        | SReqEng          | Group I <2018-04-04 Wed 08:00> J1207, Group II <2018-04-04 Wed 10:00> J1207                                           |
+| s                |        | X      |        | SReqEng          | Group I <2018-04-04 Wed 13:00> J1207, Group II <2018-04-04 Wed 15:00> J1207, Group III (IndEk) <2018-04-05 Thu 10:00> |
+| <2018-04-05 Thu> |        |        | X      | SPatterns        | <2018-04-05 Thu 13:00> J1610                                                                                          |
+| a                | X      | X      |        | A0ThreeWeek      | Deadline <2018-04-06 Fri>                                                                                             |
+| a                |        |        | X      | A2OOD            | Feedback Deadline <2018-04-06 Fri>                                                                                    |
+| <2018-04-09 Mon> |        |        | X      | LArchitecture    | <2018-04-09 Mon 10:00> J1610                                                                                          |
+| a                | X      |        |        | A1Req            | Feedback Deadline <2018-04-09 Mon>                                                                                    |
+| <2018-04-10 Tue> | X      | X      |        | LStructure       | <2018-04-10 Tue 10:00> J1504                                                                                          |
+| <2018-04-10 Tue> | X      |        |        | LTesting         | <2018-04-10 Tue 13:00> J1504                                                                                          |
+| <2018-04-11 Wed> | X      | X      |        | LBehaviour       | <2018-04-11 Wed 10:00> J1504                                                                                          |
+| <2018-04-11 Wed> | X      |        |        | SA1Req           | Online on Gitter <2018-04-11 Wed 13:00-15:00>                                                                         |
+| a                |        | X      |        | A1UseCases       | Feedback Deadline <2018-04-09 Mon>                                                                                    |
+| <2018-04-11 Wed> |        | X      |        | SA1UseCases      | Online on Gitter <2018-04-11 Wed 13:00-15:00>                                                                         |
+| <2018-04-12 Thu> |        |        | X      | LQuality         | <2018-04-12 Thu 10:00> J1610                                                                                          |
+| <2018-04-13 Fri> | X      | X      |        | LDesignPatterns  | <2018-04-13 Fri 10:00> J1504                                                                                          |
+| <2018-04-16 Mon> | X      | X      |        | SPatterns        | <2018-04-16 Mon 10:00> J1504                                                                                          |
+| <2018-04-17 Tue> |        |        | X      | LImplementation  | <2018-04-17 Tue 10:00> J1610                                                                                          |
+| a                |        |        | X      | A3Architecture   | Feedback Deadline <2018-04-19 Thu>                                                                                    |
+| <2018-04-19 Thu> |        |        | X      | SQnA             | <2018-04-19 Thu 10:00> J1610, <2018-05-16 Wed> J1504, <2018-05-23 Wed> J1504                                          |
+| sa               |        |        | X      | SA3Demo          | Individually Booked Week 17, Week 18                                                                                  |
+| a                | X      | X      |        | A2OOD            | Feedback Deadline <2018-04-25 Wed>                                                                                    |
+| <2018-04-25 Wed> | X      | X      |        | LImplementation  | <2018-04-25 Wed 10:00> J1504                                                                                          |
+| a                | X      | X      |        | A3Implementation | Feedback Deadline <2018-05-09 Wed>                                                                                    |
+| sa               | X      | X      |        | SA3Demo          | Individually Booked Week 20                                                                                           |
 |                  | X      | X      | X      | SQnA             | <2018-05-16 Wed> J1504, <2018-05-23 Wed> J1504                                                                        |

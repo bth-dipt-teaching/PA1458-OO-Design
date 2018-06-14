@@ -413,7 +413,7 @@ This book, also called the Gang of Four book is /the/ reference work when it com
    Some seminars are done online, others are done as a full group. But for /some/ seminars, we would like to divide you in groups, consisting of around 25-30 people per group. Use the following guidelines for an initial rough sort:
 
    1. Who is the oldest member in your team?
-   2. What letter does his family name start with?
+   2. What letter does their family name start with?
    3. Go to the seminar accordingly:
 
    | Course | Study Programme               | Start Letter | Seminar   |

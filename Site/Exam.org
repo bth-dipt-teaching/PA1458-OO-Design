@@ -75,6 +75,11 @@ note right: A DVD <I>is a</I> type of Media.
    - [[./OldExams/PA1415-20160819_SOLVED.pdf][Exam 2016-08-19, With Solutions]]
    - [[./OldExams/PA1415-20170102-SOLVED.pdf][Exam 2017-01-02, With Solutions]]
 
+   Computer Based Exams:
+   - [[./OldExams/PA1415-201705.pdf][Exam 2017 May]]
+   - [[./OldExams/PA1415-201708.pdf][Exam 2017 August]]
+   - [[./OldExams/PA1415-201801.pdf][Exam 2018 January]]
+
 #+BEGIN_note
    Keep in mind that the solutions are /proposals/, to give you an idea of how to thing when answering the questions. There are many other ways of solving the same problem, and there are many ways to make the solution proposals better.
 #+END_note
