@@ -1,0 +1,64 @@
+
+* DomainModel
+- [ ] Money
+- [ ] Mobile Phone
+- [X] Bank
+- [X] BankID
+- [X] Mobile Phone Number
+- [X] Amount
+- [X] Message
+- [X] Transaction
+- [X] BankAccount
+- [X] Sender
+- [X] Receiver
+- [ ] TransactionOverview
+- [ ] IncomingTransaction
+- [ ] OutgoingTransaction
+- [X] Pin Code
+- [ ] BankID Server
+- [X] Identity
+
+#+BEGIN_SRC plantuml :file FDomainModel-Transaction3.png
+TransactionOverview - "*" Transaction : lists >
+
+Transaction : message
+Transaction : amount
+
+Transaction -- Customer : Sender
+Transaction -- Customer : Receiver
+
+Customer : phoneNumber
+Customer -- BankAccount : has >
+BankAccount - Bank : < owns
+
+Customer - Identity : has >
+Identity - BankID : associated with >
+
+Identity : pinCode
+#+END_SRC
+
+#+RESULTS:
+[[file:FDomainModel-Transaction3.png]]
+* UseCaseModel
+#+BEGIN_SRC plantuml :file FUCModel.png
+scale 600 width
+left to right direction
+
+rectangle Dash {
+(Transfer Money)
+(Receive Money)
+(View Transactions)
+(Authenticate)
+(Transfer Money) ..> (Authenticate) : include
+(Receive Money) ..> (Authenticate) : include
+(View Transactions) ..> (Authenticate) : include
+}
+
+User -> (Transfer Money)
+User -> (Receive Money)
+User -> (View Transactions)
+User -> (Authenticate)
+#+END_SRC
+
+#+RESULTS:
+[[file:FUCModel.png]]
