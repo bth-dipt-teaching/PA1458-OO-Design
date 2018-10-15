@@ -62,3 +62,109 @@ User -> (Authenticate)
 
 #+RESULTS:
 [[file:FUCModel.png]]
+* PackageModel
+#+BEGIN_SRC plantuml :file FPackageExample.png
+
+package "User Interface" {
+  package "Warehouse Selection" {}
+  package "Warehouse View" {}
+  package "Truck Management" {}
+  package "Goods Management" {}
+}
+
+package "Warehouse Management" {
+  class WarehouseManager
+  class Warehouse
+  class Floor
+
+  WarehouseManager - "*" Warehouse
+  Warehouse -- "*" Floor
+  
+  WarehouseManager : listWarehouses()
+  WarehouseManager : getWarehouse()
+}
+
+"Warehouse Selection" .. WarehouseManager
+"Warehouse View" .. Warehouse
+
+package "Inventory" {
+  class InventoryManager
+  package Goods {
+    class Goods
+    Goods <|-- ColdGoods
+    Goods <|-- HotGoods
+    Goods <|-- NonStackableGoods
+    NonStackableGoods <|-- FragileGoods
+  }
+
+  InventoryManager -- "*" Goods
+
+  Package InventoryOrders {}
+}
+
+"Goods Management" .. InventoryManager
+"Warehouse View" .. Goods
+
+package "Truck Controls" {
+  TruckManager -- "*" Truck
+  TruckManager : listTrucks()
+  TruckManager : getTruck()
+  Truck : getPosition()
+  Truck : moveToPosition(Goods)
+  Truck : moveToPosition(coordinates)
+  Truck : moveGoods(Goods, destination)    
+}
+
+"Truck Management" .. TruckManager
+"Warehouse View" .. Truck
+
+Package Storage <<database>> {
+  class DatabaseInterface
+  class Configuration
+}
+
+
+"Warehouse Management" ..d. Storage
+"Truck Controls" ..d. Storage
+"Inventory" ..d. Storage
+
+#+END_SRC
+
+#+RESULTS:
+[[file:FPackageExample.png]]
+* SystemEvent
+#+BEGIN_SRC plantuml :file FSystemEvent.png
+hide footbox
+actor User
+User --> ":WarehouseManager" : listWarehouses()
+#+END_SRC
+
+#+RESULTS:
+[[file:FSystemEvent.png]]
+* PackageModelExample
+#+BEGIN_SRC plantuml :file FPackage-Dash.png
+package "User Interface" as ui {}
+package "Incoming Transactions" as in {}
+package "Outgoing Transactions" as out {}
+package "Transactions Log" as log {}
+package "Authentication" as auth {}
+package "Bank Connection" as bank {}
+
+
+ui -- in
+ui -- out
+ui -- log
+
+in -- log
+in --- bank
+in --- auth
+
+out -- log
+out --- bank
+out --- auth
+
+log --- auth
+#+END_SRC
+
+#+RESULTS:
+[[file:FPackage-Dash.png]]
