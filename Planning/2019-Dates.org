@@ -1,0 +1,33 @@
+* Dates
+    - LP3 ::
+      - PA1459 (6 hp; MTS, HTP)
+      - PA1460 (5hp; KHE)
+      - Week 3 -- 12 (9 weeks)
+    - LP4 ::
+      - PA1458 (7.5hp; MOS, MOL)
+      - Week 13 -- 22 (9 weeks)
+
+Lectures
+ | Type | Module                | Lecture                                 |       Week | Line | PA1458 | PA1459 | PA1460 |
+ |      |                       |                                         | (relative) |   nr | lp4    | lp3    | lp3    |
+ |------+-----------------------+-----------------------------------------+------------+------+--------+--------+--------|
+ | L    | Course Intro          | Introduction, Process, Domain Modelling |          1 |    1 | x      | x      | x      |
+ | L    | Problem Domain        | Requirements Engineering                |          1 |    2 | x      | x      | x      |
+ | L    | Problem Domain        | Use Cases                               |          1 |    3 | x      | x      | x      |
+ | S    | Problem Domain        | Requirements Engineering/Use Cases      |      (1-2) |      | os     | os     | os     |
+ | L    | Planning              | Development Methodologies               |          2 |    4 | x      | x      | x      |
+ | L    | Software Architecture | Quality                                 |          2 |    5 |        | x      | x      |
+ | L    | Software Architecture | Architecture                            |          2 |    6 |        | x      | x      |
+ | L    | Quality Assurance     | Testing                                 |          3 |    7 | x      | x      | x      |
+ | L    | OO Design             | Structure                               |          3 |    8 | x      | x      | x      |
+ | L    | OO Design             | Behaviour                               |          3 |    9 | x      | x      | x      |
+ | L    | Problem Based Design  | Design Patterns                         |          4 |   10 | x      | x      | x      |
+ | SL   | Problem Based Design  | Designing with Patterns                 |          4 |   11 | sl     | sl     | sl     |
+ | SL   | Problem Based Design  | Designing with Patterns                 |          4 |   12 | sl     | sl     | sl     |
+ | L    | Impl & Testing        | Implementation                          |          5 |   13 | x      | x      | x      |
+ | SL   | Problem Based Design  | Designing with Patterns                 |          5 |   14 | sl     | sl     | sl     |
+ | SL   | Problem Based Design  | Designing with Patterns                 |          5 |   15 | sl     | sl     | sl     |
+ | SL   |                       | QnA                                     |          8 |   16 | x      | x      | x      |
+ | SL   |                       | QnA                                     |          8 |   17 | x      | x      | x      |
+ |------+-----------------------+-----------------------------------------+------------+------+--------+--------+--------|
+ | SUM  |                       |                                         |            |      | 15     | 17     | 17     |

@@ -168,3 +168,149 @@ log --- auth
 
 #+RESULTS:
 [[file:FPackage-Dash.png]]
+* TeaExample
+#+BEGIN_SRC plantuml :file FTeaSSD.png
+hide footbox
+title System Sequence Diagram: User Orders Tea
+actor User
+participant ":System" as sys
+
+User->sys : initiateTransaction()
+sys-->User : <friendly bleep>
+User->sys : orderBeverage("Tea")
+sys-->User : request flavour
+User->sys : setFlavour("Earl Grey")
+sys-->User : request temperature
+User->sys : setTemperature("Hot!")
+sys-->User : <acknowledging bleep>
+#+END_SRC
+* InteractionDiagrams
+#+BEGIN_SRC plantuml :file FTeaInitiate.png
+participant ":OrderController" as oc
+
+[-> oc : initiateTransaction()
+activate oc
+
+oc -> ":BeverageManager" : listBeverages()
+activate ":BeverageManager"
+deactivate ":BeverageManager"
+
+loop while more beverages
+oc -> ":BeverageManager" : b = getBeverage(bName)
+activate ":BeverageManager"
+deactivate ":BeverageManager"
+
+oc -> "b:Beverage" : listFlavours()
+activate "b:Beverage"
+deactivate "b:Beverage"
+
+end loop
+
+oc -> ":Heater" : listTemperatureSettings()
+activate ":Heater"
+deactivate ":Heater"
+
+deactivate oc
+#+END_SRC
+
+#+RESULTS:
+[[file:FTeaInitiate.png]]
+
+#+BEGIN_SRC plantuml :file FTeaOrderBeverage.png
+participant ":OrderController" as oc
+
+[-> oc : orderBeverage("Tea")
+activate oc
+
+participant "order:Order" as order
+create order
+oc --> order : create()
+
+oc -> ":BeverageManager" : b = getBeverage(bName)
+activate ":BeverageManager"
+deactivate ":BeverageManager"
+
+oc -> order : setBeverage(b)
+deactivate oc
+#+END_SRC
+
+#+RESULTS:
+[[file:FTeaOrderBeverage.png]]
+
+
+#+BEGIN_SRC plantuml :file FTeaSetFlavour.png
+participant ":OrderController" as oc
+
+[-> oc : setFlavour("Earl Grey")
+activate oc
+
+participant "order:Order" as order
+
+oc -> order : b = getBeverage()
+activate order
+deactivate order
+
+oc -> "b:Beverage" : f = getFlavour(flavourName)
+activate "b:Beverage"
+deactivate "b:Beverage"
+
+oc -> order : setFlavour(f)
+activate order
+deactivate order
+
+deactivate oc
+#+END_SRC
+
+#+RESULTS:
+[[file:FTeaSetFlavour.png]]
+
+#+BEGIN_SRC plantuml :file FTeaSetTemp.png
+participant ":OrderController" as oc
+participant "order:Order" as order
+
+[-> oc : setTemperature("Hot")
+activate oc
+
+oc -> ":Heater" : setTemperature("Hot")
+activate ":Heater"
+deactivate ":Heater"
+
+oc -> order : makeOrder()
+activate order
+
+order -> "beverage:Beverage" : mixIngredients(flavour)
+activate "beverage:Beverage"
+
+"beverage:Beverage" -> ":IngredientsController" : addWater(amount)
+activate ":IngredientsController"
+deactivate ":IngredientsController"
+
+"beverage:Beverage" -> ":IngredientsController" : addFlavour(flavour)
+activate ":IngredientsController"
+
+":IngredientsController" -> "flavour:Flavour" : flavourAmount = getAmount()
+activate "flavour:Flavour"
+deactivate "flavour:Flavour"
+
+deactivate ":IngredientsController"
+
+deactivate "beverage:Beverage"
+
+order -> ":Heater" : applyHeat()
+activate ":Heater"
+deactivate ":Heater"
+
+order --> oc
+deactivate order
+
+oc -> ":Pump" : serveBeverage()
+activate ":Pump"
+deactivate ":Pump"
+
+
+[<-- oc : <<friendly bleep>>
+deactivate oc
+#+END_SRC
+
+#+RESULTS:
+[[file:FTeaSetTemp.png]]

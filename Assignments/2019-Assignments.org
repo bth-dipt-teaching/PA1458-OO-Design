@@ -1,0 +1,790 @@
+* DONE Input: System Description
+  CLOSED: [2018-11-14 Wed 10:19]
+Mean Streets https://en.wikipedia.org/wiki/Mean_Streets_(video_game) is an old adventure game where you play a private investigator who gets hired to investigate a suspected murder. In the game, you fly around across town to interview people, and if you ask the right questions they give up new clues. When arriving at a new scene, the character can inspect the scene and the usual [look, open, move, turn on/off, taste, pick up, drop] objects at the scene. Doing the right action to the right object may reveal new objects (e.g. open a drawer to find objects inside the drawer), or transition you to a new scene (lick a toad).
+
+I want to modernise this a bit, and rather than zooming across a fictive town in a flying car, I want to fit this into a real town (Let's use Karlskrona for starters) and let the players actually move across the town and use their phones to interact with the game.
+
+Specific requirements:
+
+- As a player I want my phone to notify me when I am close to the physical location (GPS coordinates) connected to a currently available scene in the game, so that I can easily find the right place and continue playing.
+
+- As a player when I encounter a scene in the game I want to see who is there, and any initially available objects that I may inspect, so that I can understand what to do in a scene.
+
+- As a player I want to be able to communicate with characters present at a scene, in order to understand if they know something that may help me solve the crime.
+
+- As a player I want to be able to interact [look, open, move, turn on/off, taste, pick up, drop] with objects at the scene so that I may find new clues.
+
+- As a player I expect that events may happen in the game so that the game progresses, according to the following:
+  - Events may happen at a particular time
+  - Events may happen at a particular time after a specified other event. The other event may for example be:
+    - entering a scene
+    - leaving a scene
+    - interacting in a certain way with a certain object (for example open a drawer or pick up a phone)
+  - Examples of events are:
+    - that the phone rings
+    - that an object gets moved to a scene
+    - that an object becomes visible (and accessible) in a scene
+    - that people move between scenes
+    - that new scenes become available
+    - that the player walks by a physical location associated with an available scene
+
+- As a player when I inspect an object I expect a picture or a brief video but always a text description as well so that I can quickly look up important facts of the object.
+
+- As a player, I want to be able to interact with a scene in more or less the same way as with an object (with restrictions that I for example cannot pick up a scene) so that I don't have to learn two different ways of interacting with the game.
+
+- As a player I want to have an unlimited inventory so that I can collect objects that I have picked up from different scenes.
+
+- As a player I want to have access to my (in-game) secretary as if she is a real life contact, so that I get fully immersed in the game.
+
+- As a player I want my in-game secretary to tell me where certain people are waiting for me, or notify me when I am close to an available scene so that she acts as an interface between the gameplay and myself.
+
+Then there are the usual game requirements:
+- As a player I want to be able to start a new game from scratch so that I can play the game more than once.
+- As a player I want my current state in the game to be automatically saved at all times so that I am "always playing" even when I am moving between scenes (or am at work).
+- As a player I want to be able to set checkpoints so that I can revert the game back to a previous "safe" point.
+
+
+Future improvements (you do not need to consider these now, but you should not make decisions that makes them impossible to implement in the current architecture/design):
+
+- As a player I can choose whether to play the game in a stand-alone mode or in a team mode, to be able to have fun with my friends.
+- As a player in team mode I want to collaborate and communicate with my fellow investigators so that we may solve the crime together.
+- As a player in team mode I want to choose between playing as a private investigator or as a criminal trying to cover up the crime.
+- As a player trying to cover up the crime I want to be able to destroy evidence and silence witnesses so that it is more difficult for the private investigators to solve the crime.
+
+
+An example of how the game may start:
+ You start a new game, and immediately get a text message to your phone from your secretary with a description of the case, who hired you, and where you can find the deceased's office (The office of the deceased happens to be in a corner of the town square in Karlskrona). You go there, and look at the apartment. You find the deceased's phone which you pick up to inspect later. As you are leaving the scene you get a message from the Pathologist that the autopsy of the deceased is done, and you can come to xer office to pick it up (xer office is in Hogland's park, near the police station). You decide to go there, and inspect the lab report. The pathologist is still around so you ask xer a few questions while you are there. Afterwards, you inspect the phone of the deceased. You are especially interested in who they called last on it.
+
+---
+For those of you who find the whole idea of developing a game a bit daunting, here is a different take on the assignment:
+
+I want a "smart" virtual guide for a city-wide art exhibition. You can pick different themes for your museum visit, and as you are walking in town you get notified if you are near a piece of art which matches your theme.
+
+When you are within a few metres of the piece of art, you get a number of objects associated with this particular piece of art, that you can interact with. Some may be additional pictures or videos, some may be texts with background information. Sometimes the artist wants you to look at this material in a certain order, so you may need to interact with one object before others become available to you.
+
+Some objects may be ideas for things (books or home decor) that you may be interested in buying if you like the piece of art. Sometimes, you just want a printout of the text or photo you have just viewed. These objects you "pick up" and add to your shopping cart (later, you can go the ArtStore in Wachtmeister and check out the items you have collected in your shopping cart). For some pieces of art you can interact with chatbots who can help you understand the work.
+
+... Do you see where I am going with this? Coming up with a non-game application that behaves in roughly the same way as a game is really not that difficult. And vice versa, as the several flight attendant simulators apps are evidence of (I don't know what is the real WTF, that there are such simulators, or that there is more than one).
+* DONE DONE Assignment 1o1: Use Cases, System Events, WBS [6/6]      :PA1458:
+  CLOSED: [2018-11-16 Fri 11:00]
+** DONE Input: High Level Use Cases
+   CLOSED: [2018-11-14 Wed 10:20]
+Use Case: Start New Game
+Actor: Player
+Description: Player selects to start a new game by sending a message to the in-game secretary. The system verifies that the player really wants to abandon the current game, and then resets the player to a new game.
+
+Use Case: Get Help
+Actor: Player
+Description: Player requests help by sending a message to the in-game secretary. The system responds with help on the requested topic. If no topic is given, the system responds with how to interact with the in-game secretary.
+
+Use Case: Set Checkpoint
+Actor: Player
+Description: Player selects to set a checkpoint by sending a message to the in-game secretary. The system asks for a description of the checkpoint, stores the current game state along with the current time and the checkpoint description, and notifies the user that the checkpoint has been saved.
+
+Use Case: List Checkpoints
+Actor: Player
+Description: Player sends a message to the in-game secretary and asks for a list of checkpoints. The system responds by listing all saved checkpoints, the save time, and the description.
+
+Use Case: Restore checkpoint
+Actor: Player
+Description: Player selects to restore a checkpoint. The system lists saved checkpoints for the player, and the player selects one of them. The system verifies that the player really wants to abandon the current position in the game, andf then restores the player to the selected checkpoint.
+
+Use Case: Enter Scene
+Actor: Player
+Description: Player enters a scene. The system presents a menu of objects and characters that are available in the scene.
+
+Use Case: Interact with Object
+Actor: Player
+Description: Player select an object in a scene. The system presents the possible interactions for that object. Player picks one interaction (and possibly provide interaction-specific options). The system executes the selected interaction and present the result.
+
+Use Case: Interact with Character
+Actor: Player
+Description: Player selects a character to interact with in a scene. The system initiates a chat between the character and the player. The character starts by asking how they may be of service. The player types a question or a request, and the character answers. Player ends conversation.
+
+Use Case: Notify Player
+Actor: Player
+Description: When (some) events occur, the system notifies the player with the help of the in-game secretary. The secretary sends a link to the notification object, and the player inspects the notification as per the "Interact with Object" use case.
+
+Use Case: Inspect Inventory
+Actor: Player
+Description: Player chooses to inspects their current inventory. The inventory is a scene that is available everywhere, so this transitions into the "Enter Scene" use case.
+** DONE Input: Example Detailed Use Cases
+   CLOSED: [2018-11-14 Wed 10:57]
+*** start new game
+Use Case: Start New Game
+Actor: Player
+Description: Player selects to start a new game by sending a message to the in-game secretary. The system verifies that the player really wants to abandon the current game, and then resets the player to a new game.
+
+Main Course of Events:
+
+1. Player sends a message containing the phrase "Start New Game" to the in-game secretary
+2. The in-game secretary responds by warning that the current state will be lost. They ask if the Player would like to save a checkpoint first.
+3. Player responds
+4. System acts according to response.
+5. System reminds the player that they are about to start a new game and lose the current state. They ask if the player is absolutely sure.
+6. Player responds "Yes"
+7. System resets the game to the initial state.
+
+Alternative Flows:
+4a. Player replies "yes": include Set Checkpoint
+4b. Player replies "no": The in-game secretary replies with a poignant silence.
+
+6. Player responds "no":
+7. The in-game secretary commends the player on their choice and the game continues.
+
+*** list checkpoints
+Use Case: List Checkpoints
+Actor: Player
+Description: Player sends a message to the in-game secretary and asks for a list of checkpoints. The system responds by listing all saved checkpoints, the save time, and the description.
+
+Main Course of Events:
+
+1. Player sends a message containing the phrases "[list,see,view,look]" and "checkpoint[s]" to the in-game secretary.
+2. The in-game secretary responds with a list of checkpoints, with timestamps and a brief description for each.
+
+Alternative Flows:
+2. The system can not understand the message: The in-game secretary responds that she does not know how to do what the player asks.
+
+*** restore checkpoint
+Use Case: Restore checkpoint
+Actor: Player
+Description: Player selects to restore a checkpoint. The system lists saved checkpoints for the player, and the player selects one of them. The system verifies that the player really wants to abandon the current position in the game, andf then restores the player to the selected checkpoint.
+Note: many similarities with "Start New Game". Is "Start New Game" a special case of "Restore Checkpoint"?
+
+Main Course of Events:
+1. Player sends a message to the in-game secretary containing the phrase "restore checkpoint".
+2. The in-game secretary responds with a list of checkpoints, with timestamps and a brief description for each.
+3. Player selects one of the checkpoints
+4. The in-game secretary warns the player that the current game state will be lost. They ask if the player would like to save a checkpoint first.
+5. Player responds
+6. System acts according to response.
+7. System reminds the player that they are about to restore a checkpoint and lose the current state. They ask if the player is absolutely sure.
+8. Player responds "Yes"
+9. System resets the game to the initial state.
+
+Alternative Flows:
+6a. Player replies "yes": include Set Checkpoint
+6b. Player replies "no": The in-game secretary replies with a poignant silence.
+
+8. Player responds "no":
+9. The in-game secretary commends the player on their choice and the game continues.
+*** interact with object
+Use Case: Interact with Object
+Actor: Player
+Description: Player select an object in a scene. The system presents the possible interactions for that object. Player picks one interaction (and possibly provide interaction-specific options). The system executes the selected interaction and present the result.
+
+Main course of events:
+1. Player selects an object in the scene
+2. The system presents possible interactions for that object
+3. Player selects one possible interaction
+4. System asks for interaction-specific options
+5. Player provides these options (text)
+6. System executes the interaction and present the result.
+** DONE Input: MVP-Prioritised High-Level Use Cases
+   CLOSED: [2018-11-14 Wed 11:34]
+The order in which to implement the use cases for this system is based on creating a Minimum Viable Product as quickly as possible. I have opted to do this by reasoning about the use cases, and a pair-wise comparison between different use cases where there are any remaining doubts.
+
+One thing worth noting is that the way this game is constructed, writing the software to deliver the game to the user is only one part of developing the game. It may even be the smallest part. Developing the contents that should be delivered to the player is the major component, and this is not at all covered in the software design. Incidentally, this is also what makes it so easy to transform the game into the art-exhibition application.
+
+The game progresses through visiting different scenes. Therefore, Enter Scene is at the core of the application. In the initial version we may not check whether the player is standing in the right location to enter the scene, or whether the scene should be available to the user at all. What we will do, however, is to get objects and characters available in the scene. This exercises many parts of the system such as a minimal user interface for interacting with scenes (which we can re-use for inventories etc.), we get to generate a query to the game contents deliverer to get all the objects and characters that should be in a scene, we get a set of objects and characters that we need to deal with and present to the user. This, in turn sets the scene for the next two use cases Interact with Object and Interact with Character.
+
+Interacting with an object is perhaps of equal importance to interacting with characters, but it is probably easier to set up the scaffolding for allowing different types of interaction with different types of objects. We get to build parts of the user interface that presents options to the user. We build the aforementioned scaffolding. If objects have persistent state, we get to implement some form of persistent storage. When you interact with objects, the game state moves forward, and this needs to be stored persistently as well.
+
+Interacting with characters is, in the same way, something which will require us to build a user interface, a character interaction engine, and persistent storage (so that characters remember what the player has already talked to them about).
+
+Notify Players is another tenet of the gameplay in order to immerse the player into the game whenever they are moving around in Karlskrona, so that comes next. It is not strictly necessary for a MVP, but it is the natural next step. Getting the notification system to work adds a new component into the system.
+
+Inspecting the inventory is a special case of a scene, so only a few database queries are added.
+
+Restore checkpints and Start New Game are more or less the same, so they come together next. This uses the previously introduced character interaction engine, as well as the persistent storage of game state. These are necessary for a complete game, but not for the first version.
+
+The same reasoning applies for Get Help, Set checkpoint, and list checkpoints. They do not add anything new to the system in terms of components or interactions between components. They are necessary for the game experience, but not for a first version.
+
+Thus, we get the following prioritisation of the use cases:
+
+1. Enter Scene
+2. Interact with Object
+3. Interact with Character
+4. Notify Player
+5. Inspect Inventory
+6. Restore Checkpoint
+7. Start New Game
+8. Get Help
+9. Set Checkpoint
+10. List Checkpoints
+** DONE Required: Create Detailed Use Cases
+   CLOSED: [2018-11-14 Wed 10:57]
+Please make detailed use cases for the following use cases. Detailed use cases contain a positive main course of events, and (if applicable) any alternative flows.
+
+- Enter Scene
+- Inspect Inventory
+- Set Checkpoint
+** DONE Required: System Events from Detailed Use Cases
+   CLOSED: [2018-11-14 Wed 11:34]
+Please list the system events generated in the following use cases:
+
+- Interact with Object
+- Restore Checkpoint
+- Start New Game
+
+Kudos if you express these as System Sequence Diagrams.
+** DONE Required: WBS/Work Plan for MVP
+   CLOSED: [2018-11-16 Fri 11:00]
+Break down the top three use cases (Enter Scene, Interact with Object, Interact with Character) into work tasks and create a Work Breakdown Structure. Please note that in order to do this, you may first need to sketch an overall conceptual architecture.
+
+Provide effort estimations for each of your tasks. Use Planning Poker and assign story points (Use the "defaults" 0, 1, 2, 3, 5, 8, 13, 20, 40 and 100). Give the first task 5 story points (If you want to give it more, break it down instead), and use this task as a relative measure for the rest of the tasks.
+
+Assume that you have the following five people available. Plan the work so that they can work full time, taking dependencies between tasks into consideration. They are all capable of performing all the tasks, but they are particularly skilled in certain areas. Their velocity is expressed as story points per week. Please express the plan as a GANTT chart.
+
+| Person  | Particular Skillz      | Velocity | Velocity in Skillz area |
+|---------+------------------------+----------+-------------------------|
+| Augusto | Character Interactions |       40 |                      45 |
+| Benito  | User Inteface          |       40 |                      50 |
+| Chiang  | Integration Testing    |       40 |                      40 |
+| Idi     | Storage                |       30 |                      40 |
+| Eugenio | Back-end support       |       40 |                      45 |
+|---------+------------------------+----------+-------------------------|
+
+* DONE Assignment 1o2: Architecture [4/4]                            :PA1460:
+  CLOSED: [2018-11-16 Fri 11:37]
+** DONE Input: System Description(s)
+   CLOSED: [2018-11-16 Fri 11:02]
+** DONE Input: Domain Model
+   CLOSED: [2018-11-16 Fri 11:02]
+** DONE Required: Discussion of Quality Attributes
+   CLOSED: [2018-11-16 Fri 11:32]
+Below, a list of quality attributes is provided. For each of them, please reason about:
+
+ - Whether it is relevant to focus on the quality attribute in this system, and why.
+ - How important they are and why ("must achieve to a non-trivial degree", "must not actively hinder", "target will most likely be met without extra consideration", "not relevant, can be ignored")
+ - Strategies (e.g. tactics) you may use to address the quality attribute, and their impact on the software architecture.
+
+Performance -- Response Time
+Performance -- Resource Utilisation (including, but not limited to, battery usage)
+
+Maintainability -- Reusability
+Maintainability -- Modifiability
+Maintainability -- Testability
+
+Usability -- Operability
+Usability -- Accessibility
+
+Security -- Confidentiality
+Security -- Integrity
+Security -- Authenticity
+
+** DONE Required: Instantiated Architecture Style for System
+   CLOSED: [2018-11-16 Fri 11:37]
+Based on the domain model and your discussion of quality attributes, what are the major components in this system? Think in terms of that
+
+- you may want to separate e.g. anything dealing with characters from other gameObjects
+- you may want separate components for different types of characterInterfaces (e.g. conversation, text messaging),
+- you may want to place storage-related functionality into a separate component
+- you may want the "gameplay" (plot etc.) in a separate component
+- ... and so on.
+
+
+Pick a suitable architecture style (and motivate your choice by also considering alternative architecture styles) for this system.
+
+Create a package diagram based on your component division and place the domain concepts in the appropriate package. Briefly describe the responsibilities for each of the packages.
+
+(For your convenience, the source code for the domain model is:
+
+@startuml
+title Domain Model
+Game -- "*" Scene
+Checkpoint -- "*" GameElement : stores >
+Checkpoint -- Inventory : stores >
+Checkpoint - Game : stores >
+Character <|-- Secretary : is a type of
+GameElement <|-- GameObject : is a
+GameElement <|-- Character : is a
+Scene - "*" GameElement : contains >
+Scene <|-- Inventory : is a type of
+Inventory -- "*" GameObject : contains >
+GameElement -- Event : generates >
+Event -- Notification : generates >
+Event -- GameElement : manipulates >
+Secretary -- Notification : announces >
+GameObject <|-- HelpObject : is a type of
+GameObject <|-- Notification : is a
+GameObject -- "*" InteractionType : has >
+@enduml
+
+
+Describe how you, in your package diagram, have addressed relevant quality attributes according to the strategies you previously described. Also, describe the major components of your selected architecture style and motivate your allocation of your created packages to different architecture style components.
+* DONE Assignment 2.1: Interaction Diagram + GRASP [5/5] :PA1458:PA1459:PA1460:
+  CLOSED: [2018-11-14 Wed 14:26]
+** DONE Input: Domain Model
+   CLOSED: [2018-11-14 Wed 13:27]
+#+BEGIN_SRC plantuml :file ms-domain-mod.png
+title Domain Model
+Game -- "*" Scene
+Checkpoint -- "*" GameElement : stores >
+Checkpoint -- Inventory : stores >
+Checkpoint - Game : stores >
+Character <|-- Secretary : is a type of
+GameElement <|-- GameObject : is a
+GameElement <|-- Character : is a
+Scene - "*" GameElement : contains >
+Scene <|-- Inventory : is a type of
+Inventory -- "*" GameObject : contains >
+GameElement -- Event : generates >
+Event -- Notification : generates >
+Event -- GameElement : manipulates >
+Secretary -- Notification : announces >
+GameObject <|-- HelpObject : is a type of
+GameObject <|-- Notification : is a
+
+GameObject -- "*" InteractionType : has >
+' More detailed design?
+' Character - CharacterInteractionEngine : has a >
+' InteractionType <|-- Look
+' InteractionType <|-- Open
+' InteractionType <|-- Move
+' InteractionType <|-- TurnOn
+' InteractionType <|-- TurnOff
+' InteractionType <|-- Taste
+' InteractionType <|-- PickUp
+' InteractionType <|-- Drop
+#+END_SRC
+
+#+RESULTS:
+[[file:ms-domain-mod.png]]
+
+** DONE Input: Detailed Use Case  (Interact with Object)
+   CLOSED: [2018-11-14 Wed 13:35]
+*** interact with object
+Use Case: Interact with Object
+Actor: Player
+Description: Player select an object in a scene. The system presents the possible interactions for that object. Player picks one interaction (and possibly provide interaction-specific options). The system executes the selected interaction and present the result.
+
+Main course of events:
+1. Player selects an object in the scene
+2. The system presents possible interactions for that object
+3. Player selects one possible interaction
+4. System asks for interaction-specific options
+5. Player provides these options (text)
+6. System executes the interaction and present the result.
+
+** DONE Input: System Sequence Diagram  (Interact with Object)
+   CLOSED: [2018-11-14 Wed 13:47]
+#+BEGIN_SRC plantuml :file ms-syst-seq-diag.png
+title System Sequence Diagram for Use Case "Interact with Object"
+actor "Player" as p
+participant ":Game" as g
+
+p -> g : selectObject(theGameObject)
+p <-- g : list of interactionTypes available for theGameObject
+
+p -> g : selectInteraction(theInteractionType)
+
+alt Interaction Options available
+p <-- g : requests interaction specific options
+
+p -> g : setInteractionOptions(theOptions)
+p <-- g : confirms options
+end
+
+p -> g : startInteraction()
+p <-- g : results of interaction
+#+END_SRC
+
+#+RESULTS:
+[[file:ms-syst-seq-diag.png]]
+
+** DONE Required: Discussion of GRASP Patterns  (Interact with Object)
+   CLOSED: [2018-11-14 Wed 14:26]
+From the system sequence diagram, we get a number of system events (method calls from "Player" to ":Game"). In order for the system to actually be able to deliver what is expected as a response to each of these system events, a number of domain concepts (from the domain model) need to interact. Moreover, you need to create several other classes to help you find, deliver, and interact with these domain concepts.
+
+For each of the system events, we can get an early idea of what is required and how to set up the interaction if we consider the GRASP patterns.
+
+---
+selectObject(theGameObject)
+
+This event starts this use case, and finds the game object to interact with.
+
+- Who is the information expert on what game objects are available?
+- Who is the controller for this use case?
+- Who is the information expert on the InteractionTypes that are available for a particular GameObject?
+
+---
+selectInteraction(theInteractionType)
+
+During this event, the system needs to find out what InteractionTypes that are available for the selected GameObject.
+
+- Who should be the creator of an :InteractionType object?
+- Who is the information expert on the interaction specific options that may be available for this particular InteractionType?
+- Who is responsible for formatting these options to something which can be displayed in the user interface?
+
+---
+setInteractionOptions(theOptions)
+
+This event means that the system needs to send the options given by the player to the previously selected interactionType.
+
+- Should ":Game" set the options directly on the :InteractionType object, or should it pass it along via a method on the :GameObject object?
+  Discuss your answer in terms of low coupling and high cohesion.
+
+---
+startInteraction()
+
+With this event we start the interaction with the given options. As an end result we may have created new events, and we may have an updated persistent state for the :GameObject.
+
+- Who is the controller for the actual interaction to be executed with the :GameObject (Beware: it's not the most obvious one, so think twice before answering)?
+- By which GRASP pattern may we get a class responsible for handling persistent storage?
+- Who is responsible for generating new events? Reason about how or if you may get lower coupling by assigning this responsibility to different classes.
+- Who should be the controller for taking care of new events and enqueuing them for later dispatch?
+** DONE Required: Interaction Diagrams  (Interact with Object)
+   CLOSED: [2018-11-14 Wed 14:26]
+With the answers to the questions above, you are now in a position to generate interaction diagrams for the system events. Create one interaction diagram each for:
+
+- selectObject(theGameObject)
+- selectInteraction(theInteractionType)
+- setInteractionOptions(theOptions)
+- startInteraction()
+
+Once you are done, inspect your interaction diagrams once more and try to create as low coupling and as high cohesion as possible (without violating your other design decisions (GRASP-based or otherwise)). Revise your diagrams accordingly before submitting.
+
+Please annotate each interaction diagram with a brief description of how you have used the GRASP patterns to assign responsibilities to the different classes.
+* DONE Assignment 2.2: Class and Package Diagram [3/3] :PA1458:PA1459:PA1460:
+  CLOSED: [2018-11-15 Thu 13:48]
+** DONE Input: Domain Model
+   CLOSED: [2018-11-14 Wed 14:27]
+** DONE Input: Interaction Diagrams (Interact with Character)
+   CLOSED: [2018-11-15 Thu 12:54]
+#+BEGIN_SRC plantuml :file ms-interaction-diag-initateConversation.png
+title Interaction Diagram for Use Case "Interact with Character", event initiateConversation(theCharacter)
+
+participant ":Game" as gm
+[-> gm : initiateConversation(theCharacter)
+activate gm
+gm -> "currentlyActive:Scene" : isAvailable(theCharacter)
+activate "currentlyActive:Scene"
+deactivate "currentlyActive:Scene"
+
+gm -> ":PhoneBook" : getContactMethod(theCharacter)
+note right: null if character is not in phonebook
+activate ":PhoneBook"
+deactivate ":PhoneBook"
+
+create ":CharacterInterface" as ci
+gm -> ci : create(theCharacter)
+activate ci
+ci -> ":CharacterRepository" : currentlyActive = getCharacter(theCharacter)
+activate ":CharacterRepository"
+deactivate ":CharacterRepository"
+deactivate ci
+
+gm -> ci : activate()
+activate ci
+
+participant "currentlyActive:Character" as ac
+ci -> ac : response = getInitialGreeting()
+activate ac
+deactivate ac
+deactivate ci
+
+[<-- gm : characterInterface
+deactivate gm
+#+END_SRC
+
+#+RESULTS:
+[[file:ms-interaction-diag-initateConversation.png]]
+
+#+BEGIN_SRC plantuml :file ms-interaction-diag-sendQuery.png
+title Interaction Diagram for Use Case "Interact with Character", event sendQuery(theQuery)
+
+[-> ":CharacterInterface" : sendQuery(theQuery)
+activate ":CharacterInterface"
+
+":CharacterInterface" -> ":InputSanitiser" : safeQuery = sanitiseInput(theQuery)
+activate ":InputSanitiser"
+deactivate ":InputSanitiser"
+
+participant "currentlyActive:Character" as ac
+":CharacterInterface" -> ac : response = query(safeQuery)
+activate ac
+create ":InteractionEngine"
+ac --> ":InteractionEngine" : create()
+ac -> ":InteractionEngine" : parsedQuery = parseQuery(theQuery)
+activate ":InteractionEngine"
+deactivate ":InteractionEngine"
+
+ac -> ":PlotEngine" : getPlotState()
+activate ":PlotEngine"
+deactivate ":PlotEngine"
+
+ac -> ":InteractionEngine" : formatResponse(theResponse, nextConversationOptions)
+activate ":InteractionEngine"
+deactivate ":InteractionEngine"
+
+deactivate ac
+[<--":CharacterInterface" : response
+deactivate ":CharacterInterface"
+#+END_SRC
+
+#+RESULTS:
+[[file:ms-interaction-diag-sendQuery.png]]
+** DONE Required: Class and Package Diagram  (Interact with Character)
+   CLOSED: [2018-11-15 Thu 12:53]
+The use case "Interact with Character" has the following system events:
+
+initiateConversation(theCharacter)
+
+This event instructs the :Game that the player wishes to start a conversation with a specific character. The game checks whether the character is accessible (e.g. player has the phone number to the character, an address for text messages, or is at the same scene as the character, and then connects the player with the character using the appropriate CharacterInterface.
+  
+sendQuery(theQuery)
+
+In this event the player sends a text query to the character that is currently active (as per the most recent initiateConversation event). The character parses the query, checks where in the game plot the player is, formats a response along with conversational avenues that the player can pursuit in their next sendQuery() call.
+
+acceptGameObject()
+
+The response may include a GameObject that the character prepares (e.g. a pathology report, a note with the character's phone number, etc.) and offers to tge player. In this event, the player accepts to take the object and it gets put into their inventory.
+
+endConversation()
+
+This terminates the current conversation. When relevant, the character records into persistent storage that they have had the conversation (e.g. about a particular clue) with the player.
+
+Tasks:
+ - Based on the domain model and the interaction diagrams presented What are the major components in this system? Think in terms of that
+   - you may want to separate e.g. anything dealing with characters from other gameObjects
+   - you may want separate components for different types of characterInterfaces (e.g. conversation, text messaging),
+   - you may want to place storage-related functionality into a separate component
+   - you may want the "gameplay" (plot etc.) in a separate component
+   - ... and so on.
+
+- Create a package diagram based on your component division and place the domain concepts in the appropriate package. Briefly describe the responsibilities for each of the packages.
+
+(For your convenience, the source code for the domain model is:
+
+@startuml
+title Domain Model
+Game -- "*" Scene
+Checkpoint -- "*" GameElement : stores >
+Checkpoint -- Inventory : stores >
+Checkpoint - Game : stores >
+Character <|-- Secretary : is a type of
+GameElement <|-- GameObject : is a
+GameElement <|-- Character : is a
+Scene - "*" GameElement : contains >
+Scene <|-- Inventory : is a type of
+Inventory -- "*" GameObject : contains >
+GameElement -- Event : generates >
+Event -- Notification : generates >
+Event -- GameElement : manipulates >
+Secretary -- Notification : announces >
+GameObject <|-- HelpObject : is a type of
+GameObject <|-- Notification : is a
+GameObject -- "*" InteractionType : has >
+@enduml
+
+
+- Create a NEW package diagram, where you ONLY include the classes, methods, and relations that you are able to extract from the provided sequence diagrams for initiateConversation() and sendQuery().
+* DONE Assignment 2.3: Design Patterns [5/5]           :PA1458:PA1459:PA1460:
+  CLOSED: [2018-11-15 Thu 13:48]
+** DONE Input: Domain Model
+   CLOSED: [2018-11-15 Thu 12:54]
+** DONE Input: (Detailed) Use Case (Interact with Object)
+   CLOSED: [2018-11-15 Thu 12:55]
+*** interact with object
+Use Case: Interact with Object
+Actor: Player
+Description: Player select an object in a scene. The system presents the possible interactions for that object. Player picks one interaction (and possibly provide interaction-specific options). The system executes the selected interaction and present the result.
+
+Main course of events:
+1. Player selects an object in the scene or in their inventory
+2. The system presents possible interactions for that object
+3. Player selects one possible interaction
+4. System asks for interaction-specific options
+5. Player provides these options (text)
+6. System executes the interaction and present the result.
+
+** DONE Input: Class Diagram (Interact with Object)
+   CLOSED: [2018-11-15 Thu 13:25]
+#+BEGIN_SRC plantuml :file ms-class-interact-with-object.png
+Game : +selectGameObject(String name)
+
+Game : -GameObjectRepository myGameObjects
+Game : -Scene currentScene
+Game : -Scene playerInventory
+
+Game -- Scene
+
+Scene : +listAvailableElements()
+Scene : +boolean isAvailable(String gameElementName)
+Scene : +boolean isGameObject(String gameElementName)
+
+GameElement <|-- Scene
+Scene - "*" GameObject
+
+class GameObjectRepository
+note top of GameObjectRepository: Central repository makes it easier\nto find objects to get and send events\ninstead of looking in every scene
+Game -- GameObjectRepository
+GameObjectRepository : +GameObject getGameObject(String gameElementName)
+GameObjectRepository o-- "*" GameObject
+
+GameElement <|-- GameObject
+Game -- GameObject
+GameObject : +listInteractionTypes()
+
+Game : +selectInteraction(GameObject theGameObject, String theInteraction)
+GameObject : +startInteraction(String theInteractionType)
+GameObject : +listCurrentInterationOptions()
+Game : +setInteractionOptions(String theOptions)
+GameObject : +setCurrentInteractionOptions(String theOptions)
+Game : +startInteraction()
+Game : +abortInteraction()
+GameObject : +startCurrentInteraction()
+GameObject : +abortCurrentInteraction()
+
+EventManager - GameElement
+EventManager : +createEvent(EventCondition, Event)
+EventManager : +listAffectedEvents(EventCondition)
+EventManager : +triggerEvents(EventCondition)
+EventManager : +clearEvent(EventCondition)
+EventManager : +clearEvent(Event)
+#+END_SRC
+
+#+RESULTS:
+[[file:ms-class-interact-with-object.png]]
+** DONE Required: Refactored Class Diagram According to some Design Patterns
+   CLOSED: [2018-11-15 Thu 13:47]
+Please use the Strategy Pattern, where GameObject is the <<context>> to introduce the different InteractionTypes. Available InteractionTypes are: Look, Open, Move, TurnOn, TurnOff, Taste, PickUp, Drop.
+
+a GameObject can be in different states, where different interactions are possible. Please use the State Pattern to solve this.
+
+There should only be one EventManager available in the entire system. Please modify the class diagram with an appropriate design pattern to address this. Use <<Stereotypes>> as well as adding the appropriate methods in the right classes.
+
+If we continue like this, the class Game will become "obese" with methods for dealing with every situation in the game. In other words, the Game class will have low cohesion. One way to deal with this is to refactor Game so that you have Interfaces for each type of GameElement (Scene, GameObject, Character (which is not present in this use case)). Please refactor the Game class (and the rest of the class diagram) accordingly. 
+
+In fact, this is an example of a particular design pattern. Please annotate the class diagram with <<Stereotypes>> to identify and describe this design pattern and its constituting classes.
+
+** DONE Required: Refactored Interaction Diagrams According to some Design Pattern
+   CLOSED: [2018-11-15 Thu 13:47]
+Doing things in a different order than commonly prescribed by the book, create interaction diagrams for the system events in this use case, based on your updated class diagram:
+
+- selectGameObject(theGameObject)
+- selectInteraction(theInteractionType)
+- setInteractionOptions(theOptions)
+- startInteraction()
+
+Most likely, these interaction diagrams differ from the diagrams you constructed in a previous assignment. Please study these differences and try to understand their causes with respect to how responsibilities have been (re-)assigned, and how design patterns increase or decrease e.g. coupling and cohesion. Briefly describe the most important differences that you identify.
+* DONE Assignment 3o1: Implementation and Testing [3/3]              :PA1458:
+  CLOSED: [2018-11-16 Fri 10:24]
+** DONE Input: Detailed Use Cases + System Sequence Diagrams (Interact with Object, Interact with Character)
+   CLOSED: [2018-11-16 Fri 10:01]
+*** DONE interact with object
+    CLOSED: [2018-11-16 Fri 09:51]
+*** DONE Interact with character
+    CLOSED: [2018-11-16 Fri 10:00]
+Use Case: Interact with Character
+Actor: Player
+Description: Player selects a character to interact with in a scene. The system initiates a chat between the character and the player. The character starts by asking how they may be of service. The player types a question or a request, and the character answers. Player ends conversation.
+
+Main course of Events
+1. Player selets a character to interact with.
+2. The system initiates a conversation; the character greets the player.
+3. Player types a question and sends it.
+4. Character responds.
+5. Player types another question.
+6. Character responds and offers a GameObject.
+7. Player accepts the GameObject.
+8. Player ends conversation.
+
+#+BEGIN_SRC plantuml :file ms-interaction-diag-interact-with-character.png
+actor Player as p
+participant ":Game" as g
+participant ":CharacterInterface" as ci
+
+p -> g  : initiateConversation(theCharacter)
+p <-- ci : Character:How may I be of service?
+loop while more questions
+p -> ci  : sendQuery(theQuery)
+p <-- ci : response to query
+end loop
+p -> ci : sendQuery(theQuery)
+p <-- ci : offers game object
+p -> g  : acceptGameObject(theGameObject)
+p -> ci : endConversation()
+#+END_SRC
+
+#+RESULTS:
+[[file:ms-interaction-diag-interact-with-character.png]]
+
+** DONE Required: Unit Tests for Use Cases  (Interact with Object)
+   CLOSED: [2018-11-16 Fri 09:43]
+Create automated unit tests for the use case "Interact with Object" using your favourite unit test framework for your programming language of choice.
+
+For the sake of testing, create a hidden game object in every scene that responds with a simple text no matter what you do to it (e.g., "You taste the test object", "you open the test object", "you turn on the test object"). Please note that "turn on" and "turn off" implies a saved state, so when you look at the object, you should also get information about whether it is on or off.
+
+Testing this use case should be done both from a regular scene as well as from the inventory. For the sake of testing, create a hidden test scene that is always available.
+
+** DONE Required: Implementation
+   CLOSED: [2018-11-16 Fri 10:24]
+Implement an MVP where you have the following scenes:
+
+- start Scene
+- hidden test Scene
+- Inventory
+
+and a hidden test object in each of these scenes.
+
+Implement the start of the in-game secretary, so that they can start the game for you by sending a message containing your mission and how to get to the start scene. The in-game secretary shall at least be able to answer with a dummy response to any query you direct at them.
+
+Connect your implementation with the unit tests you built for the Interact with Object use case.
+
+Your implementation is expected to mostly follow your previous design (class diagrams, interaction diagrams). Some re-naming of methods and changes to the parameter lists is ok, but any major deviations MUST be documented and explained. When asked, you are expected to be able to show the implementation of a method/class from the interaction diagrams and class diagrams. Vice versa, when asked, you are expected to be able to show in which interaction diagrams a particular class in your implementation is used.
+* DONE Assignment 3o2: Testing [7/7]                                 :PA1460:
+  CLOSED: [2018-11-16 Fri 09:42]
+** DONE Input: System Description
+   CLOSED: [2018-11-15 Thu 14:09]
+** DONE Input: High Level Use Cases
+   CLOSED: [2018-11-15 Thu 14:09]
+** DONE Input: MVP-Prioritised High-Level Use Cases
+   CLOSED: [2018-11-15 Thu 14:09]
+** DONE Input: Detailed Use Case (Interact with Object)
+   CLOSED: [2018-11-15 Thu 14:21]
+** DONE Input: System Sequence Diagram for Detailed Use Case (Interact with Object)
+   CLOSED: [2018-11-15 Thu 14:21]
+** DONE Required: Test Plan
+   CLOSED: [2018-11-15 Thu 14:20]
+The plan is to implement this system two use cases at a time, i.e.
+
+Release 1: Enter Scene, Interact With Object
+Release 2: Interact with Character, Notify Player
+Release 3: Inspect Inventory, Restore Checkpoint
+Release 4: Start New Game, Get Help
+Release 5: Set Checkpoint, List Checkpoints
+
+Create a Test Plan for the development of this system. Consider all four quadrants of testing and when during development it will make sense to focus on tests from the different quadrants. If you decide not to use test types from a particular quadrant, then motivate this.
+
+Your report shall at least include:
+
+Test Strategy
+   - Describe your test strategy:
+     - What types of tests will you run?
+     - When will you run them?
+     - According to what rules will you run and re-run your tests?
+     - Which parts of your tests will be automated, and which parts will be manual?
+     - What tools will you use for automated testing?
+     - How will you ensure that as much as possible of your system is tested?
+       - How will you calculate your test coverage?
+System Tests
+   - Describe your system tests:
+     - What are your test items?
+     - Which features do you plan on testing?
+       - How?
+       - When?
+       - Rules for testing and re-testing the feature?
+     - What is the test environment for each feature test (entry and exit criteria)?
+     - What are pass/fail criteria for each feature test?
+     - What are your test deliverables for each feature test?
+** DONE Required: Unit Tests for Use Case  (Interact with Object)
+   CLOSED: [2018-11-16 Fri 09:42]
+Create automated unit tests for the use case "Interact with Object" using your favourite unit test framework for your programming language of choice.
+
+For the sake of testing, create a hidden game object in every scene that responds with a simple text no matter what you do to it (e.g., "You taste the test object", "you open the test object", "you turn on the test object"). Please note that "turn on" and "turn off" implies a saved state, so when you look at the object, you should also get information about whether it is on or off.
+
+Testing this use case should be done both from a regular scene as well as from the inventory. For the sake of testing, create a hidden test scene that is always available.
+* TODO [#A] Rubrics
+* TODO [#C] Control questions for each given diagram
