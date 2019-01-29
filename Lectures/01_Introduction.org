@@ -1,4 +1,5 @@
-#+Title: Software Design\\\\Introduction
+#+Title: Software Design
+#+Subtitle: Introduction
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+EPRESENT_FRAME_LEVEL: 1
@@ -9,7 +10,7 @@
 #+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
 #+BEAMER_THEME: BTH_msv
 
-* Outline 							   :noexport:
+* Outline                                                          :noexport:
       - [X] Course Intro
 	- About MSV
 	- Course Structure
@@ -40,67 +41,64 @@
 - https://sites.google.com/site/mikaelsvahnberg/
 - Interests:
   - Software Architectures, Software Architecture Evaluation, Software Architecture Evolution, Requirements Engineering, Large Scale Requirements Engineering, Market-Driven Requirements Engineering, Software Product Lines, Software Reuse, Empirical Research Methodology, Software Engineering Decision Support, Static Code Analysis, Software Architecture Reconstruction
-* Discuss: Course Charter: PA1415				 :Discussion:
-Efter genomförd kurs skall studenten:
-- på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation
-- i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation
-- i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram
-- i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design
-- på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation
-- skapa och analysera objektorienterade artefakter uttryckta i UML
-- kunna motivera och använda designmönster i utvecklingen av mjukvarusystem   
-* Discuss: Course Charter: PA1435				 :Discussion:
-:PROPERTIES: 
-:BEAMER_OPT: shrink=15
-:END:
+# * Discuss: Course Charter: PA1458                                :Discussion:
+# Efter genomförd kurs skall studenten:
+# - på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation
+# - i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation
+# - i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram
+# - i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design
+# - på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation
+# - skapa och analysera objektorienterade artefakter uttryckta i UML
+# - kunna motivera och använda designmönster i utvecklingen av mjukvarusystem   
+# * Discuss: Course Charter: PA1459                                :Discussion:
+# :PROPERTIES: 
+# :BEAMER_OPT: shrink=15
+# :END:
 
-*Kunskap och förståelse* Efter genomförd kurs ska studenten:
-- kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
-- kunna visa förståelse för UML som modelleringsspråk.
-- kunna visa kunskap om grundläggande designprinciper.
-- kunna visa kunskap om grundläggande designmönster.
+# *Kunskap och förståelse* Efter genomförd kurs ska studenten:
+# - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
+# - kunna visa förståelse för UML som modelleringsspråk.
+# - kunna visa kunskap om grundläggande designprinciper.
+# - kunna visa kunskap om grundläggande designmönster.
 
-*Färdigheter och förmåga* Efter genomförd kurs ska studenten:
-- kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
-- kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.
-- kunna korrekt transformera en objektorienterad design till källkod.
-- kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.
+# *Färdigheter och förmåga* Efter genomförd kurs ska studenten:
+# - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
+# - kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.
+# - kunna korrekt transformera en objektorienterad design till källkod.
+# - kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.
 
-*Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:
-- kunna analysera källkod för eventuella förbättringar.
-- kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
-* Discuss: Course Charter: PA1443				 :Discussion:
-:PROPERTIES: 
-:BEAMER_OPT: shrink=15
-:END:
+# *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:
+# - kunna analysera källkod för eventuella förbättringar.
+# - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+# * Discuss: Course Charter: PA1460                                :Discussion:
+# :PROPERTIES: 
+# :BEAMER_OPT: shrink=15
+# :END:
 
-*Kunskap och förståelse* Efter genomförd kurs ska studenten:
-- kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
-- kunna visa kunskap om grundläggande designprinciper.
-- kunna visa kunskap om grundläggande designmönster.
-- kunna visa kunskap om grundläggande mjukvaruarkitekturstilar
+# *Kunskap och förståelse* Efter genomförd kurs ska studenten:
+# - kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.
+# - kunna visa kunskap om grundläggande designprinciper.
+# - kunna visa kunskap om grundläggande designmönster.
+# - kunna visa kunskap om grundläggande mjukvaruarkitekturstilar
 
-*Färdigheter och förmåga* Efter genomförd kurs ska studenten:
-- kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
-- kunna tillämpa grundläggande designmönster i en objektorienterad design.
-- kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper
-- kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem
-- kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha
-- kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system
+# *Färdigheter och förmåga* Efter genomförd kurs ska studenten:
+# - kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.
+# - kunna tillämpa grundläggande designmönster i en objektorienterad design.
+# - kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper
+# - kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem
+# - kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha
+# - kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system
 
-*Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:
-- kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+# *Värderingsförmåga och förhållningssätt* Efter genomförd kurs ska studenten:
+# - kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
 * Course Structure
-  - https://mickesv.github.io/OODesign/
-
-  - Sprints
-  - Lectures
-    - Video Lectures
-    - Classroom Lectures
-  - Seminars
-  - Assignments (Release Sprints)
-
-  See [[https://mickesv.github.io/OODesign/Sprint0-course-intro.html][Sprint 0: Course Introduction]] homepage on It's for deadlines etc.	
+  - Modules
+    - Readings
+    - Lectures
+      - Video Lectures
+      - Classroom Lectures
+    - Things to do
+  - Assignments
 * Literature
 :PROPERTIES: 
 :BEAMER_OPT: shrink=15
@@ -118,6 +116,18 @@ Efter genomförd kurs skall studenten:
 #+LATEX: }
 ** Sidenote							   :noexport:
    The Gamma et al. book is often referred to as the "Gang of Four-book". This is, in fact, a reference to the Chinese cultural revolution (https://en.wikipedia.org/wiki/Gang_of_Four), and refers to four people who were later charged with treason. When talking to industry practitioners, the GoF-book is often held in the same regard. Stockholm-syndromed as I am into academia, I find this a bit unfair, but the book does become a problem when you use it indiscriminately in an attempt to design pattern /everything/.
+* Assignments
+- Submit your work in groups of 3-5 students.
+- Deadlines on Canvas
+- One special case: /Discussion og GRASP Patterns/
+  - Has no points, just a submission
+  - The intention is to make you /think/
+  - The quality of your answers will become visible in the next assignment (/Interaction Diagrams/)
+
+Resubmissions:
+- Within two weeks after course ends.
+- August 2019
+- Next Year
 * Tools
   Any UML Tool will work, except pen and paper.
 
@@ -128,7 +138,7 @@ Efter genomförd kurs skall studenten:
   - https://marketplace.eclipse.org/content/uml-designer
   - http://plantuml.com/
   - ...
-* Discuss: Why Bother About Modelling				 :Discussion:
+* Discuss: Why Bother About Modelling                            :Discussion:
   T. Gorschek, E. Tempero, L. Angelis, /On the use of software design models in software development practice: An empirical investigation/, in Journal of Systems and Software 95(2014):176--193.
 
   - TL;DR: Nearly 4000 industry practitioners were asked "Do you model?". Answers ranged from "no" to "hell no!".
@@ -213,7 +223,7 @@ Process:
   - There is nothing that /requires/ you to use design patterns; they are a convenience.
   - Design patterns focus primarily on structure (class view), and interaction (sequence diagrams).
     - Thus, we will come back to them later in the course.
-* Excercise							    :Example:
+* Excercise                                                         :Example:
 ** Discussion Forum
    Design a Conceptual Model of a Discussion forum with categories, topics, posts, users, user profiles, and private messages.
    The system consists of a server park (including the database), a web client, and an android client.
