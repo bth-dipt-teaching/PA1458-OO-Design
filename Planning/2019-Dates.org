@@ -32,9 +32,9 @@ Lectures
  |------+-----------------------+-----------------------------------------+------------+------+--------+--------+--------|
  | SUM  |                       |                                         |            |      | 15     | 17     | 17     |
 
-* Finalised lectures PA1459 PA1460
-1. [X] Introduction <2019-01-21 Mon>
-2. [X] Use Cases <2019-01-22 Tue>
+* PA1459 PA1460
+1. [ ] Introduction <2019-01-21 Mon>
+2. [ ] Use Cases <2019-01-22 Tue>
 3. [ ] Quality Attributes <2019-01-25 Fri>
 4. [ ] Architectures <2019-01-28 Mon>
 5. [ ] Documenting Architectures <2019-02-01 Fri>
@@ -48,3 +48,23 @@ Lectures
 13. [ ] DELETE <2019-02-22 Fri>
 14. [ ] Workable Example <2019-03-04 Mon>
 15. [ ] Q&A <2019-03-11 Mon>
+* PA1458
+| Date             |    | Sketch                           | Module | Lecture |
+|------------------+----+----------------------------------+--------+---------|
+| <2019-04-02 Tue> |  0 | Introduktion                     |        |         |
+| <2019-04-05 Fri> |  1 | Requirements Engineering         |        |         |
+| <2019-04-08 Mon> |  2 | Use Cases                        |        |         |
+| <2019-04-09 Tue> |  3 | Development Methodologies        |        |         |
+| <2019-04-12 Fri> |  4 | Testing                          |        |         |
+| <2019-04-15 Mon> |  5 | Structure                        |        |         |
+| <2019-04-16 Tue> |  6 | Behaviour                        |        |         |
+| <2019-04-23 Tue> |  7 | Design Patterns                  |        |         |
+| <2019-04-26 Fri> |  8 | Design to Code                   |        |         |
+| <2019-04-29 Mon> |  9 | QnA / Workable Example           |        |         |
+| <2019-04-30 Tue> | 10 | Working Example/Patterns         |        |         |
+| <2019-05-03 Fri> | 11 | Working Example/Testing          |        |         |
+| <2019-05-20 Mon> | 12 | Working Example/RE               |        |         |
+| <2019-05-21 Tue> | 13 | Working Example/Project Planning |        |         |
+| <2019-05-24 Fri> | 14 | Working Example/Patterns         |        |         |
+| <2019-05-27 Mon> | 15 | QnA                              |        |         |
+| <2019-05-28 Tue> | 16 | QnA                              |        |         |
