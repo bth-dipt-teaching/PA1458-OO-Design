@@ -1,0 +1,189 @@
+\documentclass[10pt]{article}
+\usepackage{multicol}
+\usepackage[margin=2cm,a4paper]{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+%\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{epstopdf}
+\DeclareGraphicsRule{.tif}{png}{.png}{`convert #1 `dirname #1`/`basename #1 .tif`.png}
+\usepackage[utf8]{inputenc}
+\usepackage[swedish]{babel}
+
+
+\title{}
+\author{Mikael Svahnberg\\
+Blekinge Institute of Technology\\
+SE-371 79 Karlskrona SWEDEN\\
+Mikael.Svahnberg@bth.se}
+%\date{}                                           % Activate to display a given date or no date
+
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\newenvironment{goal}[1]
+{\subsubsection*{#1}
+Efter genomförd kurs skall studenten:
+\begin{itemize}
+}
+{\end{itemize}}
+
+
+\begin{document}
+% \maketitle
+\begin{minipage}[t]{\textwidth}
+  \centering
+  \begin{tabular}{C{\textwidth}}
+    {\huge KURSBESKRIVNING}\\
+    \hline
+    {\small}\\
+    {\large Objektorienterad Mjukvarudesign}\\
+    {\large Object Oriented Software Design}\\
+    {\large Kurs på forskarnivå}\\
+    {\large Motsvarar 5 högskolepoäng}\\
+    {\small}\\
+    \hline
+  \end{tabular}
+\end{minipage}
+
+\begin{multicols}{2}
+\section{Syfte}
+Arkitekturen och designen av ett mjukvarusystem påverkar i hög grad
+kvaliteten på systemet och kostnaden för utvecklingen. Utgående från
+grundläggande objektorienterade begrepp och designprinciper analyseras
+och modelleras ett systems struktur och beteende med hjälp av
+modelleringsspråket UML (Unified Modelling Language) i en strukturerad
+arbetsmetodik, Unified Process.
+
+Arbetsmetodiken utgår från en beskrivning av kundkrav och bygger en
+spårbar kedja via olika UML-modeller hela vägen fram till
+implementation och testning. Den strukturerade arbetsmetodiken och
+modelleringsspråket UML ger ett stöd till designarbetet, men för att
+skapa en hållbar programvarudesign krävs också en förståelse för
+grundläggande designprinciper och designmönster.
+
+Designmönster är generella lösningsförslag på vanligt förekommande
+problem, och som mjukvaruutvecklare förväntas man känna till och kunna
+anpassa dessa generella lösningar till de konkreta utmaningar man
+försöker lösa. Grundläggande designprinciper beskriver hur man
+fördelar olika typer av ansvar mellan klasser för att få löst kopplad
+och lättunderhållen programvarukod.
+\section{Innehåll}
+Kursen omfattar följande:
+
+\begin{itemize}
+\item Introduktion till Systemutvecklingsprocessen
+\item Introduktion till Kravhantering
+\item Tids- och storleksskattningar
+\item Planering av arbete
+\item Grundläggande begrepp inom objektorienterad modellering
+\item Introduktion till modelleringsspråket UML
+\item Introduktion till arbetsmetodiken Unified Process
+\item Grundläggande designprinciper, t.ex. låg koppling, hög sammanhållning, inkapsling, och polymorfism
+\item Introduktion till, och användning av Designmönster
+\item Testning, i synnerhet ur mjukvarudesignprocess-perspektivet
+\item Introduktion till Mjukvaruarkitekturer
+\item Introduktion till Mjukvaruarkitekturstilar
+\end{itemize}
+
+\section{Mål}
+\begin{goal}{Kunskap och Förståelse}
+\item kunna visa kunskap om och förståelse för en systematisk arbetsmetodik
+\item kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling
+\item kunna visa förståelse för UML som modelleringsspråk
+\item kunna visa kunskap om grundläggande designprinciper
+\item kunna visa kunskap om grundläggande designmönster
+\item kunna visa kunskap om grundläggande mjukvaruarkitekturstilar
+\item kunna visa förståelse för hur designarbete skapar förutsättningar för testning av mjukvarusystem.
+\end{goal}
+
+\begin{goal}{Färdighet och Förmåga}
+\item på en grundläggande nivå kunna ta fram och bedöma krav på en programvara
+\item på en grundläggande nivå kunna planera och bedöma planer för utvecklingsarbete
+\item kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept
+\item kunna analysera strukturen och beteendet hos ett system i termer av objektorienterade koncept
+\item kunna korrekt använda och läsa UML för att uttrycka struktur och beteende hos ett system
+\item kunna tillämpa grundläggande designprinciper för en objektorienterad design
+\item kunna tillämpa grundläggande designmönster i en objektorienterad design.
+\item kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem
+\item kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha
+\item kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system.
+\end{goal}
+
+\begin{goal}{Värderingsförmåga och Förhållningssätt}
+\item kunna analysera källkod för eventuella förbättringar
+\item kunna analysera och kritiskt diskutera en design för eventuella förbättringar.
+\end{goal}
+
+\section{Lärande och Undervisning}
+Undervisningen består av ingående muntliga och skriftliga diskussioner. Kursen ges på engelska.
+
+\section{Bedömning och Examination}
+Examinationen består av aktivt deltagande i diskussioner samt av ingående bedömningar av olika, av studenter producerade, projekt-, design-, arkitektur- och testrapporter.
+
+Bedömning i kursen är betyget godkänd/underkänd.
+
+\section{Kursvärdering}
+Kursansvarig ansvarar för att forskarstudenten har möjlighet att lämna synpunkter på kursen.
+
+\section{Kurslitteratur och övriga lärresurser}
+huvudbok:
+
+\begin{itemize}
+\item C. Larman, \emph{Applying UML and Patterns}, Prentice Hall, 3rd Edition.
+\end{itemize}
+  
+\noindent referenslitteratur:
+
+\begin{itemize}
+\item Gamma, Helm, Johnson, Vlissides, \emph{Design Patterns, Elements of Reusable Object-Oriented Software}, Addison-Wesley Professional.
+\item L. Bass, R. Kazman, P. Clements, \emph{Software Architecture in Practice}, Addison-Wesley, 2012.
+\item R. Nystrom, \emph{Game Programming Patterns}, Genever Benning, 2014.
+\end{itemize}
+
+\section{Kursansvarig}
+\makeatletter
+\@author
+\makeatother
+
+\noindent $\blacksquare$
+\end{multicols}
+\end{document}
+
+
+% 1. Syfte
+% Syftet är att forskarstudenten skall tillägna sig fördjupade kunskaper och färdigheter i vetenskapsteori.
+
+% 2. Innehåll
+% −	Introduktion till vetenskapsteori
+% −	Orientering i ämnets frågeställningar
+% −	Diskussion av centrala teman i ämnet
+
+% 3. Mål 
+% Kunskap och förståelse
+% −	fördjupad kunskap i vetenskapsteori
+
+% Färdighet och förmåga
+% −	förmåga att självständigt reflektera över och kritiskt diskutera vetenskapsteoretiska problem
+
+% 4. Lärande och undervisning 
+% Undervisningen sker i form av föreläsningar och seminariediskussioner. Kursen ges på engelska.  
+
+% 5. Bedömning och examination
+% Examination består av aktivt deltagande på föreläsningar och seminarier samt inlämnande och presentation av en skriftlig uppgift.
+% Bedömning i kursen är betyget godkänd/underkänd. 
+
+% 6. Kursvärdering 
+% Kursansvarig ansvarar för att forskarstudenten har möjlighet att lämna synpunkter på kursen.
+
+% 7. Kurslitteratur och övriga lärresurser 
+% −	Smith, A. (2016) On the Philosophy of Science – a comprehensive guide to the history and future of Philosophy of Science. Oxford University Press
+% −	Kurskompendium och artiklar
+
+% 8. Kursansvarig
+% Thomas Hobbes, Instituionen för vetenskapsteori, filosofi och konstruktivism.
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
