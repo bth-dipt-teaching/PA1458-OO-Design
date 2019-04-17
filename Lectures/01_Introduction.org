@@ -119,15 +119,14 @@
 * Assignments
 - Submit your work in groups of 3-5 students.
 - Deadlines on Canvas
-- One special case: /Discussion og GRASP Patterns/
+- One special case: /Discussion of GRASP Patterns/
   - Has no points, just a submission
   - The intention is to make you /think/
   - The quality of your answers will become visible in the next assignment (/Interaction Diagrams/)
 
 Resubmissions:
 - Within two weeks after course ends.
-- August 2019
-- Next Year
+- Same dates as the re-exams
 * Tools
   Any UML Tool will work, except pen and paper.
 
