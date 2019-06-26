@@ -1,0 +1,251 @@
+#+Title: Example: Robot System
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+* Introduktion
+Det här är ett exempel som vi började arbeta med på lektionen den <2019-02-15 Fri>, med tanke att fortsätta nästa lektion. Exemplet är inte komplett och förmodligen svårt att hänga med på om man inte var med på föreläsningen; om du är osäker så fråga dina studentkollegor.
+* Package Diagram
+#+BEGIN_SRC plantuml :file packdia.jpg
+package UI
+
+package Robot {
+package ControlInterface
+package Navigation
+package Steering
+package ArmControl
+
+ControlInterface - Navigation
+ControlInterface - Steering
+
+}
+
+package HardwareControllers {
+package Motors
+package Sensors
+}
+
+UI - Robot
+Steering - Motors
+Navigation - Sensors
+ArmControl - Motors
+ArmControl - Sensors
+
+#+END_SRC
+
+#+RESULTS:
+[[file:packdia.jpg]]
+
+* Use Case: Navigate to Point
+*Use Case*: Navigate to Point
+*Actors*: User, (System)
+*Description*: User selects a coordinate and asks for possible routes to this point. System displays possible routes. User selects one route.
+*Requirements:* FR1, FR10, QA2.
+
+*Main Course of Events*
+
+| Actor                            | System                                              |
+|----------------------------------+-----------------------------------------------------|
+| User selects "navigate to point" |                                                     |
+|                                  | System displays map and asks user to select a point |
+| User selects a point             |                                                     |
+|                                  | System calculates routes and displays               |
+| User selects one route           |                                                     |
+|----------------------------------+-----------------------------------------------------|
+
+* Systemsekvensdiagram: Navigate to Point
+#+BEGIN_SRC plantuml :file ssd.jpg
+actor user
+participant ":system" as sys
+
+user -> sys : selectNavigationMethod("toPoint")
+sys --> user : displays map, asks for a destination
+user -> sys : selectPoint(x, y)
+sys --> user : displays alternative routes
+user -> sys : selectNearestRoute(x,y)
+sys --> user : confirms route
+#+END_SRC
+
+#+RESULTS:
+[[file:ssd.jpg]]
+
+*Kommentar:* Systemet borde returnera saker här också. För varje systemhändelse skall det returneras något som kan mappas mot vad som "lovades" i use case:t. På samma sätt som man tar varje enskild systemhändelse som grund till ett sekvensdiagram, så skall man ta med sig returvärderna härifrån. Se sekvensdiagrammen nedan; De börjar med systemhändelsen och skall sluta med samma returvärde som man fick tillbaka enligt systemsekvensdiagrammet. Uppdaterat diagrammet enligt detta <2019-02-18 Mon>.
+* Sekvensdiagram - selectNavigationMethod
+#+BEGIN_SRC plantuml :file sekv-diagr-selectNav.jpg
+[-> ":System" : selectNavigationMethod("toPoint")
+activate ":System"
+
+create "currentNavigationStrategy:PointNavigation"
+":System" --> "currentNavigationStrategy:PointNavigation" : create()
+
+":System" -> "currentNavigationStrategy:PointNavigation" : getStartMap()
+activate "currentNavigationStrategy:PointNavigation"
+"currentNavigationStrategy:PointNavigation" -> ":GPS" : currentCoordinates=getCurrentCoordinates()
+activate ":GPS"
+deactivate ":GPS"
+
+
+"currentNavigationStrategy:PointNavigation" -> ":MapCollection" : getMap(currentCoordinates, zoomLevel)
+activate ":MapCollection"
+create ":Map"
+":MapCollection" --> ":Map" : create()
+deactivate ":MapCollection"
+
+"currentNavigationStrategy:PointNavigation" --> ":System" : map around current location
+deactivate "currentNavigationStrategy:PointNavigation"
+":System" -->[ : map around current location
+deactivate ":System"
+
+#+END_SRC
+
+#+RESULTS:
+[[file:sekv-diagr-selectNav.jpg]]
+
+*Kommentar:* Som mycket riktigt påpekades efter föreläsningen så kan ju inte en konstruktor returnera en massa värden eller kartor och annat. Man behöver alltså dela upp anropen från ~:System~ till ~currentNavigationStrategy:PointNavigation~ till en ~create()~ (som inte returnerar något) och ett anrop till en metod, t.ex. ~getStartMap()~ (som returnerar kartan). Uppdaterat diagrammet enligt detta <2019-02-18 Mon>.
+
+* Klassdiagram
+#+BEGIN_SRC plantuml :file class-selectNav.png
+package Robot {
+
+package ControlInterface {
+
+class System {
+selectNavigationMethod(theMethod)
+NavigationStrategy* currentNavigationStrategy
+}
+
+class PointNavigation {
+getStartMap()
+Point currentCoordinates
+}
+
+abstract class NavigationStrategy
+NavigationStrategy <|-- PointNavigation
+
+System o- NavigationStrategy
+}
+
+
+package Navigation {
+GPS : getCurrentCoordinates()
+MapCollection : getMap(currentCoordinates, zoomLevel)
+
+class Map
+
+PointNavigation - GPS
+PointNavigation - MapCollection
+MapCollection o-- "*" Map
+
+}
+
+package Steering {
+}
+
+package ArmControl {
+}
+
+ControlInterface - Navigation
+ControlInterface - Steering
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:class-selectNav.png]]
+* Sekvensdiagram - selectPoint
+#+BEGIN_SRC plantuml :file sekv-selectPoint.png
+[-> "currentNavigationStrategy:PointNavigation" : selectPoint(x,y)
+activate "currentNavigationStrategy:PointNavigation"
+
+participant ":RoutePlanner"
+
+loop while more routes
+"currentNavigationStrategy:PointNavigation" -> ":RoutePlanner" : r = getRoute(currentMap)
+activate ":RoutePlanner"
+
+participant "currentMap:Map"
+":RoutePlanner" -> "currentMap:Map" : lots of interesting interaction
+
+create ":Route"
+":RoutePlanner" --> ":Route" : create()
+end loop
+
+deactivate ":RoutePlanner"
+
+"currentNavigationStrategy:PointNavigation" -->[ : list of routes
+deactivate "currentNavigationStrategy:PointNavigation"
+
+#+END_SRC
+
+#+RESULTS:
+[[file:sekv-selectPoint.png]]
+* Styrning av Robotarmen
+#+BEGIN_SRC plantuml :file armControllerclas.png
+package armControl {
+
+class ArmControllerInterface <<strategyContext>>
+abstract class AbstractArmController <<abstractStrategy>>
+ArmControllerInterface o- "1" AbstractArmController
+AbstractArmController <|-- preciseNavigation
+AbstractArmController <|-- gotoPointNavigation
+AbstractArmController <|-- PickupObjectNavigation
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:armControllerclas.png]]
+
+* Abstract Factory && Observer Pattern
+#+BEGIN_SRC plantuml :file absFact.png
+package ObserverPackage {
+abstract class Observer
+abstract class Observable
+
+Observer "*" - Observable
+
+Observer : notify(Observable thePlaceWhereThingsJustHappened)
+Observable : addObserver(Observer theObjectThatWanstToKnowWhatHappens)
+}
+
+package FactoryPackage {
+buttonFactory : Button* getButton()
+buttonFactory : setStrategy()
+note right
+void setStrategy(theStrategy) {
+ myCurrentStrategy = theStrategy
+}
+end note
+
+buttonFactory : enum myCurrentStrategy
+buttonFactory - Button
+
+Observable <|- Button
+abstract class Button
+Button <|-- RoundButton
+Button <|-- HiddenButton
+Button <|-- SquareButton
+}
+
+package RestOfTheSystem {
+
+Observer <|- myFancyClassThatNeedsAButton
+
+myFancyClassThatNeedsAButton : someMethod()
+note left
+void someMethod() {
+//...
+Button* aButton = new buttonFactory().getButton();
+aButton->addObserver(this);
+//...
+}
+end note
+}
+
+#+END_SRC
+
+#+RESULTS:
+[[file:absFact.png]]

@@ -1,0 +1,229 @@
+#+Title: Example: Robot System
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,a4paper]
+#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#+BEAMER_THEME: BTH_msv
+
+* Introduktion
+Det här är ett exempel som vi började arbeta med på lektionen den <2019-05-03 Fri>, med tanke att fortsätta nästa lektion. Exemplet är inte komplett och förmodligen svårt att hänga med på om man inte var med på föreläsningen; om du är osäker så fråga dina studentkollegor.
+* Package Diagram
+#+BEGIN_SRC plantuml :file packdia.jpg
+package UI
+
+package Robot {
+package ControlInterface
+package Navigation
+package Steering
+package ArmControl
+
+ControlInterface - Navigation
+ControlInterface - Steering
+
+}
+
+package HardwareControllers {
+package Motors
+package Sensors
+}
+
+UI - Robot
+Steering - Motors
+Navigation - Sensors
+ArmControl - Motors
+ArmControl - Sensors
+
+#+END_SRC
+
+#+RESULTS:
+[[file:packdia.jpg]]
+
+* Use Case: Navigate to Point
+*Use Case*: Navigate to Point
+
+*Actors*: User
+
+*Description*: User selects a coordinate and asks for routes to this point. System displays possible routes. User selects one route. 
+
+*Requirements:* FR120, QA2, FR111
+
+*Main Course of Events*
+| Actor                               | System                                                   |
+|-------------------------------------+----------------------------------------------------------|
+| 1. User selects "Navigate to Point" |                                                          |
+|                                     | 2. System displays a map and asks user to select a point |
+| 3. User selects a point             |                                                          |
+|                                     | 4. System calculates routes and displays them.           |
+| 5. User selects one route.          |                                                          |
+|-------------------------------------+----------------------------------------------------------|
+
+* Systemsekvensdiagram: Navigate to Point
+#+BEGIN_SRC plantuml :file robot-ssd.png
+actor user
+participant ":system" as sys
+
+user -> sys : selectNavigationMethod("toPoint")
+sys --> user : displays map, asks for a destination
+
+user -> sys : selectPoint(x,y)
+sys --> user : displays alternative rotues
+
+user -> sys : selectNearestRoute(x,y)
+sys --> user : confirms rute
+
+#+END_SRC
+
+#+RESULTS:
+[[file:robot-ssd.png]]
+
+* Sekvensdiagram - selectNavigationMethod
+#+BEGIN_SRC plantuml :file robot-selectnavigationmethod.png
+[-> ":system" : selectNavigationMethod("toPoint")
+activate ":system"
+
+create "currentNavigationStrategy:PointNavigation" as cns
+":system" -> cns : create()
+activate cns
+cns -> ":GPS" : currentCoordinates = getCurrentCoordinates()
+activate ":GPS"
+deactivate ":GPS"
+
+cns -> ":MapCollection" : getMap(currentCoordinates, zoomLevel)
+activate ":MapCollection"
+create "map:Map"
+":MapCollection" -> "map:Map" : create()
+":MapCollection" --> cns : map:Map
+deactivate ":MapCollection"
+deactivate cns
+
+":system" -> cns : getResponseObject()
+activate cns
+create "response:ResponseObject"
+cns -> "response:ResponseObject" : create()
+
+alt map exists
+cns -> "response:ResponseObject" : setMap(map)
+else
+cns -> "response:ResponseObject" : setError("Map does not exist")
+end
+
+cns --> ":system" : return responseObject
+deactivate cns
+
+":system" -->[ : map around current location
+
+deactivate ":system"
+
+#+END_SRC
+
+#+RESULTS:
+[[file:robot-selectnavigationmethod.png]]
+
+* Klassdiagram
+Såhär ser t.ex. metoden selectNavigationMethod i klassen system:
+#+BEGIN_SRC cpp
+system::selectNavigationMethod(String theMethod) {
+// ...
+NavigationMethod* currentNavigationMethod = new PointNavigation(); // create()
+// ...
+ResponseObject* ro = currentNavigationMethod->getResponse();
+// ...
+return ro;
+}
+#+END_SRC
+
+Klassdiagram med alla klasser, metoder, och relationer från sekvensdiagrammet för systemhändelsen selectNavigationMethod():
+#+BEGIN_SRC plantuml :file robot-class.png
+class system {
++selectNavigationMethod(theMethod)
+}
+class PointNavigation {
++create()
++getResponse()
+- currentPosition:Position
+- map : Map
+}
+class GPS {
++ getCurrentCoordinates()
+}
+class MapCollection {
++ getMap(coordinates, zoomLevel)
+}
+class Map {
++create()
+}
+class ResponseObject {
++setMap(theMap:Map)
++setError(string theError)
+}
+
+system - NavigationMethod
+NavigationMethod <|-- PointNavigation
+system -- ResponseObject
+PointNavigation -- GPS
+PointNavigation -- MapCollection
+PointNavigation -- Map
+PointNavigation -- ResponseObject
+MapCollection - Map
+ResponseObject - Map
+
+#+END_SRC
+
+#+RESULTS:
+[[file:robot-class.png]]
+
+* Sekvensdiagram - selectPoint :noexport:
+* Styrning av Robotarmen :noexport:
+* Abstract Factory && Observer Pattern :noexport:otherExample:designPattern:
+#+BEGIN_SRC plantuml :file absFact.png
+package ObserverPackage {
+abstract class Observer
+abstract class Observable
+
+Observer "*" - Observable
+
+Observer : notify(Observable thePlaceWhereThingsJustHappened)
+Observable : addObserver(Observer theObjectThatWanstToKnowWhatHappens)
+}
+
+package FactoryPackage {
+buttonFactory : Button* getButton()
+buttonFactory : setStrategy()
+note right
+void setStrategy(theStrategy) {
+ myCurrentStrategy = theStrategy
+}
+end note
+
+buttonFactory : enum myCurrentStrategy
+buttonFactory - Button
+
+Observable <|- Button
+abstract class Button
+Button <|-- RoundButton
+Button <|-- HiddenButton
+Button <|-- SquareButton
+}
+
+package RestOfTheSystem {
+
+Observer <|- myFancyClassThatNeedsAButton
+
+myFancyClassThatNeedsAButton : someMethod()
+note left
+void someMethod() {
+//...
+Button* aButton = new buttonFactory().getButton();
+aButton->addObserver(this);
+//...
+}
+end note
+}
+
+#+END_SRC
+
+#+RESULTS:
+[[file:absFact.png]]
