@@ -429,5 +429,5 @@ JPanel <|-- WordView
     :BEAMER_col: 0.8
     :END:
 Class Diagram:
-[[./FDictionaryClass4.png]]
+[[file:./FDictionaryClass4.png]]
 

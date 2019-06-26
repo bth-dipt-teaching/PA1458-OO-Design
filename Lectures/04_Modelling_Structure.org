@@ -1,7 +1,7 @@
 #+Title: Modelling Structure
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
-#+Date: 2016-03-21
+# #+Date: 2016-03-21
 #+EPRESENT_FRAME_LEVEL: 1
 #+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
 # #+STARTUP: showall
@@ -119,7 +119,7 @@
    - Go through different types of multiplicity
 ** Discussion: Concept or Class 				 :Discussion:
    - When does a conceptual diagram become a class diagram?
-** Discussion: Aggregation or Composition 			 :Discussion:
+** Discussion: Aggregation or Composition :Discussion:noexport:
 #+BEGIN_SRC plantuml :file FAggregation.png
 left to right direction
 scale 400 height
@@ -139,17 +139,22 @@ C o-- D
      - "Consists-of"
      - weak aggregation
 
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FAggregation2.png]]
+*** Code :noexport:
 #+BEGIN_SRC plantuml :file FAggregation2.png
 left to right direction
 Car "1" *-- "4" Wheel
 Team "0..*" o-- "1..*" Person
 #+END_SRC
-#+ATTR_LATEX: :height 4cm
-#+RESULTS:
-[[file:FAggregation2.png]]
-
 ** Discussion: An Example				 :Discussion:Example:
-#+BEGIN_SRC plantuml :file FExampleUniversity.png
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FExampleUniversity.png]]
+
+*** Code :noexport:
+#+BEGIN_SRC plantuml :file FExampleUniversity.png :exports results
 class Department {
 +Name : String
 +HoD : String
@@ -204,11 +209,6 @@ note on link: Note the Reflexive Association
 Student -- Exam : Writes >
 Teacher -- Exam : Authors >
 #+END_SRC
-
-#+ATTR_LATEX: :height 6.5cm
-#+RESULTS:
-[[file:FExampleUniversity.png]]
-
 *** Statements							   :noexport:
 En institution kan ge hur många kurser som helst.
 Det finns 200 studenter i systemet.
@@ -231,6 +231,11 @@ Studenter känner andra studenter
    - Vector Graphics Drawing Programme
      - Point, Line, Arc, Polygon, Ellipse, Circle
 ** Generalisation: Hierarchy
+
+#+ATTR_LATEX: :height 6.5cm
+#+RESULTS:
+[[file:FInheritance.png]]
+*** Code :noexport:
 #+BEGIN_SRC plantuml :file FInheritance.png
 Figure <|-- 0Dimension
 Figure <|-- 1Dimension
@@ -243,11 +248,12 @@ Figure <|-- 2Dimension
 Ellipse <|-- Circle
 #+END_SRC
 
+** Generalisation: Hierarchy II
+
 #+ATTR_LATEX: :height 6.5cm
 #+RESULTS:
-[[file:FInheritance.png]]
-
-** Generalisation: Hierarchy II
+[[file:FInheritance2.png]]
+*** Code :noexport:
 #+BEGIN_SRC plantuml :file FInheritance2.png
 class Figure
 note left: Supertype
@@ -269,11 +275,12 @@ Figure <|-- 2Dimension
 Ellipse <|-- Circle
 #+END_SRC
 
+** Generalisation: Hierarchy III
+
 #+ATTR_LATEX: :height 6.5cm
 #+RESULTS:
-[[file:FInheritance2.png]]
-
-** Generalisation: Hierarchy III
+[[file:FInheritance3.png]]
+*** Code :noexport:
 #+BEGIN_SRC plantuml :file FInheritance3.png
 class Figure
 note left: Supertype
@@ -321,12 +328,13 @@ Circle : +Diameter
 
 #+END_SRC
 
-#+ATTR_LATEX: :height 6.5cm
-#+RESULTS:
-[[file:FInheritance3.png]]
 ** Abstract Types
    - When no instances of the base class are desirable.
    - Example: There are no instances of the generic "Figure" base class.
+#+ATTR_LATEX: :height 4cm
+#+RESULTS:
+[[file:FInheritanceAbstract.png]]
+*** Code :noexport:
 #+BEGIN_SRC plantuml :file FInheritanceAbstract.png
 abstract class Payment
 class Sale
@@ -337,12 +345,35 @@ Payment <|-- Check
 
 Payment -right- Sale : Pays for >
 #+END_SRC
-#+ATTR_LATEX: :height 4cm
-#+RESULTS:
-[[file:FInheritanceAbstract.png]]
+
 ** Reflexive Associations
 [[./IReflexive.png]]
 ** Exotic UML: Association Attributes
+
+#+LATEX: \only<1>{
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FAssociationAttributes0.png]]
+#+LATEX: }
+
+
+#+LATEX: \only<2>{
+One solution:
+
+#+ATTR_LATEX: :height 6cm
+#+RESULTS:
+[[file:FAssociationAttributes1.png]]
+#+LATEX: }
+
+
+#+LATEX: \only<3>{
+Proper Solution:
+
+#+ATTR_LATEX: :width 10cm
+#+RESULTS:
+[[file:FAssociationAttributes2.png]]
+#+LATEX: }
+*** Code :noexport:
 #+BEGIN_SRC plantuml :file FAssociationAttributes0.png
 Company "0..*" -- "0..*" Person : Employs
 
@@ -352,13 +383,6 @@ in Person: implies you can ony work in one place
 in Company: implies one salary for all
 end note
 #+END_SRC
-
-#+LATEX: \only<1>{
-#+ATTR_LATEX: :height 6cm
-#+RESULTS:
-[[file:FAssociationAttributes0.png]]
-#+LATEX: }
-
 #+BEGIN_SRC plantuml :file FAssociationAttributes1.png
 left to right direction
 Company "0..*" -- "0..*" Person : Employs
@@ -367,15 +391,6 @@ Person "0..*" -left- "0..*" Employment
 
 Employment : +salary
 #+END_SRC
-
-#+LATEX: \only<2>{
-One solution:
-
-#+ATTR_LATEX: :height 6.5cm
-#+RESULTS:
-[[file:FAssociationAttributes1.png]]
-#+LATEX: }
-
 #+BEGIN_SRC plantuml :file FAssociationAttributes2.png
 left to right direction
 Company "0..*" -- "0..*" Person : Employs
@@ -383,11 +398,3 @@ Company "0..*" -- "0..*" Person : Employs
 
 Employment : +salary
 #+END_SRC
-
-#+LATEX: \only<3>{
-Proper Solution:
-
-#+ATTR_LATEX: :width 10cm
-#+RESULTS:
-[[file:FAssociationAttributes2.png]]
-#+LATEX: }
