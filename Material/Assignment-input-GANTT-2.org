@@ -1,0 +1,454 @@
+#+PROPERTY: Effort_ALL 1d 2d 3d 5d 8d 13d 21d 34d 50d
+#+COLUMNS: %70ITEM(Task) %17Effort(Estimated Effort)
+
+* Use Cases for Mean Streets
+** Use Case Get Help
+*** Analysis
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design -- Help Framework
+    :PROPERTIES:
+    :Effort:   13d
+    :END:
+*** Define Database Schema -- Help Framework
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Design -- Interface to Help Framework
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Create Help Texts
+    :PROPERTIES:
+    :Effort:   13d
+    :END:
+*** Create Unit Tests for Help Framework
+    :PROPERTIES:
+    :Effort:   8d
+    :END:
+*** Create Unit Tests for Help Interface
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+*** Implementation Help Framework
+    :PROPERTIES:
+    :Effort:   13d
+    :END:
+*** Implementation Help Interface
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Testing Help Framework
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+*** Testing Help Interface
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+** Use Case Set Checkpoint
+*** Analysis
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Analysis -- What is part of a Checkpoint?
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Define Database Schema
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+*** Design -- Extracting a Checkpoint
+    :PROPERTIES:
+    :Effort:   8d
+    :END:
+*** Design -- Writing Checkpoint to Database
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Create Unit Tests -- Writing a Checkpoint
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Create Unit Tests -- Extracting a Checkpoint
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Implementation -- Writing a Checkpoint
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Implementation -- Extracting a Checkpoint
+    :PROPERTIES:
+    :Effort:   8d
+    :END:
+*** Testing -- Writing a Checkpoint
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Testing -- Extracting a Checkpoint
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+** Use Case List Checkpoints
+*** Analysis
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Design
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+*** Create Unit Tests
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Implementation
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+** Use Case Enhanced Enter Scene
+*** Analysis
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design Location Framework
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design Scene Availability Framework
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design Scene Availability Notifications
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Design Event Framework
+    :PROPERTIES:
+    :Effort:   13d
+    :END:
+*** Design -- Trigger Entry Events
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Create Unit Tests -- Location Framework
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Create Unit Tests -- Scene Availability Frameworks
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Create Unit Tests -- Event Framework
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Implementation -- Location Framework
+    :PROPERTIES:
+    :Effort:   13d
+    :END:
+*** Implementation -- Scene Availability Frameworks
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Implementation -- Event Framework
+    :PROPERTIES:
+    :Effort:   13d
+    :END:
+*** Testing -- Location Framework
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing -- Scene Availability Frameworks
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing -- Event Framework
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+** Use Case Enhanced Interact with Object
+*** Analysis
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design -- Interaction Events
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design -- Persistent GameObject States
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Define Database Schema
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Create Unit Tests -- Interaction Events
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Create Unit Tests -- Persistent GameObject States
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Implementation -- Interaction Events
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Implementation -- Persistent GameObject States
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing -- Interaction Events
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing -- Persistent GameObject States
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+** Use Case Enhanced Interact with Character
+*** Analysis
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design -- Interaction Events
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Design -- Persistent Character States
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Define Database Schema
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Create Unit Tests -- Interaction Events
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Create Unit Tests -- Persistent Character States
+    :PROPERTIES:
+    :Effort:   1d
+    :END:
+*** Implementation -- Interaction Events
+    :PROPERTIES:
+    :Effort:   5d
+    :END:
+*** Implementation -- Persistent Character States
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing -- Interaction Events
+    :PROPERTIES:
+    :Effort:   3d
+    :END:
+*** Testing -- Persistent Character States
+    :PROPERTIES:
+    :Effort:   2d
+    :END:
+* Summary
+#+BEGIN: columnview :id global :hlines 2
+| Task                                               | Estimated Effort |
+|----------------------------------------------------+------------------|
+| Use Cases for Mean Streets                         |                  |
+|----------------------------------------------------+------------------|
+| Use Case Get Help                                  |                  |
+| Analysis                                           |               5d |
+| Design -- Help Framework                           |              13d |
+| Define Database Schema -- Help Framework           |               1d |
+| Design -- Interface to Help Framework              |               5d |
+| Create Help Texts                                  |              13d |
+| Create Unit Tests for Help Framework               |               8d |
+| Create Unit Tests for Help Interface               |               2d |
+| Implementation Help Framework                      |              13d |
+| Implementation Help Interface                      |               5d |
+| Testing Help Framework                             |               2d |
+| Testing Help Interface                             |               1d |
+|----------------------------------------------------+------------------|
+| Use Case Set Checkpoint                            |                  |
+| Analysis                                           |               5d |
+| Analysis -- What is part of a Checkpoint?          |               5d |
+| Define Database Schema                             |               2d |
+| Design -- Extracting a Checkpoint                  |               8d |
+| Design -- Writing Checkpoint to Database           |               1d |
+| Create Unit Tests -- Writing a Checkpoint          |               3d |
+| Create Unit Tests -- Extracting a Checkpoint       |               5d |
+| Implementation -- Writing a Checkpoint             |               3d |
+| Implementation -- Extracting a Checkpoint          |               8d |
+| Testing -- Writing a Checkpoint                    |               1d |
+| Testing -- Extracting a Checkpoint                 |               2d |
+|----------------------------------------------------+------------------|
+| Use Case List Checkpoints                          |                  |
+| Analysis                                           |               1d |
+| Design                                             |               2d |
+| Create Unit Tests                                  |               1d |
+| Implementation                                     |               3d |
+| Testing                                            |               1d |
+|----------------------------------------------------+------------------|
+| Use Case Enhanced Enter Scene                      |                  |
+| Analysis                                           |               5d |
+| Design Location Framework                          |               5d |
+| Design Scene Availability Framework                |               5d |
+| Design Scene Availability Notifications            |               3d |
+| Design Event Framework                             |              13d |
+| Design -- Trigger Entry Events                     |               5d |
+| Create Unit Tests -- Location Framework            |               3d |
+| Create Unit Tests -- Scene Availability Frameworks |               3d |
+| Create Unit Tests -- Event Framework               |               5d |
+| Implementation -- Location Framework               |              13d |
+| Implementation -- Scene Availability Frameworks    |               5d |
+| Implementation -- Event Framework                  |              13d |
+| Testing -- Location Framework                      |               3d |
+| Testing -- Scene Availability Frameworks           |               3d |
+| Testing -- Event Framework                         |               5d |
+|----------------------------------------------------+------------------|
+| Use Case Enhanced Interact with Object             |                  |
+| Analysis                                           |               5d |
+| Design -- Interaction Events                       |               5d |
+| Design -- Persistent GameObject States             |               5d |
+| Define Database Schema                             |               1d |
+| Create Unit Tests -- Interaction Events            |               3d |
+| Create Unit Tests -- Persistent GameObject States  |               1d |
+| Implementation -- Interaction Events               |               5d |
+| Implementation -- Persistent GameObject States     |               3d |
+| Testing -- Interaction Events                      |               3d |
+| Testing -- Persistent GameObject States            |               2d |
+|----------------------------------------------------+------------------|
+| Use Case Enhanced Interact with Character          |                  |
+| Analysis                                           |               5d |
+| Design -- Interaction Events                       |               5d |
+| Design -- Persistent Character States              |               5d |
+| Define Database Schema                             |               1d |
+| Create Unit Tests -- Interaction Events            |               3d |
+| Create Unit Tests -- Persistent Character States   |               1d |
+| Implementation -- Interaction Events               |               5d |
+| Implementation -- Persistent Character States      |               3d |
+| Testing -- Interaction Events                      |               3d |
+| Testing -- Persistent Character States             |               2d |
+|----------------------------------------------------+------------------|
+| Summary                                            |                  |
+|----------------------------------------------------+------------------|
+| GANTT Plan                                         |                  |
+#+END:
+* GANTT Plan
+#+tblname: gantt-table
+| Task                                               | Est. Effort) | Start Date       | End Date         | Responsible | Spent Time | Progress (%) | Projected Effort | Over/Undertime |
+|                                                    |       (days) |                  | (calculated)     |             |            |              |     (Calculated) |   (Calculated) |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+| Use Case Get Help                                  |              | <2019-11-07 Thu> | #ERROR           |             |            |              |                  |                |
+| Analysis                                           |            5 | <2019-11-07 Thu> | [2019-11-12 Tue] | Augusto     |          3 |          80% |             3.75 |           1.25 |
+| Design -- Help Framework                           |           13 | <2019-11-07 Thu> | [2019-11-20 Wed] | Benito      |          3 |          30% |              10. |             3. |
+| Define Database Schema -- Help Framework           |            1 | <2019-11-07 Thu> | [2019-11-08 Fri] | Benito      |          1 |         100% |                1 |              0 |
+| Design -- Interface to Help Framework              |            5 | <2019-11-13 Wed> | [2019-11-18 Mon] | Idi         |            |              |                  |                |
+| Create Help Texts                                  |           13 | <2019-11-07 Thu> | [2019-11-20 Wed] | Chiang      |          2 |          20% |              10. |             3. |
+| Create Unit Tests for Help Framework               |            8 | <2019-11-17 Sun> | [2019-11-25 Mon] | Benito      |            |              |                  |                |
+| Create Unit Tests for Help Interface               |            2 | <2019-11-07 Thu> | [2019-11-09 Sat] | Idi         |          1 |          50% |               2. |             0. |
+| Implementation Help Framework                      |           13 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation Help Interface                      |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Testing Help Framework                             |            2 |                  | #ERROR           |             |            |              |                  |                |
+| Testing Help Interface                             |            1 |                  | #ERROR           |             |            |              |                  |                |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+| Use Case "Set Checkpoint"                          |              |                  | #ERROR           |             |            |              |                  |                |
+| Analysis                                           |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Analysis -- What is part of a Checkpoint?          |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Define Database Schema                             |            2 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Extracting a Checkpoint                  |            8 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Writing Checkpoint to Database           |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Writing a Checkpoint          |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Extracting a Checkpoint       |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Writing a Checkpoint             |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Extracting a Checkpoint          |            8 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Writing a Checkpoint                    |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Extracting a Checkpoint                 |            2 |                  | #ERROR           |             |            |              |                  |                |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+| Use Case "List Checkpoints"                        |              |                  | #ERROR           |             |            |              |                  |                |
+| Analysis                                           |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Design                                             |            2 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests                                  |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation                                     |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing                                            |            1 |                  | #ERROR           |             |            |              |                  |                |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+| Use Case "Enhanced Enter Scene"                    |              |                  | #ERROR           |             |            |              |                  |                |
+| Analysis                                           |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design Location Framework                          |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design Scene Availability Framework                |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design Scene Availability Notifications            |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Design Event Framework                             |           13 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Trigger Entry Events                     |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Location Framework            |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Scene Availability Frameworks |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Event Framework               |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Location Framework               |           13 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Scene Availability Frameworks    |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Event Framework                  |           13 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Location Framework                      |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Scene Availability Frameworks           |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Event Framework                         |            5 |                  | #ERROR           |             |            |              |                  |                |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+| Use Case "Enhanced Interact with Object"           |              |                  | #ERROR           |             |            |              |                  |                |
+| Analysis                                           |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Interaction Events                       |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Persistent GameObject States             |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Define Database Schema                             |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Interaction Events            |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Persistent GameObject States  |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Interaction Events               |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Persistent GameObject States     |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Interaction Events                      |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Persistent GameObject States            |            2 |                  | #ERROR           |             |            |              |                  |                |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+| Use Case "Enhanced Interact with Character"        |              |                  | #ERROR           |             |            |              |                  |                |
+| Analysis                                           |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Interaction Events                       |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Design -- Persistent Character States              |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Define Database Schema                             |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Interaction Events            |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Create Unit Tests -- Persistent Character States   |            1 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Interaction Events               |            5 |                  | #ERROR           |             |            |              |                  |                |
+| Implementation -- Persistent Character States      |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Interaction Events                      |            3 |                  | #ERROR           |             |            |              |                  |                |
+| Testing -- Persistent Character States             |            2 |                  | #ERROR           |             |            |              |                  |                |
+|----------------------------------------------------+--------------+------------------+------------------+-------------+------------+--------------+------------------+----------------|
+#+TBLFM: $4=if("$-1"!="",date(<$-1>)+<$-2>,string(""));E::$9=if($-1>0,$2-$-1,string(""))::$8=if($-1>0,$-2/$-1,string(""))
+
+#+tblname: test-table
+| Test  | 2 | <2019-11-08 Fri> | <2019-11-15 Fri> |
+| Test2 | 3 | <2019-11-11 Mon> | <2019-11-29 Fri> |
+
+
+#+BEGIN_SRC gnuplot :var DATA=gantt-table :file gantt-out.png
+OneMonth = strptime("%m","2")
+timeformat = "%Y-%m-%d"
+T(N) = timecolumn(N,timeformat)
+
+set xdata time
+set format x "%b\n'%y"
+set xtics OneMonth nomirror
+set xtics scale 2, 0.5
+set mxtics 4
+
+skiptorow=4
+set yrange [(skiptorow-2):] reverse
+set ytics nomirror
+
+unset key
+set title "{/=15 GANTT Chart Example}"
+set grid x y
+set border 3
+set style arrow 1 nohead filled size screen 0.02, 15 fixed lt 3 lw 8
+
+plot DATA using (T(3)) : ($0) : (T(4)-T(3)) : (0.0) : yticlabel(1) with vector as 1
+#+END_SRC
+
+#+RESULTS:
+[[file:gantt-out.png]]

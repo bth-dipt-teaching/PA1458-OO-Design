@@ -1,0 +1,51 @@
+* Use Case /Notify Player/
+** Notification Framework -- Backend
+*** Analysis
+*** Design
+*** Define Database Schema
+*** Create Unit Tests
+*** Implementation
+*** Testing
+** Notification Framework -- Frontend IOS
+*** Analysis
+*** Design
+*** User Interface Design
+*** Create Unit Tests
+*** Implementation
+*** Testing
+** Notification Framework -- Frontend Android
+*** Analysis
+*** Design
+*** User Interface Design
+*** Create Unit Tests
+*** Implementation
+*** Testing
+** Connecting Notification Framework with Game Logic
+*** Analysis / Design
+*** Create Unit Tests
+*** Implementation
+*** Testing
+* Use Case /Inspect Inventory/
+** Analysis
+** Design
+** User Interface Design
+** Define Database Schema
+** Create Unit Tests
+** Implementation -- Inventory
+** Implementation -- Inspect Inventory
+** Implementation -- User Interface for Inspect Inventory
+** Testing
+* Use Case /Restore Checkpoint/
+** Analysis
+** Design -- Read Checkpoint
+** Design -- Restore/Reset to Checkpoint
+** Define Database Schema
+** Create Unit Tests
+** Implementation -- Read Checkpoint
+** Implementation -- Restore/Reset to Checkpoint
+** Testing
+* Use Case /Start New Game/
+** Analysis
+** Design -- Checkpoint for Initial Game State
+** Create Unit Tests
+** Testing
