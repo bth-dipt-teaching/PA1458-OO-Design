@@ -1,0 +1,20 @@
+
+* Overview
+| Assignment                       | Course |        |        | Modules                                         | Chapters                                                     | #pages |
+|                                  | PA1458 | PA1459 | PA1460 |                                                 |                                                              |        |
+|----------------------------------+--------+--------+--------+-------------------------------------------------+--------------------------------------------------------------+--------|
+| Discussion of Quality Attributes |        |        | X      | Softw Arch                                      | 33,34,35,38,39                                               |     64 |
+| Instantiated Architecture Style  |        |        | X      | Softw Arch                                      | 33,34,35,38,39                                               |     64 |
+| Create Detailed Use Cases        | X      |        |        |                                                 |                                                              |        |
+| List System Events               | X      |        |        |                                                 |                                                              |        |
+| WBS and Project Plan             | X      |        |        |                                                 |                                                              |        |
+| Discussion of GRASP Patterns     | X      | X      | X      | Problem Domain, OO Design, Problem-Based Design | 4,5,6,7,9,10,11,14,15,16,17,18,19,21,25,26,29,30,31,35,36,37 |    462 |
+| Interaction Diagrams             | X      | X      | X      | OO Design, Problem-Based Design                 | -,-,-,-,9,10,11,14,15,16,17,18,19,--,25,26,--,--,31,35,36,37 |    379 |
+| Class and Package Diagram        | X      | X      | X      | OO Design                                       | -,-,-,-,9,10,11,14,15,16,--,--,--,--,--,--,--,--,31,35       |    160 |
+| Refactored Class Diagram         | X      | X      | X      | OO Design, Problem-Based Design                 | -,-,-,-,9,10,11,14,15,16,17,18,19,--,25,26,--,--,31,35,36,37 |    379 |
+| Refactored Interaction Diagram   | X      | X      | X      | OO Design, Problem-Based Design                 | -,-,-,-,9,10,11,14,15,16,17,18,19,--,25,26,--,--,31,35,36,37 |    379 |
+| Create Test Plan                 |        |        | X      | Quality Assurane                                | 20,21                                                        |     26 |
+| Unit Test for Use Case           | X      |        | X      | Quality Assurance                               | 20,21                                                        |     26 |
+| Implementation                   | X      |        |        |                                                 |                                                              |        |
+| Demo Implementation              | X      |        |        |                                                 |                                                              |        |
+|----------------------------------+--------+--------+--------+-------------------------------------------------+--------------------------------------------------------------+--------|

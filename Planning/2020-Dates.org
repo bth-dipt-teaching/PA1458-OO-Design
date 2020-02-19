@@ -1,21 +1,40 @@
 * Lectures && Dates
-| Date lp3         | Date lp4 | Lecture                       | PA1458 | PA1459 | PA1460 |
-|------------------+----------+-------------------------------+--------+--------+--------|
-| <2020-01-23 Thu> |          | Introduction                  | x      | x      | x      |
-|                  |          | Requirements Engineering      | x      |        |        |
-| <2020-01-24 Fri> |          | Use Cases                     | x      | x      | x      |
-|                  |          | Development Methodologies     | x      |        |        |
-| <2020-01-28 Tue> |          | Quality Attributes            |        |        | x      |
-| <2020-01-30 Thu> |          | Introduction to Architectures |        |        | x      |
-| <2020-01-31 Fri> |          | Documenting Architectures     |        |        | x      |
-| <2020-02-04 Tue> |          | Testing                       | x      | x      | x      |
-| <2020-02-06 Thu> |          | Modelling Structure           | x      | x      | x      |
-| <2020-02-07 Fri> |          | Modelling Behaviour           | X      | x      | x      |
-| <2020-02-11 Tue> |          | Design Patterns               | x      | x      | x      |
-| <2020-02-13 Thu> |          | GRASP/Workable Example        | x      | x      | x      |
-| <2020-02-14 Fri> |          | Design to Code                | x      | x      | x      |
-|                  |          |                               |        |        |        |
-| <2020-03-03 Tue> |          | Buffer/Workable Example       | x      | x      | x      |
-| <2020-03-05 Thu> |          | Buffer/Workable Example       | x      | x      | x      |
-| <2020-03-06 Fri> |          | Buffer/Workable Example       | x      | x      | x      |
-|------------------+----------+-------------------------------+--------+--------+--------|
+| Date lp3         | Lecture                       | PA1458 | PA1459 | PA1460 |
+|------------------+-------------------------------+--------+--------+--------|
+| <2020-01-23 Thu> | Introduction                  | x      | x      | x      |
+|                  | Requirements Engineering      | x      |        |        |
+| <2020-01-24 Fri> | Use Cases                     | x      | x      | x      |
+|                  | Development Methodologies     | x      |        |        |
+| <2020-01-28 Tue> | Testing                       | x      | x      | x      |
+| <2020-01-30 Thu> | Quality Attributes            |        |        | x      |
+| <2020-01-31 Fri> | Modelling Structure           | x      | x      | x      |
+| <2020-02-04 Tue> | Modelling Behaviour           | x      | x      | x      |
+| <2020-02-06 Thu> | Introduction to Architectures |        |        | x      |
+| <2020-02-07 Fri> | Documenting Architectures     |        |        | x      |
+| <2020-02-11 Tue> | Design Patterns               | x      | x      | x      |
+| <2020-02-13 Thu> | GRASP/Workable Example        | x      | x      | x      |
+| <2020-02-14 Fri> | Design to Code                | x      | x      | x      |
+|                  |                               |        |        |        |
+| <2020-03-03 Tue> | Buffer/Workable Example       | x      | x      | x      |
+| <2020-03-05 Thu> | Buffer/Workable Example       | x      | x      | x      |
+| <2020-03-06 Fri> | Buffer/Workable Example       | x      | x      | x      |
+|------------------+-------------------------------+--------+--------+--------|
+
+** LP4 PA1458
+| Lecture                       | PA1458 | Date lp4 |
+|-------------------------------+--------+----------|
+| Introduction                  | x      |          |
+| Requirements Engineering      | x      |          |
+| Use Cases                     | x      |          |
+| Development Methodologies     | x      |          |
+| Testing                       | x      |          |
+| Modelling Structure           | x      |          |
+| Modelling Behaviour           | x      |          |
+| Design Patterns               | x      |          |
+| GRASP/Workable Example        | x      |          |
+| Design to Code                | x      |          |
+|                               |        |          |
+| Buffer/Workable Example       | x      |          |
+| Buffer/Workable Example       | x      |          |
+| Buffer/Workable Example       | x      |          |
+|-------------------------------+--------+----------|
