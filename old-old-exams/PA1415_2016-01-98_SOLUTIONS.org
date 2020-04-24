@@ -1,0 +1,292 @@
+
+* 2 Object-Oriented Modelling - Modelling Structure
+** Task
+Draw a conceptual model for the following fragment of the problem domain.
+
+In the Country lives a community of persons - workers and students.
+Every person has a name, personal number and address.
+
+The address consists of the name of the town, the name of the street and the number of the
+apartment/flat (such as Stockholm, Vasa Street, 25).
+
+Every person can have a number of mobile phones.
+
+Every phone can have 1 or two phone cards. Every card has the PIN code (used to identified the
+legal usage of the card when the card is inserted into the phone) and the call number (the number
+that is used for calling).
+
+There two types of phones – touch screen phones and
+To the keypad phones the microphone can be attached as an external device.
+
+A person can work in a company. A person can work in no more than 4 companies, but a company
+may employ any number of workers.
+
+When employed, a person gets a salary, may be different in different working places.
+The salary consists of a basic salary, extra salary and bonus.
+
+At a given moment a person can be unemployed.
+
+** Solution
+#+BEGIN_SRC plantuml :file FConceptual-20160109_SOLVED.png
+Country -- "*" Person : Lives
+Person <|- Worker
+Person <|- Student
+
+Person : name
+Person : p-number
+Person -- Address
+
+Address : townName
+Address : streetName
+Address : flatNumber
+
+Person o-- "*" MobilePhone
+
+MobilePhone o-- "1..2" PhoneCard
+
+PhoneCard : PINcode
+PhoneCard : PhoneNumber
+
+MobilePhone <|-- TouchScreenPhone
+MobilePhone <|-- KeypadPhone
+
+KeypadPhone -- Microphone
+
+Worker "*" -- "0..4" Company : Works
+Employment : BaseSalary
+Employment : ExtraSalary
+Employment : Bonus
+(Worker,Company) .. Employment
+#+END_SRC
+
+#+RESULTS:
+[[file:FConceptual-20160109_SOLVED.png]]
+
+* 2.1 Modelling Behaviour
+** Task
+A (rather very special) Digital Watch can display the time -- hours and minutes.
+
+When the watch is created the watch displays time - hours and minutes,
+and they both are set to zero.
+
+Both the hours and minutes can be adjusted.
+This is dine using two buttons attached to the watch – A button and B button.
+
+When the watch is displaying the time - steady, non-blinking hours and minutes,
+and the B button is pressed - nothing happens and the watch continues to display the time.
+But when the A button is pressed then the watch starts to display only blinking hours
+and the hours can be change by pressing the B button.
+Each pressing of the button B increasing the hours by one.
+
+Then when pressing the A button the watch starts to display only blinking minutes
+and then the button B can be pressed to change the minutes.
+Each pressing the button B increases the minutes by one.
+
+Then when the button A is pressed the watch stats to display the newly set time
+- steady, non-blinking hours and minutes. When the button A is pressed it starts to blinking hours etc
+
+Provide an UML model describing the watch - both the structure and behaviour of the watch.
+** Solution
+#+BEGIN_SRC plantuml :file FState-20160109-SOLVED.png
+state normal
+state "Set Hour" as sh
+state "Set Minute" as sm
+
+[*] --> normal : /setTime(0:00)
+normal : do/DisplayTime()
+
+normal -->  sh : Button A
+sh : do/Blink(hour)
+sh -->  sh : Button B/increase(hour)
+
+sh --> sm : Button A
+sm : do/Blink(minutes)
+sm --> sm : Button B/increase(minute)
+
+sm --> normal : Button A
+#+END_SRC
+
+#+RESULTS:
+[[file:FState-20160109-SOLVED.png]]
+
+* 3 Object Oriented Design
+** Task
+Bank Terminal
+
+Bank Terminal is a device from which you can perform a number of operations on your bank
+account.
+
+It is situated in a number of places around the town and has a direct telecommunication
+connection with a bank. It has a screen to display information and a number of buttons.
+
+At the Bank Terminal you can withdraw money from you account.
+
+Before you decide on how much you want in cash you can check how much money is
+available on the account. You can also make a choice on the values of the banknotes (paper
+money) you want the requested money be delivered – 500, 100, and 50.
+
+The Bank Terminal will try to deliver the money as close to your request as possible.
+
+You will not get the money if the requested amount is greater than the amount available on
+the account or if there is not enough money in the terminal container.
+
+When the terminal is running out of money the terminal maintenance office should be notified.
+
+At the terminal you can also make examination of you account. This includes a look-up of all
+operations preformed on the account, printing the actual balance and printing operations
+performed. In the last case you can make a choice what operations you want to be printed,
+choose the format of the printing and also choose the device on which they will be printed.
+
+To withdraw the money and to examine your account you have to authorize.
+
+For the authorization you have to insert your bank card to a special slot.
+
+A scanner reads the card and asks you to enter PIN code. Then proceeds to the verification
+process.
+
+During the verification process the terminal contacts with the bank, providing appropriate
+information about the card used for the transaction, and gets a reply if the card is valid.
+
+Then you are asked for a code. If the code is ok you can proceed with the operations
+otherwise you are asked to retype the code. After three unsuccessful trials your card is kept.
+
+The terminal contacts the bank using fibre cable connection if there is a need to obtain or to
+update the information about your account.
+** Solution
+*** Actors
+-   Customer
+-   Bank
+-   Maintenance Office
+*** Use Cases
+-   Withdraw Money
+-   Examine Account
+-   Authorisation
+-   Out of Money
+*** Use Case Diagram
+#+BEGIN_SRC plantuml :file FUCD-20160109_SOLVED.png
+left to right direction
+actor Customer
+actor Bank
+actor "Maintenance Office" as mo
+rectangle "Bank Terminal" {
+(Withdraw Money) as wm
+(Examine Account) as ccb
+(Authorization) as au
+(Out of Money) as oom
+
+wm .> au : include
+ccb .> au : include
+}
+
+Customer --> wm
+Customer --> ccb
+Customer --> au
+
+wm <-- Bank
+ccb <-- Bank
+au <-- Bank
+
+oom <-- mo
+#+END_SRC
+
+#+RESULTS:
+[[file:FUCD-20160109_SOLVED.png]]
+
+*** Extended Use Case =WithdrawMoney=
+Use Case: Withdraw Money
+
+Primary Actor: Customer
+
+Actors: Bank
+
+Preconditions:
+- Customer is a customer at the bank
+- There is money in the bank terminal
+
+Postconditions:
+- Customer walks away with cash in hand
+- The customers account is accordingly updated
+
+Description: A customer authenticates themselves against the bank, and selects how much money they want to withdraw and in what types of banknotes. The system updates the account (if there is enough money) and gives the money to the customer.
+
+#+LATEX: \begin{scriptsize}
+Main Flow of Events:
+| Actor                                            | System                                                             |
+|--------------------------------------------------+--------------------------------------------------------------------|
+| 1. Customer /Authorises/ themself to the machine | 2. Initiate use case _Authorisation_                               |
+| 3. Customer /Checks/ how much money is available | 4. System displays the amount of money on the account.             |
+| 5. Customer decides how much money they want     |                                                                    |
+| 6. Customer decides what banknotes they want     | 7. System verifies that there are sufficient funds in the account. |
+|                                                  | 8. System subtracts desired amount from account.                   |
+|                                                  | 9. System dispenses money (according to the preferred banknotes).  |
+|                                                  | 10. System returns card.                                           |
+|--------------------------------------------------+--------------------------------------------------------------------|
+#+LATEX: \end{scriptsize}
+
+Alternative Flows:
+ - 2. Customer fails to authorise themselves correctly. The transaction is aborted.
+ - 7. There are not enough money in the account. The transaction is aborted and an error message is shown.
+ - 9. The desired banknotes are not available. The system dispenses other banknotes.
+ - 9. There is not enough money in the machine. The transaction is aborted and the system initiates the _out of money_ use case.
+
+*** Conceptual Model
+#+BEGIN_SRC plantuml :file FConceptual2_20160109_SOLVED.png
+Bank -- "*" BankTerminal : Owns >
+BankTerminal -- "*" BankNote : has >
+BankTerminal *- "1" CardReader
+CardReader - Card : accepts >
+
+BankNote : amountAvailable
+
+Card : pinCode
+Card -- Account : is assocated with
+Account "*" -- Bank : < has 
+Account : currentBalance
+Account -- "*" TransactionHistory
+
+BankTerminal -- Account : updates
+
+#+END_SRC
+
+#+RESULTS:
+[[file:FConceptual2_20160109_SOLVED.png]]
+
+*** System Operations
+    Authorise(pin,cardNumber)
+    CheckAccount()
+    WithdrawAmount(theAmount)
+    setPreferredBankNotes(theNoteType)   
+*** Signature
+    =void WithdrawAmount(int theAmount)=
+*** Collaboration Diagram    
+#+BEGIN_SRC plantuml :file FCollaboration-20160109_SOLVED.png
+title: WithdrawAmount(theAmount)
+participant ":BankTerminal" as bt
+participant ":Bank" as ba
+participant ":AccountManager" as am
+participant "theAccount:Account" as ac
+
+[-> bt : WithdrawAmount(cardId, theAmount)
+activate bt
+bt ->  ba : isAvailable=widthdrawAmount(cardId, theAmount)
+activate ba
+ba -> am : theAccount=findAccount(cardId)
+activate am
+deactivate am
+ba -> ac : isAvailable=checkAvailable(theAmount)
+activate ac
+deactivate ac
+ba -> ac : withdrawAmount(theAmount)
+activate ac
+deactivate ac
+bt <-- ba : ok
+deactivate ba
+[<-- bt : ok
+deactivate bt
+#+END_SRC    
+
+#+RESULTS:
+[[file:FCollaboration-20160109_SOLVED.png]]
+
+*** TODO Contract
+
