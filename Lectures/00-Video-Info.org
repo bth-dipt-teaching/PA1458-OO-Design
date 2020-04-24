@@ -1,0 +1,24 @@
+#+Title: Information om Inspelning av Föreläsningar
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2020-03-31
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+* Inspelade Föreläsningar
+- Under VT2020 spelas föreläsningarna in och publiceras på YouTube
+  - De kommer vara publicerade och tillgängliga under 2020
+  - Efter det så kommer jag spara dem i fem år (till 2025):
+    - som reserv ifall någon föreläsning blir inställd
+    - i normalfallet är de då opublicerade, men kan göras tillgängliga en termin i taget.
+
+- Ha gärna kameran på, det blir lättare för mig att "läsa av" klassen då
+  - Om ni föredrar att inte synas, så är det ok.
+
+- Avbryt gärna och ställ frågor (använd /raise hand/-funktionen i Zoom).
+  - 10 minuter i slutet av varje föreläsning viks för frågor och spelas /inte/ in.
+
+[[./raise-hand.png]]
