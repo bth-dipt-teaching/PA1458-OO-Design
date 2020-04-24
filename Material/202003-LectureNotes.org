@@ -1,0 +1,700 @@
+* Domain Model for Discussion Forum
+#+BEGIN_SRC plantuml :file 202003-DM-DiscForum.png
+class Post
+class Thread
+class Category
+
+class User
+User : +namn
+User : +password
+
+User - Post : writes
+Category -- Thread : contains
+Thread -- Post : contains
+#+END_SRC
+
+#+RESULTS:
+[[file:202003-DM-DiscForum.png]]
+* Use Cases
+1. Use Case: Create Post
+2. Use Case: Authenticate
+3. Use Case: Create Thread
+
+** Use Case: Create Post
+Use Case: Create Post
+Actor: User
+Description: User writes a post, selects a category and thread to post it in, and posts it.
+
+Main Course of Events
+| Actor                         | System                                        |
+|-------------------------------+-----------------------------------------------|
+| 1. User selects "create Post" |                                               |
+|                               | 2. System asks for post text                  |
+| 3. User writes post           |                                               |
+|                               | 4. System asks for category and thread        |
+| 5. User selects category      |                                               |
+| 6. User selects thread        |                                               |
+|                               | 7. System confirms                            |
+| 8. User selects "Post!"       |                                               |
+|                               | 9. System adds post to thread and redisplays. |
+|                               |                                               |
+
+** System Sequence Diagram
+#+BEGIN_SRC plantuml :file 202004-ssd.png
+actor User
+participant ":System" as sys
+
+User -> sys : createPost()
+User -> sys : writePost(thePost)
+sys --> User : please select category
+
+User -> sys : selectCategory()
+User -> sys : selectThread()
+
+User -> sys : post()
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-ssd.png]]
+
+* Components
+#+BEGIN_SRC plantuml :file 202004-comp.png
+title diary app
+package Authentication {
+ package OAUTH {
+}
+ package TwoFactor {
+}
+}
+
+package Person {
+ class Person {
++name
+}
+ class Diary {
++contents
+}
+}
+
+
+package DBManagement {
+ class DBConnection
+}
+
+package PersonPresentation {
+}
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-comp.png]]
+* Domain Model / Class Diagram / Multiplicity
+#+BEGIN_SRC plantuml :file 202004-classdiagram.png
+skinparam nodesep 100
+Person "1..2" - "0..4" Cykel
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-classdiagram.png]]
+
+- n :: Exakt n
+- x..y :: mellan x och y
+- * :: Godtyckligt många
+- + :: En eller fler
+- 1+ :: En eller fler
+- n+ :: n st eller fler
+
+#+BEGIN_SRC plantuml :file 202004-matsCyklar.png
+Person : +name
+Person : +cykla(Plats A, Plats B)
+
+Person -- Barn : < is a
+
+abstract class Plats
+Plats <|-- Turistort 
+
+Plats : +name
+
+
+Person - "2" Plats : ror sig mellan
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-matsCyklar.png]]
+* Sequence Diagram
+#+BEGIN_SRC plantuml :file 202004-seqdia.png
+
+[->":Pos" : enterItem(upc, qty)
+activate ":Pos"
+":Pos" -> "current:Sale" : addItem(upc, qty)
+activate "current:Sale"
+"current:Sale" --> "si:SaleItem" : create(upc, qty)
+activate "si:SaleItem"
+"si:SaleItem" --> "info:Warehouse" : create()
+
+"si:SaleItem" -> "info:Warehouse" : getDescription(upc)
+"si:SaleItem" -> "info:Warehouse" : getPrice(upc)
+
+deactivate "si:SaleItem"
+
+"current:Sale" -> "si:SaleItem" : subtotal += si::getPrice()
+activate "si:SaleItem"
+deactivate "si:SaleItem"
+
+"current:Sale" -> "si:SaleItem" : getDescription()
+activate "si:SaleItem"
+deactivate "si:SaleItem"
+"current:Sale" --> ":Pos" : item Description
+
+deactivate "current:Sale"
+
+deactivate ":Pos"
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-seqdia.png]]
+* GRASP Patterns
+   - Low Coupling
+   - High Cohesion
+   - Information Expert
+   - Creator
+   - Controller
+   - Polymorphism
+   - Indirection
+   - Pure Fabrication
+   - Protected Variations
+* Design Patterns
+** Strategy
+#+BEGIN_SRC plantuml :file 202004-strategy.png
+
+class  Owner <<Context>>
+
+abstract class DefinedInterface <<Abstract Strategy>> 
+Owner o- DefinedInterface
+
+DefinedInterface : +method1()
+DefinedInterface : +method2()
+
+DefinedInterface <|-- ConcreteImplementation1
+DefinedInterface <|-- ConcreteImplementation2
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-strategy.png]]
+
+#+BEGIN_SRC plantuml :file 202004-strategy-concrete.png
+
+class Ghost <<context>>
+abstract class MovementStrategy <<Abstract Strategy>>
+Ghost o- MovementStrategy
+
+MovementStrategy : +move()=0
+
+MovementStrategy <|-- InkyMovment
+MovementStrategy <|-- BlinkyMovement
+MovementStrategy <|-- PinkyMovement
+MovementStrategy <|-- ClydeMovement
+
+InkyMovment : +move()
+BlinkyMovement : +move()
+PinkyMovement : +move()
+ClydeMovement : +move()
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-strategy-concrete.png]]
+
+** State
+#+BEGIN_SRC plantuml :file 202004-state.png
+class Owner <<context>>
+abstract class DefinedInterface <<abstract state>>
+Owner o- DefinedInterface
+
+DefinedInterface <|-- ConcreteImplementation1
+DefinedInterface <|-- ConcreteImplementation2   
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-state.png]]
+
+#+BEGIN_SRC plantuml :file 202004-state-concrete.png
+class Pacman <<context>>
+abstract class PacmanState <<abstract state>>
+Pacman o- PacmanState
+
+PacmanState : +makeSound() =0
+PacmanState : +encounterGhost() =0
+
+PacmanState <|-- NormalState
+PacmanState <|-- SuperState
+
+NormalState : +makeSound()
+NormalState : +encounterGhost()
+
+SuperState : +makeSound()
+SuperState : +encounterGhost()
+
+Pacman : +makeSound()
+Pacman : +encounterGhost()
+Pacman : +encounterSuperCandy()
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-state-concrete.png]]
+
+** Observer
+#+BEGIN_SRC plantuml :file 202004-observer.png
+
+class Observable
+abstract class Observer
+
+Observer : +notify(Observable o)
+
+Observable : +addObserver(Observer x)
+Observable : +notifyObservers()
+Observable : -list<Observer> myObservers
+
+Observable - "*" Observer
+
+class MyClassWithInterestingData
+Observable <|-- MyClassWithInterestingData
+
+class MySubscriber
+
+Observer <|-- MySubscriber
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-observer.png]]
+
+#+BEGIN_SRC plantuml :file 202004-observer-example.png
+
+class Observable
+abstract class Observer
+
+Observer : +notify(Observable o)
+
+Observable : +addObserver(Observer x)
+Observable : +notifyObservers()
+Observable : -list<Observer> myObservers
+
+Observable - "*" Observer
+
+Observable <|-- Pacman
+Observer <|-- Ghost
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-observer-example.png]]
+
+** Abstract Factory
+#+BEGIN_SRC plantuml :file 202004-absfact.png
+class Owner
+abstract class AbstractFactory
+Owner o- AbstractFactory
+
+AbstractFactory : +getInstanceOfX()
+AbstractFactory : +getInstanceOfY()
+
+AbstractFactory <|-- ConcreteFactory1
+AbstractFactory <|-- ConcreteFactory2
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-absfact.png]]
+
+#+BEGIN_SRC plantuml :file 202004-absfact-ex1.png
+class Owner
+abstract class InterfaceGenerator <<abstract factory>>
+Owner o- InterfaceGenerator
+
+InterfaceGenerator : +createButton()
+InterfaceGenerator : +createTextField()
+
+InterfaceGenerator <|-- WindowsGenerator
+InterfaceGenerator <|-- MacGenerator
+
+abstract class AbstractButton <<abstract Strategy>>
+AbstractButton <|-- WindowsButton
+AbstractButton <|-- MacButton
+
+WindowsGenerator --- WindowsButton : creates
+MacGenerator --- MacButton : creates
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-absfact-ex1.png]]
+
+#+BEGIN_SRC plantuml :file 202004-absfact-ex2.png
+class Game
+abstract class SceneGenerator <<abstract factory>>
+Game o- SceneGenerator
+
+SceneGenerator : +createObjectsInScene()
+
+SceneGenerator <|-- MainMenuGenerator
+SceneGenerator <|-- GameGenerator
+SceneGenerator <|-- HighScoreGenerator
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-absfact-ex2.png]]
+
+** Singleton
+#+BEGIN_SRC plantuml :file 202004-singleton.png
+
+class MyLittleResource <<singleton>> {
++static MyLittleResource* getInstance()
+-static MyLittleResource* myInstance = 0
+-MyLittleResource()
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-singleton.png]]
+
+#+BEGIN_SRC cpp
+MyLittleResource* MyLittleResouce::getInstance() {
+ if (0 == myInstance) {
+   myInstance = new MyLittleResource();
+ }
+
+ return myInstance;
+}
+#+END_SRC
+
+** Wrapper
+** Adapter
+#+BEGIN_SRC plantuml :file 202004-wrapper.png
+
+package AllOfMySystem {
+}
+
+class EvilChangingComponentWrapper
+
+Package EvilChangingComponent {
+}
+
+AllOfMySystem - EvilChangingComponentWrapper
+EvilChangingComponentWrapper - EvilChangingComponent
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-wrapper.png]]
+* Example System: BurgerOrderer
+** Use Case: Order Food
+Use case: Order Food
+Actors: Customer
+Description: A customer arrives at the BurgerOrderer, selects a meal, configures their hamburger, and orders it.
+Related Use cases: Pay for Order
+
+Main Course of Events
+| Actor                                                       | System                                        |
+|-------------------------------------------------------------+-----------------------------------------------|
+| 1. Customer arrives at BurgerOrderer and starts a new order |                                               |
+|                                                             | 2. System presents options                    |
+|                                                             | [just one burger, full meal, dessert, drink]  |
+| 3. Customer selects "full meal"                             |                                               |
+|                                                             | 4. System presents available meals            |
+| 5. Customer selects a meal                                  |                                               |
+|                                                             | 6. System adds the selected meal to order and |
+|                                                             | presents configuration options                |
+| 7. Customer selects "no onions"                             |                                               |
+|                                                             | 8. System adds "no onions" to the order       |
+| 9. Customer selects "more bacon!"                           |                                               |
+|                                                             | 10. System adds "more bacon!" to the order    |
+| 11. Customer confirms order                                 |                                               |
+|                                                             | 12. System initiates use case _pay for order_ . |
+|                                                             | 13. System places burger order to the kitchen |
+|                                                             | and prints a receipt.                         |
+|-------------------------------------------------------------+-----------------------------------------------|
+** System Sequence Diagram
+#+BEGIN_SRC plantuml :file 202004-bo-ssd.png
+actor ":Customer" as customer
+participant ":BurgerOrderer" as sys
+
+customer -> sys : startNewOrder()
+sys --> customer : present options [one burger, meal, dessert, drink]
+customer -> sys : select("meal")
+sys --> customer : present meals
+customer -> sys : selectMeal("Max")
+sys --> customer : present configuration options
+customer -> sys : selectOption("no onions")
+customer -> sys : selectOption("moar bacon!")
+customer -> sys : confirmOrder()
+
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-bo-ssd.png]]
+
+** Interaction Diagrams (Sequence Diagrams)
+# note to self: template in register i
+
+*** startNewOrder()
+#+BEGIN_SRC plantuml :file 202004-bo-startNew.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : startNewOrder()
+activate sys
+' ---------- How the system intents to solve this system call is described below ----------
+sys --> ":Order" : create()
+sys -> ":OrderTypeManager" : getOrderTypes()
+[<-- sys : return types of orders
+' ---------- end ----------
+deactivate sys
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-bo-startNew.png]]
+
+*** selectOrderType()
+#+BEGIN_SRC plantuml :file 202004-bo-selectOT.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectOrderType(theOrderTypeName)
+activate sys
+' ---------- How the system intents to solve this system call is described below ----------
+sys -> ":OrderTypeManager" : getOrderType(theOrderTypeName)
+activate ":OrderTypeManager"
+":OrderTypeManager" --> "ot:OrderType" : create()
+":OrderTypeManager" --> sys : return ot
+deactivate ":OrderTypeManager"
+
+sys -> "ot:OrderType" : getAvailableItems()
+activate "ot:OrderType"
+deactivate "ot:OrderType"
+
+[<-- sys : return available items
+' ---------- end ----------
+deactivate sys
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-bo-selectOT.png]]
+
+*** selectItem("MaxMeal")
+#+BEGIN_SRC plantuml :file 202004-bo-selectItem.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectItem(itemName)
+activate sys
+' ---------- How the system intents to solve this system call is described below ----------
+sys -> "ot:OrderType" : selectItem(itemName)
+activate "ot:OrderType"
+"ot:OrderType" --> "theItem:Item" : create()
+"ot:OrderType" --> sys : theItem
+deactivate "ot:OrderType"
+sys -> ":Order" : addItem(theItem)
+activate ":Order"
+deactivate ":Order"
+
+sys -> "theItem:Item" : getOptions()
+activate "theItem:Item"
+deactivate "theItem:Item"
+[<-- sys : return list of options
+' ---------- end ----------
+deactivate sys
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-bo-selectItem.png]]
+*** selectOption("no onions")
+#+BEGIN_SRC plantuml :file 202004-bo-selectOption.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectOption(optionName)
+activate sys
+' ---------- How the system intents to solve this system call is described below ----------
+sys -> "theItem:Item" : selectOption(optionName)
+activate "theItem:Item"
+"theItem:Item" -> "theItem:Item" : op = getOption(optionName)
+activate "theItem:Item"
+deactivate "theItem:Item"
+
+"theItem:Item" -> "op:ItemOption" : enable()
+activate "op:ItemOption"
+deactivate "op:ItemOption"
+
+deactivate "theItem:Item"
+' ---------- end ----------
+deactivate sys
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-bo-selectOption.png]]
+
+*** selectOption("more bacon!")
+*** confirmOrder()
+#+BEGIN_SRC plantuml :file 202004-bo-confirmorder.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : confirmOrder()
+activate sys
+' ---------- How the system intents to solve this system call is described below ----------
+sys -> ":Payment" : executePayment()
+activate ":Payment"
+deactivate ":Payment"
+
+sys -> ":Order" : sendOrder()
+activate ":Order"
+":Order" -> ":KitchenController" : sendItems(items)
+activate ":KitchenController"
+deactivate ":KitchenController"
+deactivate ":Order"
+
+sys -> ":Order" : printReceipt()
+activate ":Order"
+
+loop for all Items in Order
+":Order" -> ":ReceiptPrinter" : print(theItem)
+activate ":ReceiptPrinter"
+":ReceiptPrinter" -> "theItem:Item" : getName()
+activate "theItem:Item"
+deactivate "theItem:Item"
+":ReceiptPrinter" -> "theItem:Item" : getEnabledOptionNames()
+activate "theItem:Item"
+loop for all options
+"theItem:Item" -> "option:ItemOption" : isEnabled()
+activate "option:ItemOption"
+deactivate "option:ItemOption"
+
+alt is Enabled
+"theItem:Item" -> "option:ItemOption" : getName()
+activate "option:ItemOption"
+deactivate "option:ItemOption"
+end alt
+
+end loop
+deactivate "theItem:Item"
+
+deactivate ":ReceiptPrinter"
+end loop
+deactivate ":Order"
+
+' ---------- end ----------
+deactivate sys
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-bo-confirmorder.png]]
+
+** Class Diagram
+#+BEGIN_SRC plantuml :file 202004-classes.png
+class BurgerOrderer {
++startNewOrder()
++selectOrderdType(string theOrderTypeName)
++selectItem(string itemName)
++selectOption(string optionName)
+}
+
+class Order {
+ +addItem(Item theItem)
+}
+
+OrderTypeManager : +OrderType[] getOrderTypes()
+OrderTypeManager : +OrderType* getOrderType(string theOrderTypeName)
+
+abstract class OrderType <<abstract strategy>>
+OrderType : +getAvailableItems()
+OrderType : +selectItem(string itemName)
+OrderType <|-- MealOrderType
+OrderType <|-- PlainBurgerOrderType
+OrderType <|-- DessertOrderType
+
+Item : +string[] getOptionNames() ' TODO: rename getOptions() in seq-diagr.
+Item : +selectOption(string optionName)
+Item : +ItemOption* getOption(string optionName)
+
+ItemOption : enable()
+
+BurgerOrderer - Order
+BurgerOrderer -- OrderTypeManager
+BurgerOrderer --- OrderType
+BurgerOrderer -- Item : >
+
+OrderTypeManager -- "*" OrderType
+
+Item -- "*" ItemOption
+
+Order -- "*" Item
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-classes.png]]
+
+** Entity Component System
+Ett förslag på hur man kan göra "OrderType" annorlunda, för att slippa en del problem om man vill sätta ihop nya ordertyper.
+*** Bakgrund: lös det med arv
+Hur man skulle behövt lösa kompositionen om man inte använt ECS utan vanliga arvshierarkier
+#+BEGIN_SRC plantuml :file 202004-ecs-inheritance.png
+OrderType <|-- Meal
+OrderType <|-- PlainBurger
+OrderType <|-- Dessert
+OrderType <|-- Drink
+
+PlainBurger <|-- BurgerWithDessert
+Dessert <|-- BurgerWithDessert
+
+BurgerWithDessert <|-- SameButWithDrinkToo
+Drink <|-- SameButWithDrinkToo
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-ecs-inheritance.png]]
+
+... Som synes så blir det nya (multipla) arv varje gång man vill skapa en ny ordertyp. Jobbigt, svårt med multipla arv, man måste koda om systemet varje gång man vill skapa en ny ordertyp.
+
+*** Alternaiv: Entity Component System
+#+BEGIN_SRC plantuml :file 202004-ecs.png
+
+class OrderType {
+ +getAvailableItems()
+ +selectItem(string itemName)
+}
+
+abstract class MealComponent
+MealComponent <|-- PlainBurger
+MealComponent <|-- Dessert
+MealComponent <|-- Fries
+MealComponent <|-- Drink
+
+OrderType o-- "*" MealComponent
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202004-ecs.png]]
+
+#+BEGIN_SRC cpp
+// Note: Here be dragons! Egregious pseudocode below...
+class OrderType {
+private:
+ MealComponent** myComponents;
+public:
+ void create(string** componentNames) {
+  for(c in componentNames) {
+    myComponents.push(createNewMealComponent(c));
+  }
+}
+
+ MealComponent* createNewMealComponent(string cName) {
+   switch (cName) {
+ case "Burger" : return new PlainBurger(); break;
+ case "Dessert" : return new Dessert(); break;
+}
+}
+}
+#+END_SRC
+
+Slutsats: Lätt att kombinera ihop nya ordertyper -- vid runtime om så krävs.

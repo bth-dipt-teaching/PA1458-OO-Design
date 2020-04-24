@@ -1,0 +1,150 @@
+#+Title: Example of Design Process
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2020-03-04
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+
+* Introduktion
+Det här är ett exempel som vi började arbeta med på lektionen den <2020-03-03 Tue>, med tanke att fortsätta nästa lektion. Exemplet är inte komplett och förmodligen svårt att hänga med på om man inte var med på föreläsningen; om du är osäker så fråga dina studentkollegor.
+* System
+1. [ ] Självkörande Robot
+2. [X] Timmer-Skördare
+3. [ ] Websida för Blekinge Rovdjursimport
+* Arkitektur -- Paketdiagram
+#+BEGIN_SRC plantuml :file 202003-package.png
+package Harvester {
+
+package Navigation
+package Steerage
+package GPSSensor
+
+Navigation -- Steerage
+GPSSensor -- Navigation
+
+
+package TreeSensor
+package TreeDatabase
+
+TreeSensor -- TreeDatabase
+
+package ArmController
+}
+
+package UI
+package Actuators
+
+UI -- Harvester
+Harvester -- Actuators
+#+END_SRC
+
+#+RESULTS:
+[[file:202003-package.png]]
+
+* Use Case
+Use Case: Navigate to Point
+Actors: Driver
+Description: Driver selects that they want to navigate to a point. The system displays a map, the driver selects a point.
+
+
+#+LATEX: \vspace{1em} \hspace{-3cm}\begin{minipage}[c]{1.2\textwidth} \scriptsize
+
+Main Course of Events:
+| Actor                                                   | System                                                                          |
+|---------------------------------------------------------+---------------------------------------------------------------------------------|
+| 1. Driver selects that they want to navigate to a point |                                                                                 |
+|                                                         | 2. The system selects "Navigate to Point" and presents a map. Asks where to go. |
+| 3. The Driver selects a point.                          |                                                                                 |
+|                                                         | 4. The system calculates a couple of alternative routes and displays them.      |
+| 5. The Driver selects one route.                        |                                                                                 |
+|                                                         | 6. The system lurches away into the forest with a smile on its face.            |
+|---------------------------------------------------------+---------------------------------------------------------------------------------|
+
+#+LATEX: \end{minipage}
+
+* Systemsekvensdiagram
+#+BEGIN_SRC plantuml :file 202003-ssd.png
+actor Driver as d
+participant ":System" as sys
+
+d -> sys : selectNavigationMethod("toPoint")
+sys --> d : map, where do you want to go
+
+d -> sys : selectPoint(x, y)
+sys --> d : alternative routes
+
+d -> sys : selectRoute(specificRoute)
+
+#+END_SRC
+
+#+RESULTS:
+[[file:202003-ssd.png]]
+
+* Interaktionsdiagram
+#+BEGIN_SRC plantuml :file 202003-interaction.png
+[-> ":System" : selectNavigationMethod("toPoint")
+activate ":System"
+":System" -> ":NavigationFactory" : getNavigationStrategy("toPoint")
+activate ":NavigationFactory"
+
+":NavigationFactory" -> "navStrat:ToPointNavigationStrategy"** : create()
+":NavigationFactory" --> ":System" : navStrat
+
+deactivate ":NavigationFactory"
+
+":System" -> "navStrat:ToPointNavigationStrategy" : getNavigationObject()
+activate "navStrat:ToPointNavigationStrategy"
+"navStrat:ToPointNavigationStrategy" -> ":NavigationObject"** : create()
+deactivate "navStrat:ToPointNavigationStrategy"
+
+
+[<-- ":System" : navigationObject
+deactivate ":System"
+#+END_SRC
+
+#+RESULTS:
+[[file:202003-interaction.png]]
+
+* Klassdiagram
+#+BEGIN_SRC plantuml :file 202003-class.png
+package Harvester {
+
+class System
+
+package Navigation {
+class NavigationFactory
+class ToPointNavigationStrategy
+}
+
+package InteractionObjects {
+class NavigationObject
+}
+
+System -- NavigationFactory
+NavigationFactory -- ToPointNavigationStrategy
+System -- ToPointNavigationStrategy
+ToPointNavigationStrategy -- NavigationObject
+
+
+package Steerage {}
+package GPSSensor {}
+
+Navigation - Steerage
+GPSSensor - Navigation
+
+package TreeSensor {}
+package TreeDatabase {}
+
+TreeSensor - TreeDatabase
+
+package ArmController {}
+
+package UI {}
+package Actuators {}
+
+UI - Harvester
+Harvester - Actuators
+#+END_SRC
+
+#+RESULTS:
+[[file:202003-class.png]]
