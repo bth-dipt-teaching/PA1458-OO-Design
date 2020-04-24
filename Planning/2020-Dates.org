@@ -1,4 +1,5 @@
 * Lectures && Dates
+** LP3 PA1459, PA1460, LP34 PA1459
 | Date lp3         | Lecture                       | PA1458 | PA1459 | PA1460 |
 |------------------+-------------------------------+--------+--------+--------|
 | <2020-01-23 Thu> | Introduction                  | x      | x      | x      |
@@ -19,22 +20,23 @@
 | <2020-03-05 Thu> | Buffer/Workable Example       | x      | x      | x      |
 | <2020-03-06 Fri> | Buffer/Workable Example       | x      | x      | x      |
 |------------------+-------------------------------+--------+--------+--------|
-
 ** LP4 PA1458
-| Lecture                       | PA1458 | Date lp4 |
-|-------------------------------+--------+----------|
-| Introduction                  | x      |          |
-| Requirements Engineering      | x      |          |
-| Use Cases                     | x      |          |
-| Development Methodologies     | x      |          |
-| Testing                       | x      |          |
-| Modelling Structure           | x      |          |
-| Modelling Behaviour           | x      |          |
-| Design Patterns               | x      |          |
-| GRASP/Workable Example        | x      |          |
-| Design to Code                | x      |          |
-|                               |        |          |
-| Buffer/Workable Example       | x      |          |
-| Buffer/Workable Example       | x      |          |
-| Buffer/Workable Example       | x      |          |
-|-------------------------------+--------+----------|
+| Lecture                   | Date lp4         |
+|---------------------------+------------------|
+| Introduction              | <2020-03-31 Tue> |
+| Requirements Engineering  | <2020-04-02 Thu> |
+| Use Cases                 | <2020-04-03 Fri> |
+| Development Methodologies | <2020-04-06 Mon> |
+| Testing                   | <2020-04-07 Tue> |
+| Modelling Structure       | <2020-04-09 Thu> |
+| Modelling Behaviour       | <2020-04-14 Tue> |
+| Design Patterns           | <2020-04-16 Thu> |
+| GRASP/Workable Example    | <2020-04-17 Fri> |
+| Design to Code            | <2020-04-21 Tue> |
+|                           |                  |
+| Buffer/Workable Example   | <2020-04-23 Thu> |
+| Buffer/Workable Example   | <2020-04-24 Fri> |
+| Buffer/Workable Example   | <2020-05-12 Tue> |
+| Buffer/Workable Example   | <2020-05-14 Thu> |
+| Buffer/Workable Example   | <2020-05-15 Fri> |
+|---------------------------+------------------|
