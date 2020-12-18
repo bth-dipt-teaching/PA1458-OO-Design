@@ -1,0 +1,84 @@
+* Lectures && Dates
+** LP3 PA1458
+| Lecture                   | Week | Day | Date |  Time |
+|---------------------------+------+-----+------+-------|
+| Introduction              |    3 | Mon | 18/1 | 10-12 |
+| Requirements Engineering  |      | Tue | 19/1 | 13-15 |
+| Use Cases                 |      | Thu | 21/1 |  8-10 |
+| Development Methodologies |    4 | Mon | 25/1 | 10-12 |
+| Testing                   |      | Thu | 28/1 |  8-10 |
+| Modelling Structure       |    5 | Mon | 1/2  | 10-12 |
+| Modelling Behaviour       |      | Thu | 4/2  |  8-10 |
+| Design Patterns           |    6 | Mon | 8/2  | 10-12 |
+| GRASP/Workable Example    |      | Tue | 9/2  | 13-15 |
+| Design to Code            |      | Thu | 11/2 |  8-10 |
+|                           |      |     |      |       |
+| Buffer/Workable Example   |    7 | Mon | 15/2 | 10-12 |
+| Buffer/Workable Example   |    9 | Mon | 1/3  | 10-12 |
+| Buffer/Workable Example   |   10 | Mon | 8/3  | 10-12 |
+| Buffer/Workable Example   |      | Tue | 9/3  | 13-15 |
+|---------------------------+------+-----+------+-------|
+
+** LP3 PA1459, PA1460, LP34 PA1459
+| Lecture                       | PA1458 | PA1459 | PA1460 | Week | Day | Date |  Time |
+|-------------------------------+--------+--------+--------+------+-----+------+-------|
+| Introduction                  | x      | x      | x      |    3 | Mon | 18/1 | 13-15 |
+| Requirements Engineering      | x      |        |        |      |     |      |       |
+| Use Cases                     | x      | x      | x      |      | Wed | 20/2 |  8-10 |
+| Development Methodologies     | x      |        |        |      |     |      |       |
+| Testing                       | x      | x      | x      |      | Fri | 22/1 | 10-12 |
+| Modelling Structure           | x      | x      | x      |    4 | Mon | 25/1 | 13-15 |
+| Quality Attributes            |        |        | x      |      | Fri | 29/1 | 10-12 |
+| Modelling Behaviour           | x      | x      | x      |    5 | Mon | 1/2  | 13-15 |
+| Introduction to Architectures |        |        | x      |      | Wed | 3/2  |  8-10 |
+| Documenting Architectures     |        |        | x      |      | Fri | 5/2  | 10-12 |
+| Design Patterns               | x      | x      | x      |    6 | Mon | 8/2  | 13-15 |
+| GRASP/Workable Example        | x      | x      | x      |      | Wed | 10/2 |  8-10 |
+| Design to Code                | x      | x      | x      |      | Fri | 12/2 | 10-12 |
+|                               |        |        |        |      |     |      |       |
+| Buffer/Workable Example       | x      | x      | x      |    7 | Mon | 15/2 | 13-15 |
+| Buffer/Workable Example       | x      | x      | x      |    9 | Mon | 1/3  | 13-15 |
+| Buffer/Workable Example       | x      | x      | x      |   10 | Mon | 8/3  | 13-15 |
+| Buffer/Workable Example       | x      | x      | x      |      | Wed | 10/3 |  8-10 |
+|-------------------------------+--------+--------+--------+------+-----+------+-------|
+** lp3 PA1459, PA1469 for web
+| Lecture                       | PA1459 | PA1460 | Date |
+|-------------------------------+--------+--------+------|
+| Introduction                  | x      | x      | 18/1 |
+| Use Cases                     | x      | x      | 20/2 |
+| Testing                       | x      | x      | 22/1 |
+| Modelling Structure           | x      | x      | 25/1 |
+| Quality Attributes            |        | x      | 29/1 |
+| Modelling Behaviour           | x      | x      | 1/2  |
+| Introduction to Architectures |        | x      | 3/2  |
+| Documenting Architectures     |        | x      | 5/2  |
+| Design Patterns               | x      | x      | 8/2  |
+| GRASP/Workable Example        | x      | x      | 10/2 |
+| Design to Code                | x      | x      | 12/2 |
+|                               |        |        |      |
+| Buffer/Workable Example       | x      | x      | 15/2 |
+| Buffer/Workable Example       | x      | x      | 1/3  |
+| Buffer/Workable Example       | x      | x      | 8/3  |
+| Buffer/Workable Example       | x      | x      | 10/3 |
+|-------------------------------+--------+--------+------|
+
+** TODO LP4 PA1458
+| Lecture                   | Date lp4         |
+|---------------------------+------------------|
+| Introduction              | <2020-03-31 Tue> |
+| Requirements Engineering  | <2020-04-02 Thu> |
+| Use Cases                 | <2020-04-03 Fri> |
+| Development Methodologies | <2020-04-06 Mon> |
+| Testing                   | <2020-04-07 Tue> |
+| Modelling Structure       | <2020-04-09 Thu> |
+| Modelling Behaviour       | <2020-04-14 Tue> |
+| Design Patterns           | <2020-04-16 Thu> |
+| GRASP/Workable Example    | <2020-04-17 Fri> |
+| Design to Code            | <2020-04-21 Tue> |
+|                           |                  |
+| Buffer/Workable Example   | <2020-04-23 Thu> |
+| Buffer/Workable Example   | <2020-04-24 Fri> |
+| Buffer/Workable Example   | <2020-05-12 Tue> |
+| Buffer/Workable Example   | <2020-05-14 Thu> |
+| Buffer/Workable Example   | <2020-05-15 Fri> |
+|---------------------------+------------------|
