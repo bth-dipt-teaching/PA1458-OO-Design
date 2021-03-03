@@ -1,4 +1,4 @@
-#+Title: Mapping\\\\ Design to Code
+#+Title: Mapping Design to Code
 #+Author: Mikael Svahnberg
 #+Email: Mikael.Svahnberg@bth.se
 #+Date: 2016-04-21
@@ -28,7 +28,7 @@ ProductDescription : -ItemID myItemID
 #+RESULTS:
 [[file:FClassToCode.png]]
 
-*** Solution 							   :noexport:
+ Solution:
 #+BEGIN_SRC java
 public class SalesLineItem {
 private int myQuantity;
@@ -82,7 +82,7 @@ Sale -- "*" SalesLineItem : >
 #+RESULTS:
 [[file:FCollectionsToCode.png]]
 
-*** Solutions							   :noexport:
+Solutions:
 #+BEGIN_SRC java
 public class Sale {
   private List<SalesLineItem> myItems = new ArrayList<SalesLineItem>;
@@ -104,7 +104,6 @@ private:
        - First write interfaces for all classes, then inherit and implement the classes
 * Dictionary Example
 ** Task
-*** Dictionary
     Write a dictionary program where you have words and their definitions.
     - Users shall be able to browse all words.
     - Users shall be able to search for words
@@ -160,7 +159,7 @@ ControllerInterface -- "*" DictionaryView
 #+RESULTS:
 [[file:FDictionaryClass1.png]]
 
-*** Note
+- Note
     - Views are loosely connected to Controller (pointer given via ~setController()~)
     - Views have no direct connection to the Dictionary.
       - Controller ensures views "behave".
@@ -219,7 +218,7 @@ class WordView #PaleGreen
 #+RESULTS:
 [[file:FDictionaryClass2.png]]
 
-*** Note
+- Note
     - ~OutputInterface~ to keep track of which word to display
       - Keeps Controller ignorant of concrete views (dependency injection)
     - Views /should/ track all changes (=CRUD= -- Create, Remove, Update, Delete)
