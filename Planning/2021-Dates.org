@@ -1,25 +1,26 @@
 * Lectures && Dates
-** LP3 PA1458
-| Lecture                   | Week | Day | Date |  Time |
-|---------------------------+------+-----+------+-------|
-| Introduction              |    3 | Mon | 18/1 | 10-12 |
-| Requirements Engineering  |      | Tue | 19/1 | 13-15 |
-| Use Cases                 |      | Thu | 21/1 |  8-10 |
-| Development Methodologies |    4 | Mon | 25/1 | 10-12 |
-| Testing                   |      | Thu | 28/1 |  8-10 |
-| Modelling Structure       |    5 | Mon | 1/2  | 10-12 |
-| Modelling Behaviour       |      | Thu | 4/2  |  8-10 |
-| Design Patterns           |    6 | Mon | 8/2  | 10-12 |
-| GRASP/Workable Example    |      | Tue | 9/2  | 13-15 |
-| Design to Code            |      | Thu | 11/2 |  8-10 |
-|                           |      |     |      |       |
-| Buffer/Workable Example   |    7 | Mon | 15/2 | 10-12 |
-| Buffer/Workable Example   |    9 | Mon | 1/3  | 10-12 |
-| Buffer/Workable Example   |   10 | Mon | 8/3  | 10-12 |
-| Buffer/Workable Example   |      | Tue | 9/3  | 13-15 |
-|---------------------------+------+-----+------+-------|
+** lp3 PA1458
+| Lecture                   | Week | Day | Date |  Time | Notes |
+|---------------------------+------+-----+------+-------+-------|
+| Introduction              |    3 | Mon | 18/1 | 10-12 |       |
+| Requirements Engineering  |      | Tue | 19/1 | 13-15 |       |
+| Use Cases                 |      | Thu | 21/1 |  8-10 |       |
+| Development Methodologies |    4 | Mon | 25/1 | 10-12 |       |
+| Testing                   |      | Thu | 28/1 |  8-10 | n/a   |
+| Modelling Structure       |    5 | Mon | 1/2  | 10-12 |       |
+| Modelling Behaviour       |      | Thu | 4/2  |  8-10 |       |
+| Design Patterns           |    6 | Mon | 8/2  | 10-12 |       |
+| GRASP/Workable Example    |      | Tue | 9/2  | 13-15 | n/a   |
+| Design to Code            |      | Thu | 11/2 |  8-10 | n/a   |
+|                           |      |     |      |       |       |
+| Buffer/Workable Example   |    7 | Mon | 15/2 | 10-12 |       |
+| Buffer/Workable Example   |    9 | Mon | 1/3  | 10-12 |       |
+| Buffer/Workable Example   |   10 | Mon | 8/3  | 10-12 |       |
+| Buffer/Workable Example   |      | Tue | 9/3  | 13-15 |       |
+| Buffer/Workable Example   |      | Tue | 11/3 |  8-10 |       |
+|---------------------------+------+-----+------+-------+-------|
 
-** LP3 PA1459, PA1460, LP34 PA1459
+** lp3 PA1459, PA1460, LP34 PA1459 :noexport:
 | Lecture                       | PA1458 | PA1459 | PA1460 | Week | Day | Date |  Time |
 |-------------------------------+--------+--------+--------+------+-----+------+-------|
 | Introduction                  | x      | x      | x      |    3 | Mon | 18/1 | 13-15 |
@@ -41,7 +42,7 @@
 | Buffer/Workable Example       | x      | x      | x      |   10 | Mon | 8/3  | 13-15 |
 | Buffer/Workable Example       | x      | x      | x      |      | Wed | 10/3 |  8-10 |
 |-------------------------------+--------+--------+--------+------+-----+------+-------|
-** lp3 PA1459, PA1469 for web
+** lp3 PA1459, PA1460 for web
 | Lecture                       | PA1459 | PA1460 | Date |
 |-------------------------------+--------+--------+------|
 | Introduction                  | x      | x      | 18/1 |
@@ -60,25 +61,116 @@
 | Buffer/Workable Example       | x      | x      | 1/3  |
 | Buffer/Workable Example       | x      | x      | 8/3  |
 | Buffer/Workable Example       | x      | x      | 10/3 |
+| Buffer/Workable Example       | x      | x      | 12/3 |
 |-------------------------------+--------+--------+------|
 
-** TODO LP4 PA1458
+** lP4 PA1458
 | Lecture                   | Date lp4         |
 |---------------------------+------------------|
-| Introduction              | <2020-03-31 Tue> |
-| Requirements Engineering  | <2020-04-02 Thu> |
-| Use Cases                 | <2020-04-03 Fri> |
-| Development Methodologies | <2020-04-06 Mon> |
-| Testing                   | <2020-04-07 Tue> |
-| Modelling Structure       | <2020-04-09 Thu> |
-| Modelling Behaviour       | <2020-04-14 Tue> |
-| Design Patterns           | <2020-04-16 Thu> |
-| GRASP/Workable Example    | <2020-04-17 Fri> |
-| Design to Code            | <2020-04-21 Tue> |
+| Introduction              | <2020-03-29 Sun> |
+| Requirements Engineering  | <2020-04-07 Tue> |
+| Use Cases                 | <2020-04-09 Thu> |
+| Development Methodologies | <2020-04-12 Sun> |
+| Testing                   | <2020-04-14 Tue> |
+| Modelling Structure       | <2020-04-16 Thu> |
+| Modelling Behaviour       | <2020-04-19 Sun> |
+| Design Patterns           | <2020-04-21 Tue> |
+| GRASP/Workable Example    | <2020-04-23 Thu> |
+| Design to Code            | <2020-04-26 Sun> |
 |                           |                  |
-| Buffer/Workable Example   | <2020-04-23 Thu> |
-| Buffer/Workable Example   | <2020-04-24 Fri> |
-| Buffer/Workable Example   | <2020-05-12 Tue> |
-| Buffer/Workable Example   | <2020-05-14 Thu> |
-| Buffer/Workable Example   | <2020-05-15 Fri> |
+| Buffer/Workable Example   | <2020-04-30 Thu> |
+| Buffer/Workable Example   | <2020-05-17 Sun> |
+| Buffer/Workable Example   | <2020-05-19 Tue> |
+| Buffer/Workable Example   | <2020-05-21 Thu> |
 |---------------------------+------------------|
+* Assignment Deadlines Spring 2021 [4/4]
+2021 lp3 start week 3 <2021-01-18 Mon>
+2021 lp3 end week 12 <2021-03-28 Sun>
+2021 lp4 start week 13 <2021-03-29 Mon>
+2021 lp4 end week 22 <2021-06-06 Sun>
+** DONE PA1458 lp3
+| <15>                           | <15>               | <20>                                        |
+| Assignnment                    | has rubric         | PA1458 -lp3                                 |
+|--------------------------------+--------------------+---------------------------------------------|
+| Create Detailed Use Cases      | OOD                | 29/1 fre w4                                 |
+| List System Events             | List System Events | 29/1 fre w4                                 |
+| WBS and Project Plan           | Planning           | 5/2 fre w5                                  |
+| Discussion of GRASP Patterns   | n-ok               | 12/2 fre w6                                 |
+| Interaction Diagrams           | OOD&Grasp          | 17/2 wed w7                                 |
+| Class and Package Diagram      | OOD                | 3/3 wed w9                                  |
+| Refactored Class Diagram       | OOD&DP             | 12/3 fre w10                                |
+| Refactored Interaction Diagram | OOD                | 12/3 fre w10                                |
+| Unit Test for Use Case         | Impl & Test        | 19/3 fre w11                                |
+| Implementation                 | Impl & Test        | 19/3 fre w11                                |
+| Demo Implementation            | n-ok               | Book Time Fri 12/3; Demo week 11 && week 12 |
+|--------------------------------+--------------------+---------------------------------------------|
+*** Dates 2018
+| Course | lp | Task                             |   Week | Date                   |
+|--------+----+----------------------------------+--------+------------------------|
+| PA1458 |  4 |                                  | 14--22 |                        |
+|        |    | Create Detailed Use Cases        |     15 | <2019-04-11 Thu 23:59> |
+|        |    | List System Events               |     15 | <2019-04-11 Thu 23:59> |
+|        |    | WBS and Project Plan             |     16 | <2019-04-16 Tue 23:59> |
+|        |    | Discussion of GRASP patterns     |     18 | <2019-05-02 Thu 23:59> |
+|        |    | Interaction Diagrams             |     18 | <2019-05-02 Thu 23:59> |
+|        |    | Class and Package Diagrams       |     19 | <2019-05-07 Tue 23:59> |
+|        |    | Refactored Class Diagram         |     20 | <2019-05-16 Thu 23:59> |
+|        |    | Refactored Interaction Diagram   |     20 | <2019-05-16 Thu 23:59> |
+|        |    | Unit Tests                       |     22 | <2019-05-28 Tue 23:59> |
+|        |    | Implementation                   |     22 | <2019-05-28 Tue 23:59> |
+
+** DONE PA1459 [2/2]
+2019 course start: 2019-01-21 (tis)
+2020 course start: 2020-01-23 (tor)
+2021 course start: 2020-01-18 (mån)
+
+- [X] lp3
+- [X] lp3-4
+
+| <15>                           | <5>          |              |
+| Assignment                     | PA1459 -lp3  | PA1459 -lp34 |
+|--------------------------------+--------------+--------------|
+| Discussion of GRASP Patterns   | 12/2 fre w6  | 17/2 wed     |
+| Interaction Diagrams           | 17/2 wed w7  | 12/3 fre     |
+| Class and Package Diagram      | 3/3 wed w9   | 16/4 fre     |
+| Refactored Class Diagram       | 12/3 fre w10 | 14/5 fre     |
+| Refactored Interaction Diagram | 12/3 fre w10 | 14/5 fre     |
+|--------------------------------+--------------+--------------|
+** DONE PA1460
+2019 course start: 2019-01-21 (tis)
+2020 course start: 2020-01-23 (tor)
+2021 course start: 2020-01-18 (mån)
+| <15>                             |              |
+| Assignment                       | PA1460 -lp3  |
+|----------------------------------+--------------|
+| Discussion of Quality Attributes | 5/2 fre w5   |
+| Instantiated Architecture Style  | 10/2 wed w6  |
+| Discussion of GRASP Patterns     | 12/2 fre w6  |
+| Interaction Diagrams             | 17/2 wed w7  |
+| Class and Package Diagram        | 3/3 wed w9   |
+| Refactored Class Diagram         | 12/3 fre w10 |
+| Refactored Interaction Diagram   | 12/3 fre w10 |
+| Create Test Plan                 | 19/3 fre w11 |
+| Unit Test for Use Case           | 19/3 fre w11 |
+|----------------------------------+--------------|
+** DONE PA1458 lp4
+| <20>                           | <20>                                                |
+| Assignnment                    | PA1458 -lp4                                         |
+|--------------------------------+-----------------------------------------------------|
+| Create Detailed Use Cases      | <2021-04-09 Fri>                                    |
+| List System Events             | <2021-04-09 Fri>                                    |
+| WBS and Project Plan           | <2021-04-16 Fri>                                    |
+| Discussion of GRASP Patterns   | <2021-04-16 Fri>                                    |
+| Interaction Diagrams           | <2021-04-23 Fri>                                    |
+| Class and Package Diagram      | <2021-04-30 Fri>                                    |
+| Refactored Class Diagram       | <2021-05-07 Fri>                                    |
+| Refactored Interaction Diagram | <2021-05-07 Fri>                                    |
+| Unit Test for Use Case         | <2021-05-21 Fri>                                    |
+| Implementation                 | <2021-05-21 Fri>                                    |
+| Demo Implementation            | Book Time <2021-05-21 Fri>; Demo week 21 && week 22 |
+|--------------------------------+-----------------------------------------------------|
+* Exam Dates
+PA1459 2021-03-17
+PA1458 2021-03-17
+
+\sum publish on the 12th, due on the 19th.
