@@ -1,0 +1,105 @@
+#+Title: Hemtenta Objektorienterad Design
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2021-01-08
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,a4paper]
+#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: timeperiod Januari 2021
+#+MACRO: starttime 8:e Januari
+#+MACRO: endtime 15:e Januari
+#+MACRO: pattern Observer Pattern
+#+MACRO: GRASP1 Information Expert
+#+MACRO: GRASP2 Controller
+
+* Bakgrund
+  :PROPERTIES:
+  :UNNUMBERED: t
+  :END:
+Det här dokumentet beskriver en hemtentamen under *{{{timeperiod}}}* i kurserna:
+
+- PA1458 (PA1415) :: Programvaruteknik, 7.5 ECTS
+- PA1459 (PA1435) :: Objektorienterad Design, 6 ECTS
+- PA1460 (PA1443) :: Introduktion till programvarudesign och arkitektur, 5 ECTS
+
+Tentamen består av två uppgifter (se nedan), och du som student får *en vecka* på dig att besvara och skicka in ditt svar. Tentan publiceras alltså den {{{starttime}}}, och ditt svar skall vara inlämnat den *{{{endtime}}} kl. 23:59*. Jag måste kunna öppna och läsa din inlämning så PDF eller ett Word-dokument är en bra idé.
+
+Du får använda de hjälpmedel såsom böcker och internetresurser du vill, och ni får diskutera era lösningar med varandra, men det finns några begränsningar:
+
+- Det system du hittar på och använder för att besvara uppgifterna måste vara unikt för dig.
+- Svaren på uppgifterna måste vara unika för dig.
+
+* Uppgifter
+** Uppgift 1 (4 deluppgifter)
+1. Hitta på ett mindre system där du kan använda designmönstret *{{{pattern}}}*. Beskriv systemet och hur du tänker använda designmönstret för att lösa en del av systemet.
+
+2. Gör ett klassdiagram med klasser, attribut och metoder för den del av systemet där ditt {{{pattern}}} används. Om du inte har möjlighet skapa ett diagram så beskriv det med kod enligt följande:
+#+BEGIN_SRC plantuml
+' En kommentar
+
+' Deklarera en klass
+class KlassA
+class KlassB
+class KlassC
+
+' Metoder och Attribut
+KlassA : +publicMethod()
+KlassA : -privateMethod()
+KlassA : +int publicAttribute
+KlassA : -int privateAttribute
+
+
+' Relationer mellan klasser 
+KlassA -- KlassB 'en association
+KlassB <|-- KlassC 'ett arv. KlassC ärver från KlassB
+#+END_SRC
+
+3. [@3]Beskriv hur du använt {{{pattern}}} och vilka klasser och metoder som är inblandade. Vilka roller har de? Vilka ansvarsområden har de?
+
+4. Skriv pseudokod (eller kod i Java eller C++) för de metoder där du skapar objekt enligt ditt {{{pattern}}} och de metoder där du använder dig av dessa objekt.
+** Uppgift 2 (2 deluppgifter)
+1) På vilket sätt är {{{pattern}}} relaterat till GRASP-mönstren *{{{GRASP1}}}* och *{{{GRASP2}}}*? Beskriv kortfattat.
+
+2) Använd ditt system från uppgift 1 och beskriv hur {{{GRASP1}}} och {{{GRASP2}}} används för att fördela ansvar mellan klasserna i ditt system.
+
+#+LATEX: \newpage
+* Rättningsmall
+För att få godkänt på tentan måste man få minst en poäng för var och en av de nedanstående kriterierna och mer än 60% (9 poäng).
+** Kriterier
+    - Inblandade Klasser
+      0. [@0] Klasserna i klassdiagrammet är inte en del av det efterfrågade designmönstret.
+      1. Någon av de beskrivna klasserna kan tolkas som en del av det efterfrågade designmönstret. Roller och ansvarsområden är inte beskrivna.
+      2. 
+      3. Klasserna för det efterfrågade designmönstret finns med i klassdiagrammet. Roller och ansvarsområden är ytligt beskrivna, med några brister.
+      4. 
+      5. Klasserna för det efterfrågade designmönstret finns med i klassdiagrammet. Designmönstret är tydligt utmärkt i klassdiagrammet. Roller och ansvarsområden är tydligt och korrekt beskrivna.
+    - Inblandade Metoder och Attribut
+      0. [@0] Inga metoder eller attribut finns med i klassdiagrammet. Pseudokod för efterfrågade metoder fungerar inte enligt det efterfrågade desigmönstret.
+      1. Någon av de metoder och attribut som behövs för det efterfrågade designmönstret finns med i klassdiagrammet. Pseudokod för några av de efterfrågade metoderna fungerar i stort enligt det efterfrågade desigmönstret.
+      2. 
+      3. De flesta av de metoder och attribut som behövs för det efterfrågade designmönstret finns med i klassdiagrammet och i rätt klasser. Pseudokod för efterfrågade metoder fungerar i stort enligt det efterfrågade desigmönstret. 
+      4. 
+      5. Alla de metoder och attribut som behövs för det efterfrågade designmönstret finns med i klassdiagrammet och i rätt klasser. Pseudokod för alla efterfrågade metoder fungerar enligt det efterfrågade desigmönstret.
+    - GRASP-Mönster
+      0. [@0] De efterfrågade GRASP-mönstren och deras relation till det efterfrågade designmönstret beskrivs felaktigt eller inte alls.
+      1. Ett av de efterfrågade GRASP-mönstren och deras relation till det efterfrågade designmönstret beskrivs ytligt men i huvudsak korrekt. Klasserna i exempelsystemet har beskrivna ansvarsområden, men det är oklart hur de efterfrågade GRASP-mönstren har används för att tilldela klasserna olika ansvarsområden.
+      2. 
+      3. Samtliga efterfrågade GRASP-mönster och deras relation till det efterfrågade designmönstret beskrivs i huvudsak korrekt. Klasserna i exempelsystemet har beskrivna ansvarsområden och det är mestadels tydligt hur de efterfrågade GRASP-mönstren har används för att tilldela klasserna deras olika ansvarsområden.
+      4. 
+      5. Samtliga efterfrågade GRASP-mönster och deras relation till det efterfrågade designmönstret beskrivs ingående och korrekt. Klasserna i exempelsystemet har beskrivna ansvarsområden och det är tydligt hur de efterfrågade GRASP-mönstren har används för att tilldela klasserna deras olika ansvarsområden.
+
+** Betygsgränser
+| Betyg | Procent | Poäng |
+|-------+---------+-------|
+| MAX   |    100% |    15 |
+| A     |     90% |  13.5 |
+| B     |     80% |    12 |
+| C     |     70% |  10.5 |
+| D     |     65% |  9.75 |
+| E     |     60% |     9 |
+|-------+---------+-------|

@@ -1,0 +1,108 @@
+#+Title: Home Exam Object Oriented Design
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2021-01-08
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 toc:nil
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,a4paper]
+#+LATEX_HEADER: \usepackage[margin=2cm]{geometry}
+#+BEAMER_THEME: BTH_msv
+
+#+MACRO: timeperiod Januari 2021
+#+MACRO: starttime 8:e Januari
+#+MACRO: endtime 15:e Januari
+#+MACRO: pattern Observer Pattern
+#+MACRO: GRASP1 Information Expert
+#+MACRO: GRASP2 Controller
+
+* Background
+  :PROPERTIES:
+  :UNNUMBERED: t
+  :END:
+This document describes a home exam for the time period {{{timeperiod}}} in the courses:
+
+- PA1458 (PA1415) :: Software Design  /  Programvaruteknik, 7.5 ECTS
+- PA1459 (PA1435) :: Object Oriented Design  /  Objektorienterad Design, 6 ECTS
+- PA1460 (PA1443) :: Introduction to Software Design and Architectures  /  Introduktion till programvarudesign och arkitektur, 5 ECTS
+
+The exam consists of two tasks (see below), and you have *one week* to complete and submit your answer. Thus, the exam is published on the {{{starttime}}}, and your submission is due on the {{{endtime}}} at *23:59*. I have to be able to open and read your submission so a PDF or a Word-document is a good idea.
+
+You may use any books and internet resources you see fit, and you may discuss your solution with each other, but with a few limitations:
+
+- The system that you invent and use to complete the tasks must be unique for each student.
+- The answers to the questions must be unique for you.
+
+You may answer the questions either in Swedish or in English.
+
+* Tasks
+** Task 1 (4 questions)
+1. Invent a small system where you can use the design pattern {{{pattern}}}. Describe the system and how you intend to use the design pattern to solve a part of the system.
+
+2. Create a class diagram with classes, attributes, and methods for the part of the system where your {{{pattern}}} is used. If you are not able to create a graphical diagram, then describe it in code according to the following:
+
+#+BEGIN_SRC plantuml
+' A comment
+
+' Declare a class
+class KlassA
+class KlassB
+class KlassC
+
+' Methods and attributes
+KlassA : +publicMethod()
+KlassA : -privateMethod()
+KlassA : +int publicAttribute
+KlassA : -int privateAttribute
+
+
+' Relations between classes
+KlassA -- KlassB 'an association
+KlassB <|-- KlassC 'inheritance. KlassC inherits from KlassB
+#+END_SRC
+
+3. Describe how you have used {{{pattern}}} and which classes and methods that are involved. What are their roles? What are their responsibilities?
+
+4. Write pseudocode (or code in Java or C++) for the methods where you create objects according to your {{{pattern}}} and the methods where you use these objects.
+
+** Task 2 (2 questions)
+1. Describe briefly in what way is {{{pattern}}} related to the GRASP patterns {{{GRASP1}}} and {{{GRASP2}}}?
+
+2. Use your system from Task 1 and describe how {{{GRASP1}}} and {{{GRASP2}}} are used to assign responsibilities to the classes in your system.
+
+#+LATEX: \newpage
+* Marking Guide
+To pass the exam you must get at least one point from each of the criteria below and score more than 60% (9 points).
+** Criteria
+- Involved Classes
+  0. [@0] The classes in the class diagram are not part of the requested design pattern.
+  1. Some of the classes can be interpreted to be part of the requested design pattern. Roles and responsibilities are not described.
+  2. 
+  3. The classes for the requested design pattern are part of the class diagram. Roles and responsibilities are shallowly described but with a few deficiencies.
+  4. 
+  5. The classes for the requested design pattern are part of the class diagram. The design pattern  is clearly marked in the class diagram. Roles and responsibilities are clearly and correctly described.
+- Involved Methods and Attributes
+  0. [@0] There are no methods or attributes in the class diagram. Pseudocode for relevant methods to not work according to the requested design pattern.
+  1. Some of the methods and attributes needed for the requested design pattern are part of the class diagram. Pseudocode for some of the relevant methods more or less work according to the requested design pattern.
+  2. 
+  3. Most methods and attributes needed for the requested design pattern are part of the class diagram and in the right classes. Pseudocode for relevant methods more or less work according to the requested design pattern.
+  4. 
+  5. All methods and attributes needed for the requested design pattern are part of the class diagra and in the right cass. Pseudocode for all methods and attributes work according to the requested design pattern.
+- GRASP Patterns
+  0. [@0] The requested GRASP patterns, and their relation to the requested design pattern are not described or the description is seriously flawed.
+  1. One of the requested GRASP patterns and their relation to the requested design pattern is shallowly but mostly correctly described. The classes in the example system have described responsibilities but it is unclear how the requested GRASP patterns have been used to assign responsibilities to the different classes.
+  2. 
+  3. All requested GRASP patterns and their relation to the requested design pattern are mostly correctly described. The classes in the example system have described responsibilities and it is mostly clear how the requested GRASP patterns are used to assign responsibilities to the different classes.
+  4. 
+  5. All requested GRASP patterns and their relation to the requested design pattern are correctly described and described in depth. The classes in the example system have described responsibilities and it is clear how the requested GRASP patterns are used to assign responsibilities to the different classes.
+** Grade Limits
+| Grade | Percent | Points |
+|-------+---------+--------|
+| MAX   |    100% |     15 |
+| A     |     90% |   13.5 |
+| B     |     80% |     12 |
+| C     |     70% |   10.5 |
+| D     |     65% |   9.75 |
+| E     |     60% |      9 |
+|-------+---------+--------|
