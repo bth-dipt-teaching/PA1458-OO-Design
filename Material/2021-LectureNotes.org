@@ -1,0 +1,1139 @@
+* PA1458 Domain Model for Discussion Forum
+*Discussion Forum*
+Design a Conceptual Model of a Discussion forum with categories, topics,
+posts, users, user profiles, and private messages. The system consists of a
+server park (including the database), a web client, and an android client.
+
+  #+begin_src plantuml :file DM-DF-pa1458.png
+class Post
+class Topic
+class Category
+class User
+
+User : profile
+User : name
+User : credentials
+
+Post : contents
+Post : upvotes
+Post : downvotes
+Post : edit-history
+
+Topic : title
+
+Category : listTopics()
+
+Post - Topic : is part of
+Category - Topic : contains >
+User - Post : CRUD >
+  #+end_src
+
+  #+RESULTS:
+  [[file:DM-DF-pa1458.png]]
+
+** Use Cases
+1. Use Case: Create Post
+2. Use Case: List Topics
+3. Use Case: Login User
+
+* PA1459/PA1460 Domain Model for Discussion Forum
+*Discussion Forum*
+Design a Conceptual Model of a Discussion forum with categories, topics,
+posts, users, user profiles, and private messages. The system consists of a
+server park (including the database), a web client, and an android client.
+
+#+begin_src plantuml :file DM-DF-pa1459.png
+class Forum
+Forum -- Category : contains >
+
+class Post
+class Topic
+class Category
+class User
+
+User : profile
+
+Post : contents
+Post : upvotes
+Post : downvotes
+
+Category : listTopics()
+
+User -- Post : writes >
+Topic - Post : contains >
+Category - Topic : contains >
+#+end_src
+
+#+RESULTS:
+[[file:DM-DF-pa1459.png]]
+
+** Use Case
+1. Use case: Create Post
+2. Use case: List Topics
+3. Use case: Login User
+
+*Use case*: Create Post
+*Actors:* user
+*Description:* User creates a post and assigns it to a topic and category.
+
+*Main course of events:*
+| Actor                         | System                                                      |
+|-------------------------------+-------------------------------------------------------------|
+| 1. User selects "create Post" | 2. System asks for post contents                            |
+| 3. User writes post           | 4. System asks for topic and category                       |
+| 5. User selects topic         |                                                             |
+| 6. User selects category      |                                                             |
+|                               | 7. System previews post in topic.                           |
+| 8. User selects "post!"       |                                                             |
+|                               | 9. System saves post, displays it and notifies other users. |
+|-------------------------------+-------------------------------------------------------------|
+
+---
+List System Events
+
+=getAvailableTopics()=
+=sendPost(contents, topic, category)=
+
+System Sequence Diagram
+* PA1459 PlantUML tests
+  #+begin_src plantuml :file 2021-tsts.png
+class Test1 {
+    test : string
+}
+class Test2 {
+    test : string
+} 
+  #+end_src
+
+  #+RESULTS:
+  [[file:2021-tsts.png]]
+* PA1458 Development cycle
+*Dice Game Machine*
+
+On the Machine a player may login, logout or play the game.
+When playing the game a player rolls two die. If the total number of points is greater
+than seven the player wins, otherwise the player loses.
+
+** Use Case Diagram
+   #+begin_src plantuml :file 2021-PA1458-ucd.png
+actor player
+
+rectangle "Dice Game" {
+player -> (login)
+player -> (logout)
+player -> (roll dice)
+player -> (calculate score)
+}
+   #+end_src
+
+   #+RESULTS:
+   [[file:2021-PA1458-ucd.png]]
+
+** Use Cases
+*Use Case:* Roll Dice
+*Actors:* Player
+*Description:* Player selects to roll the two die. System rolls die and displays them.
+
+*Main Course of Events:*
+| Actor                       | System                                |
+|-----------------------------+---------------------------------------|
+| 1. Player select "Roll Die" | 2. System roll die and display result |
+|-----------------------------+---------------------------------------|
+
+** Conceptual Model
+   #+begin_src plantuml :file 2021-PA1458-conceptual-model.png
+ class Player
+ class Dice
+ class Score
+
+ Dice : currentValue
+ Score : currentValue
+  
+ Player - Dice : Rolls >
+ Dice - Score : Adds to >
+   #+end_src
+
+   #+RESULTS:
+   [[file:2021-PA1458-conceptual-model.png]]
+
+** Behaviour Model
+*** System Sequence Diagram
+ #+begin_src plantuml :file 2021-PA1458-SSD.png
+ actor ":Player" as pl
+ participant ":System" as sys
+
+ pl -> sys : rollDie()
+ #+end_src
+
+ #+RESULTS:
+ [[file:2021-PA1458-SSD.png]]
+* PA1459/PA1460 Sequence Diagram Refactor
+#+BEGIN_SRC plantuml :file FSequenceDiagram-refactor.png
+hide footbox
+title Example Sequence Diagram
+
+participant ":PoS"  as pos
+
+[-> pos : startNewSale()
+activate pos
+create participant "current:Sale" as cs
+pos --> cs : create()
+deactivate pos
+
+' ---
+
+[-> pos : enterItem(upc, qty)
+activate pos
+
+create participant "si:SalesItem" as si
+pos --> si : create()
+pos -> si : setProductID(upc)
+activate si
+deactivate si
+pos -> si : setQuantity(qty)
+activate si
+deactivate si
+
+pos -> cs : addItem(si)
+activate cs
+create participant "info:Warehouse" as info
+cs --> info : create()
+cs -> info : theDescription=getDescription(si->getUPC())
+activate info
+deactivate info
+cs -> info : thePrice=getPrice(si->getUPC())
+activate info
+deactivate info
+cs -> si : setPrice(thePrice)
+activate si
+deactivate si
+cs -> cs : increaseTotal(thePrice)
+activate cs
+deactivate cs
+cs -> info : destroy()
+destroy info
+cs --> pos : theItemDescription
+deactivate cs
+deactivate pos
+#+END_SRC
+* PA1459/PA1469 Multiplicity
+  #+begin_src plantuml :file 2021-PA1459-PA1460-multiplicity.png
+class Flight
+class Passenger
+
+Flight : +int aPublicAttribute
+Flight :  -aPrivateAttribute : int
+Flight : # int aProtectedAttribute
+Flight : int aMethod()
+Flight : anotherMethod() : int
+
+Flight "1" --- "*" Passenger
+  #+end_src
+
+  #+RESULTS:
+  [[file:2021-PA1459-PA1460-multiplicity.png]]
+* PA1458 Multiplicity
+  #+begin_src plantuml :file PA1458-multiplicity.png
+class A
+class B
+
+A  -- "5+" B
+
+class Flight
+class Seat
+
+Flight "1+" -- "*" Seat
+
+C -- D
+  #+end_src
+
+  #+RESULTS:
+  [[file:PA1458-multiplicity.png]]
+* PA1460 Software Architecture
+Diary System
+---
+Write a diary online, make diary entries available to a selection of friends.
+
+
+  #+begin_src plantuml :file PA1460-SA.png
+() "Browse Diary" as bd
+() "Write Diary" as wd
+() "User Management" as um
+
+package DiarySystem {
+[Diary Management]
+[User Management]
+
+bd --> [Diary Management]
+wd --> [Diary Management]
+um --> [User Management]
+
+[Diary Management] --> [Persistent Storage]
+[User Management] --> [Persistent Storage]
+
+[User Management] -- [Authentication]
+}
+  #+end_src
+
+  #+RESULTS:
+  [[file:PA1460-SA.png]]
+
+  #+begin_src plantuml :file PA1460-SA-execution.png
+'[Diary Management]
+'[User Management]
+'[Authentication]
+
+node "Load Balancer" {
+[loadBalancer]
+}
+  
+node "Browse Diary" {
+[Diary]
+}
+
+[loadBalancer] --> [Diary]
+
+
+node "Diary Creator" {
+[Diary Entry] - [Diary_]
+[Diary Entry] -- [Diary Parser]
+}
+
+[Diary] - [Diary_]
+
+database "Storage" {
+[Persistent Storage]
+}
+
+[Diary Parser] --> [Persistent Storage]
+[Persistent Storage] --> [Diary]
+
+  #+end_src
+
+  #+RESULTS:
+  [[file:PA1460-SA-execution.png]]
+* PA1459/PA1460 Example: BurgerOrderer
+** Use Case Order Food
+*Use Case* Order food
+
+*Actors* Customer
+
+*Description* A customer arrives at the BurgerOrderer, selects a meal, configures their burger, and orders it.
+
+*Related Use Cases* Pay for order
+
+*Main course of events*
+
+#+LATEX: \begin{scriptsize}
+| Actor                                                        | System                                                 |
+|--------------------------------------------------------------+--------------------------------------------------------|
+| 1. Customer arrives at BurgerOrderer and starts a new order. |                                                        |
+|                                                              | 2. System presents options                             |
+|                                                              | [single burger, meal, dessert, dring]                  |
+| 3. Customer selects "meal"                                   |                                                        |
+|                                                              | 4. System presents available meals                     |
+| 5. Customer selects a specific meal.                         |                                                        |
+|                                                              | 6. System adds the selected meal to the order.         |
+|                                                              | 7. System presents configuration options               |
+| 8. customer selects "no onions"                              |                                                        |
+|                                                              | 9. System adds "no onions" to order.                   |
+| 10. customer selects "more bacon!"                           |                                                        |
+|                                                              | 11. System adds "more bacon!" to order.                |
+| 12. Customer confirms order.                                 |                                                        |
+|                                                              | 13. System initiates use case _pay for order_            |
+|                                                              | 14. System places order to kitchen and prints receipt. |
+|--------------------------------------------------------------+--------------------------------------------------------|
+
+#+LATEX: \end{scriptsize}
+** System Sequence Diagram
+   #+begin_src plantuml :file PA1459-PA1460-SSD.png
+actor ":Customer" as cus
+participant ":BurgerOrder" as sys
+
+cus -> sys : startNewOrder()
+sys --> cus : presents options
+
+cus -> sys : selectOrderType(theOrderTypeName)
+sys --> cus : presents available meals
+
+cus -> sys : selectOrder(theOrderName)
+sys --> cus : presents configuration options
+
+cus -> sys : selectConfiguration(theConfigurationName)
+sys --> cus : confirms configuration
+
+cus -> sys : confirmOrder()
+sys --> cus : printed receipt
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1459-PA1460-SSD.png]]
+
+** Interaction Diagrams (Sequence Diagrams)
+*** startNewOrder()
+    #+begin_src plantuml :file PA1459-PA1460-startNewOrder.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : startNewOrder()
+activate sys
+
+sys --> "current:Order"  : create()
+
+sys -> ":OrderTypeManager" : getOrderTypes()
+
+[<-- sys : return types of orders
+deactivate sys
+    #+end_src
+
+    #+RESULTS:
+    [[file:PA1459-PA1460-startNewOrder.png]]
+*** selectOrderType()
+    #+begin_src plantuml :file PA1459-PA1460-selectOrderType.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectOrderType(theOrderTypeName)
+activate sys
+sys -> ":OrderTypeManager" : getOrderType(theOrderTypeName)
+activate ":OrderTypeManager"
+":OrderTypeManager" -> "currentOrderType:OrderType" : create()
+":OrderTypeManager" --> sys : return currentOrderType
+deactivate ":OrderTypeManager"
+
+sys -> "currentOrderType:OrderType" : getAvailableOptions()
+activate "currentOrderType:OrderType"
+deactivate "currentOrderType:OrderType"
+
+[<-- sys : return available order options
+deactivate sys    
+    #+end_src
+
+    #+RESULTS:
+    [[file:PA1459-PA1460-selectOrderType.png]]
+
+*** selectOrder()
+    #+begin_src plantuml :file PA1459-PA1460-selectOrder.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectOrder(theOrderName) ' e.g. "Metric Ton Beef n' Bacon"
+activate sys
+sys -> "currentOrderType:OrderType" : selectOrder(theOrderName)
+activate "currentOrderType:OrderType"
+
+"currentOrderType:OrderType" --> "theOrderItem:OrderItem" : create()
+
+"currentOrderType:OrderType" --> sys : returns theOrderItem
+deactivate "currentOrderType:OrderType"
+
+sys -> "current:Order" : addItem(theOrderItem)
+sys -> "theOrderItem:OrderItem" : getConfigurationOptions()
+
+[<-- sys : return list of configuration options
+deactivate sys    
+    #+end_src
+
+    #+RESULTS:
+    [[file:PA1459-PA1460-selectOrder.png]]
+
+*** selectConfiguration()
+    #+begin_src plantuml :file PA1459-PA1460-selectConfiguration.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectConfiguration(theConfigurationName)
+' e.g. "more bacon!"
+activate sys
+sys -> "currentOrderType:OrderType" : theCO=createConfiguration(theConfigurationName)
+activate "currentOrderType:OrderType"
+"currentOrderType:OrderType" --> "theConfigurationOption:ConfigurationItem" : create()
+deactivate "currentOrderType:OrderType"
+
+sys -> "current:Order" : addItem(theConfigurationOption)
+
+deactivate sys    
+    #+end_src
+
+    #+RESULTS:
+    [[file:PA1459-PA1460-selectConfiguration.png]]
+
+*** confirmOrder()
+    #+begin_src plantuml :file PA1459-PA14560-confirmOrder.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : confirmOrder()
+activate sys
+
+sys -> ":Payment" : executePayment()
+activate ":Payment"
+deactivate ":Payment"
+
+sys -> "current:Order" : sendOrder()
+activate "current:Order"
+"current:Order" -> ":KitchenController" : sendItems(orderItems)
+activate ":KitchenController"
+deactivate ":KitchenController"
+deactivate "current:Order"
+
+sys -> "current:Order" : printReceipt()
+activate "current:Order"
+deactivate "current:Order"    
+deactivate sys
+    #+end_src
+
+    #+RESULTS:
+    [[file:PA1459-PA14560-confirmOrder.png]]
+
+** Class Diagram -- First version
+In this version, I have simply merged all of the interaction diagrams above. As is seen, this means that associations between classes are duplicated, and some associations are made to the sub-class when they should be moved up to a super-class instead. I present this as a first version, and then I will clean it up and simplify it a bit.
+
+   #+begin_src plantuml :file PA1459-PA1460-classDiagram.png
+' startNewOrder()
+' --------------------
+class BurgerOrderer
+class Order
+class OrderTypeManager
+
+BurgerOrderer : startNewOrder()
+OrderTypeManager : getOrderTypes()
+
+BurgerOrderer - Order
+BurgerOrderer - OrderTypeManager
+
+' selectOrderType()
+' --------------------
+class BurgerOrderer
+class OrderTypeManager
+class OrderType
+
+BurgerOrderer : selectOrderType(theOrderTypeName)
+OrderTypeManager : getOrderType(theOrderTypeName)
+OrderType : getAvailableOptions()
+
+BurgerOrderer - OrderTypeManager
+BurgerOrderer - OrderType
+OrderTypeManager - OrderType
+
+' selectOrder()
+' --------------------
+class BurgerOrderer
+class OrderType
+class OrderItem
+class Order
+
+BurgerOrderer : selectOrder(theOrderName)
+OrderType : selectOrder(theOrderName)
+Order : addItem()
+OrderItem : getConfigurationOptions()
+
+BurgerOrderer - OrderType
+OrderType - OrderItem
+BurgerOrderer - OrderItem
+BurgerOrderer - Order
+
+' selectConfiguration()
+' --------------------
+class BurgerOrderer
+class OrderType
+class ConfigurationItem
+class Order
+
+BurgerOrderer : selectConfiguration(theConfigurationName)
+OrderType : createConfiguration(theConfigurationName)
+Order : addItem()
+
+BurgerOrderer - OrderType
+OrderType - ConfigurationItem
+BurgerOrderer - AbstractOrderItem
+
+' adding a few inheritance hierarchies that I think will be needed
+AbstractOrderItem <|-- ConfigurationItem
+AbstractOrderItem <|-- OrderItem
+
+OrderType <|-- MealOrderType
+OrderType <|-- SingleBurgerOrderType
+OrderType <|-- DessertOrderType
+
+
+' confirmOrder()
+' --------------------
+class BurgerOrderer
+class Payment
+class Order
+class KitchenController
+   
+BurgerOrderer : confirmOrder()
+Order : sendOrder()
+Order : printReceipt()
+
+BurgerOrderer - Payment
+BurgerOrderer - Order
+BurgerOrderer - KitchenController
+
+
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1459-PA1460-classDiagram.png]]
+
+** Class Diagram -- Simplified
+Please see the comments in the code below for information about what I have done and why,.
+
+   #+begin_src plantuml :file PA1459-PA1460-classDiagram-simplified.png
+' startNewOrder()
+' --------------------
+class BurgerOrderer
+class Order
+class OrderTypeManager
+
+BurgerOrderer : startNewOrder()
+
+' Replaced "getOrderTypes()"  with "listOrderTypes()" since this is slightly clearer.
+OrderTypeManager : listOrderTypes()
+
+' Replaced the single dash with a double dash to put BurgerOrderer on top of the other classes.
+BurgerOrderer -- Order
+
+BurgerOrderer - OrderTypeManager
+
+' selectOrderType()
+' --------------------
+' I don't really need to re-declare BurgerOrderer or OrderTypeManager
+' but nothing is added to the final result if I keep them so for simplicity's
+' sake, I'll leave them as they are.
+class BurgerOrderer
+class OrderTypeManager
+
+' For reasons that I will expand upon later
+' I want OrderType to be abstract.
+abstract class OrderType
+
+BurgerOrderer : selectOrderType(theOrderTypeName)
+OrderTypeManager : getOrderType(theOrderTypeName)
+
+' Replaced "getAvailableOptions()" with "listOrderOptions()"
+OrderType : listOrderOptions()
+
+' Remove this association to avoid multiple lines in the diagram
+' BurgerOrderer - OrderTypeManager
+
+' Replaced single dash with double dashes
+BurgerOrderer -- OrderType
+OrderTypeManager -- OrderType : creates >
+
+' selectOrder()
+' --------------------
+class BurgerOrderer
+class OrderType
+class OrderItem
+class Order
+
+BurgerOrderer : selectOrder(theOrderName)
+
+' renamed selectOrder() => createOrderItem()
+OrderType : createOrderItem(theOrderName)
+
+Order : addItem()
+OrderItem : getConfigurationOptions()
+
+
+' Duplicates
+'BurgerOrderer - OrderType
+'BurgerOrderer - Order
+
+' Replaced single dash with double dashes
+' Added information that OrderType merely creates OrderItem
+OrderType -- OrderItem : creates >
+BurgerOrderer -- OrderItem
+
+' selectConfiguration()
+' --------------------
+class BurgerOrderer
+class OrderType
+class Order
+
+' See discussion below why I remove this
+' class ConfigurationItem
+
+
+BurgerOrderer : selectConfiguration(theConfigurationName)
+OrderType : createConfiguration(theConfigurationName)
+
+' Duplicate
+' Order : addItem()
+
+' Duplicates
+'BurgerOrderer - OrderType
+
+' The following two associations are a bit tricky. I want to abstract
+' "ConfigurationItem" and "OrderItem" to something more generic, and I
+' want to collectively call these OrderItems, i.e. the base class should
+' be called OrderItem. With sub-classes ConfigurationOrderItem and
+' -- perhaps -- MealOrderItem?  so the association from OrderType will go
+' to the abstract base class OrderItem (even if it is a configurationOrderItem
+' that is being created right now. And that makes the associations
+'  duplicates to already stated associations above. So I remove them.
+
+' OrderType - ConfigurationItem
+' BurgerOrderer - AbstractOrderItem
+
+' adding a few inheritance hierarchies that I think will be needed
+' Renaming the OrderItem hierarchy as per the discussion above.
+OrderItem <|-- ConfigurationOrderItem
+OrderItem <|-- MealOrderItem
+
+OrderType <|-- MealOrderType
+OrderType <|-- SingleBurgerOrderType
+OrderType <|-- DessertOrderType
+
+
+' confirmOrder()
+' --------------------
+class BurgerOrderer
+class Payment
+class Order
+class KitchenController
+   
+BurgerOrderer : confirmOrder()
+Order : sendOrder()
+Order : printReceipt()
+
+BurgerOrderer - Payment
+
+' Replace BurgerOrderer with Order since I mis-read the interaction diagram before
+Order - KitchenController
+
+' Duplicate
+'BurgerOrderer - Order
+
+
+' Add an association
+Order - OrderItem : contains >
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1459-PA1460-classDiagram-simplified.png]]
+
+And there you have it. With this diagram we can now take a step back and look at a few things.
+
+- First, =BurgerOrderer= is connected to everything! Is there anything we can do to avoid this?
+- Second, the =OrderItem= inheritance hierarchy does not have that many methods currently. This /could/ be because we have only modelled a single use case. But it can also indicate that maybe we do not need to have an inheritance hierarchy here. Maybe =OrderItem= with a few attributes can be sufficient.
+- Third and likewise, the =OrderType= hierarchy is also suspiciously empty of methods.
+* PA1459/PA1460 Observer Pattern
+  #+begin_src plantuml :file PA1459-PA1460-Observer.png
+  
+class Publisher
+Publisher : -myValuableData
+Publisher : -List<Subscriber> mySubscribers
+Publisher : +tellTheWorld()
+Publisher : +addSubscriber()
+
+
+interface Subscriber
+
+Publisher - "*" Subscriber
+Subscriber : +notify()
+
+class ReallyInterestedInTheData
+Subscriber <|-- ReallyInterestedInTheData
+
+ReallyInterestedInTheData : +notify()
+  #+end_src
+
+  #+RESULTS:
+  [[file:PA1459-PA1460-Observer.png]]
+
+Publisher -- Observable
+Subscriber -- Observer
+* PA1458 Example
+file+emacs:/Users/msv/Documents/Teaching/PA1415_software_design/Material/202102-HomeExam-Example-1-en.org
+** System Description
+A web scraper that collects posts from social media platforms and when certain conditions are met, actions are taken.
+** Class Diagram
+   #+begin_src plantuml :file PA1458-he1-class.png
+package Scraper {
+' Not done in this exam
+}
+
+package Storage {
+class ContentModel {
+ +addContent(String newContent)
+}
+
+class ContentAtom
+
+ContentModel -- "*" ContentAtom
+}
+
+Scraper -> Storage : inserts >
+
+package ObserverPattern {
+class Observable {
+ +addObserver(Observer* newObserver)
+ +notify()
+ +List<Observer*> myObservers
+}
+
+abstract class Observer {
+ +notify(Observable* source, String newContent)
+}
+
+Observable - "*" Observer
+}   
+
+package Actions {
+Observer <|-- StatisticsCollector
+Observer <|-- MathCalculator
+Observer <|-- ComicsSearcher
+
+StatisticsCollector : +notify()
+MathCalculator : +notify()
+ComicsSearcher : +notify()
+}
+
+Observable <|-- ContentModel
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1458-he1-class.png]]
+** Description of Class Diagram
+The class diagram consists of a couple of packages:
+
+- Scrapers :: collect information e.g. from social media. Puts the data into Storage by calling the =ContentModel::addContent()= method.
+- Storage :: Creates new ContentAtoms based on the given input and stores them. Then it calls the =notify()= method to announce that there is new contents.
+- Actions :: Reacts to new contents.
+- ObserverPattern :: Contains the classes necessary for a generic Observer pattern.
+
+The Observer pattern is used so that when new content is added via the =addContent()= method, it calls the =Observable::notify()= method.
+This method will run through all elements in =myObservers= and call their corresponding =notify()= method. The Observers (or the concrete instances, to be specific) will decide whether to take action or not.
+
+** Pseudocode
+*** Observable::addObserver()
+    #+begin_src C++
+void Observable::addObserver(Observer* newObserver) {
+  myObservers.add(newObserver);
+}   
+    #+end_src
+*** Observable::notify()
+    #+begin_src C++
+void Observable::notify() {
+ myObservers.forEach( function(o) {
+  o.notify(this, newContents); // newContents is magically available.
+});
+}   
+    #+end_src
+*** ComicsSearcher::notify()
+    #+begin_src C++
+void ComicsSearcher::notify(Observable* source, String newContent) {
+  String key = newContent.split()[0];
+  if (myKeywords.find(key)) {
+     // Do relevant stuff
+  }
+}   
+    #+end_src
+*** ContentModel::addContent()
+    #+begin_src C++
+void ContentModel::addContent(String newContent) {
+  ContentAtom atom = new ContentAtom(newContent);
+  DBHandler::store(atom);
+  this->notify(newContent); // This is where the Observer pattern is used
+}   
+    #+end_src
+** Discussion of GRASP Patterns
+- Information Expert
+- Controller
+
+The =Observable= (and sub-classes that inherit from =Observable=) are information expert on which =Observers= to call when the =notify()= method is called. It is also a controller, that delegates the responsibility of /acting/ on new information to each of the observers (the classes that inherit from =Observer=). It offers an opportunity to each Observer to do whatever they please when notified.
+
+The sub-classes to =Observer= are information experts on exactly what action to take when new information arrives via the =notify()= method.
+** Usage of GRASP patterns
+- ContentModel :: is an information expert on how to store new content. It is also an information expert on when to call the =Observers=.
+- ContentModel is (via the =Observable= class from which it inherits) an information expert on which Observers are available. See discussion of GRASP patterns above.
+- The sub-classes to =Observer= (e.g. the ComicsSearcher) is an information expert on which keywords that should trigger it, and what should happen when these keywords are mentioned.
+- ContentAtom :: is an information expert on one particular piece of contents.
+* PA1459/PA1460 Example
+  file+emacs:/Users/msv/Documents/Teaching/PA1415_software_design/Material/202102-HomeExam-Example-I.org
+
+pattern Observer Pattern
+GRASP1 Information Expert
+GRASP2 Controller
+
+** Systembeskrivning
+Ett system som letar efter nyckelord på en social mediaplatform (t.ex. ett diskussionsforum), och när vissa nyckelord hittas så skall bestämda handlingar utföras. Observer-mönstret används för att sära på letandet av nyckelord och agerandet utifrån dessa nyckelord.
+** Klassdiagram
+   #+begin_src plantuml :file PA1459-PA1460-he1-class.png
+package Scraper {
+' not done here -- too big and not part of the task or the Observer pattern
+}
+
+package Storage {
+
+class ContentModel {
+ +addContent(String newContent)
+}
+
+class ContentAtom
+
+ContentModel -- "*" ContentAtom
+}
+
+Scraper -> Storage : insert >
+  
+package ObserverPattern {
+class Observable {
+ -List<Observer*> myObservers
+ +addObserver(Observer* newObserver)
+ -notify()
+}
+
+abstract class Observer {
+ +notify(Observable* source, String newContent)
+}
+
+Observable - "*" Observer
+}
+
+package Actions {
+Observer <|-- StatisticsCollector
+Observer <|-- MathCalculator
+Observer <|-- ComicsSearcher
+
+StatisticsCollector : +notify()
+MathCalculator : +notify()
+ComicsSearcher : +notify()
+} 
+
+Observable <|-- ContentModel
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1459-PA1460-he1-class.png]]
+
+** Beskrivning av Klassdiagrammet
+Klassdiagrammet har ett antal paket:
+
+- Scraper :: samlar data från websidor och skickar till *Storage*.
+- Storage :: skapar ContentAtoms av nytt innehåll och lagrar dessa. Meddelar sedan *Actions* via sitt Observer pattern att det finns nytt innehåll.
+- Actions :: Innehåller olika sätt att reagera på innehåll.
+- ObserverPattern :: De klasser som behövs för ett generiskt Observer pattern
+
+*** Storage
+*ContentModel*
+
+*ContentAtom*
+
+** Pseudokod
+*** Observable::addObserver()
+    #+begin_src C++
+void Observable::addObserver(Observer* newObserver) {
+ myObservers.append(newObserver);
+}   
+    #+end_src
+*** Observable::notify()
+    #+begin_src C++
+void Observable::notify() {
+ myObservers.forEach( function(o) {
+  o.notify(this, newContent); // newContent is magically available
+});
+}   
+    #+end_src
+*** ContentModel::addContent()
+    #+begin_src C++
+void ContentModel::addContent(String newContent) {
+ ContentAtom atom = new ContentAtom(newContent);
+ DBHandler::store(atom);
+ this->notify(newContent); // Här använder vi Observer-mönstret
+}   
+    #+end_src
+*** t.ex. ComicsSearcher::notify()
+    #+begin_src C++
+void ComicsSearcher::notify(Observable* source, String newContent) {
+ String key = newContent.split()[0];
+ if(myKeywords.find(key)) {
+   // Do relevant action based on keyword
+ } 
+}   
+    #+end_src
+** Diskussion om GRASP-mönster
+Observable är /information expert/ på vilka observers som finns. Den är också en /controller/ som delegerar ut ansvar till var och en av sina observers för att genomföra sin handling.
+
+Observer (eller sub-klasserna till observer) är information expert på vilka nyckelord de skall reagera på. De är också information experts på att genomföra vad de nu skall göra.
+
+Var och en av klasserna i =Actions= kan vara en controller för att dirigera det arbetsflöde som behövs för att lösa sin uppgift.
+** Användning av GRASP-mönster
+- ContentModel är en Information Expert på hur nytt innehåll skall lagras. Den är också (via Observable) är den också information expert på vilka som skall meddelas när det finns nytt innehåll.
+- ContentAtom är information expert på en specifik bit av innehåll.
+- Observable och Observer -- se tidigare.
+- [StatisticsCollector, MathCalculator, ComicsSearcher] är information expert på hur respektive uppgift skall utföras, och vilka nyckelord som skall sätta igång handlingen.
+- [StatisticsCollector, MathCalculator, ComicsSearcher] kan vara controllers för att dirigera ett större arbetsflöde för att lösa sin respektive uppgift.
+* PA1458 Example II
+pattern State Pattern
+GRASP1 Creator
+GRASP2 Information Expert
+** System Description
+Desktop Ponies is an application that allows MLP ponies to run around on the screen and execute different behaviours.
+
+Each pony randomly changes behaviour to do something else. Each behaviour is a *state*.
+
+Link: https://github.com/mickesv/JSPonies
+** Class Diagram
+   #+begin_src plantuml :file PA1458-JSpony-class.png
+PonyContainer - "*" Pony
+
+Pony - "*" PonyBehaviour
+
+abstract class PonyBehaviour <<Abstract State>> {
+ +enter()
+ +execute()
+ +exit()
+ -currentAnimation
+}
+
+Pony : -PonyBehaviour** myBehaviourCollection
+Pony : -PonyBehaviour* myCurrentBehaviour
+
+Pony -- PonyBehaviourFactory
+
+PonyBehaviour <|-- Stand
+PonyBehaviour <|-- Walk
+PonyBehaviour <|-- Jump
+
+PonyBehaviour - "*" PonySpeak
+
+PonySpeak : +String myLine
+PonySpeak : +int myDuration
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1458-JSpony-class.png]]
+
+** Description of Classes
+- Pony :: is <<context>> in the State pattern. It owns a collection of =PonyBehaviour= and has a =currentPonyBehaviour= which is the currently active state.
+- PonyBehaviour :: is the <<abstract state>>. This class provides an interface that all concrete states have to implement.
+- {Stand, Walk, Jump} :: are the <<concrete state>> . Each implement a state and its behaviour in the =enter()= =exit()= and =execute()= methods.
+- PonySpeak :: is responsible for one single line of speech that a PonyBehaviour can say.
+- PonyContainer :: contains all ponies.
+- PonyBehaviourFactory :: Given a behaviour name, it creates an object based on one of the concrete implementations of PonyBehaviour.
+** Pseudocode
+   #+begin_src java
+Pony::create() {
+ String** behaviourNames = PonyInitFile::getBehaviours(myPonyName);
+
+ behaviourNames.forEach( (n) => {
+   PonyBehaviour* pb = PonyBehaviourFactory::createBehaviour(n);
+   myBehaviourCollection.append(pb);
+ });
+
+ myCurrentBehaviour = myBehaviourCollection[0];
+ myCurrentBehaviour->enter();
+}
+   
+
+Pony::setBehaviour(String newBehaviourName) {
+  PonyBehaviour pb = myBehaviourCollection.find(newBehaviourName);
+  if (pb) {
+    myCurrentBehaviour->exit();
+    myCurrentBehaviour = pb;
+    myCurrentBehaviour->enter();
+  }
+}
+   #+end_src
+** Discussion of GRASP patterns
+- The context class is a *Creator* of the different states
+- The context class is an *Information Expert* about which states exist, and which is the current state.
+- The abstract state is an *Information Expert* about the interface that each state must provide
+- The concrete states are *Information Experts* on what it means to be in that particular state
+** Usage of GRASP patterns
+- PonyBehaviourFactory is a *Creator* of PonyBehaviours
+- PonyBehaviour, as <<abstract state>> is an *information expert* on the interface to the states
+* PA1459/PA1460 Example II
+pattern State Pattern
+GRASP1 Creator
+GRASP2 Information Expert
+** System Description
+Desktop Ponies är en applikation som låter MLP ponies springa runt på skärmen.
+
+Varje Pony byter slumpvis beteende. Varje beteende är ett *tillstånd*, ett *state*.
+** Class Diagram
+   #+begin_src plantuml :file PA1459-PA1460-jsponies.png
+PonyContainer - "*" Pony
+
+abstract class PonyBehaviour <<Abstract State>> {
+ +enter()
+ +execute()
+ +exit()
+}
+
+Pony - "*" PonyBehaviour
+
+Pony : -List<PonyBehaviour*> myBehaviourCollection
+Pony : -PonyBehaviour* myCurrentBehaviour
+
+PonyBehaviour <|-- Stand
+PonyBehaviour <|-- Walk
+PonyBehaviour <|-- Jump
+
+Pony -- PonyBehaviourFactory
+
+PonyBehaviourFactory : +getBehaviourByName(String ponyName)
+
+class PonySpeak
+PonySpeak : String myLine
+PonySpeak : int myDuration
+
+PonyBehaviour - "*" PonySpeak
+   #+end_src
+
+   #+RESULTS:
+   [[file:PA1459-PA1460-jsponies.png]]
+
+** Description of Classes
+- Pony :: är <<context>> i State pattern. Den äger en samling av =PonyBehaviour= och vet vilket som är =current=.
+- PonyBehaviour :: är <<abstract state>>, den erbjuder det gränssnitt som alla konkreta beteenden måste implementera.
+- {Stand, Walk, Jump} :: är <<concrete state>> . Var och en implementerar beteendet för ett tillstånd.
+- PonyContainer :: Innehåller samlingen av alla =Pony=.
+- PonySpeak :: En enskild replik som en Pony kan säga i ett visst tillstånd.
+- PonyBehaviourFactory :: creates objects of the<<concrete state>> subclasses.
+** Pseudocode
+   #+begin_src java
+Pony::create() {
+ List<String> behaviourNames = PonyInitFile::getBehaviours(ponyName);
+
+ behaviourNames.forEach( (n) => {
+   PonyBehaviour* pb = PonyBehaviourFactory::getBehaviourByName(n);
+   myBehaviourCollection.append(pb);
+ });
+
+ myCurrentBehaviour = myBehaviourCollection[0];
+ myCurrentBehaviour.enter();
+}   
+
+Pony::setBehaviour(String newBehaviourName) {
+ PonyBehaviour* pb = myBehaviourCollection.findByName(newBehaviourName);
+
+ if(pb) {
+   myCurrentBehaviour.exit();
+   myCurrentBehaviour = pb;
+   myCurrentBehaviour.enter();
+ }
+}
+   #+end_src
+** Discussion of GRASP patterns
+- Context :: är *information expert* på vilka tillstånd som finns och vilket som gäller just nu.
+- Context :: kan vara *creator* av de konkreta tillstånden.
+- Abstract State :: är *information expert* på gränssnittet för alla tillstånd.
+- Concrete State :: är *information expert* på vad det innebär att vara just det tillståndet.
+** Usage of GRASP patterns
+- PonyContainer :: är *information Expert* på vilka =Pony= som finns.
+- Pony :: är, som <<context>> *Information expert* på vilka =PonyBehaviour= en viss Pony har och vilket som gäller jusrt nu.
+- PonyBehaviourFactory :: är *Creator* som ansvarar för att skapa objekt av de konkreta PonyBehaviour-implementationerna.
+- PonyBehaviour :: är som <<abstract state>> *Information expert* på gränssnittet för alla tillstånd.
+- PonyBehaviour :: är *information expert* på vad man kan säga (=PonySpeak=) i ett visst beteende.
+- {Stand, Walk, Jump} :: är *information expert* på att vara respektive beteende.
+- PonySpeak :: är *information expert* på att säga en specifik sak.
+
+* Stereotyper tst
+  #+begin_src plantuml :file 2021-stereotypes.png
+  
+class Foo <<Part of Use Case Interact with Character>>
+  #+end_src
+
+  #+RESULTS:
+  [[file:2021-stereotypes.png]]
