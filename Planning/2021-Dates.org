@@ -67,21 +67,21 @@
 ** lP4 PA1458
 | Lecture                   | Date lp4         |
 |---------------------------+------------------|
-| Introduction              | <2020-03-29 Sun> |
-| Requirements Engineering  | <2020-04-07 Tue> |
-| Use Cases                 | <2020-04-09 Thu> |
-| Development Methodologies | <2020-04-12 Sun> |
-| Testing                   | <2020-04-14 Tue> |
-| Modelling Structure       | <2020-04-16 Thu> |
-| Modelling Behaviour       | <2020-04-19 Sun> |
-| Design Patterns           | <2020-04-21 Tue> |
-| GRASP/Workable Example    | <2020-04-23 Thu> |
-| Design to Code            | <2020-04-26 Sun> |
+| Introduction              | <2021-03-29 Mon> |
+| Requirements Engineering  | <2021-04-07 Wed> |
+| Use Cases                 | <2021-04-09 Fri> |
+| Development Methodologies | <2021-04-12 Mon> |
+| Testing                   | <2021-04-14 Wed> |
+| Modelling Structure       | <2021-04-16 Fri> |
+| Modelling Behaviour       | <2021-04-19 Mon> |
+| Design Patterns           | <2021-04-21 Wed> |
+| GRASP/Workable Example    | <2021-04-23 Fri> |
+| Design to Code            | <2021-04-26 Mon> |
 |                           |                  |
-| Buffer/Workable Example   | <2020-04-30 Thu> |
-| Buffer/Workable Example   | <2020-05-17 Sun> |
-| Buffer/Workable Example   | <2020-05-19 Tue> |
-| Buffer/Workable Example   | <2020-05-21 Thu> |
+| Buffer/Workable Example   | <2021-04-30 Fri> |
+| Buffer/Workable Example   | <2021-05-17 Mon> |
+| Buffer/Workable Example   | <2021-05-19 Wed> |
+| Buffer/Workable Example   | <2021-05-21 Fri> |
 |---------------------------+------------------|
 * Assignment Deadlines Spring 2021 [4/4]
 2021 lp3 start week 3 <2021-01-18 Mon>
@@ -170,7 +170,4 @@
 | Demo Implementation            | Book Time <2021-05-21 Fri>; Demo week 21 && week 22 |
 |--------------------------------+-----------------------------------------------------|
 * Exam Dates
-PA1459 2021-03-17
-PA1458 2021-03-17
-
-\sum publish on the 12th, due on the 19th.
+PA1458 2021-05-27
