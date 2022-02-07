@@ -1,0 +1,1229 @@
+* Weekly Plan
+** Recorded Lectures to Watch
+|   | <10>                   |                               | <5>                                    |                                                                            |
+| W | Theme                  | Lecture                       | Link                                   | Comment                                                                    |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+| 3 | Do the right thing     | Requirements Engineering      | https://youtu.be/MIM7yLJiYCY (Swedish) | PA1458 Background lecture                                                  |
+|   | the right way          |                               | https://youtu.be/I5iDw9luVXQ (English) |                                                                            |
+|   |                        | Use Cases                     | https://youtu.be/VKfQqpf8eW4 (Swedish) | Used on Jan 20/21 and for PA1458 in assignment "create detailed use cases" |
+|   |                        |                               | https://youtu.be/QcuFZm6z_JA (English) |                                                                            |
+|   |                        | Software Testing              | https://youtu.be/d1Sqlfcwllo (Swedish) | Used on Jan 20/21                                                          |
+|   |                        |                               | (English not available)                |                                                                            |
+|   |                        | Development Process           | https://youtu.be/snfAsD4shyc (Swedish) | Input to PA1458 assignment "WBS and Project Plan"                          |
+|   |                        |                               | https://youtu.be/IwCKKgeoq0Y (English) |                                                                            |
+|   | Architectures (PA1460) | Quality Attributes            | https://youtu.be/gftNxfrEOQo (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
+|   |                        | Introduction to Architectures | https://youtu.be/93so4dPskwE (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
+|   |                        | Documenting Architectures     | https://youtu.be/e788pDG_rQE (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+| 4 | Model all the things   | Modelling Structure           | https://youtu.be/5_jplldguKc (Swedish) | Used on Jan 27/28 and from assignment "Class and Package Diagram"          |
+|   |                        |                               | https://youtu.be/wVLKFPIpa0A (English) |                                                                            |
+|   |                        | Modelling Behaviour           | https://youtu.be/E3gyQFxDiPs (Swedish) | Used on Jan 27/28 and from assignment "Interaction Diagrams"               |
+|   |                        |                               | https://youtu.be/wVLKFPIpa0A (English) |                                                                            |
+|   |                        | Design Patterns               | https://youtu.be/R9L7gaVhCCQ (Swedish) | Used on Feb 3/4 and from assignment "Discussion of GRASP patterns"         |
+|   |                        |                               | https://youtu.be/oU54ETOBcxU (English) |                                                                            |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+| 5 | Put it together        | From Design to Code           | https://youtu.be/zUVRWNsOUJc (Swedish) | Gives a deeper understanding and a practical example                       |
+|   |                        |                               | (English not available)                |                                                                            |
+|   |                        | Example: JSPonies             | https://youtu.be/jzVU5NCib10 (Swedish) | An example of the "State" design pattern                                   |
+|   |                        |                               | https://youtu.be/4FkqQUJR2G0 (English) |                                                                            |
+|   |                        | Example: Wizards Apprentice   | https://youtu.be/nlY4EgXVIdU (Swedish) | An example of the "Strategy" design pattern                                |
+|   |                        |                               | https://youtu.be/GvlvfeEgvXc (English) |                                                                            |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+** Weekly Plan
+*** Week 3
+  - Monday Jan 17: Zoom https://bth.zoom.us/j/67447092811 . Introduction Lecture.
+  - Monday Jan 17: I will post a reminder with which lectures are relevant for you to watch this week.
+  - Thursday Jan 20: Zoom. New lecture that discuss, explains, and gives examples for this week's recorded lectures.
+  - Friday Jan 21: Zoom. New lecture that discuss, explains, and gives examples for this week's recorded lectures.
+
+*** Week 4
+  - Monday Jan 24: Zoom https://bth.zoom.us/j/67447092811 .  New lecture to put this week's contents into context.
+  - Monday Jan 24: I will post a reminder with which lectures are relevant for you to watch this week.
+  - Thursday Jan 27: Zoom. Working through an example from requriements to classes; using what you have learnt from this week's recorded lectures.
+  - Friday Jan 28: Zoom. Working through an example from requriements to classes; using what you have learnt from this week's recorded lectures.
+
+*** Week 5
+  - Monday Jan 31: Zoom https://bth.zoom.us/j/67447092811 .  A more hands-on lecture about Design Patterns
+  - Monday Jan 31: I will post which lectures are relevant for you to watch this week.
+  - Thursday Feb 3: Zoom. Working through an example of design patterns and GRASP patterns; using what you have learnt from this week's recorded lectures.
+  - Friday Feb 4: Zoom. Working through an example from requriements to classes; using what you have learnt from this week's recorded lectures.
+
+*** Week 6
+  - No lectures planned.
+  - Work on assignments, I am available via online channels.
+
+*** Week 7
+  - No lectures planned.
+  - Work on assignments, I am available via online channels.
+
+*** Week 8
+  - Monday Feb 21: Zoom https://bth.zoom.us/j/67447092811 . Working through an example of design patterns and GRASP patterns.
+  - Work on assignments, I am available via online channels.
+
+*** Week 9
+  - Monday Feb 28: Zoom https://bth.zoom.us/j/67447092811 . Working through an exam example.
+  - Thursday Mar 3: exam questions.
+** Assignments && Deadlines
+ | <30>                                         |        |        |        | <20>                                            |
+ | Assignnment                                  | PA1458 | PA1472 | PA1460 | 2022                                            |
+ |----------------------------------------------+--------+--------+--------+-------------------------------------------------|
+ | Quality Attributes and Software Architecture |        |        | x      | PA1460 9/2 wed w6                               |
+ | *Create Detailed Use Cases*                    | x      |        |        | 28/1 fre w4                                     |
+ | WBS and Project Plan                         | x      |        |        | 4/2 fre w5                                      |
+ | Discussion of GRASP Patterns                 | x      | x      | x      | 11/2 fre w6                                     |
+ | Interaction Diagrams                         | x      | x      | x      | 18/2 fre w7                                     |
+ | Class and Package Diagram                    | x      | x      | x      | 4/3 fre w9                                      |
+ | Refactored Class Diagram                     | x      | x      | x      | 11/3 fre w10                                    |
+ | Create Test Plan                             |        |        | x      | PA1460 16/3 wed w11                             |
+ | Unit Test for Use Case                       | x      |        | x      | 18/3 fre w11                                    |
+ | Implementation                               | x      |        |        | 18/3 fre w11                                    |
+ | Demo Implementation                          | x      |        |        | Book Time Fri 11/3 w10; Demo week 11 && week 12 |
+ |----------------------------------------------+--------+--------+--------+-------------------------------------------------|
+** MSV Notes :noexport:
+ file+emacs:/Users/msv/Documents/Teaching/PA1415_software_design/Material/2022-MSVNotes.org
+** Scratch :noexport:
+- PA1458 Requirements Engineering:
+  - https://youtu.be/MIM7yLJiYCY (Swedish)
+  - https://youtu.be/I5iDw9luVXQ (English)
+- Use Cases:
+  - https://youtu.be/VKfQqpf8eW4 (Swedish)
+  - https://youtu.be/QcuFZm6z_JA (English)
+- Software Testing
+  - https://youtu.be/d1Sqlfcwllo (Swedish)
+- PA1458 Development Process:
+  - https://youtu.be/snfAsD4shyc (Swedish)
+  - https://youtu.be/IwCKKgeoq0Y (English)
+- PA1460 Quality Attributes: https://youtu.be/gftNxfrEOQo (Swedish)
+- PA1460 Introduction to Architectures: https://youtu.be/93so4dPskwE (Swedish)
+- PA1460 Documenting Architectures: https://youtu.be/e788pDG_rQE (Swedish)
+
+---
+- Modelling Structure
+  - Used on Jan 27/28 and in/from assignment "Class and Package Diagram" 
+  - https://youtu.be/5_jplldguKc (Swedish)
+  - https://youtu.be/wVLKFPIpa0A (English)
+- Modelling Behaviour
+  - Used on Jan 27/28 and in/from assignment "Interaction Diagrams"
+  - https://youtu.be/E3gyQFxDiPs (Swedish)
+  - https://youtu.be/wVLKFPIpa0A (English)
+- Design Patterns
+  - Used on Feb 3/4 and in/from assignment "Discussion of GRASP patterns"
+  - https://youtu.be/R9L7gaVhCCQ (Swedish)
+  - https://youtu.be/oU54ETOBcxU (English)
+---
+- From Design to Code
+  - Gives a deeper understanding and a practical example
+  - https://youtu.be/zUVRWNsOUJc (Swedish)
+  - (English not available)
+- Example: JSPonies
+  - An example of the "State" design pattern
+  - https://youtu.be/jzVU5NCib10 (Swedish)  
+  - https://youtu.be/4FkqQUJR2G0 (English)
+- Example: Wizards Apprentice 
+  - An example of the "Strategy" design pattern
+  - https://youtu.be/nlY4EgXVIdU (Swedish)
+  - https://youtu.be/GvlvfeEgvXc (English)
+
+* Notes
+** <2022-01-17 Mon> Domain Model
+   #+begin_src plantuml :file DM.png
+
+class Post
+Post : +contents
+Post : +date
+   
+Thread - Post : contains >
+Category - Thread : < has
+
+User -- Post : writes >
+User : +accessRights
+   #+end_src
+
+   #+RESULTS:
+   [[file:DM.png]]
+** <2022-01-20 Thu> Use Cases
+*Use Case* Namn på use caset
+*Actors* vem är inblandad i use caset
+*Description* en kort beskrivning på ett par meningar om hur användningsfallet går till.
+
+#+begin_src plantuml :file use-cases.png
+left to right direction
+actor User
+actor Admin
+
+rectangle DiscussionForum {
+User -- (Create Post)
+User -- (Read Post)
+User -- (Update Post)
+User -- (Delete Post)
+User -- (Create Thread)
+User -- (Read Thread)
+User -- (Read Category)
+(Create Category) -- Admin
+}
+
+rectangle Authentication {
+User -- (Authenticate Session)
+}
+
+#+end_src
+
+#+RESULTS:
+[[file:use-cases.png]]
+
+*Use Case* Create Thread
+*Actors* User
+*Description* User selects to create new thread and enters a name for it.
+
+
+---
+*Use Case* Create Post
+*Actors* User
+*Description* User creates a new post and selects which thread to post in. User writes the contents and selects "preview". System displays a rendered version of the post and the User submits the post.
+
+*Precondition* There is at least one thread available to post in.
+*Postcondition* Users mentioned in the post are notified.
+
+*Requirements* As a User I want to Create Posts so that I can tell others what I think.
+
+*Main Course of Events*
+
+| <10>                                 | <20>                                         | <20>                                                                                                           |
+| User                                 | System                                       | Requirement                                                                                                    |
+|--------------------------------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------|
+| 1. User selects "Create New Post".   |                                              |                                                                                                                |
+|                                      | 2. System lists available threads.           | US1 "As a User I can only see threads that I can also post in, so that I am not overwhelmed with information." |
+| 3. User selects a thread to post in. |                                              |                                                                                                                |
+|                                      | 4. System asks for the contents of the post. |                                                                                                                |
+| 5.1 User writes the post             |                                              |                                                                                                                |
+| 5.2 User selects "Preview"           |                                              |                                                                                                                |
+|                                      | 6.1 System renders the post                  | US2 "…"                                                                                                        |
+|                                      | 6.2 System displays the post.                |                                                                                                                |
+| 7.1 User reads the previewed post    |                                              |                                                                                                                |
+| 7.2 User selects "Submit"            |                                              |                                                                                                                |
+|                                      | 8. System stores the post                    |                                                                                                                |
+|                                      | 9. System displays the post in the thread.   |                                                                                                                |
+|--------------------------------------+----------------------------------------------+----------------------------------------------------------------------------------------------------------------|
+*Alternative Flows*
+2. There are no available threads. Launch use case <<Create Thread>>
+1--7. User selects "Cancel". System aborts use case.
+
+
+---
+*New System* Event Searcher
+*User Story* As a Customer I want to search for events of a certain type within a certain time period and region so that I can see what is available.
+
+*Use Case* Search for Event
+*Actor* Customer
+*Description* Customer selects event type. Customer specifies a date range. System displays the number of matching events in each region. Customer browses the available events in a selected region.
+
+*Main Course of Events*
+| User                                 | System                                       |
+|--------------------------------------+----------------------------------------------|
+| 1. Customer searches for an event    |                                              |
+|                                      | 2. System displays available event types.    |
+| 3. Customer specifies a date range.  |                                              |
+|                                      | 4. System displays number of matching events |
+|                                      | organised per region.                        |
+| 5. Customer views a specific region. |                                              |
+|                                      | 6. System displays all matching events       |
+|                                      | in the selected region.                      |
+|--------------------------------------+----------------------------------------------|
+
+*Use Case* Book Event
+*Actor* Customer
+*Description* Customer books an event.
+*Precondition* Customer has /Searched for an Event/
+*Precondition* System displays a set of events within a date range and region.
+
+*Main Course of Events*
+| User                                         | System                                           |
+|----------------------------------------------+--------------------------------------------------|
+| 1. Customer selects one event.               |                                                  |
+|                                              | 2. System displays details about the event.      |
+|                                              | 3. System displays available seats in the event. |
+| 4. Customer selects number of seats to book. |                                                  |
+| 5. Customer selects "Book"                   |                                                  |
+|                                              | 6. System reserves the selected number of seats. |
+|                                              | 7. System sends invoice to Customer              |
+|                                              | 8. System displays booking confirmation.         |
+|----------------------------------------------+--------------------------------------------------|
+
+#+begin_src plantuml :file domain-model.png
+class Event
+
+Event -- EventDetails : has >
+Event -- Seat : has >
+Seat - Reservation : may have >
+
+Seat : +location
+
+Customer - Event : book >
+
+Reservation - "Booking Confirmation"
+#+end_src
+
+#+RESULTS:
+[[file:domain-model.png]]
+
+
+1. selectEvent(theEvent)
+5. reserveSeats(theEvent, theNumberOfSeats)
+
+#+begin_src plantuml :file systemSequenceDiagram.png
+actor User
+participant ":System" as sys
+
+User -> sys : selectEvent(theEvent)
+sys --> User : event details, available seats
+
+User -> sys : reserveSeats(theEvent, theNumberOfSeats)
+sys --> User : booking Confirmation
+
+#+end_src
+
+#+RESULTS:
+[[file:systemSequenceDiagram.png]]
+
+
+#+begin_src plantuml :file UCD-actors.png
+actor User
+actor Bank
+actor EventManager
+
+rectangle "System" {
+User - (Book Event)
+(Book Event) - Bank
+(Book Event) - EventManager
+}
+#+end_src
+
+#+RESULTS:
+[[file:UCD-actors.png]]
+
+
+*Use Case*  Book Event
+*Actors* User, Bank, EventManager
+*Description* User books an event. System checks with EventManager that it is possible. System withdraw funds from Bank.
+
+*Main Course of Events*
+| User                         | System                             |
+|------------------------------+------------------------------------|
+| 1. User selects "Book" event |                                    |
+|                              | 2. System checks with *EventManager* |
+|                              |                                    |
+|                              | 4. System withdraw funds from *Bank* |
+|                              | 5. System displays confirmation    |
+|------------------------------+------------------------------------|
+
+---
+*Use Case* Send Message to In-Game Secretary
+*Actors* Player
+*Description* Actor sends a message to the in-game secretary. System responds.
+
+*Main Course of Events*
+| User                                        | System                                        |
+|---------------------------------------------+-----------------------------------------------|
+| 1. User sends "Hello?" to in-game secretary |                                               |
+|                                             | 2. System decides on an appropriate response. |
+|                                             | 3. System responds to user.                   |
+|---------------------------------------------+-----------------------------------------------|
+
+** <2022-01-21 Fri> Testing
+|              | Test Frequency |             |            |             |                 |           |
+| Type of Test | Construction   | Every Build | Every Hour | Every Day   | Every Release   | Every Bug |
+|--------------+----------------+-------------+------------+-------------+-----------------+-----------|
+| Manual       | GUI, Use Cases |             |            | ?           | Checklist-based | ! \downarrow       |
+| Semi-Manual  | =fun()= =class=    |             |            |             |                 | \downarrow         |
+| Automated    | =fun()= =class=    | Components  | ?          | Integration | !!               | !!        |
+|              |                |             |            |             |                 |           |
+
+Test a function
+
+=int exp(int x,int e)=
+
+#+begin_src c++
+
+expect(exp(1,1), 1)
+expect(exp(2,2), 4)
+
+expect(exp(2,0), 1)
+expect(exp(2,17), 2^17)
+
+expect(exp(2,-2), 0.25)
+
+expect(exp(65537,2), 0.25)
+
+#+end_src
+
+---
+Test a class
+
+- setUp
+- test
+- teardown
+
+#+begin_src c++
+
+// Setup
+testObject = new TestObject();
+testObject.connectDB("MyTestDatabase");
+
+// Test
+Results res = TestObject.select("Select * from TestData");
+expect(res.getSize(), 10);
+
+// Separate Test
+expect(res.getFirst().getName(), "Should Be This");
+
+// Teardown
+testObject.disconnect()
+delete [] testObject;
+
+#+end_src
+
+** <2022-01-24 Mon> Static vs Dynamic
+
+[[~/Downloads/matt.jpg]]
+
+Static
+- Conceptual Model
+- Class Diagram
+
+Dynamic
+- Sequence Diagrams
+- Collaboration Diagram
+
+- System Sequence Diagram 
+
+
+1. Use Cases
+2. Conceptual Model (using nouns from use cases)
+3. System Sequence Diagram (using system events from use cases)
+4. Sequence Diagram (for each system event in System Sequence Diagram, using Conceptual Model to look for possible objects)
+5. Class Diagram
+   - objects from sequence diagram to figure out which classes to build
+   - necessary methods from sequence diagram
+
+#+BEGIN_SRC plantuml :file FSequenceDiagrams.png
+hide footbox
+title Example Sequence Diagram
+
+participant ":PoS"  as pos
+
+[-> pos : startNewSale()
+activate pos
+create participant "current:Sale" as cs
+pos --> cs : create()
+deactivate pos
+
+[-> pos : enterItem(upc, qty)
+activate pos
+create participant "si:SalesItem" as si
+pos --> si : create()
+pos -> si : setProductID(upc)
+activate si
+deactivate si
+pos -> si : setQuantity(qty)
+activate si
+deactivate si
+pos -> cs : addItem(si)
+activate cs
+create participant "info:Warehouse" as info
+cs --> info : create()
+cs -> info : theDescription=getDescription(si->getUPC())
+activate info
+deactivate info
+cs -> info : thePrice=getPrice(si->getUPC())
+activate info
+deactivate info
+cs -> si : setPrice(thePrice)
+activate si
+deactivate si
+cs -> cs : increaseTotal(thePrice)
+activate cs
+deactivate cs
+cs -> info : destroy()
+destroy info
+cs --> pos : theItemDescription
+deactivate cs
+deactivate pos
+#+END_SRC
+
+#+RESULTS:
+[[file:FSequenceDiagrams.png]]
+
+
+#+BEGIN_SRC plantuml :file FSequenceDiagrams.png
+hide footbox
+title Example Sequence Diagram
+
+participant ":PoS"  as pos
+participant "current:Sale" as cs
+
+
+[-> pos : enterItem(upc, qty)
+activate pos
+create participant "si:SalesItem" as si
+pos --> si : create()
+pos -> si : setProductID(upc)
+activate si
+deactivate si
+pos -> si : setQuantity(qty)
+activate si
+deactivate si
+pos -> cs : addItem(si)
+activate cs
+create participant "info:Warehouse" as info
+cs --> info : create()
+cs -> info : theDescription=getDescription(si->getUPC())
+activate info
+deactivate info
+cs -> info : thePrice=getPrice(si->getUPC())
+activate info
+deactivate info
+cs -> si : setPrice(thePrice)
+activate si
+deactivate si
+cs -> cs : increaseTotal(thePrice)
+activate cs
+deactivate cs
+cs -> info : destroy()
+destroy info
+cs --> pos : theItemDescription
+deactivate cs
+deactivate pos
+#+END_SRC
+
+#+RESULTS:
+[[file:FSequenceDiagrams.png]]
+
+#+begin_src plantuml :file FSeqClasses.png
+class PoS
+class Sale
+class SalesItem
+class Warehouse
+
+PoS : +enterItem(upc,qty)
+
+Sale : +addItem(SalesItem theItem)
+Sale : +increaseTotal(int thePrice)
+
+SalesItem : +setProductId(upc)
+SalesItem : +setQuantity(qty)
+SalesItem : +setPrice(thePrice)
+
+SalesItem : +getUPC()
+
+Warehouse : +getDescriptuon(upc)
+Warehouse : +getPrice(upc)
+
+PoS -- SalesItem
+PoS -- Sale
+Sale - SalesItem
+Sale -- Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:FSeqClasses.png]]
+
+
+#+begin_src plantuml :file newSeq.png
+participant ":PoS" as pos
+participant "current:Sale" as cs
+
+[-> pos : enterItem(upc,qty)
+activate pos
+
+pos -> cs : addItem(upc,qty)
+activate cs
+create participant "si:SaleItem" as si
+cs --> si : create()
+
+cs -> si : setProductId(upc)
+activate si
+create participant "info:Warehouse" as wh
+si --> wh : get()
+si -> wh : getDescription(upc)
+si -> wh : getPrice(upc)
+si --> wh : destroy()
+destroy wh
+deactivate si
+
+cs -> si : setQuantity(qty)
+cs -> si : thePrice = getPrice()
+cs -> cs : increaseTotal(thePrice)
+activate cs
+deactivate cs
+
+cs -> si : theDescription = getDescription()
+cs --> pos : theDescription
+deactivate cs
+
+deactivate pos
+
+#+end_src
+
+#+RESULTS:
+[[file:newSeq.png]]
+
+#+begin_src plantuml :file newclass.png
+class PoS
+class Sale
+class SaleItem
+class Warehouse
+
+PoS : +enterItem(upc,qty)
+PoS : -Sale current
+
+Sale : +addItem(upc,qty)
+Sale : +increaseTotal(thePrice)
+Sale : -Vector<SaleItem> myItems
+
+SaleItem : +setProductId(upc)
+SaleItem : +setQuantity(qty)
+SaleItem : +getPrice()
+SaleItem : +getDescription()
+SaleItem : -String myDescription
+SaleItem : -String myUpc
+SaleItem : -int myQuantity 
+SaleItem : -int myPrice
+
+Warehouse : +getDescription(upc)
+Warehouse : +getPrice(upc)
+
+PoS - Sale
+Sale - SaleItem
+SaleItem -- Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:newclass.png]]
+** <2022-01-27 Thu> GRASP Patterns
+- Low Coupling
+- High Cohesion
+
+- Information Expert
+  - Domain Information
+  - Design Information
+  - Interface Information
+
+- Creator
+
+#+begin_src plantuml :file creator.png
+class Sale
+abstract class SaleItem
+
+Sale - "*" SaleItem
+
+SaleItem <|-- GiftCard
+SaleItem <|-- PoisonousSubstance
+SaleItem <|-- FoodItem
+
+Sale : +addItem(upc,qty)
+
+SaleItemFactory : +createSaleItem(upc, qty)
+
+Sale -- SaleItemFactory
+SaleItemFactory -- SaleItem : creates >
+
+SaleItem : +calculateVAT()=0
+
+GiftCard : +calculateVAT()
+PoisonousSubstance : +calculateVAT()
+FoodItem : +calculateVAT()
+#+end_src
+
+#+RESULTS:
+[[file:creator.png]]
+
+- Controller
+
+- Polymorphism
+
+#+begin_src C++
+
+Sale::WRONGcalculateVAT() {
+  float vat=0.25;
+
+  foreach(item : mySaleItemList) {
+    int type item->getType();
+    switch(type) {
+    case 1: vat=0.25; break;
+    case 2: vat=0.08; break;
+    case 3: vat=0.00; break;
+    default: vat=0.25; break;
+    }
+
+  }
+
+ return vat;
+}
+
+Sale::calculateVAT() {
+  float vat=0.25;
+
+  foreach(item : mySalesItemList) {
+    vat=item->calculateVAT();
+  }
+
+  return vat;
+}
+
+#+end_src
+
+- Indirection
+- Protected Variations
+- Pure Fabrication
+
+
+---
+GRASP Patterns
+
+- Low Coupling
+- High Cohesion
+
+- Information Expert
+- Creator
+- Controller
+
+- Polymorphism
+- Indirection
+
+- Protected Variations
+- Pure Fabrication
+
+
+---
+Multiplicity
+
+#+begin_src plantuml :file multiplicity.png
+Sale  --- "*" SaleItem
+
+Sale : +Vector<SaleItem*> mySaleItems
+#+end_src
+
+#+RESULTS:
+[[file:multiplicity.png]]
+
+
+#+begin_src plantuml :file multiplicity2.png
+Sale  --- "*" SaleItem
+
+SaleItem : +Sale* myOwner
+
+#+end_src
+
+#+RESULTS:
+[[file:multiplicity2.png]]
+
+** <2022-01-28 Fri> Complete Example -- BurgerOrderer
+*** Use Case
+*Use Case:* Order Meal
+*Actors:* Customer
+*Description:* Customer arrives at the BurgerOrderer. Customer selects a meal, configures their burger, and orders it.
+
+*Main Course of Events*
+| Actor                                                  | System                                      |
+|--------------------------------------------------------+---------------------------------------------|
+| 1. Customer arrives at the                             |                                             |
+| BurgerOrderer and starts a new Order                   |                                             |
+|                                                        | 2. System presents available categories     |
+|                                                        | {Meal, Single Burgers, Desserts, Drinks}    |
+| 3. Customer selects "Meal"                             |                                             |
+|                                                        | 4. System presents available Meal types.    |
+| 5. Customer selects specific meal type.                |                                             |
+|                                                        | 6. System adds selected meal type to Order. |
+|                                                        | 7. System presents configuration options.   |
+| 8. Customer selects +"no onions"+ a configuration option |                                             |
+|                                                        | 9. System adds +"no onions"+ to Order.        |
+| 10. Customer confirms order.                           |                                             |
+|                                                        | 11. System initiates use case _pay for order_ |
+|                                                        | 12. System sends order to _Kitchen_           |
+|                                                        | 13. System prints receipt.                  |
+|--------------------------------------------------------+---------------------------------------------|
+*Alternative Flows*
+1--10. Customer cancels order. Order is aborted.
+6. Meal is currently not available. System informs user and asks for a new Meal Type.
+
+*startNewOrder()  selectOrderCategory() selectOrderType() selectConfigurationOption() confirmOrder()*
+
+*** System Sequence Diagram
+    #+begin_src plantuml :file BO-ssd.png
+title "System Sequence Diagram for Use Case: Order Meal"
+actor ":Customer" as cus
+participant ":BurgerOrderer" as sys
+    
+cus -> sys : startNewOrder()
+sys --> cus : list of available order categories
+
+cus -> sys : selectOrderCategory(theCategoryName)
+sys --> cus : list of available order types within the selected category
+
+cus -> sys : selectOrderType(theOrderTypeName)
+sys --> cus : list of configuration options
+
+cus -> sys : selectConfigurationOption(theConfigurationOptionName)
+sys --> cus : confirms configuration
+
+cus -> sys : confirmOrder()
+sys --> cus : order confirmation. Prints receipt.
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-ssd.png]]
+
+*** startNewOrder()
+    #+begin_src plantuml :file BO-SNO.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : startNewOrder()
+activate sys
+
+create participant "current:Order" as order
+sys --> order : create()
+    
+sys -> ":OrderCategoryManager" : listOrderCategories()
+
+[<-- sys : list of order categories
+deactivate sys
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-SNO.png]]
+
+*** selectOrderCategory(theCategoryName)
+    #+begin_src plantuml :file BO-SOC.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectOrderCategory(theOrderCategoryName)
+activate sys
+sys -> ":OrderCategoryManager" : oc = getOrderCategory(theOrderCategoryName)
+activate ":OrderCategoryManager"
+deactivate ":OrderCategoryManager"
+
+participant "oc:OrderCategory" as oc
+
+sys -> oc : listOrderTypes()
+activate oc
+deactivate oc
+
+[<-- sys : list of available order types within selected category
+deactivate sys    
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-SOC.png]]
+
+*** selectOrderType(theOrderTypeName)
+    #+begin_src plantuml :file BO-SOT.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : selectOrderType(theOrderTypeName)
+activate sys
+
+sys -> ":OrderTypeManager" : currentOrderType=createOrderType(theOrderTypeName)
+activate ":OrderTypeManager"
+create participant "currentOrderType:OrderType"
+":OrderTypeManager" --> "currentOrderType:OrderType" : create()
+deactivate ":OrderTypeManager"
+
+sys -> "current:Order" : append(currentOrderType)
+activate "current:Order"
+deactivate "current:Order"
+    
+sys -> "currentOrderType:OrderType" : listConfigurationOptions()
+activate "currentOrderType:OrderType"
+deactivate "currentOrderType:OrderType"
+
+
+[<-- sys : list of configuration options
+deactivate sys
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-SOT.png]]
+
+*** selectConfigurationOption(theConfigurationOptionName)
+    #+begin_src plantuml :file BO-SCO.png
+participant ":BurgerOrderer" as sys
+
+[-> sys :  selectConfigurationOption(theConfigurationOptionName)
+activate sys
+
+sys -> "currentOrderType:OrderType" : co=createConfigurationOption(theConfigurationOptionName)
+activate "currentOrderType:OrderType"
+create participant "co:ConfigurationOption"
+"currentOrderType:OrderType" --> "co:ConfigurationOption" : create()
+deactivate "currentOrderType:OrderType"
+
+sys -> "current:Order" : append(co)
+
+[<-- sys : confirms selection
+deactivate sys
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-SCO.png]]
+
+*** confirmOrder()
+    #+begin_src plantuml :file BO-co.png
+participant ":BurgerOrderer" as sys
+
+[-> sys : confirmOrder()
+activate sys
+
+sys -> "current:Order" : price=calculateTotal()
+
+actor ":PaymentManager"
+actor ":KitchenManager"
+
+sys -> ":PaymentManager" : startPayment(price)
+sys -> ":KitchenManager" : startProcessing(current)
+
+actor ":PrinterManager"
+
+sys -> "current:Order" : rec = getFormattedReceipt()
+sys -> ":PrinterManager" : printReceipt(rec)
+
+deactivate sys
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-co.png]]
+
+*** Class Diagram
+    #+begin_src plantuml :file BO-cd.png
+class BurgerOrderer {
+ +selectConfigurationOption()
+ +confirmOrder()
+ - Order current
+ - OrderType currentOrderType
+}
+
+class Order {
+ +calculateTotal()
+ +getFormattedReceipt()
+ +append()
+}
+    
+class OrderType {
+ +createConfigurationOption()
+}
+
+class ConfigurationOption
+
+BurgerOrderer - Order
+BurgerOrderer - OrderType
+
+OrderType -- ConfigurationOption
+    #+end_src
+
+    #+RESULTS:
+    [[file:BO-cd.png]]
+** <2022-01-31 Mon> Before we start
+- 3 Week Roll Call
+- Programming Language
+- Exam
+** <2022-02-03 Thu> A choice to make
+- Continue with Design Patterns?
+  - Abstract Factory
+  - Singleton
+  - Facade, Wrapper, Adapter
+- Work through an example using the /Strategy Pattern/?
+** <2022-02-03 Thu> A concrete Example: PostEnhancer
+   #+begin_src plantuml :file PostEn.png
+package PostCollector {
+}
+
+package TextParser {
+}
+
+package PostEnhancer {
+
+class PostEnhancer <<Facade, Context>> {
+ +setContents()
+ +setContentsType()
+ +execute()
+ -EnhancerStrategy* myStrategy;
+}
+
+abstract class EnhancerStrategy <<Abstract Strategy>> {
+ +enhanceContents()
+}
+
+PostEnhancer - "1" EnhancerStrategy
+
+EnhancerStrategy <|-- ComicEnhancer
+EnhancerStrategy <|-- PoemEnhancer
+EnhancerStrategy <|-- NewsflashEnhancer
+
+ComicEnhancer : +enhanceContents()
+PoemEnhancer : +enhanceContents()
+NewsflashEnhancer : +enhanceContents()
+}
+
+package PostPublisher {
+}
+
+PostCollector - TextParser : >
+TextParser - PostEnhancer : >
+PostEnhancer - PostPublisher : > 
+   #+end_src
+
+   #+RESULTS:
+   [[file:PostEn.png]]
+
+   #+begin_src c++
+PostEnhancer::setContentsType(enum contentsType theType) {
+ switch(theType) {
+ case contentsType::comic: myStrategy = new ComicEnhancer(); break;
+ case contentsType::poem:  myStrategy = new PoemEnhancer(); break;
+ case contentsType::news:  myStrategy = new NewsflashEnhancer(); break;
+ }
+}
+
+PostEnhancer::execute() {
+ myStrategy->enhanceContents(myContents);
+}
+   #+end_src
+** Component Diagram
+   #+begin_src plantuml :file comp.png
+
+component Model
+component View1
+component View2
+component Controller   
+
+Controller -- Model : manipulates >
+View1 -- Model : displays >
+View2 -- Model : displays >
+   #+end_src
+
+   #+RESULTS:
+   [[file:comp.png]]
+
+   #+begin_src plantuml :file comp-pack.png
+package View1 {
+}
+package View2 {
+}
+package Controller {
+ class InteractWithCharacter <<Controller>>
+}
+
+package Model {
+ class GameElement
+ class Character
+ class GameObject
+ class Scene
+ class Inventory
+
+ GameElement <|-- GameObject : is a
+ GameElement <|-- Character : is a
+ Scene - "*" GameElement : contains >
+ Scene <|-- Inventory : is a type of
+ Inventory -- "*" GameObject : contains >
+}
+
+Controller -- Model : manipulates >
+View1 -- Model : displays >
+View2 -- Model : displays > 
+   #+end_src
+
+   #+RESULTS:
+   [[file:comp-pack.png]]
+
+   #+begin_src plantuml :file ssd-iwc.png
+actor "Player" as pl
+participant "System" as sys
+   
+pl -> sys : findCharacter(theChacterName)
+pl -> sys : sendMessage(theMessage)
+   #+end_src
+
+   #+RESULTS:
+   [[file:ssd-iwc.png]]
+
+   #+begin_src plantuml :file sd-iwc.png
+participant "System" as sys
+
+[-> sys : findCharacter(theCharacterName)
+
+sys -> ":CharacterManager" : findCharacter(theCharacterName)
+create participant ":Character"
+
+
+   
+   #+end_src
+
+   #+RESULTS:
+   [[file:sd-iwc.png]]
+
+   #+begin_src plantuml :file cd-iwc.png
+class InteractWithCharacter <<controller>>
+class CharacterManager
+class Character
+   #+end_src
+
+   #+RESULTS:
+   [[file:cd-iwc.png]]
+
+   #+begin_src plantuml :file arc-iwc.png
+package Controller {
+class InteractWithCharacter <<controller>> 
+}
+   
+package Model {
+class CharacterManager
+class Character
+}
+
+package View {
+}
+
+Controller -- Model
+View -- Model
+   #+end_src
+
+   #+RESULTS:
+   [[file:arc-iwc.png]]
+** <2022-02-04 Fri> From Design to Code
+   #+begin_src ditaa :file arch.png
+
+                     +-------------------------------+
+                     |                               |
+                     |         GUI                   |
+                     +-------------------------------+
+                                   
+                                   
+                     +-------------------------------+
+       +--------+    |                     cGRE      |
+       |        |    |                               |
+       |        |    |                               |
+       | main() |    |                               |
+       +--------+    |         Application           |
+                     |                               |
+                     |                               |
+                     |                               |
+                     |                               |
+                     +-------------------------------+
+                              +---------------+
+                              |           {s} |
+                              |  Storage      |
+                              +---------------+
+   #+end_src
+
+   #+RESULTS:
+   [[file:arch.png]]
+** JSPonies
+https://github.com/mickesv/JSPonies
+
+** Testning
+   #+begin_src c++
+
+class StringBuilder {
+private:
+ string currentString;
+public:
+ string append(stringToAppend);
+}
+   
+...
+StringBuilder sb;
+sb.append("Hej"); // -> Hej
+sb.append("Hopp"); // -> HejHopp
+   #+end_src
+
+   #+begin_src c++
+
+// Test step1
+   
+   #+end_src
+
+    #+RESULTS:
+    [[file:BO-ssd.png]]
+
+#+begin_quote
+Feature Order Meal
+
+Scenario I start a new order
+ When I select start new order                        # Setup
+ Then I see a list of available order categories #Test
+ And this list includes "Meal"                          #Test
+
+Scenario I select an Order Category
+ When I select start new order
+ And I select order category "Meal"
+ Then I see a list of available order types within the selected category
+ And this list includes the items in table 1
+
+table 1
+| Meal type                            |
+|--------------------------------------|
+| Very Vegan Vealish                   |
+| Metric Ton Big Bacon and Beef Burger |
+|--------------------------------------|
+
+Scenario I select an Order Type
+ When I select start new order
+ And I select Order category "Meal"
+ And I select a specific order type "Very Vegan Vealish"
+ Then I see a list of Configuration Options
+
+Scenario I select a configuration Option
+ ...
+
+Scenario I confirm an order
+#+end_quote
+
+
+#+begin_quote
+Feature Calculate Exponent of x
+
+Scenario I test squares
+ When I enter values from column 1 in table 1
+ I get results from column 2 in table 1
+
+table 1
+ | val | result |
+ |-----+--------|
+ |   2 |      4 |
+ |   8 |    256 |
+ |  -2 |    0.5 |
+ |   0 |      1 |
+ |-----+--------|
+
+#+end_quote
+
+#+begin_quote
+Scenario I select an Order Type
+ When I select start new order
+ And I select Order category "Meal"
+ And I select a specific order type "Very Vegan Vealish"
+ Then I see a list of Configuration Options
+#+end_quote
+
+#+begin_src c++
+
+@Test Select Order Type
+int TestSelectOrderType() {
+ // Setup
+ System sys;
+ BurgerOrderer bo = sys.selectOrderBurgerUseCase();
+ bo.startNewOrder();
+ bo.selectOrderCategory("Meal");
+ Result res =  bo.selectOrderType("Vegan V...");
+
+ // Test
+ expect.notEmpty(res);
+ expect.contains(res, "hold the Onions"); 
+
+ // Teardown
+ bo.cancelOrder();
+ sys.quit();
+}
+
+#+end_src

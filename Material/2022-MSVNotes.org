@@ -1,0 +1,730 @@
+* MSV Notes :noexport:
+** MSV Plan
+ |      |          |        |                                              | <70>                                                                                     |
+ | Week | Day      | Date   | Comment                                      | Topic                                                                                    |
+ |------+----------+--------+----------------------------------------------+------------------------------------------------------------------------------------------|
+ |    3 | Monday   | Jan 17 | Use Existing Lecture                         | Introduction, Canvas, UML, Domain Modelling                                              |
+ |      | Thursday | Jan 20 | *new* Publish annotated notes afterwards       | Writing Use Cases, what is a meaningful use case, use cases and requirements             |
+ |      | Friday   | Jan 21 | *new*                                          | How do we test (DevOps, manual, automated), What do we test (function, class, component) |
+ |      |          |        |                                              |                                                                                          |
+ |    4 | Monday   | Jan 24 | *new*                                          | Static and Dynamic, how they feed each other. Good and bad design (GRASP)                |
+ |      | Thursday | Jan 27 | BurgerOrderer, Publish last year's lecture   | Static & Dynamic, GRASP / Example from Use Case to Classes                               |
+ |      | Friday   | Jan 28 | *new*                                          |                                                                                          |
+ |      |          |        |                                              |                                                                                          |
+ |    5 | Monday   | Jan 31 | Use Guest Lecture                            | GRASP && Design Patterns                                                                 |
+ |      | Thursday | Feb  3 | Web Scraper: Strategy && Discussion of GRASP | Q&A, Example                                                                             |
+ |      | Friday   | Feb  4 | *new* JSPonies?                                | Q&A, Example                                                                             |
+ |      |          |        |                                              |                                                                                          |
+ |    8 | Monday   | Feb 21 | DocumentExporter; Different Design Patterns  | Example, Q&A, More on GRASP (Controller, Information Expert)                             |
+ |      |          |        | (Abstract Factory (two versions), Decorator) |                                                                                          |
+ |      |          |        |                                              |                                                                                          |
+ |    9 | Monday   | Feb 28 |                                              | Exam Example, Q&A                                                                        |
+ |      | Thursday | Mar  3 |                                              | Exam Example, Q&A                                                                        |
+ |------+----------+--------+----------------------------------------------+------------------------------------------------------------------------------------------|
+** Use Cases
+- System: *Discussion Forum*
+- Brainstorm use cases in UCD
+  - user, admin
+  - CRUD {Post, Category, Thread}
+- High level Use Cases
+  - Name
+  - Actors
+  - Description
+- What's in a Name?
+- Which Use Cases to Dig Deeper with?
+  - Create Post
+- Detailed Use Case -- which headings?
+- Happy Case!
+- Develop in Stages: Iterate Use Cases
+- New System: *Event Searcher*, use case *Search for Event*
+  1. Start
+  2. Select type of Event (Music, Exhibition, Sport)
+  3. Select sub-type (Jazz, Blues, Rock)
+  4. Select date range
+  5. Select region
+  6. Click to book (invoke << book >> UC)
+
+--- HERE ---
+left to right direction
+use case diagram: Always have a system border. Without it, a use case is performed outside of a computer system.
+
+what can we now do with what we have so far? (requirements/user stories && use cases)
+- Do the Domain Model Monster Mash!
+
+- What if more actors? Use Case *Book Event*
+  - Actors: User, System, EventManager, Bank
+- Let's complicate things, interact with actor /within/ system *Send Message to In-Game Secretary*
+  - do UCD (only one actor, this is a clue)
+  - do Detailed UC
+** Testing
+Build a table
+|           | Frequency   |            |           |               |           |
+| Type      | Every build | Every Hour | Every Day | Every Release | Every Bug |
+|-----------+-------------+------------+-----------+---------------+-----------|
+| Manual    |             |            |           |               |           |
+| Automated |             |            |           |               |           |
+
+- Why now in the course?
+- How do we test?
+  - Manual, Automated
+  - Every day? Every build?
+- How do we select what to test?
+  - Which parts of the system?
+  - Entire system, just one component, just one class, just one function?
+- What do we test? (Unit under test)
+  - Example:
+    - Function =exp(x,y)=
+    - Class =Matrix=
+      - Is this different compared to testing all its functions?
+      - Yes if stateful. How do we create tests for this?
+    - Component =NFS-FileSystem=
+      - Same here...
+    - System
+      - Manual: Checklist
+      - Semi-Automated: EyeScout, Selenium, etc.
+      - Automated: Remove UI, add test harness
+- On a component/System, what do we test?
+  - Each functionality? -- Requirement by requirement?
+  - Use cases? -- Is this integration testing?
+- How should we write a use case so that it is testable?
+  - Preconditions, Postconditions
+  - Traceability? Can we add information into the Use Case?
+  - Cucumber/Gherkin?
+#+begin_quote
+Feature: Search for events
+
+Background:
+ Given I have selected a Date Range
+ And there is no Lockdown
+
+Scenario: I search for available types of Music Events
+ When I search for a Music Event
+ Then I see a list of different types of Music Events
+
+Scenario: I search for a Jazz Concert
+ Given I see a list of different types of Music Events
+ When I select a Jazz Concert among the types of Music Events
+ Then I should see a list of Regions where there are Jazz Concerts within the given Date Range
+
+Scenario: I only want to see events in a specific Region
+ Given I see a list of Regions where there are Music Events
+ When I select one of the Regions
+ Then I should see a list of available Jazz concerts within the given Date Range and Region
+#+end_quote
+  
+- Testing changes to attributes within an object is "easy".
+- What about new/changed relations to other objects?
+- What is the starting state for a test? What is the exit state? (Prepare for the next test)
+  - Depends on whether the unit under test is stateless or stateful.
+  - Prefer stateless, it is much easier. You still have Setup, test, teardown.
+    1. TestSetup.setup() -- Basic setup (Initial state; load game, populate database, etc.)
+    2. Setup() for one test group/class/suite (insert something that can be tested against)
+    3. Test 1
+    4. Test 2
+    5. …
+    6. Test n
+    7. Teardown() (clean up from step 2 so that the next test can run smoothly)
+    8. TestSetup.teardown() -- Shutdown…
+
+- A word or two about Continuous Integration / Continuous Deployment
+- DevOps.
+- Testing and the User Interface (show JSPonies?)
+** Static / Dynamic, GRASP
+- Statisk, Dynamisk, vilken börjar vi med?
+  - Konceptuell
+  - SystemSeq.
+  - Seq.
+  - Class
+- Vad visar egentligen de statiska vyerna?
+  - Klasser
+  - Relationer mellan klasser
+- Vad är skilnaden mot de dynamiska?
+  - Objekt  ":anObject"
+  - Värden på attribut
+  - Nu existerande relationer
+  - De relationer och attribut som behövs för att lösa en viss uppgift (ett metodanrop)
+  - Contracts?
+- Konceptuell Model
+  - Är ett mellanting: Vi tittar på verkligheten (Objekt) och ser olika typer av objekt (Koncept)
+  - Relationerna bygger vi både utifrån enskilda fall och från vad som borde behövas
+
+Så var börjar vi?
+- Det enskilda fallet är alltid enklast!
+- /Ett/ use case, /ett/ metodanrop.
+
+#+BEGIN_SRC plantuml :file FSequenceDiagrams.png
+hide footbox
+title Example Sequence Diagram
+
+participant ":PoS"  as pos
+
+[-> pos : startNewSale()
+activate pos
+create participant "current:Sale" as cs
+pos --> cs : create()
+deactivate pos
+
+[-> pos : enterItem(upc, qty)
+activate pos
+create participant "si:SalesItem" as si
+pos --> si : create()
+pos -> si : setProductID(upc)
+activate si
+deactivate si
+pos -> si : setQuantity(qty)
+activate si
+deactivate si
+pos -> cs : addItem(si)
+activate cs
+create participant "info:Warehouse" as info
+cs --> info : create()
+cs -> info : theDescription=getDescription(si->getUPC())
+activate info
+deactivate info
+cs -> info : thePrice=getPrice(si->getUPC())
+activate info
+deactivate info
+cs -> si : setPrice(thePrice)
+activate si
+deactivate si
+cs -> cs : increaseTotal(thePrice)
+activate cs
+deactivate cs
+cs -> info : destroy()
+destroy info
+cs --> pos : theItemDescription
+deactivate cs
+deactivate pos
+#+END_SRC
+
+#+RESULTS:
+[[file:FSequenceDiagrams.png]]
+
+#+begin_src plantuml :file FSeqClasses.png
+class PoS 
+PoS : +startNewSale()
+PoS : +enterItem(upc,qty)
+
+Sale : +addItem(SaleItem theItem)
+
+SaleItem : +setProductId(upc)
+SaleItem : +setQuantity(qty)
+
+Warehouse : +getDescription(upc)
+Warehouse : +getPrice(upc)
+
+SaleItem : +setPrice(thePrice)
+SaleItem : +getUPC()
+
+Sale : +increaseTotal(thePrice)
+
+PoS - Sale
+PoS -- SaleItem
+Sale -- SaleItem
+Sale -- Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:FSeqClasses.png]]
+
+** Jan 27 More GRASP
+GRASP Patterns
+
+- Low Coupling
+- High Cohesion
+
+- Information Expert
+- Creator
+- Controller
+
+- Polymorphism
+- Indirection
+
+- Pure Fabrication
+- Protected Variations
+
+---
+- Multiplicity
+
+-------
+Gå tillbaka till PoS, enterItem; diskutera
+ - Information Expert (både data och struktur)
+   - Struktur 1: Hur ser programmet ut
+   - Data: Attribut ur domänen
+   - Struktur 2: Vilket gränssnitt som behövs (för ett use case, en abstrakt basklass, osv)
+ - Controller (PoS, Sale och SaleItem är alla Controllers)
+ - vem är Creator?
+   - Borde vara Sale som skapar SaleItem
+   - Därför att Sale vet om att det finns SaleItem (Struktur)
+ - Varför är inte PoS creator?
+   - Den vet visserligen data (ups och qty)
+   - men vet inte vad detta innebär eller vad man behöver göra med dem.
+
+
+Då vet vi klasserna. Vilka /objekt/ behövs?
+- Ett PoS-objekt
+  - list<Sale> saleHistory
+  - currentSale:Sale
+- Sale
+  - list<SaleItem> saleItems
+  - för en kort stund, ett separat SaleItem som stoppas in i listan
+- SaleItem
+  - för en kort stund: info:Warehouse
+
+Hur skriver vi ett program runt detta?
+
+Converting Text or other ID's in GUI to Objects in System
+
+Stateful controllers (e.g. for use cases) vs stateless classes
+** Jan 28 - BurgerOrderer
+BurgerOrderer
+
+Exempel med två burgare
+- Metric Ton Big Bacon n' Beef Burger
+- Vegan Vealight
+
+Hur blir dessa objekt? (Behöver inte klasser för var och en av dem)
+
+*** PA1459/PA1460 Example: BurgerOrderer
+**** Use Case Order Food
+  *Use Case* Order food
+  *Actors* Customer
+  *Description* A customer arrives at the BurgerOrderer, selects a meal, configures their burger, and orders it.
+  *Related Use Cases* Pay for order
+
+  *Main course of events*
+
+  #+LATEX: \begin{scriptsize}
+  | Actor                                                        | System                                                 |
+  |--------------------------------------------------------------+--------------------------------------------------------|
+  | 1. Customer arrives at BurgerOrderer and starts a new order. |                                                        |
+  |                                                              | 2. System presents options                             |
+  |                                                              | [single burger, meal, dessert, dring]                  |
+  | 3. Customer selects "meal"                                   |                                                        |
+  |                                                              | 4. System presents available meals                     |
+  | 5. Customer selects a specific meal.                         |                                                        |
+  |                                                              | 6. System adds the selected meal to the order.         |
+  |                                                              | 7. System presents configuration options               |
+  | 8. customer selects "no onions"                              |                                                        |
+  |                                                              | 9. System adds "no onions" to order.                   |
+  | 10. customer selects "more bacon!"                           |                                                        |
+  |                                                              | 11. System adds "more bacon!" to order.                |
+  | 12. Customer confirms order.                                 |                                                        |
+  |                                                              | 13. System initiates use case _pay for order_            |
+  |                                                              | 14. System places order to kitchen and prints receipt. |
+  |--------------------------------------------------------------+--------------------------------------------------------|
+
+  #+LATEX: \end{scriptsize}
+**** System Sequence Diagram
+     #+begin_src plantuml :file PA1459-PA1460-SSD.png
+  actor ":Customer" as cus
+  participant ":BurgerOrder" as sys
+
+  cus -> sys : startNewOrder()
+  sys --> cus : presents options
+
+  cus -> sys : selectOrderType(theOrderTypeName)
+  sys --> cus : presents available meals
+
+  cus -> sys : selectOrder(theOrderName)
+  sys --> cus : presents configuration options
+
+  cus -> sys : selectConfiguration(theConfigurationName)
+  sys --> cus : confirms configuration
+
+  cus -> sys : confirmOrder()
+  sys --> cus : printed receipt
+     #+end_src
+
+     #+RESULTS:
+     [[file:PA1459-PA1460-SSD.png]]
+
+**** Interaction Diagrams (Sequence Diagrams)
+***** startNewOrder()
+      #+begin_src plantuml :file PA1459-PA1460-startNewOrder.png
+  participant ":BurgerOrderer" as sys
+
+  [-> sys : startNewOrder()
+  activate sys
+
+  sys --> "current:Order"  : create()
+
+  sys -> ":OrderTypeManager" : getOrderTypes()
+
+  [<-- sys : return types of orders
+  deactivate sys
+      #+end_src
+
+      #+RESULTS:
+      [[file:PA1459-PA1460-startNewOrder.png]]
+***** selectOrderType()
+      #+begin_src plantuml :file PA1459-PA1460-selectOrderType.png
+  participant ":BurgerOrderer" as sys
+
+  [-> sys : selectOrderType(theOrderTypeName)
+  activate sys
+  sys -> ":OrderTypeManager" : getOrderType(theOrderTypeName)
+  activate ":OrderTypeManager"
+  ":OrderTypeManager" -> "currentOrderType:OrderType" : create()
+  ":OrderTypeManager" --> sys : return currentOrderType
+  deactivate ":OrderTypeManager"
+
+  sys -> "currentOrderType:OrderType" : getAvailableOptions()
+  activate "currentOrderType:OrderType"
+  deactivate "currentOrderType:OrderType"
+
+  [<-- sys : return available order options
+  deactivate sys    
+      #+end_src
+
+      #+RESULTS:
+      [[file:PA1459-PA1460-selectOrderType.png]]
+
+***** selectOrder()
+      #+begin_src plantuml :file PA1459-PA1460-selectOrder.png
+  participant ":BurgerOrderer" as sys
+
+  [-> sys : selectOrder(theOrderName) ' e.g. "Metric Ton Beef n' Bacon"
+  activate sys
+  sys -> "currentOrderType:OrderType" : selectOrder(theOrderName)
+  activate "currentOrderType:OrderType"
+
+  "currentOrderType:OrderType" --> "theOrderItem:OrderItem" : create()
+
+  "currentOrderType:OrderType" --> sys : returns theOrderItem
+  deactivate "currentOrderType:OrderType"
+
+  sys -> "current:Order" : addItem(theOrderItem)
+  sys -> "theOrderItem:OrderItem" : getConfigurationOptions()
+
+  [<-- sys : return list of configuration options
+  deactivate sys    
+      #+end_src
+
+      #+RESULTS:
+      [[file:PA1459-PA1460-selectOrder.png]]
+
+***** selectConfiguration()
+      #+begin_src plantuml :file PA1459-PA1460-selectConfiguration.png
+  participant ":BurgerOrderer" as sys
+
+  [-> sys : selectConfiguration(theConfigurationName)
+  ' e.g. "more bacon!"
+  activate sys
+  sys -> "currentOrderType:OrderType" : theCO=createConfiguration(theConfigurationName)
+  activate "currentOrderType:OrderType"
+  "currentOrderType:OrderType" --> "theConfigurationOption:ConfigurationItem" : create()
+  deactivate "currentOrderType:OrderType"
+
+  sys -> "current:Order" : addItem(theConfigurationOption)
+
+  deactivate sys    
+      #+end_src
+
+      #+RESULTS:
+      [[file:PA1459-PA1460-selectConfiguration.png]]
+
+***** confirmOrder()
+      #+begin_src plantuml :file PA1459-PA14560-confirmOrder.png
+  participant ":BurgerOrderer" as sys
+
+  [-> sys : confirmOrder()
+  activate sys
+
+  sys -> ":Payment" : executePayment()
+  activate ":Payment"
+  deactivate ":Payment"
+
+  sys -> "current:Order" : sendOrder()
+  activate "current:Order"
+  "current:Order" -> ":KitchenController" : sendItems(orderItems)
+  activate ":KitchenController"
+  deactivate ":KitchenController"
+  deactivate "current:Order"
+
+  sys -> "current:Order" : printReceipt()
+  activate "current:Order"
+  deactivate "current:Order"    
+  deactivate sys
+      #+end_src
+
+      #+RESULTS:
+      [[file:PA1459-PA14560-confirmOrder.png]]
+
+**** Class Diagram -- First version
+  In this version, I have simply merged all of the interaction diagrams above. As is seen, this means that associations between classes are duplicated, and some associations are made to the sub-class when they should be moved up to a super-class instead. I present this as a first version, and then I will clean it up and simplify it a bit.
+
+     #+begin_src plantuml :file PA1459-PA1460-classDiagram.png
+  ' startNewOrder()
+  ' --------------------
+  class BurgerOrderer
+  class Order
+  class OrderTypeManager
+
+  BurgerOrderer : startNewOrder()
+  OrderTypeManager : getOrderTypes()
+
+  BurgerOrderer - Order
+  BurgerOrderer - OrderTypeManager
+
+  ' selectOrderType()
+  ' --------------------
+  class BurgerOrderer
+  class OrderTypeManager
+  class OrderType
+
+  BurgerOrderer : selectOrderType(theOrderTypeName)
+  OrderTypeManager : getOrderType(theOrderTypeName)
+  OrderType : getAvailableOptions()
+
+  BurgerOrderer - OrderTypeManager
+  BurgerOrderer - OrderType
+  OrderTypeManager - OrderType
+
+  ' selectOrder()
+  ' --------------------
+  class BurgerOrderer
+  class OrderType
+  class OrderItem
+  class Order
+
+  BurgerOrderer : selectOrder(theOrderName)
+  OrderType : selectOrder(theOrderName)
+  Order : addItem()
+  OrderItem : getConfigurationOptions()
+
+  BurgerOrderer - OrderType
+  OrderType - OrderItem
+  BurgerOrderer - OrderItem
+  BurgerOrderer - Order
+
+  ' selectConfiguration()
+  ' --------------------
+  class BurgerOrderer
+  class OrderType
+  class ConfigurationItem
+  class Order
+
+  BurgerOrderer : selectConfiguration(theConfigurationName)
+  OrderType : createConfiguration(theConfigurationName)
+  Order : addItem()
+
+  BurgerOrderer - OrderType
+  OrderType - ConfigurationItem
+  BurgerOrderer - AbstractOrderItem
+
+  ' adding a few inheritance hierarchies that I think will be needed
+  AbstractOrderItem <|-- ConfigurationItem
+  AbstractOrderItem <|-- OrderItem
+
+  OrderType <|-- MealOrderType
+  OrderType <|-- SingleBurgerOrderType
+  OrderType <|-- DessertOrderType
+
+
+  ' confirmOrder()
+  ' --------------------
+  class BurgerOrderer
+  class Payment
+  class Order
+  class KitchenController
+   
+  BurgerOrderer : confirmOrder()
+  Order : sendOrder()
+  Order : printReceipt()
+
+  BurgerOrderer - Payment
+  BurgerOrderer - Order
+  BurgerOrderer - KitchenController
+
+
+     #+end_src
+
+     #+RESULTS:
+     [[file:PA1459-PA1460-classDiagram.png]]
+
+**** Class Diagram -- Simplified
+  Please see the comments in the code below for information about what I have done and why,.
+
+     #+begin_src plantuml :file PA1459-PA1460-classDiagram-simplified.png
+  ' startNewOrder()
+  ' --------------------
+  class BurgerOrderer
+  class Order
+  class OrderTypeManager
+
+  BurgerOrderer : startNewOrder()
+
+  ' Replaced "getOrderTypes()"  with "listOrderTypes()" since this is slightly clearer.
+  OrderTypeManager : listOrderTypes()
+
+  ' Replaced the single dash with a double dash to put BurgerOrderer on top of the other classes.
+  BurgerOrderer -- Order
+
+  BurgerOrderer - OrderTypeManager
+
+  ' selectOrderType()
+  ' --------------------
+  ' I don't really need to re-declare BurgerOrderer or OrderTypeManager
+  ' but nothing is added to the final result if I keep them so for simplicity's
+  ' sake, I'll leave them as they are.
+  class BurgerOrderer
+  class OrderTypeManager
+
+  ' For reasons that I will expand upon later
+  ' I want OrderType to be abstract.
+  abstract class OrderType
+
+  BurgerOrderer : selectOrderType(theOrderTypeName)
+  OrderTypeManager : getOrderType(theOrderTypeName)
+
+  ' Replaced "getAvailableOptions()" with "listOrderOptions()"
+  OrderType : listOrderOptions()
+
+  ' Remove this association to avoid multiple lines in the diagram
+  ' BurgerOrderer - OrderTypeManager
+
+  ' Replaced single dash with double dashes
+  BurgerOrderer -- OrderType
+  OrderTypeManager -- OrderType : creates >
+
+  ' selectOrder()
+  ' --------------------
+  class BurgerOrderer
+  class OrderType
+  class OrderItem
+  class Order
+
+  BurgerOrderer : selectOrder(theOrderName)
+
+  ' renamed selectOrder() => createOrderItem()
+  OrderType : createOrderItem(theOrderName)
+
+  Order : addItem()
+  OrderItem : getConfigurationOptions()
+
+
+  ' Duplicates
+  'BurgerOrderer - OrderType
+  'BurgerOrderer - Order
+
+  ' Replaced single dash with double dashes
+  ' Added information that OrderType merely creates OrderItem
+  OrderType -- OrderItem : creates >
+  BurgerOrderer -- OrderItem
+
+  ' selectConfiguration()
+  ' --------------------
+  class BurgerOrderer
+  class OrderType
+  class Order
+
+  ' See discussion below why I remove this
+  ' class ConfigurationItem
+
+
+  BurgerOrderer : selectConfiguration(theConfigurationName)
+  OrderType : createConfiguration(theConfigurationName)
+
+  ' Duplicate
+  ' Order : addItem()
+
+  ' Duplicates
+  'BurgerOrderer - OrderType
+
+  ' The following two associations are a bit tricky. I want to abstract
+  ' "ConfigurationItem" and "OrderItem" to something more generic, and I
+  ' want to collectively call these OrderItems, i.e. the base class should
+  ' be called OrderItem. With sub-classes ConfigurationOrderItem and
+  ' -- perhaps -- MealOrderItem?  so the association from OrderType will go
+  ' to the abstract base class OrderItem (even if it is a configurationOrderItem
+  ' that is being created right now. And that makes the associations
+  '  duplicates to already stated associations above. So I remove them.
+
+  ' OrderType - ConfigurationItem
+  ' BurgerOrderer - AbstractOrderItem
+
+  ' adding a few inheritance hierarchies that I think will be needed
+  ' Renaming the OrderItem hierarchy as per the discussion above.
+  OrderItem <|-- ConfigurationOrderItem
+  OrderItem <|-- MealOrderItem
+
+  OrderType <|-- MealOrderType
+  OrderType <|-- SingleBurgerOrderType
+  OrderType <|-- DessertOrderType
+
+
+  ' confirmOrder()
+  ' --------------------
+  class BurgerOrderer
+  class Payment
+  class Order
+  class KitchenController
+   
+  BurgerOrderer : confirmOrder()
+  Order : sendOrder()
+  Order : printReceipt()
+
+  BurgerOrderer - Payment
+
+  ' Replace BurgerOrderer with Order since I mis-read the interaction diagram before
+  Order - KitchenController
+
+  ' Duplicate
+  'BurgerOrderer - Order
+
+
+  ' Add an association
+  Order - OrderItem : contains >
+     #+end_src
+
+     #+RESULTS:
+     [[file:PA1459-PA1460-classDiagram-simplified.png]]
+
+  And there you have it. With this diagram we can now take a step back and look at a few things.
+
+  - First, =BurgerOrderer= is connected to everything! Is there anything we can do to avoid this?
+  - Second, the =OrderItem= inheritance hierarchy does not have that many methods currently. This /could/ be because we have only modelled a single use case. But it can also indicate that maybe we do not need to have an inheritance hierarchy here. Maybe =OrderItem= with a few attributes can be sufficient.
+  - Third and likewise, the =OrderType= hierarchy is also suspiciously empty of methods.
+** Feb 3 -- PostEnhancer
+Hur skriver vi ett program runt detta?
+
+Converting Text or other ID's in GUI to Objects in System
+
+Stateful controllers (e.g. for use cases) vs stateless classes
+
+---
+
+Strategy pattern!
+Get back to GRASP again
+
+Look for different types of keywords && links
+When found, instantiate strategy to enrich post
+
+- Comic - Make it into a comic
+- Poem - Re-format as poem (make it rhyme && rhytm, romantify it, etc.)
+- News - Newflash (find illustration pictures, add other news around it, highlight paragraphs, etc.)
+** Feb 4 -- JSPonies??
+Hur skriver vi ett program runt detta?
+
+Converting Text or other ID's in GUI to Objects in System
+
+Stateful controllers (e.g. for use cases) vs stateless classes
+
+** Lost Puppies
+- Testing:Cucumber
+*** Artist
+    #+begin_src ditaa :file foo.png
+      +----------------------------------+
+      |                                  |
+      +----------------------------------+
+                  |  +
+      +-----------|--+-------------------+
+      |           \  |                   |
+      |           || +                   |
+      +-----------|+---------------------+
+      o           ||
+
+
+    #+end_src
