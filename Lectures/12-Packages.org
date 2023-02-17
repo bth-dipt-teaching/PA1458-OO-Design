@@ -1,0 +1,119 @@
+#+Title: Components and Packages
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2023-02-01
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+* Conceptual
+#+begin_src plantuml :file FUML-Conceptual.png
+title Conceptual View
+package UserInterface <<Rectangle>> {
+}
+
+package BusinessLogic <<Rectangle>> {
+}
+
+package Logging <<Rectangle>> {
+}
+
+package Database <<Database>> {
+}
+
+UserInterface -- BusinessLogic
+BusinessLogic -- Logging
+BusinessLogic -- Database
+#+end_src
+
+#+RESULTS:
+[[file:FUML-Conceptual.png]]
+
+- /Conceptual view/
+- Logical breakdown into system components
+- Each component represent some group of functionality
+- Each component may have several interfaces, used by other components.
+- Each component may in turn consist of other, smaller, components.
+
+- *Each Component has a description of its responsibilities*
+
+* Modules
+#+BEGIN_SRC plantuml :file FUML-Module.png
+title Module View
+package UserInterface {
+}
+
+package BusinessLogic {
+class BusinessFunctionA
+class OutputFormatter
+class SomeOtherBusinessFunction
+
+}
+
+package Logging {
+}
+
+package DBInterface {
+}
+
+UserInterface -- BusinessLogic
+BusinessLogic -- Logging
+BusinessLogic -- DBInterface
+#+END_SRC
+
+#+RESULTS:
+[[file:FUML-Module.png]]
+
+- /Module/ or /Package/ view.
+- A Package may contain other packages
+- A Package may contain classes
+- This is closer to what you are going to implement.
+- A Package /may/ end up as a sub-directory in your filesystem, or a namespace.
+- The packages start out by mimicking the conceptual components, but may evolve from there.
+
+- *Each package has a description of its responsibilities*
+
+* Execution
+#+BEGIN_SRC plantuml :file FUML-Execution.png
+title Execution View
+package Client <<Node>> {
+package UserInterface {
+}
+}
+
+package Server <<Node>> {
+package BusinessLogic {
+}
+
+package Logging {
+}
+
+package DBInterface {
+}
+
+}
+
+package Database <<Database>> {
+}
+
+Client -- Server
+Server -- Database
+#+END_SRC
+
+#+RESULTS:
+[[file:FUML-Execution.png]]
+
+- Each block is one execution unit
+  - one compiled binary
+  - may be run as a separate process or on a separate computer
+- Each block contains packages
+- Sometimes, parts of a package need to be split across execution units
+  - this means that we may have to go back to the module view and create new packages.
+
+* Get Started
+1. Create a Component for each major piece of functionality
+2. Create Packages for classes that deal with similar concepts
+3. Create Packages for support functions (e.g. storage, events, etc.)

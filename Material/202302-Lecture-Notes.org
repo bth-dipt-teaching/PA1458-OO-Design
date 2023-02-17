@@ -1,0 +1,1358 @@
+#+Title: OO Design Examples
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2023-02-01
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2 exports:bothy
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+* <2023-02-01 ons> BurgerOrderer
+** Use Case Order Food
+*Use Case* Order Food
+*Actors* Customer
+*Description* A customer arrives at the BurgerOrderer, selects a meal and configures it.
+*Related Use Case* Pay for Order
+
+*Main Course of Events*
+
+| Actor                                                       | System                                                    |
+|-------------------------------------------------------------+-----------------------------------------------------------|
+| 1. Customer arrives at BurgerOrderer and starts a new order |                                                           |
+|                                                             | 2. System presents order options                          |
+|                                                             | [single burger, meal, dessert, drink]                     |
+| 3. Customer selects "meal"                                  |                                                           |
+|                                                             | 4. System presents available meals                        |
+| 5. Customer selects a specific meal.                        |                                                           |
+|                                                             | 6. System adds meal to current order.                     |
+|                                                             | 7. System presents configuration options for ordered meal |
+| 8. Customer selects "no onions" and "more bacon"            |                                                           |
+|                                                             | 9. System adds "no onions" and "more bacon" to order.     |
+| 10. Customer confirms order.                                |                                                           |
+|                                                             | 11. System initiates use case _pay for order_               |
+|                                                             | 12. System places order to kitchen and prints receipt.    |
+|-------------------------------------------------------------+-----------------------------------------------------------|
+
+** System Sequence Diagram
+#+begin_src plantuml :file BOE-SSD.png :exports both
+actor ":Customer" as cus
+participant ":BurgerOrderer" as sys
+
+cus -> sys : startNewOrder()
+sys --> cus : present order options
+
+cus -> sys : selectOrderType(theOrderTypeName)
+sys --> cus : presents available meals
+
+cus -> sys : selectOrder(theOrderName)
+sys --> cus : present configuration options
+
+cus -> sys : selectConfigurationOption(theConfigurationName)
+sys --> cus : confirms option
+
+cus -> sys : confirmOrder()
+sys --> cus : printed receipt
+#+end_src
+
+#+RESULTS:
+[[file:BOE-SSD.png]]
+
+** Interaction Diagrams (Sequence Diagrams)
+*** startNewOrder()
+#+begin_src plantuml :file BOE-ID-sno.png :exports both
+[-> ":BurgerOrderer" : startNewOrder()
+activate ":BurgerOrderer"
+
+create participant "currentOrder:Order"
+":BurgerOrderer" --> "currentOrder:Order" : create()
+
+":BurgerOrderer" -> ":OrderTypeManager" : getOrderTypes()
+activate ":OrderTypeManager"
+deactivate ":OrderTypeManager"
+
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+RESULTS:
+[[file:BOE-ID-sno.png]]
+
+*** selectOrderType()
+#+begin_src plantuml :file BOE-ID-sot.png :exports both
+[-> ":BurgerOrderer" : selectOrderType(theOrderTypeName)
+activate ":BurgerOrderer"
+
+":BurgerOrderer" -> ":OrderTypeManager" : getOrderType(theOrderTypeName)
+activate ":OrderTypeManager"
+create participant "currentOrderType:OrderType"
+":OrderTypeManager" --> "currentOrderType:OrderType" : create()
+":OrderTypeManager" --> ":BurgerOrderer" : return currentOrderType
+deactivate ":OrderTypeManager"
+
+":BurgerOrderer" -> "currentOrderType:OrderType" : getAvailableOrderOptions()
+activate "currentOrderType:OrderType"
+deactivate "currentOrderType:OrderType"
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+RESULTS:
+[[file:BOE-ID-sot.png]]
+
+*** selectOrder()
+#+begin_src plantuml :file BOE-ID-so.png :exports both
+[-> ":BurgerOrderer" : selectOrder(theOrderName)
+activate ":BurgerOrderer"
+
+":BurgerOrderer" -> "currentOrderType:OrderType" : createOrder(theOrderName)
+activate "currentOrderType:OrderType"
+
+create participant "theOrderItem:OrderItem"
+"currentOrderType:OrderType" --> "theOrderItem:OrderItem" : create()
+"currentOrderType:OrderType" --> ":BurgerOrderer" : returns theOrderItem
+
+deactivate "currentOrderType:OrderType"
+
+":BurgerOrderer" -> "current:Order" : addItem(theOrderItem)
+activate "current:Order"
+deactivate "current:Order"
+
+":BurgerOrderer" -> "theOrderItem:OrderItem" : getConfigurationOptions()
+activate "theOrderItem:OrderItem"
+deactivate "theOrderItem:OrderItem"
+
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+RESULTS:
+[[file:BOE-ID-so.png]]
+
+*** selectConfiguration()
+#+begin_src plantuml :file BOE-ID-sc.png :exports both
+[-> ":BurgerOrderer" : selectConfiguration(theConfigurationName)
+activate ":BurgerOrderer"
+":BurgerOrderer" -> "theOrderItem:OrderItem" : selectConfiguration(theConfigurationName)
+activate "theOrderItem:OrderItem"
+deactivate "theOrderItem:OrderItem"
+
+deactivate ":BurgerOrderer"
+
+#+end_src
+
+#+RESULTS:
+[[file:BOE-ID-sc.png]]
+
+*** confirmOrder()
+#+begin_src plantuml :file BOE-ID-co.png :exports both
+[-> ":BurgerOrderer" : confirmOrder()
+activate ":BurgerOrderer"
+":BurgerOrderer" -> ":Payment" : executePayment()
+
+":BurgerOrderer" -> "current:Order" : sendOrder()
+activate "current:Order"
+"current:Order" -> ":KitchenController" : sendOrderItem()
+deactivate "current:Order"
+
+":BurgerOrderer" -> "current:Order" : printReceipt()
+activate "current:Order"
+deactivate "current:Order"
+
+
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+RESULTS:
+[[file:BOE-ID-co.png]]
+
+** Class Diagram
+#+begin_src plantuml :file BOE-CD.png :exports both
+
+BurgerOrderer : +confirmOrder()
+BurgerOrderer : -current:Order
+
+Payment : +executePayment()
+
+Order : +sendOrder()
+Order : +printReceipt()
+
+KitchenController : +sendOrderItem()
+
+BurgerOrderer - Payment
+BurgerOrderer - Order
+Order -- KitchenController
+
+#+end_src
+
+#+RESULTS:
+[[file:BOE-CD.png]]
+
+
+... och så vidare. Man fyller på dett enda klassdiagram med klasser och metoder från alla interaktionsdiagram så att man till slut har ett enda stort klassdiagram för hela systemet och alla use cases.
+
+* <2023-02-07 tis> ECS
+** Deep Inheritance
+#+begin_src plantuml :file ECS-Deep.png
+
+class OrderType {
+-name
+-availableTypes[]
++differingBehaviour()
+}
+
+OrderType <|-- Meal
+OrderType <|-- SingleBurger
+OrderType <|-- Dessert
+OrderType <|-- Drink
+
+SingleBurger <|-- BurgerWithDessert
+Dessert <|-- BurgerWithDessert
+
+BurgerWithDessert <|-- SameButWithDrinkToo
+Drink <|-- SameButWithDrinkToo
+
+#+end_src
+
+#+RESULTS:
+[[file:ECS-Deep.png]]
+
+** Alternative: Entity Component System
+#+begin_src plantuml :file ECS-ecs.png
+
+class OrderType {
+-name
+-availableTypes[]
++differingBehaviour()
+}
+
+abstract class MealComponent
+
+MealComponent <|-- PlainBurger
+MealComponent <|-- Dessert
+MealComponent <|-- Fries
+MealComponent <|-- Drink
+
+OrderType o-- "*" MealComponent
+
+#+end_src
+
+#+RESULTS:
+[[file:ECS-ecs.png]]
+
+* <2023-02-07 tis> Example: Robot System
+#+begin_src plantuml :file RS-conc.png :exports both
+
+package UI
+
+package Robot {
+
+
+package GPSSensor
+package MapManager
+
+package Navigator
+package RouteExecutor
+package DriveControl
+
+GPSSensor -- Navigator
+MapManager -- Navigator
+
+Navigator -- RouteExecutor
+RouteExecutor -- DriveControl
+
+package ArmControl
+}
+
+package Sensors
+package Actuators
+
+UI -- Robot
+Robot -- Sensors
+Robot -- Actuators
+
+
+#+end_src
+
+#+RESULTS:
+[[file:RS-conc.png]]
+** Use Case: Navigate to Point
+#+begin_verse
+*Use Case* Navigate to Point
+*Actors* Driver
+*Description* Driver selects that they want to navigate to a point. System displays a map. Driver selects a point. System plots a route to point.
+#+end_verse
+
+*Main Course of Events*
+| Driver                                                   | System                                                        |
+|----------------------------------------------------------+---------------------------------------------------------------|
+| 1. Driver selects that they want to navigate to a point. |                                                               |
+|                                                          | 2. The system selects "Navigate to point" and presents a map. |
+| 3. Driver selects a point on the map.                    |                                                               |
+|                                                          | 4. System plots a route to the point.                         |
+| 5. Driver confirms route                                 |                                                               |
+|                                                          | 6. System lurches away with a smile on its face.              |
+|----------------------------------------------------------+---------------------------------------------------------------|
+
+#+begin_src plantuml :file RS-ssd.png :exports both
+actor Driver as d
+participant ":System" as sys
+
+d -> sys : selectNavigationMethod("toPoint")
+sys --> d : presents map
+
+d -> sys : selectPoint(x, y)
+sys --> d : several routes to point
+
+d -> sys : selectRoute(theSpecificRouteID)
+sys --> d : ok
+#+end_src
+
+#+RESULTS:
+[[file:RS-ssd.png]]
+** Interaction Diagrams
+#+begin_src plantuml :file RS-ID-SNM.png :exports both
+
+[-> ":System" : selectNavigationMethod("toPoint")
+activate ":System"
+
+":System" -> ":NavigationFactory" : getNavigationMethod("toPoint")
+activate ":NavigationFactory"
+":NavigationFactory" -> "currentNavigationStrategy:ToPointNavigationStrategy"** : create()
+":NavigationFactory" --> ":System" : currentNavigationStrategy
+deactivate ":NavigationFactory"
+
+":System" -> "currentNavigationStrategy:ToPointNavigationStrategy" : getNavigationObject()
+activate "currentNavigationStrategy:ToPointNavigationStrategy"
+deactivate "currentNavigationStrategy:ToPointNavigationStrategy"
+
+[<-- ":System" : navigationObject
+deactivate ":System"
+
+#+end_src
+
+#+RESULTS:
+[[file:RS-ID-SNM.png]]
+
+#+begin_src plantuml :file RS-ID-sp.png :exports both
+[-> ":System" : selectPoint(x,y)
+activate ":System"
+
+":System" -> "currentNavigationStrategy:ToPointNavigationStrategy" : selectPoint(x,y)
+activate "currentNavigationStrategy:ToPointNavigationStrategy"
+"currentNavigationStrategy:ToPointNavigationStrategy" -> ":GPSSensor" : getCurrentPosition()
+"currentNavigationStrategy:ToPointNavigationStrategy" -> ":RoutePlanner" : getRoutes(currentPosition, targetPosition)
+
+
+"currentNavigationStrategy:ToPointNavigationStrategy" --> ":System" : routesObject
+deactivate "currentNavigationStrategy:ToPointNavigationStrategy"
+
+deactivate ":System"
+
+#+end_src
+
+#+RESULTS:
+[[file:RS-ID-sp.png]]
+
+** Class Diagram
+#+begin_src plantuml :file RS-CD.png :exports both
+package UI {
+}
+
+package Robot {
+
+class System {
++selectNavigationMethod()
++selectPoint(x,y)
+}
+
+package NavigationStrategies {
+class NavigationFactory {
++getNavigationStrategy()
+}
+
+abstract class NavigationStrategy {
++getNavigationObject()
++selectPoint()
+}
+
+NavigationStrategy <|-- ToPointNavigationStrategy
+}
+
+package GPSSensor {
+class GPSSensor {
++getCurrentPosition()
+}
+}
+package MapManager {
+}
+
+package Navigator {
+class RoutePlanner {
++getRoutes(startPos, targetPos)
+}
+}
+
+package RouteExecutor {
+}
+package DriveControl {
+}
+
+GPSSensor -- Navigator
+MapManager -- Navigator
+
+Navigator -- RouteExecutor
+RouteExecutor -- DriveControl
+
+package ArmControl {
+}
+}
+
+package Sensors {
+}
+package Actuators {
+}
+
+UI -- Robot
+Robot -- Sensors
+Robot -- Actuators
+
+System -- NavigationFactory
+System -- NavigationStrategy
+
+NavigationStrategy - GPSSensor
+NavigationStrategy - RoutePlanner
+
+#+end_src
+
+#+RESULTS:
+[[file:RS-CD.png]]
+
+* <2023-02-08 ons> Example: Robot System (en)
+#+begin_src plantuml :file RSE-conc.png
+
+package UI
+
+package Robot {
+
+package ArmController
+
+package LocationManager
+package Navigation
+package RouteExecutor
+package DriveControl
+
+Navigation -- LocationManager
+Navigation -- RouteExecutor
+RouteExecutor -- DriveControl
+}
+
+package Sensors
+package Actuators
+
+UI -- Robot
+Robot -- Sensors
+Robot -- Actuators
+#+end_src
+
+#+RESULTS:
+[[file:RSE-conc.png]]
+
+** Use Case
+*Use Case* Navigate to Point
+*Actors* Driver
+*Description* Driver selects that they want to navigate to a point. System displays a map. Driver selects a position on the map. System presents a selection of routes to this point. Driver selects one route and confirms.
+
+*Main Course of Events*
+| Driver                                                   | System                                                     |
+|----------------------------------------------------------+------------------------------------------------------------|
+| 1. Driver selects that they want to navigate to a point. |                                                            |
+|                                                          | 2. System displays a map.                                  |
+| 3. Driver selects a position on the map.                 |                                                            |
+|                                                          | 4. System presents a selection of routes to this position. |
+| 5. Driver selects one route.                             |                                                            |
+| 6. Driver confirms choice.                               |                                                            |
+|----------------------------------------------------------+------------------------------------------------------------|
+
+** System Sequence Diagram
+#+begin_src plantuml :file RSE-SSD.png
+actor ":Driver" as d
+participant ":System" as sys
+
+d -> sys : selectNavigationMethod("toPoint")
+sys --> d : map
+
+d -> sys : selectPoint(x,y)
+sys --> d : alternative routes
+
+d -> sys : selectRoute(specificRoute)
+sys --> d : ok
+#+end_src
+
+#+RESULTS:
+[[file:RSE-SSD.png]]
+
+** Interaction Diagrams
+#+begin_src plantuml :file RSE-ID-snm.png
+[-> ":System" : selectNavigationMethod("toPoint")
+activate ":System"
+
+":System" -> ":NavigationFactory" : getNavigationStrategy("toPoint")
+activate ":NavigationFactory"
+":NavigationFactory" -> "currentNavigationMethod:ToPointNavigationStrategy"** : create()
+":NavigationFactory" --> ":System" : currentNavigationMethod
+deactivate ":NavigationFactory"
+
+":System" -> "currentNavigationMethod:ToPointNavigationStrategy" : getNavigationObject()
+activate "currentNavigationMethod:ToPointNavigationStrategy"
+deactivate "currentNavigationMethod:ToPointNavigationStrategy"
+
+[<-- ":System" : navigationObject
+deactivate ":System"
+#+end_src
+
+#+RESULTS:
+[[file:RSE-ID-snm.png]]
+
+#+begin_src plantuml :file RSE-ID-sp.png
+[-> ":System" : selectPoint(x,y)
+activate ":System"
+":System" -> "currentNavigationMethod:ToPointNavigationStrategy" : selectPoint(x,y)
+activate "currentNavigationMethod:ToPointNavigationStrategy"
+
+"currentNavigationMethod:ToPointNavigationStrategy" -> ":LocationManager" : getCurrentPosition()
+"currentNavigationMethod:ToPointNavigationStrategy" -> ":Navigation" : getRoutes(currentPosition, targetPosition)
+
+"currentNavigationMethod:ToPointNavigationStrategy" --> ":System" : alternative routes
+deactivate "currentNavigationMethod:ToPointNavigationStrategy"
+[<-- ":System" : alternative routes
+deactivate ":System"
+#+end_src
+
+#+RESULTS:
+[[file:RSE-ID-sp.png]]
+
+#+begin_src plantuml :file RSE-ID-sr.png
+[-> ":System" : selectRoute(specificRoute)
+activate ":System"
+":System" -> "currentNavigationMethod:ToPointNavigationStrategy" : selectRoute(specificRoute)
+activate "currentNavigationMethod:ToPointNavigationStrategy"
+
+"currentNavigationMethod:ToPointNavigationStrategy" -> ":Navigation" : verifyRoute(specificRoute)
+"currentNavigationMethod:ToPointNavigationStrategy" -> ":RouteExecutor" : executeRoute(specificRoute)
+
+deactivate "currentNavigationMethod:ToPointNavigationStrategy"
+[<-- ":System" : ok
+deactivate ":System"
+#+end_src
+
+#+RESULTS:
+[[file:RSE-ID-sr.png]]
+
+** Class Diagram
+#+begin_src plantuml :file RSE-CD.png
+
+package UI {
+}
+
+package Robot {
+
+class System {
++selectNavigationMethod()
++selectPoint()
++selectRoute()
+-currentNavigationMethod
+}
+
+package NavigationStrategy {
+class NavigationFactory {
++getNavigationStrategy()
+}
+class ToPointNavigationStrategy
+abstract class NavigationStrategy {
++getNavigationObject()
++selectPoint()
++selectRoute()
+}
+
+NavigationFactory - NavigationStrategy : creates >
+NavigationStrategy <|-- ToPointNavigationStrategy
+}
+
+package ArmController {
+}
+
+package LocationManager {
+class LocationManager {
++getCurrentPosition()
+}
+}
+package Navigation {
+class NavigationManager {
++getRoutes()
++verifyRoute()
+}
+}
+package RouteExecutor {
+class RouteExecutor {
++executeRoute()
+}
+}
+package DriveControl {
+}
+
+System - NavigationFactory
+
+Navigation -- LocationManager
+Navigation -- RouteExecutor
+RouteExecutor -- DriveControl
+}
+
+package Sensors {
+}
+package Actuators {
+}
+
+UI -- Robot
+Robot -- Sensors
+Robot -- Actuators
+
+#+end_src
+
+#+RESULTS:
+[[file:RSE-CD.png]]
+
+* <2023-02-09 tor> Example: SMSU (en)
+** Conceptual Model
+#+begin_src plantuml :file SMSU-cm.png :exports both
+
+package ConfigUI
+
+package Collect
+package Transform
+package Publish
+
+ConfigUI -- Collect
+Collect - Transform
+Transform - Publish
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-cm.png]]
+
+** Package Model
+#+begin_src plantuml :file SMSU-pm.png :exports both
+
+package ConfigUI {
+'package TwitterCollectorConfigUI {}
+'package FBCollectorConfigUI {}
+'package NewsCollectorConfigUI {}
+'package CanvasCollectorConfigUI {}
+}
+
+
+package ObserverPattern {
+class Observable {
++addObserver()
++removeObserver()
++notifyObservers()
+}
+
+abstract class Observer {
++notify(Observable origin, Event theEvent)
+}
+
+Observable - "*" Observer : myObservers >
+}
+
+package Collectors {
+package TwitterCollector {}
+package FBCollector {}
+package NewsCollector {}
+package CanvasCollector {}
+}
+
+package TempStorage {
+class TempStorage {
++addMessage()
+}
+
+class MessageAtom
+
+TempStorage o-- "*" MessageAtom
+Observable <|-- TempStorage
+}
+
+package Transformers {
+
+class Transform <<context>> {
++transform(message)
++publish(message)
+}
+
+abstract class TransformationStrategy <<abstract strategy>> {
++isTransformationPossible(message)
++transform(message)
+}
+
+Observer <|-- Transform
+Transform - "*" TransformationStrategy
+
+TransformationStrategy <|-- ComicTransformation
+TransformationStrategy <|-- SonnetTransformation
+TransformationStrategy <|-- TuringTestTransformation
+TransformationStrategy <|-- SoundtrackTransformation
+}
+
+package Publishers {}
+
+ConfigUI -- Collectors
+Collectors -- TempStorage
+'TempStorage -- Transformers
+Transformers -- Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-pm.png]]
+
+** Clearing up Strategy Patterns
+#+begin_src plantuml :file SMSU-noStrategy.png :exports both
+
+package ConfigUI {
+'package TwitterCollectorConfigUI {}
+'package FBCollectorConfigUI {}
+'package NewsCollectorConfigUI {}
+'package CanvasCollectorConfigUI {}
+}
+
+
+package ObserverPattern {
+class Observable {
++addObserver()
++removeObserver()
++notifyObservers()
+}
+
+abstract class Observer {
++notify(Observable origin, Event theEvent)
+}
+
+Observable - "*" Observer : myObservers >
+}
+
+package Collectors {
+'package TwitterCollector {}
+'package FBCollector {}
+'package NewsCollector {}
+'package CanvasCollector {}
+}
+
+package TempStorage {
+class TempStorage {
++addMessage()
+}
+
+class MessageAtom
+
+TempStorage o-- "*" MessageAtom
+Observable <|-- TempStorage
+}
+
+package Transformers {
+
+class TransformationStrategy {
++notify(theObservable, theEvent)
+-isTransformationPossible(message) = 0
+-performTransformation(message) = 0
+-noopTransformation(message)
+}
+
+class TransformerManager {
++initiateTransformers()
++isAllTransformersReady(theMessage)
+}
+
+Observer <|-- TransformationStrategy
+
+TransformationStrategy <|-- ComicTransformation
+TransformationStrategy <|-- SonnetTransformation
+TransformationStrategy <|-- TuringTestTransformation
+TransformationStrategy <|-- SoundtrackTransformation
+}
+
+package Publishers {}
+
+ConfigUI -- Collectors
+Collectors -- TempStorage
+'TempStorage -- Transformers
+Transformers -- Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-noStrategy.png]]
+
+** Some code for the Transformers notify() method
+#+begin_src java
+  ComicTransformation::notify(theOrigin, theEvent) {
+    if (isTransformationPossible(theEvent.message)) {
+      Publishers::maybe-publish( performTransformation(theEvent.message) );
+    } else {
+      Publishers::maybe-publish( noopTransformation(theEvent.message) );
+    }
+  }
+
+  Transformers::AvailableTransformers::allTransformersReady(theMessage) {
+    // Match theMessage with a built-in list of possible transformations
+  }
+#+end_src
+
+** Looking in the Publishers package
+#+begin_src plantuml :file SMSU-pub.png :exports both
+package Publishers {
+class Publishers {
++maybe-publish(theMessage)
+}
+
+package SystemNotificationPublisher {}
+package StaticWebPagePublisher {}
+package DBStoragePublisher {}
+}
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-pub.png]]
+
+#+begin_src lisp
+  (defun maybe-publish (theMessage)
+    (add-component! theMessage)
+    (when (all-components-ready? theMessage)
+      (publish-dwim! theMessage)))
+
+
+  (defun all-components-ready? (theMessage)
+    (Transformers::allComponentsReady theMessage))
+#+end_src
+** Structure on Disk
+#+begin_src bash :session smsu :results output
+  cd ~/Documents/Play/smspruceupper/src/
+  mkdir Collectors
+  mkdir Transformers
+  mkdir Publishers
+  mkdir TempStorage
+  ls -l
+#+end_src
+
+#+RESULTS:
+: 
+: [00m [01;32m[msv@msv-laptop[01;37m src[01;32m]$[00m [01;32m[msv@msv-laptop[01;37m src[01;32m]$[00m [01;32m[msv@msv-laptop[01;37m src[01;32m]$[00m [01;32m[msv@msv-laptop[01;37m src[01;32m]$[00m total 16
+: drwxr-xr-x 2 msv msv 4096  9 feb 10.33 Collectors
+: drwxr-xr-x 2 msv msv 4096  9 feb 10.33 Publishers
+: drwxr-xr-x 2 msv msv 4096  9 feb 10.33 TempStorage
+: drwxr-xr-x 2 msv msv 4096  9 feb 10.33 Transformers
+* <2023-02-10 fre> Example: SMSprucerUpper
+** Conceptual Model
+#+begin_src plantuml :file SMSU-cm.png
+
+package Collect
+package Transform
+package Publish
+
+Collect - Transform
+Transform - Publish
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-cm.png]]
+
+** Package Model
+#+begin_src plantuml :file SMSU-pm.png
+
+package ConfigUI {
+package TwitterCollectorConfigUI {}
+package FBCollectorConfigUI {}
+package CanvasCollectorConfigUI {}
+package NewsCollectorConfigUI {}
+}
+
+package Collectors {
+package TwitterCollector {}
+package FBCollector {}
+package CanvasCollector {}
+package NewsCollector {}
+}
+
+package Transformers {}
+package Publishers {}
+
+ConfigUI -- Collectors
+Collectors - Transformers
+Transformers - Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-pm.png]]
+
+** The Transformers Package
+Implementing the Transformers using a =Strategy Pattern=.
+
+#+begin_src plantuml :file SMSU-tf.png
+
+package ConfigUI {
+'package TwitterCollectorConfigUI {}
+'package FBCollectorConfigUI {}
+'package CanvasCollectorConfigUI {}
+'package NewsCollectorConfigUI {}
+}
+
+package Collectors {
+'package TwitterCollector {}
+'package FBCollector {}
+'package CanvasCollector {}
+'package NewsCollector {}
+}
+
+package Transformers {
+
+class Transform <<Context>> {
++transform(theMessage)
++publish(theMessage)
+}
+
+abstract class TransformationStrategy <<Abstract Strategy>> {
++isTransformationPossible(theMessage)
++transform(theMessage)
+}
+
+Transform o- "*" TransformationStrategy
+TransformationStrategy <|-- ComicTransformation
+TransformationStrategy <|-- SonnetTransformation
+TransformationStrategy <|-- TuringTestTransformation
+TransformationStrategy <|-- SoundtrackTransformation
+}
+
+package Publishers {}
+
+ConfigUI -- Collectors
+Collectors -- Transformers
+Transformers -- Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-tf.png]]
+** Fixing the Collectors \rightarrow Transformers dependency
+1. Make Collectors write to a =TempStorage=.
+2. Impose an =Observer Pattern= to allow TempStorage to notify when new data is available.
+
+#+begin_src plantuml :file SMSU-ts.png
+
+package ConfigUI {
+'package TwitterCollectorConfigUI {}
+'package FBCollectorConfigUI {}
+'package CanvasCollectorConfigUI {}
+'package NewsCollectorConfigUI {}
+}
+
+package ObserverPattern {
+
+class Observable {
++addObserver()
++removeObserver()
+#notifyObservers()
+}
+
+abstract class Observer {
++notify(theObserver, theEvent)
+}
+
+Observable - "*" Observer : myObservers >
+
+}
+
+
+package Collectors {
+'package TwitterCollector {}
+'package FBCollector {}
+'package CanvasCollector {}
+'package NewsCollector {}
+}
+
+package Transformers {
+
+class Transform <<Context>> {
++transform(theMessage)
++publish(theMessage)
+}
+
+abstract class TransformationStrategy <<Abstract Strategy>> {
++isTransformationPossible(theMessage)
++transform(theMessage)
+}
+
+Observer <|-- Transform
+Transform o- "*" TransformationStrategy
+TransformationStrategy <|-- ComicTransformation
+TransformationStrategy <|-- SonnetTransformation
+TransformationStrategy <|-- TuringTestTransformation
+TransformationStrategy <|-- SoundtrackTransformation
+}
+
+package Publishers {}
+
+
+package TempStorage {
+
+class TempStorage {
++addMessage()
+}
+
+Observable <|-- TempStorage
+
+class MessageAtom
+TempStorage o-- "*" MessageAtom
+
+}
+
+ConfigUI -- Collectors
+Collectors -- TempStorage
+Transformers -- Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-ts.png]]
+
+** Cleaning up Design Patterns
+Since Observer is essentially a Strategy Pattern, we can clean up and merge our Strategy Pattern with our Observrer. This means that each Transformer now implements a =notify()= method.
+
+#+begin_src plantuml :file SMSU-cudp.png
+
+package ConfigUI {
+'package TwitterCollectorConfigUI {}
+'package FBCollectorConfigUI {}
+'package CanvasCollectorConfigUI {}
+'package NewsCollectorConfigUI {}
+}
+
+package ObserverPattern {
+
+class Observable {
++addObserver()
++removeObserver()
+#notifyObservers()
+}
+
+abstract class Observer {
++notify(theObserver, theEvent)
+}
+
+Observable - "*" Observer : myObservers >
+
+}
+
+
+package Collectors {
+'package TwitterCollector {}
+'package FBCollector {}
+'package CanvasCollector {}
+'package NewsCollector {}
+}
+
+
+package Transformers {
+
+'class Transform <<Context>> {
+'+transform(theMessage)
+'+publish(theMessage)
+'}
+
+'abstract class TransformationStrategy <<Abstract Strategy>> {
+'+isTransformationPossible(theMessage)
+'+transform(theMessage)
+'}
+
+'Observer <|-- Transform
+'Transform o- "*" TransformationStrategy
+
+Observer <|-- ComicTransformation
+Observer <|-- SonnetTransformation
+Observer <|-- TuringTestTransformation
+Observer <|-- SoundtrackTransformation
+}
+
+
+package Publishers {}
+
+package TempStorage {
+
+class TempStorage {
++addMessage()
+}
+
+Observable <|-- TempStorage
+
+class MessageAtom
+TempStorage o-- "*" MessageAtom
+
+}
+
+ConfigUI -- Collectors
+Collectors - TempStorage
+TempStorage - Transformers
+Transformers - Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-cudp.png]]
+
+** Some Code for the Transformers::notify() method
+#+begin_src java
+  ComicTransformation::notify(theOrigin, theEvent) {
+    if(isTransformationPossible(theEvent.message)) {
+      Publishers::publish( performTransformation(theEvent.message) );
+    } else {
+      // Do nothing
+    }    
+  }
+#+end_src
+** New TransformationStrategy class
+The problem is now that each Transformer implements the same method in exactly the same way.
+
+Solution: Re-introduce the TransformationStrategy class, but for the purpose of gathering behaviour common for all transformers.
+
+Each Transformation /is a/ TransformationStrategy, which /is an/ Observer, so by inference all Transformations are also Observers.
+
+#+begin_src plantuml :file SMSU-nbc.png
+
+package ConfigUI {
+'package TwitterCollectorConfigUI {}
+'package FBCollectorConfigUI {}
+'package CanvasCollectorConfigUI {}
+'package NewsCollectorConfigUI {}
+}
+
+package ObserverPattern {
+
+class Observable {
++addObserver()
++removeObserver()
+#notifyObservers()
+}
+
+abstract class Observer {
++notify(theObserver, theEvent)
+}
+
+Observable - "*" Observer : myObservers >
+
+}
+
+
+package Collectors {
+'package TwitterCollector {}
+'package FBCollector {}
+'package CanvasCollector {}
+'package NewsCollector {}
+}
+
+
+package Transformers {
+
+class TransformersManager {
++createTransformers()
++allComponentsReady(theMessage)
+}
+
+'class Transform <<Context>> {
+'+transform(theMessage)
+'+publish(theMessage)
+'}
+
+abstract class TransformationStrategy {
++notify(theOrigin, theEvent)
+-nopTransformation(theMessage)
+-isTransformationPossible(theMessage) =0
+-performTransformation(theMessage) =0
+}
+
+Observer <|-- TransformationStrategy
+
+TransformationStrategy <|-- ComicTransformation
+TransformationStrategy <|-- SonnetTransformation
+TransformationStrategy <|-- TuringTestTransformation
+TransformationStrategy <|-- SoundtrackTransformation
+
+' class MessageMerger {
+' +addComponent(theMessage)
+' }
+' 
+' MessageMerger -- TransformersManager
+' 
+' TransformationStrategy -- MessageMerger
+
+}
+
+
+package Publishers {}
+
+package TempStorage {
+
+class TempStorage {
++addMessage()
+}
+
+Observable <|-- TempStorage
+
+class MessageAtom
+TempStorage o-- "*" MessageAtom
+
+}
+
+ConfigUI -- Collectors
+Collectors -- TempStorage
+Transformers -- Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-nbc.png]]
+
+** The Publishers Package
+#+begin_src plantuml :file SMSU-pub.png
+package Publishers {
+class Publishers {
++publish(theMessage)
+}
+
+package SystemNotificationPublisher {}
+package WebPagePublisher {}
+package DBStoragePublisher {}
+
+}
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-pub.png]]
+
+Some code for the =publish()= method.
+
+#+begin_src lisp
+  (defun publish (theMessage)
+    (add-component! theMessage)
+    (when (all-components-ready? theMessage)
+      (publish-dwim! theMessage)))
+
+  (defun all-components-ready? (theMessage)
+    (Transformers::allComponentsReady theMessage))
+#+end_src
+
+A problem now is that the =publish()= method has to go back to the Transformers package to figure out if everything us ready. This means the connection between the two packages is tighter than it needs to be. So we create a new class in the Transformers package, a =MessageMerger= class.
+** Modified Transformers Package
+All in one go. Re-including everything which I have hidden along the way so this is the final diagram with everything in it:
+
+#+begin_src plantuml :file SMSU-mtp.png :exports both
+
+package ConfigUI {
+ package TwitterCollectorConfigUI {}
+ package FBCollectorConfigUI {}
+ package CanvasCollectorConfigUI {}
+ package NewsCollectorConfigUI {}
+}
+
+package Collectors {
+ package TwitterCollector {}
+ package FBCollector {}
+ package CanvasCollector {}
+ package NewsCollector {}
+}
+
+package ObserverPattern {
+
+class Observable {
++addObserver()
++removeObserver()
+#notifyObservers()
+}
+
+abstract class Observer {
++notify(theObserver, theEvent)
+}
+
+Observable - "*" Observer : myObservers >
+
+}
+
+
+package Transformers {
+
+class TransformersManager {
++createTransformers()
++allComponentsReady(theMessage)
+}
+
+'class Transform <<Context>> {
+'+transform(theMessage)
+'+publish(theMessage)
+'}
+
+abstract class TransformationStrategy {
++notify(theOrigin, theEvent)
+-nopTransformation(theMessage)
+-isTransformationPossible(theMessage) =0
+-performTransformation(theMessage) =0
+}
+
+Observer <|-- TransformationStrategy
+
+TransformationStrategy <|-- ComicTransformation
+TransformationStrategy <|-- SonnetTransformation
+TransformationStrategy <|-- TuringTestTransformation
+TransformationStrategy <|-- SoundtrackTransformation
+
+class MessageMerger {
++addComponent(theMessage)
+}
+
+MessageMerger -- TransformersManager
+
+TransformationStrategy -- MessageMerger
+
+}
+
+
+package Publishers {
+class Publishers {
++publish(theMessage)
+}
+
+package SystemNotificationPublisher {}
+package WebPagePublisher {}
+package DBStoragePublisher {}
+}
+
+package TempStorage {
+
+class TempStorage {
++addMessage()
+}
+
+Observable <|-- TempStorage
+
+class MessageAtom
+TempStorage o-- "*" MessageAtom
+
+}
+
+ConfigUI -- Collectors
+Collectors -- TempStorage
+Transformers -- Publishers
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-mtp.png]]
+
+** Modified Code for the Transformers::notify() method
+#+begin_src java
+  TransformationStrategy::notify(theOrigin, theEvent) {
+    if(isTransformationPossible(theEvent.message)) {
+      myMessageMerger.addComponent( performTransformation(theEvent.message) );
+    } else {
+      myMessageMerger.addComponent( nopTransformation(theEvent.message) );
+    }    
+  }
+#+end_src
