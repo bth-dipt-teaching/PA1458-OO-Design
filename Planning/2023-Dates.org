@@ -1,3 +1,34 @@
+* DONE Lecture Links, 2022 plan
+CLOSED: [2022-11-03 tor 09:39]
+|   | <10>                   |                               | <5>                                    |                                                                            |
+| W | Theme                  | Lecture                       | Link                                   | Comment                                                                    |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+| 3 | Do the right thing     | Requirements Engineering      | https://youtu.be/MIM7yLJiYCY (Swedish) | PA1458 Background lecture                                                  |
+|   | the right way          |                               | https://youtu.be/I5iDw9luVXQ (English) |                                                                            |
+|   |                        | Use Cases                     | https://youtu.be/VKfQqpf8eW4 (Swedish) | Used on Jan 20/21 and for PA1458 in assignment "create detailed use cases" |
+|   |                        |                               | https://youtu.be/QcuFZm6z_JA (English) |                                                                            |
+|   |                        | Software Testing              | https://youtu.be/d1Sqlfcwllo (Swedish) | Used on Jan 20/21                                                          |
+|   |                        |                               | (English not available)                |                                                                            |
+|   |                        | Development Process           | https://youtu.be/snfAsD4shyc (Swedish) | Input to PA1458 assignment "WBS and Project Plan"                          |
+|   |                        |                               | https://youtu.be/IwCKKgeoq0Y (English) |                                                                            |
+|   | Architectures (PA1460) | Quality Attributes            | https://youtu.be/gftNxfrEOQo (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
+|   |                        | Introduction to Architectures | https://youtu.be/93so4dPskwE (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
+|   |                        | Documenting Architectures     | https://youtu.be/e788pDG_rQE (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+| 4 | Model all the things   | Modelling Structure           | https://youtu.be/5_jplldguKc (Swedish) | Used on Jan 27/28 and from assignment "Class and Package Diagram"          |
+|   |                        |                               | https://youtu.be/wVLKFPIpa0A (English) |                                                                            |
+|   |                        | Modelling Behaviour           | https://youtu.be/E3gyQFxDiPs (Swedish) | Used on Jan 27/28 and from assignment "Interaction Diagrams"               |
+|   |                        |                               | https://youtu.be/wVLKFPIpa0A (English) |                                                                            |
+|   |                        | Design Patterns               | https://youtu.be/R9L7gaVhCCQ (Swedish) | Used on Feb 3/4 and from assignment "Discussion of GRASP patterns"         |
+|   |                        |                               | https://youtu.be/oU54ETOBcxU (English) |                                                                            |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
+| 5 | Put it together        | From Design to Code           | https://youtu.be/zUVRWNsOUJc (Swedish) | Gives a deeper understanding and a practical example                       |
+|   |                        |                               | (English not available)                |                                                                            |
+|   |                        | Example: JSPonies             | https://youtu.be/jzVU5NCib10 (Swedish) | An example of the "State" design pattern                                   |
+|   |                        |                               | https://youtu.be/4FkqQUJR2G0 (English) |                                                                            |
+|   |                        | Example: Wizards Apprentice   | https://youtu.be/nlY4EgXVIdU (Swedish) | An example of the "Strategy" design pattern                                |
+|   |                        |                               | https://youtu.be/GvlvfeEgvXc (English) |                                                                            |
+|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
 * 2023
 ** DONE Lectures and Dates
 CLOSED: [2022-11-03 tor 09:43]
@@ -11,8 +42,8 @@ Copy from msv-todo
 |  4 | Modelling Structure           | x      | x      | x      |    4 |
 |  5 | Design Patterns I             | x      | x      | x      |    4 |
 |  6 | Design Patterns II            | x      | x      | x      |    4 |
-|  7 | GRASP/Workable Example        | x      | x      | x      |    5 |
-|  8 | Modelling Behaviour           | x      | x      | x      |    5 |
+|  7 | Modelling Behaviour           | x      | x      | x      |    5 |
+|  8 | GRASP/Workable Example        | x      | x      | x      |    5 |
 |  9 | Packages. Refactoring         | x      | x      | x      |    5 |
 | 10 | Design to Code                | x      | x      | x      |    6 |
 | 11 | Example                       | x      | x      | x      |    6 |
@@ -47,8 +78,8 @@ Copy from msv-todo
 |                                  |      |                             |                              | This is part of the core of OO Design                         |
 |                                  |    4 | Design Patterns I           |                              | This is part of the core of OO Design                         |
 |                                  |    4 | Design Patterns II          |                              | This is part of the core of OO Design                         |
-|                                  |    5 | GRASP / Workable Example    |                              | This is part of the core of OO Design                         |
 |                                  |    5 | Modelling Behaviour         |                              | This is part of the core of OO Design                         |
+|                                  |    5 | GRASP / Workable Example    |                              | This is part of the core of OO Design                         |
 |----------------------------------+------+-----------------------------+------------------------------+---------------------------------------------------------------|
 | Put it together                  |    5 | Packages and Refactoring    |                              | Back up and put things together, go back and improve          |
 |                                  |    6 | From Design to Code         |                              | A Deeper understanding and a practical example                |
@@ -59,8 +90,8 @@ Copy from msv-todo
 |                                  |    9 | Buffer/Example/Example Exam |                              |                                                               |
 |                                  |    9 | Buffer/Example/Example Exam |                              |                                                               |
 |----------------------------------+------+-----------------------------+------------------------------+---------------------------------------------------------------|
-*** lp3 PA1472, PA1460
-| <20>                             |      |                               |                              |                                                                    |
+*** lp3 PA1460
+| <20>                             |      |                               | <10>                         | <40>                                                               |
 | Theme                            | Week | Lecture                       | Link                         | Comment                                                            |
 |----------------------------------+------+-------------------------------+------------------------------+--------------------------------------------------------------------|
 | Introduction                     |    3 | Introduction                  |                              |                                                                    |
@@ -73,8 +104,8 @@ Copy from msv-todo
 |                                  |      |                               |                              | This is part of the core of OO Design                              |
 |                                  |    4 | Design Patterns I             |                              | This is part of the core of OO Design                              |
 |                                  |    4 | Design Patterns II            |                              | This is part of the core of OO Design                              |
-|                                  |    5 | GRASP / Workable Example      |                              | This is part of the core of OO Design                              |
 |                                  |    5 | Modelling Behaviour           |                              | This is part of the core of OO Design                              |
+|                                  |    5 | GRASP / Workable Example      |                              | This is part of the core of OO Design                              |
 |----------------------------------+------+-------------------------------+------------------------------+--------------------------------------------------------------------|
 | Architecture                     |  (5) | Quality Attributes            | https://youtu.be/gftNxfrEOQo | Input to assignment "Quality Attributes and Software Architecture" |
 |                                  |  (5) | Introduction to Architectures | https://youtu.be/93so4dPskwE | Input to assignment "Quality Attributes and Software Architecture" |
@@ -89,59 +120,55 @@ Copy from msv-todo
 |                                  |    9 | Buffer/Example/Example Exam   |                              |                                                                    |
 |                                  |    9 | Buffer/Example/Example Exam   |                              |                                                                    |
 |----------------------------------+------+-------------------------------+------------------------------+--------------------------------------------------------------------|
-** DONE Assignment Deadlines Spring 2022
+*** lp3 PA1472
+| <20>                             |      |                             |      |                                                               |
+| Theme                            | Week | Lecture                     | Link | Comment                                                       |
+|----------------------------------+------+-----------------------------+------+---------------------------------------------------------------|
+| Introduction                     |    3 | Introduction                |      |                                                               |
+|----------------------------------+------+-----------------------------+------+---------------------------------------------------------------|
+| Do the right thing the right way |    3 | Use Cases                   |      | Used in assignment "Create Detailed Use Cases"                |
+|                                  |      |                             |      | and starting point for UML.                                   |
+|                                  |    3 | Software Testing            |      | Start thinking about testing early                            |
+|----------------------------------+------+-----------------------------+------+---------------------------------------------------------------|
+| Model All the Things             |    4 | Modelling Structure         |      | Used in assignments starting with "Class and Package Diagram" |
+|                                  |      |                             |      | This is part of the core of OO Design                         |
+|                                  |    4 | Design Patterns I           |      | This is part of the core of OO Design                         |
+|                                  |    4 | Design Patterns II          |      | This is part of the core of OO Design                         |
+|                                  |    5 | Modelling Behaviour         |      | This is part of the core of OO Design                         |
+|                                  |    5 | GRASP / Workable Example    |      | This is part of the core of OO Design                         |
+|----------------------------------+------+-----------------------------+------+---------------------------------------------------------------|
+| Put it together                  |    5 | Packages and Refactoring    |      | Back up and put things together, go back and improve          |
+|                                  |    6 | From Design to Code         |      | A Deeper understanding and a practical example                |
+|                                  |    6 | Example                     |      |                                                               |
+|                                  |    6 | Example                     |      |                                                               |
+|----------------------------------+------+-----------------------------+------+---------------------------------------------------------------|
+| Buffer                           |    9 | Buffer/Example/Example Exam |      |                                                               |
+|                                  |    9 | Buffer/Example/Example Exam |      |                                                               |
+|                                  |    9 | Buffer/Example/Example Exam |      |                                                               |
+|----------------------------------+------+-----------------------------+------+---------------------------------------------------------------|
+** DONE Assignment Deadlines Spring 2023
 CLOSED: [2022-11-03 tor 09:42]
- | <20>                                         |           |        |        |        |        |                                   | <20>                                            |
- | Assignnment                                  | Rubric    | Points | PA1458 | PA1472 | PA1460 | 2023                              | 2022                                            |
- |----------------------------------------------+-----------+--------+--------+--------+--------+-----------------------------------+-------------------------------------------------|
- | Quality Attributes and Software Architecture | QA and SA | 18p    |        |        | x      | *3/3 fre w9*                        | PA1460 9/2 wed w6                               |
- | Create Detailed Use Cases                    | Use Cases | 11p    | x      |        |        | 27/1 fre w4                       | 28/1 fre w4                                     |
- | WBS and Project Plan                         | Planning  | 18p    | x      |        |        | 3/2 fre w5                        | 4/2 fre w5                                      |
- | Discussion of GRASP Patterns                 | -         |        | x      | x      | x      | 3/2 fre w5                        | 11/2 fre w6                                     |
- | Interaction Diagrams                         | OOD       | 17p    | x      | x      | x      | 10/2 fre w6                       | 18/2 fre w7                                     |
- | Class and Package Diagram                    | OOD       | 17p    | x      | x      | x      | 17/2 fre w7                       | 4/3 fre w9                                      |
- |                                              |           |        |        |        |        | /Sportlov w8/                       |                                                 |
- | Refactored Class Diagram                     | OOD&DP    | 22p    | x      | x      | x      | 3/3 fre w9                        | 11/3 fre w10                                    |
- | Create Test Plan                             | -         | 15p    |        |        | x      | 8/3 wed w10                       | PA1460 16/3 wed w11                             |
- | Unit Test for Use Case                       | Impl&Test | 11p    | x      |        | x      | 10/3 fre w10                      | 18/3 fre w11                                    |
- | Implementation                               | Impl&Test | 11p    | x      |        |        | 10/3 fre w10                      | 18/3 fre w11                                    |
- | Demo Implementation                          | -         |        | x      |        |        | book 10/3 fre w9; demo week 10&11 | Book Time Fri 11/3 w10; Demo week 11 && week 12 |
- |----------------------------------------------+-----------+--------+--------+--------+--------+-----------------------------------+-------------------------------------------------|
-** TODO Separate document for each Course
+ | <20>                                         |           |        |        |        |        | <40>                              |
+ | Assignnment                                  | Rubric    | Points | PA1458 | PA1472 | PA1460 | 2023                              |
+ |----------------------------------------------+-----------+--------+--------+--------+--------+-----------------------------------|
+ | Create Detailed Use Cases                    | Use Cases | 11p    | x      |        |        | 27/1 fre w4                       |
+ | WBS and Project Plan                         | Planning  | 18p    | x      |        |        | 3/2 fre w5                        |
+ | Discussion of GRASP Patterns                 | -         |        | x      | x      | x      | 3/2 fre w5                        |
+ | Interaction Diagrams                         | OOD       | 17p    | x      | x      | x      | 10/2 fre w6                       |
+ | Class and Package Diagram                    | OOD       | 17p    | x      | x      | x      | 17/2 fre w7                       |
+ |                                              |           |        |        |        |        | /Sportlov w8/                       |
+ | Refactored Class Diagram                     | OOD&DP    | 22p    | x      | x      | x      | 3/3 fre w9                        |
+ | Quality Attributes and Software Architecture | QA and SA | 18p    |        |        | x      | *3/3 fre w9*                        |
+ | Create Test Plan                             | -         | 15p    |        |        | x      | 8/3 wed w10                       |
+ | Unit Test for Use Case                       | Impl&Test | 11p    | x      |        | x      | 10/3 fre w10                      |
+ | Implementation                               | Impl&Test | 11p    | x      |        |        | 10/3 fre w10                      |
+ | Demo Implementation                          | -         |        | x      |        |        | book 10/3 fre w9; demo week 10&11 |
+ |----------------------------------------------+-----------+--------+--------+--------+--------+-----------------------------------|
+** DONE Separate document for each Course
+CLOSED: [2023-01-12 tor 11:50]
 ** DONE Exam Dates
 CLOSED: [2022-11-03 tor 09:39]
 - <2023-01-02 mån> Omtentamen
 - <2023-03-17 fre> Tentamen
 - <2023-05-30 tis> Omtentamen
 - <2023-08-17 tor> Omtentamen
-* DONE Lecture Links, 2022 plan
-CLOSED: [2022-11-03 tor 09:39]
-|   | <10>                   |                               | <5>                                    |                                                                            |
-| W | Theme                  | Lecture                       | Link                                   | Comment                                                                    |
-|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
-| 3 | Do the right thing     | Requirements Engineering      | https://youtu.be/MIM7yLJiYCY (Swedish) | PA1458 Background lecture                                                  |
-|   | the right way          |                               | https://youtu.be/I5iDw9luVXQ (English) |                                                                            |
-|   |                        | Use Cases                     | https://youtu.be/VKfQqpf8eW4 (Swedish) | Used on Jan 20/21 and for PA1458 in assignment "create detailed use cases" |
-|   |                        |                               | https://youtu.be/QcuFZm6z_JA (English) |                                                                            |
-|   |                        | Software Testing              | https://youtu.be/d1Sqlfcwllo (Swedish) | Used on Jan 20/21                                                          |
-|   |                        |                               | (English not available)                |                                                                            |
-|   |                        | Development Process           | https://youtu.be/snfAsD4shyc (Swedish) | Input to PA1458 assignment "WBS and Project Plan"                          |
-|   |                        |                               | https://youtu.be/IwCKKgeoq0Y (English) |                                                                            |
-|   | Architectures (PA1460) | Quality Attributes            | https://youtu.be/gftNxfrEOQo (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
-|   |                        | Introduction to Architectures | https://youtu.be/93so4dPskwE (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
-|   |                        | Documenting Architectures     | https://youtu.be/e788pDG_rQE (Swedish) | PA1460 input to assignment "Quality Attributes and Software Architecture"  |
-|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
-| 4 | Model all the things   | Modelling Structure           | https://youtu.be/5_jplldguKc (Swedish) | Used on Jan 27/28 and from assignment "Class and Package Diagram"          |
-|   |                        |                               | https://youtu.be/wVLKFPIpa0A (English) |                                                                            |
-|   |                        | Modelling Behaviour           | https://youtu.be/E3gyQFxDiPs (Swedish) | Used on Jan 27/28 and from assignment "Interaction Diagrams"               |
-|   |                        |                               | https://youtu.be/wVLKFPIpa0A (English) |                                                                            |
-|   |                        | Design Patterns               | https://youtu.be/R9L7gaVhCCQ (Swedish) | Used on Feb 3/4 and from assignment "Discussion of GRASP patterns"         |
-|   |                        |                               | https://youtu.be/oU54ETOBcxU (English) |                                                                            |
-|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
-| 5 | Put it together        | From Design to Code           | https://youtu.be/zUVRWNsOUJc (Swedish) | Gives a deeper understanding and a practical example                       |
-|   |                        |                               | (English not available)                |                                                                            |
-|   |                        | Example: JSPonies             | https://youtu.be/jzVU5NCib10 (Swedish) | An example of the "State" design pattern                                   |
-|   |                        |                               | https://youtu.be/4FkqQUJR2G0 (English) |                                                                            |
-|   |                        | Example: Wizards Apprentice   | https://youtu.be/nlY4EgXVIdU (Swedish) | An example of the "Strategy" design pattern                                |
-|   |                        |                               | https://youtu.be/GvlvfeEgvXc (English) |                                                                            |
-|---+------------------------+-------------------------------+----------------------------------------+----------------------------------------------------------------------------|
