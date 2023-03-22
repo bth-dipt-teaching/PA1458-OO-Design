@@ -1356,3 +1356,112 @@ Transformers -- Publishers
     }    
   }
 #+end_src
+* Stereotype
+#+begin_src plantuml :file stereotypes.png
+
+class MyClass <<my-fancy-Stereotype>>
+
+#+end_src
+
+#+RESULTS:
+[[file:stereotypes.png]]
+
+
+* Strategy
+#+begin_src java
+  class myCOntextClass {
+   private Vector myInteractionTypes
+
+   myContestCLass() {
+     myInteractionTypes.add(new TasteInteraction());
+     miUnteractionTypes.add(new ThrowInteraction());
+   }
+
+   selectInteraction(...) {
+     currentInteaction = myInteractionTypes.find(...);
+   }
+
+    executeInteraction() {
+      currentInteraction.execute();
+    }
+  }
+
+#+end_src
+
+
+#+begin_src plantuml :file strategy.png
+
+class Owner <<context>> {
++setStrategy()
++getBehaviour()
++executeBehavior()
+}
+
+abstract class AbstractStrategy {
++getBehaviour() = 0
++executeBehaviour() = 0
+}
+
+Owner - "*" AbstractStrategy
+
+AbstractStrategy <|-- ConcreteImplementation
+
+class ConcreteImplementation {
++getBehaviour()
++executeBehaviour()
+}
+
+#+end_src
+
+#+RESULTS:
+[[file:strategy.png]]
+
+#+begin_src plantuml :file GOStrategy.png
+
+class GameObject <<context>> {
+ -Vector<InteractionType> myInteractionTypes
+ -InteractionType currentInteraction
+ +selectInteraction(String desiredInteraction)
+
+ +listInteractionOptions() = { return currentInteraction->listInteractionOptions(); }
+ +executeInteraction() = { return currentInteraction->execute(); }
+}
+
+abstract class InteractionType <<Abstract Strategy>> {
+-String myName
++getName() = { return myName };
++listInteractionOptions() = 0 
++execute() = 0
+}
+
+GameObject - "*" InteractionType
+
+InteractionType <|-- TasteInteraction
+InteractionType <|-- ThrowInteraction
+
+class TasteInteraction {
+ +listInteractionOptions()
+ +execute()
+}
+
+class ThrowInteraction {
+ +listInteractionOptions()
+ +execute()
+}
+
+#+end_src
+
+#+RESULTS:
+[[file:GOStrategy.png]]
+
+
+#+begin_src java
+  class GameObject
+   private Vector<InteractionType> myInteractionTypes;
+   private InteractionType currentInteraction;
+
+   public void selectInteraction(String desiredInteraction) {
+     currentInteraction = myInteractionTypes.find(desiredInteraction);
+   }
+
+#+end_src

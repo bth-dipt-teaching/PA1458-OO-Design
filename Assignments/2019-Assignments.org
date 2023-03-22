@@ -580,6 +580,37 @@ GameObject -- "*" InteractionType : has >
 
 
 - Create a NEW package diagram, where you ONLY include the classes, methods, and relations that you are able to extract from the provided sequence diagrams for initiateConversation() and sendQuery().
+** SOLUTION class diagram
+#+begin_src plantuml :file ms-class-diagram-interact-with-character.png
+
+Game : +intitiateConversation()
+Scene : +isAvailable()
+PhoneBook : +getContactMethod()
+CharacterInterface : +activate()
+CharacterRepository : +getCharacter()
+Character : +getInitialGreeting()
+
+Game -- Scene
+Game -- PhoneBook
+Game -- CharacterInterface
+CharacterInterface - CharacterRepository
+CharacterInterface -- Character
+
+CharacterInterface : +sendQuery()
+InputSanitiser : +sanitiseInput()
+Character : +query()
+InteractionEngine : +parseQuery()
+PlotEngine : +getPlotState()
+InteractionEngine : +formatResponse()
+
+CharacterInterface -- InputSanitiser
+Character -- InteractionEngine
+Character -- PlotEngine
+#+end_src
+
+#+RESULTS:
+[[file:ms-class-diagram-interact-with-character.png]]
+
 * DONE Assignment 2.3: Design Patterns [5/5]           :PA1458:PA1459:PA1460:
   CLOSED: [2018-11-15 Thu 13:48]
 ** DONE Input: Domain Model
