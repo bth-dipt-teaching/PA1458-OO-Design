@@ -1,0 +1,446 @@
+#+Title: Design Patterns
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2021-03-03
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+
+* Introduction
+** Christopher Polhem, father of Design Patterns?
+#+ATTR_LATEX: :height 6cm
+#+ATTR_ORG: :width 800
+[[file:./IPolhem.jpg]]
+** Patterns -- a brief introduction
+  - Design patterns are reusable solutions to known problems
+    - With known consequences
+    - "encoded experience"
+    - Codified in a structured format
+    - named
+  - There is nothing that /requires/ you to use design patterns; they are a convenience.
+  - Design patterns focus primarily on structure (class view), and interaction (sequence diagrams).
+
+ *Responsibility Driven Design*
+
+** Levels of Patterns
+   Different levels:
+   - Architecture
+     - Systems, subsystems
+   - Design
+     - Classes, groups of classes
+   - Idioms
+     - One class, functions within one class
+   - GRASP
+     - In some sense orthogonal
+     - Learning aid for OO Design
+     - Advice for Assigning Responsibilities
+** Some Common Design Patterns
+From Gamma, E., Helm, R., Johnson, R., & Vlissides, J., /Design
+patterns: elements of reusable object-oriented languages and systems/
+(1994), Reading MA: Addison-Wesley.
+
+  1. Strategy
+  2. State
+  3. Observer
+  4. Facade && Adapter
+  5. Abstract Facory
+  6. Builder
+  7. Command
+  8. Interpreter
+  9. Visitor
+* GRASP Patterns
+Larman, C., Applying uml and patterns: an introduction to object-oriented analysis and design and iterative development, 3/e (2012), : Pearson Education.
+   - Low Coupling
+   - High Cohesion
+   - Information Expert
+   - Creator
+   - Controller
+   - Polymorphism
+   - Indirection
+   - Pure Fabrication
+   - Protected Variations
+* Design Patterns
+** Strategy
+*** Generic Structure
+#+NOTES: Owner, DefinedInterface, ConcreteImplementation
+#+BEGIN_SRC plantuml :file DP-strategy.png
+class Owner <<context>>
+
+abstract class DefinedInterface <<abstract strategy>> {
++doSomething()=0
++doSomethingElse()=0
+}
+
+DefinedInterface <|-- ConcreteImplementation1
+DefinedInterface <|-- ConcreteImplementation2
+
+Owner - DefinedInterface
+
+ConcreteImplementation1 : +doSomething()
+ConcreteImplementation1 : +doSomethingElse()
+ConcreteImplementation2 : +doSomething()
+ConcreteImplementation2 : +doSomethingElse()
+
+Owner : +setStrategy()
+Owner : -currentStrategy:DefinedInterface
+Owner : +doSomething()
+Owner : +doSomethingElse()
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-strategy.png]]
+
+*** Example
+#+NOTES: Ghost, MovementStrategy, Inky, Blinky, Pinky, Clyde
+#+BEGIN_SRC plantuml :file DP-strategy-example.png
+class Ticket <<context>> {
+-myPricingStrategy
++calculatePrice()
++Ticket(enum TicketType theType)
+}
+
+abstract class TicketStrategy <<abstract strategy>> {
++calculatePrice()=0
++formatTicket()=0
+}
+
+Ticket - TicketStrategy : has >
+
+TicketStrategy <|-- StudentTicket
+TicketStrategy <|-- PensionerTicket
+TicketStrategy <|-- NormalTicket
+TicketStrategy <|-- ArmyTicket
+
+StudentTicket : +calculatePrice()
+PensionerTicket : +calculatePrice()
+NormalTicket : +calculatePrice()
+ArmyTicket : +calculatePrice()
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-strategy-example.png]]
+
+** State
+*** Generic Structure
+#+NOTES: Owner, DefinedInterface, ConcreteImplementation
+#+BEGIN_SRC plantuml :file DP-state.png
+class Owner <<context>> {
+-amyCurrentState
++setState()
++...()
+}
+
+Owner - DefinedInterface
+
+abstract class DefinedInterface <<abstract state>> {
++...() = 0
+}
+
+DefinedInterface <|-- ConcreteState1
+DefinedInterface <|-- ConcreteState2
+
+
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-state.png]]
+
+** Observer
+*** Generic Structure
+#+NOTES: Observer, Observable, DataPublisher, DataSubscriber
+#+BEGIN_SRC plantuml :file DP-observer.png
+package ObserverPattern {
+class Observable {
++addObserver()
++deleteObserver()
+#notify()
+-Observer [] myObservers
+}
+
+interface Observer {
++notify()
+}
+
+Observable - "*" Observer
+}
+
+Observer <|-- OurSystem
+
+OurSystem : +notify()
+
+Observable <|-- SomeOtherSystem
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-observer.png]]
+
+*** Example
+#+NOTES: copy from above + Pacman, Ghost
+#+BEGIN_SRC plantuml :file DP-observer-example.png
+package ObserverPattern {
+class Observable {
++addObserver()
++deleteObserver()
+#notify()
+-Observer [] myObservers
+}
+
+interface Observer {
++notify()
+}
+
+Observable - "*" Observer
+}
+
+package Railway {
+Observable <|-- Train
+
+Train : +checkTardiness()
+
+note left: if (isTardy) notify();
+}
+
+package TicketSystem {
+Observer <|-- Ticket
+
+Ticket : +notify()
+}
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-observer-example.png]]
+
+** Abstract Factory
+*** Generic Structure
+#+NOTES: Owner, AbstractFactory (getInstanceOfX(), …Y()) , ConcreteFactory…
+#+BEGIN_SRC plantuml :file DP-absfact.png
+class Owner <<context>> {
+}
+
+abstract class Factory <<abstract factory>> {
+ +getInstanceOfX()
+ +getInstanceOfY()
+}
+
+Owner - Factory
+
+Factory <|-- ConcreteFactory1
+Factory <|-- ConcreteFactory2
+Factory <|-- ConcreteFactory3
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-absfact.png]]
+
+*** Example 1
+#+NOTES: Owner, InferfaceGenerator (createButton(), createTextField()), WindowsGenerator, MacGenerator
+#+NOTES: AbstractButton, WindowsButton, MacButton   relations:creates
+#+BEGIN_SRC plantuml :file DP-absfact-ex1.png
+class Ticket <<context>>
+Ticket : +create()
+Ticket : -myPricingStrategy
+Ticket : -myPresentationStrategy
+Ticket : -myStatisticsStratefy
+
+interface PricingStrategy
+interface PresentationStrategy
+interface StatisticsStrategy
+
+Ticket -- PricingStrategy
+Ticket -- PresentationStrategy
+Ticket -- StatisticsStrategy
+
+interface TicketFactory {
++createPricingStrategy()
++createPresentationStrategy()
++createStatisticsStrategy()
+}
+
+Ticket - TicketFactory
+
+TicketFactory <|-- StudentTicketFactory
+TicketFactory <|-- PensionerTicketFactory
+TicketFactory <|-- NormalTicketFactory
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-absfact-ex1.png]]
+
+#+begin_src java
+  create() {
+    if(student) myFactory = new StudentTicketFactory();
+
+    ...
+
+    myPricingStrategy = myFactory.getPricingStrategy();
+
+  }
+
+#+end_src
+** Singleton
+*** Generic Structure
+#+NOTES: abstract class, private constructor, getInstance() etc.
+#+BEGIN_SRC plantuml :file DP-singleton.png
+class Singleton {
+ -Singleton()
+ +Singleton* getInstance()
+ -Singleton* myInstance
+}
+
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-singleton.png]]
+
+*** getInstance()
+#+BEGIN_SRC cpp
+  static Singleton* Singleton::getInstance() {
+    if(null == myInstance) {
+      myInstance = new SIngleton();
+    }
+
+    return myInstance;
+
+  }
+
+#+END_SRC
+** Facade, Wrapper, Adapter
+*** Generic Structure
+#+NOTES: +wrapper
+#+BEGIN_SRC plantuml :file DP-wrapper.png
+package AllOfMySystem { }
+
+
+AllOfMySystem - Wrapper
+Wrapper - EvilChangingComponent
+
+Package EvilChangingComponent { }
+#+END_SRC
+
+#+RESULTS:
+[[file:DP-wrapper.png]]
+
+** Interpreter
+*** Generic Structure
+#+NOTES: Expression (interpret() ), IfExpr, AndExpr, TerminalExpr
+#+begin_src plantuml :file DP-Interpreter.png
+class Owner <<context>>
+
+Owner - "*" Expression
+
+class Expression {
+ +interpret(theInputString)
+ +execute()
+}
+
+Expression <|-- IfExpr
+Expression <|-- AndExpr
+Expression <|-- TerminalExpr
+
+Expression - "*" Expression : >
+
+#+end_src
+
+#+RESULTS:
+[[file:DP-Interpreter.png]]
+
+*** Example
+Lisp grammar:
+  - sexpr :: list || atom
+  - list :: '(' sexpr* ')'
+  - atom :: number || symbol
+  - number :: [0-9]+
+  - symbol :: ^[()]+
+
+Let's parse an expression: ~(if (= 0 some-variable) (+ 10 20 30) (call-some-function 20))~
+
+Object Diagram
+#+begin_src plantuml :file DP-Interpreter-Lisp.png
+note as n1
+Please note that this is an <i>object</i> diagram, not a class diagram.
+Tus, what we see here are objects and the values of their attributes
+in order parse the expression:
+
+<i>(if (= 0 some-variable) (+ 10 20 30) (call-some-function 20))</i>
+end note
+
+object ifExpr
+
+object equalExpr
+
+object atomNumberExpr {
+value=0
+}
+equalExpr -- atomNumberExpr : LHS
+
+object atomSymbolExpr {
+value = some-variable
+}
+equalExpr -- atomSymbolExpr : RHS
+
+
+object additionExpr {
+ value = list (10 20 30)
+}
+note bottom of additionExpr
+The list is actually a separate expression,
+containing three instances of atomNumberExpr
+end note
+
+object funcallExpr {
+ value = atomSymbol(call-some-function)
+ param = list (20)
+}
+
+note bottom of funcallExpr
+Same here... <i>atomSymbol(call-some-function)</i> is an object,
+and <i>list(20)</i> is a listExpr containing an atomNumberExpr.
+I'm being lazy for the sake of fitting it all to one page.
+end note
+
+ifExpr -- equalExpr : condition
+ifExpr -- additionExpr : ifTrue
+ifExpr -- funcallExpr : ifFalse
+#+end_src
+
+#+RESULTS:
+[[file:DP-Interpreter-Lisp.png]]
+
+* Design Antipatterns
+- Design Patterns == Solutions to commonly recurring problems
+- Programming *antipatterns* == What *not* to do.
+- High and low, ranging from process, to design, to programming
+** Design Antpattern Examples
+Process antipatterns
+- Premature optimisation :: Optimising your code before you know if, when, and where a particular quality attribute is going to be a problem.
+- Bikeshedding :: Spend time discussing the /colour/ of the bikeshed instead of figuring out whether you really need a bikeshed in the first place.
+- Analysis Paralysis :: The most perfect analysis in the world is useless unless you have actually built the system. /Good enough/ is often plenty.
+- Gold Plating :: Adding things to your project/design/code that might someday come in handy even if no-one has ever asked for it -- or is willing to pay for it.
+
+
+Design antipatterns
+- The God class :: The one central class that knows too much about the rest of the system, with too many dependencies and responsibilities.
+- Fear of adding classes :: More classes doth not always a more complex design make.
+
+
+Programming antipatterns
+- Magic Numbers and Strings :: string and number literals that are thrown into the middle of the code means that it is (a) more difficult to find them when they change, and (b) there is no encoded decision rationale what thet mean. Use a constant instead.
+- Copypasta :: When you copy code from one function to another that /almost/ do the same thing, you are creating twice the maintenance headache.
+* Security Antipatterns
+- Pardon the Malintent :: You should use the same standard of throwing exceptions and notifications when you detect a hacking attempt as in your own code. If you can't open a file, you throw an exception so that the user can know about it (hopefully you do not terminate unless it is critical), but if you notice a hacking attempt you just swallow it without even logging the attempt?
+- Incomplete Mediation :: When you authenticate some types of requests (the common ones), but forget other access routes.
+- Insufficient Knowledge of Protocols :: Just because you have never seen a HTTP request/response (it is fully possible to implement a whole web application without evver seeing one), it doesn't mean that the hacker doesn't know how to exploit it. Do you know how all parameters in the HTTP header are treated in your application?-
+- Secure Library Ignorance :: Make sure you security audit any third party libraries that you use. This includes all third party libraries, not just the ones you think might be at risk.
+- Mixing Code and Data :: Make sure that all and any inputs are sanitised before you concatenate them into a a string that is going to be executed. Fun fact: Did you know that someone voted for =pwn'); DROP TABLE VOTERS;--= in the 2010 Swedish elections?
+- Confirmation Bias :: We all have blind spots where we assume but do not verify certain things. In security engineering, this can be particularly problematic.
+

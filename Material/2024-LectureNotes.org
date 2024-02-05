@@ -1,0 +1,369 @@
+#+Title: 2024 Lecture Notes
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2024-01-29
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:2
+#+STARTUP: beamer
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH_msv
+
+
+* System Sequence Diagram
+#+begin_src plantuml :file 2024ssd.png
+actor Cashier as cas
+participant ":System" as sys
+
+cas -> sys : enterItem(upc, qty)
+sys --> cas : description and price
+
+cas -> sys : saleComplete()
+sys --> cas : total amount due
+
+#+end_src
+
+#+RESULTS:
+[[file:2024ssd.png]]
+
+* Interaction Diagram enterItem()
+#+begin_src plantuml :file 2024-id-enterItem.png
+[-> ":PoS" : enterItem(upc, qty)
+activate ":PoS"
+
+":PoS" -> "current:Sale" : addItem(upc, qty)
+activate "current:Sale"
+
+create "si:SaleItem" as si
+"current:Sale" --> si : create()
+"current:Sale" -> si : setProductId(upc)
+activate si
+create ":Warehouse"
+si --> ":Warehouse" : getInstance()
+si -> ":Warehouse" : getDescription(upc)
+activate ":Warehouse"
+deactivate ":Warehouse"
+si -> ":Warehouse" : getPrice(upc)
+activate ":Warehouse"
+deactivate ":Warehouse"
+deactivate si
+
+"current:Sale" -> si : setQuantity(qty)
+activate si
+deactivate si
+
+"current:Sale" -> si : getPrice()
+activate si
+deactivate si
+
+"current:Sale" -> "current:Sale" : increaseTotal()
+activate "current:Sale"
+deactivate "current:Sale"
+
+"current:Sale" -> si : getDescription()
+activate si
+deactivate si
+
+"current:Sale" --> ":PoS" : description and price of item
+
+deactivate "current:Sale"
+[<--":PoS" : description and price of item
+deactivate ":PoS"
+#+end_src
+
+#+RESULTS:
+[[file:2024-id-enterItem.png]]
+
+
+* Class Diagram from Bad Interaction Diagram
+#+begin_src plantuml :file 2024-class-bad.png
+note as n1
+Based on the bad interaction diagram in the lecture slides
+end note
+
+PoS : +enterItem(upc,qty)
+PoS : -current:Sale
+
+Sale : +addItem(SalesItem theItem)
+Sale : +increaseTotal(int thePrice)
+
+SalesItem : +setProductId(upc)
+SalesItem : +setQuantity(qty)
+SalesItem : +setPrice(thePrice)
+
+SalesItem : +getUPC()
+
+Warehouse : +getDescription(upc)
+Warehouse : +getPrice(upc)
+
+PoS -- SalesItem
+PoS -- Sale
+Sale - "*" SalesItem
+Sale -- Warehouse
+#+end_src
+
+#+RESULTS:
+[[file:2024-class-bad.png]]
+
+* "Better" Class Diagram
+#+begin_src plantuml :file 2024-class.png
+note as n1
+Based on the "better" interaction diagram.
+end note
+
+class PoS
+PoS : +enterItem(upc, qty)
+PoS : -current:Sale
+
+Sale : +addItem(upc, qty)
+Sale : -increaseTotal()
+
+class SaleItem {
++setProductId(upc)
++setQuantity(qty)
++getPrice()
++getDescription()
+}
+
+class Warehouse <<Singleton>> {
++static Warehouse* getInstance()
++getDescription(upc)
++getPrice(upc)
+}
+
+PoS - Sale 
+Sale -- "*" SaleItem
+SaleItem - Warehouse
+#+end_src
+
+#+RESULTS:
+[[file:2024-class.png]]
+
+
+* BurgerOrderer
+** Use Case: Order Food
+#+begin_verse
+*Use Case* Order Food
+*Actors* Customer
+*Description* Customer orders a meal and configures it. The system registers the order and confirms.
+#+end_verse
+
+*Main Course of Events*
+| Actor                                                        | System                                          |
+|--------------------------------------------------------------+-------------------------------------------------|
+| 1. Customer arrives at BurgerOrderer and starts a new order. |                                                 |
+|                                                              | 2. System presents options                      |
+|                                                              | [single burger, meal, dessert, ...]             |
+| 3. Customer selects "full meal"                              |                                                 |
+|                                                              | 4. System presents available meals              |
+| 5. Customer selects a meal                                   |                                                 |
+|                                                              | 6. System adds the selected meal to the order   |
+|                                                              | and presents configuration options.             |
+| 7. Customer selects "no onions"                              |                                                 |
+|                                                              | 8. System adds "No onions" to the order         |
+| 9. Customer selects "more bacon!"                            |                                                 |
+|                                                              | 10. System adds "more bacon!" to the order.     |
+| 11. Customer confirms order                                  |                                                 |
+|                                                              | 12. System initiates the use case _pay for order_ |
+|                                                              | 13. System places burger order to tke Kitchen   |
+|                                                              | 14. System prints receipt.                      |
+|--------------------------------------------------------------+-------------------------------------------------|
+
+** System Sequence Diagram
+#+begin_src plantuml :file 2024-BO-SSD.png
+scale 2
+actor Customer as c
+participant ":BurgerOrderer" as sys
+
+c -> sys : startNewOrder()
+sys --> c : presents available food options
+
+c -> sys : selectMealType("full meal")
+sys --> c : presents available full meal types
+
+c -> sys : selectOrder(mealName)
+sys --> c : presents configuration options
+
+c -> sys : selectConfiguration(theConfigurationName)
+sys --> c : confirms configuration
+
+c -> sys : confirmOrder()
+sys --> c : prints receipt
+
+#+end_src
+
+#+RESULTS:
+[[file:2024-BO-SSD.png]]
+** Sequence Diagram: startNewOrder()
+#+begin_src plantuml :file 2024-sd-startNew.png
+scale 2
+participant ":BurgerOrderer" as sys
+[-> sys : startNewOrder()
+activate sys
+
+create participant "current:Order" as co
+sys --> co : create()
+
+sys -> ":OrderTypeManager" : getAvailableMealTypes()
+activate ":OrderTypeManager"
+deactivate ":OrderTypeManager"
+
+
+[<-- sys : return list of available meals [single burger, meal, dessert, ...]
+deactivate sys
+#+end_src
+
+#+RESULTS:
+[[file:2024-sd-startNew.png]]
+
+** Sequence Diagram: selectMealType()
+#+begin_src plantuml :file 2024-BO-sd-selectMealtype.png
+scale 2
+participant ":BurgerOrderer" as sys
+[-> sys : selectMealType(theMealType)
+activate sys
+
+sys -> ":OrderTypeManager" : getAvailableMeals(theMealType)
+activate ":OrderTypeManager"
+deactivate ":OrderTypeManager"
+
+
+[<-- sys : return list of available meals of the specified type.
+deactivate sys
+
+
+#+end_src
+
+#+RESULTS:
+[[file:2024-BO-sd-selectMealtype.png]]
+
+** Sequence Diagram: selectOrder(theMealName)
+#+begin_src plantuml :file 2024-bo-sd-selectOrder.png
+scale 2
+participant ":BurgerOrderer" as sys
+[-> sys : selectOrder(theMealName)
+activate sys
+
+sys -> ":OrderTypeManager" : getMeal(theMealName)
+activate ":OrderTypeManager"
+
+create participant "meal:MealType"
+":OrderTypeManager" --> "meal:MealType" : create()
+
+deactivate ":OrderTypeManager"
+
+sys -> "current:Order" : add(meal)
+activate "current:Order"
+deactivate "current:Order"
+
+sys -> "meal:MealType" : getConfigurationOptions()
+activate "meal:MealType"
+deactivate "meal:MealType"
+
+
+[<-- sys : return list of configuration options
+deactivate sys
+
+
+#+end_src
+
+#+RESULTS:
+[[file:2024-bo-sd-selectOrder.png]]
+
+** Sequence Diagram: selectConfiguration(theConfigurationName)
+#+begin_src plantuml :file 2024-bo-sd-selectConfiguration.png
+scale 2
+participant ":BurgerOrderer" as sys
+[-> sys : selectConfiguration(theConfigurationName)
+activate sys
+
+sys -> "current:Order" : meal = getLatestMealOrder()
+activate "current:Order"
+deactivate "current:Order"
+
+sys -> "meal:MealType" : setConfiguration(theConfigurationName)
+activate "meal:MealType"
+deactivate "meal:MealType"
+
+
+[<-- sys : return confirmation
+deactivate sys
+
+
+#+end_src
+
+#+RESULTS:
+[[file:2024-bo-sd-selectConfiguration.png]]
+
+** Sequence Diagram: confirmOrder()
+|   | 12. System initiates the use case _pay for order_ |
+|   | 13. System places burger order to tke Kitchen   |
+|   | 14. System prints receipt.                      |
+
+#+begin_src plantuml :file 2024-bo-sd-confirmOrder.png
+scale 2
+participant ":BurgerOrderer" as sys
+[-> sys : confirmOrder()
+activate sys
+
+sys -> ":PaymentSystem" : executePayment()
+activate ":PaymentSystem"
+deactivate ":PaymentSystem"
+
+
+sys -> ":KitchenSystem" : sendOrder(current)
+activate ":KitchenSystem"
+
+participant "current:Order" as currentOrder
+loop while more items
+":KitchenSystem" -> currentOrder : getItems()
+activate currentOrder
+deactivate currentOrder
+end loop
+
+deactivate ":KitchenSystem"
+
+sys -> ":ReceiptPrinter" : print(current)
+activate ":ReceiptPrinter"
+loop while more items
+":ReceiptPrinter" -> currentOrder : getItems()
+activate currentOrder
+deactivate currentOrder
+end loop
+
+' ":ReceiptPrinter" --> sys : printed Receipt
+deactivate ":ReceiptPrinter"
+
+' [<-- sys : printed Receipt
+deactivate sys
+
+#+end_src
+
+#+RESULTS:
+[[file:2024-bo-sd-confirmOrder.png]]
+
+** Class Diagram
+#+begin_src plantuml :file 2024-bo-class.png
+scale 2
+BurgerOrderer : +confirmOrder()
+BurgerOrderer : -current:Order
+
+PaymentSystem : +executePayment()
+
+KitchenSystem : +sendOrder(Order theOrder)
+
+Order : +getItems()
+
+ReceiptPrinter : +print(Order theOrder)
+
+BurgerOrderer - PaymentSystem
+BurgerOrderer - KitchenSystem
+BurgerOrderer - ReceiptPrinter
+BurgerOrderer -- Order
+ReceiptPrinter -- Order
+KitchenSystem -- Order
+
+#+end_src
+
+#+RESULTS:
+[[file:2024-bo-class.png]]
