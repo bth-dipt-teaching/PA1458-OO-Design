@@ -11,6 +11,7 @@
 
 * Conceptual
 #+begin_src plantuml :file FUML-Conceptual.png
+scale 2
 title Conceptual View
 package UserInterface <<Rectangle>> {
 }
@@ -42,6 +43,7 @@ BusinessLogic -- Database
 
 * Modules
 #+BEGIN_SRC plantuml :file FUML-Module.png
+scale 1.5
 title Module View
 package UserInterface {
 }
@@ -78,6 +80,7 @@ BusinessLogic -- DBInterface
 
 * Execution
 #+BEGIN_SRC plantuml :file FUML-Execution.png
+scale 1.2
 title Execution View
 package Client <<Node>> {
 package UserInterface {

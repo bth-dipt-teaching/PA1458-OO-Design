@@ -367,3 +367,231 @@ KitchenSystem -- Order
 
 #+RESULTS:
 [[file:2024-bo-class.png]]
+
+
+* Example: SMSprucerUpper
+** Conceptual Model
+#+begin_src plantuml :file SMSU-cm.png
+package Collect
+package Transform
+package Publish
+
+Collect - Transform
+Transform - Publish
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-cm.png]]
+
+** Package Model : Deeper into the Collect Package
+#+begin_src plantuml :file SMSU-pm-collect.png
+package Collect {
+class Collector <<Context>> {
+-AbstractCollector [] activeCollectors
++collect()
++setup()
+}
+
+abstract class AbstractCollector <<Abstract Strategy>> {
+-String URL
++collect()
+}
+
+Collector - "*" AbstractCollector
+
+package TwitterCollector {
+AbstractCollector <|-- TwitterCollector
+}
+package FBCollector {
+AbstractCollector <|-- FBCollector
+package FBParser {}
+package FBJunkRemover {}
+}
+
+package CanvasCollector {
+AbstractCollector <|-- CanvasCollector
+}
+package IRCCollector {
+AbstractCollector <|-- IRCCollector
+}
+}
+
+package Transform {}
+package Publish {}
+
+Collector -- Transform
+Transform - Publish
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-pm-collect.png]]
+
+** The collect() method
+#+begin_src cpp
+  void Collector::collect() {
+    for (AbstractCollector* collector : activeCollectors) {
+      Message* m = collector->collect();
+      if ( m->hasContents() ) { TempStorage::getInstance()->add(m); }
+    }
+  }
+#+end_src
+
+This adds a new class ~Message~.
+Also note that this adds a temporary storage between the packages ~Collect~ and ~Transform~ :
+
+#+begin_src plantuml :file SMSU-cm2.png
+package Collect
+database TempStorage
+package Transform
+package Publish
+
+Collect - TempStorage
+TempStorage - Transform
+Transform - Publish
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-cm2.png]]
+** Package Model: The Transform Package
+Implementing the Transformers using a =Strategy Pattern=.
+
+#+begin_src plantuml :file SMSU-tf.png
+
+package Collect { }
+package TempStorage <<Database>> { 
+}
+
+Collect - TempStorage
+
+package Transform {
+
+class Transform <<Context>> {
+-AbstractTransformation [] activeTransformations
++newContents(theMessage)
++setup()
+-publish(theMessage)
+}
+
+abstract class AbstractTransformation <<Abstract Strategy>> {
++isTransformationPossible(theMessage)
++transform(theMessage)
++maybeTransform(theMessage)
+}
+
+Transform o- "*" AbstractTransformation
+
+AbstractTransformation <|-- ComicTransformation
+AbstractTransformation <|-- SonnetTransformation
+AbstractTransformation <|-- TuringTestTransformation
+AbstractTransformation <|-- SoundtrackTransformation
+
+class ComicTransformation {
++isTransformationPossible(theMessage)
++transform(theMessage)
++maybeTransform(theMessage)
+}
+
+class SonnetTransformation {
++isTransformationPossible(theMessage)
++transform(theMessage)
++maybeTransform(theMessage)
+}
+
+class TuringTestTransformation {
++isTransformationPossible(theMessage)
++transform(theMessage)
++maybeTransform(theMessage)
+}
+
+class SoundtrackTransformation {
++isTransformationPossible(theMessage)
++transform(theMessage)
++maybeTransform(theMessage)
+}
+
+
+}
+
+package Publish {}
+
+TempStorage -- Transform.Transform
+Transform -- Publish
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-tf.png]]
+
+** Introducing an Observer Pattern
+Just for the hell of it, so that the ~TempStorage~ can notify when there is new content added.
+
+#+begin_src plantuml :file SMSU-observer.png
+package Collect {}
+package TempStorage <<Database>> {
+}
+
+
+package Observer {
+class Observable {
+-Observer [] myObservers
++addObserver()
++notifyObservers()
+}
+
+abstract class Observer {
++notify()
+}
+
+Observable - "*" Observer
+}
+
+package Transform {
+class Transform <<Context>> {
+-AbstractTransformation [] activeTransformations
++notify()
++newContents(theMessage)
++setup()
+-publish(theMessage)
+}
+
+note bottom: The rest of the classes in this package are left out for brevity.
+}
+
+
+package Publish {}
+
+Collect -- TempStorage
+Observer.Observer <|-- Transform.Transform
+Observable <|-- TempStorage
+Transform -- Publish
+
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-observer.png]]
+
+** Package Model: The Publish Package
+#+begin_src plantuml :file SMSU-pub.png
+
+package Collect { }
+package TempStorage <<Database>> {
+ }
+package Transform { }
+
+Collect - TempStorage
+TempStorage - Transform
+Transform - Publish
+
+package Publish {
+class Publish {
++publish(theMessage)
+}
+
+package SystemNotificationPublisher {}
+package WebPagePublisher {}
+package DBStoragePublisher {}
+}
+#+end_src
+
+#+RESULTS:
+[[file:SMSU-pub.png]]
+
