@@ -1,0 +1,724 @@
+
+* <2025-02-03 mån> System Sequence Diagram
+#+begin_src plantuml :file 2025-ssd.png
+actor Cashier as cas
+participant ":System" as sys
+
+cas -> sys : enterItem(upc,qty)
+sys --> cas : item price and description
+
+cas -> sys : saleComplete()
+sys --> cas : sale total
+
+cas -> sys : payByCash(amount)
+sys --> cas : return amount due
+
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-ssd.png]]
+
+* <2025-02-03 mån> Sekvensdiagram enterItem()
+#+begin_src plantuml :file 2025-id.png
+participant ":PoS" as pos
+participant "current:Sale" as sale
+
+[-> pos : enterItem(upc, qty)
+activate pos
+
+pos -> sale : addItem(upc,qty)
+activate sale
+
+create participant "si:SaleItem" as si
+sale --> si : create()
+
+sale -> si : setProuctID(upc)
+activate si
+create participant ":Warehouse" as wh
+si --> wh : getInstance()
+
+si -> wh : getDescription(upc)
+activate wh
+deactivate wh
+si -> wh : getPrice(upc)
+activate wh
+deactivate wh
+
+
+deactivate si
+
+sale -> si : setQuantity(qty)
+activate si
+deactivate si
+
+sale -> si : getPrice()
+activate si
+deactivate si
+
+sale -> sale : increaseTotal()
+activate sale
+deactivate sale
+
+sale -> si : getDescription()
+activate si
+deactivate si
+
+ 
+sale --> pos : description and price
+deactivate sale
+
+[<-- pos : description and price
+deactivate pos
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-id.png]]
+* <2025-02-03 mån> Bad Class Diagram
+#+begin_src plantuml :file 2025-badClass.png
+
+class PoS {
++startNewSale()
++enterItem()
+-current:Sale
+}
+
+class Sale {
++addItem(SalesItem si)
++increaseTotal()
+}
+
+class SaleItem {
++setProductId(upc)
++setQuantity(qty)
++setPrice(thePrice)
++getUPC()
+}
+
+class Warehouse {
++getDescription(upc)
++getPrice(upc)
+}
+
+PoS -- SaleItem
+PoS -- Sale
+Sale - SaleItem
+Sale -- Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-badClass.png]]
+
+* <2025-02-03 mån> Better Class Diagram
+#+begin_src plantuml :file 2025-betterClass.png
+class PoS {
+-current : Sale
++enterItem(upc,qty)
+}
+
+class Sale {
++addItem(upc,qty)
+-increaseTotal()
+}
+
+class SaleItem {
++setProductId(upc)
++setQuantity(qty)
++getPrice()
++getDescription()
+}
+
+class Warehouse {
++static Warehouse getInstance()
+-static myInstance : Warehouse
++getDescription(upc)
++getPrice(upc)
+}
+
+PoS - Sale
+Sale -- "*" SaleItem
+SaleItem - Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-betterClass.png]]
+* <2025-02-04 tis> RobotSystem
+** Conceptual Model
+#+begin_src plantuml :file 2025-conc.png
+package ui
+
+package Robot {
+
+package GPSSensor
+package ArmController
+package DriveController
+
+package Navigator
+package MapManager
+package RouteExecutor
+
+Navigator -- MapManager
+Navigator -- GPSSensor
+Navigator -- RouteExecutor
+RouteExecutor -- DriveController
+
+}
+
+package Sensors
+
+package Actuators
+
+ui -- Robot
+Robot -- Sensors
+Robot -- Actuators
+#+end_src
+
+#+RESULTS:
+[[file:2025-conc.png]]
+
+** Use Case: Navigate to Point
+#+begin_quote
+*Use Case* Navigate to Point
+*Actors* Driver
+*Description* Driver selects that they want to navigate to point. System displays a map. Driver selects a point. System plots a route to the point.
+#+end_quote
+
+*Main Course of Events*
+
+| Actor                                 | System                                    |
+|---------------------------------------+-------------------------------------------|
+| 1. Driver selects that they           |                                           |
+| want to "Navigate to Point"           |                                           |
+|                                       | 2. The system selects "Navigate to Point" |
+|                                       | 3. The system displays a map              |
+|                                       | with the current position marked.         |
+| 4. Driver selects a point on the map. |                                           |
+|                                       | 5. System plots a route to the point.     |
+| 6. Driver confirms the route.         |                                           |
+|                                       | 7. System starts moving the robot         |
+|                                       | according to the planned route.           |
+|---------------------------------------+-------------------------------------------|
+*Alternative Events*
+5. System cannot plan a route to the point. An Error message is shown and the Driver may select another point.
+** System Sequence Diagram for Use Case "Navigate to Point"
+#+begin_src plantuml :file 2025-ssd.png
+actor Driver as d
+participant ":System" as sys
+
+d -> sys : selectNavigationMethod("toPoint")
+sys --> d : map with current position marked
+
+d -> sys : selectPoint(x,y)
+sys --> d : route to point
+
+d -> sys : selectRoute(oneRoute)
+sys --> d : ok
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-ssd.png]]
+
+** Interaction Diagrams: SelectNavigationMethod()
+#+begin_src plantuml :file 2025-id-snm.png
+[-> ":System" : selectNavigationMethod(String navigationType)
+activate ":System"
+
+participant ":NavigationFactory" as nf
+
+":System" -> nf : getNavigationStrategy(navigationType)
+activate nf
+create participant "current:NavigationStrategy" as cn
+nf --> cn : create()
+nf --> ":System" : current:NavigationStrategy
+deactivate nf
+
+":System" -> cn : getNavigationElements()
+activate cn
+cn -> ":GPSSensor" : currentPosition = getCurrentPosition()
+activate ":GPSSensor"
+deactivate ":GPSSensor"
+
+cn -> ":MapManager" : getMap(currentPosition)
+activate ":MapManager"
+deactivate ":MapManager"
+
+cn --> ":System" : list of navigation Elements
+deactivate cn
+
+":System" -> cn : currentControls = getNavigationControls()
+activate cn
+deactivate cn
+
+
+[<-- ":System" : map with current position marked
+deactivate ":System"
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-snm.png]]
+** Interaction Diagram selectPoint()
+#+begin_src plantuml :file 2025-id-sp.png
+[-> ":System" : selectPoint(x,y)
+activate ":System"
+
+participant "current:NavigationStrategy" as cn
+
+":System" -> cn : selectPoint(x,y)
+activate cn
+
+cn -> ":RoutePlanner" : calculateRoute(currentPosition, [x,y])
+activate ":RoutePlanner"
+":RoutePlanner" --> cn : planned route
+deactivate ":RoutePlanner"
+
+cn --> ":System" : planned route
+deactivate cn
+
+[<-- ":System" : planned route
+deactivate ":System"
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-sp.png]]
+
+** Interaction Diagram: selectRoute()
+#+begin_src plantuml :file 2025-id-sr.png
+[-> ":System" : selectRoute(oneRoute)
+activate ":System"
+participant "current:NavigationStrategy" as cn
+
+":System" -> cn : selectRoute(oneRoute)
+activate cn
+
+cn -> ":RouteExecutor" : calculateNextMovement()
+cn -> ":DriveController" : executeMovement()
+
+deactivate cn
+
+[<-- ":System" : ok
+deactivate ":System"
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-sr.png]]
+** Class Diagram from Use Case "Navigate to Point"
+#+begin_src plantuml :file 2025-class-ntp.png
+package ui {
+}
+
+package Robot {
+class System {
+-current:NavigationStrategy
++selectNavigationMethod(String navigationType)
++selectPoint(x,y)
++selectRoute(oneRoute)
+}
+
+package Navigator {
+class NavigationFactory
+NavigationFactory : +getNavigationStrategy(String navigationType)
+
+class NavigationStrategy
+NavigationFactory - NavigationStrategy
+NavigationStrategy : +getNavigationElements()
+NavigationStrategy : +getNavigationControls()
+NavigationStrategy : +selectPoint(x,y)
+NavigationStrategy : +selectRoute(oneRoute)
+
+NavigationStrategy <|-- ToPointNavigation
+ToPointNavigation : -currentPosition:Position
+
+}
+
+System -- NavigationFactory
+System -- NavigationStrategy
+
+
+ToPointNavigation -- MapManager
+ToPointNavigation -- GPSSensor
+ToPointNavigation -- RoutePlanner
+NavigationStrategy -- RouteExecutor
+NavigationStrategy -- DriveController
+
+package GPSSensor {
+GPSSensor : +getCurrentPosition()
+}
+package ArmController {
+}
+package DriveController {
+DriveController : +executeMovement()
+}
+
+package MapManager {
+MapManager : +getMap(position)
+}
+
+package RoutePlanner {
+RoutePlanner : +calculateRoute(fromPosition, toPosition)
+}
+
+package RouteExecutor {
+RouteExecutor : +calculateNextMovement()
+}
+
+}
+
+package Sensors {
+}
+
+package Actuators {
+}
+
+ui -- Robot
+Robot -- Sensors
+Robot -- Actuators
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-class-ntp.png]]
+
+
+* <2025-02-12 ons> WordProcessor
+** Use Case
+#+begin_verse
+*Use Case*: Export Document
+*Actors*: User
+*Description*: The User selects export document. The system asks to which format. The user selects a format. The system exports the document.
+*References* See requirements #xxx, #yyy, and #zzz for a list of export formats to support.
+#+end_verse
+
+| Actor                                          | System                                                                                 |
+|------------------------------------------------+----------------------------------------------------------------------------------------|
+| 1. User selects "Export Document"              |                                                                                        |
+|                                                | 2. The system presents a list of export formats                                        |
+| 3. The user selects a format                   |                                                                                        |
+|                                                | 4. The system asks for a filename                                                      |
+| 5. The user specifies a filename               |                                                                                        |
+| 6. The user clicks the "perform export" button |                                                                                        |
+|                                                | 7. The system exports the document using the selected format to the specified filename |
+|------------------------------------------------+----------------------------------------------------------------------------------------|
+** System Sequence Diagram
+- exportDocument() -- returns a list of export formats
+- selectExportFormat()
+- selectFilename()
+- performExport()
+
+#+begin_src plantuml :file 2025-wp-ssd.png
+scale 1.5
+actor "User" as us
+participant ":System" as sys
+
+us -> sys : exportDocument()
+sys --> us : list of export formats
+
+us -> sys : selectExportFormat()
+sys --> us : ok, suggest a filename
+
+us -> sys : selectFilename()
+
+alt filename is ok
+sys --> us : ok
+else
+sys --> us : filename is not ok
+end
+
+us -> sys : performExport()
+sys --> us : ok (document exported)
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-wp-ssd.png]]
+
+** Interaction Diagrams
+*** exportDocument()
+#+begin_src plantuml :file 2025-id-expdoc.png
+participant ":System" as sys
+
+[-> sys : exportDocument()
+activate sys
+
+sys -> ":ExportManager" : listExportFormats()
+activate ":ExportManager"
+":ExportManager" --> sys : list of available formats
+deactivate ":ExportManager"
+
+[<-- sys : list of available formats
+deactivate sys
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-expdoc.png]]
+
+*** selectExportFormat()
+#+begin_src plantuml :file 2025-id-selectef.png
+participant ":System" as sys
+
+[-> sys : selectExportFormat(theExportFormat)
+activate sys
+sys -> ":ExportManager" : suggestFilename(currentFilename, theExportFormat)
+activate ":ExportManager"
+":ExportManager" --> sys : filename according to theExportFormat
+deactivate ":ExportManager"
+
+[<-- sys : suggested filename
+
+deactivate sys
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-selectef.png]]
+
+*** selectFilename()
+#+begin_src plantuml :file 2025-id-selectfn.png
+participant ":System" as sys
+
+[-> sys : selectFilename(theFilename)
+activate sys
+sys -> ":FileManager" : verifyFilename(theFilename)
+activate ":FileManager"
+alt when filename is ok
+":FileManager" --> sys : ok
+deactivate ":FileManager"
+[<-- sys : ok
+deactivate sys
+else
+":FileManager" --> sys : invalid filename
+deactivate ":FileManager"
+[<-- sys : invalid filename
+deactivate sys
+end
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-selectfn.png]]
+
+*** performExport()
+#+begin_src plantuml :file 2025-id-export.png
+participant ":System" as sys
+participant ":ExportManager" as em
+collections "inputDocument:DocumentElement" as in
+
+[-> sys : performExport(theFilename, theExportFormat)
+activate sys
+sys -> em : performExport(theExportFormat)
+activate em
+create participant ":ExportFactory" as ef
+em --> ef : create()
+
+loop while more DocumentElements
+em -> in : getNextElement()
+activate in
+deactivate in
+em -> ef : convert(nextElement)
+activate ef
+participant "nextElement:DocumentElement"
+ef -> "nextElement:DocumentElement" : getContents()
+activate "nextElement:DocumentElement"
+deactivate "nextElement:DocumentElement"
+ef -> "nextElement:DocumentElement" : getType()
+activate "nextElement:DocumentElement"
+deactivate "nextElement:DocumentElement"
+
+create participant "convertedElement:DocumentElement"
+ef --> "convertedElement:DocumentElement" : create()
+ef --> em : convertedElement
+deactivate ef
+
+collections "outputDocument:DocumentElement" as out
+em -> out : add(convertedElement)
+activate out
+deactivate out
+
+end
+
+em --> sys : outputDocument
+deactivate em
+sys -> ":FileManager" : save(theFilename, outputDocument)
+activate ":FileManager"
+deactivate ":FileManager"
+
+deactivate sys
+#+end_src
+
+#+RESULTS:
+[[file:2025-id-export.png]]
+
+** Class Diagram
+#+begin_src  plantuml :file 2025-wp-cd.png
+title Class diagram <i>only</i> for the performExport() system event
+System : +performExport()
+ExportManager : +performExport()
+FileManager : +save()
+
+class ExportManager <<context (for ExportFactory)>>
+class DocumentManager <<context (for DocumentElement Strategy)>>
+interface DocumentElement <<abstract strategy>>
+interface ExportFactory <<abstract factory>>
+
+DocumentManager : +getNextElment()
+DocumentManager : +add()
+
+DocumentElement : +getContents()
+DocumentElement : +getType()
+
+ExportFactory : +convert()
+System - ExportManager
+ExportManager - DocumentManager
+DocumentManager -- "*" DocumentElement
+
+ExportManager -- ExportFactory
+ExportFactory -- DocumentElement
+
+System - FileManager
+
+ExportFactory <|- PDFExportFactory
+ExportFactory <|- HTMLExportFactory
+
+DocumentElement <|-- Title
+DocumentElement <|-- PDFTitle
+DocumentElement <|-- HTMLTitle
+DocumentElement <|-- Body
+DocumentElement <|-- PDFBody
+DocumentElement <|-- HTMLBody
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-wp-cd.png]]
+** Package Diagram
+#+begin_src plantuml :file 2025-wp-pd.png
+package WordProcessor {
+System : +performExport()
+
+}
+
+package FileManagement {
+FileManager : +save()
+}
+
+package Document {
+class DocumentManager <<context (for DocumentElement Strategy)>>
+interface DocumentElement <<abstract strategy>>
+
+DocumentManager : +getNextElment()
+DocumentManager : +add()
+
+DocumentElement : +getContents()
+DocumentElement : +getType()
+DocumentManager -- "*" DocumentElement
+
+DocumentElement <|-- Title
+DocumentElement <|-- PDFTitle
+DocumentElement <|-- HTMLTitle
+DocumentElement <|-- Body
+DocumentElement <|-- PDFBody
+DocumentElement <|-- HTMLBody
+}
+
+package Export {
+ExportManager : +performExport()
+
+class ExportManager <<context (for ExportFactory)>>
+interface ExportFactory <<abstract factory>>
+
+ExportFactory : +convert()
+ExportManager - DocumentManager
+
+ExportManager -- ExportFactory
+ExportFactory -- DocumentElement
+
+
+ExportFactory <|-- PDFExportFactory
+ExportFactory <|-- HTMLExportFactory
+}
+
+System -- FileManager
+System -- ExportManager
+
+note as N1
+This further highlights why I am not happy yet with this design.
+
+- The "Document" package now needs to know all about different export formats, which lowers its cohesion).
+- The class ExportFactory reaches into the internals of the Document package in order to create DocumentElements.
+end note
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-wp-pd.png]]
+
+** Package Diagram, take two
+In order to try to fix some of the issues with the previous package diagram, here is a new attempt:
+
+#+begin_src plantuml :file 2025-wp-pd2.png
+package WordProcessor {
+System : +performExport()
+
+class DocumentManager <<context (for DocumentElement Strategy)>>
+DocumentManager : +getNextElment()
+DocumentManager : +add()
+
+System -- DocumentManager
+}
+
+package FileManagement {
+FileManager : +save()
+}
+
+package DocumentElements {
+interface DocumentElement <<abstract strategy>>
+
+DocumentElement : +getContents()
+DocumentElement : +getType()
+DocumentManager -- "*" DocumentElement
+
+
+package Normal {
+DocumentElement <|-- Title
+DocumentElement <|-- Body
+}
+
+package PDF {
+DocumentElement <|-- PDFTitle
+DocumentElement <|-- PDFBody
+}
+
+package HTML {
+DocumentElement <|-- HTMLTitle
+DocumentElement <|-- HTMLBody
+}
+}
+
+package Export {
+ExportManager : +performExport()
+
+class ExportManager <<context (for ExportFactory)>>
+interface ExportFactory <<abstract factory>>
+
+ExportFactory : +convert()
+ExportManager - DocumentManager 
+
+ExportManager -- ExportFactory
+ExportFactory -- DocumentElement
+
+
+ExportFactory <|-- PDFExportFactory
+ExportFactory <|-- HTMLExportFactory
+}
+
+System -- FileManager
+System -- ExportManager
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-wp-pd2.png]]
