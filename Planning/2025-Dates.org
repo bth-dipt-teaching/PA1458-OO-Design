@@ -99,7 +99,6 @@ Spring 2025 lp3: Week 04-13 <2025-01-20 mån> - <2025-03-30 sön>
  | Class and Package Diagram                    | OOD       | 17p    | x      | x      | x      | 14/2 fre w7 |
  |                                              |           |        |        |        |        | /Sportlov w8/ |
  | Refactored Class Diagram                     | OOD&DP    | 22p    | x      | x      | x      | 28/2 fre w9 |
- | Quality Attributes and Software Architecture | QA and SA | 18p    |        |        | x      | *28/2 fre w9* |
  | Create Test Plan                             | -         | 15p    |        |        | x      | 5/3 wed w10 |
  | Unit Test for Use Case                       | Impl&Test | 11p    | x      |        | x      | 7/3 fre w10 |
  | Implementation                               | Impl&Test | 11p    | x      |        |        |             |
