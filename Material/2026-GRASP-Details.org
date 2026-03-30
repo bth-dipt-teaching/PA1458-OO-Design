@@ -1,0 +1,58 @@
+#+Title: More on GRASP Patterns
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2026-01-23
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:1
+#+STARTUP: beamer num
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH2025
+
+* Introduction
+GRASP patterns is s set of low level design principles from Craig Larman's book "Applying UML and Patterns -- an Introduction to Object-Oriented Analysis and Design and Iterative Development". These principles are not new; they have been known for quite some time under many different names. Larman's contribution is to collect a small and coherent set of design principles and give them descriptive names that makes them somewhat easier to discuss and think about when designing an object oriented system.
+
+If you consider these principles in your design work, you end up with a design where each class, object, or method has a well defined responsibility and the data and functionality to act on that data. This creates a design consisting of modular and self-sustained pieces of software that are easy to reuse, and a design where it is easy to get an overview of, and to understand where and how to modify.
+
+In some sense, the One Princple to Rule Them All is *"Easy to Change"*. When we make decisions in our design on how software should be built, we always favour a design which is easier to change. The GRASP patterns are a lens to help us understand which solution results in the easier to change system.
+
+The principles are instructions to guide you when allocating /responsibilities/ in your design -- responsibility for knowing about something, or responsibility for doing something. Thus, you will also hear the name "Responsibility Driven Design" for these types of principles.
+
+On to the patterns!
+* Low Coupling and High Cohesion
+The patterns *Low Coupling* and *High Cohesion* are a good starting point, and many of the other patterns are consequences of these two patterns. A system that has low coupling is easier to change because each change has only small and local effects. Thus, favour a design where you have fewer and "lighter" connections between classes. The less you depend on other classes, the lower coupling you have. This includes the number of other classes you depend on, the number of methods in other classes you depend on, the longevity of your relationship to other classes (is it e.g. within the scope of a single method, or do you need to save a reference as an attribute in your object?), or the ease with which you can move over to use another class.
+
+High Cohesion means that each class or object or method should be as complete a unit as possible. It should contain all the data needed to represent a single concept, and the methods needed to operate on that data. Essentially, it should be like a self-sustained mini-program inside your program. 
+
+There is an inherent conflict between these two patterns, since in order to achieve high cohesion you also have to break away functionality and data which does /not/ belong and put them into a separate unit, which may incur a new coupling between the old and the new class. In these cases, favour high cohesion since this makes your software easier to change, but avoid adding /unnecessary/ couplings.
+
+* Information Expert
+With Information Expert we start looking at responsibilities. When you decide to include a particular concept as a class in your design, you also (at least implicity) assign to it the /responsibility/ to be the best possible representation of that concept, e.g. "The World's Greatest Student Ticket!", or "The Best Dictionary Item There Ever Was". In order to Be Best, an object need to have all the data related to that concept, and all the methods to operate on the data. And nothing else. This last bit is important because -- again, in order to Be Best -- we want to maintain high cohesion by only focusing on a single responsibility and to do that well and without the risk of contamination from other responsibilities. Two responsibilities \rarr two classes.
+
+If a single class is fully responsible for a single concept, it follows naturally that the couplings to other classes are only the really necessary, and are as few and as loose as is possible ( = low coupling).
+* Controller
+There are other types of information in a software system, not just data from the problem domain. One important type of information is knowledge about how to execute a particular task, and which components (or classes or objects) in the software system that can be used to complete the task. This is where the /Controller pattern/ comes in.
+
+A Controller is, in fact, an information expert on how to perform a task. Typically, when we build a software component we want to hide as much as possible of the design of this component away from other users, in order to keep the design as loosely coupled as possible. In order to do this, we usually add one or a few classes that act as the entrypoint into the component -- the API of the component. These entrypoints accept calls from the outside and delegate them to the right place internally, possibly breaking up the task into several smaller tasks along the way. This is a Controller; it knows what steps are involved in solving a particular task, and it knows enough about the software design to be able to find the right objects to execute these steps.
+
+Do note that the controller does not (should not) actually perform the tasks by itself, it should delegate as much as possible to other parts of the design. This maintains high cohesion.
+
+The entrypoints into a component or subsystem or the entire system are typically built as controllers -- their responsibilities are to expose a list of services (i.e. the public methods they provide), and to delegate the tasks to the right classes or objects inside their component/subsystem/system. However, this is not the only place we may find controllers. Whenever we have a work task that consists of several steps, we may declare that "this class (or method) is a controller for this work task" and add it to its list of responsibilities. Of course, adding responsibilities means lower cohesion so we should immediately consider whether we should instead add a new class or method with this single responsibility.
+
+* Creator
+Creator is a merge between knowledge from the problem domain (data) and knowledge about the design (which classes are available and relevant to create objects from). The data has to come from somewhere when we create an object, and the creator pattern tries to provide guidelines for how to think when we create objects. Class B should be the creator of objects of type A if it has the data necessary to create A, of it is a container of objects of the type A, or if A can be considered a part of B.
+
+It is easy to overthink this pattern, but it is really just an extension of Information Expert and Controller, and an attempt to as quickly as possible get back to a state of higher cohesion in a running system.
+
+* Indirection
+In order to get lower coupling between two objects (Let's call them 'a' and 'b'), we introduce an object between them who will be responsible to route calls from one to the other. This means that it is easier to change the system because if we want to replace 'b' with some other object (maybe of a different type), all we need to do is to change the intermediate object, and hopefully we need not modify the 'a' object. Essentially, we ask ourselves the question "should 'a' really be the information expert on how to reach 'b', can we get a more loosely coupled system if it isn't"?.
+
+* Polymorphism
+Polymorphism isn't quite of the same type as the other design principles, since it is more of a mechanism inherent in object oriented programming languages. The basic idea is that we hide behaviour that may vary using the polymorphism mechanisms that our language provides us with. This means we get systems with lower coupling (where we are no longer bound to each individual type (of behaviour) but to a generic superclass; we can see it as a form of indirection but where the compiler helps us out), we get higher cohesion (each behaviour type is represented by a single class), and thus systems that are easier to change.
+
+* Protected Variations
+This is, in many senses, the summary of all the other design principles. If we have parts of our design that is likely to change, we want to make this change as easy as possible. We do this by encapsulating the parts of the design that may vary into a class or subsystem, we make sure that there are as few places in our design as possible where this variation occurs ( e.g by applying the principle of information export in order to achieve high cohesion), and we make sure that the rest of the system is as loosely coupled to this encapsulated behaviour as possible, for example with the help of indirection, controllers, and creators.
+
+* Pure Fabrication
+When there is no domain concept that directly maps to what we are trying to achieve -- for example when trying to apply the principles of high cohesion and low coupling -- Pure Fabrication tells us that we have the liberty to invent new classes. We are the designers of our own system and have a complete artistic license to "make sh!t up" as we need to, in order to create a system which is easy to change.
+

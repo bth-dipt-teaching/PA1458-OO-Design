@@ -1,0 +1,848 @@
+
+* <2025-02-03 mån> Bad Class Diagram
+#+begin_src plantuml :file 2025-badClass.png
+
+class PoS {
++startNewSale()
++enterItem()
+-current:Sale
+}
+
+class Sale {
++addItem(SalesItem si)
++increaseTotal()
+}
+
+class SaleItem {
++setProductId(upc)
++setQuantity(qty)
++setPrice(thePrice)
++getUPC()
+}
+
+class Warehouse {
++getDescription(upc)
++getPrice(upc)
+}
+
+PoS -- SaleItem
+PoS -- Sale
+Sale - SaleItem
+Sale -- Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:2025-badClass.png]]
+
+* <2026-02-03 tis> Improved Sequence Diagram
+#+begin_src plantuml :file 2026-seq-enteritem.png
+[-> ":PoS" : enterItem(upc, qty)
+activate ":PoS"
+
+":PoS" -> "current:Sale" : addItem(upc, qty)
+activate "current:Sale"
+
+create participant ":SaleItem"
+"current:Sale" --> ":SaleItem" : create()
+
+"current:Sale" -> ":SaleItem" : setProductId(upc)
+activate ":SaleItem"
+
+create participant ":Warehouse"
+":SaleItem" --> ":Warehouse" : getInstance()
+
+":SaleItem" -> ":Warehouse" : myDescription = getDescription(upc)
+activate ":Warehouse"
+deactivate ":Warehouse"
+
+":SaleItem" -> ":Warehouse" : myPrice = getPrice(upc)
+activate ":Warehouse"
+deactivate ":Warehouse"
+
+
+deactivate ":SaleItem"
+
+"current:Sale" -> ":SaleItem" : setQuantity(qty)
+activate ":SaleItem"
+deactivate ":SaleItem"
+
+"current:Sale" -> ":SaleItem" : p = getPrice()
+activate ":SaleItem"
+deactivate ":SaleItem"
+
+"current:Sale" -> "current:Sale" : increasePrice(p)
+activate "current:Sale"
+deactivate "current:Sale"
+
+":PoS" <-- "current:Sale" : (price, current total)
+deactivate "current:Sale"
+[<-- ":PoS" : price and current total
+deactivate ":PoS"
+
+#+end_src
+
+#+ATTR_ORG: :width 900
+#+RESULTS:
+[[file:2026-seq-enteritem.png]]
+
+* <2026-02-03 tis> Class Diagram
+#+begin_src plantuml :file 2026-class.png
+PoS : +enterItem(upc, qty)
+
+Sale : +addItem(upc, qty)
+Sale : +increasePrice(thePrice)
+
+SaleItem : +setProductId(upc)
+SaleItem : +setQuantity(qty)
+SaleItem : +getPrice()
+
+Warehouse : +getDescription(upc)
+Warehouse : +getPrice(upc)
+Warehouse : +static Warehouse* getInstance()
+
+PoS - Sale
+Sale -- "*" SaleItem
+SaleItem - Warehouse
+
+#+end_src
+
+#+RESULTS:
+[[file:2026-class.png]]
+* <2026-02-05 tor> BurgerOrderer
+** Use Case: Order Food
+
+#+begin_verse
+*Use Case* Order Food
+*Actors* Customer
+*Description* Customer orders a meal and configures it. The system registers the order and confirms.
+
+#+end_verse
+
+*Main Course of Events*
+| Actor                                      | System                                          |
+|--------------------------------------------+-------------------------------------------------|
+| 1. Customer arrives and starts a new order |                                                 |
+|                                            | 2. System presents options                      |
+|                                            | [single burger, meal, dessert, ...]             |
+| 3. Customer selects "full meal"            |                                                 |
+|                                            | 4. System presents available meals              |
+| 5. Customer selects "Dripping with McLard" |                                                 |
+|                                            | 6. System adds meal to the order and            |
+|                                            | presents configuration options.                 |
+| 7. Customer selects "no onions"            |                                                 |
+|                                            | 8. System adds "No Onions" to order             |
+| 9. Customer selects "more bacon!"          |                                                 |
+|                                            | 10. System adds "extra bacon" to order          |
+| 11. Customer confirms order                |                                                 |
+|                                            | 12. System initiates the use case _pay for order_ |
+|                                            | 13. System places order to Kitchen              |
+|                                            | 14. System prints receipt.                      |
+|--------------------------------------------+-------------------------------------------------|
+
+** System Sequence Diagram
+#+begin_src plantuml :file 2026-bo-ssd.png
+actor ":Customer" as cust
+participant ":BurgerOrder" as sys
+
+cust -> sys : startNewOrder()
+sys --> cust : presents available food options
+
+cust -> sys : selectMealType("full meal")
+sys --> cust : presents available full meal types
+
+cust -> sys : selectOrder(theOrderType)
+sys --> cust : presents configuration options
+
+cust -> sys : selectConfiguration(theConfigurationOption)
+sys --> cust : confirms configuration
+
+cust -> sys : confirmOrder()
+'sys -> ":KitchenSystem" : orderReceived()
+sys --> cust : printed receipt
+
+#+end_src
+
+#+ATTR_ORG: :width 800
+#+RESULTS:
+[[file:2026-bo-ssd.png]]
+
+** Sequence Diagram: startNewOrder()
+#+begin_src plantuml :file 2026-bo-sno.png
+[-> ":BurgerOrderer" : startNewOrder()
+activate ":BurgerOrderer"
+
+create participant "current:Order"
+":BurgerOrderer" --> "current:Order" : create()
+
+":BurgerOrderer" -> ":OrderTypeManager" : getAVailableMealTypes()
+activate ":OrderTypeManager"
+deactivate ":OrderTypeManager"
+
+[<-- ":BurgerOrderer" : list of available meals
+deactivate ":BurgerOrderer"
+
+#+end_src
+
+#+ATTR_ORG: :width 800
+#+RESULTS:
+[[file:2026-bo-sno.png]]
+
+** Sequence Diagram: selectMealType()
+#+begin_src plantuml :file 2026-bo-smt.png
+[-> ":BurgerOrderer" : selectMealType(theMealType)
+activate ":BurgerOrderer"
+
+":BurgerOrderer" -> ":OrderTypeManager" : getAvailableMeals(theMealType)
+activate ":OrderTypeManager"
+":OrderTypeManager" --> ":BurgerOrderer" : list of available meals of the selected type
+deactivate ":OrderTypeManager"
+
+[<-- ":BurgerOrderer" : list of available meals of the selected type
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+ATTR_ORG: :width 800
+#+RESULTS:
+[[file:2026-bo-smt.png]]
+
+** Sequence Diagram: selectOrder()
+#+begin_src plantuml :file 2026-bo-so.png
+[-> ":BurgerOrderer" : selectOrder(theMealName)
+activate ":BurgerOrderer"
+
+":BurgerOrderer" -> ":OrderTypeManager" : getMeal(theMealName)
+activate ":OrderTypeManager"
+create participant "theMeal:MealType"
+":OrderTypeManager" --> "theMeal:MealType" : create()
+":OrderTypeManager" --> ":BurgerOrderer" : theMeal
+deactivate ":OrderTypeManager"
+
+":BurgerOrderer" -> "current:Order" : add(theMeal)
+activate "current:Order"
+deactivate "current:Order"
+
+
+":BurgerOrderer" -> "theMeal:MealType" : getConfigurationOptions()
+activate "theMeal:MealType"
+"theMeal:MealType" --> ":BurgerOrderer" : list of configuration options
+deactivate "theMeal:MealType"
+
+
+[<-- ":BurgerOrderer" : list of configuration options
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+ATTR_ORG: :width 1000
+#+RESULTS:
+[[file:2026-bo-so.png]]
+** Sequence Diagram: selectConfiguration()
+#+begin_src plantuml :file 2026-bo-sc.png
+[-> ":BurgerOrderer" : selectConfiguration(theConfigurationName)
+activate ":BurgerOrderer"
+
+":BurgerOrderer" -> "current:Order" : theMeal = getLatestMealOrder()
+activate "current:Order"
+deactivate "current:Order"
+
+":BurgerOrderer" -> "theMeal:MealType" : setConfiguration(theConfigurationName)
+activate "theMeal:MealType"
+deactivate "theMeal:MealType"
+
+[<-- ":BurgerOrderer" : confirm choice
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+ATTR_ORG: :width 800
+#+RESULTS:
+[[file:2026-bo-sc.png]]
+** Sequence Diagram: confirmOrder()
+  12. System initiates the use case _pay for order_ 
+  13. System places order to Kitchen 
+  14. System prints receipt. 
+
+
+#+begin_src plantuml :file 2026-bo-co.png
+[-> ":BurgerOrderer" : confirmOrder()
+activate ":BurgerOrderer"
+
+":BurgerOrderer" -> ":PaymentSystem" : executePayment()
+activate ":PaymentSystem"
+deactivate ":PaymentSystem"
+
+":BurgerOrderer" -> ":KitchenSystem" : sendOrder(current)
+activate ":KitchenSystem"
+
+loop [while more items]
+":KitchenSystem" -> "current:Order" : getNextItem()
+end loop
+
+deactivate ":KitchenSystem"
+
+":BurgerOrderer" -> ":ReceiptPrinter" : print(current)
+activate ":ReceiptPrinter"
+
+loop [while more items]
+":ReceiptPrinter" -> "current:Order" : getNextItem()
+end loop
+
+deactivate ":ReceiptPrinter"
+
+[<-- ":BurgerOrderer" : confirmation of order
+deactivate ":BurgerOrderer"
+#+end_src
+
+#+ATTR_ORG: :width 800
+#+RESULTS:
+[[file:2026-bo-co.png]]
+
+#+ATTR_ORG: :width 800
+
+** Class Diagram
+#+begin_src plantuml :file 2026-bo-class.png
+
+class BurgerOrderer {
++startNewOrder()
++selectMealType(theMealType)
++selectOrder(theMealName)
++selectConfiguration(theConfigurationName)
++confirmOrder()
+- current:Order
+}
+
+class Order
+Order : +add(theMeal)
+Order : +getLatestMealOrder()
+Order : +getNextItem()
+
+BurgerOrderer -- "0..1" Order
+
+BurgerOrderer -- OrderTypeManager
+
+OrderTypeManager : +getAvailableMealTypes()
+OrderTypeManager : +getAvailableMeals(theMealType)
+OrderTypeManager : +getMeal(theMealName)
+
+class MealType {
++getConfigurationOptions()
++setConfiguration(theConfigurationName)
+}
+
+OrderTypeManager -- MealType : creates >
+Order -- "*" MealType : contains >
+
+PaymentSystem : executePayment()
+KitchenSystem : sendOrder(current)
+ReceiptPrinter : print()
+
+BurgerOrderer - PaymentSystem
+BurgerOrderer - KitchenSystem
+BurgerOrderer - ReceiptPrinter
+
+KitchenSystem -- Order
+ReceiptPrinter -- Order
+#+end_src
+
+#+ATTR_ORG: :width 800
+#+RESULTS:
+[[file:2026-bo-class.png]]
+* <2026-02-12 tor> S/M SprucerUpper
+** Conceptual Model
+#+begin_src plantuml :file 2026-smcm.png
+package Collect
+
+package Transform
+
+package Publish
+
+Collect - Transform
+Transform - Publish
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-smcm.png]]
+
+** Package Model: Collect
+#+begin_src plantuml :file 2026-collect.png
+package Collect {
+class Collect <<Context>> {
+  +setup()
+  +collect()
+  -List<AbstractCollector> activeCollectors
+}
+
+abstract class AbstractCollector <<Abstract Strategy>> {
+  -string URL
+  +collect()
+}
+
+Collect -- "*" AbstractCollector
+
+AbstractCollector <|-- FBCollector.FBCollector
+AbstractCollector <|-- RedditCollector.RedditCollector
+AbstractCollector <|-- XitterCollector.XitterCollector
+AbstractCollector <|-- CanvasCollector.CanvasCollector
+
+class Message
+Collect - "*" Message
+
+package FBCollector {
+  class FBCollector
+  class FBParser
+  class FBJunkRemover
+}
+
+package RedditCollector {
+class RedditCollector
+}
+
+package XitterCollector {
+class XitterCollector
+}
+
+package CanvasCollector {
+class CanvasCollector
+}
+
+}
+
+package TempStorage <<database>> {
+}
+
+package Transform {
+}
+
+package Publish {
+}
+
+Collect - TempStorage
+TempStorage - Transform
+Transform - Publish
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-collect.png]]
+** Collect Method
+#+begin_src cpp
+  void Collector::collect() {
+  	for (auto collector : activeCollectors) {
+  		Message* m = collector->collect();
+  		if ( m->hasContents() ) { TempStorage::getInstance()->add(m); }
+  	}
+  }
+
+#+end_src
+
+** Package: Transform
+#+begin_src plantuml :file 2026-sm-transform.png
+
+package Collect {
+}
+
+package TempStorage <<database>> {
+}
+
+package Transform {
+class Transform <<Context>> {
+-List<AbstractTransformation> activeTransformations
++setup()
++newContents(Message* theMessage)
+-publish(Message* theMessage)
+}
+
+class Message
+
+abstract class AbstractTransformation <<Abstract Strategy>> {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+Transform -- "*" AbstractTransformation
+
+AbstractTransformation <|-- SonnetTransformation
+
+class SonnetTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+class ComicTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+class SoundtrackTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+class TuringTestTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+AbstractTransformation <|-- ComicTransformation
+AbstractTransformation <|-- SoundtrackTransformation
+AbstractTransformation <|-- TuringTestTransformation
+
+}
+
+package Publish {
+}
+
+Collect - TempStorage
+TempStorage - Transform
+Transform - Publish
+
+#+end_src
+
+#+ATTR_ORG: :width 1600
+#+RESULTS:
+[[file:2026-sm-transform.png]]
+
+** Observer for TempStorage
+#+begin_src plantuml :file 2026-sm-transform-observer.png
+
+package Collect {
+}
+
+package TempStorage <<database>> {
+}
+
+package Transform {
+class Transform <<Context>> {
+-List<AbstractTransformation> activeTransformations
++setup()
++newContents(Message* theMessage)
+-publish(Message* theMessage)
+}
+
+class Message
+
+abstract class AbstractTransformation <<Abstract Strategy>> {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+Transform -- "*" AbstractTransformation
+
+AbstractTransformation <|-- SonnetTransformation
+
+class SonnetTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+class ComicTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+class SoundtrackTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+class TuringTestTransformation {
++canTransform(Message* theMessage)
++performTransformation(Message* theMessage)
++maybeTransform(Message* theMessage)
+}
+
+AbstractTransformation <|-- ComicTransformation
+AbstractTransformation <|-- SoundtrackTransformation
+AbstractTransformation <|-- TuringTestTransformation
+
+}
+
+package Publish {
+}
+
+Collect - TempStorage
+'TempStorage - Transform
+Transform - Publish
+
+package Observer {
+class Observable {
+-Observer [] myObserver
++addObserver()
++notifyObservers() 
+}
+
+abstract class Observer {
+  +notify() = 0
+}
+
+Observable - "*" Observer
+}
+
+Observer.Observer <|-- Transform.Transform 
+Transform.Transform : +notify()
+Observable <|-- TempStorage
+
+#+end_src
+
+#+ATTR_ORG: :width 1600
+#+RESULTS:
+[[file:2026-sm-transform-observer.png]]
+
+
+** Package: Publish
+#+begin_src plantuml :file 2026-sm-publish.png
+package Collect {
+}
+
+package Transform {
+}
+
+package TempStorage <<database>> {
+}
+
+package Observer {
+}
+
+package Publish {
+class Publish {
++publish(Message* theMessage)
+}
+
+package WebPublisher {
+}
+
+package SystemNotificationPublisher {
+}
+
+package DBStoragePublisher {
+}
+
+
+}
+
+Collect - TempStorage
+Observer <|-- TempStorage
+Observer <|-- Transform
+
+Transform - Publish.Publish
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-sm-publish.png]]
+* <2026-02-13 fre> Robot
+** Overview
+#+begin_src plantuml :file 2026-robot.png
+
+package UI {
+}
+
+package Robot {
+package ArmControl
+package Navigator
+package GPSSensor
+package MapManager
+package RouteExecutor
+package DriveControl
+
+GPSSensor -- Navigator
+MapManager - Navigator
+Navigator -- RouteExecutor
+RouteExecutor -- DriveControl
+
+}
+
+package Sensors {
+}
+
+package Actuators {
+}
+
+UI -- Robot
+Robot - Sensors
+Robot - Actuators
+
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-robot.png]]
+** Use Case: Navigate to Point
+#+begin_verse
+*Use Case:* Navigate to Point
+*Actors:* Driver
+*Description:* Driver selects that they want to navigate to a point.
+ System displays a map. Driver selects a point in the map.
+ System plots a route to the selected point.
+#+end_verse
+
+*Main Course of Events*
+| Actor                                                    | System                                                              |
+|----------------------------------------------------------+---------------------------------------------------------------------|
+| 1. Driver selects that they want to navigate to a point. |                                                                     |
+|                                                          | 2. The system selects "Navigate to point"                           |
+|                                                          | and presents a map.                                                 |
+| 3. Driver selects a point on the map.                    |                                                                     |
+|                                                          | 4. System plots a route to the point.                               |
+| 5. Driver confirms route.                                |                                                                     |
+|                                                          | 6. System registers route and lurches away with a smile on its face |
+|----------------------------------------------------------+---------------------------------------------------------------------|
+
+** System Sequence Diagram
+#+begin_src plantuml :file 2026-robot-ssd.png
+actor ":Driver" as d
+participant ":System" as sys
+
+d -> sys : selectNavigationMethod("toPoint")
+sys --> d : presents map
+
+d -> sys : selectPoint(x, y)
+sys --> d : route to point
+
+d -> sys : confirmRoute()
+sys --> d : ok
+
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-robot-ssd.png]]
+** Interaction Diagrams
+*** selectNavigationMethod()
+#+begin_src plantuml :file 2026-robot-snm.png
+[-> ":System" : selectNavigationMethod("toPoint")
+activate ":System"
+
+":System" -> ":NavigationFactory" : getNavigationStrategy("toPoint")
+activate ":NavigationFactory"
+":NavigationFactory" --> "currentNavigationStrategy:ToPointNavigationStrategy"** : create()
+
+":NavigationFactory" --> ":System" : currentNavigationStrategy
+deactivate ":NavigationFactory"
+
+":System" -> "currentNavigationStrategy:ToPointNavigationStrategy" : getNavigationObject()
+activate "currentNavigationStrategy:ToPointNavigationStrategy"
+deactivate "currentNavigationStrategy:ToPointNavigationStrategy"
+
+[<-- ":System" : navigationObject
+deactivate ":System"
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-robot-snm.png]]
+
+*** selectPoint()
+#+begin_src plantuml :file 2026-robot-sp.png
+[-> ":System" : selectPoint(x,y)
+activate ":System"
+
+":System" -> "currentNavigationStrategy:ToPointNavigationStrategy" : selectPoint(x,y)
+activate "currentNavigationStrategy:ToPointNavigationStrategy"
+"currentNavigationStrategy:ToPointNavigationStrategy" -> ":GPSSensor" : getCurrentPosition()
+"currentNavigationStrategy:ToPointNavigationStrategy" -> ":RoutePlanner" : getRoute(currentPosition, targetPosition)
+
+"currentNavigationStrategy:ToPointNavigationStrategy" --> ":System" : routeObject
+deactivate "currentNavigationStrategy:ToPointNavigationStrategy"
+
+
+[<-- ":System" : routeObject
+deactivate ":System"
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-robot-sp.png]]
+
+** Class Diagram
+#+begin_src plantuml :file 2026-robot-class.png
+
+package UI {
+}
+
+package Robot {
+
+class System {
++selectNavigationMethod(string theMethod)
++selectPoint(int xpos, int ypos)
++confirmRoute(Route theRoute)
+}
+
+package NavigationStrategies {
+class NavigationFactory {
++getNavigationStrategy(string theMethod)
+}
+
+abstract class NavigationStrategy {
++getNavigationObject()
++selectPoint(int xpos, int ypos)
+}
+
+NavigationStrategy <|-- ToPointNavigationStrategy
+
+}
+
+package ArmControl {
+}
+package Navigator {
+class RoutePlanner {
++getRoute(Point start, Point target)
+}
+}
+package GPSSensor {
+class GPSSensor {
++getCurrentPosition()
+}
+}
+package MapManager {
+  }
+package RouteExecutor {
+  }
+package DriveControl {
+  }
+
+
+GPSSensor -- Navigator
+MapManager - Navigator
+Navigator -- RouteExecutor
+RouteExecutor -- DriveControl
+
+}
+
+package Sensors {
+}
+
+package Actuators {
+}
+
+UI -- Robot
+Robot - Sensors
+Robot - Actuators
+
+System -- NavigationFactory
+System -- NavigationStrategy
+
+NavigationStrategy - GPSSensor.GPSSensor
+NavigationStrategy - RoutePlanner
+
+#+end_src
+
+#+ATTR_ORG: :width 1024
+#+RESULTS:
+[[file:2026-robot-class.png]]
