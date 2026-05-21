@@ -1,0 +1,105 @@
+#+Title: Diary System
+#+Author: Mikael Svahnberg
+#+Email: Mikael.Svahnberg@bth.se
+#+Date: 2026-04-02
+#+EPRESENT_FRAME_LEVEL: 1
+#+OPTIONS: email:t <:t todo:t f:t ':t H:1
+#+STARTUP: beamer num
+
+#+LATEX_CLASS_OPTIONS: [10pt,t,a4paper]
+#+BEAMER_THEME: BTH2025
+
+* Introduktion
+Applikationen är en enkel dagboks-applikation; man kan som användare skapa en eller flera dagböcker, och sedan göra inlägg i dessa.
+* Exempel på Use Cases
+#+begin_verse
+*Use Case:* Create Diary
+*Actors:* Diary Author
+
+*Description:* A diary author selects "Create New Diary".
+The system asks for the name of the new diary and a short description of it.
+ The system lists available diary categories and ask the author to select which categories that apply.
+ The author selects applicable categories and selects "Create".
+ The system presents a summary of the diary and asks the user to confirm before creation.
+ The author reviews the information for the new diary and confirms. The system creates the diary.
+
+#+end_verse
+
+#+begin_verse
+*Use Case:* Create Post in Diary
+*Actors:* Diary Author
+*Description:* A diary author selects "Create new Post". The system lists the diaries available to the author.
+ The author selects one of the diaries. The system asks for the text of the post.
+ The author writes the post and selects "Submit".
+ The system lists available keywords and asks the author to select which keywords that apply.
+ The author selects applicable keywords and select "Post". The system adds the post to the diary and redisplays.
+#+end_verse
+
+#+begin_verse
+*Use Case:* Search for Post
+*Actors:* User
+*Description:* The user selects "Search". The system lists available categories and keywords,
+ and asks the user to select applicable categories or keywords.
+ The system also provides a search box where the user can write anything.
+ The user selects applicable categories and keywords, types in text to search for, and selects "Search".
+ The system displays a list of posts that match the search terms.
+#+end_verse
+
+*Main Course of Events*
+#+LATEX: \scriptsize
+| Actor                                                  | System                                                              |
+|--------------------------------------------------------+---------------------------------------------------------------------|
+| 1. The user selects "Search".                          |                                                                     |
+|                                                        | 2. The system lists available categories and keywords               |
+| 3. The user selects applicable categories and keywords |                                                                     |
+|                                                        | 4. The system narrows the list of keywords and categories           |
+|                                                        | based on the choices made.                                          |
+| 5. The user types text to search for                   |                                                                     |
+| 6. The user selects "Search"                           |                                                                     |
+|                                                        | 7. The system displays a list of posts that match the search terms. |
+|--------------------------------------------------------+---------------------------------------------------------------------|
+
+#+begin_src plantuml :file 202604-ssd-Diary.png
+title System Sequence Diagram for the use case "Search for Post"
+actor ":User" as u
+participant ":System" as sys
+
+u -> sys : initiateSearch()
+sys --> u : all (categories, keywords)
+loop
+alt
+u -> sys : selectCategory(someCategoryName)
+sys --> u : updated (categories, keywords)
+else
+u -> sys : selectKeyword(someKeyword)
+sys --> u : updated (categories, keywords)
+end alt
+end loop
+
+u -> sys : startSearch(searchText)
+sys --> u : list of matching posts
+
+#+end_src
+
+#+RESULTS:
+[[file:202604-ssd-Diary.png]]
+
+#+begin_src plantuml :file 202604-domain-Diary.png
+title Possible Domain Concepts for Diary System
+DiaryManager - "*" Diary
+Diary -- "*" Post
+Diary -- "*" Category
+Post -- "*" Keyword
+
+Post : +Text contents
+
+CategoryManager -- "*" Category
+KeywordManager - "*" Keyword
+
+legend bottom
+Please note that this is not an exhaustive list of domain concepts.
+end legend
+#+end_src
+
+#+RESULTS:
+[[file:202604-domain-Diary.png]]
